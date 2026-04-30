@@ -136,6 +136,24 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G9WMXW2MF5');
+</script> <script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href="#booking"], a[href="#quote"]');
+  if (link) {
+    e.preventDefault();
+    var target = document.getElementById('qqcCard');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  }
+});
+</script><script>
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href="#booking"]');
+  if (link) {
+    e.preventDefault();
+    var target = document.getElementById('qqcCard');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 </script>
 <!-- ▲▲▲ END SECTION 00: HEAD ▲▲▲ -->
 
