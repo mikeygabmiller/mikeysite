@@ -395,72 +395,8 @@ main { padding-top: 70px; /* space for sticky header */ }
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 04: URGENCY BAR (slot machine) ▼▼▼ -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
-.urg-wrap { background: #111; border-top: 3px solid var(--brand-red); border-bottom: 1px solid #222; padding: 13px 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-.urg-wrap::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(220,38,38,0.03) 40px, rgba(220,38,38,0.03) 41px); pointer-events: none; }
-.urg-inner { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 1; }
-.urg-prefix { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; color: #f0f0f0; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
-.urg-slot { height: 28px; line-height: 28px; overflow: hidden; position: relative; background: rgba(220,38,38,0.12); border: 1px solid rgba(220,38,38,0.3); border-radius: 5px; padding: 0 10px; min-width: 160px; }
-.urg-slot::before, .urg-slot::after { content: ''; position: absolute; left: 0; right: 0; height: 5px; z-index: 2; pointer-events: none; }
-.urg-slot::before { top: 0; background: linear-gradient(to bottom, rgba(17,17,17,0.95), transparent); }
-.urg-slot::after { bottom: 0; background: linear-gradient(to top, rgba(17,17,17,0.95), transparent); }
-.urg-track { position: relative; width: 100%; }
-.urg-item { height: 28px; line-height: 28px; font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 700; color: var(--brand-red); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; display: block; }
-.urg-item.final { color: #ff5050; }
-.urg-sep { width: 1px; height: 26px; background: #2a2a2a; }
-.urg-sub { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #666; white-space: nowrap; }
-.urg-sub strong { color: #aaa; }
-.urg-btn { background: transparent; border: 1.5px solid var(--brand-red); color: var(--brand-red); font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 6px 18px; border-radius: 4px; text-decoration: none; transition: all .2s; white-space: nowrap; }
-.urg-btn:hover { background: var(--brand-red); color: white; }
-</style>
-
-<section class="urg-wrap">
-  <div class="urg-inner">
-    <span class="urg-prefix">Get booked as soon as</span>
-    <div class="urg-slot"><div class="urg-track" id="urgTrack"></div></div>
-    <div class="urg-sep"></div>
-    <div class="urg-sub"><strong>Snohomish</strong> · Mobile Detailing</div>
-    <a href="https://form.jotform.com/251325009768156" class="urg-btn">Book Now</a>
-  </div>
-</section>
-
-<script>
-(function(){
-  var ITEM_H = 28;
-  var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var monNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var target = new Date();
-  target.setDate(target.getDate() + 3);
-  var targetStr = dayNames[target.getDay()] + ' ' + monNames[target.getMonth()] + ' ' + target.getDate();
-  var reel = ['Monday','Thursday','Friday','Wednesday','Saturday','Tuesday','Monday','Friday','Wednesday','Thursday', targetStr];
-  var track = document.getElementById('urgTrack');
-  if(!track) return;
-  reel.forEach(function(d, i){
-    var el = document.createElement('span');
-    el.className = 'urg-item' + (i === reel.length - 1 ? ' final' : '');
-    el.textContent = d;
-    track.appendChild(el);
-  });
-  track.style.cssText = 'position:relative;transform:translateY(0px);transition:none;';
-  var finalIndex = reel.length - 1;
-  var speeds = [55,55,60,70,85,105,130,165,210,270,400];
-  var i = 1;
-  function step(){
-    if(i > finalIndex) return;
-    var idx = i;
-    setTimeout(function(){
-      if(idx < finalIndex - 1) track.style.transition = 'transform 0.045s linear';
-      else if(idx < finalIndex) track.style.transition = 'transform 0.2s ease-out';
-      else track.style.transition = 'transform 0.45s cubic-bezier(0.175,0.885,0.32,1.275)';
-      track.style.transform = 'translateY(-' + (idx * ITEM_H) + 'px)';
-      i++;
-      step();
-    }, speeds[Math.min(i, speeds.length - 1)]);
-  }
-  step();
-})();
-</script>
-<!-- ▲▲▲ END SECTION 04: URGENCY BAR ▲▲▲ -->
+<
+    (
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 10: PHOTO GALLERY ▼▼▼ -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
