@@ -1116,26 +1116,595 @@ Read all 5-Star reviews on Google →
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 07: QQC (Quick Quote Calculator — iframe) ▼▼▼ -->
 <!-- ════════════════════════════════════════════════════════════════════ -<!-- MIKEY'S QQC v3 — Uses original working JS pattern exactly 
-<styles> .iframe-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 100%; /* Change this to 56.25% if you want it to be wide like a TV */
-}
+<!-- MIKEY'S QQC v3 — Uses original working JS pattern exactly -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
 
-.iframe-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
+#qqcCard {
+  font-family: 'Outfit', sans-serif;
+  background: #141414;
+  color: #fff;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 2px solid #2a2a2a;
+  padding: 32px 24px;
+  box-sizing: border-box;
 }
-<div class="iframe-container">
-  <iframe src="https://mikeysquote.netlify.app" title="Mikeys Quote" allowfullscreen></iframe>
+#qqcCard * { box-sizing: border-box; }
+#qqcCard h2 {
+  font-weight: 900;
+  font-size: 22px;
+  text-align: center;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+#qqcCard .qq-sub {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+#qqcCard .qq-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+#qqcCard .qq-card {
+  background: #1c1c1c;
+  border: 2px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+#qqcCard .qq-card:hover { border-color: #444; }
+#qqcCard .qq-card.selected {
+  border-color: #dc2626;
+  box-shadow: 0 0 16px rgba(220,38,38,0.25);
+}
+#qqcCard .qq-card .qq-icon { font-size: 28px; display: block; margin-bottom: 6px; }
+#qqcCard .qq-card .qq-label { font-weight: 700; font-size: 14px; display: block; }
+#qqcCard .qq-card .qq-desc { font-size: 11px; color: #888; display: block; margin-top: 4px; line-height: 1.3; }
+#qqcCard .qq-card .qq-price { color: #dc2626; font-weight: 700; font-size: 13px; margin-top: 6px; display: block; }
+
+#qqcCard .qq-services-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+#qqcCard .qq-services-grid .qq-card {
+  display: flex; align-items: center; text-align: left; padding: 14px 16px; gap: 12px; min-width: unset;
+}
+#qqcCard .qq-services-grid .qq-card .qq-check {
+  width: 22px; height: 22px; border-radius: 6px; border: 2px solid #444;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 13px; transition: border-color 0.2s, background 0.2s;
+}
+#qqcCard .qq-services-grid .qq-card.selected .qq-check { border-color: #dc2626; background: #dc2626; }
+#qqcCard .qq-services-grid .qq-card .qq-svc-info { flex: 1; }
+#qqcCard .qq-services-grid .qq-card .qq-svc-price { color: #dc2626; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+#qqcCard .qq-addons-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 10px 0; font-weight: 600; }
+
+#qqcCard .qq-btn {
+  display: block; width: 100%; padding: 14px; border: none; border-radius: 10px;
+  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
+  cursor: pointer; transition: opacity 0.2s, transform 0.1s;
+  text-align: center; text-decoration: none;
+}
+#qqcCard .qq-btn:active { transform: scale(0.98); }
+#qqcCard .qq-btn-red { background: #dc2626; color: #fff; }
+#qqcCard .qq-btn-red:hover { opacity: 0.9; }
+#qqcCard .qq-btn-red:disabled { background: #333; color: #666; cursor: not-allowed; opacity: 1; }
+#qqcCard .qq-btn-ghost { background: transparent; color: #888; border: 1px solid #333; font-size: 13px; padding: 10px; }
+#qqcCard .qq-btn-ghost:hover { border-color: #555; color: #bbb; }
+#qqcCard .qq-nav { display: flex; gap: 10px; margin-top: 16px; }
+#qqcCard .qq-nav .qq-btn { flex: 1; }
+
+#qqcCard .qq-quote-amount { font-size: 52px; font-weight: 900; text-align: center; color: #fff; margin: 8px 0 4px 0; letter-spacing: -2px; }
+#qqcCard .qq-quote-from { text-align: center; font-size: 13px; color: #666; margin-bottom: 16px; }
+#qqcCard .qq-summary { background: #1c1c1c; border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; }
+#qqcCard .qq-summary p { margin: 4px 0; font-size: 13px; color: #ccc; }
+#qqcCard .qq-summary .qq-sum-check { color: #dc2626; font-weight: 700; }
+
+#qqcCard .qq-book-block {
+  background: rgba(220,38,38,0.08); border: 2px solid rgba(220,38,38,0.3);
+  border-radius: 14px; padding: 20px 18px; margin-bottom: 16px;
+}
+#qqcCard .qq-book-block h3 { font-weight: 900; font-size: 16px; text-align: center; margin: 0 0 14px 0; color: #fff; }
+#qqcCard .qq-form-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+#qqcCard .qq-input {
+  background: #1a1010; border: 2px solid rgba(220,38,38,0.25); border-radius: 10px;
+  padding: 13px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px;
+  width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+#qqcCard .qq-input::placeholder { color: #666; }
+#qqcCard .qq-input:focus { border-color: #dc2626; box-shadow: 0 0 12px rgba(220,38,38,0.2); }
+#qqcCard .qq-form-note { text-align: center; font-size: 12px; color: #555; margin-top: 10px; }
+
+#qqcCard .qq-success { text-align: center; padding: 20px 0; }
+#qqcCard .qq-success-icon { font-size: 48px; margin-bottom: 12px; display: block; }
+#qqcCard .qq-success h3 { font-weight: 900; font-size: 20px; margin: 0 0 8px 0; }
+#qqcCard .qq-success p { color: #999; font-size: 14px; margin: 0; line-height: 1.5; }
+
+#qqcCard .qq-steps-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+#qqcCard .qq-dot { width: 8px; height: 8px; border-radius: 50%; background: #333; transition: background 0.3s; }
+#qqcCard .qq-dot.active { background: #dc2626; }
+
+#step1 { display: block; }
+#step2, #step3, #step4, #step5 { display: none; }
+
+/* ========== DESKTOP RESPONSIVE ========== */
+@media (min-width: 640px) {
+  #qqcCard {
+    max-width: 640px;
+    padding: 40px 36px;
+    border-radius: 20px;
+  }
+  #qqcCard h2 {
+    font-size: 26px;
+  }
+  #qqcCard .qq-sub {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+  #qqcCard .qq-grid {
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  #qqcCard .qq-card {
+    padding: 20px 18px;
+    border-radius: 14px;
+  }
+  #qqcCard .qq-card .qq-icon {
+    font-size: 34px;
+    margin-bottom: 8px;
+  }
+  #qqcCard .qq-card .qq-label {
+    font-size: 15px;
+  }
+  #qqcCard .qq-card .qq-desc {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  #qqcCard .qq-services-grid {
+    gap: 12px;
+  }
+  #qqcCard .qq-services-grid .qq-card {
+    padding: 16px 20px;
+    gap: 16px;
+  }
+  #qqcCard .qq-services-grid .qq-card .qq-check {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+  #qqcCard .qq-services-grid .qq-card .qq-label {
+    font-size: 15px;
+  }
+  #qqcCard .qq-services-grid .qq-card .qq-desc {
+    font-size: 12px;
+  }
+  #qqcCard .qq-services-grid .qq-card .qq-svc-price {
+    font-size: 16px;
+  }
+  #qqcCard .qq-addons-label {
+    font-size: 14px;
+    margin: 20px 0 12px 0;
+  }
+  #qqcCard .qq-btn {
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+  #qqcCard .qq-btn-ghost {
+    font-size: 14px;
+    padding: 12px;
+  }
+  #qqcCard .qq-nav {
+    gap: 12px;
+    margin-top: 20px;
+  }
+  #qqcCard .qq-quote-amount {
+    font-size: 60px;
+    margin: 12px 0 6px 0;
+  }
+  #qqcCard .qq-quote-from {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  #qqcCard .qq-summary {
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  #qqcCard .qq-summary p {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  #qqcCard .qq-book-block {
+    padding: 24px 24px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  #qqcCard .qq-book-block h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  #qqcCard .qq-form-fields {
+    flex-direction: row;
+    gap: 12px;
+  }
+  #qqcCard .qq-input {
+    font-size: 16px;
+    padding: 14px 18px;
+  }
+  #qqcCard .qq-form-note {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  #qqcCard .qq-steps-indicator {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  #qqcCard .qq-dot {
+    width: 10px;
+    height: 10px;
+  }
+  #qqcCard .qq-success-icon {
+    font-size: 56px;
+  }
+  #qqcCard .qq-success h3 {
+    font-size: 24px;
+  }
+  #qqcCard .qq-success p {
+    font-size: 15px;
+  }
+}
+</style>
+
+<div id="qqcCard">
+
+  <div class="qq-steps-indicator">
+    <div class="qq-dot active" id="dot1"></div>
+    <div class="qq-dot" id="dot2"></div>
+    <div class="qq-dot" id="dot3"></div>
+    <div class="qq-dot" id="dot4"></div>
+  </div>
+
+  <div id="step1">
+    <h2>Quick Quote</h2>
+    <p class="qq-sub">Get your price in 30 seconds</p>
+    <div class="qq-grid">
+      <div class="qq-card" data-role="vehicle" data-value="0" data-label="Sedan / Compact">
+        <span class="qq-icon">&#128663;</span>
+        <span class="qq-label">Sedan / Compact</span>
+      </div>
+      <div class="qq-card" data-role="vehicle" data-value="20" data-label="SUV / Truck">
+        <span class="qq-icon">&#128665;</span>
+        <span class="qq-label">SUV / Truck</span>
+      </div>
+      <div class="qq-card" data-role="vehicle" data-value="40" data-label="Van / XL SUV">
+        <span class="qq-icon">&#128656;</span>
+        <span class="qq-label">Van / XL SUV</span>
+      </div>
+    </div>
+    <button class="qq-btn qq-btn-red" id="next1" disabled data-role="go-step" data-step="2">Next &#8594;</button>
+  </div>
+
+  <div id="step2">
+    <h2>How's the Interior?</h2>
+    <p class="qq-sub">Be honest — no judgment</p>
+    <div class="qq-grid">
+      <div class="qq-card" data-role="condition" data-value="0" data-label="Pretty Clean">
+        <span class="qq-icon">&#128077;</span>
+        <span class="qq-label">Pretty Clean</span>
+        <span class="qq-desc">Light dust, no major stains</span>
+      </div>
+      <div class="qq-card" data-role="condition" data-value="30" data-label="Needs Work">
+        <span class="qq-icon">&#128528;</span>
+        <span class="qq-label">Needs Work</span>
+        <span class="qq-desc">Some stains, pet hair, overdue</span>
+      </div>
+      <div class="qq-card" data-role="condition" data-value="60" data-label="War Zone">
+        <span class="qq-icon">&#128561;</span>
+        <span class="qq-label">War Zone</span>
+        <span class="qq-desc">Heavy stains, mud, pet hair</span>
+      </div>
+    </div>
+    <div class="qq-nav">
+      <button class="qq-btn qq-btn-ghost" data-role="go-step" data-step="1">&#8592; Back</button>
+      <button class="qq-btn qq-btn-red" id="next2" disabled data-role="go-step" data-step="3">Next &#8594;</button>
+    </div>
+  </div>
+
+  <div id="step3">
+    <h2>Pick Your Services</h2>
+    <p class="qq-sub">Select everything you want done</p>
+    <div class="qq-services-grid">
+      <div class="qq-card" data-role="service" data-name="Interior Detail" data-value="160">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info">
+          <span class="qq-label">Interior Detail</span>
+          <span class="qq-desc">Full vacuum, dash, console, windows, protection</span>
+        </div>
+        <span class="qq-svc-price">$160+</span>
+      </div>
+      <div class="qq-card" data-role="service" data-name="Exterior Detail" data-value="130">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info">
+          <span class="qq-label">Exterior Detail</span>
+          <span class="qq-desc">Hand wash, clay bar, wax, tires, wheels, windows</span>
+        </div>
+        <span class="qq-svc-price">$130+</span>
+      </div>
+      <div class="qq-card" data-role="service" data-name="Full Detail" data-value="260">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info">
+          <span class="qq-label">Full Interior + Exterior</span>
+          <span class="qq-desc">Complete inside &amp; out detail package</span>
+        </div>
+        <span class="qq-svc-price">$260+</span>
+      </div>
+    </div>
+    <div class="qq-addons-label">Add-ons</div>
+    <div class="qq-services-grid">
+      <div class="qq-card" data-role="addon" data-name="Carpet Shampoo" data-value="20">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info"><span class="qq-label">Carpet Shampoo</span></div>
+        <span class="qq-svc-price">$20+</span>
+      </div>
+      <div class="qq-card" data-role="addon" data-name="Ceramic Wax" data-value="20">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info"><span class="qq-label">Ceramic Wax</span></div>
+        <span class="qq-svc-price">$20+</span>
+      </div>
+      <div class="qq-card" data-role="addon" data-name="Exterior Polish" data-value="30">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info"><span class="qq-label">Exterior Polish</span></div>
+        <span class="qq-svc-price">$30+</span>
+      </div>
+      <div class="qq-card" data-role="addon" data-name="RainX Window Treatment" data-value="20">
+        <div class="qq-check">&#10003;</div>
+        <div class="qq-svc-info"><span class="qq-label">RainX Window Treatment</span></div>
+        <span class="qq-svc-price">$20+</span>
+      </div>
+    </div>
+    <div class="qq-nav">
+      <button class="qq-btn qq-btn-ghost" data-role="go-step" data-step="2">&#8592; Back</button>
+      <button class="qq-btn qq-btn-red" id="next3" disabled data-role="calc-quote">See My Quote &#8594;</button>
+    </div>
+  </div>
+
+  <div id="step4">
+    <h2>Your Estimated Quote</h2>
+    <div class="qq-quote-amount" id="quoteAmount">$0</div>
+    <p class="qq-quote-from">Based on your selections — final price confirmed at booking</p>
+    <div class="qq-summary" id="summaryList"></div>
+    <div class="qq-book-block">
+      <h3>Book Now — I'll Text You to Confirm</h3>
+      <div class="qq-form-fields">
+        <input type="text" class="qq-input" id="qqName" placeholder="Your name" autocomplete="name" />
+        <input type="tel" class="qq-input" id="qqPhone" placeholder="Phone number" autocomplete="tel" />
+      </div>
+      <button class="qq-btn qq-btn-red" id="qqSubmitBtn" data-role="submit-quote">LOCK IN YOUR QUOTE &#8594;</button>
+    </div>
+    <p class="qq-form-note">100% Satisfaction Guarantee &#8226; Pay When Complete</p>
+  </div>
+
+  <div id="step5">
+    <div class="qq-success">
+      <span class="qq-success-icon">&#10003;</span>
+      <h3>You're Locked In</h3>
+      <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
+      <p style="margin-top:16px;color:#666;font-size:13px;">— Mikey</p>
+    </div>
+  </div>
+
 </div>
+
+<script>
+(function(){
+  var qqS = { vehicle: null, condition: null, services: {}, addons: {} };
+  var qqTotal = 0, qqItems = [], qqVehicle = '';
+
+  function findRole(el, stopAt) {
+    while (el && el !== stopAt) {
+      if (el.getAttribute && el.getAttribute('data-role')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+
+  function goStep(n) {
+    var i;
+    for (i = 1; i <= 5; i++) {
+      var s = document.getElementById('step' + i);
+      if (s) s.style.display = 'none';
+    }
+    var target = document.getElementById('step' + n);
+    if (target) target.style.display = 'block';
+    for (i = 1; i <= 4; i++) {
+      var d = document.getElementById('dot' + i);
+      if (d) d.className = 'qq-dot' + (i <= n ? ' active' : '');
+    }
+    var card = document.getElementById('qqcCard');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function deselectAll(parentId, selector) {
+    var els = document.querySelectorAll('#' + parentId + ' ' + selector);
+    for (var i = 0; i < els.length; i++) els[i].classList.remove('selected');
+  }
+
+  function handleClick(e) {
+    var card = document.getElementById('qqcCard');
+    var el = findRole(e.target, card);
+    if (!el) return;
+    var role = el.getAttribute('data-role');
+
+    if (role === 'vehicle') {
+      deselectAll('step1', '.qq-card');
+      el.classList.add('selected');
+      qqS.vehicle = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      var n1 = document.getElementById('next1');
+      if (n1) n1.disabled = false;
+      setTimeout(function() { goStep(2); }, 300);
+    }
+
+    else if (role === 'condition') {
+      deselectAll('step2', '.qq-card');
+      el.classList.add('selected');
+      qqS.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      var n2 = document.getElementById('next2');
+      if (n2) n2.disabled = false;
+      setTimeout(function() { goStep(3); }, 300);
+    }
+
+    else if (role === 'service') {
+      el.classList.toggle('selected');
+      var sName = el.getAttribute('data-name');
+      var sVal = parseInt(el.getAttribute('data-value'));
+      if (el.classList.contains('selected')) {
+        qqS.services[sName] = sVal;
+        if (sName === 'Full Detail') {
+          var svcCards = document.querySelectorAll('#step3 .qq-services-grid .qq-card[data-role="service"]');
+          for (var j = 0; j < svcCards.length; j++) {
+            var n = svcCards[j].getAttribute('data-name');
+            if (n === 'Interior Detail' || n === 'Exterior Detail') {
+              svcCards[j].classList.remove('selected');
+              delete qqS.services[n];
+            }
+          }
+        } else if (sName === 'Interior Detail' || sName === 'Exterior Detail') {
+          var svcCards = document.querySelectorAll('#step3 .qq-services-grid .qq-card[data-role="service"]');
+          for (var j = 0; j < svcCards.length; j++) {
+            if (svcCards[j].getAttribute('data-name') === 'Full Detail') {
+              svcCards[j].classList.remove('selected');
+              delete qqS.services['Full Detail'];
+            }
+          }
+        }
+      } else {
+        delete qqS.services[sName];
+      }
+      var n3 = document.getElementById('next3');
+      if (n3) n3.disabled = Object.keys(qqS.services).length === 0;
+    }
+
+    else if (role === 'addon') {
+      el.classList.toggle('selected');
+      var aName = el.getAttribute('data-name');
+      var aVal = parseInt(el.getAttribute('data-value'));
+      if (el.classList.contains('selected')) {
+        qqS.addons[aName] = aVal;
+      } else {
+        delete qqS.addons[aName];
+      }
+    }
+
+    else if (role === 'go-step') {
+      if (el.disabled) return;
+      goStep(parseInt(el.getAttribute('data-step')));
+    }
+
+    else if (role === 'calc-quote') {
+      if (el.disabled) return;
+      var vv = qqS.vehicle ? qqS.vehicle.value : 0;
+      var cv = qqS.condition ? qqS.condition.value : 0;
+      var st = 0, sn = Object.keys(qqS.services);
+      for (var i = 0; i < sn.length; i++) st += qqS.services[sn[i]];
+      var at = 0, an = Object.keys(qqS.addons);
+      for (var i = 0; i < an.length; i++) at += qqS.addons[an[i]];
+      var total = st + vv + cv + at;
+      var html = '';
+      for (var i = 0; i < sn.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + sn[i] + '</p>';
+      for (var i = 0; i < an.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + an[i] + '</p>';
+      if (qqS.vehicle) html += '<p style="color:#666;">&#8226; ' + qqS.vehicle.label + '</p>';
+      if (qqS.condition && qqS.condition.value > 0) html += '<p style="color:#666;">&#8226; Condition: ' + qqS.condition.label + '</p>';
+      var sl = document.getElementById('summaryList');
+      if (sl) sl.innerHTML = html;
+      qqTotal = total;
+      qqItems = sn.concat(an);
+      qqVehicle = qqS.vehicle ? qqS.vehicle.label : 'vehicle';
+      goStep(4);
+      var count = 0;
+      var display = document.getElementById('quoteAmount');
+      var inc = Math.max(1, Math.ceil(total / 20));
+      var iv = setInterval(function() {
+        count = Math.min(count + inc, total);
+        if (display) display.textContent = '$' + count;
+        if (count >= total) clearInterval(iv);
+      }, 30);
+    }
+
+    else if (role === 'submit-quote') {
+      var nameEl = document.getElementById('qqName');
+      var phoneEl = document.getElementById('qqPhone');
+      var name = nameEl ? nameEl.value.trim() : '';
+      var phone = phoneEl ? phoneEl.value.trim() : '';
+      if (!name) { if (nameEl) { nameEl.style.borderColor = '#dc2626'; nameEl.focus(); } return; }
+      if (!phone || phone.length < 7) { if (phoneEl) { phoneEl.style.borderColor = '#dc2626'; phoneEl.focus(); } return; }
+      if (nameEl) nameEl.style.borderColor = 'rgba(220,38,38,0.25)';
+      if (phoneEl) phoneEl.style.borderColor = 'rgba(220,38,38,0.25)';
+      var btn = document.getElementById('qqSubmitBtn');
+      if (btn) { btn.disabled = true; btn.textContent = 'SENDING...'; }
+      var cond = (qqS.condition && qqS.condition.label) ? qqS.condition.label : 'Pretty Clean';
+      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone + '\nQuote: $' + qqTotal + '\nVehicle: ' + qqVehicle + '\nCondition: ' + cond + '\nServices: ' + qqItems.join(', ');
+      var formData = new FormData();
+      formData.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
+      formData.append('subject', 'New Quote: $' + qqTotal + ' - ' + name);
+      formData.append('from_name', 'Mikeys QQC');
+      formData.append('name', name);
+      formData.append('phone', phone);
+      formData.append('message', msgBody);
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      }).then(function(res) { return res.json(); }).then(function() {
+        goStep(5);
+      }).catch(function() {
+        goStep(5);
+      });
+    }
+  }
+
+  function attach() {
+    var card = document.getElementById('qqcCard');
+    if (card) {
+      card.addEventListener('click', handleClick, false);
+      return true;
+    }
+    return false;
+  }
+
+  if (!attach()) {
+    var delays = [100, 300, 600, 1000, 2000];
+    var di = 0;
+    (function retry() {
+      if (di >= delays.length) return;
+      setTimeout(function() {
+        if (!attach()) { di++; retry(); }
+      }, delays[di]);
+    })();
+  }
+})();
+</script>
+
+<script>
+(function() {
+  function reportHeight() {
+    var h = document.documentElement.scrollHeight;
+    if (window.parent !== window) {
+      window.parent.postMessage({ type: 'qqc-resize', height: h }, '*');
+    }
+  }
+  reportHeight();
+  window.addEventListener('resize', reportHeight);
+  setInterval(reportHeight, 500);
+})();
+    </script>
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 08: HOW IT WORKS ▼▼▼ -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
