@@ -188,6 +188,58 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 main { padding-top: 70px; /* space for sticky header */ }
 </style>
+  <style>
+/* ============================================
+   MIKEY'S SITE — GLOBAL LAYOUT OVERRIDES
+   ============================================ */
+
+/* 1. UNIVERSAL CONTENT WRAPPER */
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tight width for headlines/CTAs only */
+.section-inner--narrow {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* 2. SECTION VERTICAL RHYTHM */
+section {
+  padding: 100px 0 !important;
+}
+
+/* 3. ALTERNATING SECTION BACKGROUNDS */
+section:nth-child(odd) {
+  background: #141414;
+}
+section:nth-child(even) {
+  background: #1a1a1a;
+}
+
+/* 4. STAT STRIP (add this div between hero and services) */
+.stat-strip {
+  background: #dc2626;
+  padding: 18px 40px;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+/* 5. MOBILE */
+@media (max-width: 768px) {
+  .section-inner { padding: 0 20px; }
+  section { padding: 60px 0 !important; }
+}
+  </style>
 
 </head>
 <body>
