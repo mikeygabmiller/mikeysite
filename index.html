@@ -337,27 +337,81 @@ section:nth-child(even) {
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 02: HERO ▼▼▼ -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
-
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 02: HERO ▼▼▼ -->
-<!/* Push hero below sticky nav */
-.hero { padding: 90px 20px 0; }
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<style>
+.hero { font-family: 'Outfit', sans-serif; text-align: left; padding: 90px 20px 0; max-width: 620px; margin: 0 auto; color: #fff; }
+.hero-proof { display: flex; justify-content: flex-start; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.hero-proof-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #a3a3a3; }
+.hero-proof-val { color: #fff; font-weight: 800; }
+.hero-stars { color: #facc15; font-size: 12px; letter-spacing: 1px; }
+.hero-dot { width: 3px; height: 3px; border-radius: 50%; background: #444; }
+.hero h1 { font-size: clamp(30px, 7.5vw, 50px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; margin: 0 0 16px; color: #fff; }
+.hero h1 em { font-style: normal; color: #dc2626; display: inline-block; padding-left: 0.6em; }
+.hero-sub { font-size: 15px; color: #999; line-height: 1.5; margin: 0 0 24px; max-width: 460px; }
+.hero-sub strong { color: #fff; }
+.hero-prices { display: flex; justify-content: flex-start; gap: 8px; flex-wrap: nowrap; margin-bottom: 28px; }
+.hero-pill { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 10px 14px; flex: 1; max-width: 160px; }
+.hero-pill-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; }
+.hero-pill-price { font-size: 17px; font-weight: 900; color: #dc2626; letter-spacing: -0.5px; line-height: 1; white-space: nowrap; }
+.hero-ctas { display: flex; justify-content: flex-start; gap: 10px; flex-wrap: wrap; padding-bottom: 0; }
+.hero-cta-primary { display: inline-block; padding: 15px 36px; background: #dc2626; color: #fff; font-size: 15px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: transform .15s, box-shadow .15s; box-shadow: 0 4px 20px rgba(220,38,38,0.4); }
+.hero-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(220,38,38,0.55); }
+.hero-cta-secondary { display: inline-block; padding: 15px 28px; background: transparent; color: #ccc; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid #333; border-radius: 8px; transition: border-color .15s, color .15s; }
+.hero-cta-secondary:hover { border-color: #dc2626; color: #fff; }
+@media (max-width: 380px) {
+  .hero-pill { padding: 9px 12px; }
+  .hero-pill-price { font-size: 16px; }
+  .hero-cta-primary { padding: 14px 28px; font-size: 14px; }
+  .hero-cta-secondary { padding: 14px 22px; font-size: 13px; }
+  .hero h1 em { padding-left: 0.4em; }
+}
+</style>
 
-/* Kill the dead space below CTAs */
-.hero-ctas { padding-bottom: 0; }
+<section class="hero">
+  <div class="hero-proof">
+    <div class="hero-proof-item"><span class="hero-stars" aria-hidden="true">★★★★★</span><span class="hero-proof-val">5.0</span></div>
+    <span class="hero-dot"></span>
+    <div class="hero-proof-item"><span class="hero-proof-val">35+</span> Reviews</div>
+    <span class="hero-dot"></span>
+    <div class="hero-proof-item"><span class="hero-proof-val">300+</span> Cars</div>
+  </div>
+  <h1>Detailing That Comes<br><em>to Your Driveway.</em></h1>
+  <p class="hero-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
+  <div class="hero-prices">
+    <div class="hero-pill">
+      <span class="hero-pill-label">Full Detail</span>
+      <span class="hero-pill-price">$260–$340</span>
+    </div>
+    <div class="hero-pill">
+      <span class="hero-pill-label">Interior</span>
+      <span class="hero-pill-price">$160–$240</span>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <a class="hero-cta-primary" href="#booking">Get Your Instant Quote →</a>
+    <a class="hero-cta-secondary" href="#allservices">See Services</a>
+  </div>
+</section>
+<!-- ▲▲▲ END SECTION 02: HERO ▲▲▲ -->
 
-/* Tighten top of proof section */
-.proof { padding: 32px 20px 52px; text-align: center; }
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- ▼▼▼ SECTION 03: SOCIAL PROOF BAR ▼▼▼ -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<style>
+.proof { background: #0d0d0d; padding: 32px 20px 52px; text-align: center; }
 .proof-inner { max-width: 640px; margin: 0 auto; }
 .proof-stats { display: flex; justify-content: center; align-items: stretch; margin-bottom: 36px; border: 1px solid #1e1e1e; border-radius: 6px; overflow: hidden; }
 .proof-stat { flex: 1; padding: 20px 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; border-right: 1px solid #1e1e1e; background: #111; }
 .proof-stat:last-child { border-right: none; }
 .proof-stat-num { font-family: 'Oswald', sans-serif; font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700; color: #D4AF37; line-height: 1; }
 .proof-stat-label { font-family: 'DM Sans', sans-serif; font-size: 10px; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
-.proof-quote { background: #111; border: 1px solid #1e1e1e; border-left: 3px solid var(--brand-red); border-radius: 4px; padding: 22px 24px; margin-bottom: 20px; text-align: left; }
+.proof-quote { background: #111; border: 1px solid #1e1e1e; border-left: 3px solid #dc2626; border-radius: 4px; padding: 22px 24px; margin-bottom: 20px; text-align: left; }
 .proof-quote-text { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #d0d0d0; line-height: 1.65; margin-bottom: 14px; font-style: italic; }
 .proof-quote-author { display: flex; align-items: center; gap: 10px; }
-.proof-quote-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--brand-red); display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-weight: 700; color: #fff; flex-shrink: 0; }
+.proof-quote-avatar { width: 34px; height: 34px; border-radius: 50%; background: #dc2626; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-weight: 700; color: #fff; flex-shrink: 0; }
 .proof-quote-name { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: #fff; }
 .proof-quote-stars { color: #D4AF37; font-size: 12px; margin-left: auto; }
 .proof-google { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color .2s; }
@@ -379,15 +433,15 @@ section:nth-child(even) {
       <div class="proof-stat"><span class="proof-stat-num">5yr</span><span class="proof-stat-label">Experience</span></div>
     </div>
     <div class="proof-quote">
-      <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
+      <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and affordable. Highly recommend!"</p>
       <div class="proof-quote-author">
         <div class="proof-quote-avatar">C</div>
         <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
         <span class="proof-quote-stars">★★★★★</span>
       </div>
     </div>
-    <a href="https://www.google.com/search?q=Mikey%27s+Mobile+Detailing+Snohomish" target="_blank" rel="noopener" class="proof-google">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+    <a class="proof-google" href="https://www.google.com/search?q=Mikey%27s+Mobile+Detailing+Snohomish" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/></svg>
       Read all 5-Star reviews on Google →
     </a>
   </div>
