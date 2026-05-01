@@ -340,70 +340,14 @@ section:nth-child(even) {
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 02: HERO ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
-.hero { font-family: 'Outfit', sans-serif; text-align: center; padding: 64px 20px 0; max-width: 620px; margin: 0 auto; color: #fff; }
-.hero-proof { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
-.hero-proof-item { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: #a3a3a3; }
-.hero-proof-val { color: #fff; font-weight: 800; }
-.hero-stars { color: #facc15; font-size: 12px; letter-spacing: 1px; }
-.hero-dot { width: 3px; height: 3px; border-radius: 50%; background: #444; }
-.hero h1 { font-size: clamp(30px, 7.5vw, 50px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; margin: 0 0 16px; color: #fff; }
-.hero h1 em { font-style: normal; color: #dc2626; }
-.hero-sub { font-size: 15px; color: #999; line-height: 1.5; margin: 0 auto 24px; max-width: 380px; }
-.hero-sub strong { color: #fff; }
-.hero-prices { display: flex; justify-content: center; gap: 8px; flex-wrap: nowrap; margin-bottom: 28px; }
-.hero-pill { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 10px 14px; flex: 1; max-width: 160px; }
-.hero-pill-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #999; }
-.hero-pill-price { font-size: 17px; font-weight: 900; color: #dc2626; letter-spacing: -0.5px; line-height: 1; white-space: nowrap; }
-.hero-ctas { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding-bottom: 30px; }
-.hero-cta-primary { display: inline-block; padding: 15px 36px; background: #dc2626; color: #fff; font-size: 15px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: transform .15s, box-shadow .15s; box-shadow: 0 4px 20px rgba(220,38,38,0.4); }
-.hero-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(220,38,38,0.55); }
-.hero-cta-secondary { display: inline-block; padding: 15px 28px; background: transparent; color: #ccc; font-size: 14px; font-weight: 600; text-decoration: none; border: 1px solid #333; border-radius: 8px; transition: border-color .15s, color .15s; }
-.hero-cta-secondary:hover { border-color: #dc2626; color: #fff; }
-@media (max-width: 380px) {
-  .hero-pill { padding: 9px 12px; }
-  .hero-pill-price { font-size: 16px; }
-  .hero-cta-primary { padding: 14px 28px; font-size: 14px; }
-  .hero-cta-secondary { padding: 14px 22px; font-size: 13px; }
-}
-</style>
+<!/* Push hero below sticky nav */
+.hero { padding: 90px 20px 0; }
 
-<section class="hero">
-  <div class="hero-proof">
-    <div class="hero-proof-item"><span class="hero-stars" aria-hidden="true">★★★★★</span><span class="hero-proof-val">5.0</span></div>
-    <span class="hero-dot"></span>
-    <div class="hero-proof-item"><span class="hero-proof-val">35+</span> Reviews</div>
-    <span class="hero-dot"></span>
-    <div class="hero-proof-item"><span class="hero-proof-val">300+</span> Cars</div>
-  </div>
-  <h1>Detailing That Comes <em>to Your Driveway.</em></h1>
-  <p class="hero-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
-  <div class="hero-prices">
-    <div class="hero-pill">
-      <span class="hero-pill-label">Full Detail</span>
-      <span class="hero-pill-price">$260–$340</span>
-    </div>
-    <div class="hero-pill">
-      <span class="hero-pill-label">Interior</span>
-      <span class="hero-pill-price">$160–$240</span>
-    </div>
-  </div>
-  <div class="hero-ctas">
-    <a class="hero-cta-primary" href="#booking">Get Your Instant Quote →</a>
-    <a class="hero-cta-secondary" href="#allservices">See Services</a>
-  </div>
-</section>
-<!-- ▲▲▲ END SECTION 02: HERO ▲▲▲ -->
-```
-.
+/* Kill the dead space below CTAs */
+.hero-ctas { padding-bottom: 0; }
 
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 03: SOCIAL PROOF BAR ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
-.proof { background: #0d0d0d; padding: 52px 20px; text-align: center; }
+/* Tighten top of proof section */
+.proof { padding: 32px 20px 52px; text-align: center; }
 .proof-inner { max-width: 640px; margin: 0 auto; }
 .proof-stats { display: flex; justify-content: center; align-items: stretch; margin-bottom: 36px; border: 1px solid #1e1e1e; border-radius: 6px; overflow: hidden; }
 .proof-stat { flex: 1; padding: 20px 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; border-right: 1px solid #1e1e1e; background: #111; }
