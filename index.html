@@ -4,54 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- -->
-<!-- MIKEY'S MOBILE DETAILING — HOMEPAGE -->
-<!-- Built: April 2026 -->
-<!-- -->
-<!-- ┌─ EDIT QUICK REFERENCE ────────────────────────────────────────┐ -->
-<!-- │ │ -->
-<!-- │ Search "▼▼▼ SECTION XX" to jump to any section. │ -->
-<!-- │ Each section is self-contained: own CSS + HTML + JS. │ -->
-<!-- │ CSS classes are prefixed (.hero-*, .faq-*, etc.) so they │ -->
-<!-- │ never bleed between sections. │ -->
-<!-- │ │ -->
-<!-- │ 00 — HEAD (meta tags, SEO, schema) │ -->
-<!-- │ 01 — HEADER / NAV (sticky) │ -->
-<!-- │ 02 — HERO │ -->
-<!-- │ 03 — SOCIAL PROOF BAR │ -->
-<!-- │ 04 — URGENCY BAR (slot machine) │ -->
-<!-- │ 05 — REVIEWS CAROUSEL (marquee) │ -->
-<!-- │ 06 — FLASH PROMO (Free Exterior offer) │ -->
-<!-- │ 07 — QQC (Quick Quote — iframe) │ -->
-<!-- │ 08 — HOW IT WORKS │ -->
-<!-- │ 09 — SERVICES (tabs) │ -->
-<!-- │ 10 — PHOTO GALLERY │ -->
-<!-- │ 11 — GUARANTEE │ -->
-<!-- │ 12 — CLEAN CLUB │ -->
-<!-- │ 13 — WHY CHOOSE US │ -->
-<!-- │ 14 — ABOUT MIKEY │ -->
-<!-- │ 15 — FAQ │ -->
-<!-- │ 16 — FOOTER │ -->
-<!-- │ │ -->
-<!-- │ To swap a section: find ▼▼▼ START / ▲▲▲ END markers, │ -->
-<!-- │ delete everything between, paste new code. │ -->
-<!-- │ │ -->
-<!-- │ COMMON EDITS: │ -->
-<!-- │ • Phone number: search "3607975831" — change all at once │ -->
-<!-- │ • Pricing: search "$160" or "$130" — Interior/Exterior │ -->
-<!-- │ • Jotform link: search "251325009768156" │ -->
-<!-- │ • Email: search "mikeysdetailing4u@gmail.com" │ -->
-<!-- │ │ -->
-<!-- └────────────────────────────────────────────────────────────────┘ -->
-<!-- -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 00: HEAD — SEO, META, SCHEMA ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-
 <title>Mikey's Mobile Detailing | Snohomish, WA Car Detailing — Comes To You</title>
 <meta name="description" content="Mobile car detailing in Snohomish, WA. Interior, exterior, and full detail packages from $130. 5.0 stars, 35+ Google reviews, 300+ cars detailed. Book online — I come to your driveway.">
 <meta name="keywords" content="mobile car detailing Snohomish, car detailing Monroe WA, auto detailing Lake Stevens, mobile detailing Everett, car wash Snohomish County">
@@ -73,7 +25,7 @@
 <!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
 
-<!-- Fonts (one place, not per-section) -->
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Oswald:wght@600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
@@ -115,7 +67,7 @@
 }
 </script>
 
-<!-- FAQ Schema (matches FAQ section content) -->
+<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -129,6 +81,7 @@
   ]
 }
 </script>  
+
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
@@ -136,32 +89,13 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G9WMXW2MF5');
-</script> <script>
-document.addEventListener('click', function(e) {
-  var link = e.target.closest('a[href="#booking"], a[href="#quote"]');
-  if (link) {
-    e.preventDefault();
-    var target = document.getElementById('qqcCard');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  }
-});
-</script><script>
-document.addEventListener('click', function(e) {
-  var link = e.target.closest('a[href="#booking"]');
-  if (link) {
-    e.preventDefault();
-    var target = document.getElementById('qqcCard');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  }
-});
-</script>
-<!-- ▲▲▲ END SECTION 00: HEAD ▲▲▲ -->
+</script> 
 
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- GLOBAL RESET + DESIGN TOKENS (used by all sections) -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- ========================================== -->
+<!-- ALL CSS STYLES -->
+<!-- ========================================== -->
 <style>
+/* GLOBAL RESET & TOKENS */
 :root {
   --brand-red: #dc2626;
   --brand-red-dark: #b71c1c;
@@ -186,34 +120,19 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-main { padding-top: 70px; /* space for sticky header */ }
-</style>
-  <style>
-/* ============================================
-   MIKEY'S SITE — GLOBAL LAYOUT OVERRIDES
-   ============================================ */
+main { padding-top: 70px; }
 
-/* 1. UNIVERSAL CONTENT WRAPPER */
+/* GLOBAL LAYOUT */
 .section-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 40px;
   width: 100%;
-  box-sizing: border-box;
 }
-
-/* Tight width for headlines/CTAs only */
-.section-inner--narrow {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-/* 2. SECTION VERTICAL RHYTHM */
 section {
-  padding: 100px 0 !important;
+  padding: 100px 0;
+  width: 100%;
 }
-
-/* 3. ALTERNATING SECTION BACKGROUNDS */
 section:nth-child(odd) {
   background: #141414;
 }
@@ -221,36 +140,14 @@ section:nth-child(even) {
   background: #1a1a1a;
 }
 
-/* 4. STAT STRIP (add this div between hero and services) */
-.stat-strip {
-  background: #dc2626;
-  padding: 18px 40px;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.08em;
-  color: #fff;
-  text-transform: uppercase;
-}
-
-/* 5. MOBILE */
 @media (max-width: 768px) {
   .section-inner { padding: 0 20px; }
-  section { padding: 60px 0 !important; }
+  section { padding: 60px 0; }
 }
-  </style>
 
-</head>
-<body>
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 01: HEADER / NAV ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
+/* HEADER */
 #mikeyHeader { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: rgba(0,0,0,0.95); z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-#mikeyHeader nav { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; color: white; }
+#mikeyHeader nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; color: white; }
 #mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; }
 #desktopMenu { list-style: none; display: flex; gap: 30px; align-items: center; }
 #desktopMenu a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease; }
@@ -265,14 +162,98 @@ section:nth-child(even) {
 #mobileMenu li:last-child { border-bottom: none; }
 #mobileMenu a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-size: 1rem; }
 #mobileMenu a:hover { background: rgba(220,38,38,0.2); padding-left: 25px; }
+
 @media (max-width: 768px) {
   #desktopMenu { display: none !important; }
   #hamburgerBtn { display: flex !important; }
   #mikeyHeader img { height: 40px; }
-  #mikeyHeader nav { padding: 10px 15px; }
+  #mikeyHeader nav { padding: 10px 20px; }
+}
+
+/* HERO SECTION */
+.mh {
+  font-family: 'Outfit', sans-serif;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #fff;
+}
+.mh-proof { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+.mh-proof-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #a3a3a3; }
+.mh-proof-val { color: #fff; font-weight: 800; }
+.mh-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
+.mh-dot { width: 4px; height: 4px; border-radius: 50%; background: #444; }
+.mh h1 { font-size: clamp(36px, 6vw, 65px); font-weight: 900; line-height: 1.1; letter-spacing: -1.5px; margin: 0 0 20px; color: #fff; }
+.mh h1 .mh-em { color: #A3242B; }
+.mh-sub { font-size: 18px; color: #999; line-height: 1.6; margin: 0 auto 36px; max-width: 600px; }
+.mh-prices { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; margin-bottom: 36px; }
+.mh-pill { display: flex; align-items: center; gap: 8px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 24px; }
+.mh-pill-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #999; }
+.mh-pill-price { font-size: 22px; font-weight: 900; color: #A3242B; letter-spacing: -0.5px; line-height: 1; }
+.mh-ctas { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+.mh-cta-primary { display: inline-block; padding: 18px 42px; background: #A3242B; color: #fff; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(163,36,43,0.35); }
+.mh-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(163,36,43,0.45); }
+.mh-cta-secondary { display: inline-block; padding: 18px 32px; background: transparent; color: #ccc; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid #333; border-radius: 8px; transition: border-color 0.15s, color 0.15s; }
+.mh-cta-secondary:hover { border-color: #A3242B; color: #fff; }
+
+@media (max-width: 480px) {
+  .mh-prices { flex-direction: column; gap: 10px; }
+  .mh-pill { justify-content: center; }
+  .mh-cta-primary, .mh-cta-secondary { width: 100%; text-align: center; }
+}
+
+/* ANIMATIONS */
+.mh-proof, .mh h1, .mh-sub, .mh-prices, .mh-ctas { opacity: 0; transform: translateY(18px); animation: mhFadeUp 0.6s ease-out forwards; }
+.mh-proof { animation-delay: 0.1s; }
+.mh h1 { animation-delay: 0.25s; }
+.mh-sub { animation-delay: 0.45s; }
+.mh-prices { animation-delay: 0.6s; }
+.mh-ctas { animation-delay: 0.8s; }
+@keyframes mhFadeUp { to { opacity: 1; transform: translateY(0); } }
+.mh-cta-primary { animation: mhFadeUp 0.6s ease-out 0.8s forwards, mhPulse 0.5s ease-in-out 1.6s 1; }
+@keyframes mhPulse { 0% { box-shadow: 0 4px 20px rgba(163,36,43,0.35); } 50% { box-shadow: 0 4px 35px rgba(163,36,43,0.6); } 100% { box-shadow: 0 4px 20px rgba(163,36,43,0.35); } }
+
+/* PROOF SECTION */
+.proof { text-align: center; }
+.proof-inner { max-width: 900px; margin: 0 auto; }
+.proof-stats { display: flex; justify-content: center; align-items: stretch; gap: 0; margin-bottom: 36px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #111; }
+.proof-stat { flex: 1; padding: 25px 15px; display: flex; flex-direction: column; align-items: center; gap: 6px; border-right: 1px solid #2a2a2a; }
+.proof-stat:last-child { border-right: none; }
+.proof-stat-num { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #D4AF37; line-height: 1; }
+.proof-stat-label { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
+
+.proof-quote { background: #111; border: 1px solid #2a2a2a; border-left: 3px solid #cc0000; border-radius: 6px; padding: 30px; margin-bottom: 24px; text-align: left; }
+.proof-quote-text { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; color: #d0d0d0; line-height: 1.65; margin-bottom: 18px; font-style: italic; }
+.proof-quote-author { display: flex; align-items: center; gap: 12px; }
+.proof-quote-avatar { width: 40px; height: 40px; border-radius: 50%; background: #cc0000; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.proof-quote-name { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #fff; }
+.proof-quote-stars { color: #D4AF37; font-size: 14px; margin-left: auto; }
+
+.proof-google { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+.proof-google:hover { color: #aaa; }
+.proof-google svg { width: 16px; height: 16px; }
+
+@media (max-width: 600px) {
+  .proof-stats { flex-wrap: wrap; }
+  .proof-stat { flex: 1 1 50%; border-bottom: 1px solid #2a2a2a; }
+  .proof-stat:nth-child(even) { border-right: none; }
+  .proof-stat:nth-child(3), .proof-stat:nth-child(4) { border-bottom: none; }
+}
+
+/* GALLERY IFRAME */
+.gallery-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 </style>
+</head>
+<body>
 
+<!-- HEADER -->
 <header id="mikeyHeader">
   <nav>
     <a href="#top" aria-label="Mikey's Mobile Detailing — home">
@@ -280,9 +261,8 @@ section:nth-child(even) {
     </a>
 
     <ul id="desktopMenu">
-       <li><a href="#top">Homw</a></li>
+      <li><a href="#top">Home</a></li>
       <li><a href="#allservices">Services</a></li>
-
       <li><a href="#booking">Booking</a></li>
       <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
       <li><a href="#qanda">FAQ</a></li>
@@ -306,6 +286,108 @@ section:nth-child(even) {
   </nav>
 </header>
 
+<main id="top">
+  
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="section-inner">
+      <div class="mh">
+        <div class="mh-proof">
+          <div class="mh-proof-item">
+            <span class="mh-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="mh-proof-val">5.0</span>
+          </div>
+          <span class="mh-dot"></span>
+          <div class="mh-proof-item">
+            <span class="mh-proof-val">35+</span> Reviews
+          </div>
+          <span class="mh-dot"></span>
+          <div class="mh-proof-item">
+            <span class="mh-proof-val">300+</span> Cars
+          </div>
+        </div>
+        
+        <h1>Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
+        <p class="mh-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
+        
+        <div class="mh-prices">
+          <div class="mh-pill">
+            <span class="mh-pill-label">Full Detail</span>
+            <span class="mh-pill-price">$260–$340</span>
+          </div>
+          <div class="mh-pill">
+            <span class="mh-pill-label">Interior</span>
+            <span class="mh-pill-price">$160–$240</span>
+          </div>
+        </div>
+        
+        <div class="mh-ctas">
+          <a class="mh-cta-primary" href="#booking">Get Your Instant Quote &#8594;</a>
+          <a class="mh-cta-secondary" href="#allservices">See Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS / REVIEWS SECTION -->
+  <section class="proof">
+    <div class="section-inner proof-inner">
+      
+      <!-- Stats bar -->
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <span class="proof-stat-num">★★★★★</span>
+          <span class="proof-stat-label">5.0 Rating</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">35+</span>
+          <span class="proof-stat-label">Reviews</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">300+</span>
+          <span class="proof-stat-label">Cars Detailed</span>
+        </div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">5yr</span>
+          <span class="proof-stat-label">Experience</span>
+        </div>
+      </div>
+
+      <!-- Featured review -->
+      <div class="proof-quote">
+        <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
+        <div class="proof-quote-author">
+          <div class="proof-quote-avatar">C</div>
+          <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
+          <span class="proof-quote-stars">★★★★★</span>
+        </div>
+      </div>
+
+      <!-- Google link -->
+      <a href="#reviews" target="_blank" class="proof-google">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+        </svg>
+        Read all 5-Star reviews on Google →
+      </a>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="gallery-wrapper">
+        <iframe style="border: none;" src="https://mikeygabmiller.github.io/beforeafter/" title="iFrame" width="100%" height="600px" scrolling="yes" allow="fullscreen"></iframe>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- SCRIPTS -->
 <script>
 (function(){
   var btn = document.getElementById('hamburgerBtn');
@@ -318,7 +400,7 @@ section:nth-child(even) {
   }
   btn.addEventListener('click', toggle);
   btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
-  // Close mobile menu when a link is tapped
+  
   menu.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
       menu.style.maxHeight = '0px';
@@ -327,505 +409,19 @@ section:nth-child(even) {
     });
   });
 })();
+
+document.addEventListener('click', function(e) {
+  var link = e.target.closest('a[href="#booking"], a[href="#quote"]');
+  if (link) {
+    e.preventDefault();
+    var target = document.getElementById('qqcCard');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 </script>
-<!-- ▲▲▲ END SECTION 01: HEADER ▲▲▲ -->
-
-
-<main id="top">
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 02: HERO ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mikey's Mobile Detailing</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
-.mh{font-family:'Outfit',sans-serif;text-align:center;padding:48px 20px 0;max-width:620px;margin:0 auto;color:#fff;}
-.mh-proof{display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
-.mh-proof-item{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#a3a3a3;}
-.mh-proof-val{color:#fff;font-weight:800;}
-.mh-stars{color:#facc15;font-size:12px;letter-spacing:1px;}
-.mh-dot{width:3px;height:3px;border-radius:50%;background:#444;}
-.mh h1{font-size:clamp(30px,7.5vw,50px);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin:0 0 16px;color:#fff;}
-.mh h1 .mh-em{color:#A3242B;}
-.mh-sub{font-size:16px;color:#999;line-height:1.6;margin:0 auto 28px;max-width:460px;}
-.mh-prices{display:flex;justify-content:center;gap:10px;flex-wrap:nowrap;margin-bottom:28px;}
-.mh-pill{display:flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:6px;padding:9px 20px;}
-.mh-pill-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#999;}
-.mh-pill-from{font-size:10px;font-weight:500;color:#555;}
-.mh-pill-price{font-size:20px;font-weight:900;color:#A3242B;letter-spacing:-0.5px;line-height:1;}
-.mh-ctas{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
-.mh-cta-primary{
-display:inline-block;padding:15px 36px;background:#A3242B;color:#fff;
-font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;
-letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;
-border-radius:8px;transition:transform 0.15s,box-shadow 0.15s;
-box-shadow:0 4px 20px rgba(163,36,43,0.35);
-}
-.mh-cta-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(163,36,43,0.45);}
-.mh-cta-secondary{
-display:inline-block;padding:15px 28px;background:transparent;color:#ccc;
-font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;
-text-decoration:none;border:1px solid #333;border-radius:8px;
-transition:border-color 0.15s,color 0.15s;
-}
-.mh-cta-secondary:hover{border-color:#A3242B;color:#fff;}
-@media(max-width:380px){
-.mh-pill{padding:8px 16px;gap:5px;}
-.mh-pill-price{font-size:18px;}
-.mh-pill-label{font-size:10px;}
-.mh-cta-primary{padding:14px 28px;font-size:14px;}
-.mh-cta-secondary{padding:14px 22px;font-size:13px;}
-}
-.mh-proof,.mh h1,.mh-sub,.mh-prices,.mh-ctas{opacity:0;transform:translateY(18px);animation:mhFadeUp 0.6s ease-out forwards;}
-.mh-proof{animation-delay:0.1s;}
-.mh h1{animation-delay:0.25s;}
-.mh-sub{animation-delay:0.45s;}
-.mh-prices{animation-delay:0.6s;}
-.mh-ctas{animation-delay:0.8s;}
-@keyframes mhFadeUp{to{opacity:1;transform:translateY(0);}}
-.mh-cta-primary{animation:mhFadeUp 0.6s ease-out 0.8s forwards,mhPulse 0.5s ease-in-out 1.6s 1;}
-@keyframes mhPulse{
-0%{box-shadow:0 4px 20px rgba(163,36,43,0.35);}
-50%{box-shadow:0 4px 35px rgba(163,36,43,0.6);}
-100%{box-shadow:0 4px 20px rgba(163,36,43,0.35);}
-}
-.mh-pill:nth-child(1){opacity:0;animation:mhFadeUp 0.5s ease-out 0.6s forwards;}
-.mh-pill:nth-child(2){opacity:0;animation:mhFadeUp 0.5s ease-out 0.7s forwards;}
-@media(prefers-reduced-motion:reduce){
-.mh-proof,.mh h1,.mh-sub,.mh-prices,.mh-ctas,.mh-pill,.mh-cta-primary{animation:none;opacity:1;transform:none;}
-}
-</style>
-</head>
-<body>
-
-<div class="mh">
-<div class="mh-proof">
-<div class="mh-proof-item">
-<span class="mh-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-<span class="mh-proof-val">5.0</span>
-</div>
-<span class="mh-dot"></span>
-<div class="mh-proof-item">
-<span class="mh-proof-val">35+</span> Reviews
-</div>
-<span class="mh-dot"></span>
-<div class="mh-proof-item">
-<span class="mh-proof-val">300+</span> Cars
-</div>
-</div>
-<h1>Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
-<p class="mh-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
-<div class="mh-prices">
-<div class="mh-pill">
-<span class="mh-pill-label">Full Detail</span>
-<span class="mh-pill-price">$260–$340</span>
-</div>
-<div class="mh-pill">
-<span class="mh-pill-label">Interior</span>
-<span class="mh-pill-price">$160–$240</span>
-</div>
-</div>
-<div class="mh-ctas">
-<a class="mh-cta-primary" href="#booking">Get Your Instant Quote &#8594;</a>
-<a class="mh-cta-secondary" href="#allservices">See Services</a>
-</div>
-</div>
 
 </body>
-</html><link href="https://googleapis.com" rel="stylesheet">
-
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
-.proof {
-background: #0d0d0d;
-padding: 52px 20px;
-text-align: center;
-}
-
-.proof-inner {
-max-width: 640px;
-margin: 0 auto;
-}
-
-/* Section label */
-.proof-label {
-font-family: 'DM Sans', sans-serif;
-font-size: 11px;
-font-weight: 600;
-color: #cc0000;
-text-transform: uppercase;
-letter-spacing: 3px;
-margin-bottom: 10px;
-}
-
-/* Headline */
-.proof h2 {
-font-family: 'Oswald', sans-serif;
-font-size: clamp(1.8rem, 7vw, 2.8rem);
-font-weight: 700;
-color: #fff;
-text-transform: uppercase;
-line-height: 1.05;
-margin-bottom: 32px;
-letter-spacing: 1px;
-}
-
-/* Stats row */
-.proof-stats {
-display: flex;
-justify-content: center;
-align-items: stretch;
-gap: 0;
-margin-bottom: 36px;
-border: 1px solid #1e1e1e;
-border-radius: 6px;
-overflow: hidden;
-}
-
-.proof-stat {
-flex: 1;
-padding: 20px 12px;
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 4px;
-border-right: 1px solid #1e1e1e;
-background: #111;
-}
-
-.proof-stat:last-child {
-border-right: none;
-}
-
-.proof-stat-num {
-font-family: 'Oswald', sans-serif;
-font-size: clamp(1.5rem, 5vw, 2rem);
-font-weight: 700;
-color: #D4AF37;
-line-height: 1;
-}
-
-.proof-stat-label {
-font-family: 'DM Sans', sans-serif;
-font-size: 10px;
-color: #ffffff; /* Changed from # to white */
-text-transform: uppercase;
-letter-spacing: 1.5px;
-}
-
-/* Featured quote */
-.proof-quote {
-background: #111;
-border: 1px solid #1e1e1e;
-border-left: 3px solid #cc0000;
-border-radius: 4px;
-padding: 22px 24px;
-margin-bottom: 20px;
-text-align: left;
-}
-
-.proof-quote-text {
-font-family: 'DM Sans', sans-serif;
-font-size: 0.95rem;
-color: #d0d0d0;
-line-height: 1.65;
-margin-bottom: 14px;
-font-style: italic;
-}
-
-.proof-quote-author {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.proof-quote-avatar {
-width: 34px;
-height: 34px;
-border-radius: 50%;
-background: #cc0000;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: 'Oswald', sans-serif;
-font-size: 14px;
-font-weight: 700;
-color: #fff;
-flex-shrink: 0;
-}
-
-.proof-quote-name {
-font-family: 'DM Sans', sans-serif;
-font-size: 13px;
-font-weight: 600;
-color: #fff;
-}
-
-.proof-quote-stars {
-color: #D4AF37;
-font-size: 12px;
-margin-left: auto;
-}
-
-/* Google link */
-.proof-google {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-font-family: 'DM Sans', sans-serif;
-font-size: 12px;
-font-weight: 600;
-color: #ffffff; /* Changed from #555 to white */
-text-decoration: none;
-text-transform: uppercase;
-letter-spacing: 1.5px;
-transition: color 0.2s;
-}
-
-.proof-google:hover {
-color: #aaa;
-}
-
-.proof-google svg {
-width: 14px;
-height: 14px;
-}
-
-@media (max-width: 480px) {
-.proof-stats {
-gap: 0;
-}
-.proof-stat {
-padding: 14px 6px;
-}
-.proof-stat-num {
-font-size: 1.1rem;
-}
-.proof-stat-label {
-font-size: 8px;
-letter-spacing: 0.5px;
-}
-}
-</style>
-
-<section class="proof">
-<div class="proof-inner">
-<!-- Stats bar -->
-<div class="proof-stats">
-<div class="proof-stat">
-<span class="proof-stat-num">★★★★★</span>
-<span class="proof-stat-label">5.0 Rating</span>
-</div>
-<div class="proof-stat">
-<span class="proof-stat-num">35+</span>
-<span class="proof-stat-label">Reviews</span>
-</div>
-<div class="proof-stat">
-<span class="proof-stat-num">300+</span>
-<span class="proof-stat-label">Cars Detailed</span>
-</div>
-<div class="proof-stat">
-<span class="proof-stat-num">5yr</span>
-<span class="proof-stat-label">Experience</span>
-</div>
-</div>
-
-<!-- Featured review -->
-<div class="proof-quote">
-<p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
-<div class="proof-quote-author">
-<div class="proof-quote-avatar">C</div>
-<span class="proof-quote-name">C Wilson · Snohomish, WA</span>
-<span class="proof-quote-stars">★★★★★</span>
-</div>
-</div>
-
-<!-- Google link -->
-<a href="#reviews" target="_blank" class="proof-google">
-<svg viewBox="0 0 24 24" fill="none">
-<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-</svg>
-Read all 5-Star reviews on Google →
-</a>
-</div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTIONS 04 + 10 (URGENCY BAR + PHOTO GALLERY) — REBUILD PENDING ▼▼▼ -->
-<!-- These sections were corrupted by an embedded duplicate document. -->
-<!-- They've been removed for now — rebuild them clean before re-adding. -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<iframe style="border:1px #FFFFFF none" src="https://mikeygabmiller.github.io/beforeafter/" title="iFrame" width="100%" height="600px" scrolling="yes" frameborder="no" allow="fullscreen"></iframe>
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 05: REVIEWS CAROUSEL (marquee) ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
-.rev-section { padding: 64px 0 72px; overflow: hidden; }
-.rev-header { max-width: 1100px; margin: 0 auto 36px; padding: 0 24px; text-align: center; }
-.rev-tag { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 14px; }
-.rev-tag::before, .rev-tag::after { content: ''; width: 24px; height: 2px; background: var(--brand-red); display: inline-block; }
-.rev-title { font-size: clamp(28px, 5.2vw, 44px); font-weight: 900; line-height: 1.05; margin-bottom: 8px; letter-spacing: -0.5px; }
-.rev-title span { color: var(--brand-red); }
-.rev-sub-title { font-size: 14px; color: #888; margin-bottom: 22px; font-weight: 500; }
-
-.rev-stat-strip { display: inline-flex; align-items: center; gap: 18px; background: linear-gradient(160deg, #1c1c1c 0%, #141414 100%); border: 2px solid #2a2a2a; border-radius: 12px; padding: 12px 24px; transition: all .2s; }
-.rev-stat-strip:hover { border-color: var(--brand-red); box-shadow: 0 0 20px rgba(220,38,38,0.15); }
-.rev-google-logo { width: 24px; height: 24px; flex-shrink: 0; }
-.rev-rating { font-size: 32px; font-weight: 900; line-height: 1; }
-.rev-stars { display: flex; gap: 2px; }
-.rev-stars svg { width: 18px; height: 18px; }
-.rev-div { width: 1px; height: 32px; background: #2a2a2a; }
-.rev-count { text-align: left; }
-.rev-count .n { font-size: 20px; font-weight: 800; color: var(--brand-red); line-height: 1; }
-.rev-count .l { font-size: 10px; font-weight: 700; color: #888; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; }
-
-.rev-marquee-wrap { position: relative; padding: 8px 0; }
-.rev-marquee-wrap::before, .rev-marquee-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 3; pointer-events: none; }
-.rev-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg-card) 0%, transparent 100%); }
-.rev-marquee-wrap::after { right: 0; background: linear-gradient(to left, var(--bg-card) 0%, transparent 100%); }
-.rev-track { display: flex; gap: 18px; width: max-content; animation: rev-marquee 50s linear infinite; }
-.rev-track:hover { animation-play-state: paused; }
-.rev-track.reverse { animation: rev-marquee-rev 55s linear infinite; }
-@keyframes rev-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-@keyframes rev-marquee-rev { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-.rev-card { flex-shrink: 0; width: 340px; background: linear-gradient(160deg, #1c1c1c 0%, #141414 100%); border: 2px solid #232323; border-radius: 14px; padding: 22px 22px 20px; position: relative; transition: all .3s; }
-.rev-card:hover { border-color: var(--brand-red); box-shadow: 0 8px 24px rgba(220,38,38,0.12); transform: translateY(-2px); }
-.rev-card::before { content: '\201C'; position: absolute; top: 12px; right: 18px; font-size: 56px; font-weight: 900; line-height: 1; color: var(--brand-red); opacity: .1; font-family: Georgia, serif; }
-
-.rev-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.rev-avatar { width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; color: #fff; box-shadow: 0 2px 8px rgba(220,38,38,0.25); position: relative; }
-.rev-avatar::after { content: ''; position: absolute; bottom: -2px; right: -2px; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234285f4' d='M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z'/%3E%3Cpath fill='%2334a853' d='M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z'/%3E%3Cpath fill='%23fbbc05' d='M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z'/%3E%3Cpath fill='%23ea4335' d='M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z'/%3E%3C/svg%3E") center/contain no-repeat; background-color: #fff; border-radius: 50%; padding: 2px; box-sizing: border-box; }
-
-.rev-name { font-size: 14px; font-weight: 700; line-height: 1.2; }
-.rev-sub { font-size: 11px; font-weight: 500; color: #666; margin-top: 2px; }
-
-.rev-card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.rev-card-stars { display: flex; gap: 2px; }
-.rev-card-stars svg { width: 14px; height: 14px; }
-.rev-card-date { font-size: 11px; color: #555; font-weight: 500; }
-
-.rev-text { font-size: 14px; font-weight: 400; line-height: 1.6; color: #c4c4c4; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
-
-.rev-row-gap { height: 18px; }
-
-.rev-cta-wrap { text-align: center; margin-top: 36px; padding: 0 24px; }
-.rev-cta { display: inline-flex; align-items: center; gap: 10px; background: transparent; border: 2px solid #2a2a2a; color: #fff; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; padding: 14px 26px; border-radius: 10px; text-decoration: none; transition: all .25s; }
-.rev-cta:hover { border-color: var(--brand-red); background: rgba(220,38,38,0.08); transform: translateY(-1px); }
-.rev-cta svg { width: 18px; height: 18px; transition: transform .25s; }
-.rev-cta:hover svg.arrow { transform: translateX(4px); }
-
-@media (max-width: 600px) {
-  .rev-card { width: 290px; padding: 20px 18px 18px; }
-  .rev-stat-strip { gap: 12px; padding: 10px 18px; flex-wrap: wrap; justify-content: center; }
-  .rev-rating { font-size: 26px; }
-}
-</style>
-
-<section class="rev-section" id="reviews" aria-labelledby="rev-title-id" itemscope itemtype="https://schema.org/LocalBusiness">
-  <meta itemprop="name" content="Mikey's Mobile Detailing">
-  <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" style="display:none;">
-    <meta itemprop="ratingValue" content="5.0">
-    <meta itemprop="reviewCount" content="35">
-    <meta itemprop="bestRating" content="5">
-  </div>
-
-  <div class="rev-header">
-    <div class="rev-tag">What Snohomish County Says</div>
-    <h2 id="rev-title-id" class="rev-title">35+ Five-Star Reviews. <span>Zero Complaints.</span></h2>
-    <div class="rev-sub-title">Real people. Real cars. Real results — straight from Google.</div>
-
-    <div class="rev-stat-strip">
-      <svg class="rev-google-logo" viewBox="0 0 48 48" aria-hidden="true">
-        <path fill="#4285f4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-        <path fill="#34a853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-        <path fill="#fbbc05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-        <path fill="#ea4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-      </svg>
-      <div class="rev-rating">5.0</div>
-      <div class="rev-stars" aria-hidden="true">
-        <svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg>
-        <svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg>
-        <svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg>
-        <svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg>
-        <svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg>
-      </div>
-      <div class="rev-div"></div>
-      <div class="rev-count"><div class="n">35+</div><div class="l">Google Reviews</div></div>
-    </div>
-  </div>
-
-  <!-- ROW 1 — scrolls left -->
-  <div class="rev-marquee-wrap">
-    <div class="rev-track">
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">C</div><div><div class="rev-name">C Wilson</div><div class="rev-sub">Repeat Client · Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars" aria-label="5 stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey has done my car 4 times now and each time was amazing — quick, thorough, and a fabulous result. 10/10 would recommend.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">T</div><div><div class="rev-name">Tara Hull</div><div class="rev-sub">First Detail · Monroe</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">He was so professional — well spoken, hard working, and thorough. My car had never been detailed before. It looks amazing now.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">F</div><div><div class="rev-name">Flon R.</div><div class="rev-sub">3-Car Detail · Lake Stevens</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey's Mobile Detailing is an absolute gem! For around 6 hours, he cleaned three cars including waxing and polishing. Outstanding value.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">A</div><div><div class="rev-name">Angela</div><div class="rev-sub">Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">J</div><div><div class="rev-name">Jason Brandvold</div><div class="rev-sub">Truck + 28ft Trailer</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey has attention to detail with schedule, workmanship, and price! My Silverado and 28-foot travel trailer look great!</p></article>
-
-      <!-- duplicate set for seamless loop -->
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">C</div><div><div class="rev-name">C Wilson</div><div class="rev-sub">Repeat Client · Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey has done my car 4 times now and each time was amazing — quick, thorough, and a fabulous result. 10/10 would recommend.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">T</div><div><div class="rev-name">Tara Hull</div><div class="rev-sub">First Detail · Monroe</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">He was so professional — well spoken, hard working, and thorough. My car had never been detailed before. It looks amazing now.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">F</div><div><div class="rev-name">Flon R.</div><div class="rev-sub">3-Car Detail · Lake Stevens</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey's Mobile Detailing is an absolute gem! For around 6 hours, he cleaned three cars including waxing and polishing. Outstanding value.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">A</div><div><div class="rev-name">Angela</div><div class="rev-sub">Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">J</div><div><div class="rev-name">Jason Brandvold</div><div class="rev-sub">Truck + 28ft Trailer</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey has attention to detail with schedule, workmanship, and price! My Silverado and 28-foot travel trailer look great!</p></article>
-    </div>
-  </div>
-
-  <div class="rev-row-gap"></div>
-
-  <!-- ROW 2 — scrolls right -->
-  <div class="rev-marquee-wrap">
-    <div class="rev-track reverse">
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">J</div><div><div class="rev-name">James Bell</div><div class="rev-sub">Full Interior · Everett</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey did an AMAZING job detailing my Ford. I ordered a full interior detail and he cleaned it to perfection!</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">M</div><div><div class="rev-name">Marissa Jones</div><div class="rev-sub">4-Vehicle Client</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">We first hired Mikey to detail our truck before selling it. He did such a great job we had him come back for our other 3 vehicles.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">K</div><div><div class="rev-name">Kailey Blight</div><div class="rev-sub">Full Detail · Monroe</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">The BEST!! My car hasn't felt this clean since I got it! Highly recommend and will be back!</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">P</div><div><div class="rev-name">Pat Job</div><div class="rev-sub">Repeat Client</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Top notch service! Mikey's Mobile Detailing has become my go-to for keeping my vehicles looking their best.</p></article>
-
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">R</div><div><div class="rev-name">Rosie Ramirez</div><div class="rev-sub">Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey gave my car a flawless shine for an amazingly good price. Super professional, on time, and made the whole process easy.</p></article>
-
-      <!-- duplicate set -->
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">J</div><div><div class="rev-name">James Bell</div><div class="rev-sub">Full Interior · Everett</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey did an AMAZING job detailing my Ford. I ordered a full interior detail and he cleaned it to perfection!</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">M</div><div><div class="rev-name">Marissa Jones</div><div class="rev-sub">4-Vehicle Client</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">We first hired Mikey to detail our truck before selling it. He did such a great job we had him come back for our other 3 vehicles.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">K</div><div><div class="rev-name">Kailey Blight</div><div class="rev-sub">Full Detail · Monroe</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">The BEST!! My car hasn't felt this clean since I got it! Highly recommend and will be back!</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">P</div><div><div class="rev-name">Pat Job</div><div class="rev-sub">Repeat Client</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Top notch service! Mikey's Mobile Detailing has become my go-to for keeping my vehicles looking their best.</p></article>
-      <article class="rev-card"><div class="rev-card-top"><div class="rev-avatar">R</div><div><div class="rev-name">Rosie Ramirez</div><div class="rev-sub">Snohomish</div></div></div><div class="rev-card-meta"><div class="rev-card-stars"><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg><svg viewBox="0 0 20 20"><polygon points="10,1.5 12.4,7.1 18.5,7.6 13.8,11.7 15.3,17.7 10,14.4 4.7,17.7 6.2,11.7 1.5,7.6 7.6,7.1" fill="#facc15"/></svg></div><div class="rev-card-date">Recent</div></div><p class="rev-text">Mikey gave my car a flawless shine for an amazingly good price. Super professional, on time, and made the whole process easy.</p></article>
-    </div>
-  </div>
-
-  <div class="rev-cta-wrap">
-    <a href="https://www.google.com/search?q=Mikey%27s+Mobile+Detailing+-+Snohomish&stick=H4sIAAAAAAAA_-NgU1I1qLBINTM2NDE2TjZONbBMTU6xMqgwtDQ1SrE0TzZIM7JMTDU0WMSq4puZnVqpXqzgm5-UmZOq4JJakpiZk5mXrqCrEJyXn5Gfm1mcAQARA76SUAAAAA&hl=en&mat=CRPpn5eejix4ElcBYJahaeHYnmAvBzSNihlxEz7KJ6ZTolWt_cbbY0VkBJDgKcuVC8JY-ga3V3o99y7DSEPVc0tnPQuZpTdUmjUQiRQO56uoKRJnRBh-biaxYOOuaD00dLs&authuser=1" target="_blank" rel="noopener" class="rev-cta">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285f4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34a853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#fbbc05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#ea4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-      Read All 35+ Reviews on Google
-      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-                                                             
+</html>            
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- ▼▼▼ SECTION 09: SERVICES (tabs) ▼▼▼ -->
