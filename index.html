@@ -9,28 +9,23 @@
 <meta name="keywords" content="mobile car detailing Snohomish, car detailing Monroe WA, auto detailing Lake Stevens, mobile detailing Everett, car wash Snohomish County">
 <link rel="canonical" href="https://mikeysdetailing.com/">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mikeysdetailing.com/">
 <meta property="og:title" content="Mikey's Mobile Detailing — Snohomish, WA">
 <meta property="og:description" content="Showroom-clean inside and out — without leaving home. You don't pay until you love it.">
 <meta property="og:image" content="https://iili.io/qKtjLcx.jpg">
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mikey's Mobile Detailing — Snohomish, WA">
 <meta name="twitter:description" content="Showroom-clean inside and out — without leaving home.">
 <meta name="twitter:image" content="https://iili.io/qKtjLcx.jpg">
 
-<!-- Favicon -->
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Oswald:wght@600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
 
-<!-- Local Business Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,7 +62,6 @@
 }
 </script>
 
-<!-- FAQ Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,22 +74,17 @@
     { "@type": "Question", "name": "Do you guarantee your work?", "acceptedAnswer": { "@type": "Answer", "text": "100% satisfaction guarantee. If you're not happy with any part of the service, I'll make it right or refund you." } }
   ]
 }
-</script>  
+</script>
 
-<!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G9WMXW2MF5');
-</script> 
+</script>
 
-<!-- ========================================== -->
-<!-- ALL CSS STYLES -->
-<!-- ========================================== -->
 <style>
-/* GLOBAL RESET & TOKENS */
 :root {
   --brand-red: #dc2626;
   --brand-red-dark: #b71c1c;
@@ -122,30 +111,16 @@ img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 main { padding-top: 70px; }
 
-/* GLOBAL LAYOUT */
-.section-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-  width: 100%;
-}
-section {
-  padding: 100px 0;
-  width: 100%;
-}
-section:nth-child(odd) {
-  background: #141414;
-}
-section:nth-child(even) {
-  background: #1a1a1a;
-}
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
+section { padding: 100px 0; width: 100%; }
+section:nth-of-type(odd) { background: #141414; }
+section:nth-of-type(even) { background: #1a1a1a; }
 
 @media (max-width: 768px) {
   .section-inner { padding: 0 20px; }
   section { padding: 60px 0; }
 }
 
-/* HEADER */
 #mikeyHeader { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: rgba(0,0,0,0.95); z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
 #mikeyHeader nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; color: white; }
 #mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; }
@@ -170,14 +145,7 @@ section:nth-child(even) {
   #mikeyHeader nav { padding: 10px 20px; }
 }
 
-/* HERO SECTION */
-.mh {
-  font-family: 'Outfit', sans-serif;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-  color: #fff;
-}
+.mh { font-family: 'Outfit', sans-serif; text-align: center; max-width: 900px; margin: 0 auto; color: #fff; }
 .mh-proof { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
 .mh-proof-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #a3a3a3; }
 .mh-proof-val { color: #fff; font-weight: 800; }
@@ -202,7 +170,6 @@ section:nth-child(even) {
   .mh-cta-primary, .mh-cta-secondary { width: 100%; text-align: center; }
 }
 
-/* ANIMATIONS */
 .mh-proof, .mh h1, .mh-sub, .mh-prices, .mh-ctas { opacity: 0; transform: translateY(18px); animation: mhFadeUp 0.6s ease-out forwards; }
 .mh-proof { animation-delay: 0.1s; }
 .mh h1 { animation-delay: 0.25s; }
@@ -210,10 +177,7 @@ section:nth-child(even) {
 .mh-prices { animation-delay: 0.6s; }
 .mh-ctas { animation-delay: 0.8s; }
 @keyframes mhFadeUp { to { opacity: 1; transform: translateY(0); } }
-.mh-cta-primary { animation: mhFadeUp 0.6s ease-out 0.8s forwards, mhPulse 0.5s ease-in-out 1.6s 1; }
-@keyframes mhPulse { 0% { box-shadow: 0 4px 20px rgba(163,36,43,0.35); } 50% { box-shadow: 0 4px 35px rgba(163,36,43,0.6); } 100% { box-shadow: 0 4px 20px rgba(163,36,43,0.35); } }
 
-/* PROOF SECTION */
 .proof { text-align: center; }
 .proof-inner { max-width: 900px; margin: 0 auto; }
 .proof-stats { display: flex; justify-content: center; align-items: stretch; gap: 0; margin-bottom: 36px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #111; }
@@ -240,193 +204,8 @@ section:nth-child(even) {
   .proof-stat:nth-child(3), .proof-stat:nth-child(4) { border-bottom: none; }
 }
 
-/* GALLERY IFRAME */
-.gallery-wrapper {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-</style>
-</head>
-<body>
+.gallery-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-<!-- HEADER -->
-<header id="mikeyHeader">
-  <nav>
-    <a href="#top" aria-label="Mikey's Mobile Detailing — home">
-      <img src="https://iili.io/qKtjLcx.jpg" alt="Mikey's Mobile Detailing logo">
-    </a>
-
-    <ul id="desktopMenu">
-      <li><a href="#top">Home</a></li>
-      <li><a href="#allservices">Services</a></li>
-      <li><a href="#booking">Booking</a></li>
-      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
-      <li><a href="#qanda">FAQ</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-
-    <div id="hamburgerBtn" aria-label="Toggle menu" role="button" tabindex="0">
-      <span></span><span></span><span></span>
-    </div>
-
-    <ul id="mobileMenu">
-      <li><a href="#top">Home</a></li>
-      <li><a href="#allservices">Services</a></li>
-      <li><a href="#booking">Booking</a></li>
-      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
-      <li><a href="#qanda">FAQ</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main id="top">
-  
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <div class="section-inner">
-      <div class="mh">
-        <div class="mh-proof">
-          <div class="mh-proof-item">
-            <span class="mh-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="mh-proof-val">5.0</span>
-          </div>
-          <span class="mh-dot"></span>
-          <div class="mh-proof-item">
-            <span class="mh-proof-val">35+</span> Reviews
-          </div>
-          <span class="mh-dot"></span>
-          <div class="mh-proof-item">
-            <span class="mh-proof-val">300+</span> Cars
-          </div>
-        </div>
-        
-        <h1>Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
-        <p class="mh-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
-        
-        <div class="mh-prices">
-          <div class="mh-pill">
-            <span class="mh-pill-label">Full Detail</span>
-            <span class="mh-pill-price">$260–$340</span>
-          </div>
-          <div class="mh-pill">
-            <span class="mh-pill-label">Interior</span>
-            <span class="mh-pill-price">$160–$240</span>
-          </div>
-        </div>
-        
-        <div class="mh-ctas">
-          <a class="mh-cta-primary" href="#booking">Get Your Instant Quote &#8594;</a>
-          <a class="mh-cta-secondary" href="#allservices">See Services</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS / REVIEWS SECTION -->
-  <section class="proof">
-    <div class="section-inner proof-inner">
-      
-      <!-- Stats bar -->
-      <div class="proof-stats">
-        <div class="proof-stat">
-          <span class="proof-stat-num">★★★★★</span>
-          <span class="proof-stat-label">5.0 Rating</span>
-        </div>
-        <div class="proof-stat">
-          <span class="proof-stat-num">35+</span>
-          <span class="proof-stat-label">Reviews</span>
-        </div>
-        <div class="proof-stat">
-          <span class="proof-stat-num">300+</span>
-          <span class="proof-stat-label">Cars Detailed</span>
-        </div>
-        <div class="proof-stat">
-          <span class="proof-stat-num">5yr</span>
-          <span class="proof-stat-label">Experience</span>
-        </div>
-      </div>
-
-      <!-- Featured review -->
-      <div class="proof-quote">
-        <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
-        <div class="proof-quote-author">
-          <div class="proof-quote-avatar">C</div>
-          <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
-          <span class="proof-quote-stars">★★★★★</span>
-        </div>
-      </div>
-
-      <!-- Google link -->
-      <a href="#reviews" target="_blank" class="proof-google">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-        </svg>
-        Read all 5-Star reviews on Google →
-      </a>
-    </div>
-  </section>
-
-  <!-- GALLERY SECTION -->
-  <section class="gallery-section">
-    <div class="section-inner">
-      <div class="gallery-wrapper">
-        <iframe style="border: none;" src="https://mikeygabmiller.github.io/beforeafter/" title="iFrame" width="100%" height="1200px" scrolling="yes" allow="fullscreen"></iframe>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- SCRIPTS -->
-<script>
-(function(){
-  var btn = document.getElementById('hamburgerBtn');
-  var menu = document.getElementById('mobileMenu');
-  function toggle(){
-    var closed = menu.style.maxHeight === '0px' || menu.style.maxHeight === '';
-    menu.style.maxHeight = closed ? '500px' : '0px';
-    menu.style.opacity = closed ? '1' : '0';
-    btn.classList.toggle('active', closed);
-  }
-  btn.addEventListener('click', toggle);
-  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
-  
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      menu.style.maxHeight = '0px';
-      menu.style.opacity = '0';
-      btn.classList.remove('active');
-    });
-  });
-})();
-
-document.addEventListener('click', function(e) {
-  var link = e.target.closest('a[href="#booking"], a[href="#quote"]');
-  if (link) {
-    e.preventDefault();
-    var target = document.getElementById('qqcCard');
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
-  }
-});
-</script>
-
-</body>
-</html>            
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 09: SERVICES (tabs) ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .srv-wrap { max-width: 480px; margin: 0 auto; padding: 0 16px; }
 .srv-header { text-align: center; padding: 28px 0 20px; }
 .srv-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--brand-red); font-weight: 700; margin-bottom: 8px; }
@@ -463,111 +242,7 @@ document.addEventListener('click', function(e) {
 .srv-report-text { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; font-style: italic; }
 .srv-see-all { display: block; text-align: center; margin: 20px auto 0; color: var(--brand-red); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 10px; }
 .srv-see-all:hover { color: #fff; }
-</style>
 
-<section class="srv-wrap" id="allservices">
-  <div class="srv-header">
-    <div class="srv-label">Pro Services</div>
-    <h2 class="srv-title">What We Offer</h2>
-  </div>
-
-  <div class="srv-tabs-wrap">
-    <input type="radio" name="srvtab" id="srvt1" checked class="srv-radio">
-    <input type="radio" name="srvtab" id="srvt2" class="srv-radio">
-    <input type="radio" name="srvtab" id="srvt3" class="srv-radio">
-    <input type="radio" name="srvtab" id="srvt4" class="srv-radio">
-
-    <div class="srv-tabs">
-      <label for="srvt1" class="srv-tab">Interior</label>
-      <label for="srvt2" class="srv-tab">Exterior</label>
-      <label for="srvt3" class="srv-tab">Full Detail</label>
-      <label for="srvt4" class="srv-tab srv-tab--care">Care Check <span class="srv-tab-new">NEW</span></label>
-    </div>
-
-    <!-- INTERIOR -->
-    <div class="srv-panel srv-p1">
-      <div class="srv-card">
-        <div class="srv-price-bar"><div class="srv-price">$160–$240</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
-        <p class="srv-blurb">Deep clean every surface inside your vehicle. Stains, odors, pet hair — we handle it all so it feels brand new.</p>
-        <div class="srv-checks">
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full vacuum + crevice detail</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Steam clean seats &amp; carpet</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Leather clean &amp; condition</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Dashboard &amp; trim dressed</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Windows + mirrors streak-free</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Door jambs wiped down</div>
-        </div>
-        <a href="#booking" class="srv-cta">Get Your Quote</a>
-      </div>
-    </div>
-
-    <!-- EXTERIOR -->
-    <div class="srv-panel srv-p2">
-      <div class="srv-card">
-        <div class="srv-price-bar"><div class="srv-price">$130–$200</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
-        <p class="srv-blurb">A thorough hand wash and protection detail. We clean, decontaminate, and protect every exterior surface.</p>
-        <div class="srv-checks">
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full hand wash &amp; dry</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Clay bar decontamination</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire &amp; wheel deep clean</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire dressing applied</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Exterior windows cleaned</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Spray sealant protection</div>
-        </div>
-        <a href="#booking" class="srv-cta">Get Your Quote</a>
-      </div>
-    </div>
-
-    <!-- FULL DETAIL -->
-    <div class="srv-panel srv-p3">
-      <div class="srv-card">
-        <div class="srv-price-bar"><div class="srv-price">$260–$340</div><div class="srv-price-note">Best<br>value</div></div>
-        <p class="srv-blurb">The complete package — interior deep clean plus full exterior protection. Inside and out, bumper to bumper.</p>
-        <div class="srv-checks">
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Interior</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Exterior</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> 100% satisfaction guaranteed</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> Your car ready same day</div>
-          <div class="srv-chk"><div class="srv-chk-icon">✓</div> No hidden fees or surprises</div>
-        </div>
-        <a href="#booking" class="srv-cta">Get Your Quote</a>
-      </div>
-    </div>
-
-    <!-- CARE CHECK -->
-    <div class="srv-panel srv-p4">
-      <div class="srv-card srv-card--gold">
-        <div class="srv-gold-badge">🆕 New Service — Limited Spots</div>
-        <div class="srv-gold-free">First Check-Up FREE — No Strings</div>
-        <div class="srv-price-bar" style="border-color:rgba(217,119,6,0.2)"><div class="srv-price">$39</div><div class="srv-price-note">per month<br>per vehicle</div></div>
-        <p class="srv-blurb">Your car's monthly doctor visit — at your driveway. I come to you every month, inspect everything, and send you a full report so nothing sneaks up on you.</p>
-        <div class="srv-checks">
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Tire pressure + tread depth</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> All fluids checked</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full light check</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Wipers &amp; belts inspected</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Under-hood visual scan</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> New damage photo-documented</div>
-          <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full text report card after every visit</div>
-        </div>
-        <div class="srv-report-preview">
-          <div class="srv-report-label">📱 Sample Report</div>
-          <div class="srv-report-text">"April check done ✓ Oil looks clean, tires at 33/33/34/34 PSI — bumped to 35. Washer fluid topped off. Small chip on rear windshield, recommend sealing soon. Everything else looks great. See you next month!"</div>
-        </div>
-        <a href="mailto:mikeysdetailing4u@gmail.com?subject=Book%20FREE%20Care%20Check%20%E2%80%94%20First%20Visit&body=Hey%20Mikey%2C%0A%0AI%27d%20like%20to%20book%20my%20FREE%20first%20Care%20Check.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0AAddress%2FCity%3A%20%0APhone%3A%20%0A%0AThanks!" class="srv-cta srv-cta--gold">Book Free Check-Up</a>
-      </div>
-    </div>
-  </div>
-
-  <a href="services.html" class="srv-see-all">See all 9 services →</a>
-</section>
-<!-- ▲▲▲ END SECTION 09: SERVICES ▲▲▲ -->
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 11: GUARANTEE ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .gt-wrap { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
 .gt-box { position: relative; background: #141414; border: 2px solid #222; border-radius: 16px; overflow: hidden; }
 .gt-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--brand-red); }
@@ -590,28 +265,7 @@ document.addEventListener('click', function(e) {
   .gt-step + .gt-step { border-left: none; border-top: 1px solid #222; }
   .gt-step { padding: 22px; }
 }
-</style>
 
-<section class="gt-wrap" aria-labelledby="gt-title-id">
-  <div class="gt-box">
-    <div class="gt-top">
-      <div class="gt-tag">100% Guaranteed</div>
-      <h2 id="gt-title-id" class="gt-title">I Don't Leave Until<br>You <em>Love It</em></h2>
-      <p class="gt-desc">Every detail ends with a walkthrough — you and me, around the whole car. Anything you don't like gets fixed right then and there. Not over text. Not next week. On the spot.</p>
-    </div>
-    <div class="gt-steps">
-      <div class="gt-step"><span class="gt-num">1</span><div class="gt-step-title">Walk-around</div><p class="gt-step-text">We inspect your car together. Anything off gets fixed immediately.</p></div>
-      <div class="gt-step"><span class="gt-num">2</span><div class="gt-step-title">Free Return</div><p class="gt-step-text">Notice something later? I come back and fix it — completely free.</p></div>
-      <div class="gt-step"><span class="gt-num">3</span><div class="gt-step-title">Full Refund</div><p class="gt-step-text">Still not 100%? Full refund. No awkward conversation.</p></div>
-    </div>
-  </div>
-</section>
-<!-- ▲▲▲ END SECTION 11: GUARANTEE ▲▲▲ -->
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 06: FLASH PROMO (Free Exterior offer) ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .mkd-flash { --red: #c0392b; --red-dark: #a5311f; --red-light: #e74c3c; font-family: 'Outfit', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 12px; }
 .mkd-flash * { box-sizing: border-box; }
 .mkd-flash-card { border-radius: 16px; overflow: hidden; box-shadow: 0 0 60px rgba(192,57,43,0.2), 0 0 120px rgba(192,57,43,0.08), 0 20px 60px rgba(0,0,0,0.4); animation: mkd-f-glow 3s ease-in-out infinite; position: relative; }
@@ -666,62 +320,9 @@ document.addEventListener('click', function(e) {
   .mkd-flash-right::before { font-size: 80px; }
   .mkd-flash-urgency { padding: 10px 14px; }
 }
-</style>
 
-<div class="mkd-flash">
-  <div class="mkd-flash-card">
-    <div class="mkd-flash-inner">
-      <div class="mkd-flash-left">
-        <div class="mkd-flash-bolt">
-          <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <polygon points="50,0 10,65 35,65 25,120 70,50 45,50 55,0" fill="#fff" opacity="0.95"/>
-          </svg>
-        </div>
-        <div class="mkd-flash-limited">Limited Time Offer</div>
-        <div class="mkd-flash-word">FREE</div>
-        <div class="mkd-flash-word-sub">Detail</div>
-      </div>
-      <div class="mkd-flash-right">
-        <div class="mkd-flash-pretitle">Spring Special</div>
-        <h2 class="mkd-flash-headline"><em>Free</em> Exterior</h2>
-        <div class="mkd-flash-headline-sub">With Any Interior Booking</div>
-        <div class="mkd-flash-divider"></div>
-        <div class="mkd-flash-urgency">
-          <div class="mkd-flash-live-dot"></div>
-          <div class="mkd-flash-urgency-text">
-            <strong>Ending this week.</strong><br>
-            Once spots fill, this offer is <em>gone for good.</em>
-          </div>
-        </div>
-        <div class="mkd-flash-drain">
-          <div class="mkd-flash-drain-label"><span>Spots Remaining</span><strong>3 left</strong></div>
-          <div class="mkd-flash-drain-bar"><div class="mkd-flash-drain-fill"></div></div>
-        </div>
-        <div class="mkd-flash-includes">
-          <span>Hand wash</span><span>Wax &amp; sealant</span><span>Wheels</span><span>Tires</span><span>Glass</span>
-        </div>
-        <a href="mailto:mikeysdetailing4u@gmail.com?subject=Claim%20Free%20Exterior%20Deal&body=Hey%20Mikey%2C%0A%0AI%20want%20to%20claim%20the%20free%20exterior%20deal%20with%20an%20interior%20detail.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0ACity%3A%20%0A%0AThanks!" class="mkd-flash-cta">Claim Free Exterior Now →</a>
-        <p class="mkd-flash-fine">First-time clients only · $150+ value, on the house · I've never done this before and won't again.<br>This is a one-time offer. It will not be repeated.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- ▲▲▲ END SECTION 06: FLASH PROMO ▲▲▲ -->
-<div id="booking">
-  <iframe
-    src="https://mikeysquote.netlify.app"
-    title="Quick Quote Calculator"
-    width="100%"
-    height="600px"
-    style="border: 1px solid #FFFFFF;"
-    allow="fullscreen">
-  </iframe>
-</div>
-<!-- ▼▼▼ SECTION 08: HOW IT WORKS ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .hiw { font-family: 'Outfit', sans-serif; max-width: 720px; margin: 0 auto; padding: 30px 16px; }
-.hiw-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 20px; }
+.hiw-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 20px; text-align: center; }
 .hiw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .hiw-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 14px; padding: 28px 18px; text-align: center; }
 .hiw-icon { width: 40px; height: 40px; margin: 0 auto 14px; color: #999; }
@@ -730,48 +331,22 @@ document.addEventListener('click', function(e) {
 .hiw-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #fff; margin-bottom: 8px; line-height: 1.3; }
 .hiw-desc { font-size: 13px; color: #888; line-height: 1.5; }
 @media (max-width: 480px) { .hiw-card { padding: 22px 14px; } .hiw-num { font-size: 26px; } .hiw-title { font-size: 11px; } .hiw-desc { font-size: 11px; } .hiw-icon { width: 32px; height: 32px; margin-bottom: 10px; } }
-</style>
 
-<section class="hiw" aria-labelledby="hiw-title-id">
-  <div class="hiw-label" id="hiw-title-id">How It Works</div>
-  <div class="hiw-grid">
-    <div class="hiw-card">
-      <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg></div>
-      <div class="hiw-num">1</div>
-      <h3 class="hiw-title">Book Online</h3>
-      <p class="hiw-desc">Takes about 60 seconds. Pick your service and a time.</p>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
-      <div class="hiw-num">2</div>
-      <h3 class="hiw-title">I Show Up</h3>
-      <p class="hiw-desc">Mikey shows up with everything. You don't need to do a thing.</p>
-    </div>
-    <div class="hiw-card">
-      <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></div>
-      <div class="hiw-num">3</div>
-      <h3 class="hiw-title">You Pay When Done</h3>
-      <p class="hiw-desc">Walk around, approve the result, then pay — cash, Venmo, Zelle, or Cash App.</p>
-    </div>
-  </div>
-</section>
-<!-- ▲▲▲ END SECTION 08: HOW IT WORKS ▲▲▲ -->
+.faq-section { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
+.faq-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; text-align: center; }
+.faq-title { font-size: 32px; font-weight: 900; color: #fff; text-align: center; margin-bottom: 32px; }
+.faq-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+.faq-item summary { padding: 18px 22px; font-size: 15px; font-weight: 700; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; font-size: 24px; color: var(--brand-red); font-weight: 700; }
+.faq-item[open] summary::after { content: '−'; }
+.faq-item p { padding: 0 22px 18px; color: #aaa; font-size: 14px; line-height: 1.65; }
 
+.reviews-section { max-width: 1100px; margin: 0 auto; padding: 30px 16px; text-align: center; }
+.reviews-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; }
+.reviews-title { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 24px; }
+.reviews-iframe-wrap { width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-
-
-
-
-
-
-
-
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 14: ABOUT MIKEY ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .about-section { background: #000; position: relative; overflow: hidden; padding: 60px 20px; }
 .about-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
 .about-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
@@ -789,38 +364,7 @@ document.addEventListener('click', function(e) {
 @media (max-width: 768px) {
   .about-text-full { padding: 30px 22px; }
 }
-</style>
 
-<section class="about-section" id="about" aria-labelledby="about-title-id">
-  <div class="about-container">
-    <div class="about-header">
-      <h2 id="about-title-id">Meet Mikey</h2>
-      <p class="about-subtitle">Your local mobile car detailing expert in Snohomish, WA.</p>
-    </div>
-    <div class="about-text-full">
-      <h3>Locally Owned &amp; Operated in Snohomish</h3>
-      <p>Hey! I'm Mikey, and I've been making cars look incredible in <strong>Snohomish and Snohomish County</strong> for over 5 years. What started as a passion for keeping my own car pristine turned into a full-time business helping hundreds of local drivers restore their vehicles to showroom condition.</p>
-      <p>I'm not some big corporate chain — I'm a local guy who genuinely loves what I do. Every car gets my personal attention, and I use the same <strong>professional-grade products and techniques</strong> I'd use on my own vehicle. Your satisfaction is everything to me, which is why I back every detail with a 100% guarantee.</p>
-      <p>When you book with Mikey's Mobile Detailing, you're getting <strong>5+ years of expertise, premium products, and a neighbor who cares</strong> about your car as much as you do. I'm not happy until you're thrilled with the results.</p>
-      <p class="about-signature">— Mikey</p>
-      <div class="about-badge-wrap"><span class="about-badge">⭐ 5+ Years Experience</span></div>
-    </div>
-  </div>
-</section>
-<!-- ▲▲▲ END SECTION 14: ABOUT MIKEY ▲▲▲ -->
-
-
-
-<!-- ▲▲▲ END SECTION 15: FAQ ▲▲▲ -->
-
-
-</main>
-
-
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<!-- ▼▼▼ SECTION 16: FOOTER ▼▼▼ -->
-<!-- ════════════════════════════════════════════════════════════════════ -->
-<style>
 .site-footer { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
 .footer-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: flex-start; }
 .footer-col { flex: 1 1 200px; min-width: 180px; }
@@ -834,6 +378,331 @@ document.addEventListener('click', function(e) {
 .footer-cta:hover { transform: translateY(-2px); }
 .footer-copy { margin-top: 24px; text-align: center; color: #555; font-size: 12px; }
 </style>
+</head>
+<body>
+
+<header id="mikeyHeader">
+  <nav>
+    <a href="#top" aria-label="Mikey's Mobile Detailing — home">
+      <img src="https://iili.io/qKtjLcx.jpg" alt="Mikey's Mobile Detailing logo">
+    </a>
+    <ul id="desktopMenu">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#allservices">Services</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
+      <li><a href="#qanda">FAQ</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div id="hamburgerBtn" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <ul id="mobileMenu">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#allservices">Services</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
+      <li><a href="#qanda">FAQ</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero-section">
+    <div class="section-inner">
+      <div class="mh">
+        <div class="mh-proof">
+          <div class="mh-proof-item">
+            <span class="mh-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="mh-proof-val">5.0</span>
+          </div>
+          <span class="mh-dot"></span>
+          <div class="mh-proof-item"><span class="mh-proof-val">35+</span> Reviews</div>
+          <span class="mh-dot"></span>
+          <div class="mh-proof-item"><span class="mh-proof-val">300+</span> Cars</div>
+        </div>
+        <h1>Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
+        <p class="mh-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
+        <div class="mh-prices">
+          <div class="mh-pill"><span class="mh-pill-label">Full Detail</span><span class="mh-pill-price">$260–$340</span></div>
+          <div class="mh-pill"><span class="mh-pill-label">Interior</span><span class="mh-pill-price">$160–$240</span></div>
+        </div>
+        <div class="mh-ctas">
+          <a class="mh-cta-primary" href="#booking">Get Your Instant Quote &#8594;</a>
+          <a class="mh-cta-secondary" href="#allservices">See Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="section-inner proof-inner">
+      <div class="proof-stats">
+        <div class="proof-stat"><span class="proof-stat-num">★★★★★</span><span class="proof-stat-label">5.0 Rating</span></div>
+        <div class="proof-stat"><span class="proof-stat-num">35+</span><span class="proof-stat-label">Reviews</span></div>
+        <div class="proof-stat"><span class="proof-stat-num">300+</span><span class="proof-stat-label">Cars Detailed</span></div>
+        <div class="proof-stat"><span class="proof-stat-num">5yr</span><span class="proof-stat-label">Experience</span></div>
+      </div>
+      <div class="proof-quote">
+        <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
+        <div class="proof-quote-author">
+          <div class="proof-quote-avatar">C</div>
+          <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
+          <span class="proof-quote-stars">★★★★★</span>
+        </div>
+      </div>
+      <a href="#reviews" class="proof-google">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Read all 5-Star reviews on Google →
+      </a>
+    </div>
+  </section>
+
+  <section class="gallery-section">
+    <div class="section-inner">
+      <div class="gallery-wrapper">
+        <iframe style="border: none;" src="https://mikeygabmiller.github.io/beforeafter/" title="Before and After Gallery" width="100%" height="1200" scrolling="yes" allow="fullscreen"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="srv-wrap" id="allservices">
+    <div class="srv-header">
+      <div class="srv-label">Pro Services</div>
+      <h2 class="srv-title">What We Offer</h2>
+    </div>
+    <div class="srv-tabs-wrap">
+      <input type="radio" name="srvtab" id="srvt1" checked class="srv-radio">
+      <input type="radio" name="srvtab" id="srvt2" class="srv-radio">
+      <input type="radio" name="srvtab" id="srvt3" class="srv-radio">
+      <input type="radio" name="srvtab" id="srvt4" class="srv-radio">
+      <div class="srv-tabs">
+        <label for="srvt1" class="srv-tab">Interior</label>
+        <label for="srvt2" class="srv-tab">Exterior</label>
+        <label for="srvt3" class="srv-tab">Full Detail</label>
+        <label for="srvt4" class="srv-tab srv-tab--care">Care Check <span class="srv-tab-new">NEW</span></label>
+      </div>
+      <div class="srv-panel srv-p1">
+        <div class="srv-card">
+          <div class="srv-price-bar"><div class="srv-price">$160–$240</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
+          <p class="srv-blurb">Deep clean every surface inside your vehicle. Stains, odors, pet hair — I handle it all so it feels brand new.</p>
+          <div class="srv-checks">
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full vacuum + crevice detail</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Steam clean seats &amp; carpet</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Leather clean &amp; condition</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Dashboard &amp; trim dressed</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Windows + mirrors streak-free</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Door jambs wiped down</div>
+          </div>
+          <a href="#booking" class="srv-cta">Get Your Quote</a>
+        </div>
+      </div>
+      <div class="srv-panel srv-p2">
+        <div class="srv-card">
+          <div class="srv-price-bar"><div class="srv-price">$130–$200</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
+          <p class="srv-blurb">A thorough hand wash and protection detail. I clean, decontaminate, and protect every exterior surface.</p>
+          <div class="srv-checks">
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full hand wash &amp; dry</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Clay bar decontamination</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire &amp; wheel deep clean</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire dressing applied</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Exterior windows cleaned</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Spray sealant protection</div>
+          </div>
+          <a href="#booking" class="srv-cta">Get Your Quote</a>
+        </div>
+      </div>
+      <div class="srv-panel srv-p3">
+        <div class="srv-card">
+          <div class="srv-price-bar"><div class="srv-price">$260–$340</div><div class="srv-price-note">Best<br>value</div></div>
+          <p class="srv-blurb">The complete package — interior deep clean plus full exterior protection. Inside and out, bumper to bumper.</p>
+          <div class="srv-checks">
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Interior</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Exterior</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> 100% satisfaction guaranteed</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Your car ready same day</div>
+            <div class="srv-chk"><div class="srv-chk-icon">✓</div> No hidden fees or surprises</div>
+          </div>
+          <a href="#booking" class="srv-cta">Get Your Quote</a>
+        </div>
+      </div>
+      <div class="srv-panel srv-p4">
+        <div class="srv-card srv-card--gold">
+          <div class="srv-gold-badge">🆕 New Service — Limited Spots</div>
+          <div class="srv-gold-free">First Check-Up FREE — No Strings</div>
+          <div class="srv-price-bar" style="border-color:rgba(217,119,6,0.2)"><div class="srv-price">$39</div><div class="srv-price-note">per month<br>per vehicle</div></div>
+          <p class="srv-blurb">Your car's monthly doctor visit — at your driveway. I come to you every month, inspect everything, and send you a full report so nothing sneaks up on you.</p>
+          <div class="srv-checks">
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Tire pressure + tread depth</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> All fluids checked</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full light check</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Wipers &amp; belts inspected</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Under-hood visual scan</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> New damage photo-documented</div>
+            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full text report card after every visit</div>
+          </div>
+          <div class="srv-report-preview">
+            <div class="srv-report-label">📱 Sample Report</div>
+            <div class="srv-report-text">"April check done ✓ Oil looks clean, tires at 33/33/34/34 PSI — bumped to 35. Washer fluid topped off. Small chip on rear windshield, recommend sealing soon. Everything else looks great. See you next month!"</div>
+          </div>
+          <a href="mailto:mikeysdetailing4u@gmail.com?subject=Book%20FREE%20Care%20Check%20%E2%80%94%20First%20Visit&body=Hey%20Mikey%2C%0A%0AI%27d%20like%20to%20book%20my%20FREE%20first%20Care%20Check.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0AAddress%2FCity%3A%20%0APhone%3A%20%0A%0AThanks!" class="srv-cta srv-cta--gold">Book Free Check-Up</a>
+        </div>
+      </div>
+    </div>
+    <a href="services.html" class="srv-see-all">See all 9 services →</a>
+  </section>
+
+  <section class="gt-wrap" aria-labelledby="gt-title-id">
+    <div class="gt-box">
+      <div class="gt-top">
+        <div class="gt-tag">100% Guaranteed</div>
+        <h2 id="gt-title-id" class="gt-title">I Don't Leave Until<br>You <em>Love It</em></h2>
+        <p class="gt-desc">Every detail ends with a walkthrough — you and me, around the whole car. Anything you don't like gets fixed right then and there. Not over text. Not next week. On the spot.</p>
+      </div>
+      <div class="gt-steps">
+        <div class="gt-step"><span class="gt-num">1</span><div class="gt-step-title">Walk-around</div><p class="gt-step-text">We inspect your car together. Anything off gets fixed immediately.</p></div>
+        <div class="gt-step"><span class="gt-num">2</span><div class="gt-step-title">Free Return</div><p class="gt-step-text">Notice something later? I come back and fix it — completely free.</p></div>
+        <div class="gt-step"><span class="gt-num">3</span><div class="gt-step-title">Full Refund</div><p class="gt-step-text">Still not 100%? Full refund. No awkward conversation.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mkd-flash">
+    <div class="mkd-flash-card">
+      <div class="mkd-flash-inner">
+        <div class="mkd-flash-left">
+          <div class="mkd-flash-bolt">
+            <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <polygon points="50,0 10,65 35,65 25,120 70,50 45,50 55,0" fill="#fff" opacity="0.95"/>
+            </svg>
+          </div>
+          <div class="mkd-flash-limited">Limited Time Offer</div>
+          <div class="mkd-flash-word">FREE</div>
+          <div class="mkd-flash-word-sub">Detail</div>
+        </div>
+        <div class="mkd-flash-right">
+          <div class="mkd-flash-pretitle">Spring Special</div>
+          <h2 class="mkd-flash-headline"><em>Free</em> Exterior</h2>
+          <div class="mkd-flash-headline-sub">With Any Interior Booking</div>
+          <div class="mkd-flash-divider"></div>
+          <div class="mkd-flash-urgency">
+            <div class="mkd-flash-live-dot"></div>
+            <div class="mkd-flash-urgency-text">
+              <strong>Ending this week.</strong><br>
+              Once spots fill, this offer is <em>gone for good.</em>
+            </div>
+          </div>
+          <div class="mkd-flash-drain">
+            <div class="mkd-flash-drain-label"><span>Spots Remaining</span><strong>3 left</strong></div>
+            <div class="mkd-flash-drain-bar"><div class="mkd-flash-drain-fill"></div></div>
+          </div>
+          <div class="mkd-flash-includes">
+            <span>Hand wash</span><span>Wax &amp; sealant</span><span>Wheels</span><span>Tires</span><span>Glass</span>
+          </div>
+          <a href="mailto:mikeysdetailing4u@gmail.com?subject=Claim%20Free%20Exterior%20Deal&body=Hey%20Mikey%2C%0A%0AI%20want%20to%20claim%20the%20free%20exterior%20deal%20with%20an%20interior%20detail.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0ACity%3A%20%0A%0AThanks!" class="mkd-flash-cta">Claim Free Exterior Now →</a>
+          <p class="mkd-flash-fine">First-time clients only · $150+ value, on the house · I've never done this before and won't again.<br>This is a one-time offer. It will not be repeated.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <div class="section-inner">
+      <iframe
+        src="https://mikeysquote.netlify.app"
+        title="Quick Quote Calculator"
+        width="100%"
+        height="600"
+        style="border: 1px solid #FFFFFF; border-radius: 8px;"
+        allow="fullscreen">
+      </iframe>
+    </div>
+  </section>
+
+  <section class="hiw" aria-labelledby="hiw-title-id">
+    <div class="hiw-label" id="hiw-title-id">How It Works</div>
+    <div class="hiw-grid">
+      <div class="hiw-card">
+        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg></div>
+        <div class="hiw-num">1</div>
+        <h3 class="hiw-title">Book Online</h3>
+        <p class="hiw-desc">Takes about 60 seconds. Pick your service and a time.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
+        <div class="hiw-num">2</div>
+        <h3 class="hiw-title">I Show Up</h3>
+        <p class="hiw-desc">I show up with everything. You don't need to do a thing.</p>
+      </div>
+      <div class="hiw-card">
+        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></div>
+        <div class="hiw-num">3</div>
+        <h3 class="hiw-title">You Pay When Done</h3>
+        <p class="hiw-desc">Walk around, approve the result, then pay — cash, Venmo, Zelle, or Cash App.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews-section" id="reviews">
+    <div class="reviews-label">What People Say</div>
+    <h2 class="reviews-title">5-Star Reviews</h2>
+    <div class="reviews-iframe-wrap">
+      <iframe src="https://reveiws.netlify.app" title="Customer Reviews" width="100%" height="500" style="border:none;" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <section class="faq-section" id="qanda">
+    <div class="faq-label">Common Questions</div>
+    <h2 class="faq-title">FAQ</h2>
+    <details class="faq-item">
+      <summary>How long does a detail take?</summary>
+      <p>Most full details take 2–4 hours depending on size and condition. Bigger SUVs and trucks can take longer. I'll give you a realistic time when you book.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you really come to my location?</summary>
+      <p>Yes. I bring everything — water, power, products, towels — to your home or work in Snohomish, Monroe, Lake Stevens, Everett, Bothell, and Mill Creek.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What forms of payment do you accept?</summary>
+      <p>Cash, credit/debit, Venmo, Zelle, and Cash App. Payment is due when the job is done and you've approved the work.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you offer monthly plans?</summary>
+      <p>Yes — Clean Club is $125 per recurring full detail with priority booking and locked-in pricing. Limited to 5 spots.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you guarantee your work?</summary>
+      <p>100%. If you're not happy with any part of the service, I'll fix it on the spot, come back free, or refund you. I don't leave until you love it.</p>
+    </details>
+  </section>
+
+  <section class="about-section" id="about" aria-labelledby="about-title-id">
+    <div class="about-container">
+      <div class="about-header">
+        <h2 id="about-title-id">Meet Mikey</h2>
+        <p class="about-subtitle">Your local mobile car detailing expert in Snohomish, WA.</p>
+      </div>
+      <div class="about-text-full">
+        <h3>Locally Owned &amp; Operated in Snohomish</h3>
+        <p>Hey! I'm Mikey, and I've been making cars look incredible in <strong>Snohomish and Snohomish County</strong> for over 5 years. What started as a passion for keeping my own car pristine turned into a full-time business helping hundreds of local drivers restore their vehicles to showroom condition.</p>
+        <p>I'm not some big corporate chain — I'm a local guy who genuinely loves what I do. Every car gets my personal attention, and I use the same <strong>professional-grade products and techniques</strong> I'd use on my own vehicle. Your satisfaction is everything to me, which is why I back every detail with a 100% guarantee.</p>
+        <p>When you book with Mikey's Mobile Detailing, you're getting <strong>5+ years of expertise, premium products, and a neighbor who cares</strong> about your car as much as you do. I'm not happy until you're thrilled with the results.</p>
+        <p class="about-signature">— Mikey</p>
+        <div class="about-badge-wrap"><span class="about-badge">⭐ 5+ Years Experience</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer class="site-footer">
   <div class="footer-grid">
@@ -850,10 +719,10 @@ document.addEventListener('click', function(e) {
         <li><a href="#qanda">FAQ</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="/monroe">monroe</a></li>
-        <li><a href="/duvall">duvall</a></li>
-        <li><a href="/mill-creek">mill creek</a></li> 
-        <li><a href="/lake-stevens">lake stevens</a></li>
+        <li><a href="/monroe">Monroe</a></li>
+        <li><a href="/duvall">Duvall</a></li>
+        <li><a href="/mill-creek">Mill Creek</a></li>
+        <li><a href="/lake-stevens">Lake Stevens</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -869,7 +738,28 @@ document.addEventListener('click', function(e) {
   </div>
   <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish. All rights reserved.</p>
 </footer>
-<!-- ▲▲▲ END SECTION 16: FOOTER ▲▲▲ -->
+
+<script>
+(function(){
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  function toggle(){
+    var closed = menu.style.maxHeight === '0px' || menu.style.maxHeight === '';
+    menu.style.maxHeight = closed ? '500px' : '0px';
+    menu.style.opacity = closed ? '1' : '0';
+    btn.classList.toggle('active', closed);
+  }
+  btn.addEventListener('click', toggle);
+  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      menu.style.maxHeight = '0px';
+      menu.style.opacity = '0';
+      btn.classList.remove('active');
+    });
+  });
+})();
+</script>
 
 </body>
-                                                                                                                                         </html>
+            </html>
