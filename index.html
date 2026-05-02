@@ -6,26 +6,32 @@
 
 <title>Mikey's Mobile Detailing | Snohomish, WA Car Detailing — Comes To You</title>
 <meta name="description" content="Mobile car detailing in Snohomish, WA. Interior, exterior, and full detail packages from $130. 5.0 stars, 35+ Google reviews, 300+ cars detailed. Book online — I come to your driveway.">
-<meta name="keywords" content="mobile car detailing Snohomish, car detailing Monroe WA, auto detailing Lake Stevens, mobile detailing Everett, car wash Snohomish County">
 <link rel="canonical" href="https://mikeysdetailing.com/">
 
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mikeysdetailing.com/">
 <meta property="og:title" content="Mikey's Mobile Detailing — Snohomish, WA">
 <meta property="og:description" content="Showroom-clean inside and out — without leaving home. You don't pay until you love it.">
 <meta property="og:image" content="https://iili.io/qKtjLcx.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Mikey's Mobile Detailing">
 
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mikey's Mobile Detailing — Snohomish, WA">
 <meta name="twitter:description" content="Showroom-clean inside and out — without leaving home.">
 <meta name="twitter:image" content="https://iili.io/qKtjLcx.jpg">
 
+<!-- Geo signals for local SEO -->
+<meta name="geo.region" content="US-WA">
+<meta name="geo.placename" content="Snohomish">
+
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Oswald:wght@600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
-
+<!-- Schema: LocalBusiness / AutoDetailing -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,11 +42,13 @@
   "url": "https://mikeysdetailing.com",
   "telephone": "+1-360-797-5831",
   "email": "mikeysdetailing4u@gmail.com",
-  "priceRange": "$130-$340",
+  "priceRange": "$130–$340",
+  "description": "Mobile car detailing in Snohomish County, WA. Interior, exterior, and full detail packages. 5-star rated, 35+ reviews, 300+ cars detailed. I come to your driveway.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Snohomish",
     "addressRegion": "WA",
+    "postalCode": "98290",
     "addressCountry": "US"
   },
   "areaServed": [
@@ -49,33 +57,109 @@
     { "@type": "City", "name": "Lake Stevens" },
     { "@type": "City", "name": "Everett" },
     { "@type": "City", "name": "Bothell" },
-    { "@type": "City", "name": "Mill Creek" }
+    { "@type": "City", "name": "Mill Creek" },
+    { "@type": "City", "name": "Duvall" }
   ],
   "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" }
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
+    "bestRating": "5",
     "reviewCount": "35"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Detailing Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Interior Detail" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "160", "maxPrice": "240", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Exterior Detail" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "130", "maxPrice": "200", "priceCurrency": "USD" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Full Detail" },
+        "priceSpecification": { "@type": "PriceSpecification", "minPrice": "260", "maxPrice": "340", "priceCurrency": "USD" }
+      }
+    ]
   }
 }
 </script>
 
+<!-- Schema: FAQPage -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How long does a detail take?", "acceptedAnswer": { "@type": "Answer", "text": "Most full details take 2-4 hours depending on size and condition. Paint correction can take 6-8 hours or more." } },
-    { "@type": "Question", "name": "Do you really come to my location?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! I bring everything to your home or work in Snohomish, Monroe, Lake Stevens, Everett, and surrounding areas." } },
-    { "@type": "Question", "name": "What forms of payment do you accept?", "acceptedAnswer": { "@type": "Answer", "text": "Cash, credit/debit cards, Venmo, Zelle, and Cash App. Payment is due when the job is complete." } },
-    { "@type": "Question", "name": "Do you offer monthly plans?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — the Clean Club is $125 per recurring full detail with priority booking." } },
-    { "@type": "Question", "name": "Do you guarantee your work?", "acceptedAnswer": { "@type": "Answer", "text": "100% satisfaction guarantee. If you're not happy with any part of the service, I'll make it right or refund you." } }
+    {
+      "@type": "Question",
+      "name": "How long does a mobile car detail take in Snohomish, WA?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Most full details take 2–4 hours depending on vehicle size and condition. Bigger SUVs and trucks may take longer. I'll give you a realistic time estimate when you book." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you really come to my home or work location?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes! I bring everything — water, power, products, and towels — to your home or workplace in Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, and Duvall." }
+    },
+    {
+      "@type": "Question",
+      "name": "What payment methods do you accept?",
+      "acceptedAnswer": { "@type": "Answer", "text": "I accept cash, credit/debit cards, Venmo, Zelle, and Cash App. Payment is due when the job is done and you've approved the work." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer recurring detailing plans?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — the Clean Club is a recurring detail membership at $125 per visit with priority scheduling and locked-in pricing. Limited to 5 spots." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you guarantee your detailing work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "100% satisfaction guarantee. I walk around the car with you when I'm done. Anything you don't like gets fixed on the spot, for free. If you're still not happy, I'll refund you in full." }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas do you serve in Snohomish County?",
+      "acceptedAnswer": { "@type": "Answer", "text": "I serve Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and surrounding areas in Snohomish County, WA." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does mobile car detailing cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Interior detail starts at $160, exterior detail starts at $130, and full detail (interior + exterior) starts at $260. Pricing varies by vehicle size. Get an instant quote at mikeysdetailing.com." }
+    }
   ]
 }
 </script>
 
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mikeysdetailing.com/" }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Oswald:wght@600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
+
+<!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -85,6 +169,9 @@
 </script>
 
 <style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
 :root {
   --brand-red: #dc2626;
   --brand-red-dark: #b71c1c;
@@ -116,27 +203,88 @@ section { padding: 100px 0; width: 100%; }
 section:nth-of-type(odd) { background: #141414; }
 section:nth-of-type(even) { background: #1a1a1a; }
 
+/* Skip nav for accessibility */
+.skip-nav {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--brand-red);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+  z-index: 99999;
+  transition: top 0.2s;
+}
+.skip-nav:focus { top: 8px; }
+
 @media (max-width: 768px) {
   .section-inner { padding: 0 20px; }
   section { padding: 60px 0; }
 }
 
-#mikeyHeader { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: rgba(0,0,0,0.95); z-index: 9999; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
-#mikeyHeader nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 12px 40px; color: white; }
+/* =========================================================
+   HEADER / NAV
+   ========================================================= */
+#mikeyHeader {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%;
+  background: rgba(0,0,0,0.97);
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+#mikeyHeader nav {
+  max-width: 1200px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 40px; color: white;
+}
 #mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; }
 #desktopMenu { list-style: none; display: flex; gap: 30px; align-items: center; }
-#desktopMenu a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease; }
-#desktopMenu a:hover { color: var(--brand-red); transform: translateY(-2px); }
-#hamburgerBtn { display: none; flex-direction: column; gap: 4px; cursor: pointer; z-index: 10001; }
-#hamburgerBtn span { width: 24px; height: 3px; background: white; border-radius: 2px; transition: all 0.3s ease; }
+#desktopMenu a {
+  color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  transition: all 0.2s ease;
+  position: relative; padding-bottom: 2px;
+}
+#desktopMenu a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--brand-red);
+  transition: width 0.2s ease;
+}
+#desktopMenu a:hover { color: var(--brand-red); }
+#desktopMenu a:hover::after { width: 100%; }
+#desktopMenu a:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
+
+/* Hamburger */
+#hamburgerBtn {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; z-index: 10001;
+  background: none; border: none; padding: 4px;
+}
+#hamburgerBtn span {
+  width: 24px; height: 3px; background: white;
+  border-radius: 2px; transition: all 0.3s ease; display: block;
+}
 #hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
-#hamburgerBtn.active span:nth-child(2) { opacity: 0; }
+#hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 #hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
-#mobileMenu { list-style: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; max-height: 0; opacity: 0; overflow: hidden; transition: all 0.3s ease; }
-#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* Mobile menu */
+#mobileMenu {
+  list-style: none; position: absolute; top: 100%; left: 0;
+  width: 100%; background: rgba(0,0,0,0.99);
+  max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+#mobileMenu.open { max-height: 600px; opacity: 1; }
+#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
 #mobileMenu li:last-child { border-bottom: none; }
-#mobileMenu a { color: white; text-decoration: none; padding: 15px 20px; display: block; font-size: 1rem; }
-#mobileMenu a:hover { background: rgba(220,38,38,0.2); padding-left: 25px; }
+#mobileMenu a {
+  color: white; text-decoration: none;
+  padding: 16px 24px; display: block; font-size: 1rem; font-weight: 500;
+  transition: background 0.15s, padding-left 0.15s;
+}
+#mobileMenu a:hover { background: rgba(220,38,38,0.15); padding-left: 30px; }
+#mobileMenu a:focus-visible { outline: 2px solid var(--brand-red); outline-offset: -2px; }
 
 @media (max-width: 768px) {
   #desktopMenu { display: none !important; }
@@ -145,6 +293,9 @@ section:nth-of-type(even) { background: #1a1a1a; }
   #mikeyHeader nav { padding: 10px 20px; }
 }
 
+/* =========================================================
+   HERO
+   ========================================================= */
 .mh { font-family: 'Outfit', sans-serif; text-align: center; max-width: 900px; margin: 0 auto; color: #fff; }
 .mh-proof { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
 .mh-proof-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #a3a3a3; }
@@ -159,10 +310,25 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .mh-pill-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #999; }
 .mh-pill-price { font-size: 22px; font-weight: 900; color: #A3242B; letter-spacing: -0.5px; line-height: 1; }
 .mh-ctas { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-.mh-cta-primary { display: inline-block; padding: 18px 42px; background: #A3242B; color: #fff; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; border-radius: 8px; transition: transform 0.15s, box-shadow 0.15s; box-shadow: 0 4px 20px rgba(163,36,43,0.35); }
-.mh-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(163,36,43,0.45); }
-.mh-cta-secondary { display: inline-block; padding: 18px 32px; background: transparent; color: #ccc; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600; text-decoration: none; border: 1px solid #333; border-radius: 8px; transition: border-color 0.15s, color 0.15s; }
+.mh-cta-primary {
+  display: inline-block; padding: 18px 42px;
+  background: #A3242B; color: #fff;
+  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800;
+  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  border-radius: 8px; transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 20px rgba(163,36,43,0.35);
+}
+.mh-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(163,36,43,0.5); }
+.mh-cta-primary:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.mh-cta-secondary {
+  display: inline-block; padding: 18px 32px;
+  background: transparent; color: #ccc;
+  font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600;
+  text-decoration: none; border: 1px solid #333; border-radius: 8px;
+  transition: border-color 0.15s, color 0.15s;
+}
 .mh-cta-secondary:hover { border-color: #A3242B; color: #fff; }
+.mh-cta-secondary:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 3px; }
 
 @media (max-width: 480px) {
   .mh-prices { flex-direction: column; gap: 10px; }
@@ -170,7 +336,11 @@ section:nth-of-type(even) { background: #1a1a1a; }
   .mh-cta-primary, .mh-cta-secondary { width: 100%; text-align: center; }
 }
 
-.mh-proof, .mh h1, .mh-sub, .mh-prices, .mh-ctas { opacity: 0; transform: translateY(18px); animation: mhFadeUp 0.6s ease-out forwards; }
+/* Hero animations */
+.mh-proof, .mh h1, .mh-sub, .mh-prices, .mh-ctas {
+  opacity: 0; transform: translateY(18px);
+  animation: mhFadeUp 0.6s ease-out forwards;
+}
 .mh-proof { animation-delay: 0.1s; }
 .mh h1 { animation-delay: 0.25s; }
 .mh-sub { animation-delay: 0.45s; }
@@ -178,23 +348,45 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .mh-ctas { animation-delay: 0.8s; }
 @keyframes mhFadeUp { to { opacity: 1; transform: translateY(0); } }
 
+/* =========================================================
+   PROOF BAR
+   ========================================================= */
 .proof { text-align: center; }
 .proof-inner { max-width: 900px; margin: 0 auto; }
-.proof-stats { display: flex; justify-content: center; align-items: stretch; gap: 0; margin-bottom: 36px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; background: #111; }
-.proof-stat { flex: 1; padding: 25px 15px; display: flex; flex-direction: column; align-items: center; gap: 6px; border-right: 1px solid #2a2a2a; }
+.proof-stats {
+  display: flex; justify-content: center; align-items: stretch; gap: 0;
+  margin-bottom: 36px; border: 1px solid #2a2a2a; border-radius: 8px;
+  overflow: hidden; background: #111;
+}
+.proof-stat {
+  flex: 1; padding: 25px 15px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  border-right: 1px solid #2a2a2a;
+}
 .proof-stat:last-child { border-right: none; }
 .proof-stat-num { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #D4AF37; line-height: 1; }
 .proof-stat-label { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
-
-.proof-quote { background: #111; border: 1px solid #2a2a2a; border-left: 3px solid #cc0000; border-radius: 6px; padding: 30px; margin-bottom: 24px; text-align: left; }
+.proof-quote {
+  background: #111; border: 1px solid #2a2a2a; border-left: 3px solid #cc0000;
+  border-radius: 6px; padding: 30px; margin-bottom: 24px; text-align: left;
+}
 .proof-quote-text { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; color: #d0d0d0; line-height: 1.65; margin-bottom: 18px; font-style: italic; }
 .proof-quote-author { display: flex; align-items: center; gap: 12px; }
-.proof-quote-avatar { width: 40px; height: 40px; border-radius: 50%; background: #cc0000; display: flex; align-items: center; justify-content: center; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.proof-quote-avatar {
+  width: 40px; height: 40px; border-radius: 50%; background: #cc0000;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
 .proof-quote-name { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #fff; }
 .proof-quote-stars { color: #D4AF37; font-size: 14px; margin-left: auto; }
-
-.proof-google { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.2s; }
+.proof-google {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+  transition: color 0.2s; padding: 4px;
+}
 .proof-google:hover { color: #aaa; }
+.proof-google:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
 .proof-google svg { width: 16px; height: 16px; }
 
 @media (max-width: 600px) {
@@ -204,24 +396,49 @@ section:nth-of-type(even) { background: #1a1a1a; }
   .proof-stat:nth-child(3), .proof-stat:nth-child(4) { border-bottom: none; }
 }
 
-.gallery-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+/* =========================================================
+   GALLERY
+   ========================================================= */
+.gallery-wrapper {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
 
+/* =========================================================
+   SERVICES TABS
+   ========================================================= */
 .srv-wrap { max-width: 480px; margin: 0 auto; padding: 0 16px; }
 .srv-header { text-align: center; padding: 28px 0 20px; }
 .srv-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--brand-red); font-weight: 700; margin-bottom: 8px; }
 .srv-title { font-size: 26px; font-weight: 900; line-height: 1.15; }
 .srv-tabs-wrap { position: relative; }
 .srv-radio { display: none; }
-.srv-tabs { display: flex; gap: 4px; background: #1a1a1a; border-radius: 10px; padding: 4px; border: 1px solid rgba(220,38,38,0.25); }
-.srv-tab { flex: 1; text-align: center; padding: 10px 4px; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700; color: #a3a3a3; background: transparent; border-radius: 8px; cursor: pointer; transition: all .2s; letter-spacing: 0.5px; line-height: 1.2; -webkit-tap-highlight-color: transparent; }
+.srv-tabs {
+  display: flex; gap: 4px; background: #1a1a1a;
+  border-radius: 10px; padding: 4px;
+  border: 1px solid rgba(220,38,38,0.25); role: tablist;
+}
+.srv-tab {
+  flex: 1; text-align: center; padding: 10px 4px;
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
+  color: #a3a3a3; background: transparent; border-radius: 8px;
+  cursor: pointer; transition: all .2s; letter-spacing: 0.5px; line-height: 1.2;
+  -webkit-tap-highlight-color: transparent;
+}
 #srvt1:checked ~ .srv-tabs label:nth-child(1),
 #srvt2:checked ~ .srv-tabs label:nth-child(2),
 #srvt3:checked ~ .srv-tabs label:nth-child(3) { background: var(--brand-red); color: #fff; box-shadow: 0 2px 12px rgba(220,38,38,0.4); }
 #srvt4:checked ~ .srv-tabs label:nth-child(4) { background: var(--brand-gold); color: #fff; box-shadow: 0 2px 12px rgba(217,119,6,0.35); }
 #srvt4:checked ~ .srv-tabs label:nth-child(4) .srv-tab-new { background: rgba(0,0,0,0.25); color: #fff; }
-.srv-tab--care .srv-tab-new { display: inline-block; background: var(--brand-gold); color: #000; font-size: 8px; font-weight: 900; padding: 1px 4px; border-radius: 3px; letter-spacing: 1px; margin-left: 2px; vertical-align: top; line-height: 1.4; pointer-events: none; }
+.srv-tab--care .srv-tab-new {
+  display: inline-block; background: var(--brand-gold); color: #000;
+  font-size: 8px; font-weight: 900; padding: 1px 4px; border-radius: 3px;
+  letter-spacing: 1px; margin-left: 2px; vertical-align: top; line-height: 1.4; pointer-events: none;
+}
 .srv-panel { display: none; }
-#srvt1:checked ~ .srv-p1, #srvt2:checked ~ .srv-p2, #srvt3:checked ~ .srv-p3, #srvt4:checked ~ .srv-p4 { display: block; }
+#srvt1:checked ~ .srv-p1, #srvt2:checked ~ .srv-p2,
+#srvt3:checked ~ .srv-p3, #srvt4:checked ~ .srv-p4 { display: block; }
 .srv-card { margin-top: 12px; background: #1a1a1a; border: 2px solid rgba(220,38,38,0.25); border-radius: 12px; overflow: hidden; }
 .srv-price-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(220,38,38,0.25); }
 .srv-price { font-size: 28px; font-weight: 900; }
@@ -229,9 +446,17 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .srv-blurb { padding: 16px 20px 12px; font-size: 14px; color: #a3a3a3; line-height: 1.55; }
 .srv-checks { padding: 0 20px 16px; display: flex; flex-direction: column; gap: 6px; }
 .srv-chk { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; }
-.srv-chk-icon { width: 18px; height: 18px; min-width: 18px; background: var(--brand-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; }
-.srv-cta { display: block; margin: 0 20px 16px; background: var(--brand-red); color: #fff; text-align: center; padding: 14px; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; border-radius: 8px; text-decoration: none; box-shadow: 0 3px 16px rgba(220,38,38,0.35); transition: transform .15s, box-shadow .15s; }
+.srv-chk-icon { width: 18px; height: 18px; min-width: 18px; background: var(--brand-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+.srv-cta {
+  display: block; margin: 0 20px 16px; background: var(--brand-red); color: #fff;
+  text-align: center; padding: 14px;
+  font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 14px;
+  letter-spacing: 2px; text-transform: uppercase; border-radius: 8px;
+  text-decoration: none; box-shadow: 0 3px 16px rgba(220,38,38,0.35);
+  transition: transform .15s, box-shadow .15s;
+}
 .srv-cta:hover { transform: translateY(-1px); box-shadow: 0 5px 24px rgba(220,38,38,0.5); }
+.srv-cta:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
 .srv-card--gold { border-color: var(--brand-gold) !important; box-shadow: 0 0 24px rgba(217,119,6,0.35); }
 .srv-gold-badge { background: linear-gradient(135deg, var(--brand-gold), #92400e); padding: 10px 20px; text-align: center; font-size: 13px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
 .srv-gold-free { margin: 0 20px; padding: 12px 16px; background: rgba(217,119,6,0.1); border-bottom: 1px solid rgba(217,119,6,0.2); text-align: center; font-size: 15px; font-weight: 700; color: var(--brand-gold); }
@@ -242,7 +467,11 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .srv-report-text { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; font-style: italic; }
 .srv-see-all { display: block; text-align: center; margin: 20px auto 0; color: var(--brand-red); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 10px; }
 .srv-see-all:hover { color: #fff; }
+.srv-see-all:focus-visible { outline: 2px solid var(--brand-red); border-radius: 4px; }
 
+/* =========================================================
+   GUARANTEE
+   ========================================================= */
 .gt-wrap { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
 .gt-box { position: relative; background: #141414; border: 2px solid #222; border-radius: 16px; overflow: hidden; }
 .gt-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--brand-red); }
@@ -266,16 +495,19 @@ section:nth-of-type(even) { background: #1a1a1a; }
   .gt-step { padding: 22px; }
 }
 
+/* =========================================================
+   FLASH PROMO
+   ========================================================= */
 .mkd-flash { --red: #c0392b; --red-dark: #a5311f; --red-light: #e74c3c; font-family: 'Outfit', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 12px; }
 .mkd-flash * { box-sizing: border-box; }
-.mkd-flash-card { border-radius: 16px; overflow: hidden; box-shadow: 0 0 60px rgba(192,57,43,0.2), 0 0 120px rgba(192,57,43,0.08), 0 20px 60px rgba(0,0,0,0.4); animation: mkd-f-glow 3s ease-in-out infinite; position: relative; }
-@keyframes mkd-f-glow { 0%,100%{box-shadow:0 0 60px rgba(192,57,43,0.2),0 0 120px rgba(192,57,43,0.08),0 20px 60px rgba(0,0,0,0.4);} 50%{box-shadow:0 0 90px rgba(192,57,43,0.3),0 0 160px rgba(192,57,43,0.12),0 20px 60px rgba(0,0,0,0.4);} }
+.mkd-flash-card { border-radius: 16px; overflow: hidden; box-shadow: 0 0 60px rgba(192,57,43,0.2),0 20px 60px rgba(0,0,0,0.4); animation: mkd-f-glow 3s ease-in-out infinite; position: relative; }
+@keyframes mkd-f-glow { 0%,100%{box-shadow:0 0 60px rgba(192,57,43,0.2),0 20px 60px rgba(0,0,0,0.4);}50%{box-shadow:0 0 90px rgba(192,57,43,0.3),0 20px 60px rgba(0,0,0,0.4);} }
 .mkd-flash-inner { display: flex; min-height: 500px; }
 @media (max-width: 600px) { .mkd-flash-inner { flex-direction: column; min-height: auto; } }
 .mkd-flash-left { flex: 0 0 42%; background: var(--red); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; position: relative; overflow: hidden; }
 .mkd-flash-left::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(0,0,0,0.06) 18px, rgba(0,0,0,0.06) 20px); pointer-events: none; }
 .mkd-flash-left::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); animation: mkd-f-shimmer 3s ease-in-out infinite; }
-@keyframes mkd-f-shimmer { 0%{left:-60%;} 100%{left:160%;} }
+@keyframes mkd-f-shimmer { 0%{left:-60%;}100%{left:160%;} }
 .mkd-flash-bolt { position: relative; z-index: 1; margin-bottom: 10px; }
 .mkd-flash-bolt svg { width: 90px; height: 130px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); }
 .mkd-flash-limited { position: relative; z-index: 1; background: rgba(0,0,0,0.25); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; padding: 5px 16px; border-radius: 3px; margin-bottom: 14px; }
@@ -292,24 +524,15 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .mkd-flash-urgency { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(192,57,43,0.06); border: 1px solid rgba(192,57,43,0.2); border-radius: 8px; padding: 12px 20px; margin-bottom: 20px; position: relative; max-width: 360px; }
 .mkd-flash-live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex-shrink: 0; position: relative; }
 .mkd-flash-live-dot::after { content: ''; position: absolute; top: -3px; left: -3px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--red); animation: mkd-f-ping 1.5s ease-out infinite; }
-@keyframes mkd-f-ping { 0%{transform:scale(1);opacity:0.8;} 100%{transform:scale(1.8);opacity:0;} }
+@keyframes mkd-f-ping { 0%{transform:scale(1);opacity:0.8;}100%{transform:scale(1.8);opacity:0;} }
 .mkd-flash-urgency-text { font-size: 13px; font-weight: 600; color: #ccc; line-height: 1.4; text-align: left; }
 .mkd-flash-urgency-text strong { color: #fff; font-weight: 800; }
 .mkd-flash-urgency-text em { color: var(--red); font-style: normal; font-weight: 800; }
-.mkd-flash-drain { width: 100%; max-width: 320px; margin-bottom: 18px; position: relative; }
-.mkd-flash-drain-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.mkd-flash-drain-label span { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #555; }
-.mkd-flash-drain-label strong { font-size: 12px; font-weight: 800; color: var(--red); }
-.mkd-flash-drain-bar { width: 100%; height: 8px; background: #1a1a1a; border-radius: 4px; overflow: hidden; position: relative; }
-.mkd-flash-drain-fill { width: 30%; height: 100%; background: linear-gradient(90deg, var(--red-dark), var(--red-light)); border-radius: 4px; position: relative; animation: mkd-f-drain-fill 2s ease-out forwards; }
-@keyframes mkd-f-drain-fill { 0%{width:100%;} 100%{width:30%;} }
-.mkd-flash-drain-fill::after { content: ''; position: absolute; right: 0; top: 0; width: 12px; height: 100%; background: rgba(255,255,255,0.4); border-radius: 4px; animation: mkd-f-drain-pulse 1.5s ease-in-out infinite; }
-@keyframes mkd-f-drain-pulse { 0%,100%{opacity:0.2;} 50%{opacity:0.8;} }
 .mkd-flash-includes { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin-bottom: 20px; position: relative; }
 .mkd-flash-includes span { color: #aaa; font-size: 12px; display: flex; align-items: center; gap: 4px; }
 .mkd-flash-includes span::before { content: "✓"; color: var(--red); font-weight: 800; font-size: 10px; }
 .mkd-flash-cta { display: inline-block; background: var(--red); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 15px 40px; border-radius: 6px; cursor: pointer; transition: transform .2s, box-shadow .3s, background .2s; box-shadow: 0 4px 20px rgba(192,57,43,0.35); animation: mkd-f-cta-pulse 2s ease-in-out infinite; position: relative; }
-@keyframes mkd-f-cta-pulse { 0%,100%{box-shadow:0 4px 20px rgba(192,57,43,0.35);} 50%{box-shadow:0 6px 30px rgba(192,57,43,0.5);} }
+@keyframes mkd-f-cta-pulse { 0%,100%{box-shadow:0 4px 20px rgba(192,57,43,0.35);}50%{box-shadow:0 6px 30px rgba(192,57,43,0.5);} }
 .mkd-flash-cta:hover { transform: translateY(-2px); background: var(--red-light); animation: none; box-shadow: 0 8px 36px rgba(192,57,43,0.5); }
 .mkd-flash-fine { color: #444; font-size: 10px; margin-top: 12px; line-height: 1.5; position: relative; }
 @media (max-width: 600px) {
@@ -321,6 +544,9 @@ section:nth-of-type(even) { background: #1a1a1a; }
   .mkd-flash-urgency { padding: 10px 14px; }
 }
 
+/* =========================================================
+   HOW IT WORKS
+   ========================================================= */
 .hiw { font-family: 'Outfit', sans-serif; max-width: 720px; margin: 0 auto; padding: 30px 16px; }
 .hiw-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 20px; text-align: center; }
 .hiw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
@@ -330,23 +556,74 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .hiw-num { font-size: 32px; font-weight: 900; color: var(--brand-red); line-height: 1; margin-bottom: 8px; }
 .hiw-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #fff; margin-bottom: 8px; line-height: 1.3; }
 .hiw-desc { font-size: 13px; color: #888; line-height: 1.5; }
-@media (max-width: 480px) { .hiw-card { padding: 22px 14px; } .hiw-num { font-size: 26px; } .hiw-title { font-size: 11px; } .hiw-desc { font-size: 11px; } .hiw-icon { width: 32px; height: 32px; margin-bottom: 10px; } }
+@media (max-width: 480px) {
+  .hiw-grid { grid-template-columns: 1fr; gap: 8px; }
+  .hiw-card { padding: 22px 14px; }
+  .hiw-num { font-size: 26px; }
+  .hiw-title { font-size: 11px; }
+  .hiw-desc { font-size: 11px; }
+  .hiw-icon { width: 32px; height: 32px; margin-bottom: 10px; }
+}
 
+/* =========================================================
+   CLEAN CLUB MENTION
+   ========================================================= */
+.clean-club-banner {
+  max-width: 820px; margin: 0 auto; padding: 0 16px 30px;
+  text-align: center;
+}
+.clean-club-box {
+  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
+  border: 1px solid #d97706;
+  border-radius: 12px; padding: 28px 32px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  justify-content: center;
+}
+.clean-club-icon { font-size: 36px; }
+.clean-club-text { flex: 1; min-width: 200px; text-align: left; }
+.clean-club-text strong { color: #d97706; font-size: 18px; font-weight: 900; display: block; margin-bottom: 4px; }
+.clean-club-text span { color: #aaa; font-size: 14px; line-height: 1.5; }
+.clean-club-cta {
+  display: inline-block; padding: 12px 28px;
+  background: #d97706; color: #fff; text-decoration: none;
+  font-weight: 800; font-size: 13px; letter-spacing: 1px;
+  text-transform: uppercase; border-radius: 8px;
+  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 4px 16px rgba(217,119,6,0.35);
+  white-space: nowrap;
+}
+.clean-club-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(217,119,6,0.5); }
+
+/* =========================================================
+   FAQ
+   ========================================================= */
 .faq-section { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
 .faq-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; text-align: center; }
 .faq-title { font-size: 32px; font-weight: 900; color: #fff; text-align: center; margin-bottom: 32px; }
-.faq-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
-.faq-item summary { padding: 18px 22px; font-size: 15px; font-weight: 700; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.faq-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item:hover { border-color: #444; }
+.faq-item summary {
+  padding: 18px 22px; font-size: 15px; font-weight: 700; color: #fff;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px;
+}
 .faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: '+'; font-size: 24px; color: var(--brand-red); font-weight: 700; }
+.faq-item summary::after { content: '+'; font-size: 24px; color: var(--brand-red); font-weight: 700; flex-shrink: 0; }
 .faq-item[open] summary::after { content: '−'; }
 .faq-item p { padding: 0 22px 18px; color: #aaa; font-size: 14px; line-height: 1.65; }
 
+/* =========================================================
+   REVIEWS
+   ========================================================= */
 .reviews-section { max-width: 1100px; margin: 0 auto; padding: 30px 16px; text-align: center; }
 .reviews-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; }
 .reviews-title { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 24px; }
 .reviews-iframe-wrap { width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
+/* =========================================================
+   ABOUT
+   ========================================================= */
 .about-section { background: #000; position: relative; overflow: hidden; padding: 60px 20px; }
 .about-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
 .about-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
@@ -361,10 +638,11 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .about-signature { font-size: 24px; font-weight: 700; color: var(--brand-red); text-align: center; font-family: 'Brush Script MT', cursive; margin-top: 8px; }
 .about-badge { display: inline-block; background: linear-gradient(135deg, var(--brand-red), #ff0000); color: #fff; padding: 12px 26px; border-radius: 50px; font-weight: 800; font-size: 13px; box-shadow: 0 6px 22px rgba(220,38,38,0.5); margin-top: 18px; }
 .about-badge-wrap { text-align: center; }
-@media (max-width: 768px) {
-  .about-text-full { padding: 30px 22px; }
-}
+@media (max-width: 768px) { .about-text-full { padding: 30px 22px; } }
 
+/* =========================================================
+   FOOTER
+   ========================================================= */
 .site-footer { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
 .footer-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: flex-start; }
 .footer-col { flex: 1 1 200px; min-width: 180px; }
@@ -374,19 +652,55 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .footer-col p, .footer-col a, .footer-col li { color: #ccc; font-size: 13.5px; line-height: 1.6; text-decoration: none; }
 .footer-col ul { list-style: none; }
 .footer-col ul a:hover { color: var(--brand-red); }
+.footer-col ul li { margin-bottom: 2px; }
 .footer-cta { display: inline-block; padding: 11px 22px; background: var(--brand-red); color: #fff; font-weight: 800; border-radius: 8px; text-decoration: none; box-shadow: 0 0 12px rgba(220,38,38,0.5); transition: transform .15s; font-size: 13.5px; }
 .footer-cta:hover { transform: translateY(-2px); }
 .footer-copy { margin-top: 24px; text-align: center; color: #555; font-size: 12px; }
+
+/* =========================================================
+   MOBILE STICKY CTA BAR
+   ========================================================= */
+.sticky-cta-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #000; border-top: 2px solid var(--brand-red);
+  padding: 12px 16px; z-index: 9998;
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .sticky-cta-bar { display: flex; }
+  main { padding-bottom: 72px; }
+}
+.sticky-cta-call {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  gap: 8px; background: #1a1a1a; border: 1px solid #333;
+  color: #fff; font-weight: 700; font-size: 14px;
+  border-radius: 8px; padding: 12px; text-decoration: none;
+  transition: background 0.15s;
+}
+.sticky-cta-call:hover { background: #222; }
+.sticky-cta-book {
+  flex: 2; display: flex; align-items: center; justify-content: center;
+  background: var(--brand-red); color: #fff;
+  font-weight: 800; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+  border-radius: 8px; padding: 12px; text-decoration: none;
+  box-shadow: 0 4px 16px rgba(220,38,38,0.4);
+  transition: transform 0.15s;
+}
+.sticky-cta-book:hover { transform: translateY(-1px); }
 </style>
 </head>
 <body>
 
-<header id="mikeyHeader">
-  <nav>
-    <a href="#top" aria-label="Mikey's Mobile Detailing — home">
-      <img src="https://iili.io/qKtjLcx.jpg" alt="Mikey's Mobile Detailing logo">
+<!-- Skip to main content for screen readers / keyboard nav -->
+<a href="#main-content" class="skip-nav">Skip to main content</a>
+
+<header id="mikeyHeader" role="banner">
+  <nav aria-label="Main navigation">
+    <a href="#top" aria-label="Mikey's Mobile Detailing — go to home">
+      <img src="https://iili.io/qKtjLcx.jpg" alt="Mikey's Mobile Detailing logo — Snohomish, WA" width="50" height="50">
     </a>
-    <ul id="desktopMenu">
+    <ul id="desktopMenu" role="list">
       <li><a href="#top">Home</a></li>
       <li><a href="#allservices">Services</a></li>
       <li><a href="#booking">Booking</a></li>
@@ -395,10 +709,15 @@ section:nth-of-type(even) { background: #1a1a1a; }
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#about">About</a></li>
     </ul>
-    <div id="hamburgerBtn" aria-label="Toggle menu" role="button" tabindex="0">
+    <button
+      id="hamburgerBtn"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
       <span></span><span></span><span></span>
-    </div>
-    <ul id="mobileMenu">
+    </button>
+    <ul id="mobileMenu" role="list" aria-label="Mobile navigation">
       <li><a href="#top">Home</a></li>
       <li><a href="#allservices">Services</a></li>
       <li><a href="#booking">Booking</a></li>
@@ -410,26 +729,28 @@ section:nth-of-type(even) { background: #1a1a1a; }
   </nav>
 </header>
 
-<main id="top">
+<main id="main-content" id="top">
 
-  <section class="hero-section">
+  <!-- HERO -->
+  <section class="hero-section" aria-labelledby="hero-h1">
     <div class="section-inner">
       <div class="mh">
-        <div class="mh-proof">
-          <div class="mh-proof-item">
-            <span class="mh-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <div class="mh-proof" role="list" aria-label="Social proof">
+          <div class="mh-proof-item" role="listitem">
+            <span class="mh-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <span class="mh-proof-val">5.0</span>
           </div>
-          <span class="mh-dot"></span>
-          <div class="mh-proof-item"><span class="mh-proof-val">35+</span> Reviews</div>
-          <span class="mh-dot"></span>
-          <div class="mh-proof-item"><span class="mh-proof-val">300+</span> Cars</div>
+          <span class="mh-dot" aria-hidden="true"></span>
+          <div class="mh-proof-item" role="listitem"><span class="mh-proof-val">35+</span> Reviews</div>
+          <span class="mh-dot" aria-hidden="true"></span>
+          <div class="mh-proof-item" role="listitem"><span class="mh-proof-val">300+</span> Cars</div>
         </div>
-        <h1>Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
+        <h1 id="hero-h1">Detailing That Comes <span class="mh-em">to Your Driveway.</span></h1>
         <p class="mh-sub">Showroom-clean inside and out — without leaving home. <strong>You don't pay until you love it.</strong></p>
-        <div class="mh-prices">
+        <div class="mh-prices" aria-label="Service pricing">
           <div class="mh-pill"><span class="mh-pill-label">Full Detail</span><span class="mh-pill-price">$260–$340</span></div>
           <div class="mh-pill"><span class="mh-pill-label">Interior</span><span class="mh-pill-price">$160–$240</span></div>
+          <div class="mh-pill"><span class="mh-pill-label">Exterior</span><span class="mh-pill-price">$130–$200</span></div>
         </div>
         <div class="mh-ctas">
           <a class="mh-cta-primary" href="#booking">Get Your Instant Quote &#8594;</a>
@@ -439,24 +760,28 @@ section:nth-of-type(even) { background: #1a1a1a; }
     </div>
   </section>
 
-  <section class="proof">
+  <!-- PROOF -->
+  <section class="proof" aria-labelledby="proof-heading">
     <div class="section-inner proof-inner">
-      <div class="proof-stats">
-        <div class="proof-stat"><span class="proof-stat-num">★★★★★</span><span class="proof-stat-label">5.0 Rating</span></div>
-        <div class="proof-stat"><span class="proof-stat-num">35+</span><span class="proof-stat-label">Reviews</span></div>
-        <div class="proof-stat"><span class="proof-stat-num">300+</span><span class="proof-stat-label">Cars Detailed</span></div>
-        <div class="proof-stat"><span class="proof-stat-num">5yr</span><span class="proof-stat-label">Experience</span></div>
+      <h2 id="proof-heading" class="visually-hidden">Why Snohomish trusts Mikey's</h2>
+      <div class="proof-stats" role="list" aria-label="Key stats">
+        <div class="proof-stat" role="listitem"><span class="proof-stat-num" aria-label="5 star rating">★★★★★</span><span class="proof-stat-label">5.0 Rating</span></div>
+        <div class="proof-stat" role="listitem"><span class="proof-stat-num">35+</span><span class="proof-stat-label">Reviews</span></div>
+        <div class="proof-stat" role="listitem"><span class="proof-stat-num">300+</span><span class="proof-stat-label">Cars Detailed</span></div>
+        <div class="proof-stat" role="listitem"><span class="proof-stat-num">5yr</span><span class="proof-stat-label">Experience</span></div>
       </div>
-      <div class="proof-quote">
-        <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
-        <div class="proof-quote-author">
-          <div class="proof-quote-avatar">C</div>
+      <figure class="proof-quote" aria-label="Customer review">
+        <blockquote>
+          <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
+        </blockquote>
+        <figcaption class="proof-quote-author">
+          <div class="proof-quote-avatar" aria-hidden="true">C</div>
           <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
-          <span class="proof-quote-stars">★★★★★</span>
-        </div>
-      </div>
-      <a href="#reviews" class="proof-google">
-        <svg viewBox="0 0 24 24" fill="none">
+          <span class="proof-quote-stars" aria-label="5 stars">★★★★★</span>
+        </figcaption>
+      </figure>
+      <a href="https://g.page/r/Cb-YOURLINK/review" class="proof-google" rel="noopener" aria-label="Read all 5-star Google reviews for Mikey's Mobile Detailing">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
           <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
@@ -467,100 +792,131 @@ section:nth-of-type(even) { background: #1a1a1a; }
     </div>
   </section>
 
-  <section class="gallery-section">
+  <!-- GALLERY -->
+  <section class="gallery-section" aria-label="Before and after gallery">
     <div class="section-inner">
       <div class="gallery-wrapper">
-        <iframe style="border: none;" src="https://mikeygabmiller.github.io/beforeafter/" title="Before and After Gallery" width="100%" height="1200" scrolling="yes" allow="fullscreen"></iframe>
+        <iframe
+          src="https://mikeygabmiller.github.io/beforeafter/"
+          title="Before and after car detailing gallery — Mikey's Mobile Detailing"
+          width="100%"
+          height="1200"
+          loading="lazy"
+          allow="fullscreen"
+          style="border:none;"
+        ></iframe>
       </div>
     </div>
   </section>
 
-  <section class="srv-wrap" id="allservices">
+  <!-- SERVICES -->
+  <section class="srv-wrap" id="allservices" aria-labelledby="srv-heading">
     <div class="srv-header">
-      <div class="srv-label">Pro Services</div>
-      <h2 class="srv-title">What We Offer</h2>
+      <div class="srv-label" aria-hidden="true">Pro Services</div>
+      <h2 class="srv-title" id="srv-heading">What I Offer</h2>
     </div>
     <div class="srv-tabs-wrap">
       <input type="radio" name="srvtab" id="srvt1" checked class="srv-radio">
       <input type="radio" name="srvtab" id="srvt2" class="srv-radio">
       <input type="radio" name="srvtab" id="srvt3" class="srv-radio">
       <input type="radio" name="srvtab" id="srvt4" class="srv-radio">
-      <div class="srv-tabs">
-        <label for="srvt1" class="srv-tab">Interior</label>
-        <label for="srvt2" class="srv-tab">Exterior</label>
-        <label for="srvt3" class="srv-tab">Full Detail</label>
-        <label for="srvt4" class="srv-tab srv-tab--care">Care Check <span class="srv-tab-new">NEW</span></label>
+      <div class="srv-tabs" role="tablist" aria-label="Service types">
+        <label for="srvt1" class="srv-tab" role="tab">Interior</label>
+        <label for="srvt2" class="srv-tab" role="tab">Exterior</label>
+        <label for="srvt3" class="srv-tab" role="tab">Full Detail</label>
+        <label for="srvt4" class="srv-tab srv-tab--care" role="tab">Care Check <span class="srv-tab-new" aria-label="New service">NEW</span></label>
       </div>
-      <div class="srv-panel srv-p1">
+
+      <!-- Interior -->
+      <div class="srv-panel srv-p1" role="tabpanel" aria-label="Interior detail">
         <div class="srv-card">
-          <div class="srv-price-bar"><div class="srv-price">$160–$240</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
-          <p class="srv-blurb">Deep clean every surface inside your vehicle. Stains, odors, pet hair — I handle it all so it feels brand new.</p>
-          <div class="srv-checks">
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full vacuum + crevice detail</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Steam clean seats &amp; carpet</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Leather clean &amp; condition</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Dashboard &amp; trim dressed</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Windows + mirrors streak-free</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Door jambs wiped down</div>
+          <div class="srv-price-bar">
+            <div class="srv-price">$160–$240</div>
+            <div class="srv-price-note">Based on<br>vehicle size</div>
           </div>
+          <p class="srv-blurb">Deep clean every surface inside your vehicle. Stains, odors, pet hair — handled so it feels brand new.</p>
+          <ul class="srv-checks" aria-label="Included in interior detail">
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Full vacuum + crevice detail</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Steam clean seats &amp; carpet</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Leather clean &amp; condition</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Dashboard &amp; trim dressed</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Windows + mirrors streak-free</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Door jambs wiped down</li>
+          </ul>
           <a href="#booking" class="srv-cta">Get Your Quote</a>
         </div>
       </div>
-      <div class="srv-panel srv-p2">
+
+      <!-- Exterior -->
+      <div class="srv-panel srv-p2" role="tabpanel" aria-label="Exterior detail">
         <div class="srv-card">
-          <div class="srv-price-bar"><div class="srv-price">$130–$200</div><div class="srv-price-note">Based on<br>vehicle size</div></div>
+          <div class="srv-price-bar">
+            <div class="srv-price">$130–$200</div>
+            <div class="srv-price-note">Based on<br>vehicle size</div>
+          </div>
           <p class="srv-blurb">A thorough hand wash and protection detail. I clean, decontaminate, and protect every exterior surface.</p>
-          <div class="srv-checks">
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Full hand wash &amp; dry</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Clay bar decontamination</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire &amp; wheel deep clean</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Tire dressing applied</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Exterior windows cleaned</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Spray sealant protection</div>
-          </div>
+          <ul class="srv-checks" aria-label="Included in exterior detail">
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Full hand wash &amp; dry</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Clay bar decontamination</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Tire &amp; wheel deep clean</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Tire dressing applied</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Exterior windows cleaned</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Spray sealant protection</li>
+          </ul>
           <a href="#booking" class="srv-cta">Get Your Quote</a>
         </div>
       </div>
-      <div class="srv-panel srv-p3">
+
+      <!-- Full Detail -->
+      <div class="srv-panel srv-p3" role="tabpanel" aria-label="Full detail">
         <div class="srv-card">
-          <div class="srv-price-bar"><div class="srv-price">$260–$340</div><div class="srv-price-note">Best<br>value</div></div>
-          <p class="srv-blurb">The complete package — interior deep clean plus full exterior protection. Inside and out, bumper to bumper.</p>
-          <div class="srv-checks">
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Interior</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Everything in Exterior</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> 100% satisfaction guaranteed</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> Your car ready same day</div>
-            <div class="srv-chk"><div class="srv-chk-icon">✓</div> No hidden fees or surprises</div>
+          <div class="srv-price-bar">
+            <div class="srv-price">$260–$340</div>
+            <div class="srv-price-note">Best<br>value</div>
           </div>
+          <p class="srv-blurb">The complete package — interior deep clean plus full exterior protection. Inside and out, bumper to bumper.</p>
+          <ul class="srv-checks" aria-label="Included in full detail">
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Everything in Interior</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Everything in Exterior</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> 100% satisfaction guaranteed</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Your car ready same day</li>
+            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> No hidden fees or surprises</li>
+          </ul>
           <a href="#booking" class="srv-cta">Get Your Quote</a>
         </div>
       </div>
-      <div class="srv-panel srv-p4">
+
+      <!-- Care Check -->
+      <div class="srv-panel srv-p4" role="tabpanel" aria-label="Care Check monthly service">
         <div class="srv-card srv-card--gold">
-          <div class="srv-gold-badge">🆕 New Service — Limited Spots</div>
+          <div class="srv-gold-badge">New Service — Limited Spots</div>
           <div class="srv-gold-free">First Check-Up FREE — No Strings</div>
-          <div class="srv-price-bar" style="border-color:rgba(217,119,6,0.2)"><div class="srv-price">$39</div><div class="srv-price-note">per month<br>per vehicle</div></div>
-          <p class="srv-blurb">Your car's monthly doctor visit — at your driveway. I come to you every month, inspect everything, and send you a full report so nothing sneaks up on you.</p>
-          <div class="srv-checks">
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Tire pressure + tread depth</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> All fluids checked</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full light check</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Wipers &amp; belts inspected</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Under-hood visual scan</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> New damage photo-documented</div>
-            <div class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)">✓</div> Full text report card after every visit</div>
+          <div class="srv-price-bar" style="border-color:rgba(217,119,6,0.2)">
+            <div class="srv-price">$39</div>
+            <div class="srv-price-note">per month<br>per vehicle</div>
           </div>
-          <div class="srv-report-preview">
-            <div class="srv-report-label">📱 Sample Report</div>
+          <p class="srv-blurb">Your car's monthly check-up — at your driveway. I come to you every month, inspect everything, and send you a full report so nothing sneaks up on you.</p>
+          <ul class="srv-checks" aria-label="Included in Care Check">
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Tire pressure + tread depth</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> All fluids checked</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Full light check</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Wipers &amp; belts inspected</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Under-hood visual scan</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> New damage photo-documented</li>
+            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Full text report card after every visit</li>
+          </ul>
+          <div class="srv-report-preview" aria-label="Sample report text">
+            <div class="srv-report-label">Sample Report</div>
             <div class="srv-report-text">"April check done ✓ Oil looks clean, tires at 33/33/34/34 PSI — bumped to 35. Washer fluid topped off. Small chip on rear windshield, recommend sealing soon. Everything else looks great. See you next month!"</div>
           </div>
           <a href="mailto:mikeysdetailing4u@gmail.com?subject=Book%20FREE%20Care%20Check%20%E2%80%94%20First%20Visit&body=Hey%20Mikey%2C%0A%0AI%27d%20like%20to%20book%20my%20FREE%20first%20Care%20Check.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0AAddress%2FCity%3A%20%0APhone%3A%20%0A%0AThanks!" class="srv-cta srv-cta--gold">Book Free Check-Up</a>
         </div>
       </div>
     </div>
-    <a href="services.html" class="srv-see-all">See all 9 services →</a>
+    <a href="services.html" class="srv-see-all">See all services →</a>
   </section>
 
+  <!-- GUARANTEE -->
   <section class="gt-wrap" aria-labelledby="gt-title-id">
     <div class="gt-box">
       <div class="gt-top">
@@ -569,17 +925,18 @@ section:nth-of-type(even) { background: #1a1a1a; }
         <p class="gt-desc">Every detail ends with a walkthrough — you and me, around the whole car. Anything you don't like gets fixed right then and there. Not over text. Not next week. On the spot.</p>
       </div>
       <div class="gt-steps">
-        <div class="gt-step"><span class="gt-num">1</span><div class="gt-step-title">Walk-around</div><p class="gt-step-text">We inspect your car together. Anything off gets fixed immediately.</p></div>
-        <div class="gt-step"><span class="gt-num">2</span><div class="gt-step-title">Free Return</div><p class="gt-step-text">Notice something later? I come back and fix it — completely free.</p></div>
-        <div class="gt-step"><span class="gt-num">3</span><div class="gt-step-title">Full Refund</div><p class="gt-step-text">Still not 100%? Full refund. No awkward conversation.</p></div>
+        <div class="gt-step"><span class="gt-num" aria-hidden="true">1</span><h3 class="gt-step-title">Walk-around</h3><p class="gt-step-text">We inspect your car together. Anything off gets fixed immediately.</p></div>
+        <div class="gt-step"><span class="gt-num" aria-hidden="true">2</span><h3 class="gt-step-title">Free Return</h3><p class="gt-step-text">Notice something later? I come back and fix it — completely free.</p></div>
+        <div class="gt-step"><span class="gt-num" aria-hidden="true">3</span><h3 class="gt-step-title">Full Refund</h3><p class="gt-step-text">Still not 100%? Full refund. No awkward conversation.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="mkd-flash">
+  <!-- FLASH PROMO -->
+  <section class="mkd-flash" aria-label="Spring special offer">
     <div class="mkd-flash-card">
       <div class="mkd-flash-inner">
-        <div class="mkd-flash-left">
+        <div class="mkd-flash-left" aria-hidden="true">
           <div class="mkd-flash-bolt">
             <svg viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <polygon points="50,0 10,65 35,65 25,120 70,50 45,50 55,0" fill="#fff" opacity="0.95"/>
@@ -593,98 +950,134 @@ section:nth-of-type(even) { background: #1a1a1a; }
           <div class="mkd-flash-pretitle">Spring Special</div>
           <h2 class="mkd-flash-headline"><em>Free</em> Exterior</h2>
           <div class="mkd-flash-headline-sub">With Any Interior Booking</div>
-          <div class="mkd-flash-divider"></div>
-          <div class="mkd-flash-urgency">
-            <div class="mkd-flash-live-dot"></div>
+          <div class="mkd-flash-divider" aria-hidden="true"></div>
+          <div class="mkd-flash-urgency" role="alert" aria-live="polite">
+            <div class="mkd-flash-live-dot" aria-hidden="true"></div>
             <div class="mkd-flash-urgency-text">
               <strong>Ending this week.</strong><br>
               Once spots fill, this offer is <em>gone for good.</em>
             </div>
           </div>
-          <div class="mkd-flash-drain">
+          <div class="mkd-flash-drain" aria-label="3 spots remaining">
             <div class="mkd-flash-drain-label"><span>Spots Remaining</span><strong>3 left</strong></div>
-            <div class="mkd-flash-drain-bar"><div class="mkd-flash-drain-fill"></div></div>
+            <div class="mkd-flash-drain-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="30% of spots remain"><div class="mkd-flash-drain-fill"></div></div>
           </div>
-          <div class="mkd-flash-includes">
+          <div class="mkd-flash-includes" aria-label="What's included free">
             <span>Hand wash</span><span>Wax &amp; sealant</span><span>Wheels</span><span>Tires</span><span>Glass</span>
           </div>
           <a href="mailto:mikeysdetailing4u@gmail.com?subject=Claim%20Free%20Exterior%20Deal&body=Hey%20Mikey%2C%0A%0AI%20want%20to%20claim%20the%20free%20exterior%20deal%20with%20an%20interior%20detail.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0ACity%3A%20%0A%0AThanks!" class="mkd-flash-cta">Claim Free Exterior Now →</a>
-          <p class="mkd-flash-fine">First-time clients only · $150+ value, on the house · I've never done this before and won't again.<br>This is a one-time offer. It will not be repeated.</p>
+          <p class="mkd-flash-fine">First-time clients only · Exterior valued at $130+ · New clients only — never repeated.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="booking">
+  <!-- BOOKING / QQC -->
+  <section id="booking" aria-labelledby="booking-heading">
     <div class="section-inner">
+      <h2 id="booking-heading" style="text-align:center;font-size:28px;font-weight:900;margin-bottom:24px;">Get Your Instant Quote</h2>
       <iframe
         src="https://mikeysquote.netlify.app"
-        title="Quick Quote Calculator"
+        title="Quick Quote Calculator — Mikey's Mobile Detailing"
         width="100%"
         height="600"
-        style="border: 1px solid #FFFFFF; border-radius: 8px;"
+        loading="lazy"
+        style="border: 1px solid #333; border-radius: 8px;"
         allow="fullscreen">
       </iframe>
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
   <section class="hiw" aria-labelledby="hiw-title-id">
-    <div class="hiw-label" id="hiw-title-id">How It Works</div>
+    <h2 class="hiw-label" id="hiw-title-id">How It Works</h2>
     <div class="hiw-grid">
       <div class="hiw-card">
-        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg></div>
-        <div class="hiw-num">1</div>
+        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg></div>
+        <div class="hiw-num" aria-hidden="true">1</div>
         <h3 class="hiw-title">Book Online</h3>
-        <p class="hiw-desc">Takes about 60 seconds. Pick your service and a time.</p>
+        <p class="hiw-desc">Takes about 60 seconds. Pick your service and a time that works for you.</p>
       </div>
       <div class="hiw-card">
-        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
-        <div class="hiw-num">2</div>
+        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
+        <div class="hiw-num" aria-hidden="true">2</div>
         <h3 class="hiw-title">I Show Up</h3>
-        <p class="hiw-desc">I show up with everything. You don't need to do a thing.</p>
+        <p class="hiw-desc">I show up with everything. Water, power, products — you don't need to do a thing.</p>
       </div>
       <div class="hiw-card">
-        <div class="hiw-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></div>
-        <div class="hiw-num">3</div>
+        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></div>
+        <div class="hiw-num" aria-hidden="true">3</div>
         <h3 class="hiw-title">You Pay When Done</h3>
         <p class="hiw-desc">Walk around, approve the result, then pay — cash, Venmo, Zelle, or Cash App.</p>
       </div>
     </div>
   </section>
 
-  <section class="reviews-section" id="reviews">
-    <div class="reviews-label">What People Say</div>
-    <h2 class="reviews-title">5-Star Reviews</h2>
-    <div class="reviews-iframe-wrap">
-      <iframe src="https://reveiws.netlify.app" title="Customer Reviews" width="100%" height="500" style="border:none;" loading="lazy"></iframe>
+  <!-- CLEAN CLUB CALLOUT (so FAQ reference makes sense) -->
+  <section aria-labelledby="cc-heading">
+    <div class="clean-club-banner">
+      <div class="clean-club-box">
+        <div class="clean-club-icon" aria-hidden="true">⭐</div>
+        <div class="clean-club-text">
+          <strong id="cc-heading">Clean Club — $125/Detail</strong>
+          <span>Recurring monthly membership. Priority booking, locked pricing, 10% off add-ons. Only 5 spots — 3 active members currently enrolled.</span>
+        </div>
+        <a href="mailto:mikeysdetailing4u@gmail.com?subject=Clean%20Club%20Membership&body=Hey%20Mikey%2C%0A%0AI%27d%20like%20to%20join%20the%20Clean%20Club.%0A%0AName%3A%20%0AVehicle%3A%20%0ACity%3A%20%0APreferred%20frequency%20(monthly%2Fbi-monthly%2Fquarterly)%3A%20%0A%0AThanks!" class="clean-club-cta">Join Clean Club</a>
+      </div>
     </div>
   </section>
 
-  <section class="faq-section" id="qanda">
-    <div class="faq-label">Common Questions</div>
-    <h2 class="faq-title">FAQ</h2>
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews" aria-labelledby="reviews-heading">
+    <div class="reviews-label" aria-hidden="true">What People Say</div>
+    <h2 class="reviews-title" id="reviews-heading">5-Star Reviews</h2>
+    <div class="reviews-iframe-wrap">
+      <iframe
+        src="https://reveiws.netlify.app"
+        title="Customer reviews for Mikey's Mobile Detailing"
+        width="100%"
+        height="500"
+        style="border:none;"
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="qanda" aria-labelledby="faq-heading">
+    <div class="faq-label" aria-hidden="true">Common Questions</div>
+    <h2 class="faq-title" id="faq-heading">FAQ</h2>
     <details class="faq-item">
-      <summary>How long does a detail take?</summary>
-      <p>Most full details take 2–4 hours depending on size and condition. Bigger SUVs and trucks can take longer. I'll give you a realistic time when you book.</p>
+      <summary>How long does a mobile car detail take in Snohomish County?</summary>
+      <p>Most full details take 2–4 hours depending on size and condition. Bigger SUVs and trucks can take longer. I'll give you a realistic time estimate when you book.</p>
     </details>
     <details class="faq-item">
-      <summary>Do you really come to my location?</summary>
-      <p>Yes. I bring everything — water, power, products, towels — to your home or work in Snohomish, Monroe, Lake Stevens, Everett, Bothell, and Mill Creek.</p>
+      <summary>Do you really come to my home or work location?</summary>
+      <p>Yes. I bring everything — water, power, products, towels — to your home or work in Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, and Duvall.</p>
     </details>
     <details class="faq-item">
       <summary>What forms of payment do you accept?</summary>
       <p>Cash, credit/debit, Venmo, Zelle, and Cash App. Payment is due when the job is done and you've approved the work.</p>
     </details>
     <details class="faq-item">
-      <summary>Do you offer monthly plans?</summary>
-      <p>Yes — Clean Club is $125 per recurring full detail with priority booking and locked-in pricing. Limited to 5 spots.</p>
+      <summary>What is the Clean Club recurring detail membership?</summary>
+      <p>Clean Club is a recurring detailing membership at $125 per visit — that's $35 off the full detail price. You get priority booking, locked-in pricing, and 10% off any add-ons. Limited to 5 spots total. <a href="mailto:mikeysdetailing4u@gmail.com?subject=Clean%20Club%20Membership" style="color:var(--brand-red);">Email me to join.</a></p>
+    </details>
+    <details class="faq-item">
+      <summary>How much does mobile car detailing cost in Snohomish, WA?</summary>
+      <p>Interior detail starts at $160, exterior starts at $130, and a full detail (interior + exterior) starts at $260. Pricing scales with vehicle size. Use the quote calculator above for an instant estimate.</p>
     </details>
     <details class="faq-item">
       <summary>Do you guarantee your work?</summary>
       <p>100%. If you're not happy with any part of the service, I'll fix it on the spot, come back free, or refund you. I don't leave until you love it.</p>
     </details>
+    <details class="faq-item">
+      <summary>What areas in Snohomish County do you serve?</summary>
+      <p>I serve Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and surrounding areas. Not sure if I cover your area? <a href="tel:3607975831" style="color:var(--brand-red);">Give me a call.</a></p>
+    </details>
   </section>
 
+  <!-- ABOUT -->
   <section class="about-section" id="about" aria-labelledby="about-title-id">
     <div class="about-container">
       <div class="about-header">
@@ -693,18 +1086,19 @@ section:nth-of-type(even) { background: #1a1a1a; }
       </div>
       <div class="about-text-full">
         <h3>Locally Owned &amp; Operated in Snohomish</h3>
-        <p>Hey! I'm Mikey, and I've been making cars look incredible in <strong>Snohomish and Snohomish County</strong> for over 5 years. What started as a passion for keeping my own car pristine turned into a full-time business helping hundreds of local drivers restore their vehicles to showroom condition.</p>
-        <p>I'm not some big corporate chain — I'm a local guy who genuinely loves what I do. Every car gets my personal attention, and I use the same <strong>professional-grade products and techniques</strong> I'd use on my own vehicle. Your satisfaction is everything to me, which is why I back every detail with a 100% guarantee.</p>
-        <p>When you book with Mikey's Mobile Detailing, you're getting <strong>5+ years of expertise, premium products, and a neighbor who cares</strong> about your car as much as you do. I'm not happy until you're thrilled with the results.</p>
+        <p>Hey! I'm Mikey, and I've been making cars look incredible in <strong>Snohomish and Snohomish County</strong> for 5+ years. What started as a passion for keeping my own car clean turned into a full business helping hundreds of local drivers get their cars back to showroom condition.</p>
+        <p>I'm not a corporate chain — I'm a local guy who genuinely loves what I do. Every car gets my personal attention, and I use the same <strong>professional-grade products and techniques</strong> I'd use on my own vehicle.</p>
+        <p>When you book with Mikey's Mobile Detailing, you're getting <strong>5+ years of experience, premium products, and a neighbor who cares</strong> about your car as much as you do. I'm not happy until you're thrilled.</p>
         <p class="about-signature">— Mikey</p>
-        <div class="about-badge-wrap"><span class="about-badge">⭐ 5+ Years Experience</span></div>
+        <div class="about-badge-wrap"><span class="about-badge">⭐ 5+ Years Experience · 35+ Five-Star Reviews</span></div>
       </div>
     </div>
   </section>
 
 </main>
 
-<footer class="site-footer">
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
   <div class="footer-grid">
     <div class="footer-col">
       <h3 class="brand">Mikey's Mobile Detailing</h3>
@@ -719,47 +1113,87 @@ section:nth-of-type(even) { background: #1a1a1a; }
         <li><a href="#qanda">FAQ</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
         <li><a href="/monroe">Monroe</a></li>
-        <li><a href="/duvall">Duvall</a></li>
-        <li><a href="/mill-creek">Mill Creek</a></li>
         <li><a href="/lake-stevens">Lake Stevens</a></li>
+        <li><a href="/mill-creek">Mill Creek</a></li>
+        <li><a href="/duvall">Duvall</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h3 class="gold">Contact</h3>
-      <p>📍 Snohomish, WA</p>
-      <p>📞 <a href="tel:3607975831">(360) 797-5831</a></p>
-      <p>✉ <a href="mailto:mikeysdetailing4u@gmail.com">mikeysdetailing4u@gmail.com</a></p>
-      <p>💻 Mobile Detailing in Snohomish County</p>
+      <address style="font-style:normal;">
+        <p>📍 Snohomish, WA</p>
+        <p>📞 <a href="tel:+13607975831">(360) 797-5831</a></p>
+        <p>✉ <a href="mailto:mikeysdetailing4u@gmail.com">mikeysdetailing4u@gmail.com</a></p>
+      </address>
     </div>
     <div class="footer-col" style="display:flex; align-items:center;">
       <a href="#booking" class="footer-cta">Book Your Detail Today →</a>
     </div>
   </div>
-  <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish. All rights reserved.</p>
+  <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish, WA. All rights reserved.</p>
 </footer>
+
+<!-- Mobile sticky CTA bar -->
+<div class="sticky-cta-bar" aria-label="Quick action bar" role="complementary">
+  <a href="tel:+13607975831" class="sticky-cta-call" aria-label="Call Mikey now">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="#booking" class="sticky-cta-book" aria-label="Get a quote">Get a Quote →</a>
+</div>
+
+<!-- Visually hidden utility -->
+<style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
 
 <script>
 (function(){
   var btn = document.getElementById('hamburgerBtn');
   var menu = document.getElementById('mobileMenu');
-  function toggle(){
-    var closed = menu.style.maxHeight === '0px' || menu.style.maxHeight === '';
-    menu.style.maxHeight = closed ? '500px' : '0px';
-    menu.style.opacity = closed ? '1' : '0';
-    btn.classList.toggle('active', closed);
+
+  // Ensure closed state on load
+  menu.classList.remove('open');
+
+  function open() {
+    menu.classList.add('open');
+    btn.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Close navigation menu');
   }
+
+  function close() {
+    menu.classList.remove('open');
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Open navigation menu');
+  }
+
+  function toggle() {
+    menu.classList.contains('open') ? close() : open();
+  }
+
   btn.addEventListener('click', toggle);
-  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  btn.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+  });
+
+  // Close on link click
   menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
-      menu.style.maxHeight = '0px';
-      menu.style.opacity = '0';
-      btn.classList.remove('active');
-    });
+    a.addEventListener('click', close);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e){
+    if(!btn.contains(e.target) && !menu.contains(e.target)) close();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')) close();
   });
 })();
 </script>
 
 </body>
-</html>
+  </html>
