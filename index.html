@@ -401,69 +401,7 @@ section:nth-of-type(even) { background: #1a1a1a; }
 
 /* =========================================================
    SERVICES TABS
-   ========================================================= */
-.srv-wrap { max-width: 480px; margin: 0 auto; padding: 0 16px; }
-.srv-header { text-align: center; padding: 28px 0 20px; }
-.srv-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--brand-red); font-weight: 700; margin-bottom: 8px; }
-.srv-title { font-size: 26px; font-weight: 900; line-height: 1.15; }
-.srv-tabs-wrap { position: relative; }
-.srv-radio { display: none; }
-.srv-tabs {
-  display: flex; gap: 4px; background: #1a1a1a;
-  border-radius: 10px; padding: 4px;
-  border: 1px solid rgba(220,38,38,0.25); role: tablist;
-}
-.srv-tab {
-  flex: 1; text-align: center; padding: 10px 4px;
-  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
-  color: #a3a3a3; background: transparent; border-radius: 8px;
-  cursor: pointer; transition: all .2s; letter-spacing: 0.5px; line-height: 1.2;
-  -webkit-tap-highlight-color: transparent;
-}
-#srvt1:checked ~ .srv-tabs label:nth-child(1),
-#srvt2:checked ~ .srv-tabs label:nth-child(2),
-#srvt3:checked ~ .srv-tabs label:nth-child(3) { background: var(--brand-red); color: #fff; box-shadow: 0 2px 12px rgba(220,38,38,0.4); }
-#srvt4:checked ~ .srv-tabs label:nth-child(4) { background: var(--brand-gold); color: #fff; box-shadow: 0 2px 12px rgba(217,119,6,0.35); }
-#srvt4:checked ~ .srv-tabs label:nth-child(4) .srv-tab-new { background: rgba(0,0,0,0.25); color: #fff; }
-.srv-tab--care .srv-tab-new {
-  display: inline-block; background: var(--brand-gold); color: #000;
-  font-size: 8px; font-weight: 900; padding: 1px 4px; border-radius: 3px;
-  letter-spacing: 1px; margin-left: 2px; vertical-align: top; line-height: 1.4; pointer-events: none;
-}
-.srv-panel { display: none; }
-#srvt1:checked ~ .srv-p1, #srvt2:checked ~ .srv-p2,
-#srvt3:checked ~ .srv-p3, #srvt4:checked ~ .srv-p4 { display: block; }
-.srv-card { margin-top: 12px; background: #1a1a1a; border: 2px solid rgba(220,38,38,0.25); border-radius: 12px; overflow: hidden; }
-.srv-price-bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid rgba(220,38,38,0.25); }
-.srv-price { font-size: 28px; font-weight: 900; }
-.srv-price-note { font-size: 12px; color: #a3a3a3; text-align: right; line-height: 1.4; }
-.srv-blurb { padding: 16px 20px 12px; font-size: 14px; color: #a3a3a3; line-height: 1.55; }
-.srv-checks { padding: 0 20px 16px; display: flex; flex-direction: column; gap: 6px; }
-.srv-chk { display: flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 600; }
-.srv-chk-icon { width: 18px; height: 18px; min-width: 18px; background: var(--brand-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
-.srv-cta {
-  display: block; margin: 0 20px 16px; background: var(--brand-red); color: #fff;
-  text-align: center; padding: 14px;
-  font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 14px;
-  letter-spacing: 2px; text-transform: uppercase; border-radius: 8px;
-  text-decoration: none; box-shadow: 0 3px 16px rgba(220,38,38,0.35);
-  transition: transform .15s, box-shadow .15s;
-}
-.srv-cta:hover { transform: translateY(-1px); box-shadow: 0 5px 24px rgba(220,38,38,0.5); }
-.srv-cta:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-.srv-card--gold { border-color: var(--brand-gold) !important; box-shadow: 0 0 24px rgba(217,119,6,0.35); }
-.srv-gold-badge { background: linear-gradient(135deg, var(--brand-gold), #92400e); padding: 10px 20px; text-align: center; font-size: 13px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; }
-.srv-gold-free { margin: 0 20px; padding: 12px 16px; background: rgba(217,119,6,0.1); border-bottom: 1px solid rgba(217,119,6,0.2); text-align: center; font-size: 15px; font-weight: 700; color: var(--brand-gold); }
-.srv-cta--gold { background: var(--brand-gold) !important; box-shadow: 0 3px 16px rgba(217,119,6,0.35) !important; }
-.srv-cta--gold:hover { box-shadow: 0 5px 24px rgba(217,119,6,0.55) !important; }
-.srv-report-preview { margin: 12px 20px; background: #1a1a0f; border: 1px solid rgba(217,119,6,0.2); border-radius: 8px; padding: 12px 14px; }
-.srv-report-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--brand-gold); font-weight: 700; margin-bottom: 6px; }
-.srv-report-text { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; font-style: italic; }
-.srv-see-all { display: block; text-align: center; margin: 20px auto 0; color: var(--brand-red); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 10px; }
-.srv-see-all:hover { color: #fff; }
-.srv-see-all:focus-visible { outline: 2px solid var(--brand-red); border-radius: 4px; }
-
-/* =========================================================
+   ==
    GUARANTEE
    ========================================================= */
 .gt-wrap { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
@@ -803,112 +741,207 @@ section:nth-of-type(even) { background: #1a1a1a; }
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="srv-wrap" id="allservices" aria-labelledby="srv-heading">
-    <div class="srv-header">
-      <div class="srv-label" aria-hidden="true">Pro Services</div>
-      <h2 class="srv-title" id="srv-heading">What I Offer</h2>
+<!-- ============================================================
+     MIKEY'S DETAILING — SERVICES SECTION
+     Drop-in replacement. Self-contained styles scoped to .mmd-svc.
+     Uses your existing tokens: #141414 bg, #dc2626 red, Outfit font.
+     ============================================================ -->
+
+<style>
+  .mmd-svc { 
+    background:#141414; color:#fff; padding:80px 20px;
+    font-family:'Outfit',system-ui,sans-serif;
+  }
+  .mmd-svc .mmd-wrap { max-width:1200px; margin:0 auto; }
+
+  /* Section header */
+  .mmd-svc .mmd-eyebrow {
+    display:inline-block; color:#dc2626; font-weight:700;
+    font-size:.85rem; letter-spacing:.18em; text-transform:uppercase;
+    border:2px solid #dc2626; padding:6px 14px; border-radius:999px;
+    margin-bottom:18px;
+  }
+  .mmd-svc h2 {
+    font-size:clamp(2rem,5vw,3.25rem); font-weight:900; line-height:1.05;
+    margin:0 0 14px; letter-spacing:-.02em;
+  }
+  .mmd-svc h2 em { color:#dc2626; font-style:normal; }
+  .mmd-svc .mmd-sub {
+    font-size:1.05rem; color:#a1a1aa; max-width:620px;
+    margin:0 0 48px; line-height:1.5;
+  }
+
+  /* Card grid */
+  .mmd-svc .mmd-grid {
+    display:grid; gap:20px;
+    grid-template-columns:repeat(3,1fr);
+  }
+  @media (max-width:900px){ .mmd-svc .mmd-grid { grid-template-columns:1fr; } }
+
+  /* Card base */
+  .mmd-svc .mmd-card {
+    background:#1c1c1c; border:2px solid #2a2a2a; border-radius:14px;
+    padding:32px 26px; display:flex; flex-direction:column;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position:relative;
+  }
+  .mmd-svc .mmd-card:hover {
+    transform:translateY(-4px); border-color:#dc2626;
+    box-shadow:0 0 0 1px rgba(220,38,38,.25), 0 18px 40px -20px rgba(220,38,38,.4);
+  }
+
+  /* Highlighted card (Full Detail) */
+  .mmd-svc .mmd-card.mmd-popular {
+    border-color:#dc2626; background:linear-gradient(180deg,#1f1414 0%,#1c1c1c 60%);
+    box-shadow:0 0 0 1px rgba(220,38,38,.35), 0 20px 50px -20px rgba(220,38,38,.35);
+  }
+  .mmd-svc .mmd-card.mmd-popular::before {
+    content:"MOST BOOKED"; position:absolute; top:-12px; left:50%;
+    transform:translateX(-50%);
+    background:#dc2626; color:#fff; font-size:.72rem; font-weight:900;
+    letter-spacing:.15em; padding:6px 14px; border-radius:999px;
+    box-shadow:0 6px 18px -4px rgba(220,38,38,.6);
+  }
+
+  /* Card header */
+  .mmd-svc .mmd-name {
+    font-size:1.5rem; font-weight:900; margin:0 0 4px; letter-spacing:-.01em;
+  }
+  .mmd-svc .mmd-tag {
+    font-size:.85rem; color:#a1a1aa; margin:0 0 22px;
+  }
+
+  /* Price block */
+  .mmd-svc .mmd-price {
+    font-size:2.25rem; font-weight:900; line-height:1; color:#fff;
+  }
+  .mmd-svc .mmd-price small {
+    font-size:.85rem; color:#a1a1aa; font-weight:500;
+    display:block; margin-top:6px;
+  }
+  .mmd-svc .mmd-divider {
+    height:2px; background:#2a2a2a; margin:24px 0 22px; border-radius:2px;
+  }
+  .mmd-svc .mmd-popular .mmd-divider { background:#dc2626; }
+
+  /* Feature list */
+  .mmd-svc .mmd-feat {
+    list-style:none; padding:0; margin:0 0 28px; flex-grow:1;
+  }
+  .mmd-svc .mmd-feat li {
+    display:flex; align-items:flex-start; gap:10px;
+    padding:7px 0; font-size:.97rem; color:#e4e4e7;
+  }
+  .mmd-svc .mmd-feat li::before {
+    content:""; flex-shrink:0; width:18px; height:18px; margin-top:2px;
+    background:#dc2626; border-radius:50%;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size:11px; background-position:center; background-repeat:no-repeat;
+  }
+
+  /* CTA */
+  .mmd-svc .mmd-cta {
+    display:block; text-align:center; padding:14px 20px;
+    background:transparent; color:#fff; font-weight:800; font-size:1rem;
+    border:2px solid #fff; border-radius:10px; text-decoration:none;
+    transition:all .2s ease; letter-spacing:.02em;
+  }
+  .mmd-svc .mmd-cta:hover {
+    background:#fff; color:#141414; transform:translateY(-2px);
+  }
+  .mmd-svc .mmd-popular .mmd-cta {
+    background:#dc2626; border-color:#dc2626;
+    box-shadow:0 8px 24px -8px rgba(220,38,38,.6);
+  }
+  .mmd-svc .mmd-popular .mmd-cta:hover {
+    background:#fff; color:#dc2626; border-color:#fff;
+  }
+
+  /* Trust strip below cards */
+  .mmd-svc .mmd-trust {
+    margin-top:48px; padding:20px 24px;
+    background:#1c1c1c; border:2px solid #2a2a2a; border-radius:12px;
+    display:flex; flex-wrap:wrap; justify-content:center; gap:14px 32px;
+    font-size:.95rem; color:#e4e4e7;
+  }
+  .mmd-svc .mmd-trust span { display:flex; align-items:center; gap:8px; }
+  .mmd-svc .mmd-trust strong { color:#dc2626; font-weight:800; }
+</style>
+
+<section id="allservices" class="mmd-svc">
+  <div class="mmd-wrap">
+
+    <span class="mmd-eyebrow">Services & Pricing</span>
+    <h2>Pick your package. <em>I bring everything.</em></h2>
+    <p class="mmd-sub">
+      Every detail is by hand, in your driveway, with my own water and power.
+      Pricing scales with vehicle size — sedans at the low end, full-size SUVs and trucks at the high end.
+    </p>
+
+    <div class="mmd-grid">
+
+      <!-- INTERIOR -->
+      <div class="mmd-card">
+        <h3 class="mmd-name">Interior</h3>
+        <p class="mmd-tag">Inside-only deep clean</p>
+        <div class="mmd-price">$160–$240<small>Based on vehicle size</small></div>
+        <div class="mmd-divider"></div>
+        <ul class="mmd-feat">
+          <li>Full vacuum + crevice detail</li>
+          <li>Steam clean seats &amp; carpet</li>
+          <li>Leather clean &amp; condition</li>
+          <li>Dashboard &amp; trim dressed</li>
+          <li>Windows + mirrors streak-free</li>
+          <li>Door jambs wiped down</li>
+        </ul>
+        <a href="#booking" class="mmd-cta">Get My Quote →</a>
+      </div>
+
+      <!-- FULL DETAIL — HIGHLIGHTED -->
+      <div class="mmd-card mmd-popular">
+        <h3 class="mmd-name">Full Detail</h3>
+        <p class="mmd-tag">Inside &amp; out — bumper to bumper</p>
+        <div class="mmd-price">$260–$340<small>Saves $30 vs. booking separate</small></div>
+        <div class="mmd-divider"></div>
+        <ul class="mmd-feat">
+          <li>Everything in Interior</li>
+          <li>Everything in Exterior</li>
+          <li>Same-day turnaround</li>
+          <li>100% satisfaction guarantee</li>
+          <li>No hidden fees, no surprises</li>
+          <li>You don't pay until you love it</li>
+        </ul>
+        <a href="#booking" class="mmd-cta">Book Full Detail →</a>
+      </div>
+
+      <!-- EXTERIOR -->
+      <div class="mmd-card">
+        <h3 class="mmd-name">Exterior</h3>
+        <p class="mmd-tag">Outside-only wash &amp; protect</p>
+        <div class="mmd-price">$130–$200<small>Based on vehicle size</small></div>
+        <div class="mmd-divider"></div>
+        <ul class="mmd-feat">
+          <li>Full hand wash &amp; dry</li>
+          <li>Clay bar decontamination</li>
+          <li>Tire &amp; wheel deep clean</li>
+          <li>Tire dressing applied</li>
+          <li>Exterior windows cleaned</li>
+          <li>Spray sealant protection</li>
+        </ul>
+        <a href="#booking" class="mmd-cta">Get My Quote →</a>
+      </div>
+
     </div>
-    <div class="srv-tabs-wrap">
-      <input type="radio" name="srvtab" id="srvt1" checked class="srv-radio">
-      <input type="radio" name="srvtab" id="srvt2" class="srv-radio">
-      <input type="radio" name="srvtab" id="srvt3" class="srv-radio">
-      <input type="radio" name="srvtab" id="srvt4" class="srv-radio">
-      <div class="srv-tabs" role="tablist" aria-label="Service types">
-        <label for="srvt1" class="srv-tab" role="tab">Interior</label>
-        <label for="srvt2" class="srv-tab" role="tab">Exterior</label>
-        <label for="srvt3" class="srv-tab" role="tab">Full Detail</label>
-        <label for="srvt4" class="srv-tab srv-tab--care" role="tab">Care Check <span class="srv-tab-new" aria-label="New service">NEW</span></label>
-      </div>
 
-      <!-- Interior -->
-      <div class="srv-panel srv-p1" role="tabpanel" aria-label="Interior detail">
-        <div class="srv-card">
-          <div class="srv-price-bar">
-            <div class="srv-price">$160–$240</div>
-            <div class="srv-price-note">Based on<br>vehicle size</div>
-          </div>
-          <p class="srv-blurb">Deep clean every surface inside your vehicle. Stains, odors, pet hair — handled so it feels brand new.</p>
-          <ul class="srv-checks" aria-label="Included in interior detail">
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Full vacuum + crevice detail</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Steam clean seats &amp; carpet</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Leather clean &amp; condition</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Dashboard &amp; trim dressed</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Windows + mirrors streak-free</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Door jambs wiped down</li>
-          </ul>
-          <a href="#booking" class="srv-cta">Get Your Quote</a>
-        </div>
-      </div>
-
-      <!-- Exterior -->
-      <div class="srv-panel srv-p2" role="tabpanel" aria-label="Exterior detail">
-        <div class="srv-card">
-          <div class="srv-price-bar">
-            <div class="srv-price">$130–$200</div>
-            <div class="srv-price-note">Based on<br>vehicle size</div>
-          </div>
-          <p class="srv-blurb">A thorough hand wash and protection detail. I clean, decontaminate, and protect every exterior surface.</p>
-          <ul class="srv-checks" aria-label="Included in exterior detail">
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Full hand wash &amp; dry</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Clay bar decontamination</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Tire &amp; wheel deep clean</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Tire dressing applied</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Exterior windows cleaned</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Spray sealant protection</li>
-          </ul>
-          <a href="#booking" class="srv-cta">Get Your Quote</a>
-        </div>
-      </div>
-
-      <!-- Full Detail -->
-      <div class="srv-panel srv-p3" role="tabpanel" aria-label="Full detail">
-        <div class="srv-card">
-          <div class="srv-price-bar">
-            <div class="srv-price">$260–$340</div>
-            <div class="srv-price-note">Best<br>value</div>
-          </div>
-          <p class="srv-blurb">The complete package — interior deep clean plus full exterior protection. Inside and out, bumper to bumper.</p>
-          <ul class="srv-checks" aria-label="Included in full detail">
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Everything in Interior</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Everything in Exterior</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> 100% satisfaction guaranteed</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> Your car ready same day</li>
-            <li class="srv-chk"><div class="srv-chk-icon" aria-hidden="true">✓</div> No hidden fees or surprises</li>
-          </ul>
-          <a href="#booking" class="srv-cta">Get Your Quote</a>
-        </div>
-      </div>
-
-      <!-- Care Check -->
-      <div class="srv-panel srv-p4" role="tabpanel" aria-label="Care Check monthly service">
-        <div class="srv-card srv-card--gold">
-          <div class="srv-gold-badge">New Service — Limited Spots</div>
-          <div class="srv-gold-free">First Check-Up FREE — No Strings</div>
-          <div class="srv-price-bar" style="border-color:rgba(217,119,6,0.2)">
-            <div class="srv-price">$39</div>
-            <div class="srv-price-note">per month<br>per vehicle</div>
-          </div>
-          <p class="srv-blurb">Your car's monthly check-up — at your driveway. I come to you every month, inspect everything, and send you a full report so nothing sneaks up on you.</p>
-          <ul class="srv-checks" aria-label="Included in Care Check">
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Tire pressure + tread depth</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> All fluids checked</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Full light check</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Wipers &amp; belts inspected</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Under-hood visual scan</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> New damage photo-documented</li>
-            <li class="srv-chk"><div class="srv-chk-icon" style="background:var(--brand-gold)" aria-hidden="true">✓</div> Full text report card after every visit</li>
-          </ul>
-          <div class="srv-report-preview" aria-label="Sample report text">
-            <div class="srv-report-label">Sample Report</div>
-            <div class="srv-report-text">"April check done ✓ Oil looks clean, tires at 33/33/34/34 PSI — bumped to 35. Washer fluid topped off. Small chip on rear windshield, recommend sealing soon. Everything else looks great. See you next month!"</div>
-          </div>
-          <a href="mailto:mikeysdetailing4u@gmail.com?subject=Book%20FREE%20Care%20Check%20%E2%80%94%20First%20Visit&body=Hey%20Mikey%2C%0A%0AI%27d%20like%20to%20book%20my%20FREE%20first%20Care%20Check.%0A%0AName%3A%20%0AVehicle%20(year%2Fmake%2Fmodel)%3A%20%0APreferred%20day%2Ftime%3A%20%0AAddress%2FCity%3A%20%0APhone%3A%20%0A%0AThanks!" class="srv-cta srv-cta--gold">Book Free Check-Up</a>
-        </div>
-      </div>
+    <div class="mmd-trust">
+      <span><strong>5.0</strong> on Google</span>
+      <span>Snohomish County</span>
+      <span>Pay when you love it</span>
+      <span>I come to you</span>
     </div>
-    <a href="services.html" class="srv-see-all">See all services →</a>
-  </section>
+
+  </div>
+</section>
 
   <!-- HOW IT WORKS -->
   <section class="hiw" aria-labelledby="hiw-title-id">
