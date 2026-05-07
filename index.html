@@ -761,6 +761,134 @@ section.hero > * {
 #top [class*="grid"],
 .hero [class*="grid"] {
   gap: revert;
+} 
+  /* ============================================
+   GLOBAL SPACING SYSTEM — mikeysdetailing.com
+   ============================================ */
+
+:root {
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 120px;
+  --container-max: 1200px;
+  --container-narrow: 800px;
+  --container-wide: 1400px;
+  --section-py: 120px;
+}
+
+@media (max-width: 768px) {
+  :root { --section-py: 64px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root { --section-py: 88px; }
+}
+
+section {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  position: relative;
+}
+
+section > .container,
+section > .wrap,
+section > .inner {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+section > *:not(.full-bleed) {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section h1,
+section h2 {
+  margin-bottom: var(--space-lg);
+  margin-top: 0;
+}
+
+section h3 {
+  margin-bottom: var(--space-md);
+  margin-top: 0;
+}
+
+section p {
+  margin-bottom: var(--space-md);
+}
+
+section p:last-child {
+  margin-bottom: 0;
+}
+
+.services-grid,
+.cards,
+.grid,
+[class*="grid"] {
+  gap: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+  .services-grid,
+  .cards,
+  .grid,
+  [class*="grid"] {
+    gap: var(--space-md);
+  }
+}
+
+section + section {
+  padding-top: var(--section-py);
+}
+
+footer {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
+footer > * {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   HERO EXCLUSIONS — hands off .hero-section
+   ============================================ */
+
+.hero-section {
+  padding: 0 !important;
+}
+
+.hero-section,
+.hero-section * {
+  max-width: none !important;
+  margin-left: unset !important;
+  margin-right: unset !important;
+}
+
+.hero-section h1,
+.hero-section h2,
+.hero-section h3,
+.hero-section p {
+  margin-bottom: revert !important;
+  margin-top: revert !important;
+}
+
+.hero-section [class*="grid"],
+.hero-section .mh-prices {
+  gap: revert !important;
 }
 </style>.
 </header>
