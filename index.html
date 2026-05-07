@@ -290,59 +290,243 @@ section:nth-of-type(even) { background: #1a1a1a; }
 /* =========================================================
    HERO
    ========================================================= */
-.mh { font-family: 'Outfit', sans-serif; text-align: center; max-width: 1100px; margin: 0 auto; padding: 40px 20px; color: #fff; }
-.mh-proof { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
-.mh-proof-item { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #a3a3a3; }
-.mh-proof-val { color: #fff; font-weight: 800; }
-.mh-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
-.mh-dot { width: 4px; height: 4px; border-radius: 50%; background: #444; }
-.mh h1 { font-size: clamp(36px, 6vw, 65px); font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin: 0 0 20px; color: #fff; } @media (max-width: 480px) {
-  .mh h1 { font-size: clamp(28px, 8vw, 42px); }
-}
-.mh h1 .mh-em { color: #FF0000; }
-.mh-sub { font-size: 18px; color: #999; line-height: 1.6; margin: 0 auto 36px; max-width: 600px; }
-.mh-prices { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; margin-bottom: 36px; }
-.mh-pill { display: flex; align-items: center; gap: 8px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 12px 24px; }
-.mh-pill-label { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #999; }
-.mh-pill-price { font-size: 22px; font-weight: 900; color: #FF0000; letter-spacing: -0.5px; line-height: 1; }
-.mh-ctas { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-.mh-cta-primary {
-  display: inline-block; padding: 18px 42px;
-  background: #FF0000; color: #fff;
-  font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800;
-  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
-  border-radius: 8px; transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 4px 20px rgba(163,36,43,0.35);
-}
-.mh-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(163,36,43,0.5); }
-.mh-cta-primary:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.mh-cta-secondary {
-  display: inline-block; padding: 18px 32px;
-  background: transparent; color: #ccc;
-  font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 600;
-  text-decoration: none; border: 1px solid #333; border-radius: 8px;
-  transition: border-color 0.15s, color 0.15s;
-}
-.mh-cta-secondary:hover { border-color: #FF0000; color: #fff; }
-.mh-cta-secondary:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 3px; }
+/* =========================
+   HERO SECTION
+========================= */
 
-@media (max-width: 480px) {
-  .mh-prices { flex-direction: column; gap: 10px; }
-  .mh-pill { justify-content: center; }
-  .mh-cta-primary, .mh-cta-secondary { width: 100%; text-align: center; }
+.mh-hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 20px 70px;
+  background:transparent;
 }
 
-/* Hero animations */
-.mh-proof, .mh h1, .mh-sub, .mh-prices, .mh-ctas {
-  opacity: 0; transform: translateY(18px);
-  animation: mhFadeUp 0.6s ease-out forwards;
+.mh{
+  font-family:'Outfit',sans-serif;
+  text-align:center;
+  max-width:1100px;
+  margin:0 auto;
+  color:#fff;
 }
-.mh-proof { animation-delay: 0.1s; }
-.mh h1 { animation-delay: 0.25s; }
-.mh-sub { animation-delay: 0.45s; }
-.mh-prices { animation-delay: 0.6s; }
-.mh-ctas { animation-delay: 0.8s; }
-@keyframes mhFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+.mh-container{
+  width:100%;
+}
+
+.mh-content{
+  width:100%;
+}
+
+/* =========================
+   SOCIAL PROOF
+========================= */
+
+.mh-proof{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin-bottom:32px;
+  flex-wrap:wrap;
+}
+
+.mh-proof-item{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:14px;
+  font-weight:600;
+  color:#a3a3a3;
+}
+
+.mh-proof-val{
+  color:#fff;
+  font-weight:800;
+}
+
+.mh-stars{
+  color:#facc15;
+  font-size:14px;
+  letter-spacing:1px;
+}
+
+.mh-dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#444;
+}
+
+/* =========================
+   HEADLINE
+========================= */
+
+.mh h1{
+  font-size:clamp(52px,8vw,88px);
+  font-weight:900;
+  line-height:1.02;
+  letter-spacing:-2px;
+  margin:0 0 28px;
+  color:#fff;
+}
+
+.red{
+  color:#FF0000;
+}
+
+/* =========================
+   SUBTEXT
+========================= */
+
+.mh-sub{
+  font-size:22px;
+  color:#b3b3b3;
+  line-height:1.6;
+  margin:0 auto 42px;
+  max-width:760px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.mh-ctas{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:38px;
+}
+
+.mh-cta-primary{
+  display:inline-block;
+  padding:20px 42px;
+  background:#FF0000;
+  color:#fff;
+  font-size:16px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-radius:10px;
+  transition:.2s;
+  box-shadow:0 4px 20px rgba(255,0,0,.35);
+}
+
+.mh-cta-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(255,0,0,.5);
+}
+
+.mh-cta-secondary{
+  display:inline-block;
+  padding:20px 36px;
+  background:transparent;
+  color:#ccc;
+  font-size:15px;
+  font-weight:700;
+  text-decoration:none;
+  border:1px solid #333;
+  border-radius:10px;
+  transition:.2s;
+}
+
+.mh-cta-secondary:hover{
+  border-color:#FF0000;
+  color:#fff;
+}
+
+/* =========================
+   PRICE PILLS
+========================= */
+
+.mh-prices{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+
+.mh-pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:#161616;
+  border:1px solid #2a2a2a;
+  border-radius:10px;
+  padding:14px 24px;
+}
+
+.mh-pill-label{
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:#999;
+}
+
+.mh-pill-price{
+  font-size:22px;
+  font-weight:900;
+  color:#FF0000;
+  line-height:1;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  .mh-hero{
+    min-height:100svh;
+    padding:120px 20px 90px;
+  }
+
+  .mh h1{
+    font-size:clamp(54px,14vw,72px);
+    line-height:.95;
+    margin-bottom:24px;
+  }
+
+  .mh-sub{
+    font-size:20px;
+    line-height:1.5;
+    margin-bottom:36px;
+  }
+
+  .mh-proof{
+    margin-bottom:24px;
+  }
+
+  .mh-ctas{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .mh-cta-primary,
+  .mh-cta-secondary{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+  }
+
+  .mh-prices{
+    width:100%;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .mh-pill{
+    width:100%;
+    max-width:420px;
+    justify-content:center;
+  }
+
+}
 
 /* =========================================================
    PROOF BAR
@@ -622,14 +806,7 @@ section:nth-of-type(even) { background: #1a1a1a; }
   transition: transform 0.15s;
 }
 .sticky-cta-book:hover { transform: translateY(-1px); } /* ============================================
-   /* ============================================
-   GLOBAL SPACING SYSTEM — mikeysdetailing.com
-   Paste at END of your <style> block to override
-   ============================================ */
-/* =========================================================
-   GLOBAL SPACING SYSTEM
-   ========================================================= */
-:root {
+
 
 </style>
 
@@ -638,63 +815,71 @@ section:nth-of-type(even) { background: #1a1a1a; }
 <main id="main-content" id="top">
 <header>
 <!-- HERO -->
-  <section section.hero class="hero-section" aria-labelledby="hero-h1">
-    <div class="section-inner">
-      <div class="mh">
-        <div class="mh-proof" role="list" aria-label="Social proof">
-          <div class="mh-proof-item" role="listitem">
-            <span class="mh-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="mh-proof-val">5.0</span>
-          </div>
-          <span class="mh-dot" aria-hidden="true"></span>
-          <div class="mh-proof-item" role="listitem"><span class="mh-proof-val">35+</span> Reviews</div>
-          <span class="mh-dot" aria-hidden="true"></span>
-          <div class="mh-proof-item" role="listitem"><span class="mh-proof-val">300+</span> Cars Detailed</div>
-        </div>
-        <h1>
- <section class="mh-hero">
+<section class="mh-hero" aria-labelledby="hero-h1">
 
-  <div class="mh-container">
+  <div class="mh">
 
-    <div class="mh-content">
+    <div class="mh-proof" role="list" aria-label="Social proof">
 
-      <h1>
-        Mobile Detailing<br>
-        <span class="red">
-          <strong>That Comes<br>to Your Door.</strong>
+      <div class="mh-proof-item" role="listitem">
+        <span class="mh-stars" aria-label="Five stars">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
         </span>
-      </h1>
+        <span class="mh-proof-val">5.0</span>
+      </div>
 
-      <p class="mh-sub">
-        Professional Mobile Detailing In Snohomish County.
-        <span class="red">
-          <strong>Book Online In Two Minutes.</strong>
-        </span>
-      </p>
+      <span class="mh-dot" aria-hidden="true"></span>
 
-      <div class="mh-ctas">
+      <div class="mh-proof-item" role="listitem">
+        <span class="mh-proof-val">35+</span> Reviews
+      </div>
 
-        <a class="mh-cta-primary" href="#booking">
-          Get Your Instant Quote &#8594;
-        </a>
+      <span class="mh-dot" aria-hidden="true"></span>
 
-        <a class="mh-cta-secondary" href="#allservices">
-          See Services
-        </a>
+      <div class="mh-proof-item" role="listitem">
+        <span class="mh-proof-val">300+</span> Cars Detailed
+      </div>
 
-        <div class="mh-prices" aria-label="Service pricing">
+    </div>
 
-          <div class="mh-pill">
-            <span class="mh-pill-label">Full Detail</span>
-            <span class="mh-pill-price">$260–$340</span>
-          </div>
+    <h1 id="hero-h1">
+      Mobile Detailing<br>
 
-          <div class="mh-pill">
-            <span class="mh-pill-label">Interior</span>
-            <span class="mh-pill-price">$160–$240</span>
-          </div>
+      <span class="red">
+        That Comes<br>To Your Door.
+      </span>
+    </h1>
 
-        </div>
+    <p class="mh-sub">
+      Professional Mobile Detailing In Snohomish County.
+
+      <span class="red">
+        <strong>Book Online In Two Minutes.</strong>
+      </span>
+    </p>
+
+    <div class="mh-ctas">
+
+      <a class="mh-cta-primary" href="#booking">
+        Get Your Instant Quote →
+      </a>
+
+      <a class="mh-cta-secondary" href="#allservices">
+        See Services
+      </a>
+
+    </div>
+
+    <div class="mh-prices" aria-label="Service pricing">
+
+      <div class="mh-pill">
+        <span class="mh-pill-label">Full Detail</span>
+        <span class="mh-pill-price">$260–$340</span>
+      </div>
+
+      <div class="mh-pill">
+        <span class="mh-pill-label">Interior</span>
+        <span class="mh-pill-price">$160–$240</span>
       </div>
 
     </div>
