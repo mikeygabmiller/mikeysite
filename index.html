@@ -620,12 +620,12 @@ section:nth-of-type(even) { background: #1a1a1a; }
   transition: transform 0.15s;
 }
 .sticky-cta-book:hover { transform: translateY(-1px); } /* ============================================
+   /* ============================================
    GLOBAL SPACING SYSTEM — mikeysdetailing.com
    Paste at END of your <style> block to override
    ============================================ */
 
 :root {
-  /* Spacing scale — use these everywhere */
   --space-xs: 8px;
   --space-sm: 16px;
   --space-md: 24px;
@@ -634,32 +634,24 @@ section:nth-of-type(even) { background: #1a1a1a; }
   --space-2xl: 96px;
   --space-3xl: 120px;
 
-  /* Content width caps */
   --container-max: 1200px;
   --container-narrow: 800px;
   --container-wide: 1400px;
 
-  /* Section vertical padding (responsive) */
   --section-py: 120px;
 }
 
-/* Mobile: tighter spacing */
 @media (max-width: 768px) {
   :root {
     --section-py: 64px;
   }
 }
 
-/* Tablet: middle ground */
 @media (min-width: 769px) and (max-width: 1024px) {
   :root {
     --section-py: 88px;
   }
 }
-
-/* ============================================
-   SECTION DEFAULTS — applies to every <section>
-   ============================================ */
 
 section {
   padding-top: var(--section-py);
@@ -669,7 +661,6 @@ section {
   position: relative;
 }
 
-/* Inner content wrapper — caps width and centers */
 section > .container,
 section > .wrap,
 section > .inner {
@@ -679,18 +670,11 @@ section > .inner {
   width: 100%;
 }
 
-/* Fallback: if no wrapper exists, cap the section's direct children */
 section > *:not(.full-bleed) {
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
 }
-
-/* ============================================
-   HERO — fills 85vh on desktop
-   ============================================  ============================================
-   CONSISTENT HEADING SPACING
-   ============================================ */
 
 section h1,
 section h2 {
@@ -711,10 +695,6 @@ section p:last-child {
   margin-bottom: 0;
 }
 
-/* ============================================
-   GRID GAP CONSISTENCY (services, FAQ, etc.)
-   ============================================ */
-
 .services-grid,
 .cards,
 .grid,
@@ -731,19 +711,9 @@ section p:last-child {
   }
 }
 
-/* ============================================
-   REMOVE DOUBLE-PADDING FROM ADJACENT SECTIONS
-   (when section bg colors alternate, padding looks fine.
-    when they're the same, halve it to avoid huge gaps)
-   ============================================ */
-
 section + section {
   padding-top: var(--section-py);
 }
-
-/* ============================================
-   FOOTER — slightly less top padding, full bleed bg
-   ============================================ */
 
 footer {
   padding-top: var(--space-2xl);
@@ -757,45 +727,6 @@ footer > * {
   margin-left: auto;
   margin-right: auto;
 }
-</style>
-</head>
-<body>
-
-<!-- Skip to main content for screen readers / keyboard nav -->
-<a href="#main-content" class="skip-nav">Skip to main content</a>
-
-<header id="mikeyHeader" role="banner">
-  <nav aria-label="Main navigation">
-    <a href="#top" aria-label="Mikey's Mobile Detailing — go to home">
-      <img src="https://iili.io/qKtjLcx.jpg" alt="Mikey's Mobile Detailing logo — Snohomish, WA" width="50" height="50">
-    </a>
-    <ul id="desktopMenu" role="list">
-      <li><a href="#top">Home</a></li>
-      <li><a href="#allservices">Services</a></li>
-      <li><a href="#booking">Booking</a></li>
-      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
-      <li><a href="#qanda">FAQ</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-    <button
-      id="hamburgerBtn"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="mobileMenu"
-    >
-      <span></span><span></span><span></span>
-    </button>
-    <ul id="mobileMenu" role="list" aria-label="Mobile navigation">
-      <li><a href="#top">Home</a></li>
-      <li><a href="#allservices">Services</a></li>
-      <li><a href="#booking">Booking</a></li>
-      <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
-      <li><a href="#qanda">FAQ</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-    </ul>
-  </nav>
 </header>
 
 <main id="main-content" id="top">
