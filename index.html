@@ -727,7 +727,46 @@ footer > * {
   margin-left: auto;
   margin-right: auto;
 }</style>.
-</header>
+</header> /* ============================================
+   HERO EXCLUSIONS — keep hero untouched
+   ============================================ */
+
+/* Reset section defaults for the hero */
+#top,
+section#top,
+.hero,
+section.hero {
+  padding: 0 !important;
+}
+
+/* Don't cap hero children width */
+#top > *,
+section#top > *,
+.hero > *,
+section.hero > * {
+  max-width: none !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Don't touch headings/paragraphs inside hero */
+#top h1,
+#top h2,
+#top h3,
+#top p,
+.hero h1,
+.hero h2,
+.hero h3,
+.hero p {
+  margin-bottom: revert;
+  margin-top: revert;
+}
+
+/* Hero grid gaps stay as-is */
+#top [class*="grid"],
+.hero [class*="grid"] {
+  gap: revert;
+}
 
 <main id="main-content" id="top">
 
