@@ -296,7 +296,9 @@ section:nth-of-type(even) { background: #1a1a1a; }
 .mh-proof-val { color: #fff; font-weight: 800; }
 .mh-stars { color: #facc15; font-size: 14px; letter-spacing: 1px; }
 .mh-dot { width: 4px; height: 4px; border-radius: 50%; background: #444; }
-.mh h1 { font-size: clamp(36px, 6vw, 65px); font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin: 0 0 20px; color: #fff; }
+.mh h1 { font-size: clamp(36px, 6vw, 65px); font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin: 0 0 20px; color: #fff; } @media (max-width: 480px) {
+  .mh h1 { font-size: clamp(28px, 8vw, 42px); }
+}
 .mh h1 .mh-em { color: #FF0000; }
 .mh-sub { font-size: 18px; color: #999; line-height: 1.6; margin: 0 auto 36px; max-width: 600px; }
 .mh-prices { display: flex; justify-content: center; gap: 15px; flex-wrap: nowrap; margin-bottom: 36px; }
@@ -712,9 +714,9 @@ footer > * {
 </style>
 
 
-  /header>
+  
 <main id="main-content" id="top">
-
+<header>
 <!-- HERO -->
   <section section.hero class="hero-section" aria-labelledby="hero-h1">
     <div class="section-inner">
