@@ -624,170 +624,6 @@ section:nth-of-type(even) { background: #1a1a1a; }
    GLOBAL SPACING SYSTEM — mikeysdetailing.com
    Paste at END of your <style> block to override
    ============================================ */
-
-:root {
-  --space-xs: 8px;
-  --space-sm: 16px;
-  --space-md: 24px;
-  --space-lg: 40px;
-  --space-xl: 64px;
-  --space-2xl: 96px;
-  --space-3xl: 120px;
-
-  --container-max: 1200px;
-  --container-narrow: 800px;
-  --container-wide: 1400px;
-
-  --section-py: 120px;
-}
-
-@media (max-width: 768px) {
-  :root {
-    --section-py: 64px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  :root {
-    --section-py: 88px;
-  }
-}
-
-section {
-  padding-top: var(--section-py);
-  padding-bottom: var(--section-py);
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
-  position: relative;
-}
-
-section > .container,
-section > .wrap,
-section > .inner {
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-section > *:not(.full-bleed) {
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-section h1,
-section h2 {
-  margin-bottom: var(--space-lg);
-  margin-top: 0;
-}
-
-section h3 {
-  margin-bottom: var(--space-md);
-  margin-top: 0;
-}
-
-section p {
-  margin-bottom: var(--space-md);
-}
-
-section p:last-child {
-  margin-bottom: 0;
-}
-
-.services-grid,
-.cards,
-.grid,
-[class*="grid"] {
-  gap: var(--space-lg);
-}
-
-@media (max-width: 768px) {
-  .services-grid,
-  .cards,
-  .grid,
-  [class*="grid"] {
-    gap: var(--space-md);
-  }
-}
-
-section + section {
-  padding-top: var(--section-py);
-}
-
-footer {
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-lg);
-  padding-left: var(--space-md);
-  padding-right: var(--space-md);
-}
-
-footer > * {
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-/* Reset section defaults for the hero */
-#top,
-section#top,
-.hero,
-section.hero {
-  padding: 0 !important;
-}
-
-/* Don't cap hero children width */
-#top > *,
-section#top > *,
-.hero > *,
-section.hero > * {
-  max-width: none !important;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* Don't touch headings/paragraphs inside hero */
-#top h1,
-#top h2,
-#top h3,
-#top p,
-.hero h1,
-.hero h2,
-.hero h3,
-.hero p {
-  margin-bottom: revert;
-  margin-top: revert;
-
-  padding-right: var(--space-md);
-  position: relative;
-}
-
-section > .container,
-section > .wrap,
-section > .inner {
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-section > *:not(.full-bleed) {
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-section h1,
-section h2 {
-  margin-bottom: var(--space-lg);
-  margin-top: 0;
-}
-
-section h3 {
-  margin-bottom: var(--space-md);
-  margin-top: 0;
-}
-
-section p {
-  margin-bottom: var(--space-md);
 /* =========================================================
    GLOBAL SPACING SYSTEM
    ========================================================= */
@@ -854,6 +690,17 @@ section:not(.hero-section) .grid {
   }
 }
 
+/* Hero gets generous breathing room */
+.hero-section {
+  padding: 120px 20px 100px !important;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 100px 20px 80px !important;
+  }
+}
+
 footer {
   padding: var(--space-2xl) var(--space-md) var(--space-lg);
 }
@@ -863,7 +710,9 @@ footer > * {
   margin: 0 auto;
 }
 </style>
-</header>
+
+
+  /header>
 <main id="main-content" id="top">
 
 <!-- HERO -->
