@@ -1417,6 +1417,67 @@ section:nth-of-type(even) { background: #1a1a1a; }
   });
 })();
 </script>
+<!-- ============================================================
+     MIKEY'S DETAILING — GA4 EVENT TRACKING
+     Paste right before </body> on every page of mikeysdetailing.com
+     Must load AFTER your GA4 gtag snippet.
+     ============================================================ -->
+<script>
+(function () {
+  function ready(fn) {
+    if (document.readyState !== "loading") fn();
+    else document.addEventListener("DOMContentLoaded", fn);
+  }
 
+  function fire(eventName, params) {
+    if (typeof gtag === "function") {
+      gtag("event", eventName, params || {});
+      console.log("[Tracking]", eventName, params || {});
+    } else {
+      console.warn("[Tracking] gtag not loaded:", eventName);
+    }
+  }
+
+  ready(function () {
+
+    // ── PHONE CLICKS ──
+    // Catches any tel: link OR element with data-track="phone"
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest('a[href^="tel:"], [data-track="phone"]');
+      if (!el) return;
+      var phone = el.getAttribute("href") ? el.getAttribute("href").replace("tel:", "") : "";
+      var location = el.getAttribute("data-location") || (el.textContent || "").trim().slice(0, 50);
+      fire("phone_click", { phone_number: phone, button_location: location });
+    }, true);
+
+    // ── QQC FORM SUBMISSIONS ──
+    // Method A: form with id="qqc", class "qqc", or data-track="qqc"
+    document.addEventListener("submit", function (e) {
+      var form = e.target;
+      if (!form) return;
+      var isQqc = form.id === "qqc" ||
+                  form.classList.contains("qqc") ||
+                  form.getAttribute("data-track") === "qqc";
+      if (isQqc) fire("qqc_submission", { source: "form_submit" });
+    }, true);
+
+    // Method B: button click with data-track="qqc-submit"
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest('[data-track="qqc-submit"]');
+      if (!el) return;
+      fire("qqc_submission", { source: "button_click" });
+    }, true);
+
+    // Method C: QQC inside iframe (mikeysquote.netlify.app) sends postMessage
+    window.addEventListener("message", function (e) {
+      if (!e.data) return;
+      if (e.data === "qqc_submitted" || e.data.type === "qqc_submitted") {
+        fire("qqc_submission", { source: "iframe_postmessage" });
+      }
+    });
+
+  });
+})();
+</script>
 </body>
   </html>
