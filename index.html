@@ -286,39 +286,49 @@ section:nth-of-type(even) { background: #1a1a1a; }
   #mikeyHeader img { height: 40px; }
   #mikeyHeader nav { padding: 10px 20px; }
 }
-  /* 1. Target the specific link */
+/* 1. The Button Container */
 header li a[href="#booking"] {
-    display: inline-block;       /* Allows the animation to move the text */
-    font-weight: bold;           /* Makes it bold */
-    color: #ff0000;              /* Makes it red */
-    text-decoration: none;       /* Removes the underline */
-    padding: 10px 15px;
-    transition: all 0.3s ease;   /* Smooth transition for hover effects */
-    
-    /* 2. Apply the animation */
-    animation: pulse-red 2s infinite;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e60000;   /* Bold Red */
+    color: #ffffff;              /* White Text */
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;          /* Rounded corners for the button look */
+    position: relative;          /* Necessary for the shine effect */
+    overflow: hidden;            /* Keeps the shine inside the button */
+    vertical-align: middle;      /* Keeps it lined up with other links */
+    transition: background 0.3s;
 }
 
-/* 3. Define the "Cool" Animation */
-@keyframes pulse-red {
-    0% {
-        transform: scale(1);
-        text-shadow: 0 0 0 rgba(255, 0, 0, 0);
-    }
-    70% {
-        transform: scale(1.05);  /* Slightly grows */
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Glow effect */
-    }
-    100% {
-        transform: scale(1);
-        text-shadow: 0 0 0 rgba(255, 0, 0, 0);
-    }
+/* 2. The "Shine" Effect */
+header li a[href="#booking"]::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;                 /* Start off-screen to the left */
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);    /* Tilts the shine for a cooler look */
+    animation: shine 3s infinite;
 }
 
-/* 4. Optional: Add a hover effect */
+/* 3. The Shine Animation */
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }          /* Fast slide across */
+    100% { left: 100%; }         /* Pause before restarting */
+}
+
+/* 4. Hover State */
 header li a[href="#booking"]:hover {
-    color: #b30000;              /* Darkens slightly on hover */
-    transform: scale(1.1);       /* Grows even more when hovered */
+    background-color: #ff1a1a;   /* Brightens slightly on hover */
 }
 
 /* =========================================================
