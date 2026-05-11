@@ -286,6 +286,40 @@ section:nth-of-type(even) { background: #1a1a1a; }
   #mikeyHeader img { height: 40px; }
   #mikeyHeader nav { padding: 10px 20px; }
 }
+  /* 1. Target the specific link */
+header li a[href="#booking"] {
+    display: inline-block;       /* Allows the animation to move the text */
+    font-weight: bold;           /* Makes it bold */
+    color: #ff0000;              /* Makes it red */
+    text-decoration: none;       /* Removes the underline */
+    padding: 10px 15px;
+    transition: all 0.3s ease;   /* Smooth transition for hover effects */
+    
+    /* 2. Apply the animation */
+    animation: pulse-red 2s infinite;
+}
+
+/* 3. Define the "Cool" Animation */
+@keyframes pulse-red {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    }
+    70% {
+        transform: scale(1.05);  /* Slightly grows */
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Glow effect */
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    }
+}
+
+/* 4. Optional: Add a hover effect */
+header li a[href="#booking"]:hover {
+    color: #b30000;              /* Darkens slightly on hover */
+    transform: scale(1.1);       /* Grows even more when hovered */
+}
 
 /* =========================================================
    HERO
@@ -944,7 +978,7 @@ section:nth-of-type(even) { background: #1a1a1a; }
   </section>
 
   <!-- GALLERY -->
-  <section class="gallery-section" aria-label="Before and after gallery">
+  <section class="beforeafter" aria-label="Before and after gallery">
     <div class="section-inner">
       <div class="gallery-wrapper">
         <iframe
