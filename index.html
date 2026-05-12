@@ -221,64 +221,235 @@ section:nth-of-type(even) { background: #1a1a1a; }
 /* =========================================================
    HEADER / NAV
    ========================================================= */
+/* =========================================================
+   HEADER / NAV — PREMIUM
+   ========================================================= */
 #mikeyHeader {
   position: fixed; top: 0; left: 0; right: 0; width: 100%;
-  background: rgba(0,0,0,0.97);
+  background: 
+    linear-gradient(rgba(10,10,10,0.96), rgba(10,10,10,0.96)),
+    /* carbon fiber weave */
+    repeating-linear-gradient(45deg,
+      rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px,
+      transparent 1px, transparent 4px),
+    repeating-linear-gradient(-45deg,
+      rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px,
+      transparent 1px, transparent 4px),
+    /* hexagon overlay */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'><path d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z M28 34 L56 50 L56 84 L28 100 L0 84 L0 50 Z' fill='none' stroke='%23dc2626' stroke-width='0.4' opacity='0.08'/></svg>"),
+    #0a0a0a;
+  background-size: auto, auto, auto, 56px 100px, auto;
   z-index: 9999;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  border-bottom: 1px solid rgba(220,38,38,0.25);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 0 40px rgba(220,38,38,0.08);
+  backdrop-filter: blur(8px);
 }
+
+/* subtle red glow line at bottom of header */
+#mikeyHeader::after {
+  content: '';
+  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(220,38,38,0.6) 20%,
+    rgba(220,38,38,0.8) 50%,
+    rgba(220,38,38,0.6) 80%,
+    transparent 100%);
+  opacity: 0.7;
+}
+
 #mikeyHeader nav {
   max-width: 1200px; margin: auto;
   display: flex; justify-content: space-between; align-items: center;
   padding: 12px 40px; color: white;
+  position: relative;
 }
-#mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; }
-#desktopMenu { list-style: none; display: flex; gap: 30px; align-items: center; }
-#desktopMenu a {
-  color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem;
-  transition: all 0.2s ease;
-  position: relative; padding-bottom: 2px;
-}
-#desktopMenu a::after {
-  content: ''; position: absolute; bottom: 0; left: 0;
-  width: 0; height: 2px; background: var(--brand-red);
-  transition: width 0.2s ease;
-}
-#desktopMenu a:hover { color: var(--brand-red); }
-#desktopMenu a:hover::after { width: 100%; }
-#desktopMenu a:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
 
-/* Hamburger */
+#mikeyHeader img {
+  height: 50px; width: auto; display: block; cursor: pointer;
+  filter: drop-shadow(0 0 8px rgba(220,38,38,0.3));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+#mikeyHeader img:hover {
+  filter: drop-shadow(0 0 12px rgba(220,38,38,0.6));
+  transform: scale(1.03);
+}
+
+/* Desktop menu */
+#desktopMenu {
+  list-style: none; display: flex; gap: 6px; align-items: center;
+  margin: 0; padding: 0;
+}
+
+#desktopMenu a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  position: relative;
+  transition: color 0.25s ease;
+  display: inline-block;
+}
+
+/* underline sweep */
+#desktopMenu a:not([href="#booking"])::before {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--brand-red), transparent);
+  transition: width 0.35s ease, left 0.35s ease;
+}
+
+/* tiny corner brackets that appear on hover */
+#desktopMenu a:not([href="#booking"])::after {
+  content: '';
+  position: absolute;
+  top: 4px; right: 6px;
+  width: 6px; height: 6px;
+  border-top: 1px solid var(--brand-red);
+  border-right: 1px solid var(--brand-red);
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#desktopMenu a:not([href="#booking"]):hover {
+  color: #fff;
+  text-shadow: 0 0 12px rgba(220,38,38,0.5);
+}
+#desktopMenu a:not([href="#booking"]):hover::before {
+  width: 70%; left: 15%;
+}
+#desktopMenu a:not([href="#booking"]):hover::after {
+  opacity: 1; transform: translate(0,0);
+}
+
+#desktopMenu a:focus-visible {
+  outline: 1px solid var(--brand-red);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* =========================================================
+   BOOK NOW — premium standout button
+   ========================================================= */
+header li a[href="#booking"],
+#desktopMenu a[href="#booking"] {
+  display: inline-block;
+  padding: 11px 22px;
+  margin-left: 14px;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #dc2626 100%);
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 14px rgba(220,38,38,0.4),
+    0 0 0 1px rgba(220,38,38,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* override the old ::after used for shine — rebuild it */
+header li a[href="#booking"]::after,
+#desktopMenu a[href="#booking"]::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  animation: bookShine 3.5s infinite;
+}
+
+@keyframes bookShine {
+  0% { left: -75%; }
+  25% { left: 125%; }
+  100% { left: 125%; }
+}
+
+#desktopMenu a[href="#booking"]:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 22px rgba(220,38,38,0.6),
+    0 0 0 1px rgba(220,38,38,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+#desktopMenu a[href="#booking"]:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   HAMBURGER
+   ========================================================= */
 #hamburgerBtn {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; z-index: 10001;
-  background: none; border: none; padding: 4px;
+  background: none; border: none; padding: 6px;
 }
 #hamburgerBtn span {
-  width: 24px; height: 3px; background: white;
+  width: 26px; height: 2px; background: white;
   border-radius: 2px; transition: all 0.3s ease; display: block;
+  box-shadow: 0 0 4px rgba(220,38,38,0.4);
 }
-#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); }
+#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
 #hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); }
+#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
 
-/* Mobile menu */
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
 #mobileMenu {
   list-style: none; position: absolute; top: 100%; left: 0;
-  width: 100%; background: rgba(0,0,0,0.99);
+  width: 100%;
+  background:
+    linear-gradient(rgba(10,10,10,0.98), rgba(10,10,10,0.98)),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'><path d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z' fill='none' stroke='%23dc2626' stroke-width='0.4' opacity='0.1'/></svg>"),
+    #0a0a0a;
+  background-size: auto, 56px 100px, auto;
   max-height: 0; opacity: 0; overflow: hidden;
-  transition: max-height 0.35s ease, opacity 0.25s ease;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  border-top: 1px solid rgba(220,38,38,0.2);
+  margin: 0; padding: 0;
 }
 #mobileMenu.open { max-height: 600px; opacity: 1; }
-#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.06); }
 #mobileMenu li:last-child { border-bottom: none; }
 #mobileMenu a {
   color: white; text-decoration: none;
-  padding: 16px 24px; display: block; font-size: 1rem; font-weight: 500;
-  transition: background 0.15s, padding-left 0.15s;
+  padding: 18px 24px; display: block;
+  font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s, padding-left 0.2s, color 0.2s;
+  position: relative;
 }
-#mobileMenu a:hover { background: rgba(220,38,38,0.15); padding-left: 30px; }
-#mobileMenu a:focus-visible { outline: 2px solid var(--brand-red); outline-offset: -2px; }
+#mobileMenu a::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0; background: var(--brand-red);
+  transition: width 0.2s ease;
+}
+#mobileMenu a:hover {
+  background: rgba(220,38,38,0.1);
+  padding-left: 34px;
+  color: var(--brand-red);
+}
+#mobileMenu a:hover::before { width: 3px; }
+#mobileMenu a:focus-visible { outline: 1px solid var(--brand-red); outline-offset: -2px; }
 
 @media (max-width: 768px) {
   #desktopMenu { display: none !important; }
@@ -286,51 +457,6 @@ section:nth-of-type(even) { background: #1a1a1a; }
   #mikeyHeader img { height: 40px; }
   #mikeyHeader nav { padding: 10px 20px; }
 }
-/* 1. The Button Container */
-header li a[href="#booking"] {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #e60000;   /* Bold Red */
-    color: #ffffff;              /* White Text */
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;          /* Rounded corners for the button look */
-    position: relative;          /* Necessary for the shine effect */
-    overflow: hidden;            /* Keeps the shine inside the button */
-    vertical-align: middle;      /* Keeps it lined up with other links */
-    transition: background 0.3s;
-}
-
-/* 2. The "Shine" Effect */
-header li a[href="#booking"]::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;                 /* Start off-screen to the left */
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(
-        to right, 
-        rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.3) 50%, 
-        rgba(255, 255, 255, 0) 100%
-    );
-    transform: skewX(-25deg);    /* Tilts the shine for a cooler look */
-    animation: shine 3s infinite;
-}
-
-/* 3. The Shine Animation */
-@keyframes shine {
-    0% { left: -100%; }
-    20% { left: 100%; }          /* Fast slide across */
-    100% { left: 100%; }         /* Pause before restarting */
-}
-
-/* 4. Hover State */
-header li a[href="#booking"]:hover {
-    background-color: #ff1a1a;   /* Brightens slightly on hover */
-}
-
 /* =========================================================
    HERO
    ========================================================= */
