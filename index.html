@@ -219,82 +219,224 @@ section:nth-of-type(even) { background: #1a1a1a; }
 }
 
 /* =========================================================
-   HEADER / NAV
+   SUPER HEADER — carbon fiber, hex, brackets, scanline,
+   scroll progress, shrink, status pill, review badge
    ========================================================= */
-/* =========================================================
-   HEADER / NAV — PREMIUM
-   ========================================================= */
+
+/* push body down so fixed header doesn't cover content */
+body { padding-top: 90px; }
+
 #mikeyHeader {
   position: fixed; top: 0; left: 0; right: 0; width: 100%;
-  background: 
-    linear-gradient(rgba(10,10,10,0.96), rgba(10,10,10,0.96)),
-    /* carbon fiber weave */
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='140' viewBox='0 0 80 140'><path d='M40 0 L80 23 L80 70 L40 93 L0 70 L0 23 Z M40 47 L80 70 L80 117 L40 140 L0 117 L0 70 Z' fill='none' stroke='%23dc2626' stroke-width='1' opacity='0.18'/></svg>"),
     repeating-linear-gradient(45deg,
-      rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px,
-      transparent 1px, transparent 4px),
+      rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px,
+      transparent 1px, transparent 3px),
     repeating-linear-gradient(-45deg,
-      rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px,
-      transparent 1px, transparent 4px),
-    /* hexagon overlay */
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'><path d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z M28 34 L56 50 L56 84 L28 100 L0 84 L0 50 Z' fill='none' stroke='%23dc2626' stroke-width='0.4' opacity='0.08'/></svg>"),
-    #0a0a0a;
-  background-size: auto, auto, auto, 56px 100px, auto;
+      rgba(0,0,0,0.4) 0px, rgba(0,0,0,0.4) 1px,
+      transparent 1px, transparent 3px),
+    linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(10,10,10,0.92) 100%);
+  background-size: 80px 140px, auto, auto, auto;
   z-index: 9999;
-  border-bottom: 1px solid rgba(220,38,38,0.25);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.6), 0 0 40px rgba(220,38,38,0.08);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(220,38,38,0.1);
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* subtle red glow line at bottom of header */
+/* CORNER BRACKETS — military/gaming aesthetic */
+#mikeyHeader::before,
 #mikeyHeader::after {
   content: '';
-  position: absolute; bottom: -1px; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(220,38,38,0.6) 20%,
-    rgba(220,38,38,0.8) 50%,
-    rgba(220,38,38,0.6) 80%,
-    transparent 100%);
-  opacity: 0.7;
+  position: absolute;
+  width: 24px; height: 24px;
+  pointer-events: none;
+  z-index: 2;
+}
+#mikeyHeader::before {
+  top: 8px; left: 8px;
+  border-top: 2px solid var(--brand-red);
+  border-left: 2px solid var(--brand-red);
+  box-shadow: -1px -1px 8px rgba(220,38,38,0.4);
+}
+#mikeyHeader::after {
+  top: 8px; right: 8px;
+  border-top: 2px solid var(--brand-red);
+  border-right: 2px solid var(--brand-red);
+  box-shadow: 1px -1px 8px rgba(220,38,38,0.4);
 }
 
+/* SCANLINE — subtle horizontal sweep */
+#mikeyHeader nav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(220,38,38,0.6), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes scanline {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(80px); opacity: 0; }
+}
+
+/* ANIMATED PULSE LINE — bottom edge */
+#mikeyHeader > .pulse-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(220,38,38,0.3) 30%,
+    rgba(220,38,38,1) 50%,
+    rgba(220,38,38,0.3) 70%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: pulseSlide 3s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes pulseSlide {
+  0% { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* SCROLL PROGRESS BAR — very bottom */
+#mikeyHeader > .scroll-progress {
+  position: absolute;
+  bottom: -2px; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(90deg, #dc2626, #ff4444, #dc2626);
+  box-shadow: 0 0 12px rgba(220,38,38,0.8);
+  transition: width 0.1s ease-out;
+  z-index: 3;
+}
+
+/* NAV LAYOUT */
 #mikeyHeader nav {
   max-width: 1200px; margin: auto;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 40px; color: white;
+  padding: 14px 40px; color: white;
   position: relative;
+  transition: padding 0.3s ease;
 }
 
+/* SHRINK STATE */
+#mikeyHeader.shrunk { box-shadow: 0 2px 30px rgba(0,0,0,0.9), 0 0 50px rgba(220,38,38,0.15); }
+#mikeyHeader.shrunk nav { padding: 6px 40px; }
+#mikeyHeader.shrunk img { height: 38px; }
+#mikeyHeader.shrunk .header-left { gap: 12px; }
+#mikeyHeader.shrunk .status-pill { transform: scale(0.9); }
+#mikeyHeader.shrunk .review-badge { opacity: 0; transform: scale(0.8); pointer-events: none; }
+
+/* LEFT GROUP — logo + status */
+.header-left {
+  display: flex; align-items: center; gap: 18px;
+  transition: gap 0.3s ease;
+}
+
+/* LOGO + GLOW RING */
+.logo-wrap {
+  position: relative;
+  display: inline-block;
+}
+.logo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+    transparent 0deg,
+    rgba(220,38,38,0.5) 60deg,
+    transparent 120deg,
+    transparent 360deg);
+  animation: ringSpin 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  filter: blur(8px);
+}
+.logo-wrap:hover::before { opacity: 1; }
+@keyframes ringSpin {
+  to { transform: rotate(360deg); }
+}
 #mikeyHeader img {
   height: 50px; width: auto; display: block; cursor: pointer;
+  position: relative; z-index: 1;
   filter: drop-shadow(0 0 8px rgba(220,38,38,0.3));
-  transition: filter 0.3s ease, transform 0.3s ease;
+  transition: filter 0.3s ease, height 0.3s ease;
 }
-#mikeyHeader img:hover {
-  filter: drop-shadow(0 0 12px rgba(220,38,38,0.6));
-  transform: scale(1.03);
+.logo-wrap:hover img {
+  filter: drop-shadow(0 0 14px rgba(220,38,38,0.7));
 }
 
-/* Desktop menu */
+/* STATUS PILL */
+.status-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 11px;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid rgba(34,197,94,0.4);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #4ade80;
+  transition: transform 0.3s ease;
+}
+.status-pill .dot {
+  width: 7px; height: 7px;
+  background: #22c55e; border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+}
+
+/* RIGHT GROUP */
+.header-right {
+  display: flex; align-items: center; gap: 18px;
+}
+
+/* REVIEW BADGE */
+.review-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.review-badge .stars { color: #facc15; letter-spacing: 0.05em; }
+.review-badge .count { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+/* DESKTOP MENU */
 #desktopMenu {
-  list-style: none; display: flex; gap: 6px; align-items: center;
+  list-style: none; display: flex; gap: 4px; align-items: center;
   margin: 0; padding: 0;
 }
-
 #desktopMenu a {
   color: rgba(255,255,255,0.85);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 10px 18px;
+  padding: 10px 16px;
   position: relative;
   transition: color 0.25s ease;
   display: inline-block;
 }
-
-/* underline sweep */
 #desktopMenu a:not([href="#booking"])::before {
   content: '';
   position: absolute;
@@ -303,8 +445,6 @@ section:nth-of-type(even) { background: #1a1a1a; }
   background: linear-gradient(90deg, transparent, var(--brand-red), transparent);
   transition: width 0.35s ease, left 0.35s ease;
 }
-
-/* tiny corner brackets that appear on hover */
 #desktopMenu a:not([href="#booking"])::after {
   content: '';
   position: absolute;
@@ -316,36 +456,28 @@ section:nth-of-type(even) { background: #1a1a1a; }
   transform: translate(-4px, 4px);
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
-
 #desktopMenu a:not([href="#booking"]):hover {
   color: #fff;
   text-shadow: 0 0 12px rgba(220,38,38,0.5);
 }
-#desktopMenu a:not([href="#booking"]):hover::before {
-  width: 70%; left: 15%;
-}
-#desktopMenu a:not([href="#booking"]):hover::after {
-  opacity: 1; transform: translate(0,0);
-}
-
+#desktopMenu a:not([href="#booking"]):hover::before { width: 70%; left: 15%; }
+#desktopMenu a:not([href="#booking"]):hover::after { opacity: 1; transform: translate(0,0); }
 #desktopMenu a:focus-visible {
   outline: 1px solid var(--brand-red);
   outline-offset: 4px;
   border-radius: 2px;
 }
 
-/* =========================================================
-   BOOK NOW — premium standout button
-   ========================================================= */
+/* BOOK NOW BUTTON */
 header li a[href="#booking"],
 #desktopMenu a[href="#booking"] {
   display: inline-block;
   padding: 11px 22px;
-  margin-left: 14px;
+  margin-left: 10px;
   background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #dc2626 100%);
   color: #fff !important;
   font-weight: 800;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
@@ -359,8 +491,6 @@ header li a[href="#booking"],
     inset 0 1px 0 rgba(255,255,255,0.2);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
-
-/* override the old ::after used for shine — rebuild it */
 header li a[href="#booking"]::after,
 #desktopMenu a[href="#booking"]::after {
   content: '';
@@ -374,13 +504,11 @@ header li a[href="#booking"]::after,
   transform: skewX(-25deg);
   animation: bookShine 3.5s infinite;
 }
-
 @keyframes bookShine {
   0% { left: -75%; }
   25% { left: 125%; }
   100% { left: 125%; }
 }
-
 #desktopMenu a[href="#booking"]:hover {
   transform: translateY(-2px);
   box-shadow:
@@ -388,14 +516,9 @@ header li a[href="#booking"]::after,
     0 0 0 1px rgba(220,38,38,0.5),
     inset 0 1px 0 rgba(255,255,255,0.3);
 }
+#desktopMenu a[href="#booking"]:active { transform: translateY(0); }
 
-#desktopMenu a[href="#booking"]:active {
-  transform: translateY(0);
-}
-
-/* =========================================================
-   HAMBURGER
-   ========================================================= */
+/* HAMBURGER */
 #hamburgerBtn {
   display: none; flex-direction: column; gap: 5px;
   cursor: pointer; z-index: 10001;
@@ -410,9 +533,7 @@ header li a[href="#booking"]::after,
 #hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 #hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
 
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
+/* MOBILE MENU */
 #mobileMenu {
   list-style: none; position: absolute; top: 100%; left: 0;
   width: 100%;
@@ -451,11 +572,20 @@ header li a[href="#booking"]::after,
 #mobileMenu a:hover::before { width: 3px; }
 #mobileMenu a:focus-visible { outline: 1px solid var(--brand-red); outline-offset: -2px; }
 
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+  body { padding-top: 70px; }
   #desktopMenu { display: none !important; }
   #hamburgerBtn { display: flex !important; }
-  #mikeyHeader img { height: 40px; }
-  #mikeyHeader nav { padding: 10px 20px; }
+  #mikeyHeader img { height: 38px; }
+  #mikeyHeader nav { padding: 10px 16px; }
+  #mikeyHeader::before, #mikeyHeader::after { width: 16px; height: 16px; top: 5px; }
+  #mikeyHeader::before { left: 5px; }
+  #mikeyHeader::after { right: 5px; }
+  .status-pill { padding: 4px 8px; font-size: 0.62rem; }
+  .status-pill .dot { width: 6px; height: 6px; }
+  .review-badge { display: none; }
+  .header-left { gap: 10px; }
 }
 /* =========================================================
    HERO
