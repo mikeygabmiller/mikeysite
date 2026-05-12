@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exterior Car Detailing in Snohomish, WA | Mikey's Mobile Detailing</title>
+<meta name="description" content="Mobile exterior car detailing in Snohomish, WA. Hand wash, wheel deep clean, tire dressing, spray sealant. From $130. I come to your driveway. Get an instant quote.">
+<link rel="canonical" href="https://mikeysdetailing.com/exterior-detailing-snohomish/">
+
+<meta property="og:title" content="Exterior Car Detailing in Snohomish, WA | Mikey's Mobile Detailing">
+<meta property="og:description" content="Hand wash, wheels, tires, sealant protection. I come to your driveway in Snohomish. From $130.">
+<meta property="og:url" content="https://mikeysdetailing.com/exterior-detailing-snohomish/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://iili.io/qKtjLcx.jpg">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","serviceType":"Exterior Car Detailing","provider":{"@type":"LocalBusiness","name":"Mikey's Mobile Detailing","telephone":"+1-360-797-5831","email":"book@mikeysdetailing.com","address":{"@type":"PostalAddress","addressLocality":"Snohomish","addressRegion":"WA","addressCountry":"US"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"38"}},"areaServed":{"@type":"City","name":"Snohomish"},"offers":{"@type":"Offer","priceCurrency":"USD","price":"130","priceSpecification":{"@type":"PriceSpecification","minPrice":"130","maxPrice":"200","priceCurrency":"USD"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does exterior car detailing cost in Snohomish?","acceptedAnswer":{"@type":"Answer","text":"Exterior detailing in Snohomish runs $130–$200 depending on vehicle size."}},{"@type":"Question","name":"How long does an exterior detail take?","acceptedAnswer":{"@type":"Answer","text":"Most exterior details take 1.5–2.5 hours. Heavy mud, sap, or oxidation can push it longer."}},{"@type":"Question","name":"Do you need access to water and power?","acceptedAnswer":{"@type":"Answer","text":"No. I bring my own water and power. All I need is a spot to park your car."}},{"@type":"Question","name":"Will the sealant protect my paint long term?","acceptedAnswer":{"@type":"Answer","text":"The included spray sealant gives 2–3 months of protection. For multi-year protection, look at ceramic coating."}}]}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root { --brand-red: #dc2626; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #141414; color: #ffffff; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 90px; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* HEADER */
+#mikeyHeader { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='140' viewBox='0 0 80 140'><path d='M40 0 L80 23 L80 70 L40 93 L0 70 L0 23 Z M40 47 L80 70 L80 117 L40 140 L0 117 L0 70 Z' fill='none' stroke='%23dc2626' stroke-width='1' opacity='0.18'/></svg>"), repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 3px), repeating-linear-gradient(-45deg, rgba(0,0,0,0.4) 0px, rgba(0,0,0,0.4) 1px, transparent 1px, transparent 3px), linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(10,10,10,0.92) 100%); background-size: 80px 140px, auto, auto, auto; z-index: 9999; backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); box-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(220,38,38,0.1); transition: padding 0.3s ease, box-shadow 0.3s ease; }
+#mikeyHeader::before, #mikeyHeader::after { content: ''; position: absolute; width: 24px; height: 24px; pointer-events: none; z-index: 2; }
+#mikeyHeader::before { top: 8px; left: 8px; border-top: 2px solid var(--brand-red); border-left: 2px solid var(--brand-red); box-shadow: -1px -1px 8px rgba(220,38,38,0.4); }
+#mikeyHeader::after { top: 8px; right: 8px; border-top: 2px solid var(--brand-red); border-right: 2px solid var(--brand-red); box-shadow: 1px -1px 8px rgba(220,38,38,0.4); }
+#mikeyHeader nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(220,38,38,0.6), transparent); animation: scanline 4s linear infinite; pointer-events: none; z-index: 1; }
+@keyframes scanline { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(80px); opacity: 0; } }
+#mikeyHeader > .pulse-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(220,38,38,0.3) 30%, rgba(220,38,38,1) 50%, rgba(220,38,38,0.3) 70%, transparent 100%); background-size: 200% 100%; animation: pulseSlide 3s ease-in-out infinite; z-index: 2; }
+@keyframes pulseSlide { 0% { background-position: 200% 0; } 100% { background-position: -100% 0; } }
+#mikeyHeader > .scroll-progress { position: absolute; bottom: -2px; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #dc2626, #ff4444, #dc2626); box-shadow: 0 0 12px rgba(220,38,38,0.8); transition: width 0.1s ease-out; z-index: 3; }
+#mikeyHeader nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 40px; color: white; position: relative; transition: padding 0.3s ease; }
+#mikeyHeader.shrunk { box-shadow: 0 2px 30px rgba(0,0,0,0.9), 0 0 50px rgba(220,38,38,0.15); }
+#mikeyHeader.shrunk nav { padding: 6px 40px; }
+#mikeyHeader.shrunk img { height: 38px; }
+#mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; filter: drop-shadow(0 0 8px rgba(220,38,38,0.3)); transition: filter 0.3s ease, height 0.3s ease; }
+#mikeyHeader img:hover { filter: drop-shadow(0 0 14px rgba(220,38,38,0.7)); }
+#desktopMenu { list-style: none; display: flex; gap: 4px; align-items: center; margin: 0; padding: 0; }
+#desktopMenu a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px; position: relative; transition: color 0.25s ease; display: inline-block; }
+#desktopMenu a:not([href*="booking"])::before { content: ''; position: absolute; bottom: 4px; left: 50%; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brand-red), transparent); transition: width 0.35s ease, left 0.35s ease; }
+#desktopMenu a:not([href*="booking"])::after { content: ''; position: absolute; top: 4px; right: 6px; width: 6px; height: 6px; border-top: 1px solid var(--brand-red); border-right: 1px solid var(--brand-red); opacity: 0; transform: translate(-4px, 4px); transition: opacity 0.25s ease, transform 0.25s ease; }
+#desktopMenu a:not([href*="booking"]):hover { color: #fff; text-shadow: 0 0 12px rgba(220,38,38,0.5); }
+#desktopMenu a:not([href*="booking"]):hover::before { width: 70%; left: 15%; }
+#desktopMenu a:not([href*="booking"]):hover::after { opacity: 1; transform: translate(0,0); }
+#desktopMenu a[href*="booking"] { display: inline-block; padding: 11px 22px; margin-left: 10px; background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #dc2626 100%); color: #fff !important; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; position: relative; overflow: hidden; box-shadow: 0 4px 14px rgba(220,38,38,0.4), 0 0 0 1px rgba(220,38,38,0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.2s ease, box-shadow 0.3s ease; }
+#desktopMenu a[href*="booking"]::after { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); animation: bookShine 3.5s infinite; }
+@keyframes bookShine { 0% { left: -75%; } 25% { left: 125%; } 100% { left: 125%; } }
+#desktopMenu a[href*="booking"]:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(220,38,38,0.6), 0 0 0 1px rgba(220,38,38,0.5), inset 0 1px 0 rgba(255,255,255,0.3); }
+#hamburgerBtn { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 10001; background: none; border: none; padding: 6px; }
+#hamburgerBtn span { width: 26px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s ease; display: block; box-shadow: 0 0 4px rgba(220,38,38,0.4); }
+#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
+#hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
+#mobileMenu { list-style: none; position: absolute; top: 100%; left: 0; width: 100%; background: linear-gradient(rgba(10,10,10,0.98), rgba(10,10,10,0.98)), #0a0a0a; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; border-top: 1px solid rgba(220,38,38,0.2); margin: 0; padding: 0; }
+#mobileMenu.open { max-height: 600px; opacity: 1; }
+#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+#mobileMenu li:last-child { border-bottom: none; }
+#mobileMenu a { color: white; text-decoration: none; padding: 18px 24px; display: block; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, padding-left 0.2s, color 0.2s; position: relative; }
+#mobileMenu a::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--brand-red); transition: width 0.2s ease; }
+#mobileMenu a:hover { background: rgba(220,38,38,0.1); padding-left: 34px; color: var(--brand-red); }
+#mobileMenu a:hover::before { width: 3px; }
+@media (max-width: 768px) {
+  body { padding-top: 70px; }
+  #desktopMenu { display: none !important; }
+  #hamburgerBtn { display: flex !important; }
+  #mikeyHeader img { height: 38px; }
+  #mikeyHeader nav { padding: 10px 16px; }
+  #mikeyHeader::before, #mikeyHeader::after { width: 16px; height: 16px; top: 5px; }
+  #mikeyHeader::before { left: 5px; }
+  #mikeyHeader::after { right: 5px; }
+}
+
+/* PAGE */
+.hero { padding: 80px 0 60px; border-bottom: 2px solid #2a2a2a; }
+.eyebrow { color: #dc2626; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+h1 { font-weight: 900; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px; }
+h1 em { color: #dc2626; font-style: normal; }
+.hero-sub { font-size: 18px; max-width: 600px; margin-bottom: 28px; color: #cccccc; }
+.price-tag { display: inline-block; border: 2px solid #dc2626; padding: 10px 18px; font-weight: 900; font-size: 18px; margin-bottom: 32px; }
+.price-tag span { color: #dc2626; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 16px 28px; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid #dc2626; background: #dc2626; color: #fff; transition: all 0.15s ease; cursor: pointer; }
+.btn:hover { background: transparent; color: #dc2626; }
+.btn-outline { background: transparent; color: #fff; border-color: #fff; }
+.btn-outline:hover { border-color: #dc2626; color: #dc2626; background: transparent; }
+.image-slot { margin-top: 48px; border: 2px solid #2a2a2a; aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #444; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+section.content-section { padding: 72px 0; border-bottom: 2px solid #2a2a2a; }
+h2 { font-weight: 900; font-size: clamp(32px, 4vw, 44px); letter-spacing: -1px; margin-bottom: 16px; line-height: 1.1; }
+h2 em { color: #dc2626; font-style: normal; }
+.section-intro { font-size: 17px; color: #cccccc; max-width: 650px; margin-bottom: 40px; }
+.section-intro a { color: #dc2626; font-weight: 700; }
+.checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.check-item { border: 2px solid #2a2a2a; padding: 20px 22px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.15s ease; }
+.check-item:hover { border-color: #dc2626; }
+.check-icon { color: #dc2626; font-weight: 900; font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+.check-text { font-weight: 600; font-size: 15px; }
+.check-text small { display: block; font-weight: 400; font-size: 13px; color: #999; margin-top: 4px; }
+.time-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.time-card { border: 2px solid #2a2a2a; padding: 24px; }
+.time-card .vehicle { color: #dc2626; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.time-card .duration { font-weight: 900; font-size: 32px; letter-spacing: -1px; }
+.time-card .note { font-size: 14px; color: #999; margin-top: 6px; }
+.price-push { border: 2px solid #dc2626; padding: 36px; text-align: center; background: #1a0a0a; }
+.price-push h3 { font-weight: 900; font-size: 28px; margin-bottom: 12px; letter-spacing: -0.5px; }
+.price-push p { color: #cccccc; margin-bottom: 20px; }
+.price-push p a { color: #dc2626; font-weight: 700; }
+.price-range { font-weight: 900; font-size: 48px; color: #dc2626; margin: 16px 0 8px; letter-spacing: -2px; }
+.price-range-note { color: #999; font-size: 14px; margin-bottom: 24px; }
+.faq-item { border-bottom: 2px solid #2a2a2a; padding: 24px 0; }
+.faq-item:last-child { border-bottom: none; }
+.faq-q { font-weight: 900; font-size: 19px; margin-bottom: 10px; letter-spacing: -0.3px; }
+.faq-q::before { content: "Q. "; color: #dc2626; }
+.faq-a { color: #cccccc; font-size: 16px; }
+.faq-a a { color: #dc2626; font-weight: 700; }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.link-card { border: 2px solid #2a2a2a; padding: 24px; display: block; transition: border-color 0.15s ease, transform 0.15s ease; }
+.link-card:hover { border-color: #dc2626; transform: translateY(-2px); }
+.link-card .label { color: #dc2626; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.link-card .title { font-weight: 900; font-size: 18px; margin-bottom: 8px; letter-spacing: -0.3px; }
+.link-card .desc { color: #999; font-size: 14px; line-height: 1.5; }
+.link-card .arrow { color: #dc2626; font-weight: 900; margin-top: 12px; font-size: 14px; }
+
+/* FOOTER */
+footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px solid #2a2a2a; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
+.footer-col h4 { font-weight: 900; font-size: 16px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+.footer-col p { color: #999; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+.footer-col ul { list-style: none; padding: 0; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: #999; font-size: 14px; transition: color 0.15s ease; }
+.footer-col a:hover { color: #dc2626; }
+.footer-cta { display: inline-block; margin-top: 12px; padding: 12px 22px; background: #dc2626; color: #fff !important; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid #dc2626; transition: all 0.15s ease; }
+.footer-cta:hover { background: transparent; color: #dc2626 !important; }
+.footer-bottom { border-top: 1px solid #2a2a2a; padding-top: 24px; text-align: center; color: #555; font-size: 13px; }
+</style>
+</head>
+<body id="top">
+
+<header id="mikeyHeader">
+  <nav>
+    <a href="https://mikeysdetailing.com/" aria-label="Home">
+      <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing logo">
+    </a>
+    <ul id="desktopMenu">
+      <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
+      <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
+      <li><a href="https://mikeysdetailing.com/#about">About</a></li>
+      <li><a href="https://mikeysdetailing.com/#beforeafter">Before/After</a></li>
+      <li><a href="https://mikeysdetailing.com/#booking">BOOK NOW</a></li>
+    </ul>
+    <button id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="mobileMenu">
+      <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
+      <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
+      <li><a href="https://mikeysdetailing.com/#about">About</a></li>
+      <li><a href="https://mikeysdetailing.com/#qanda">FAQ</a></li>
+      <li><a href="https://mikeysdetailing.com/#booking">Book Now</a></li>
+    </ul>
+    <div class="pulse-line"></div>
+    <div class="scroll-progress"></div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Snohomish, WA · Mobile Service</div>
+    <h1>Exterior Car Detailing <em>In Snohomish.</em></h1>
+    <p class="hero-sub">Outside-only hand wash, wheel deep clean, tire dressing, sealant protection. I bring water and power to your driveway. You don't pay until you love it.</p>
+    <div class="price-tag">From <span>$130</span> · Most cars $130–$200</div>
+    <div class="cta-row">
+      <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Instant Quote →</a>
+      <a href="#included" class="btn btn-outline">See What's Included</a>
+    </div>
+    <div class="image-slot">[ IMAGE SLOT — replace with exterior shot ]</div>
+  </div>
+</section>
+
+<section class="content-section" id="included">
+  <div class="container">
+    <h2>What's <em>Included.</em></h2>
+    <p class="section-intro">Same checklist every time. No upsells mid-job, no surprise fees. Everything below is in the base price.</p>
+    <div class="checklist">
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Full hand wash &amp; dry<small>Two-bucket method. No drive-thru scratches.</small></div></div>
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Tire &amp; wheel deep clean<small>Brake dust pulled out of barrels and lugs.</small></div></div>
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Tire dressing applied<small>Clean satin finish — not greasy, not sticky.</small></div></div>
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Exterior windows cleaned<small>Streak-free glass, all sides, mirrors included.</small></div></div>
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Spray sealant protection<small>2–3 months of beading and easier cleaning.</small></div></div>
+      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Door jambs wiped down<small>The dirty edge you see when the door opens — gone.</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2>How Long It <em>Takes.</em></h2>
+    <p class="section-intro">Real numbers based on what I see day to day in Snohomish. Heavy mud, sap, or oxidation pushes the high end. <a href="https://mikeysdetailing.com/how-long-does-car-detailing-take/">See the full time breakdown →</a></p>
+    <div class="time-grid">
+      <div class="time-card"><div class="vehicle">Sedan / Coupe</div><div class="duration">1.5 hrs</div><div class="note">Civic, Camry, Accord, etc.</div></div>
+      <div class="time-card"><div class="vehicle">SUV / Crossover</div><div class="duration">2 hrs</div><div class="note">RAV4, CR-V, Highlander, etc.</div></div>
+      <div class="time-card"><div class="vehicle">Full-Size Truck</div><div class="duration">2.5 hrs</div><div class="note">F-150, Silverado, Ram, Tundra.</div></div>
+      <div class="time-card"><div class="vehicle">Heavy Condition</div><div class="duration">+30 min</div><div class="note">Mud, sap, oxidation, sun damage.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <div class="price-push">
+      <h3>Exterior Detail Pricing</h3>
+      <p>Pricing scales with vehicle size and condition.</p>
+      <div class="price-range">$130–$200</div>
+      <p class="price-range-note">Sedans on the low end, full-size trucks on the high end. See the <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/">full Snohomish County pricing breakdown</a>.</p>
+      <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Exact Quote →</a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2>Common <em>Questions.</em></h2>
+    <div class="faq-item"><div class="faq-q">How much does exterior car detailing cost in Snohomish?</div><div class="faq-a">Exterior detailing in Snohomish runs $130–$200 depending on vehicle size. Sedans land near the low end, full-size trucks near the top. Use the quote calculator on the homepage for an exact price, or see the <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/">full pricing breakdown</a>.</div></div>
+    <div class="faq-item"><div class="faq-q">How long does an exterior detail take?</div><div class="faq-a">Most exterior details take 1.5–2.5 hours. Heavy mud, sap, or oxidation can push it longer. <a href="https://mikeysdetailing.com/how-long-does-car-detailing-take/">See the full time breakdown</a>.</div></div>
+    <div class="faq-item"><div class="faq-q">Do you need access to water and power?</div><div class="faq-a">Nope. I bring my own water tank and power. All I need is a spot to park your car — driveway, parking lot, or street works fine.</div></div>
+    <div class="faq-item"><div class="faq-q">Will the sealant protect my paint long term?</div><div class="faq-a">The included spray sealant gives roughly 2–3 months of protection — water beading, easier cleaning, light UV defense. For multi-year protection, look at <a href="https://mikeysdetailing.com/ceramic-coating-snohomish-county/">ceramic coating</a>.</div></div>
+    <div class="faq-item"><div class="faq-q">What if it rains on my appointment day?</div><div class="faq-a">Light rain isn't an issue — I work under cover or reschedule on the spot at no charge. Heavy rain or a downpour, I'll reach out the day before and we'll find a better time.</div></div>
+    <div class="faq-item"><div class="faq-q">Do I need to be home during the service?</div><div class="faq-a">No. As long as I have access to the car and a place to park, you can be at work or running errands. I'll text when I'm done.</div></div>
+    <div class="faq-item"><div class="faq-q">What areas around Snohomish do you cover?</div><div class="faq-a">I'm based in Snohomish and serve <a href="https://mikeysdetailing.com/monroe">Monroe</a>, <a href="https://mikeysdetailing.com/lake-stevens">Lake Stevens</a>, Everett, Bothell, <a href="https://mikeysdetailing.com/mill-creek">Mill Creek</a>, <a href="https://mikeysdetailing.com/duvall">Duvall</a>, and surrounding Snohomish County. Not sure if I cover yours? <a href="tel:+13607975831">Give me a call.</a></div></div>
+    <div class="faq-item"><div class="faq-q">What if I'm not happy with the result?</div><div class="faq-a">We do a walkthrough together when I'm done. Anything off gets fixed on the spot. Notice something later? I come back free. Still not 100%? Full refund. I don't leave until you love it.</div></div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2>Keep <em>Exploring.</em></h2>
+    <p class="section-intro">Related services, areas, and guides to help you pick the right package.</p>
+    <div class="link-grid">
+      <a href="https://mikeysdetailing.com/#booking" class="link-card">
+        <div class="label">Pair It Up</div>
+        <div class="title">Full Detail Package</div>
+        <div class="desc">Interior + exterior together. Saves $30 vs. booking separately. From $260.</div>
+        <div class="arrow">View full detail →</div>
+      </a>
+      <a href="/interior-detailing-snohomish/" class="link-card">
+        <div class="label">Inside Only</div>
+        <div class="title">Interior Detailing</div>
+        <div class="desc">Full vacuum, steam clean, leather, dashboard. From $160.</div>
+        <div class="arrow">See interior page →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/ceramic-coating-snohomish-county/" class="link-card">
+        <div class="label">Long-Term Protection</div>
+        <div class="title">Ceramic Coating</div>
+        <div class="desc">Multi-year paint protection. Water beads, dirt wipes off. From $500.</div>
+        <div class="arrow">See ceramic packages →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/truck-detailing-snohomish-county/" class="link-card">
+        <div class="label">Built For Trucks</div>
+        <div class="title">Truck Detailing</div>
+        <div class="desc">F-150s, Silverados, Rams, Tundras. Bed cleanouts, mud, full interior.</div>
+        <div class="arrow">See truck packages →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/" class="link-card">
+        <div class="label">Pricing Guide</div>
+        <div class="title">What Detailing Costs</div>
+        <div class="desc">Real local pricing by package. No bait-and-switch.</div>
+        <div class="arrow">See full pricing →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/mobile-detailing-vs-car-wash/" class="link-card">
+        <div class="label">Decide What You Need</div>
+        <div class="title">Detail vs. Car Wash</div>
+        <div class="desc">Honest comparison. Sometimes a wash is fine — sometimes it's not.</div>
+        <div class="arrow">Read comparison →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/lake-stevens" class="link-card">
+        <div class="label">Service Area</div>
+        <div class="title">Lake Stevens</div>
+        <div class="desc">Mobile detailing in Lake Stevens — I come to your driveway.</div>
+        <div class="arrow">See Lake Stevens →</div>
+      </a>
+      <a href="https://mikeysdetailing.com/monroe" class="link-card">
+        <div class="label">Service Area</div>
+        <div class="title">Monroe</div>
+        <div class="desc">Mobile detailing in Monroe — driveway service, no shop trip.</div>
+        <div class="arrow">See Monroe →</div>
+      </a>
+      <a href="https://blog.mikeysdetailing.com" class="link-card">
+        <div class="label">Reading</div>
+        <div class="title">Car Care Blog</div>
+        <div class="desc">PNW-specific detailing tips. Rain, sap, pollen — handled.</div>
+        <div class="arrow">Read the blog →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" style="border-bottom:none;">
+  <div class="container" style="text-align:center;">
+    <h2>Ready For A <em>Showroom Shine?</em></h2>
+    <p class="section-intro" style="margin: 0 auto 32px;">Book online in about 60 seconds. I'll bring everything — water, power, products. You don't pay until you're happy with the result.</p>
+    <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Instant Quote →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Mikey's Mobile Detailing</h4>
+        <p>Professional mobile car detailing in Snohomish County — serving Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and nearby areas.</p>
+        <a href="https://mikeysdetailing.com/#booking" class="footer-cta">Book Your Detail →</a>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
+          <li><a href="https://mikeysdetailing.com/#booking">Book Now</a></li>
+          <li><a href="https://mikeysdetailing.com/#qanda">FAQ</a></li>
+          <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
+          <li><a href="https://mikeysdetailing.com/#about">About</a></li>
+          <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="https://mikeysdetailing.com/monroe">Monroe</a></li>
+          <li><a href="https://mikeysdetailing.com/lake-stevens">Lake Stevens</a></li>
+          <li><a href="https://mikeysdetailing.com/mill-creek">Mill Creek</a></li>
+          <li><a href="https://mikeysdetailing.com/duvall">Duvall</a></li>
+          <li><a href="tel:+13607975831">(360) 797-5831</a></li>
+          <li><a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Mikey's Mobile Detailing — Snohomish, WA. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  const header = document.getElementById('mikeyHeader');
+  const progress = header.querySelector('.scroll-progress');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    header.classList.toggle('shrunk', scrolled > 60);
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress) progress.style.width = ((scrolled / total) * 100) + '%';
+  });
+</script>
+
+</body>
+</html>
