@@ -186,7 +186,7 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
       <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Instant Quote →</a>
       <a href="#included" class="btn btn-outline">See What's Included</a>
     </div>
-    <div class="image-slot">[ IMAGE SLOT — replace with exterior shot ]</div>
+    <div class="image-slot"https://i.ibb.co/rR5vk15M/back-of-red-volvo-shiny.jpg</div>
   </div>
 </section>
 
