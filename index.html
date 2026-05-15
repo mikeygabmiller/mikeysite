@@ -1387,7 +1387,7 @@ header li a[href="#booking"]::after,
     background-size:11px; background-position:center; background-repeat:no-repeat;
   }
 
-  /* CTA */
+/* CTA */
   .mmd-svc .mmd-cta {
     display:block; text-align:center; padding:14px 20px;
     background:transparent; color:#fff; font-weight:800; font-size:1rem;
@@ -1405,14 +1405,40 @@ header li a[href="#booking"]::after,
     background:#fff; color:#dc2626; border-color:#fff;
   }
 
-  /* Learn More Link */
+  /* Learn More Link — small text under price */
   .mmd-svc .mmd-learn-more {
-    display: block; text-align: center; margin-top: 12px;
-    color: #a1a1aa; font-size: 0.9rem; font-weight: 500;
-    text-decoration: underline; transition: color 0.2s ease;
+    display:inline-block; margin-top:8px;
+    color:#71717a; font-size:.8rem; font-weight:500;
+    text-decoration:underline; transition:color .2s ease;
   }
-  .mmd-svc .mmd-learn-more:hover {
-    color: #fff;
+  .mmd-svc .mmd-learn-more:hover { color:#a1a1aa; }
+
+  /* First-Timer Badge — animated banner on Full Detail */
+  .mmd-svc .mmd-firsttimer {
+    position:relative;
+    margin:-6px -26px 18px;
+    padding:10px 16px;
+    background:linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
+    background-size:200% 100%;
+    color:#fff; font-size:.78rem; font-weight:900;
+    letter-spacing:.12em; text-transform:uppercase;
+    text-align:center;
+    overflow:hidden;
+    animation:mmd-shimmer 3s linear infinite;
+  }
+  .mmd-svc .mmd-firsttimer::before {
+    content:""; position:absolute; top:0; left:-100%;
+    width:60%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+    animation:mmd-sweep 2.5s ease-in-out infinite;
+  }
+  @keyframes mmd-shimmer {
+    0% { background-position:0% 50%; }
+    100% { background-position:200% 50%; }
+  }
+  @keyframes mmd-sweep {
+    0% { left:-60%; }
+    100% { left:160%; }
   }
 
   /* Trust strip below cards */
@@ -1430,9 +1456,9 @@ header li a[href="#booking"]::after,
   <div class="mmd-wrap">
 
     <span class="mmd-eyebrow">Services & Pricing</span>
-    <h2>Never Worry About A Dirty Car Again. <em>.</em></h2>
+    <h2>Car Detailing Services <em>& Pricing</em></h2>
     <p class="mmd-sub">
-            "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. that kind of service is really rare these days." — Matt K. ☆☆☆☆☆.
+      "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days." — Matt K. ★★★★★
     </p>
 
     <div class="mmd-grid">
@@ -1442,6 +1468,7 @@ header li a[href="#booking"]::after,
         <h3 class="mmd-name">Interior</h3>
         <p class="mmd-tag">Inside-only deep clean</p>
         <div class="mmd-price">$160–$240<small>Based on vehicle size</small></div>
+        <a href="https://mikeysdetailing.com/interior" class="mmd-learn-more">See what's included →</a>
         <div class="mmd-divider"></div>
         <ul class="mmd-feat">
           <li>Full vacuum + crevice detail</li>
@@ -1452,14 +1479,14 @@ header li a[href="#booking"]::after,
           <li>Door jambs wiped down</li>
         </ul>
         <a href="#booking" class="mmd-cta">Get My Quote →</a>
-        <a href="https://mikeysdetailing.com/interior" class="mmd-learn-more">Learn more</a>
       </div>
 
       <!-- FULL DETAIL — HIGHLIGHTED -->
       <div class="mmd-card mmd-popular">
+        <div class="mmd-firsttimer">★ Most Popular For First-Timers ★</div>
         <h3 class="mmd-name">Full Detail</h3>
         <p class="mmd-tag">Inside &amp; out — bumper to bumper</p>
-        <div class="mmd-price">$260–$340<small>Saves $30 vs. booking separate</small></div>
+        <div class="mmd-price">$260–$340<small>Based on vehicle size</small></div>
         <div class="mmd-divider"></div>
         <ul class="mmd-feat">
           <li>Everything in Interior</li>
@@ -1477,6 +1504,7 @@ header li a[href="#booking"]::after,
         <h3 class="mmd-name">Exterior</h3>
         <p class="mmd-tag">Outside-only wash &amp; protect</p>
         <div class="mmd-price">$130–$200<small>Based on vehicle size</small></div>
+        <a href="https://mikeysdetailing.com/exterior" class="mmd-learn-more">See what's included →</a>
         <div class="mmd-divider"></div>
         <ul class="mmd-feat">
           <li>Full hand wash &amp; dry</li>
@@ -1486,7 +1514,6 @@ header li a[href="#booking"]::after,
           <li>Spray sealant protection</li>
         </ul>
         <a href="#booking" class="mmd-cta">Get My Quote →</a>
-        <a href="https://mikeysdetailing.com/exterior" class="mmd-learn-more">Learn more</a>
       </div>
 
     </div>
