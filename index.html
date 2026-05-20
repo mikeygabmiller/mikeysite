@@ -598,12 +598,7 @@ header li a[href="#booking"]::after,
 }
 /* =========================================================
    HERO
-   ========================================================= */
-/* =========================
-   HERO SECTION
-========================= */
-
-/* ============ HERO ============ */
+  /* ============ HERO ============ */
 .mh-hero{
   min-height:100vh;
   display:flex;
@@ -640,7 +635,6 @@ header li a[href="#booking"]::after,
   animation:mhFadeUp .8s ease-out .1s forwards;
 }
 
-.mh h1 br + .accent,
 .mh h1 .accent{
   display:inline-block;
   color:#dc2626;
@@ -648,12 +642,6 @@ header li a[href="#booking"]::after,
   opacity:0;
   transform:translateY(20px) scale(.98);
   animation:mhPopIn .7s cubic-bezier(.34,1.4,.64,1) .45s forwards;
-}
-
-.mh h1 br{
-  content:"";
-  display:block;
-  margin-bottom:6px;
 }
 
 /* underline sweep behind the red line */
@@ -713,10 +701,19 @@ header li a[href="#booking"]::after,
 /* ============ MOBILE ============ */
 @media (max-width:640px){
   .mh-hero{ padding:80px 16px 50px; }
-  .mh h1{ font-size:clamp(1.9rem, 8vw, 2.6rem); margin-bottom:20px; }
-  .mh .subhead{ font-size:1rem; margin-bottom:28px; }
+  .mh h1{
+    font-size:clamp(1.5rem, 6.5vw, 2rem);
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+  }
+  .mh h1 .desktop-line{ display:none; }
+  .mh .subhead{
+    font-size:.95rem;
+    line-height:1.45;
+    margin-bottom:24px;
+  }
 }
-
 /* =========================
    SOCIAL PROOF
 ========================= */
