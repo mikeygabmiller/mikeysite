@@ -1198,19 +1198,30 @@ header li a[href="#booking"]::after,
 }
 
 /* Mobile */
+/* Mobile */
 @media (max-width:640px){
-  .mh-hero{ padding:80px 16px 50px; }
-  .mh-proof{ gap:10px; margin-bottom:20px; }
+  .mh-hero{
+    min-height:auto;
+    padding:40px 16px 5px;
+  }
+  .mh-proof{ gap:10px; margin-bottom:18px; }
   .mh-proof-item{ font-size:12px; }
   .mh h1{
-    font-size:clamp(1.5rem,6.5vw,2rem);
-    line-height:1.15; margin-bottom:18px; letter-spacing:-0.01em;
+    font-size:clamp(1.3rem, 5.5vw, 1.7rem);
+    line-height:1.2;
+    margin-bottom:16px;
+    letter-spacing:-0.01em;
   }
   .mh h1 .desktop-line{ display:none; }
-  .mh .subhead{ font-size:.95rem; line-height:1.45; margin-bottom:24px; }
-  .mh-ctas{ flex-direction:column; gap:10px; margin-bottom:24px; }
-  .mh-cta-primary,.mh-cta-secondary{ width:100%; padding:14px 20px; }
+  .mh .subhead{
+    font-size:.9rem;
+    line-height:1.45;
+    margin-bottom:22px;
+  }
+  .mh-ctas{ flex-direction:column; gap:10px; margin-bottom:22px; }
+  .mh-cta-primary,.mh-cta-secondary{ width:100%; padding:14px 20px; font-size:.95rem; }
   .mh-pill{ font-size:.85rem; padding:8px 14px; }
+  }
 }
 </style>
 
