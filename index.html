@@ -827,53 +827,6 @@ header li a[href="#booking"]::after,
 
 }
 
-/* =========================================================
-   PROOF BAR
-   ========================================================= */
-.proof { text-align: center; }
-.proof-inner { max-width: 900px; margin: 0 auto; }
-.proof-stats {
-  display: flex; justify-content: center; align-items: stretch; gap: 0;
-  margin-bottom: 36px; border: 1px solid #2a2a2a; border-radius: 8px;
-  overflow: hidden; background: #111;
-}
-.proof-stat {
-  flex: 1; padding: 25px 15px;
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  border-right: 1px solid #2a2a2a;
-}
-.proof-stat:last-child { border-right: none; }
-.proof-stat-num { font-family: 'Oswald', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: #D4AF37; line-height: 1; }
-.proof-stat-label { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
-.proof-quote {
-  background: #111; border: 1px solid #2a2a2a; border-left: 3px solid #cc0000;
-  border-radius: 6px; padding: 30px; margin-bottom: 24px; text-align: left;
-}
-.proof-quote-text { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; color: #d0d0d0; line-height: 1.65; margin-bottom: 18px; font-style: italic; }
-.proof-quote-author { display: flex; align-items: center; gap: 12px; }
-.proof-quote-avatar {
-  width: 40px; height: 40px; border-radius: 50%; background: #cc0000;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
-}
-.proof-quote-name { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: #fff; }
-.proof-quote-stars { color: #D4AF37; font-size: 14px; margin-left: auto; }
-.proof-google {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
-  color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
-  transition: color 0.2s; padding: 4px;
-}
-.proof-google:hover { color: #aaa; }
-.proof-google:focus-visible { outline: 2px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
-.proof-google svg { width: 16px; height: 16px; }
-
-@media (max-width: 600px) {
-  .proof-stats { flex-wrap: wrap; }
-  .proof-stat { flex: 1 1 50%; border-bottom: 1px solid #2a2a2a; }
-  .proof-stat:nth-child(even) { border-right: none; }
-  .proof-stat:nth-child(3), .proof-stat:nth-child(4) { border-bottom: none; }
-}
 
 /* =========================================================
    GALLERY
@@ -1312,38 +1265,268 @@ header li a[href="#booking"]::after,
   </div>
 </section>
 
-  <!-- PROOF -->
-  <section class="proof" aria-labelledby="proof-heading">
-    <div class="section-inner proof-inner">
-      <h2 id="proof-heading" class="visually-hidden">Why Snohomish trusts Mikey's</h2>
-      <div class="proof-stats" role="list" aria-label="Key stats">
-        <div class="proof-stat" role="listitem"><span class="proof-stat-num" aria-label="5 star rating">★★★★★</span><span class="proof-stat-label">5.0 Rating</span></div>
-        <div class="proof-stat" role="listitem"><span class="proof-stat-num">38+</span><span class="proof-stat-label">Reviews</span></div>
-        <div class="proof-stat" role="listitem"><span class="proof-stat-num">300+</span><span class="proof-stat-label">Cars Detailed</span></div>
-        <div class="proof-stat" role="listitem"><span class="proof-stat-num">5yr</span><span class="proof-stat-label">Experience</span></div>
-      </div>
-      <figure class="proof-quote" aria-label="Customer review">
-        <blockquote>
-          <p class="proof-quote-text">"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
-        </blockquote>
-        <figcaption class="proof-quote-author">
-          <div class="proof-quote-avatar" aria-hidden="true">C</div>
-          <span class="proof-quote-name">C Wilson · Snohomish, WA</span>
-          <span class="proof-quote-stars" aria-label="5 stars">★★★★★</span>
-        </figcaption>
-      </figure>
-      <a href="https://g.page/r/CRCuKQ982VIZEBE/review" class="proof-google" rel="noopener" aria-label="Read all 5-star Google reviews for Mikey's Mobile Detailing">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-        </svg>
-        Read all 5-Star reviews on Google →
-      </a>
-    </div>
-  </section>
+<!-- TRUST SECTION -->
+<section class="trust-section">
+  <div class="trust-container">
 
+    <!-- Stats bar -->
+    <div class="trust-stats">
+      <div class="stat-item">
+        <div class="stat-stars">★★★★★</div>
+        <div class="stat-label">5.0 Rating</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">38<span>+</span></div>
+        <div class="stat-label">Reviews</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">300<span>+</span></div>
+        <div class="stat-label">Cars Detailed</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">5<span>yr</span></div>
+        <div class="stat-label">Experience</div>
+      </div>
+    </div>
+
+    <!-- Hero review -->
+    <figure class="trust-review">
+      <div class="trust-quote-mark">"</div>
+      <blockquote class="trust-quote">
+        Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!
+      </blockquote>
+      <figcaption class="trust-attribution">
+        <div class="trust-avatar">C</div>
+        <div class="trust-meta">
+          <div class="trust-name">C Wilson</div>
+          <div class="trust-location">Snohomish, WA</div>
+        </div>
+        <div class="trust-stars">★★★★★</div>
+      </figcaption>
+    </figure>
+
+    <!-- All reviews CTA -->
+    <a href="/reviews" class="trust-cta">
+      Read all reviews
+      <span class="trust-cta-arrow">→</span>
+    </a>
+
+  </div>
+</section>
+
+<style>
+  .trust-section {
+    background: #141414;
+    padding: 64px 20px;
+    color: #fff;
+  }
+
+  .trust-container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Stats bar */
+  .trust-stats {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+    border: 2px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 24px 16px;
+    margin-bottom: 40px;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #facc15;
+    line-height: 1;
+  }
+
+  .stat-number span {
+    font-size: 20px;
+  }
+
+  .stat-stars {
+    font-size: 20px;
+    color: #facc15;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #2a2a2a;
+  }
+
+  /* Hero review */
+  .trust-review {
+    background: #1a1a1a;
+    border: 2px solid #2a2a2a;
+    border-left: 4px solid #dc2626;
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin: 0 0 32px 0;
+    position: relative;
+  }
+
+  .trust-quote-mark {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    color: #dc2626;
+    line-height: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .trust-quote {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #e5e7eb;
+    margin: 0 0 24px 0;
+  }
+
+  .trust-attribution {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid #2a2a2a;
+  }
+
+  .trust-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .trust-meta {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .trust-name {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+  }
+
+  .trust-location {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 2px;
+  }
+
+  .trust-stars {
+    font-size: 14px;
+    color: #facc15;
+    letter-spacing: 2px;
+  }
+
+  /* All reviews CTA */
+  .trust-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 24px;
+    background: transparent;
+    border: 2px solid #2a2a2a;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .trust-cta:hover {
+    border-color: #dc2626;
+    background: rgba(220, 38, 38, 0.08);
+  }
+
+  .trust-cta-arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .trust-cta:hover .trust-cta-arrow {
+    transform: translateX(4px);
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .trust-section {
+      padding: 48px 16px;
+    }
+
+    .trust-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 12px;
+      padding: 24px 16px;
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
+    .stat-number {
+      font-size: 28px;
+    }
+
+    .trust-quote {
+      font-size: 16px;
+    }
+
+    .trust-quote-mark {
+      font-size: 56px;
+    }
+
+    .trust-review {
+      padding: 24px 20px;
+    }
+  }
+</style>
   <!-- GALLERY -->
   <section id="beforeafter" aria-label="Before and after gallery">
     <div class="section-inner">
