@@ -596,70 +596,7 @@ header li a[href="#booking"]::after,
   .review-badge { display: none; }
   .header-left { gap: 10px; }
 }
-/* =========================================================
-   HERO
-  /* ============ HERO ============ */
-.mh-hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:90px 20px 70px;
-  background:transparent;
-  overflow:hidden;
-}
-
-.mh{
-  font-family:'Outfit',sans-serif;
-  text-align:center;
-  max-width:1100px;
-  margin:0 auto;
-  color:#fff;
-}
-
-.mh-container{ width:100%; }
-.mh-content{ width:100%; }
-
-/* ============ HEADLINE ============ */
-.mh h1{
-  font-family:'Outfit',sans-serif;
-  font-weight:900;
-  font-size:clamp(2.2rem, 6vw, 4.8rem);
-  line-height:1.05;
-  letter-spacing:-0.02em;
-  text-transform:uppercase;
-  margin:0 0 28px;
-  color:#fff;
-  opacity:0;
-  transform:translateY(20px);
-  animation:mhFadeUp .8s ease-out .1s forwards;
-}
-
-.mh h1 .accent{
-  display:inline-block;
-  color:#dc2626;
-  position:relative;
-  opacity:0;
-  transform:translateY(20px) scale(.98);
-  animation:mhPopIn .7s cubic-bezier(.34,1.4,.64,1) .45s forwards;
-}
-
-/* underline sweep behind the red line */
-.mh h1 .accent::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  height:3px;
-  width:0;
-  background:#dc2626;
-  animation:mhSweep .6s ease-out 1.1s forwards;
-}
-
-/* ============ SUBHEADLINE ============ */
-.mh .subhead{
-  font-family:'Outfit',sans-serif;
-  font-weight:500;
+/* ==
   font-size:clamp(1.05rem, 1.8vw, 1.35rem);
   line-height:1.5;
   color:#d4d4d4;
@@ -683,40 +620,7 @@ header li a[href="#booking"]::after,
 
 @keyframes mhSweep{
   to{ width:100%; }
-}
 
-/* respect users who hate motion */
-@media (prefers-reduced-motion: reduce){
-  .mh h1,
-  .mh h1 .accent,
-  .mh .subhead,
-  .mh h1 .accent::after{
-    animation:none;
-    opacity:1;
-    transform:none;
-    width:100%;
-  }
-}
-
-/* ============ MOBILE ============ */
-@media (max-width:640px){
-  .mh-hero{ padding:80px 16px 50px; }
-  .mh h1{
-    font-size:clamp(1.5rem, 6.5vw, 2rem);
-    line-height:1.15;
-    margin-bottom:18px;
-    letter-spacing:-0.01em;
-  }
-  .mh h1 .desktop-line{ display:none; }
-  .mh .subhead{
-    font-size:.95rem;
-    line-height:1.45;
-    margin-bottom:24px;
-  }
-}
-/* =========================
-   SOCIAL PROOF
-========================= */
 
 .mh-proof{
   display:flex;
@@ -1233,70 +1137,179 @@ header li a[href="#booking"]::after,
   </nav>
 </header>
 <!-- HERO -->
+<!-- HERO -->
+<style>
+.mh-hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:90px 20px 70px;
+  background:transparent;
+  overflow:hidden;
+}
+.mh{
+  font-family:'Outfit',sans-serif;
+  text-align:center;
+  max-width:1100px;
+  margin:0 auto;
+  color:#fff;
+}
+.mh-container,.mh-content{ width:100%; }
+
+/* Social proof */
+.mh-proof{
+  display:flex; justify-content:center; align-items:center;
+  gap:16px; margin-bottom:28px; flex-wrap:wrap;
+  opacity:0; animation:mhFadeUp .6s ease-out 0s forwards;
+}
+.mh-proof-item{ display:flex; align-items:center; gap:6px; font-size:14px; font-weight:600; color:#a3a3a3; }
+.mh-proof-val{ color:#fff; font-weight:800; }
+.mh-stars{ color:#facc15; font-size:14px; letter-spacing:1px; }
+.mh-dot{ width:4px; height:4px; background:#525252; border-radius:50%; }
+
+/* Headline */
+.mh h1{
+  font-family:'Outfit',sans-serif; font-weight:900;
+  font-size:clamp(2.2rem,6vw,4.8rem);
+  line-height:1.05; letter-spacing:-0.02em;
+  text-transform:uppercase; margin:0 0 28px; color:#fff;
+  opacity:0; transform:translateY(20px);
+  animation:mhFadeUp .8s ease-out .1s forwards;
+}
+.mh h1 .accent{
+  display:inline-block; color:#dc2626; position:relative;
+  opacity:0; transform:translateY(20px) scale(.98);
+  animation:mhPopIn .7s cubic-bezier(.34,1.4,.64,1) .45s forwards;
+}
+.mh h1 .accent::after{
+  content:""; position:absolute; left:0; bottom:-4px;
+  height:3px; width:0; background:#dc2626;
+  animation:mhSweep .6s ease-out 1.1s forwards;
+}
+
+/* Subhead */
+.mh .subhead{
+  font-family:'Outfit',sans-serif; font-weight:500;
+  font-size:clamp(1.05rem,1.8vw,1.35rem); line-height:1.5;
+  color:#d4d4d4; max-width:780px; margin:0 auto 36px;
+  opacity:0; transform:translateY(15px);
+  animation:mhFadeUp .8s ease-out .7s forwards;
+}
+
+/* CTAs */
+.mh-ctas{
+  display:flex; justify-content:center; gap:14px;
+  flex-wrap:wrap; margin-bottom:36px;
+  opacity:0; animation:mhFadeUp .8s ease-out .9s forwards;
+}
+.mh-cta-primary,.mh-cta-secondary{
+  font-family:'Outfit',sans-serif; font-weight:800;
+  font-size:1rem; text-transform:uppercase; letter-spacing:.5px;
+  padding:16px 28px; border-radius:8px; text-decoration:none;
+  border:2px solid transparent;
+  transition:transform .15s ease,background .15s ease,border-color .15s ease;
+}
+.mh-cta-primary{ background:#dc2626; color:#fff; border-color:#dc2626; }
+.mh-cta-primary:hover{ background:#b91c1c; border-color:#b91c1c; transform:translateY(-2px); }
+.mh-cta-secondary{ background:transparent; color:#fff; border-color:#fff; }
+.mh-cta-secondary:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
+
+/* Pricing pills */
+.mh-prices{
+  display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
+  opacity:0; animation:mhFadeUp .8s ease-out 1.1s forwards;
+}
+.mh-pill{
+  display:flex; align-items:center; gap:8px;
+  padding:10px 18px; border:2px solid #262626;
+  border-radius:999px; background:rgba(20,20,20,.6); font-size:.9rem;
+}
+.mh-pill-label{ color:#a3a3a3; font-weight:600; }
+.mh-pill-price{ color:#fff; font-weight:800; }
+
+/* Animations */
+@keyframes mhFadeUp{ to{ opacity:1; transform:translateY(0); } }
+@keyframes mhPopIn{
+  0%{ opacity:0; transform:translateY(20px) scale(.98); }
+  60%{ opacity:1; transform:translateY(-2px) scale(1.02); }
+  100%{ opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes mhSweep{ to{ width:100%; } }
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .mh-proof,.mh h1,.mh h1 .accent,.mh .subhead,.mh-ctas,.mh-prices,.mh h1 .accent::after{
+    animation:none; opacity:1; transform:none; width:100%;
+  }
+}
+
+/* Mobile */
+@media (max-width:640px){
+  .mh-hero{ padding:80px 16px 50px; }
+  .mh-proof{ gap:10px; margin-bottom:20px; }
+  .mh-proof-item{ font-size:12px; }
+  .mh h1{
+    font-size:clamp(1.5rem,6.5vw,2rem);
+    line-height:1.15; margin-bottom:18px; letter-spacing:-0.01em;
+  }
+  .mh h1 .desktop-line{ display:none; }
+  .mh .subhead{ font-size:.95rem; line-height:1.45; margin-bottom:24px; }
+  .mh-ctas{ flex-direction:column; gap:10px; margin-bottom:24px; }
+  .mh-cta-primary,.mh-cta-secondary{ width:100%; padding:14px 20px; }
+  .mh-pill{ font-size:.85rem; padding:8px 14px; }
+}
+</style>
+
 <section class="mh-hero" aria-labelledby="hero-h1">
-
   <div class="mh">
+    <div class="mh-container">
+      <div class="mh-content">
 
-    <div class="mh-proof" role="list" aria-label="Social proof">
+        <div class="mh-proof" role="list" aria-label="Social proof">
+          <div class="mh-proof-item" role="listitem">
+            <span class="mh-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="mh-proof-val">5.0</span>
+          </div>
+          <span class="mh-dot" aria-hidden="true"></span>
+          <div class="mh-proof-item" role="listitem">
+            <span class="mh-proof-val">38+</span>&nbsp;Reviews
+          </div>
+          <span class="mh-dot" aria-hidden="true"></span>
+          <div class="mh-proof-item" role="listitem">
+            <span class="mh-proof-val">300+</span>&nbsp;Cars Detailed
+          </div>
+        </div>
 
-      <div class="mh-proof-item" role="listitem">
-        <span class="mh-stars" aria-label="Five stars">
-          &#9733;&#9733;&#9733;&#9733;&#9733;
-        </span>
-        <span class="mh-proof-val">5.0</span>
+        <h1 id="hero-h1">
+          Never Worry About A Dirty Car Again.<br>
+          <span class="accent">Deep-Cleaned Inside And Out — Without Lifting A Finger.</span>
+          <span class="desktop-line"><br>Done In Your Driveway. Most Jobs Within The Week.</span>
+        </h1>
+
+        <p class="subhead">
+          38+ five-star reviews. 300+ vehicles detailed. I bring the water, power, and supplies to your driveway — across Snohomish County.
+        </p>
+
+        <div class="mh-ctas">
+          <a class="mh-cta-primary" href="#booking">Get Your Instant Quote →</a>
+          <a class="mh-cta-secondary" href="#allservices">See Services</a>
+        </div>
+
+        <div class="mh-prices" aria-label="Service pricing">
+          <div class="mh-pill">
+            <span class="mh-pill-label">Full Detail</span>
+            <span class="mh-pill-price">$260–$340</span>
+          </div>
+          <div class="mh-pill">
+            <span class="mh-pill-label">Interior</span>
+            <span class="mh-pill-price">$160–$240</span>
+          </div>
+        </div>
+
       </div>
-
-      <span class="mh-dot" aria-hidden="true"></span>
-
-      <div class="mh-proof-item" role="listitem">
-        <span class="mh-proof-val">38+</span> Reviews
-      </div>
-
-      <span class="mh-dot" aria-hidden="true"></span>
-
-      <div class="mh-proof-item" role="listitem">
-        <span class="mh-proof-val">300+</span> Cars Detailed
-      </div>
-
     </div>
-
-    <h1>
-  Never Worry About A Dirty Car Again.<br>
-  <span class="accent">Deep-Cleaned Inside And Out — Without Lifting A Finger.</span><br>
-  Done In Your Driveway. Most Jobs Within The Week.
-</h1>
-
- <p class="subhead">
-  <strong>300+ vehicles</strong> detailed. <strong>38+ five-star reviews</strong>. And a <span class="accent-pulse">clean car guaranteed</span> — or I make it right. I bring everything to your driveway.
-</p>  
-    <div class="mh-ctas">
-
-      <a class="mh-cta-primary" href="#booking">
-        Get Your Instant Quote →
-      </a>
-
-      <a class="mh-cta-secondary" href="#allservices">
-        See Services
-      </a>
-
-    </div>
-
-    <div class="mh-prices" aria-label="Service pricing">
-
-      <div class="mh-pill">
-        <span class="mh-pill-label">Full Detail</span>
-        <span class="mh-pill-price">$260–$340</span>
-      </div>
-
-      <div class="mh-pill">
-        <span class="mh-pill-label">Interior</span>
-        <span class="mh-pill-price">$160–$240</span>
-      </div>
-
-    </div>
-
   </div>
-
 </section>
 
   <!-- PROOF -->
