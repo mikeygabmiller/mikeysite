@@ -603,6 +603,7 @@ header li a[href="#booking"]::after,
    HERO SECTION
 ========================= */
 
+/* ============ HERO ============ */
 .mh-hero{
   min-height:100vh;
   display:flex;
@@ -610,6 +611,7 @@ header li a[href="#booking"]::after,
   justify-content:center;
   padding:90px 20px 70px;
   background:transparent;
+  overflow:hidden;
 }
 
 .mh{
@@ -620,12 +622,99 @@ header li a[href="#booking"]::after,
   color:#fff;
 }
 
-.mh-container{
-  width:100%;
+.mh-container{ width:100%; }
+.mh-content{ width:100%; }
+
+/* ============ HEADLINE ============ */
+.mh h1{
+  font-family:'Outfit',sans-serif;
+  font-weight:900;
+  font-size:clamp(2.2rem, 6vw, 4.8rem);
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+  margin:0 0 28px;
+  color:#fff;
+  opacity:0;
+  transform:translateY(20px);
+  animation:mhFadeUp .8s ease-out .1s forwards;
 }
 
-.mh-content{
-  width:100%;
+.mh h1 br + .accent,
+.mh h1 .accent{
+  display:inline-block;
+  color:#dc2626;
+  position:relative;
+  opacity:0;
+  transform:translateY(20px) scale(.98);
+  animation:mhPopIn .7s cubic-bezier(.34,1.4,.64,1) .45s forwards;
+}
+
+.mh h1 br{
+  content:"";
+  display:block;
+  margin-bottom:6px;
+}
+
+/* underline sweep behind the red line */
+.mh h1 .accent::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  height:3px;
+  width:0;
+  background:#dc2626;
+  animation:mhSweep .6s ease-out 1.1s forwards;
+}
+
+/* ============ SUBHEADLINE ============ */
+.mh .subhead{
+  font-family:'Outfit',sans-serif;
+  font-weight:500;
+  font-size:clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height:1.5;
+  color:#d4d4d4;
+  max-width:780px;
+  margin:0 auto 36px;
+  opacity:0;
+  transform:translateY(15px);
+  animation:mhFadeUp .8s ease-out .7s forwards;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes mhFadeUp{
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes mhPopIn{
+  0%   { opacity:0; transform:translateY(20px) scale(.98); }
+  60%  { opacity:1; transform:translateY(-2px) scale(1.02); }
+  100% { opacity:1; transform:translateY(0) scale(1); }
+}
+
+@keyframes mhSweep{
+  to{ width:100%; }
+}
+
+/* respect users who hate motion */
+@media (prefers-reduced-motion: reduce){
+  .mh h1,
+  .mh h1 .accent,
+  .mh .subhead,
+  .mh h1 .accent::after{
+    animation:none;
+    opacity:1;
+    transform:none;
+    width:100%;
+  }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width:640px){
+  .mh-hero{ padding:80px 16px 50px; }
+  .mh h1{ font-size:clamp(1.9rem, 8vw, 2.6rem); margin-bottom:20px; }
+  .mh .subhead{ font-size:1rem; margin-bottom:28px; }
 }
 
 /* =========================
