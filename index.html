@@ -914,28 +914,7 @@ header li a[href="#booking"]::after,
   .mkd-flash-urgency { padding: 10px 14px; }
 }
 
-/* =========================================================
-   HOW IT WORKS
-   ========================================================= */
-.hiw { font-family: 'Outfit', sans-serif; max-width: 720px; margin: 0 auto; padding: 30px 16px; }
-.hiw-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 20px; text-align: center; }
-.hiw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.hiw-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 14px; padding: 28px 18px; text-align: center; }
-.hiw-icon { width: 40px; height: 40px; margin: 0 auto 14px; color: #999; }
-.hiw-icon svg { width: 100%; height: 100%; }
-.hiw-num { font-size: 32px; font-weight: 900; color: var(--brand-red); line-height: 1; margin-bottom: 8px; }
-.hiw-title { font-size: 13px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #fff; margin-bottom: 8px; line-height: 1.3; }
-.hiw-desc { font-size: 13px; color: #888; line-height: 1.5; }
-@media (max-width: 480px) {
-  .hiw-grid { grid-template-columns: 1fr; gap: 8px; }
-  .hiw-card { padding: 22px 14px; }
-  .hiw-num { font-size: 26px; }
-  .hiw-title { font-size: 11px; }
-  .hiw-desc { font-size: 11px; }
-  .hiw-icon { width: 32px; height: 32px; margin-bottom: 10px; }
-}
-
-/* =========================================================
+ =========================================================
    CLEAN CLUB MENTION
    ========================================================= */
 .clean-club-banner {
@@ -1794,46 +1773,454 @@ header li a[href="#booking"]::after,
   </div>
 </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="hiw" aria-labelledby="hiw-title-id">
-    <h2 class="hiw-label" id="hiw-title-id">How It Works</h2>
-    <div class="hiw-grid">
-      <div class="hiw-card">
-        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg></div>
-        <div class="hiw-num" aria-hidden="true">1</div>
-        <h3 class="hiw-title">Book Online</h3>
-        <p class="hiw-desc">Takes about 60 seconds. Pick your service and a time that works for you.</p>
-      </div>
-      <div class="hiw-card">
-        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg></div>
-        <div class="hiw-num" aria-hidden="true">2</div>
-        <h3 class="hiw-title">I Show Up</h3>
-        <p class="hiw-desc">I show up with everything. Water, power, products — you don't need to do a thing.</p>
-      </div>
-      <div class="hiw-card">
-        <div class="hiw-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.745 3.745 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/></svg></div>
-        <div class="hiw-num" aria-hidden="true">3</div>
-        <h3 class="hiw-title">You Pay When Done</h3>
-        <p class="hiw-desc">Walk around, approve the result, then pay — cash, Venmo, Zelle, or Cash App.</p>
-      </div>
-    </div>
-  </section>
+  <!-- =========================================================
+     HOW IT WORKS + GUARANTEE — v2 (more punch)
+     Drop in place of the old sections.
+     ========================================================= -->
+<style>
+  :root {
+    --brand-red: #dc2626;
+    --brand-red-glow: rgba(220,38,38,0.4);
+  }
 
-  <!-- GUARANTEE -->
-  <section class="gt-wrap" aria-labelledby="gt-title-id">
-    <div class="gt-box">
-      <div class="gt-top">
-        <div class="gt-tag">100% Guaranteed</div>
-        <h2 id="gt-title-id" class="gt-title">I Don't Leave Until<br>You <em>Love It</em></h2>
-        <p class="gt-desc">Every detail ends with a walkthrough — you and me, around the whole car. Anything you don't like gets fixed right then and there. Not over text. Not next week. On the spot.</p>
+  /* ========== HOW IT WORKS ========== */
+  .hiw2 {
+    font-family: 'Outfit', sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 16px 30px;
+    position: relative;
+  }
+  .hiw2-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .hiw2-eyebrow span {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--brand-red);
+  }
+  .hiw2-eyebrow::before,
+  .hiw2-eyebrow::after {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--brand-red);
+  }
+  .hiw2-head {
+    font-size: 44px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    letter-spacing: -1.5px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+  }
+  .hiw2-head em {
+    font-style: italic;
+    color: var(--brand-red);
+    text-shadow: 0 0 30px var(--brand-red-glow);
+  }
+  .hiw2-head .small {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #666;
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .hiw2-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+
+  /* connecting arrow between cards (desktop) */
+  .hiw2-grid::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 33.33%;
+    right: 33.33%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, var(--brand-red) 0 8px, transparent 8px 16px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .hiw2-card {
+    position: relative;
+    background: linear-gradient(180deg, #1a1a1a 0%, #121212 100%);
+    border: 2px solid #222;
+    border-radius: 18px;
+    padding: 32px 24px 28px;
+    transition: all .3s ease;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .hiw2-card:hover {
+    border-color: var(--brand-red);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -10px var(--brand-red-glow);
+  }
+
+  /* giant number behind */
+  .hiw2-bignum {
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    font-size: 180px;
+    font-weight: 900;
+    color: rgba(220,38,38,0.06);
+    line-height: 1;
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  .hiw2-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-red);
+    border-radius: 16px;
+    color: #fff;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 20px -4px var(--brand-red-glow);
+    transform: rotate(-4deg);
+    transition: transform .3s ease;
+  }
+  .hiw2-card:hover .hiw2-icon {
+    transform: rotate(0deg) scale(1.05);
+  }
+  .hiw2-icon svg { width: 32px; height: 32px; }
+
+  .hiw2-step {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--brand-red);
+    background: rgba(220,38,38,0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .hiw2-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .hiw2-desc {
+    font-size: 14px;
+    color: #999;
+    line-height: 1.6;
+  }
+  .hiw2-time {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed #2a2a2a;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hiw2-time::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--brand-red);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--brand-red);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  @media (max-width: 720px) {
+    .hiw2 { padding: 40px 16px 20px; }
+    .hiw2-head { font-size: 32px; letter-spacing: -1px; margin-bottom: 32px; }
+    .hiw2-head .small { font-size: 13px; }
+    .hiw2-grid { grid-template-columns: 1fr; gap: 14px; }
+    .hiw2-grid::before { display: none; }
+    .hiw2-card { padding: 26px 22px 24px; }
+    .hiw2-bignum { font-size: 140px; top: -20px; right: -5px; }
+    .hiw2-icon { width: 56px; height: 56px; }
+    .hiw2-icon svg { width: 28px; height: 28px; }
+    .hiw2-title { font-size: 19px; }
+  }
+
+  /* ========== GUARANTEE ========== */
+  .gt2 {
+    font-family: 'Outfit', sans-serif;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 16px 60px;
+  }
+  .gt2-box {
+    position: relative;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(220,38,38,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(220,38,38,0.08) 0%, transparent 50%),
+      #0f0f0f;
+    border: 2px solid #222;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  /* corner stamp */
+  .gt2-stamp {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 90px;
+    height: 90px;
+    border: 2px solid var(--brand-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-12deg);
+    z-index: 2;
+    background: rgba(220,38,38,0.05);
+  }
+  .gt2-stamp-inner {
+    text-align: center;
+    color: var(--brand-red);
+    font-weight: 900;
+    line-height: 1;
+  }
+  .gt2-stamp-inner .big { font-size: 28px; letter-spacing: -1px; }
+  .gt2-stamp-inner .lbl { font-size: 8px; letter-spacing: 2px; margin-top: 3px; }
+
+  .gt2-top {
+    padding: 56px 32px 36px;
+    text-align: center;
+    position: relative;
+  }
+  .gt2-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--brand-red);
+    background: rgba(220,38,38,0.1);
+    border: 1px solid rgba(220,38,38,0.3);
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .gt2-tag::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--brand-red);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--brand-red);
+  }
+  .gt2-title {
+    font-size: 52px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .gt2-title em {
+    font-style: italic;
+    color: var(--brand-red);
+    text-shadow: 0 0 40px var(--brand-red-glow);
+  }
+  .gt2-desc {
+    font-size: 16px;
+    color: #aaa;
+    line-height: 1.65;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .gt2-desc strong { color: #fff; font-weight: 700; }
+
+  .gt2-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #222;
+    background: rgba(0,0,0,0.3);
+  }
+  .gt2-step {
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .gt2-step + .gt2-step {
+    border-left: 1px dashed #2a2a2a;
+  }
+  .gt2-step-num {
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    font-size: 11px;
+    font-weight: 900;
+    color: #333;
+    letter-spacing: 2px;
+  }
+  .gt2-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(220,38,38,0.1);
+    border: 1px solid rgba(220,38,38,0.3);
+    border-radius: 14px;
+    color: var(--brand-red);
+  }
+  .gt2-icon svg { width: 26px; height: 26px; }
+  .gt2-step-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .gt2-step-text {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 720px) {
+    .gt2-stamp { width: 70px; height: 70px; top: 16px; right: 16px; }
+    .gt2-stamp-inner .big { font-size: 22px; }
+    .gt2-stamp-inner .lbl { font-size: 7px; }
+    .gt2-top { padding: 40px 22px 28px; }
+    .gt2-title { font-size: 34px; letter-spacing: -1px; }
+    .gt2-desc { font-size: 14px; }
+    .gt2-steps { grid-template-columns: 1fr; }
+    .gt2-step + .gt2-step { border-left: none; border-top: 1px dashed #2a2a2a; }
+    .gt2-step { padding: 28px 22px; }
+  }
+</style>
+
+<!-- HOW IT WORKS -->
+<section class="hiw2" aria-labelledby="hiw2-title-id">
+  <div class="hiw2-eyebrow"><span>How It Works</span></div>
+  <h2 class="hiw2-head" id="hiw2-title-id">
+    Dirty to <em>damn that's clean</em>
+    <span class="small">— in 3 easy steps —</span>
+  </h2>
+
+  <div class="hiw2-grid">
+    <!-- 01 -->
+    <div class="hiw2-card">
+      <div class="hiw2-bignum">01</div>
+      <div class="hiw2-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 7.5h6M9 12h6m-6 4.5h3M5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V5.25A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25v13.5A2.25 2.25 0 0 0 5.25 21Z"/></svg>
       </div>
-      <div class="gt-steps">
-        <div class="gt-step"><span class="gt-num" aria-hidden="true">1</span><h3 class="gt-step-title">Walk-around</h3><p class="gt-step-text">We inspect your car together. Anything off gets fixed immediately.</p></div>
-        <div class="gt-step"><span class="gt-num" aria-hidden="true">2</span><h3 class="gt-step-title">Free Return</h3><p class="gt-step-text">Notice something later? I come back and fix it — completely free.</p></div>
-        <div class="gt-step"><span class="gt-num" aria-hidden="true">3</span><h3 class="gt-step-title">Full Refund</h3><p class="gt-step-text">Still not 100%? Full refund. No awkward conversation.</p></div>
+      <div class="hiw2-step">STEP ONE</div>
+      <h3 class="hiw2-title">Book in 60 Seconds</h3>
+      <p class="hiw2-desc">Pick a service, pick a time. Done before your coffee gets cold.</p>
+      <div class="hiw2-time">Takes 1 minute</div>
+    </div>
+
+    <!-- 02 -->
+    <div class="hiw2-card">
+      <div class="hiw2-bignum">02</div>
+      <div class="hiw2-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+      </div>
+      <div class="hiw2-step">STEP TWO</div>
+      <h3 class="hiw2-title">Relax — I Got It</h3>
+      <p class="hiw2-desc">I roll up with water, power, products. You don't lift a finger. Stay inside, I'll handle the rest.</p>
+      <div class="hiw2-time">2–5 Hours On-Site</div>
+    </div>
+
+    <!-- 03 -->
+    <div class="hiw2-card">
+      <div class="hiw2-bignum">03</div>
+      <div class="hiw2-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 0 0 0 6.364L12 20.364l7.682-7.682a4.5 4.5 0 0 0-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 0 0-6.364 0Z"/></svg>
+      </div>
+      <div class="hiw2-step">STEP THREE</div>
+      <h3 class="hiw2-title">Fall In Love Again</h3>
+      <p class="hiw2-desc">Hop in. Smell that. That's your car — like the day you bought it. Pay when you're smiling.</p>
+      <div class="hiw2-time">Pay Only If Happy</div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="gt2" aria-labelledby="gt2-title-id">
+  <div class="gt2-box">
+    <div class="gt2-stamp" aria-hidden="true">
+      <div class="gt2-stamp-inner">
+        <div class="big">100%</div>
+        <div class="lbl">GUARANTEE</div>
       </div>
     </div>
-  </section>
+
+    <div class="gt2-top">
+      <div class="gt2-tag">No Risk. No BS.</div>
+      <h2 id="gt2-title-id" class="gt2-title">
+        I Don't Leave Until<br>You <em>Love It</em>
+      </h2>
+      <p class="gt2-desc">
+        We walk around the car together when I'm done. <strong>Anything off gets fixed on the spot.</strong> Simple as that.
+      </p>
+    </div>
+
+    <div class="gt2-steps">
+      <div class="gt2-step">
+        <div class="gt2-step-num">01</div>
+        <div class="gt2-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59"/></svg>
+        </div>
+        <h3 class="gt2-step-title">Fixed On The Spot</h3>
+        <p class="gt2-step-text">See something off? Tell me before I leave. I fix it right then.</p>
+      </div>
+      <div class="gt2-step">
+        <div class="gt2-step-num">02</div>
+        <div class="gt2-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"/></svg>
+        </div>
+        <h3 class="gt2-step-title">Free Return Trip</h3>
+        <p class="gt2-step-text">Notice it later? I come back. No charge. No hassle.</p>
+      </div>
+      <div class="gt2-step">
+        <div class="gt2-step-num">03</div>
+        <div class="gt2-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"/></svg>
+        </div>
+        <h3 class="gt2-step-title">Full Refund</h3>
+        <p class="gt2-step-text">Still not happy? Money back. No awkward talk.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- BOOKING / QQC -->
       <div id="booking"></div>
