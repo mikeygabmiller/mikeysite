@@ -1773,9 +1773,8 @@ header li a[href="#booking"]::after,
   </div>
 </section>
 
-  <!-- =========================================================
-     HOW IT WORKS + GUARANTEE — v2 (more punch)
-     Drop in place of the old sections.
+<!-- =========================================================
+     HOW IT WORKS + GUARANTEE — v3 (Hormozi polish)
      ========================================================= -->
 <style>
   :root {
@@ -2062,6 +2061,10 @@ header li a[href="#booking"]::after,
     margin: 0 auto;
   }
   .gt2-desc strong { color: #fff; font-weight: 700; }
+  .gt2-desc .proof {
+    color: var(--brand-red);
+    font-weight: 800;
+  }
 
   .gt2-steps {
     display: grid;
@@ -2113,6 +2116,30 @@ header li a[href="#booking"]::after,
     line-height: 1.55;
   }
 
+  /* scarcity bar under guarantee */
+  .gt2-scarcity {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    letter-spacing: 0.5px;
+  }
+  .gt2-scarcity strong {
+    color: #fff;
+  }
+  .gt2-scarcity .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--brand-red);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--brand-red);
+    animation: pulse 1.8s ease-in-out infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
   @media (max-width: 720px) {
     .gt2-stamp { width: 70px; height: 70px; top: 16px; right: 16px; }
     .gt2-stamp-inner .big { font-size: 22px; }
@@ -2130,8 +2157,8 @@ header li a[href="#booking"]::after,
 <section class="hiw2" aria-labelledby="hiw2-title-id">
   <div class="hiw2-eyebrow"><span>How It Works</span></div>
   <h2 class="hiw2-head" id="hiw2-title-id">
-    Dirty to <em>damn that's clean</em>
-    <span class="small">— in 3 easy steps —</span>
+    3 Steps. Zero effort. One <em>ridiculously clean</em> car.
+    <span class="small">— here's how —</span>
   </h2>
 
   <div class="hiw2-grid">
@@ -2143,7 +2170,7 @@ header li a[href="#booking"]::after,
       </div>
       <div class="hiw2-step">STEP ONE</div>
       <h3 class="hiw2-title">Book in 60 Seconds</h3>
-      <p class="hiw2-desc">Pick a service, pick a time. Done before your coffee gets cold.</p>
+      <p class="hiw2-desc">Tell me your car, your spot, your time. No phone tag. No "we'll call you back." You're on the calendar before your coffee's cold.</p>
       <div class="hiw2-time">Takes 1 minute</div>
     </div>
 
@@ -2155,8 +2182,8 @@ header li a[href="#booking"]::after,
       </div>
       <div class="hiw2-step">STEP TWO</div>
       <h3 class="hiw2-title">Relax — I Got It</h3>
-      <p class="hiw2-desc">I roll up with water, power, products. You don't lift a finger. Stay inside, I'll handle the rest.</p>
-      <div class="hiw2-time">2–5 Hours On-Site</div>
+      <p class="hiw2-desc">I show up on time, fully loaded — every tool, every product, everything. You stay in pajamas. I'll text when I'm done.</p>
+      <div class="hiw2-time">Done in 2–5 Hours</div>
     </div>
 
     <!-- 03 -->
@@ -2167,7 +2194,7 @@ header li a[href="#booking"]::after,
       </div>
       <div class="hiw2-step">STEP THREE</div>
       <h3 class="hiw2-title">Fall In Love Again</h3>
-      <p class="hiw2-desc">Hop in. Smell that. That's your car — like the day you bought it. Pay when you're smiling.</p>
+      <p class="hiw2-desc">Open the door. That new-car smell hits. Run your hand down the paint — glass. You only pay if you're grinning.</p>
       <div class="hiw2-time">Pay Only If Happy</div>
     </div>
   </div>
@@ -2184,12 +2211,12 @@ header li a[href="#booking"]::after,
     </div>
 
     <div class="gt2-top">
-      <div class="gt2-tag">No Risk. No BS.</div>
+      <div class="gt2-tag">You Don't Pay Until You're Happy</div>
       <h2 id="gt2-title-id" class="gt2-title">
         I Don't Leave Until<br>You <em>Love It</em>
       </h2>
       <p class="gt2-desc">
-        We walk around the car together when I'm done. <strong>Anything off gets fixed on the spot.</strong> Simple as that.
+        When I'm done, we walk around the car together. You point, I fix. <span class="proof">300+ details, zero refunds asked for</span> — but if you're the first, you get every penny back.
       </p>
     </div>
 
@@ -2219,6 +2246,10 @@ header li a[href="#booking"]::after,
         <p class="gt2-step-text">Still not happy? Money back. No awkward talk.</p>
       </div>
     </div>
+  </div>
+
+  <div class="gt2-scarcity">
+    <span class="dot"></span><strong>I take 2–3 cars a day.</strong> When the week's full, it's full.
   </div>
 </section>
 
