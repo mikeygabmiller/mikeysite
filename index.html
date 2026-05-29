@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1038,9 +1039,8 @@ header li a[href="#booking"]::after,
 
 
 </style>
-
-
-  
+</head>
+<body>
 <main id="main-content">
 <a id="top"></a>
 <header id="mikeyHeader">
@@ -1515,9 +1515,6 @@ header li a[href="#booking"]::after,
   }
 </style>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* ============================================================
      MIKEY'S OFFER SECTION  —  paste this whole block into your site.
@@ -1526,25 +1523,27 @@ header li a[href="#booking"]::after,
      ============================================================ */
 
   .mko {
-    --bg: #0a0a0a;
-    --panel: #141414;
-    --panel-2: #1b1b1b;
-    --red: #e5201e;
-    --red-bright: #ff3b34;
+    --bg: #141414;
+    --panel: #1a1a1a;
+    --panel-2: #232323;
+    --red: #dc2626;
+    --red-bright: #ef4444;
     --gold: #fbc02d;
     --line: rgba(255, 255, 255, 0.10);
     --text: #ffffff;
     --muted: #9aa0a6;
     box-sizing: border-box;
-    font-family: "Poppins", system-ui, sans-serif;
+    font-family: "Outfit", sans-serif;
     color: var(--text);
     background:
-      radial-gradient(120% 80% at 50% -10%, rgba(229, 32, 30, 0.28) 0%, rgba(229, 32, 30, 0.06) 32%, transparent 60%),
+      radial-gradient(120% 80% at 50% -10%, rgba(220, 38, 38, 0.28) 0%, rgba(220, 38, 38, 0.06) 32%, transparent 60%),
       var(--bg);
     position: relative;
     overflow: hidden;
     padding: clamp(48px, 7vw, 104px) 20px clamp(56px, 7vw, 112px);
     isolation: isolate;
+    border-top: 2px solid #dc2626;
+    border-bottom: 2px solid #dc2626;
   }
   .mko *, .mko *::before, .mko *::after { box-sizing: border-box; }
 
@@ -1575,14 +1574,14 @@ header li a[href="#booking"]::after,
     gap: 9px;
     background: var(--red);
     color: #fff;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(12px, 1.5vw, 15px);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 10px 20px;
     border-radius: 999px;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.35);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(220,38,38,0.35);
     animation: mkoPulse 2.4s ease-in-out infinite;
   }
   .mko__eyebrow .dot {
@@ -1593,13 +1592,13 @@ header li a[href="#booking"]::after,
   }
   @keyframes mkoBlink { 50% { opacity: 0.25; } }
   @keyframes mkoPulse {
-    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.30); }
-    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 44px rgba(229,32,30,0.62); }
+    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(220,38,38,0.30); }
+    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 44px rgba(220,38,38,0.62); }
   }
 
   /* ---------- headline ---------- */
   .mko__head {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     line-height: 0.92;
     letter-spacing: -0.01em;
@@ -1611,7 +1610,7 @@ header li a[href="#booking"]::after,
   .mko__head .free {
     color: var(--red);
     position: relative;
-    text-shadow: 0 0 38px rgba(229, 32, 30, 0.55);
+    text-shadow: 0 0 38px rgba(220, 38, 38, 0.55);
     white-space: nowrap;
   }
   .mko__head .free::after {
@@ -1621,7 +1620,7 @@ header li a[href="#booking"]::after,
     height: clamp(5px, 0.7vw, 9px);
     background: var(--red);
     border-radius: 6px;
-    box-shadow: 0 0 22px rgba(229,32,30,0.7);
+    box-shadow: 0 0 22px rgba(220,38,38,0.7);
   }
 
   .mko__sub {
@@ -1661,24 +1660,24 @@ header li a[href="#booking"]::after,
     font-weight: 600;
   }
   .mko__cell .name {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(17px, 2.3vw, 22px);
     text-transform: uppercase;
     line-height: 1;
   }
   .mko__cell .price {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(15px, 2vw, 18px);
     color: #cfd2d5;
   }
   .mko__cell.free-cell {
-    border-color: rgba(229, 32, 30, 0.55);
+    border-color: rgba(220, 38, 38, 0.55);
     background:
-      radial-gradient(120% 130% at 50% 0%, rgba(229,32,30,0.22), transparent 70%),
+      radial-gradient(120% 130% at 50% 0%, rgba(220,38,38,0.22), transparent 70%),
       linear-gradient(180deg, var(--panel-2), var(--panel));
-    box-shadow: 0 0 0 1px rgba(229,32,30,0.25), 0 18px 50px rgba(229,32,30,0.18);
+    box-shadow: 0 0 0 1px rgba(220,38,38,0.25), 0 18px 50px rgba(220,38,38,0.18);
   }
   .mko__cell.free-cell .strike {
     color: var(--muted);
@@ -1687,20 +1686,20 @@ header li a[href="#booking"]::after,
     text-decoration-thickness: 2px;
     font-weight: 700;
     font-size: 15px;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
   }
   .mko__cell.free-cell .big-free {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: clamp(26px, 4vw, 38px);
     color: var(--red);
     line-height: 0.9;
     text-transform: uppercase;
-    text-shadow: 0 0 26px rgba(229,32,30,0.5);
+    text-shadow: 0 0 26px rgba(220,38,38,0.5);
   }
   .mko__plus {
     align-self: center;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: 30px;
     color: var(--red);
@@ -1710,7 +1709,7 @@ header li a[href="#booking"]::after,
   /* ---------- countdown ---------- */
   .mko__timerwrap { margin: clamp(34px, 5vw, 48px) auto 0; }
   .mko__timerlabel {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1737,7 +1736,7 @@ header li a[href="#booking"]::after,
     box-shadow: 0 14px 34px rgba(0,0,0,0.55);
   }
   .mko__seg .num {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: clamp(30px, 5.4vw, 50px);
     line-height: 1;
@@ -1766,7 +1765,7 @@ header li a[href="#booking"]::after,
     align-items: center;
     justify-content: center;
     gap: 12px;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -1782,12 +1781,12 @@ header li a[href="#booking"]::after,
     color: #fff;
     font-size: clamp(17px, 2.5vw, 23px);
     padding: 22px 28px;
-    box-shadow: 0 16px 40px rgba(229, 32, 30, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: 0 16px 40px rgba(220, 38, 38, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
   }
   .mko__btn--primary:hover {
-    background: #ff2a23;
+    background: #ef4444;
     transform: translateY(-2px);
-    box-shadow: 0 22px 56px rgba(229, 32, 30, 0.6), inset 0 1px 0 rgba(255,255,255,0.22);
+    box-shadow: 0 22px 56px rgba(220, 38, 38, 0.6), inset 0 1px 0 rgba(255,255,255,0.22);
   }
   .mko__btn--ghost {
     width: 100%;
@@ -1830,8 +1829,6 @@ header li a[href="#booking"]::after,
     .mko__cell { padding: 18px 16px; }
   }
 </style>
-</head>
-<body style="margin:0; background:#0a0a0a;">
 
 <!-- ===================== OFFER SECTION (copy from here) ===================== -->
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
@@ -2699,7 +2696,6 @@ header li a[href="#booking"]::after,
   }
 
 </style>
-<body style="background: #141414;">
 
 <div class="container">
   <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
@@ -2785,7 +2781,6 @@ header li a[href="#booking"]::after,
 })();
 </script>
 
-</body>
 </div>
     </div>
   </section>
