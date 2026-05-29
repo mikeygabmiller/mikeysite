@@ -228,8 +228,7 @@ section:nth-of-type(even) { background: #1a1a1a; }
 }
 
 /* =========================================================
-   SUPER HEADER — carbon fiber, hex, brackets, scanline,
-   scroll progress, shrink, status pill, review badge
+   HEADER — clean fixed bar: logo, nav, book button
    ========================================================= */
 
 /* push body down so fixed header doesn't cover content */
@@ -237,92 +236,12 @@ body { padding-top: 90px; }
 
 #mikeyHeader {
   position: fixed; top: 0; left: 0; right: 0; width: 100%;
-  background:
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='140' viewBox='0 0 80 140'><path d='M40 0 L80 23 L80 70 L40 93 L0 70 L0 23 Z M40 47 L80 70 L80 117 L40 140 L0 117 L0 70 Z' fill='none' stroke='%23dc2626' stroke-width='1' opacity='0.18'/></svg>"),
-    repeating-linear-gradient(45deg,
-      rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px,
-      transparent 1px, transparent 3px),
-    repeating-linear-gradient(-45deg,
-      rgba(0,0,0,0.4) 0px, rgba(0,0,0,0.4) 1px,
-      transparent 1px, transparent 3px),
-    linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(10,10,10,0.92) 100%);
-  background-size: 80px 140px, auto, auto, auto;
+  background: rgba(12,12,12,0.92);
   z-index: 9999;
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(220,38,38,0.1);
-  transition: padding 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* CORNER BRACKETS — military/gaming aesthetic */
-#mikeyHeader::before,
-#mikeyHeader::after {
-  content: '';
-  position: absolute;
-  width: 24px; height: 24px;
-  pointer-events: none;
-  z-index: 2;
-}
-#mikeyHeader::before {
-  top: 8px; left: 8px;
-  border-top: 2px solid var(--brand-red);
-  border-left: 2px solid var(--brand-red);
-  box-shadow: -1px -1px 8px rgba(220,38,38,0.4);
-}
-#mikeyHeader::after {
-  top: 8px; right: 8px;
-  border-top: 2px solid var(--brand-red);
-  border-right: 2px solid var(--brand-red);
-  box-shadow: 1px -1px 8px rgba(220,38,38,0.4);
-}
-
-/* SCANLINE — subtle horizontal sweep */
-#mikeyHeader nav::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg,
-    transparent, rgba(220,38,38,0.6), transparent);
-  animation: scanline 4s linear infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-@keyframes scanline {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(80px); opacity: 0; }
-}
-
-/* ANIMATED PULSE LINE — bottom edge */
-#mikeyHeader > .pulse-line {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(220,38,38,0.3) 30%,
-    rgba(220,38,38,1) 50%,
-    rgba(220,38,38,0.3) 70%,
-    transparent 100%);
-  background-size: 200% 100%;
-  animation: pulseSlide 3s ease-in-out infinite;
-  z-index: 2;
-}
-@keyframes pulseSlide {
-  0% { background-position: 200% 0; }
-  100% { background-position: -100% 0; }
-}
-
-/* SCROLL PROGRESS BAR — very bottom */
-#mikeyHeader > .scroll-progress {
-  position: absolute;
-  bottom: -2px; left: 0;
-  height: 2px; width: 0%;
-  background: linear-gradient(90deg, #dc2626, #ff4444, #dc2626);
-  box-shadow: 0 0 12px rgba(220,38,38,0.8);
-  transition: width 0.1s ease-out;
-  z-index: 3;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
 }
 
 /* NAV LAYOUT */
@@ -331,103 +250,14 @@ body { padding-top: 90px; }
   display: flex; justify-content: space-between; align-items: center;
   padding: 14px 40px; color: white;
   position: relative;
-  transition: padding 0.3s ease;
 }
 
-/* SHRINK STATE */
-#mikeyHeader.shrunk { box-shadow: 0 2px 30px rgba(0,0,0,0.9), 0 0 50px rgba(220,38,38,0.15); }
-#mikeyHeader.shrunk nav { padding: 6px 40px; }
-#mikeyHeader.shrunk img { height: 38px; }
-#mikeyHeader.shrunk .header-left { gap: 12px; }
-#mikeyHeader.shrunk .status-pill { transform: scale(0.9); }
-#mikeyHeader.shrunk .review-badge { opacity: 0; transform: scale(0.8); pointer-events: none; }
-
-/* LEFT GROUP — logo + status */
-.header-left {
-  display: flex; align-items: center; gap: 18px;
-  transition: gap 0.3s ease;
-}
-
-/* LOGO + GLOW RING */
-.logo-wrap {
-  position: relative;
-  display: inline-block;
-}
-.logo-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg,
-    transparent 0deg,
-    rgba(220,38,38,0.5) 60deg,
-    transparent 120deg,
-    transparent 360deg);
-  animation: ringSpin 4s linear infinite;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 0;
-  filter: blur(8px);
-}
-.logo-wrap:hover::before { opacity: 1; }
-@keyframes ringSpin {
-  to { transform: rotate(360deg); }
-}
+/* LOGO */
 #mikeyHeader img {
   height: 50px; width: auto; display: block; cursor: pointer;
-  position: relative; z-index: 1;
-  filter: drop-shadow(0 0 8px rgba(220,38,38,0.3));
-  transition: filter 0.3s ease, height 0.3s ease;
+  transition: opacity 0.2s ease;
 }
-.logo-wrap:hover img {
-  filter: drop-shadow(0 0 14px rgba(220,38,38,0.7));
-}
-
-/* STATUS PILL */
-.status-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 5px 11px;
-  background: rgba(34,197,94,0.12);
-  border: 1px solid rgba(34,197,94,0.4);
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #4ade80;
-  transition: transform 0.3s ease;
-}
-.status-pill .dot {
-  width: 7px; height: 7px;
-  background: #22c55e; border-radius: 50%;
-  box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
-  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-}
-
-/* RIGHT GROUP */
-.header-right {
-  display: flex; align-items: center; gap: 18px;
-}
-
-/* REVIEW BADGE */
-.review-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 5px 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 4px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 0.03em;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.review-badge .stars { color: #facc15; letter-spacing: 0.05em; }
-.review-badge .count { color: rgba(255,255,255,0.6); font-weight: 500; }
+#mikeyHeader a:hover img { opacity: 0.85; }
 
 /* DESKTOP MENU */
 #desktopMenu {
@@ -450,27 +280,12 @@ body { padding-top: 90px; }
   content: '';
   position: absolute;
   bottom: 4px; left: 50%;
-  width: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--brand-red), transparent);
-  transition: width 0.35s ease, left 0.35s ease;
+  width: 0; height: 2px;
+  background: var(--brand-red);
+  transition: width 0.25s ease, left 0.25s ease;
 }
-#desktopMenu a:not([href="#booking"])::after {
-  content: '';
-  position: absolute;
-  top: 4px; right: 6px;
-  width: 6px; height: 6px;
-  border-top: 1px solid var(--brand-red);
-  border-right: 1px solid var(--brand-red);
-  opacity: 0;
-  transform: translate(-4px, 4px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-#desktopMenu a:not([href="#booking"]):hover {
-  color: #fff;
-  text-shadow: 0 0 12px rgba(220,38,38,0.5);
-}
+#desktopMenu a:not([href="#booking"]):hover { color: #fff; }
 #desktopMenu a:not([href="#booking"]):hover::before { width: 70%; left: 15%; }
-#desktopMenu a:not([href="#booking"]):hover::after { opacity: 1; transform: translate(0,0); }
 #desktopMenu a:focus-visible {
   outline: 1px solid var(--brand-red);
   outline-offset: 4px;
@@ -483,49 +298,17 @@ header li a[href="#booking"],
   display: inline-block;
   padding: 11px 22px;
   margin-left: 10px;
-  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 50%, #dc2626 100%);
+  background: var(--brand-red);
   color: #fff !important;
   font-weight: 800;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 3px;
-  position: relative;
-  overflow: hidden;
-  box-shadow:
-    0 4px 14px rgba(220,38,38,0.4),
-    0 0 0 1px rgba(220,38,38,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 6px;
+  transition: background 0.2s ease;
 }
-header li a[href="#booking"]::after,
-#desktopMenu a[href="#booking"]::after {
-  content: '';
-  position: absolute;
-  top: 0; left: -75%;
-  width: 50%; height: 100%;
-  background: linear-gradient(to right,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.4) 50%,
-    rgba(255,255,255,0) 100%);
-  transform: skewX(-25deg);
-  animation: bookShine 3.5s infinite;
-}
-@keyframes bookShine {
-  0% { left: -75%; }
-  25% { left: 125%; }
-  100% { left: 125%; }
-}
-#desktopMenu a[href="#booking"]:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 6px 22px rgba(220,38,38,0.6),
-    0 0 0 1px rgba(220,38,38,0.5),
-    inset 0 1px 0 rgba(255,255,255,0.3);
-}
-#desktopMenu a[href="#booking"]:active { transform: translateY(0); }
+#desktopMenu a[href="#booking"]:hover { background: var(--brand-red-dark); }
 
 /* HAMBURGER */
 #hamburgerBtn {
@@ -536,7 +319,6 @@ header li a[href="#booking"]::after,
 #hamburgerBtn span {
   width: 26px; height: 2px; background: white;
   border-radius: 2px; transition: all 0.3s ease; display: block;
-  box-shadow: 0 0 4px rgba(220,38,38,0.4);
 }
 #hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
 #hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
@@ -546,14 +328,10 @@ header li a[href="#booking"]::after,
 #mobileMenu {
   list-style: none; position: absolute; top: 100%; left: 0;
   width: 100%;
-  background:
-    linear-gradient(rgba(10,10,10,0.98), rgba(10,10,10,0.98)),
-    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'><path d='M28 0 L56 16 L56 50 L28 66 L0 50 L0 16 Z' fill='none' stroke='%23dc2626' stroke-width='0.4' opacity='0.1'/></svg>"),
-    #0a0a0a;
-  background-size: auto, 56px 100px, auto;
+  background: #0a0a0a;
   max-height: 0; opacity: 0; overflow: hidden;
   transition: max-height 0.4s ease, opacity 0.3s ease;
-  border-top: 1px solid rgba(220,38,38,0.2);
+  border-top: 1px solid rgba(255,255,255,0.08);
   margin: 0; padding: 0;
 }
 #mobileMenu.open { max-height: 600px; opacity: 1; }
@@ -588,13 +366,6 @@ header li a[href="#booking"]::after,
   #hamburgerBtn { display: flex !important; }
   #mikeyHeader img { height: 38px; }
   #mikeyHeader nav { padding: 10px 16px; }
-  #mikeyHeader::before, #mikeyHeader::after { width: 16px; height: 16px; top: 5px; }
-  #mikeyHeader::before { left: 5px; }
-  #mikeyHeader::after { right: 5px; }
-  .status-pill { padding: 4px 8px; font-size: 0.62rem; }
-  .status-pill .dot { width: 6px; height: 6px; }
-  .review-badge { display: none; }
-  .header-left { gap: 10px; }
 }
 /* ==
   font-size:clamp(1.05rem, 1.8vw, 1.35rem);
@@ -2320,6 +2091,16 @@ header li a[href="#booking"]::after,
       <div class="qq-form-fields">
         <input type="text" class="qq-input" id="qqName" placeholder="Your name" autocomplete="name" />
         <input type="tel" class="qq-input" id="qqPhone" placeholder="Phone number" autocomplete="tel" />
+        <input type="text" class="qq-input" id="qqLocation" list="qqCities" placeholder="Your city (optional)" autocomplete="address-level2" />
+        <datalist id="qqCities">
+          <option value="Snohomish"></option>
+          <option value="Monroe"></option>
+          <option value="Lake Stevens"></option>
+          <option value="Everett"></option>
+          <option value="Bothell"></option>
+          <option value="Mill Creek"></option>
+          <option value="Duvall"></option>
+        </datalist>
       </div>
       <button class="qq-btn qq-btn-red" id="qqSubmitBtn" data-role="submit-quote">LOCK IN YOUR QUOTE &#8594;</button>
     </div>
@@ -2476,8 +2257,10 @@ header li a[href="#booking"]::after,
     else if (role === 'submit-quote') {
       var nameEl = document.getElementById('qqName');
       var phoneEl = document.getElementById('qqPhone');
+      var locEl = document.getElementById('qqLocation');
       var name = nameEl ? nameEl.value.trim() : '';
       var phone = phoneEl ? phoneEl.value.trim() : '';
+      var location = locEl ? locEl.value.trim() : '';
       if (!name) { if (nameEl) { nameEl.style.borderColor = '#dc2626'; nameEl.focus(); } return; }
       if (!phone || phone.length < 7) { if (phoneEl) { phoneEl.style.borderColor = '#dc2626'; phoneEl.focus(); } return; }
       if (nameEl) nameEl.style.borderColor = 'rgba(220,38,38,0.25)';
@@ -2485,13 +2268,14 @@ header li a[href="#booking"]::after,
       var btn = document.getElementById('qqSubmitBtn');
       if (btn) { btn.disabled = true; btn.textContent = 'SENDING...'; }
       var cond = (qqS.condition && qqS.condition.label) ? qqS.condition.label : 'Pretty Clean';
-      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone + '\nQuote: $' + qqTotal + '\nVehicle: ' + qqVehicle + '\nCondition: ' + cond + '\nServices: ' + qqItems.join(', ');
+      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone + (location ? '\nLocation: ' + location : '') + '\nQuote: $' + qqTotal + '\nVehicle: ' + qqVehicle + '\nCondition: ' + cond + '\nServices: ' + qqItems.join(', ');
       var formData = new FormData();
       formData.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
       formData.append('subject', 'New Quote: $' + qqTotal + ' - ' + name);
       formData.append('from_name', 'Mikeys QQC');
       formData.append('name', name);
       formData.append('phone', phone);
+      if (location) formData.append('location', location);
       formData.append('message', msgBody);
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -3569,69 +3353,6 @@ header li a[href="#booking"]::after,
   .about-btn--ghost{ background:transparent; color:#fff; border-color:#fff; }
   .about-btn--ghost:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
 </style>
-<!-- HOMEPAGE SECTIONS - drop these on your homepage -->
-<!-- ====================================================== -->
-
-<!-- SECTION 1: Ceramic Coating -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <span style="display:inline-block;background:#dc2626;color:#fff;padding:4px 12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:0.75rem;margin-bottom:16px;">Premium Service</span>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">Ceramic Coating in Snohomish County</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Multi-year paint protection applied at your driveway. Water beads off, dirt wipes away, your paint stays glossy for years instead of months. Standard, Pro, and Elite tiers from $500.</p>
-    <a href="/ceramic-coating-snohomish-county/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);">See Ceramic Packages →</a>
-  </div>
-</section>
-
-<!-- SECTION 2: Truck Detailing -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <span style="display:inline-block;background:#dc2626;color:#fff;padding:4px 12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:0.75rem;margin-bottom:16px;">Built for Trucks</span>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">Truck Detailing — Snohomish County</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Daily drivers, work trucks, weekend rigs. F-150s, Silverados, Rams, Tundras, Tacomas — bed cleanouts, mud removal, full interior shampooing. Lifted, stock, oversized, all welcome.</p>
-    <a href="/snohomish/truck-detailing/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);">See Truck Packages →</a>
-  </div>
-</section>
-
-<!-- SECTION 3: Detailing Cost -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;border-bottom:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <span style="display:inline-block;background:#dc2626;color:#fff;padding:4px 12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:0.75rem;margin-bottom:16px;">Honest Pricing</span>
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">What Does Car Detailing Cost in Snohomish County?</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Real local pricing for every package. Exterior detail from $130, full detail from $260, ceramic coating from $500. No bait-and-switch, no hidden fees. See the full breakdown.</p>
-    <a href="/car-detailing-cost-snohomish-county/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);">See Full Pricing →</a>
-  </div>
-</section>
-<!-- ====================================================== -->
-<!-- HOMEPAGE SECTIONS - drop these anywhere on your homepage -->
-<!-- ====================================================== -->
-
-<!-- SECTION 1: How Long Does Detailing Take -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">How Long Does Car Detailing Actually Take?</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Short answer: a basic interior runs about 90 minutes, a full detail takes 3–5 hours. But it depends on the car's size, condition, and what you're booking. I broke it all down by package so you know exactly what to expect when I roll up to your driveway.</p>
-    <a href="/how-long-does-car-detailing-take/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);transition:all 0.2s;">See Full Time Breakdown →</a>
-  </div>
-</section>
-
-<!-- SECTION 2: Mobile Detailing vs Car Wash -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">Mobile Detailing vs Car Wash — What's The Difference?</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">A drive-thru wash takes 5 minutes and costs $15. A real detail takes hours and costs more — but you're getting a totally different result. Here's the honest comparison so you can decide which one you actually need (sometimes a wash is fine, sometimes it's not).</p>
-    <a href="/mobile-detailing-vs-car-wash/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);transition:all 0.2s;">Read The Comparison →</a>
-  </div>
-</section>
-
-<!-- SECTION 3: Best Time of Year to Detail -->
-<section style="background:#141414;padding:60px 20px;border-top:2px solid #dc2626;border-bottom:2px solid #dc2626;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">When's The Best Time To Detail Your Car In Washington?</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Living in the PNW means rain, road salt, pollen, and sap all hit your paint at different times of year. I detail year-round, but there are smart times to book — and times most people miss. Here's my month-by-month guide for Snohomish County drivers.</p>
-    <a href="/best-time-to-detail-car-washington/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);transition:all 0.2s;">See The Seasonal Guide →</a>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section id="qanda" class="faq2" aria-labelledby="faq2-title">
   <div class="faq2-inner">
@@ -3692,6 +3413,29 @@ header li a[href="#booking"]::after,
   .faq2-btn--primary:hover{ background:#b91c1c; border-color:#b91c1c; transform:translateY(-2px); }
   .faq2-btn--ghost{ background:transparent; color:#fff; border-color:#fff; }
   .faq2-btn--ghost:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
+</style>
+
+<!-- EXPLORE MORE — compact internal links (SEO) -->
+<section class="explore" aria-labelledby="explore-title">
+  <div class="explore-inner">
+    <h2 id="explore-title" class="explore-title">More Detailing Info</h2>
+    <div class="explore-links">
+      <a href="/ceramic-coating-snohomish-county/">Ceramic Coating</a>
+      <a href="/snohomish/truck-detailing/">Truck Detailing</a>
+      <a href="/car-detailing-cost-snohomish-county/">Detailing Cost</a>
+      <a href="/how-long-does-car-detailing-take/">How Long It Takes</a>
+      <a href="/mobile-detailing-vs-car-wash/">Detailing vs Car Wash</a>
+      <a href="/best-time-to-detail-car-washington/">Best Time To Detail</a>
+    </div>
+  </div>
+</section>
+<style>
+  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
+  .explore-inner{ max-width:1100px; margin:0 auto; }
+  .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#777; margin:0 0 14px; }
+  .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
+  .explore-links a{ display:inline-block; padding:8px 14px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:0.85rem; font-weight:600; text-decoration:none; transition:border-color .15s ease, color .15s ease; }
+  .explore-links a:hover{ border-color:#dc2626; color:#fff; }
 </style>
 </main>
 
