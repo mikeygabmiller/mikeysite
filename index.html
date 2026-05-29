@@ -160,7 +160,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Oswald:wght@600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
 
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
@@ -1722,7 +1722,7 @@ header li a[href="#booking"],
       <div style="max-width:640px;margin:0 auto;padding:0 16px;">
 <!-- MIKEY'S QQC v3 — Uses original working JS pattern exactly -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
+/* Outfit is already loaded once in <head>; no duplicate @import here (faster mobile load). */
 
 #qqcCard {
   font-family: 'Outfit', sans-serif;
@@ -1838,6 +1838,52 @@ header li a[href="#booking"],
 
 #step1 { display: block; }
 #step2, #step3, #step4, #step5 { display: none; }
+
+/* ===== Keyboard focus (a11y) ===== */
+#qqcCard .qq-card { -webkit-tap-highlight-color: transparent; }
+#qqcCard .qq-card:focus-visible {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.5);
+}
+#qqcCard [id^="step"]:focus { outline: none; }
+
+/* ===== Satisfying selection pop ===== */
+@keyframes qqPop { 0%{transform:scale(1);} 45%{transform:scale(1.04);} 100%{transform:scale(1);} }
+#qqcCard .qq-card.selected { animation: qqPop .28s ease; }
+
+/* ===== Smooth step-to-step transition ===== */
+@keyframes qqStepIn { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
+#qqcCard [id^="step"].qq-anim { animation: qqStepIn .35s ease both; }
+
+/* ===== Animated success checkmark ===== */
+@keyframes qqCheckPop { 0%{transform:scale(0); opacity:0;} 60%{transform:scale(1.18);} 100%{transform:scale(1); opacity:1;} }
+#qqcCard .qq-success-icon { display:inline-block; animation: qqCheckPop .55s cubic-bezier(.34,1.56,.64,1) both; }
+
+/* ===== Submit error / SMS recovery box ===== */
+#qqcCard .qq-error {
+  display:none;
+  background: rgba(220,38,38,0.08);
+  border: 1px solid rgba(220,38,38,0.45);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+#qqcCard .qq-error p { margin: 0 0 12px; font-size: 13.5px; color: #f0c4c4; line-height: 1.55; }
+#qqcCard .qq-error a {
+  display:inline-block; background:#dc2626; color:#fff;
+  padding:13px 20px; border-radius:9px; font-weight:800; font-size:14.5px;
+  text-decoration:none; transition:opacity .2s;
+}
+#qqcCard .qq-error a:hover { opacity:.9; }
+
+/* ===== Respect reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  #qqcCard .qq-card.selected,
+  #qqcCard [id^="step"].qq-anim,
+  #qqcCard .qq-success-icon { animation: none; }
+}
 
 /* ========== DESKTOP RESPONSIVE ========== */
 @media (min-width: 640px) {
@@ -2102,6 +2148,7 @@ header li a[href="#booking"],
           <option value="Duvall"></option>
         </datalist>
       </div>
+      <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
       <button class="qq-btn qq-btn-red" id="qqSubmitBtn" data-role="submit-quote">LOCK IN YOUR QUOTE &#8594;</button>
     </div>
     <p class="qq-form-note">100% Satisfaction Guarantee &#8226; Pay When Complete</p>
@@ -2136,13 +2183,24 @@ header li a[href="#booking"],
     var i;
     for (i = 1; i <= 5; i++) {
       var s = document.getElementById('step' + i);
-      if (s) s.style.display = 'none';
+      if (s) { s.style.display = 'none'; s.classList.remove('qq-anim'); }
     }
     var target = document.getElementById('step' + n);
-    if (target) target.style.display = 'block';
+    if (target) {
+      target.style.display = 'block';
+      void target.offsetWidth;        // force reflow so the entrance animation replays
+      target.classList.add('qq-anim');
+      target.setAttribute('tabindex', '-1');
+      try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
+    }
     for (i = 1; i <= 4; i++) {
       var d = document.getElementById('dot' + i);
       if (d) d.className = 'qq-dot' + (i <= n ? ' active' : '');
+    }
+    // GA4 funnel step tracking — shows exactly where people drop off
+    if (typeof gtag === 'function') {
+      var stepNames = { 1: 'vehicle', 2: 'condition', 3: 'services', 4: 'quote', 5: 'success' };
+      gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step' + n) });
     }
     var card = document.getElementById('qqcCard');
     if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -2150,7 +2208,10 @@ header li a[href="#booking"],
 
   function deselectAll(parentId, selector) {
     var els = document.querySelectorAll('#' + parentId + ' ' + selector);
-    for (var i = 0; i < els.length; i++) els[i].classList.remove('selected');
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.remove('selected');
+      els[i].setAttribute('aria-pressed', 'false');
+    }
   }
 
   function handleClick(e) {
@@ -2162,6 +2223,7 @@ header li a[href="#booking"],
     if (role === 'vehicle') {
       deselectAll('step1', '.qq-card');
       el.classList.add('selected');
+      el.setAttribute('aria-pressed', 'true');
       qqS.vehicle = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
       var n1 = document.getElementById('next1');
       if (n1) n1.disabled = false;
@@ -2171,6 +2233,7 @@ header li a[href="#booking"],
     else if (role === 'condition') {
       deselectAll('step2', '.qq-card');
       el.classList.add('selected');
+      el.setAttribute('aria-pressed', 'true');
       qqS.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
       var n2 = document.getElementById('next2');
       if (n2) n2.disabled = false;
@@ -2179,6 +2242,7 @@ header li a[href="#booking"],
 
     else if (role === 'service') {
       el.classList.toggle('selected');
+      el.setAttribute('aria-pressed', el.classList.contains('selected') ? 'true' : 'false');
       var sName = el.getAttribute('data-name');
       var sVal = parseInt(el.getAttribute('data-value'));
       if (el.classList.contains('selected')) {
@@ -2189,6 +2253,7 @@ header li a[href="#booking"],
             var n = svcCards[j].getAttribute('data-name');
             if (n === 'Interior Detail' || n === 'Exterior Detail') {
               svcCards[j].classList.remove('selected');
+              svcCards[j].setAttribute('aria-pressed', 'false');
               delete qqS.services[n];
             }
           }
@@ -2197,6 +2262,7 @@ header li a[href="#booking"],
           for (var j = 0; j < svcCards.length; j++) {
             if (svcCards[j].getAttribute('data-name') === 'Full Detail') {
               svcCards[j].classList.remove('selected');
+              svcCards[j].setAttribute('aria-pressed', 'false');
               delete qqS.services['Full Detail'];
             }
           }
@@ -2210,6 +2276,7 @@ header li a[href="#booking"],
 
     else if (role === 'addon') {
       el.classList.toggle('selected');
+      el.setAttribute('aria-pressed', el.classList.contains('selected') ? 'true' : 'false');
       var aName = el.getAttribute('data-name');
       var aVal = parseInt(el.getAttribute('data-value'));
       if (el.classList.contains('selected')) {
@@ -2243,6 +2310,9 @@ header li a[href="#booking"],
       qqTotal = total;
       qqItems = sn.concat(an);
       qqVehicle = qqS.vehicle ? qqS.vehicle.label : 'vehicle';
+      if (typeof gtag === 'function') {
+        gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: sn.join(', ') });
+      }
       goStep(4);
       var count = 0;
       var display = document.getElementById('quoteAmount');
@@ -2265,10 +2335,26 @@ header li a[href="#booking"],
       if (!phone || phone.length < 7) { if (phoneEl) { phoneEl.style.borderColor = '#dc2626'; phoneEl.focus(); } return; }
       if (nameEl) nameEl.style.borderColor = 'rgba(220,38,38,0.25)';
       if (phoneEl) phoneEl.style.borderColor = 'rgba(220,38,38,0.25)';
+      var errBox = document.getElementById('qqError');
+      if (errBox) errBox.style.display = 'none';
       var btn = document.getElementById('qqSubmitBtn');
       if (btn) { btn.disabled = true; btn.textContent = 'SENDING...'; }
       var cond = (qqS.condition && qqS.condition.label) ? qqS.condition.label : 'Pretty Clean';
       var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone + (location ? '\nLocation: ' + location : '') + '\nQuote: $' + qqTotal + '\nVehicle: ' + qqVehicle + '\nCondition: ' + cond + '\nServices: ' + qqItems.join(', ');
+
+      // If the backend ever fails, the lead is NOT lost — we hand them a
+      // one-tap SMS pre-filled with their quote so it still reaches Mikey.
+      function showSubmitError() {
+        if (btn) { btn.disabled = false; btn.textContent = 'LOCK IN YOUR QUOTE →'; }
+        if (errBox) {
+          var smsHref = 'sms:+13607975831?&body=' + encodeURIComponent("Hi Mikey! Here's my quote request:\n" + msgBody);
+          errBox.innerHTML = "<p>That didn’t go through — but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
+            "<a href=\"" + smsHref + "\">💬 Text My Quote to Mikey</a>";
+          errBox.style.display = 'block';
+        }
+        if (typeof gtag === 'function') gtag('event', 'qqc_submit_error', {});
+      }
+
       var formData = new FormData();
       formData.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
       formData.append('subject', 'New Quote: $' + qqTotal + ' - ' + name);
@@ -2280,12 +2366,27 @@ header li a[href="#booking"],
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
-      }).then(function(res) { return res.json(); }).then(function() {
-        window.parent.postMessage("qqc_submitted", "*");
-        goStep(5);
+      }).then(function(res) { return res.json(); }).then(function(data) {
+        if (data && data.success) {
+          if (typeof gtag === 'function') {
+            gtag('event', 'qqc_submission', { source: 'qqc_form', value: qqTotal, currency: 'USD' });
+          }
+          goStep(5);
+        } else {
+          showSubmitError();
+        }
       }).catch(function() {
-        goStep(5);
+        showSubmitError();
       });
+    }
+  }
+
+  function setupA11y(card) {
+    var cards = card.querySelectorAll('.qq-card');
+    for (var i = 0; i < cards.length; i++) {
+      cards[i].setAttribute('role', 'button');
+      cards[i].setAttribute('tabindex', '0');
+      cards[i].setAttribute('aria-pressed', 'false');
     }
   }
 
@@ -2293,6 +2394,17 @@ header li a[href="#booking"],
     var card = document.getElementById('qqcCard');
     if (card) {
       card.addEventListener('click', handleClick, false);
+      // Keyboard: Enter / Space activates a card (real <button>s keep native behavior)
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          var el = findRole(e.target, card);
+          if (el && el.classList && el.classList.contains('qq-card')) {
+            e.preventDefault();
+            handleClick(e);
+          }
+        }
+      }, false);
+      setupA11y(card);
       return true;
     }
     return false;
@@ -2311,19 +2423,6 @@ header li a[href="#booking"],
 })();
 </script>
 
-<script>
-(function() {
-  function reportHeight() {
-    var h = document.documentElement.scrollHeight;
-    if (window.parent !== window) {
-      window.parent.postMessage({ type: 'qqc-resize', height: h }, '*');
-    }
-  }
-  reportHeight();
-  window.addEventListener('resize', reportHeight);
-  setInterval(reportHeight, 500);
-})();
-</script>
 
 </div>
     </div>
