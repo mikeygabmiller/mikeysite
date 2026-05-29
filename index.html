@@ -1224,7 +1224,7 @@ header li a[href="#booking"]::after,
         </div>
 
         <h1 id="hero-h1">
-  Never Worry About <br>A Dirty Car Again.<span class="accent"> Fast, Friendly Mobile Detailing</span><span class="desktop-line"><br>I Come To You.</span>
+  Never Worry About A <br>Dirty Car Again.<span class="accent"> Fast, Friendly Mobile Detailing</span><span class="desktop-line"><br>I Come To You.</span>
         </h1>
 
         <p class="subhead">
@@ -1512,23 +1512,430 @@ header li a[href="#booking"]::after,
     .trust-review {
       padding: 24px 20px;
     }
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     MIKEY'S OFFER SECTION  —  paste this whole block into your site.
+     Colors / fonts match mikeysdetailing.com (black + vivid red).
+     The only JavaScript is the countdown clock at the very bottom.
+     ============================================================ */
+
+  .mko {
+    --bg: #0a0a0a;
+    --panel: #141414;
+    --panel-2: #1b1b1b;
+    --red: #e5201e;
+    --red-bright: #ff3b34;
+    --gold: #fbc02d;
+    --line: rgba(255, 255, 255, 0.10);
+    --text: #ffffff;
+    --muted: #9aa0a6;
+    box-sizing: border-box;
+    font-family: "Poppins", system-ui, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(229, 32, 30, 0.28) 0%, rgba(229, 32, 30, 0.06) 32%, transparent 60%),
+      var(--bg);
+    position: relative;
+    overflow: hidden;
+    padding: clamp(48px, 7vw, 104px) 20px clamp(56px, 7vw, 112px);
+    isolation: isolate;
+  }
+  .mko *, .mko *::before, .mko *::after { box-sizing: border-box; }
+
+  /* faint carbon texture, like the site header */
+  .mko::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.022) 0 2px, transparent 2px 9px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,0.022) 0 2px, transparent 2px 9px);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .mko__inner {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  /* ---------- eyebrow / limited-time pill ---------- */
+  .mko__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--red);
+    color: #fff;
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: clamp(12px, 1.5vw, 15px);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.35);
+    animation: mkoPulse 2.4s ease-in-out infinite;
+  }
+  .mko__eyebrow .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.25);
+    animation: mkoBlink 1.2s steps(1) infinite;
+  }
+  @keyframes mkoBlink { 50% { opacity: 0.25; } }
+  @keyframes mkoPulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.30); }
+    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 44px rgba(229,32,30,0.62); }
+  }
+
+  /* ---------- headline ---------- */
+  .mko__head {
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    font-size: clamp(40px, 8.4vw, 104px);
+    margin: 26px 0 0;
+    text-wrap: balance;
+  }
+  .mko__head .free {
+    color: var(--red);
+    position: relative;
+    text-shadow: 0 0 38px rgba(229, 32, 30, 0.55);
+    white-space: nowrap;
+  }
+  .mko__head .free::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -0.12em;
+    height: clamp(5px, 0.7vw, 9px);
+    background: var(--red);
+    border-radius: 6px;
+    box-shadow: 0 0 22px rgba(229,32,30,0.7);
+  }
+
+  .mko__sub {
+    max-width: 660px;
+    margin: 26px auto 0;
+    font-size: clamp(16px, 2vw, 21px);
+    line-height: 1.5;
+    color: #d6d8da;
+    font-weight: 400;
+  }
+  .mko__sub b { color: #fff; font-weight: 600; }
+
+  /* ---------- the value math card ---------- */
+  .mko__deal {
+    margin: clamp(34px, 5vw, 48px) auto 0;
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .mko__cell {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .mko__cell .label {
+    font-size: 12px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .mko__cell .name {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: clamp(17px, 2.3vw, 22px);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .mko__cell .price {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: clamp(15px, 2vw, 18px);
+    color: #cfd2d5;
+  }
+  .mko__cell.free-cell {
+    border-color: rgba(229, 32, 30, 0.55);
+    background:
+      radial-gradient(120% 130% at 50% 0%, rgba(229,32,30,0.22), transparent 70%),
+      linear-gradient(180deg, var(--panel-2), var(--panel));
+    box-shadow: 0 0 0 1px rgba(229,32,30,0.25), 0 18px 50px rgba(229,32,30,0.18);
+  }
+  .mko__cell.free-cell .strike {
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: "Archivo", sans-serif;
+  }
+  .mko__cell.free-cell .big-free {
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--red);
+    line-height: 0.9;
+    text-transform: uppercase;
+    text-shadow: 0 0 26px rgba(229,32,30,0.5);
+  }
+  .mko__plus {
+    align-self: center;
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--red);
+    padding: 0 2px;
+  }
+
+  /* ---------- countdown ---------- */
+  .mko__timerwrap { margin: clamp(34px, 5vw, 48px) auto 0; }
+  .mko__timerlabel {
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .mko__timerlabel::before, .mko__timerlabel::after {
+    content: ""; height: 1px; width: 34px; background: var(--line);
+  }
+  .mko__timerlabel b { color: #fff; }
+  .mko__clock {
+    display: inline-flex;
+    gap: clamp(8px, 1.6vw, 14px);
+  }
+  .mko__seg {
+    background: linear-gradient(180deg, var(--panel-2), #0e0e0e);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--red);
+    border-radius: 14px;
+    min-width: clamp(64px, 11vw, 92px);
+    padding: 14px 8px 11px;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+  }
+  .mko__seg .num {
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+    font-size: clamp(30px, 5.4vw, 50px);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+  }
+  .mko__seg .unit {
+    margin-top: 7px;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* ---------- CTAs ---------- */
+  .mko__cta {
+    margin: clamp(32px, 4.5vw, 44px) auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .mko__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: transform 0.12s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .mko__btn--primary {
+    width: 100%;
+    max-width: 560px;
+    background: var(--red);
+    color: #fff;
+    font-size: clamp(17px, 2.5vw, 23px);
+    padding: 22px 28px;
+    box-shadow: 0 16px 40px rgba(229, 32, 30, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .mko__btn--primary:hover {
+    background: #ff2a23;
+    transform: translateY(-2px);
+    box-shadow: 0 22px 56px rgba(229, 32, 30, 0.6), inset 0 1px 0 rgba(255,255,255,0.22);
+  }
+  .mko__btn--ghost {
+    width: 100%;
+    max-width: 560px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.65);
+    font-size: clamp(15px, 2vw, 19px);
+    padding: 16px 28px;
+  }
+  .mko__btn--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+  .mko__finehint {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ---------- trust row ---------- */
+  .mko__trust {
+    margin: clamp(30px, 4vw, 40px) auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px 22px;
+    font-size: 14px;
+    color: #c9cccf;
+    font-weight: 500;
+  }
+  .mko__trust .stars { color: var(--gold); letter-spacing: 1px; }
+  .mko__trust .sep { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.28); }
+  .mko__trust .hot { color: var(--red-bright); font-weight: 700; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 600px) {
+    .mko__deal {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+    }
+    .mko__plus { transform: rotate(90deg); padding: 2px 0; }
+    .mko__cell { padding: 18px 16px; }
   }
 </style>
+</head>
+<body style="margin:0; background:#0a0a0a;">
 
-    
+<!-- ===================== OFFER SECTION (copy from here) ===================== -->
+<section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
+  <div class="mko__inner">
+
+    <span class="mko__eyebrow"><span class="dot"></span>This week &middot; Limited spots</span>
+
+    <h2 class="mko__head">
+      Free Exterior Detail<br />
+      <span class="free">This Week.</span>
+    </h2>
+
+    <p class="mko__sub">
+      Book <b>An Interior Detail</b> this week and earn a Free Wash and Wax <b></b>$130 value, on the house.</b> Pay the interior price,
+      drive away with a complete detail.
+    </p>
+value<!-- value math -->
+    <div class="mko__deal">
+      <div class="mko__cell">
+        <span class="label">You book</span>
+        <span class="name">Interior Detail</span>
+        <span class="price">from $160</span>
+      </div>
+      <div class="mko__plus">+</div>
+      <div class="mko__cell free-cell">
+        <span class="label">You get</span>
+        <span class="name">Exterior Detail</span>
+        <span><span class="strike">$130</span> &nbsp;<span class="big-free">Free</span></span>
+      </div>
+    </div>
+
+    <!-- countdown -->
+    <div class="mko__timerwrap">
+      <div class="mko__timerlabel">Offer ends <b>Sunday</b> at midnight</div>
+      <div class="mko__clock" id="mkoClock" role="timer" aria-live="off">
+        <div class="mko__seg"><div class="num" id="mkoD">0</div><div class="unit">Days</div></div>
+        <div class="mko__seg"><div class="num" id="mkoH">00</div><div class="unit">Hours</div></div>
+        <div class="mko__seg"><div class="num" id="mkoM">00</div><div class="unit">Mins</div></div>
+        <div class="mko__seg"><div class="num" id="mkoS">00</div><div class="unit">Secs</div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mko__cta">
+      <a class="mko__btn mko__btn--primary"
+         href="sms:+13607975831?&body=Hi%20Mikey!%20I%20want%20to%20claim%20the%20FREE%20exterior%20detail%20with%20my%20interior%20detail%20this%20week.%20My%20vehicle%20is%20a%20_______%20and%20I'm%20located%20in%20_______.">
+        Text Mikey to Lock It In &rarr;
+      </a>
+      <span class="mko__finehint">Takes 20 seconds &middot; I'll text right back to confirm your spot</span>
+      <a class="mko__btn mko__btn--ghost" href="tel:+13607975831">&#128222;&nbsp; Or call (360) 797-5831</a>
+    </div>
+
+    <!-- trust -->
+    <div class="mko__trust">
+      <span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0</span>
+      <span class="sep"></span>
+      <span>38+ five-star reviews</span>
+      <span class="sep"></span>
+      <span>You don't pay until you love it</span>
+      <span class="sep"></span>
+      <span class="hot">I only open a few spots a week</span>
+    </div>
+
+  </div>
+
+  <!-- Countdown clock: the only script. Resets every week, always counts to Sunday 11:59:59 PM local. -->
+  <script>
+    (function () {
+      var d = document.getElementById("mkoD"),
+          h = document.getElementById("mkoH"),
+          m = document.getElementById("mkoM"),
+          s = document.getElementById("mkoS");
+      function pad(n) { return n < 10 ? "0" + n : "" + n; }
+      function endOfThisSunday() {
+        var now = new Date();
+        var end = new Date(now);
+        var daysUntilSun = (7 - now.getDay()) % 7; // 0 = Sunday today
+        end.setDate(now.getDate() + daysUntilSun);
+        end.setHours(23, 59, 59, 999);
+        if (end < now) end.setDate(end.getDate() + 7); // already past Sunday midnight
+        return end;
+      }
+      function tick() {
+        var diff = endOfThisSunday() - new Date();
+        if (diff < 0) diff = 0;
+        var sec = Math.floor(diff / 1000);
+        d.textContent = Math.floor(sec / 86400);
+        h.textContent = pad(Math.floor((sec % 86400) / 3600));
+        m.textContent = pad(Math.floor((sec % 3600) / 60));
+        s.textContent = pad(sec % 60);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+</section>
+
       
 <section id="booking" aria-label="Quick Quote Calculator">
   <div class="section-inner">
 
     <!-- Pre-form trust strip -->
-    <div style="max-width:700px;margin:0 auto 28px;text-align:center;font-family:'Outfit',sans-serif;">
-      <p style="font-size:1.05rem;font-style:italic;color:#e5e7eb;line-height:1.6;margin:0 0 14px;">
-        "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days."
-        <strong style="color:#fff;display:block;margin-top:6px;">— Matt K. ★★★★★</strong>
-      </p>
+    
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);border-radius:999px;padding:7px 18px;font-size:0.82rem;font-weight:800;color:#dc2626;letter-spacing:0.05em;">
         <span style="width:8px;height:8px;background:#dc2626;border-radius:50%;box-shadow:0 0 8px #dc2626;animation:pulse 1.8s ease-in-out infinite;display:inline-block;"></span>
-        I take 2–3 cars a day — book now to grab your spot
+        limited Spots Available Per Week — book now to grab your spot
       </div>
     </div>
 
