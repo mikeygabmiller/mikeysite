@@ -1042,8 +1042,9 @@ header li a[href="#booking"]::after,
 
 
   
-<main id="main-content" id="top">
-<header> <header id="mikeyHeader">
+<main id="main-content">
+<a id="top"></a>
+<header id="mikeyHeader">
   <nav>
     <a href="#top" aria-label="Home">
       <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing logo">
@@ -1185,11 +1186,10 @@ header li a[href="#booking"]::after,
   .mh-proof{ gap:10px; margin-bottom:18px; }
   .mh-proof-item{ font-size:12px; }
   .mh h1{
-  font-size:clamp(1.2rem, 5vw, 1.6rem);
-  line-height:1.25;
+  font-size:clamp(2.2rem, 8vw, 3rem);
+  line-height:1.1;
   margin-bottom:16px;
   letter-spacing:-0.01em;
-}
   }
   .mh h1 .desktop-line{ display:none; }
   .mh .subhead{
@@ -1225,8 +1225,8 @@ header li a[href="#booking"]::after,
         </div>
 
         <h1 id="hero-h1">
-  Never Worry About <br>A Dirty Car</span> Again. Fast And Friendly Mobile Detailing<span class="desktop-line"><br>I Come To You.</span>
-				</h1>
+  Never Worry About <br>A Dirty Car Again.<span class="accent"> Fast, Friendly Mobile Detailing</span><span class="desktop-line"><br>I Come To You.</span>
+        </h1>
 
         <p class="subhead">
          A Car So Clean Your Friends & Family will notice. Backed by 38+ Five-star Reviews And 300+ Vehicles Detailed.
@@ -1234,7 +1234,7 @@ header li a[href="#booking"]::after,
 
         <div class="mh-ctas">
           <a class="mh-cta-primary" href="#booking">Get Your Instant Quote →</a>
-          <a class="mh-cta-secondary" href="#allservices">See Services</a>
+          <a class="mh-cta-secondary" href="tel:+13607975831">📞 (360) 797-5831</a>
         </div>
 
         <div class="mh-prices" aria-label="Service pricing">
@@ -1518,16 +1518,28 @@ header li a[href="#booking"]::after,
 
     
       
-  <section <span id="contact"></span>
 <section id="booking" aria-label="Quick Quote Calculator">
-    <div class="section-inner">
+  <div class="section-inner">
+
+    <!-- Pre-form trust strip -->
+    <div style="max-width:700px;margin:0 auto 28px;text-align:center;font-family:'Outfit',sans-serif;">
+      <p style="font-size:1.05rem;font-style:italic;color:#e5e7eb;line-height:1.6;margin:0 0 14px;">
+        "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days."
+        <strong style="color:#fff;display:block;margin-top:6px;">— Matt K. ★★★★★</strong>
+      </p>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);border-radius:999px;padding:7px 18px;font-size:0.82rem;font-weight:800;color:#dc2626;letter-spacing:0.05em;">
+        <span style="width:8px;height:8px;background:#dc2626;border-radius:50%;box-shadow:0 0 8px #dc2626;animation:pulse 1.8s ease-in-out infinite;display:inline-block;"></span>
+        I take 2–3 cars a day — book now to grab your spot
+      </div>
+    </div>
+
       <div class="gallery-wrapper">
         <iframe
           src="https://mikeygabmiller.github.io/MyQqc/"
           title="Quick Quote Calculator — Mikey's Mobile Detailing"
           width="100%"
           height="500"
-          loading="lazy"
+          loading="eager"
           allow="fullscreen"
           style="border:none;"
         ></iframe>
@@ -2282,23 +2294,6 @@ header li a[href="#booking"]::after,
     <span class="dot"></span><strong>I take 2–3 cars a day.</strong> When the week's full, it's full.
   </div>
 </section>
-<!-- ============================================ -->
-<!-- CTA CARD #3 — STICKY / COMPACT BOTTOM BAR -->
-<!-- Drop in as floating mobile CTA or inline -->
-<!-- ============================================ -->
-<div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:2px solid #dc2626;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:12px;">
-  <div style="flex:1;">
-    <div style="color:#dc2626;font-size:10px;font-weight:900;letter-spacing:1.2px;margin-bottom:2px;">READY WHEN YOU ARE</div>
-    <div style="color:#fff;font-size:16px;font-weight:900;line-height:1.2;">Book your detail today</div>
-    <div style="color:#999;font-size:12px;margin-top:2px;">Usually onsite in 24–48 hrs</div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:6px;">
-    <a href="#booking" style="background:#dc2626;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;">BOOK</a>
-    <a href="tel:3607975831" style="background:#222;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;border:1px solid #333;">📞 CALL</a>
-  </div>
-</div>
-
-
 <!-- HOMEPAGE SECTIONS - drop these on your homepage -->
 <!-- ====================================================== -->
 
@@ -2327,7 +2322,7 @@ header li a[href="#booking"]::after,
   <div style="max-width:1100px;margin:0 auto;">
     <span style="display:inline-block;background:#dc2626;color:#fff;padding:4px 12px;font-weight:900;text-transform:uppercase;letter-spacing:1px;font-size:0.75rem;margin-bottom:16px;">Honest Pricing</span>
     <h2 style="font-family:'Outfit',sans-serif;font-weight:900;font-size:2.2rem;color:#fff;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;">What Does Car Detailing Cost in Snohomish County?</h2>
-    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Real local pricing for every package. Basic exterior $80-$120, full detail $200-$400, ceramic coating $500-$1,500. No bait-and-switch, no hidden fees. See the full breakdown.</p>
+    <p style="font-family:'Outfit',sans-serif;font-weight:400;color:#ccc;font-size:1.05rem;line-height:1.6;margin:0 0 20px;max-width:800px;">Real local pricing for every package. Exterior detail from $130, full detail from $260, ceramic coating from $500. No bait-and-switch, no hidden fees. See the full breakdown.</p>
     <a href="/car-detailing-cost-snohomish-county/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);">See Full Pricing →</a>
   </div>
 </section>
