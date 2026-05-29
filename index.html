@@ -1099,8 +1099,15 @@ header li a[href="#booking"]::after,
 .mh-stars{ color:#facc15; font-size:14px; letter-spacing:1px; }
 .mh-dot{ width:4px; height:4px; background:#525252; border-radius:50%; }
 
+/* SEO H1 (small, keyword-focused) */
+.mh-seo-h1{
+  font-family:'Outfit',sans-serif; font-weight:700;
+  font-size:.8rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#dc2626; margin:0 0 14px; line-height:1.3;
+}
+
 /* Headline */
-.mh h1{
+.mh .mh-headline{
   font-family:'Outfit',sans-serif; font-weight:900;
   font-size:clamp(2.2rem,6vw,4.8rem);
   line-height:1.05; letter-spacing:-0.02em;
@@ -1108,12 +1115,12 @@ header li a[href="#booking"]::after,
   opacity:0; transform:translateY(20px);
   animation:mhFadeUp .8s ease-out .1s forwards;
 }
-.mh h1 .accent{
+.mh .mh-headline .accent{
   display:inline-block; color:#dc2626; position:relative;
   opacity:0; transform:translateY(20px) scale(.98);
   animation:mhPopIn .7s cubic-bezier(.34,1.4,.64,1) .45s forwards;
 }
-.mh h1 .accent::after{
+.mh .mh-headline .accent::after{
   content:""; position:absolute; left:0; bottom:-4px;
   height:3px; width:0; background:#dc2626;
   animation:mhSweep .6s ease-out 1.1s forwards;
@@ -1170,7 +1177,7 @@ header li a[href="#booking"]::after,
 
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce){
-  .mh-proof,.mh h1,.mh h1 .accent,.mh .subhead,.mh-ctas,.mh-prices,.mh h1 .accent::after{
+  .mh-proof,.mh .mh-headline,.mh .mh-headline .accent,.mh .subhead,.mh-ctas,.mh-prices,.mh .mh-headline .accent::after{
     animation:none; opacity:1; transform:none; width:100%;
   }
 }
@@ -1184,13 +1191,14 @@ header li a[href="#booking"]::after,
   }
   .mh-proof{ gap:10px; margin-bottom:18px; }
   .mh-proof-item{ font-size:12px; }
-  .mh h1{
+  .mh .mh-headline{
   font-size:clamp(2.2rem, 8vw, 3rem);
   line-height:1.1;
   margin-bottom:16px;
   letter-spacing:-0.01em;
   }
-  .mh h1 .desktop-line{ display:none; }
+  .mh .mh-headline .desktop-line{ display:none; }
+  .mh-seo-h1{ font-size:.7rem; margin-bottom:10px; }
   .mh .subhead{
     font-size:.9rem;
     line-height:1.45;
@@ -1208,6 +1216,8 @@ header li a[href="#booking"]::after,
     <div class="mh-container">
       <div class="mh-content">
 
+        <h1 class="mh-seo-h1" id="hero-h1">Mobile Car Detailing in Snohomish County, WA</h1>
+
         <div class="mh-proof" role="list" aria-label="Social proof">
           <div class="mh-proof-item" role="listitem">
             <span class="mh-stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -1223,9 +1233,9 @@ header li a[href="#booking"]::after,
           </div>
         </div>
 
-        <h1 id="hero-h1">
+        <div class="mh-headline">
   A Spotless Car,<br>Without Leaving Home.<span class="accent"> I Come To You.</span>
-        </h1>
+        </div>
 
         <p class="subhead">
           Mobile detailing across Snohomish County. 300+ cars, 38 five-star reviews &mdash; and you don't pay until you love it.
