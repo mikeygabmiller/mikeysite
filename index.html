@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1038,14 +1039,13 @@ header li a[href="#booking"]::after,
 
 
 </style>
-
-
-  
+</head>
+<body>
 <main id="main-content">
 <a id="top"></a>
 <header id="mikeyHeader">
   <nav>
-    <a href="#top" aria-label="Home">
+    <a href="#mikeyHeader" aria-label="Home">
       <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing logo">
     </a>
     <ul id="desktopMenu">
@@ -1224,11 +1224,11 @@ header li a[href="#booking"]::after,
         </div>
 
         <h1 id="hero-h1">
-  Never Worry About A <br>Dirty Car Again.<span class="accent"> Fast, Friendly Mobile Detailing</span><span class="desktop-line"><br>I Come To You.</span>
+  A Spotless Car Without<br>Leaving Your Driveway.<span class="accent"> I Come To You &mdash; Snohomish County.</span>
         </h1>
 
         <p class="subhead">
-         A Car So Clean Your Friends & Family will notice. Backed by 38+ Five-star Reviews And 300+ Vehicles Detailed.
+          The kind of clean that makes you sit in the driveway an extra minute. 300+ cars detailed across Snohomish County, 38 five-star reviews, and you don't pay until you love it.
         </p>
 
         <div class="mh-ctas">
@@ -1512,10 +1512,9 @@ header li a[href="#booking"]::after,
     .trust-review {
       padding: 24px 20px;
     }
+  }
+</style>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* ============================================================
      MIKEY'S OFFER SECTION  —  paste this whole block into your site.
@@ -1524,25 +1523,27 @@ header li a[href="#booking"]::after,
      ============================================================ */
 
   .mko {
-    --bg: #0a0a0a;
-    --panel: #141414;
-    --panel-2: #1b1b1b;
-    --red: #e5201e;
-    --red-bright: #ff3b34;
+    --bg: #141414;
+    --panel: #1a1a1a;
+    --panel-2: #232323;
+    --red: #dc2626;
+    --red-bright: #ef4444;
     --gold: #fbc02d;
     --line: rgba(255, 255, 255, 0.10);
     --text: #ffffff;
     --muted: #9aa0a6;
     box-sizing: border-box;
-    font-family: "Poppins", system-ui, sans-serif;
+    font-family: "Outfit", sans-serif;
     color: var(--text);
     background:
-      radial-gradient(120% 80% at 50% -10%, rgba(229, 32, 30, 0.28) 0%, rgba(229, 32, 30, 0.06) 32%, transparent 60%),
+      radial-gradient(120% 80% at 50% -10%, rgba(220, 38, 38, 0.28) 0%, rgba(220, 38, 38, 0.06) 32%, transparent 60%),
       var(--bg);
     position: relative;
     overflow: hidden;
     padding: clamp(48px, 7vw, 104px) 20px clamp(56px, 7vw, 112px);
     isolation: isolate;
+    border-top: 2px solid #dc2626;
+    border-bottom: 2px solid #dc2626;
   }
   .mko *, .mko *::before, .mko *::after { box-sizing: border-box; }
 
@@ -1573,14 +1574,14 @@ header li a[href="#booking"]::after,
     gap: 9px;
     background: var(--red);
     color: #fff;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(12px, 1.5vw, 15px);
     letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 10px 20px;
     border-radius: 999px;
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.35);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(220,38,38,0.35);
     animation: mkoPulse 2.4s ease-in-out infinite;
   }
   .mko__eyebrow .dot {
@@ -1591,13 +1592,13 @@ header li a[href="#booking"]::after,
   }
   @keyframes mkoBlink { 50% { opacity: 0.25; } }
   @keyframes mkoPulse {
-    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(229,32,30,0.30); }
-    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 44px rgba(229,32,30,0.62); }
+    0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 30px rgba(220,38,38,0.30); }
+    50%      { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 10px 44px rgba(220,38,38,0.62); }
   }
 
   /* ---------- headline ---------- */
   .mko__head {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     line-height: 0.92;
     letter-spacing: -0.01em;
@@ -1609,7 +1610,7 @@ header li a[href="#booking"]::after,
   .mko__head .free {
     color: var(--red);
     position: relative;
-    text-shadow: 0 0 38px rgba(229, 32, 30, 0.55);
+    text-shadow: 0 0 38px rgba(220, 38, 38, 0.55);
     white-space: nowrap;
   }
   .mko__head .free::after {
@@ -1619,7 +1620,7 @@ header li a[href="#booking"]::after,
     height: clamp(5px, 0.7vw, 9px);
     background: var(--red);
     border-radius: 6px;
-    box-shadow: 0 0 22px rgba(229,32,30,0.7);
+    box-shadow: 0 0 22px rgba(220,38,38,0.7);
   }
 
   .mko__sub {
@@ -1659,24 +1660,24 @@ header li a[href="#booking"]::after,
     font-weight: 600;
   }
   .mko__cell .name {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(17px, 2.3vw, 22px);
     text-transform: uppercase;
     line-height: 1;
   }
   .mko__cell .price {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     font-size: clamp(15px, 2vw, 18px);
     color: #cfd2d5;
   }
   .mko__cell.free-cell {
-    border-color: rgba(229, 32, 30, 0.55);
+    border-color: rgba(220, 38, 38, 0.55);
     background:
-      radial-gradient(120% 130% at 50% 0%, rgba(229,32,30,0.22), transparent 70%),
+      radial-gradient(120% 130% at 50% 0%, rgba(220,38,38,0.22), transparent 70%),
       linear-gradient(180deg, var(--panel-2), var(--panel));
-    box-shadow: 0 0 0 1px rgba(229,32,30,0.25), 0 18px 50px rgba(229,32,30,0.18);
+    box-shadow: 0 0 0 1px rgba(220,38,38,0.25), 0 18px 50px rgba(220,38,38,0.18);
   }
   .mko__cell.free-cell .strike {
     color: var(--muted);
@@ -1685,20 +1686,20 @@ header li a[href="#booking"]::after,
     text-decoration-thickness: 2px;
     font-weight: 700;
     font-size: 15px;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
   }
   .mko__cell.free-cell .big-free {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: clamp(26px, 4vw, 38px);
     color: var(--red);
     line-height: 0.9;
     text-transform: uppercase;
-    text-shadow: 0 0 26px rgba(229,32,30,0.5);
+    text-shadow: 0 0 26px rgba(220,38,38,0.5);
   }
   .mko__plus {
     align-self: center;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: 30px;
     color: var(--red);
@@ -1708,7 +1709,7 @@ header li a[href="#booking"]::after,
   /* ---------- countdown ---------- */
   .mko__timerwrap { margin: clamp(34px, 5vw, 48px) auto 0; }
   .mko__timerlabel {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1735,7 +1736,7 @@ header li a[href="#booking"]::after,
     box-shadow: 0 14px 34px rgba(0,0,0,0.55);
   }
   .mko__seg .num {
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 900;
     font-size: clamp(30px, 5.4vw, 50px);
     line-height: 1;
@@ -1764,7 +1765,7 @@ header li a[href="#booking"]::after,
     align-items: center;
     justify-content: center;
     gap: 12px;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -1780,12 +1781,12 @@ header li a[href="#booking"]::after,
     color: #fff;
     font-size: clamp(17px, 2.5vw, 23px);
     padding: 22px 28px;
-    box-shadow: 0 16px 40px rgba(229, 32, 30, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
+    box-shadow: 0 16px 40px rgba(220, 38, 38, 0.45), inset 0 1px 0 rgba(255,255,255,0.18);
   }
   .mko__btn--primary:hover {
-    background: #ff2a23;
+    background: #ef4444;
     transform: translateY(-2px);
-    box-shadow: 0 22px 56px rgba(229, 32, 30, 0.6), inset 0 1px 0 rgba(255,255,255,0.22);
+    box-shadow: 0 22px 56px rgba(220, 38, 38, 0.6), inset 0 1px 0 rgba(255,255,255,0.22);
   }
   .mko__btn--ghost {
     width: 100%;
@@ -1828,8 +1829,6 @@ header li a[href="#booking"]::after,
     .mko__cell { padding: 18px 16px; }
   }
 </style>
-</head>
-<body style="margin:0; background:#0a0a0a;">
 
 <!-- ===================== OFFER SECTION (copy from here) ===================== -->
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
@@ -1843,10 +1842,10 @@ header li a[href="#booking"]::after,
     </h2>
 
     <p class="mko__sub">
-      Book <b>An Interior Detail</b> this week and earn a Free Wash and Wax <b></b>$130 value, on the house.</b> Pay the interior price,
-      drive away with a complete detail.
+      Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax &mdash; a $130 value &mdash; free.</b> You pay the interior price and drive away with a full detail.
     </p>
-value<!-- value math -->
+
+    <!-- value math -->
     <div class="mko__deal">
       <div class="mko__cell">
         <span class="label">You book</span>
@@ -2322,6 +2321,7 @@ value<!-- value math -->
       <span class="qq-success-icon">&#10003;</span>
       <h3>You're Locked In</h3>
       <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
+      <p style="margin-top:14px;color:#999;font-size:13px;">In a hurry or didn't hear back? Text or call me directly: <a href="tel:+13607975831" style="color:#dc2626;font-weight:800;text-decoration:none;">(360) 797-5831</a></p>
       <p style="margin-top:16px;color:#666;font-size:13px;">— Mikey</p>
     </div>
   </div>
@@ -2545,7 +2545,7 @@ value<!-- value math -->
   #ba-gallery {
     color: #fff;
     font-family: 'Outfit', sans-serif;
-    padding: 40px 20px;
+    padding: 60px 20px;
   }
   .container { max-width: 1200px; margin: 0 auto; }
   .section-title {
@@ -2696,7 +2696,6 @@ value<!-- value math -->
   }
 
 </style>
-<body style="background: #141414;">
 
 <div class="container">
   <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
@@ -2782,7 +2781,6 @@ value<!-- value math -->
 })();
 </script>
 
-</body>
 </div>
     </div>
   </section>
@@ -2965,7 +2963,7 @@ value<!-- value math -->
         <h3 class="mmd-name">Interior</h3>
         <p class="mmd-tag">Inside-only deep clean</p>
         <div class="mmd-price">$160–$240<small>Based on vehicle size</small></div>
-        <a href="https://mikeysdetailing.com/interior" class="mmd-learn-more">See what's included →</a>
+        <a href="/services/interior.html" class="mmd-learn-more">See what's included →</a>
         <div class="mmd-divider"></div>
         <ul class="mmd-feat">
           <li>Full vacuum + crevice detail</li>
@@ -3001,7 +2999,7 @@ value<!-- value math -->
         <h3 class="mmd-name">Exterior</h3>
         <p class="mmd-tag">Outside-only wash &amp; protect</p>
         <div class="mmd-price">$130–$200<small>Based on vehicle size</small></div>
-        <a href="https://mikeysdetailing.com/exterior" class="mmd-learn-more">See what's included →</a>
+        <a href="/services/exterior.html" class="mmd-learn-more">See what's included →</a>
         <div class="mmd-divider"></div>
         <ul class="mmd-feat">
           <li>Full hand wash &amp; dry</li>
@@ -3036,7 +3034,7 @@ value<!-- value math -->
   </div>
   <div style="display:flex;flex-direction:column;gap:6px;">
     <a href="#booking" style="background:#dc2626;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;">BOOK</a>
-    <a href="tel:3607975831" style="background:#222;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;border:1px solid #333;">📞 CALL</a>
+    <a href="tel:+13607975831" style="background:#222;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;border:1px solid #333;">📞 CALL</a>
   </div>
 </div>
 <!-- =========================================================
@@ -3518,6 +3516,49 @@ value<!-- value math -->
     <span class="dot"></span><strong>I take 2–3 cars a day.</strong> When the week's full, it's full.
   </div>
 </section>
+
+<!-- ABOUT MIKEY -->
+<section id="about" class="about-mikey" aria-labelledby="about-title">
+  <div class="about-inner">
+    <div class="about-photo">
+      <!-- Swap this logo for a real photo of Mikey + his rig when you have one: <img src="/images/mikey.jpg" alt="Mikey, owner of Mikey's Mobile Detailing"> -->
+      <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing">
+    </div>
+    <div class="about-copy">
+      <span class="about-eyebrow">Meet Your Detailer</span>
+      <h2 id="about-title">Hey, I'm Mikey.</h2>
+      <p>I've detailed 300+ cars around Snohomish County out of my own rig &mdash; I bring the water, the power, and every product, so all you do is hand me the keys.</p>
+      <p>It's just me. That means you get the same person every time, I treat your car like it's mine, and I don't pack up until you're grinning. Local, careful, and usually five minutes from your driveway.</p>
+      <div class="about-trust">
+        <span><span class="about-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 on Google</span>
+        <span>300+ cars detailed</span>
+        <span>You don't pay until you love it</span>
+      </div>
+      <div class="about-ctas">
+        <a class="about-btn about-btn--primary" href="#booking">Get Your Instant Quote &rarr;</a>
+        <a class="about-btn about-btn--ghost" href="tel:+13607975831">&#128222;&nbsp;(360) 797-5831</a>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .about-mikey{ background:#141414; padding:60px 20px; border-top:2px solid #dc2626; font-family:'Outfit',sans-serif; }
+  .about-inner{ max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
+  .about-photo{ flex:1 1 280px; min-width:260px; display:flex; justify-content:center; }
+  .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:2px solid #dc2626; box-shadow:0 0 30px rgba(220,38,38,0.4); background:#1a1a1a; }
+  .about-copy{ flex:1 1 420px; min-width:300px; }
+  .about-eyebrow{ display:inline-block; background:#dc2626; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
+  .about-copy h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 16px; }
+  .about-copy p{ font-weight:400; color:#ccc; font-size:1.05rem; line-height:1.6; margin:0 0 16px; max-width:640px; }
+  .about-trust{ display:flex; flex-wrap:wrap; gap:10px 24px; margin:20px 0 24px; color:#fff; font-weight:700; font-size:0.95rem; }
+  .about-trust .about-stars{ color:#facc15; letter-spacing:1px; }
+  .about-ctas{ display:flex; flex-wrap:wrap; gap:14px; }
+  .about-btn{ font-weight:900; font-size:1rem; text-transform:uppercase; letter-spacing:.5px; padding:14px 26px; border-radius:8px; text-decoration:none; border:2px solid transparent; transition:transform .15s ease, background .15s ease, border-color .15s ease; }
+  .about-btn--primary{ background:#dc2626; color:#fff; border-color:#dc2626; box-shadow:0 0 20px rgba(220,38,38,0.4); }
+  .about-btn--primary:hover{ background:#b91c1c; border-color:#b91c1c; transform:translateY(-2px); }
+  .about-btn--ghost{ background:transparent; color:#fff; border-color:#fff; }
+  .about-btn--ghost:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
+</style>
 <!-- HOMEPAGE SECTIONS - drop these on your homepage -->
 <!-- ====================================================== -->
 
@@ -3580,6 +3621,68 @@ value<!-- value math -->
     <a href="/best-time-to-detail-car-washington/" style="display:inline-block;font-family:'Outfit',sans-serif;font-weight:900;background:#dc2626;color:#fff;padding:14px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #dc2626;box-shadow:0 0 20px rgba(220,38,38,0.4);transition:all 0.2s;">See The Seasonal Guide →</a>
   </div>
 </section>
+
+<!-- FAQ -->
+<section id="qanda" class="faq2" aria-labelledby="faq2-title">
+  <div class="faq2-inner">
+    <span class="faq2-eyebrow">Common Questions</span>
+    <h2 id="faq2-title">Everything You're Wondering</h2>
+
+    <details class="faq2-item">
+      <summary>Do you really come to me?</summary>
+      <p>Yep &mdash; that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>Do I need to provide water or power?</summary>
+      <p>No. I bring my own water and power, so I can detail your car even if you're not home. If a hose or outlet is handy I'll happily use it, but it's never required.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>How long does it take?</summary>
+      <p>A basic interior runs about 90 minutes, a full detail takes 3&ndash;5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>What does it cost?</summary>
+      <p>Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote above for a price in about 30 seconds &mdash; no surprises, no hidden fees.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>When and how do I pay?</summary>
+      <p>You pay when I'm done and you're happy with it &mdash; not before. I take cash, card, and the usual apps.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>What if it rains?</summary>
+      <p>This is the PNW, so I work around the weather all the time. If it's pouring I'll reach out to reschedule. A lot of the work is interior or done under cover anyway.</p>
+    </details>
+    <details class="faq2-item">
+      <summary>What if I'm not happy with it?</summary>
+      <p>We walk around the car together when I'm done. See something off? I fix it on the spot. Notice it later? I come back free. Still not happy? You get a full refund. Simple as that.</p>
+    </details>
+
+    <div class="faq2-cta">
+      <p>Still have a question? Just ask me.</p>
+      <a class="faq2-btn faq2-btn--primary" href="#booking">Get Your Instant Quote &rarr;</a>
+      <a class="faq2-btn faq2-btn--ghost" href="tel:+13607975831">&#128222;&nbsp;(360) 797-5831</a>
+    </div>
+  </div>
+</section>
+<style>
+  .faq2{ background:#141414; padding:60px 20px; border-top:2px solid #dc2626; border-bottom:2px solid #dc2626; font-family:'Outfit',sans-serif; }
+  .faq2-inner{ max-width:800px; margin:0 auto; }
+  .faq2-eyebrow{ display:inline-block; background:#dc2626; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
+  .faq2 h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 28px; }
+  .faq2-item{ background:#1a1a1a; border:1px solid #2a2a2a; border-radius:10px; margin-bottom:12px; overflow:hidden; }
+  .faq2-item summary{ list-style:none; cursor:pointer; padding:18px 20px; color:#fff; font-weight:800; font-size:1.05rem; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .faq2-item summary::-webkit-details-marker{ display:none; }
+  .faq2-item summary::after{ content:"+"; color:#dc2626; font-weight:900; font-size:1.5rem; line-height:1; flex-shrink:0; transition:transform .2s ease; }
+  .faq2-item[open] summary::after{ transform:rotate(45deg); }
+  .faq2-item p{ color:#ccc; font-weight:400; font-size:1rem; line-height:1.6; margin:0; padding:0 20px 20px; }
+  .faq2-cta{ text-align:center; margin-top:32px; }
+  .faq2-cta p{ color:#fff; font-weight:700; font-size:1.1rem; margin:0 0 18px; }
+  .faq2-btn{ display:inline-block; font-weight:900; font-size:1rem; text-transform:uppercase; letter-spacing:.5px; padding:14px 26px; border-radius:8px; text-decoration:none; border:2px solid transparent; margin:6px; transition:transform .15s ease, background .15s ease, border-color .15s ease; }
+  .faq2-btn--primary{ background:#dc2626; color:#fff; border-color:#dc2626; box-shadow:0 0 20px rgba(220,38,38,0.4); }
+  .faq2-btn--primary:hover{ background:#b91c1c; border-color:#b91c1c; transform:translateY(-2px); }
+  .faq2-btn--ghost{ background:transparent; color:#fff; border-color:#fff; }
+  .faq2-btn--ghost:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
+</style>
 </main>
 
 
@@ -3597,7 +3700,7 @@ value<!-- value math -->
         <li><a href="services">All Services</a></li>
         <li><a href="#booking">Book Now</a></li>
         <li><a href="#qanda">FAQ</a></li>
-        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
         <li><a href="/monroe">Monroe</a></li>
