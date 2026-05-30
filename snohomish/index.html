@@ -24,7 +24,10 @@
   "address": {"@type":"PostalAddress","addressLocality":"Snohomish","addressRegion":"WA","postalCode":"98290","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.9129,"longitude":-122.0982},
   "aggregateRating": {"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"38"},
-  
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"20:00"}
+  ]
+}
 </script>
 
 <script type="application/ld+json">
@@ -117,6 +120,35 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
 </style>
   <script src="/site-stats.js" defer></script>
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G9WMXW2MF5');
+</script>
+<!-- Schema: BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://mikeysdetailing.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Mobile Detailing Snohomish, WA",
+      "item": "https://mikeysdetailing.com/snohomish/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
