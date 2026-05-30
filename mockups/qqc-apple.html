@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Quick Quote — Apple-style redesign (mockup)</title>
+<style>
+/* =================================================================
+   MIKEY'S QUICK QUOTE — Apple-style design mockup
+   Self-contained. No external requests. Light + Dark toggle.
+   System font stack = real SF Pro on Apple devices.
+   ================================================================= */
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+#stage {
+  --accent:        #C8102E;
+  --accent-press:  #a60d26;
+  --success:       #34C759;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background .4s ease, color .4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px 64px;
+}
+
+/* ---- Light theme (default) ---- */
+#stage[data-theme="light"] {
+  --bg:          #f5f5f7;
+  --surface:     #ffffff;
+  --surface-2:   #f5f5f7;
+  --surface-3:   #ececee;
+  --text:        #1d1d1f;
+  --text-2:      #6e6e73;
+  --text-3:      #86868b;
+  --border:      rgba(0,0,0,0.10);
+  --border-2:    rgba(0,0,0,0.16);
+  --tint:        rgba(200,16,46,0.06);
+  --tint-2:      rgba(200,16,46,0.10);
+  --shadow:      0 10px 40px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.06);
+}
+/* ---- Dark theme ---- */
+#stage[data-theme="dark"] {
+  --accent:      #ff4d62;
+  --accent-press:#ff6c7d;
+  --bg:          #000000;
+  --surface:     #1c1c1e;
+  --surface-2:   #2c2c2e;
+  --surface-3:   #3a3a3c;
+  --text:        #f5f5f7;
+  --text-2:      #aeaeb2;
+  --text-3:      #8e8e93;
+  --border:      rgba(255,255,255,0.12);
+  --border-2:    rgba(255,255,255,0.22);
+  --tint:        rgba(255,77,98,0.10);
+  --tint-2:      rgba(255,77,98,0.16);
+  --shadow:      0 12px 48px rgba(0,0,0,0.55);
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ============ TOP BAR ============ */
+.topbar {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.mock-note {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 500;
+}
+.seg {
+  display: inline-flex;
+  background: var(--surface-3);
+  border-radius: 980px;
+  padding: 3px;
+  position: relative;
+}
+.seg button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 590;
+  color: var(--text-2);
+  padding: 6px 16px;
+  border-radius: 980px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color .25s ease;
+}
+.seg button.on { color: var(--text); }
+.seg .seg-pill {
+  position: absolute;
+  top: 3px; left: 3px;
+  height: calc(100% - 6px);
+  background: var(--surface);
+  border-radius: 980px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .32s cubic-bezier(.34,1.3,.64,1), width .32s cubic-bezier(.34,1.3,.64,1);
+}
+
+/* ============ CARD ============ */
+.qq {
+  width: 100%;
+  max-width: 480px;
+  background: var(--surface);
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 30px 26px 26px;
+  transition: background .4s ease, border-color .4s ease;
+}
+
+/* ---- Head ---- */
+.qq-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 680;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.qq-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.qq h1 {
+  font-size: 30px;
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 6px;
+}
+.qq .sub { font-size: 16px; color: var(--text-2); margin: 0 0 22px; font-weight: 400; }
+
+/* ---- Progress ---- */
+.progress { margin-bottom: 26px; }
+.progress-track { display: flex; gap: 6px; }
+.progress-seg {
+  flex: 1; height: 4px; border-radius: 980px;
+  background: var(--surface-3);
+  overflow: hidden;
+}
+.progress-seg i {
+  display: block; height: 100%; width: 0;
+  background: var(--accent); border-radius: 980px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+.progress-seg.done i { width: 100%; }
+.progress-seg.active i { width: 100%; }
+.progress-label {
+  margin-top: 10px; font-size: 12.5px; font-weight: 560;
+  color: var(--text-3); letter-spacing: 0.01em;
+}
+
+/* ---- Steps ---- */
+.step { display: none; }
+.step.show { display: block; animation: stepIn .45s cubic-bezier(.22,1,.36,1) both; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.q-title { font-size: 21px; font-weight: 650; letter-spacing: -0.02em; margin: 0 0 4px; }
+.q-hint { font-size: 14px; color: var(--text-2); margin: 0 0 18px; }
+
+/* ---- Choice grid (vehicle / condition) ---- */
+.grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.choice {
+  position: relative;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  padding: 18px 10px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .22s ease, background .22s ease, transform .18s cubic-bezier(.34,1.3,.64,1), box-shadow .22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.choice:hover { border-color: var(--border-2); }
+.choice:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--tint-2); border-color: var(--accent); }
+.choice.sel {
+  border-color: var(--accent);
+  background: var(--tint);
+  box-shadow: 0 6px 20px -8px var(--accent);
+}
+.choice .ic {
+  width: 38px; height: 38px; margin: 0 auto 10px;
+  color: var(--text);
+  transition: color .22s ease, transform .3s cubic-bezier(.34,1.4,.64,1);
+}
+.choice.sel .ic { color: var(--accent); transform: scale(1.06); }
+.choice .nm { display: block; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+.choice .ds { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 4px; line-height: 1.3; }
+.choice .badge {
+  position: absolute; top: 9px; right: 9px;
+  width: 21px; height: 21px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(.4);
+  transition: opacity .25s ease, transform .3s cubic-bezier(.34,1.5,.64,1);
+}
+.choice .badge svg { width: 12px; height: 12px; }
+.choice.sel .badge { opacity: 1; transform: scale(1); }
+
+/* ---- Service / add-on list (grouped table style) ---- */
+.group-label {
+  font-size: 12px; font-weight: 640; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--text-3); margin: 22px 4px 9px;
+}
+.list { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 15px 16px; cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.row:last-child { border-bottom: 0; }
+.row:hover { background: var(--surface-3); }
+.row:focus-visible { outline: none; background: var(--tint); box-shadow: inset 0 0 0 2px var(--accent); }
+.check {
+  width: 24px; height: 24px; flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid var(--border-2);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: background .2s ease, border-color .2s ease, transform .25s cubic-bezier(.34,1.5,.64,1);
+}
+.check svg { width: 13px; height: 13px; opacity: 0; transform: scale(.4); transition: opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1); }
+.row.sel .check { background: var(--accent); border-color: var(--accent); transform: scale(1.05); }
+.row.sel .check svg { opacity: 1; transform: scale(1); }
+.row .info { flex: 1; min-width: 0; }
+.row .info .t { font-size: 15px; font-weight: 560; letter-spacing: -0.01em; }
+.row .info .d { font-size: 12.5px; color: var(--text-3); margin-top: 2px; line-height: 1.35; }
+.row .price { font-size: 15px; font-weight: 640; color: var(--text); flex-shrink: 0; }
+
+/* ---- Bundle nudge ---- */
+.nudge {
+  display: none;
+  align-items: center; gap: 12px;
+  margin-top: 14px; padding: 13px 15px;
+  background: var(--tint); border: 1px solid var(--accent);
+  border-radius: 16px;
+  animation: stepIn .4s ease both;
+}
+.nudge.show { display: flex; }
+.nudge .nt { flex: 1; font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+.nudge .nt b { font-weight: 680; }
+.nudge button {
+  appearance: none; border: 0; cursor: pointer;
+  background: var(--accent); color: #fff;
+  font: inherit; font-size: 13px; font-weight: 600;
+  padding: 9px 14px; border-radius: 980px; white-space: nowrap;
+  transition: background .2s, transform .1s;
+}
+.nudge button:active { transform: scale(.96); }
+
+/* ---- Buttons / nav ---- */
+.nav { display: flex; gap: 10px; margin-top: 22px; }
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  font: inherit; font-weight: 600; font-size: 17px; letter-spacing: -0.01em;
+  padding: 15px 20px; border-radius: 14px; width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  transition: background .2s ease, color .2s, transform .12s ease, opacity .2s;
+}
+.btn:active { transform: scale(.985); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-press); }
+.btn-primary:disabled { background: var(--surface-3); color: var(--text-3); cursor: not-allowed; }
+.btn-ghost { background: transparent; color: var(--text-2); flex: 0 0 auto; width: auto; padding: 15px 18px; }
+.btn-ghost:hover { color: var(--text); background: var(--surface-2); }
+.nav .btn-primary { flex: 1; }
+
+/* ---- Quote step ---- */
+.amount {
+  text-align: center; font-size: 64px; font-weight: 700;
+  letter-spacing: -0.04em; margin: 6px 0 2px;
+  font-variant-numeric: tabular-nums;
+}
+.amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 20px; }
+.breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 6px 16px; margin-bottom: 22px; }
+.bd-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
+.bd-row:last-child { border-bottom: 0; }
+.bd-row .l { color: var(--text); font-weight: 500; }
+.bd-row .l small { display: block; color: var(--text-3); font-size: 12px; font-weight: 400; }
+.bd-row .v { color: var(--text-2); font-weight: 560; font-variant-numeric: tabular-nums; }
+.bd-total { font-weight: 680 !important; }
+.bd-total .v { color: var(--text); }
+
+/* ---- Form ---- */
+.form { display: grid; gap: 12px; margin-bottom: 6px; }
+.field { position: relative; }
+.field input {
+  width: 100%; font: inherit; font-size: 16px;
+  background: var(--surface-2); color: var(--text);
+  border: 1.5px solid var(--border); border-radius: 13px;
+  padding: 16px 16px 16px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s;
+}
+.field input::placeholder { color: var(--text-3); }
+.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--tint-2); }
+.field input.err { border-color: var(--accent); box-shadow: 0 0 0 4px var(--tint-2); }
+.field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
+.field.bad .msg { display: block; }
+.consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
+.consent a { color: var(--text-2); }
+.trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
+.trust span { display: inline-flex; align-items: center; gap: 5px; }
+.trust svg { width: 13px; height: 13px; color: var(--success); }
+
+/* ---- Success ---- */
+.success { text-align: center; padding: 18px 0 8px; }
+.success .ring {
+  width: 76px; height: 76px; margin: 0 auto 18px;
+  border-radius: 50%; background: var(--success);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px -8px var(--success);
+  animation: ringPop .55s cubic-bezier(.34,1.56,.64,1) both;
+}
+.success .ring svg { width: 38px; height: 38px; color: #fff; }
+@keyframes ringPop { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+.success h2 { font-size: 24px; font-weight: 680; letter-spacing: -0.02em; margin: 0 0 8px; }
+.success p { font-size: 15px; color: var(--text-2); line-height: 1.5; margin: 0 0 6px; }
+.success a.call { color: var(--accent); font-weight: 640; text-decoration: none; }
+.success .sig { color: var(--text-3); font-size: 13px; margin-top: 14px; }
+
+@media (max-width: 380px) {
+  .qq { padding: 26px 18px 22px; }
+  .qq h1 { font-size: 26px; }
+  .amount { font-size: 54px; }
+  .choice { padding: 15px 6px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="stage" data-theme="light">
+
+  <div class="topbar">
+    <span class="mock-note">Design mockup · interactive preview</span>
+    <div class="seg" role="tablist" aria-label="Theme">
+      <span class="seg-pill" id="segPill"></span>
+      <button class="on" data-theme-btn="light" aria-selected="true">Light</button>
+      <button data-theme-btn="dark" aria-selected="false">Dark</button>
+    </div>
+  </div>
+
+  <div class="qq" id="qq">
+
+    <span class="qq-brand"><span class="dot"></span> Mikey's Detailing</span>
+    <h1>Quick Quote</h1>
+    <p class="sub">Build your detail. Get a price in 30 seconds.</p>
+
+    <div class="progress">
+      <div class="progress-track">
+        <div class="progress-seg active" data-seg="1"><i></i></div>
+        <div class="progress-seg" data-seg="2"><i></i></div>
+        <div class="progress-seg" data-seg="3"><i></i></div>
+        <div class="progress-seg" data-seg="4"><i></i></div>
+      </div>
+      <div class="progress-label" id="progLabel">Step 1 of 4 · Your vehicle</div>
+    </div>
+
+    <!-- STEP 1: VEHICLE -->
+    <div class="step show" id="step1">
+      <h2 class="q-title">What are we detailing?</h2>
+      <p class="q-hint">Pick your vehicle size.</p>
+      <div class="grid">
+        <div class="choice" data-role="vehicle" data-value="0" data-label="Sedan / Compact" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l1.6-3.7A2 2 0 0 1 8.5 7h7a2 2 0 0 1 1.9 1.3L19 12"/><rect x="3" y="12" width="18" height="4.5" rx="1.6"/><circle cx="7.5" cy="16.8" r="1.5"/><circle cx="16.5" cy="16.8" r="1.5"/></svg></span>
+          <span class="nm">Sedan</span>
+          <span class="ds">Compact / coupe</span>
+        </div>
+        <div class="choice" data-role="vehicle" data-value="20" data-label="SUV / Truck" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5l1.4-4A2 2 0 0 1 7.3 6h9.4a2 2 0 0 1 1.9 1.5L20 11.5"/><rect x="2.6" y="11.5" width="18.8" height="5.3" rx="1.6"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg></span>
+          <span class="nm">SUV / Truck</span>
+          <span class="ds">+$20</span>
+        </div>
+        <div class="choice" data-role="vehicle" data-value="40" data-label="Van / XL SUV" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5h11l4.2 4.2v4.8H3z"/><circle cx="7.5" cy="16.8" r="1.6"/><circle cx="15.5" cy="16.8" r="1.6"/><path d="M14 7.5v4.2h4.2"/></svg></span>
+          <span class="nm">Van / XL</span>
+          <span class="ds">+$40</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: SERVICES -->
+    <div class="step" id="step2">
+      <h2 class="q-title">Choose your detail</h2>
+      <p class="q-hint">Select everything you'd like done.</p>
+      <div class="list" id="services">
+        <div class="row" data-role="service" data-name="Full Detail" data-value="260" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Full Detail</span><span class="d">Complete inside &amp; out — our most popular</span></span>
+          <span class="price">$260</span>
+        </div>
+        <div class="row" data-role="service" data-name="Interior Detail" data-value="160" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Interior Detail</span><span class="d">Vacuum, dash, console, windows, protection</span></span>
+          <span class="price">$160</span>
+        </div>
+        <div class="row" data-role="service" data-name="Exterior Detail" data-value="130" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Exterior Detail</span><span class="d">Hand wash, clay bar, wax, tires, wheels</span></span>
+          <span class="price">$130</span>
+        </div>
+      </div>
+
+      <div class="nudge" id="nudge">
+        <span class="nt">Picking both? The <b>Full Detail</b> covers inside &amp; out for <b>$30 less</b>.</span>
+        <button data-role="apply-bundle">Switch &amp; save</button>
+      </div>
+
+      <div class="group-label">Add-ons (optional)</div>
+      <div class="list" id="addons">
+        <div class="row" data-role="addon" data-name="Carpet Shampoo" data-value="20" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Carpet Shampoo</span></span>
+          <span class="price">+$20</span>
+        </div>
+        <div class="row" data-role="addon" data-name="Ceramic Wax" data-value="20" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Ceramic Wax</span></span>
+          <span class="price">+$20</span>
+        </div>
+        <div class="row" data-role="addon" data-name="Exterior Polish" data-value="30" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">Exterior Polish</span></span>
+          <span class="price">+$30</span>
+        </div>
+        <div class="row" data-role="addon" data-name="RainX Windows" data-value="20" tabindex="0" role="button" aria-pressed="false">
+          <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="info"><span class="t">RainX Window Treatment</span></span>
+          <span class="price">+$20</span>
+        </div>
+      </div>
+      <div class="nav">
+        <button class="btn btn-ghost" data-role="go" data-step="1">‹ Back</button>
+        <button class="btn btn-primary" id="next2" data-role="go" data-step="3" disabled>Continue</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: CONDITION (only shown when interior is involved) -->
+    <div class="step" id="step3">
+      <h2 class="q-title">How's the interior?</h2>
+      <p class="q-hint">Be honest — it helps me bring the right gear. No judgment.</p>
+      <div class="grid">
+        <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.8L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.2z"/><path d="M18.5 14l.9 2.2 2.1.8-2.1.8-.9 2.2-.9-2.2-2.1-.8 2.1-.8z"/></svg></span>
+          <span class="nm">Pretty Clean</span>
+          <span class="ds">Light dust</span>
+        </div>
+        <div class="choice" data-role="condition" data-value="30" data-label="Needs Work" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 1.8"/></svg></span>
+          <span class="nm">Needs Work</span>
+          <span class="ds">Stains, overdue · +$30</span>
+        </div>
+        <div class="choice" data-role="condition" data-value="60" data-label="War Zone" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l8.5 15H3.5z"/><path d="M12 10v4"/><circle cx="12" cy="16.6" r=".6" fill="currentColor"/></svg></span>
+          <span class="nm">War Zone</span>
+          <span class="ds">Heavy / pet hair · +$60</span>
+        </div>
+      </div>
+      <div class="nav">
+        <button class="btn btn-ghost" data-role="go" data-step="2">‹ Back</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: QUOTE + BOOK -->
+    <div class="step" id="step4">
+      <h2 class="q-title" style="text-align:center;">Your estimate</h2>
+      <div class="amount" id="amount">$0</div>
+      <p class="amount-sub">Final price confirmed at booking — no hidden fees.</p>
+
+      <div class="breakdown" id="breakdown"></div>
+
+      <form class="form" id="bookForm" novalidate>
+        <div class="field" id="fName">
+          <input type="text" id="name" placeholder="Your name" autocomplete="name" />
+          <span class="msg">Please enter your name.</span>
+        </div>
+        <div class="field" id="fPhone">
+          <input type="tel" id="phone" placeholder="Phone number" autocomplete="tel" inputmode="tel" />
+          <span class="msg">Enter a valid phone number so I can text you.</span>
+        </div>
+        <div class="field">
+          <input type="email" id="email" placeholder="Email (optional)" autocomplete="email" />
+        </div>
+        <div class="field">
+          <input type="text" id="city" placeholder="Your city (optional)" list="cities" autocomplete="address-level2" />
+          <datalist id="cities">
+            <option value="Snohomish"></option><option value="Monroe"></option>
+            <option value="Lake Stevens"></option><option value="Everett"></option>
+            <option value="Bothell"></option><option value="Mill Creek"></option><option value="Duvall"></option>
+          </datalist>
+        </div>
+        <button class="btn btn-primary" type="submit" id="submitBtn" style="margin-top:4px;">Lock in my quote</button>
+      </form>
+      <p class="consent">By continuing you agree to receive a text about your quote. No spam — reply STOP to opt out.</p>
+
+      <div class="trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guaranteed</span>
+      </div>
+      <div class="nav">
+        <button class="btn btn-ghost" data-role="go" data-step="2">‹ Edit services</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: SUCCESS -->
+    <div class="step" id="step5">
+      <div class="success">
+        <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h2>You're locked in</h2>
+        <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
+        <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+13607975831">Call or text (360) 797-5831</a></p>
+        <p class="sig">— Mikey</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+
+  /* ---------- Theme toggle (segmented control) ---------- */
+  var pill = document.getElementById('segPill');
+  var themeBtns = document.querySelectorAll('[data-theme-btn]');
+  function positionPill(btn){
+    pill.style.width = btn.offsetWidth + 'px';
+    pill.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
+  }
+  function setTheme(t){
+    stage.setAttribute('data-theme', t);
+    themeBtns.forEach(function(b){
+      var on = b.getAttribute('data-theme-btn') === t;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) positionPill(b);
+    });
+  }
+  themeBtns.forEach(function(b){
+    b.addEventListener('click', function(){ setTheme(b.getAttribute('data-theme-btn')); });
+  });
+  window.addEventListener('load', function(){ positionPill(document.querySelector('[data-theme-btn="light"]')); });
+  window.addEventListener('resize', function(){ positionPill(document.querySelector('.seg button.on')); });
+
+  /* ---------- State ---------- */
+  var S = { vehicle: null, condition: null, services: {}, addons: {} };
+  var PRICE = { 'Full Detail':260, 'Interior Detail':160, 'Exterior Detail':130 };
+
+  var stepLabels = {
+    1: 'Step 1 of 4 · Your vehicle',
+    2: 'Step 2 of 4 · Choose services',
+    3: 'Step 3 of 4 · Interior condition',
+    4: 'Step 4 of 4 · Your quote'
+  };
+
+  function interiorInvolved(){
+    return !!(S.services['Full Detail'] || S.services['Interior Detail']);
+  }
+
+  function setProgress(n){
+    var fillTo = (n >= 4) ? 4 : n;
+    document.querySelectorAll('.progress-seg').forEach(function(seg){
+      var i = parseInt(seg.getAttribute('data-seg'));
+      seg.classList.toggle('done', i < fillTo);
+      seg.classList.toggle('active', i === fillTo);
+    });
+    document.getElementById('progLabel').textContent = stepLabels[Math.min(n,4)] || stepLabels[4];
+  }
+
+  function goStep(n){
+    for (var i=1;i<=5;i++){ var s=document.getElementById('step'+i); if(s) s.classList.remove('show'); }
+    var t = document.getElementById('step'+n);
+    if (t){ t.classList.add('show'); }
+    setProgress(n);
+    document.getElementById('qq').scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  /* Smart routing: skip the interior-condition step for exterior-only jobs */
+  function advanceFromServices(){
+    if (interiorInvolved()) { goStep(3); }
+    else { S.condition = null; calcQuote(); }
+  }
+
+  function deselect(scope, sel){
+    document.querySelectorAll('#'+scope+' '+sel).forEach(function(el){
+      el.classList.remove('sel'); el.setAttribute('aria-pressed','false');
+    });
+  }
+
+  function refreshNudge(){
+    var both = S.services['Interior Detail'] && S.services['Exterior Detail'];
+    document.getElementById('nudge').classList.toggle('show', !!both);
+  }
+
+  function refreshContinue(){
+    document.getElementById('next2').disabled = Object.keys(S.services).length === 0;
+  }
+
+  function calcQuote(){
+    var total = 0, lines = [];
+    Object.keys(S.services).forEach(function(k){ total += PRICE[k]; lines.push({l:k, v:PRICE[k]}); });
+    Object.keys(S.addons).forEach(function(k){ total += S.addons[k]; lines.push({l:k, v:S.addons[k]}); });
+    if (S.vehicle && S.vehicle.value > 0){ total += S.vehicle.value; lines.push({l:'Vehicle size', sub:S.vehicle.label, v:S.vehicle.value}); }
+    if (interiorInvolved() && S.condition && S.condition.value > 0){
+      total += S.condition.value; lines.push({l:'Interior condition', sub:S.condition.label, v:S.condition.value});
+    }
+
+    var html = '';
+    lines.forEach(function(x){
+      html += '<div class="bd-row"><span class="l">'+x.l+(x.sub?' <small>'+x.sub+'</small>':'')+'</span><span class="v">'+(x.v>0?'$'+x.v:'$0')+'</span></div>';
+    });
+    html += '<div class="bd-row bd-total"><span class="l">Estimated total</span><span class="v">$'+total+'</span></div>';
+    document.getElementById('breakdown').innerHTML = html;
+
+    goStep(4);
+    animateAmount(total);
+  }
+
+  function animateAmount(target){
+    var el = document.getElementById('amount'), cur = 0;
+    var inc = Math.max(1, Math.ceil(target/22));
+    var iv = setInterval(function(){
+      cur = Math.min(cur+inc, target);
+      el.textContent = '$'+cur;
+      if (cur >= target) clearInterval(iv);
+    }, 28);
+  }
+
+  /* ---------- Click / keyboard handling ---------- */
+  function findRole(el, stop){
+    while (el && el !== stop){ if (el.getAttribute && el.getAttribute('data-role')) return el; el = el.parentNode; }
+    return null;
+  }
+
+  function handle(e){
+    var card = document.getElementById('qq');
+    var el = findRole(e.target, card);
+    if (!el) return;
+    var role = el.getAttribute('data-role');
+
+    if (role === 'vehicle'){
+      deselect('step1','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+      S.vehicle = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      setTimeout(function(){ goStep(2); }, 280);
+    }
+
+    else if (role === 'condition'){
+      deselect('step3','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+      S.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      setTimeout(calcQuote, 280);
+    }
+
+    else if (role === 'service'){
+      var on = el.classList.toggle('sel');
+      el.setAttribute('aria-pressed', on?'true':'false');
+      var name = el.getAttribute('data-name');
+      if (on){
+        S.services[name] = PRICE[name];
+        // Full Detail and the à-la-carte interior/exterior are mutually exclusive
+        if (name === 'Full Detail'){
+          ['Interior Detail','Exterior Detail'].forEach(function(n){ unselectService(n); });
+        } else {
+          unselectService('Full Detail');
+        }
+      } else { delete S.services[name]; }
+      refreshNudge(); refreshContinue();
+    }
+
+    else if (role === 'addon'){
+      var ao = el.classList.toggle('sel');
+      el.setAttribute('aria-pressed', ao?'true':'false');
+      var an = el.getAttribute('data-name');
+      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an];
+    }
+
+    else if (role === 'apply-bundle'){
+      ['Interior Detail','Exterior Detail'].forEach(function(n){ unselectService(n); });
+      var full = document.querySelector('#services [data-name="Full Detail"]');
+      full.classList.add('sel'); full.setAttribute('aria-pressed','true');
+      S.services['Full Detail'] = PRICE['Full Detail'];
+      refreshNudge(); refreshContinue();
+    }
+
+    else if (role === 'go'){
+      var step = parseInt(el.getAttribute('data-step'));
+      if (step === 3) { advanceFromServices(); } else { goStep(step); }
+    }
+  }
+
+  function unselectService(name){
+    var node = document.querySelector('#services [data-name="'+name+'"]');
+    if (node){ node.classList.remove('sel'); node.setAttribute('aria-pressed','false'); }
+    delete S.services[name];
+  }
+
+  /* The "Continue" button on step 2 routes through the smart skip logic */
+  document.getElementById('next2').addEventListener('click', function(e){
+    if (this.disabled) return;
+    e.stopImmediatePropagation();
+    advanceFromServices();
+  }, true);
+
+  var qq = document.getElementById('qq');
+  qq.addEventListener('click', handle, false);
+  qq.addEventListener('keydown', function(e){
+    if (e.key==='Enter' || e.key===' ' || e.key==='Spacebar'){
+      var el = findRole(e.target, qq);
+      if (el && (el.classList.contains('choice') || el.classList.contains('row'))){
+        e.preventDefault(); handle(e);
+      }
+    }
+  });
+
+  /* ---------- Form (mockup: simulates a successful send) ---------- */
+  document.getElementById('bookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    var nameWrap = document.getElementById('fName'), nameEl = document.getElementById('name');
+    var phoneWrap = document.getElementById('fPhone'), phoneEl = document.getElementById('phone');
+
+    if (!nameEl.value.trim()){ nameWrap.classList.add('bad'); nameEl.classList.add('err'); ok=false; }
+    else { nameWrap.classList.remove('bad'); nameEl.classList.remove('err'); }
+
+    var digits = (phoneEl.value || '').replace(/\D/g,'');
+    if (digits.length < 10){ phoneWrap.classList.add('bad'); phoneEl.classList.add('err'); ok=false; }
+    else { phoneWrap.classList.remove('bad'); phoneEl.classList.remove('err'); }
+
+    if (!ok){ (nameWrap.classList.contains('bad')?nameEl:phoneEl).focus(); return; }
+
+    var btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    setTimeout(function(){ goStep(5); }, 650); // demo only — real version posts the lead
+  });
+})();
+</script>
+
+</body>
+</html>
