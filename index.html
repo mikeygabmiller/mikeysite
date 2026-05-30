@@ -1848,451 +1848,359 @@ header li a[href="#booking"],
       </div>
     </div>
 
-      <div style="max-width:640px;margin:0 auto;padding:0 16px;">
-<!-- MIKEY'S QQC v3 — Uses original working JS pattern exactly -->
+      <div style="max-width:480px;margin:0 auto;padding:0 16px;">
+<!-- ===== MIKEY'S QQC v4 — Apple-style redesign · real backend (Web3Forms + honeypot + SMS fallback + GA4) ===== -->
 <style>
-/* Outfit is already loaded once in <head>; no duplicate @import here (faster mobile load). */
-
 #qqcCard {
-  font-family: 'Outfit', sans-serif;
-  background: #141414;
-  color: #fff;
-  max-width: 480px;
-  margin: 0 auto;
-  border-radius: 16px;
-  border: 2px solid #2a2a2a;
-  padding: 32px 24px;
-  box-sizing: border-box;
+  --accent: #C8102E; --accent-rgb: 200,16,46; --accent-press: #e11533;
+  --gold: #d8b25c; --gold-ink: #2a1e02; --success: #2fb358;
+  --surface: #1c1c1e; --surface-2: #262629; --surface-3: #38383b;
+  --text: #f5f5f7; --text-2: #b0b0b6; --text-3: #8e8e93;
+  --border: rgba(255,255,255,0.12); --border-2: rgba(255,255,255,0.24);
+  --shadow: 0 16px 56px rgba(0,0,0,0.6); --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  max-width: 480px; margin: 0 auto;
+  background: var(--surface); color: var(--text);
+  border-radius: 28px; border: 1px solid var(--border); box-shadow: var(--shadow);
+  padding: 30px 26px 26px; overflow: hidden;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em; box-sizing: border-box;
 }
 #qqcCard * { box-sizing: border-box; }
-#qqcCard h2 {
-  font-weight: 900;
-  font-size: 22px;
-  text-align: center;
-  margin: 0 0 4px 0;
-  letter-spacing: -0.5px;
+#qqcCard::before {
+  content: ''; position: absolute; top: -90px; right: -70px; width: 230px; height: 230px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .16), transparent 70%); pointer-events: none;
 }
-#qqcCard .qq-sub {
-  text-align: center;
-  color: #999;
-  font-size: 14px;
-  margin: 0 0 20px 0;
-}
-#qqcCard .qq-grid {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-#qqcCard .qq-card {
-  background: #1c1c1c;
-  border: 2px solid #2a2a2a;
-  border-radius: 12px;
-  padding: 16px 14px;
-  cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  text-align: center;
-  flex: 1;
-  min-width: 120px;
-}
-#qqcCard .qq-card:hover { border-color: #444; }
-#qqcCard .qq-card.selected {
-  border-color: #C8102E;
-  box-shadow: 0 0 16px rgba(200,16,46,0.25);
-}
-#qqcCard .qq-card .qq-icon { font-size: 28px; display: block; margin-bottom: 6px; }
-#qqcCard .qq-card .qq-label { font-weight: 700; font-size: 14px; display: block; }
-#qqcCard .qq-card .qq-desc { font-size: 11px; color: #888; display: block; margin-top: 4px; line-height: 1.3; }
-#qqcCard .qq-card .qq-price { color: #C8102E; font-weight: 700; font-size: 13px; margin-top: 6px; display: block; }
+#qqcCard .qq-brand { position: relative; display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 680; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+#qqcCard .qq-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .22); }
+#qqcCard h2.qq-h { position: relative; font-size: 30px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 6px; }
+#qqcCard .sub { position: relative; font-size: 16px; color: var(--text-2); margin: 0 0 22px; font-weight: 400; }
 
-#qqcCard .qq-services-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
-#qqcCard .qq-services-grid .qq-card {
-  display: flex; align-items: center; text-align: left; padding: 14px 16px; gap: 12px; min-width: unset;
-}
-#qqcCard .qq-services-grid .qq-card .qq-check {
-  width: 22px; height: 22px; border-radius: 6px; border: 2px solid #444;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  font-size: 13px; transition: border-color 0.2s, background 0.2s;
-}
-#qqcCard .qq-services-grid .qq-card.selected .qq-check { border-color: #C8102E; background: #C8102E; }
-#qqcCard .qq-services-grid .qq-card .qq-svc-info { flex: 1; }
-#qqcCard .qq-services-grid .qq-card .qq-svc-price { color: #C8102E; font-weight: 700; font-size: 14px; flex-shrink: 0; }
-#qqcCard .qq-addons-label { font-size: 13px; color: #8a8a8a; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 10px 0; font-weight: 600; }
+#qqcCard .progress { position: relative; margin-bottom: 26px; }
+#qqcCard .progress-track { display: flex; gap: 6px; }
+#qqcCard .progress-seg { flex: 1; height: 4px; border-radius: 980px; background: var(--surface-3); overflow: hidden; }
+#qqcCard .progress-seg i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-press)); border-radius: 980px; transition: width .5s cubic-bezier(.4,0,.2,1); }
+#qqcCard .progress-seg.done i, #qqcCard .progress-seg.active i { width: 100%; }
+#qqcCard .progress-label { margin-top: 10px; font-size: 12.5px; font-weight: 560; color: var(--text-3); }
 
-#qqcCard .qq-btn {
-  display: block; width: 100%; padding: 14px; border: none; border-radius: 10px;
-  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
-  cursor: pointer; transition: opacity 0.2s, transform 0.1s;
-  text-align: center; text-decoration: none;
-}
-#qqcCard .qq-btn:active { transform: scale(0.98); }
-#qqcCard .qq-btn-red { background: #C8102E; color: #fff; }
-#qqcCard .qq-btn-red:hover { opacity: 0.9; }
-#qqcCard .qq-btn-red:disabled { background: #333; color: #8a8a8a; cursor: not-allowed; opacity: 1; }
-#qqcCard .qq-btn-ghost { background: transparent; color: #888; border: 1px solid #333; font-size: 13px; padding: 10px; }
-#qqcCard .qq-btn-ghost:hover { border-color: #8a8a8a; color: #bbb; }
-#qqcCard .qq-nav { display: flex; gap: 10px; margin-top: 16px; }
-#qqcCard .qq-nav .qq-btn { flex: 1; }
+#qqcCard .step { display: none; }
+#qqcCard .step.show { display: block; animation: qqcStepIn .45s cubic-bezier(.22,1,.36,1) both; }
+@keyframes qqcStepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+#qqcCard .q-title { font-size: 21px; font-weight: 650; letter-spacing: -0.02em; margin: 0 0 4px; }
+#qqcCard .q-hint { font-size: 14px; color: var(--text-2); margin: 0 0 18px; }
 
-#qqcCard .qq-quote-amount { font-size: 52px; font-weight: 900; text-align: center; color: #fff; margin: 8px 0 4px 0; letter-spacing: -2px; }
-#qqcCard .qq-quote-from { text-align: center; font-size: 13px; color: #8a8a8a; margin-bottom: 16px; }
-#qqcCard .qq-summary { background: #1c1c1c; border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; }
-#qqcCard .qq-summary p { margin: 4px 0; font-size: 13px; color: #ccc; }
-#qqcCard .qq-summary .qq-sum-check { color: #C8102E; font-weight: 700; }
+#qqcCard .ic-tile { width: 54px; height: 54px; border-radius: 16px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(140deg, var(--surface-3), var(--surface-2)); color: var(--text-2); transition: background .3s ease, color .3s ease, transform .35s cubic-bezier(.34,1.4,.64,1), box-shadow .3s ease; }
+#qqcCard .ic-tile svg { width: 30px; height: 30px; }
+#qqcCard .sel .ic-tile { background: linear-gradient(140deg, rgb(var(--accent-rgb)), var(--accent-press)); color: #fff; transform: scale(1.05); box-shadow: 0 10px 22px -8px rgba(var(--accent-rgb), .7); }
 
-#qqcCard .qq-book-block {
-  background: rgba(200,16,46,0.08); border: 2px solid rgba(200,16,46,0.3);
-  border-radius: 14px; padding: 20px 18px; margin-bottom: 16px;
-}
-#qqcCard .qq-book-block h3 { font-weight: 900; font-size: 16px; text-align: center; margin: 0 0 14px 0; color: #fff; }
-#qqcCard .qq-form-fields { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
-#qqcCard .qq-input {
-  background: #1a1010; border: 2px solid rgba(200,16,46,0.25); border-radius: 10px;
-  padding: 13px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px;
-  width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-}
-#qqcCard .qq-input::placeholder { color: #8a8a8a; }
-#qqcCard .qq-input:focus { border-color: #C8102E; box-shadow: 0 0 12px rgba(200,16,46,0.2); }
-#qqcCard .qq-form-note { text-align: center; font-size: 12px; color: #8a8a8a; margin-top: 10px; }
-#qqcCard .qq-guarantee-note { text-align: center; font-size: 12.5px; font-weight: 600; color: #34d399; margin-top: 12px; letter-spacing: .2px; }
+#qqcCard .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+#qqcCard .choice { position: relative; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 18px; padding: 16px 8px 13px; text-align: center; cursor: pointer; transition: border-color .22s ease, background .22s ease, transform .18s cubic-bezier(.34,1.3,.64,1), box-shadow .22s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .choice .ic-tile { margin: 0 auto 10px; }
+#qqcCard .choice:hover { border-color: var(--border-2); transform: translateY(-2px); }
+#qqcCard .choice:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); border-color: var(--accent); }
+#qqcCard .choice.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .08); box-shadow: 0 8px 22px -10px var(--accent); }
+#qqcCard .choice .nm { display: block; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+#qqcCard .choice .ds { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 4px; line-height: 1.3; }
 
-#qqcCard .qq-success { text-align: center; padding: 20px 0; }
-#qqcCard .qq-success-icon { font-size: 48px; margin-bottom: 12px; display: block; }
-#qqcCard .qq-success h3 { font-weight: 900; font-size: 20px; margin: 0 0 8px 0; }
-#qqcCard .qq-success p { color: #999; font-size: 14px; margin: 0; line-height: 1.5; }
+#qqcCard .badge { position: absolute; top: 9px; right: 9px; width: 21px; height: 21px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.4); transition: opacity .25s ease, transform .3s cubic-bezier(.34,1.5,.64,1); }
+#qqcCard .badge svg { width: 12px; height: 12px; }
+#qqcCard .sel > .badge, #qqcCard .sel > .hero-main .badge { opacity: 1; transform: scale(1); }
 
-#qqcCard .qq-steps-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
-#qqcCard .qq-dot { width: 8px; height: 8px; border-radius: 50%; background: #333; transition: background 0.3s; }
-#qqcCard .qq-dot.active { background: #C8102E; }
+#qqcCard .hero { position: relative; display: block; width: 100%; text-align: left; cursor: pointer; margin: 12px 0 0; border: 1.8px solid var(--border-2); border-radius: 20px; padding: 18px; background: linear-gradient(150deg, rgba(var(--accent-rgb), .12), var(--surface-2) 70%); transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease, background .3s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .hero:hover { border-color: var(--accent); transform: translateY(-2px); }
+#qqcCard .hero:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .22); }
+#qqcCard .hero.sel { border-color: var(--accent); background: linear-gradient(150deg, rgba(var(--accent-rgb), .2), var(--surface-2) 75%); box-shadow: 0 14px 34px -14px var(--accent); }
+#qqcCard .ribbon { position: absolute; top: 0; left: 18px; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 10.5px; font-weight: 760; letter-spacing: .04em; padding: 5px 11px; border-radius: 980px; box-shadow: 0 5px 14px rgba(0,0,0,.35); overflow: hidden; }
+#qqcCard .ribbon svg { width: 11px; height: 11px; }
+#qqcCard .ribbon::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.5) 50%, transparent 65%); transform: translateX(-130%); animation: qqcShimmer 4s ease-in-out infinite; }
+@keyframes qqcShimmer { 0%, 55% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+#qqcCard .hero-main { display: flex; align-items: center; gap: 14px; }
+#qqcCard .hero .ic-tile { width: 58px; height: 58px; border-radius: 17px; }
+#qqcCard .hero .ic-tile svg { width: 33px; height: 33px; }
+#qqcCard .hero-info { flex: 1; min-width: 0; }
+#qqcCard .hero-info .t { display: block; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+#qqcCard .hero-info .d { display: block; font-size: 13px; color: var(--text-2); margin-top: 2px; }
+#qqcCard .hero-info .save { display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 680; color: var(--accent); background: rgba(var(--accent-rgb), .14); padding: 3px 9px; border-radius: 980px; }
+#qqcCard .hero-price { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; flex-shrink: 0; }
+#qqcCard .hero-price .amt { font-weight: 800; font-size: 25px; letter-spacing: -0.03em; }
+#qqcCard .hero .badge { position: static; opacity: .3; transform: scale(1); width: 24px; height: 24px; background: transparent; border: 2px solid var(--border-2); color: var(--accent); }
+#qqcCard .hero .badge svg { width: 13px; height: 13px; opacity: 0; transition: opacity .2s; }
+#qqcCard .hero.sel .badge { opacity: 1; background: var(--accent); border-color: var(--accent); color: #fff; }
+#qqcCard .hero.sel .badge svg { opacity: 1; }
+#qqcCard .hero.suggest { border-color: var(--accent); animation: qqcSuggest 1.7s ease-in-out infinite; }
+@keyframes qqcSuggest { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); } 50% { box-shadow: 0 0 0 6px rgba(var(--accent-rgb), .16); } }
 
-#step1 { display: block; }
-#step2, #step3, #step4, #step5 { display: none; }
+#qqcCard .or-divider { display: flex; align-items: center; gap: 12px; margin: 18px 2px 14px; color: var(--text-3); font-size: 12px; font-weight: 560; }
+#qqcCard .or-divider::before, #qqcCard .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
-/* ===== Keyboard focus (a11y) ===== */
-#qqcCard .qq-card { -webkit-tap-highlight-color: transparent; }
-#qqcCard .qq-card:focus-visible {
-  outline: none;
-  border-color: #C8102E;
-  box-shadow: 0 0 0 3px rgba(200,16,46,0.5);
-}
-#qqcCard [id^="step"]:focus { outline: none; }
+#qqcCard .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+#qqcCard .svc-card { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 18px; padding: 16px; cursor: pointer; transition: border-color .22s ease, background .22s ease, transform .18s ease, box-shadow .22s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .svc-card .ic-tile { width: 46px; height: 46px; border-radius: 13px; }
+#qqcCard .svc-card .ic-tile svg { width: 27px; height: 27px; }
+#qqcCard .svc-card:hover { border-color: var(--border-2); transform: translateY(-2px); }
+#qqcCard .svc-card:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); border-color: var(--accent); }
+#qqcCard .svc-card.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .08); box-shadow: 0 8px 22px -12px var(--accent); }
+#qqcCard .svc-card .t { font-size: 15px; font-weight: 620; letter-spacing: -0.01em; }
+#qqcCard .svc-card .price { font-size: 18px; font-weight: 740; letter-spacing: -0.02em; }
 
-/* ===== Satisfying selection pop ===== */
-@keyframes qqPop { 0%{transform:scale(1);} 45%{transform:scale(1.04);} 100%{transform:scale(1);} }
-#qqcCard .qq-card.selected { animation: qqPop .28s ease; }
+#qqcCard .group-label { font-size: 12px; font-weight: 640; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); margin: 22px 4px 10px; }
+#qqcCard .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#qqcCard .chip { position: relative; display: flex; align-items: center; gap: 11px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 11px 12px; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .chip:hover { border-color: var(--border-2); }
+#qqcCard .chip:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
+#qqcCard .chip .ic-mini { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--surface-3); color: var(--text-2); transition: background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1); }
+#qqcCard .chip .ic-mini svg { width: 21px; height: 21px; }
+#qqcCard .chip .ctext { flex: 1; min-width: 0; line-height: 1.2; }
+#qqcCard .chip .ct { display: block; font-size: 13.5px; font-weight: 580; }
+#qqcCard .chip .cp { display: block; font-size: 12px; color: var(--text-3); margin-top: 1px; }
+#qqcCard .chip.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .09); }
+#qqcCard .chip.sel .ic-mini { background: linear-gradient(140deg, rgb(var(--accent-rgb)), var(--accent-press)); color: #fff; transform: scale(1.06); }
 
-/* ===== Smooth step-to-step transition ===== */
-@keyframes qqStepIn { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);} }
-#qqcCard [id^="step"].qq-anim { animation: qqStepIn .35s ease both; }
+#qqcCard .notes-label { display: block; font-size: 13.5px; font-weight: 580; color: var(--text); margin: 24px 2px 9px; }
+#qqcCard .notes-label span { color: var(--text-3); font-weight: 400; }
 
-/* ===== Animated success checkmark ===== */
-@keyframes qqCheckPop { 0%{transform:scale(0); opacity:0;} 60%{transform:scale(1.18);} 100%{transform:scale(1); opacity:1;} }
-#qqcCard .qq-success-icon { display:inline-block; animation: qqCheckPop .55s cubic-bezier(.34,1.56,.64,1) both; }
+#qqcCard .nav { display: flex; gap: 10px; margin-top: 22px; }
+#qqcCard .btn { appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; padding: 15px 20px; border-radius: 14px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background .2s ease, color .2s, transform .12s ease, opacity .2s, box-shadow .2s; }
+#qqcCard .btn:active { transform: scale(.985); }
+#qqcCard .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 10px 24px -12px var(--accent); }
+#qqcCard .btn-primary:hover { background: var(--accent-press); }
+#qqcCard .btn-primary:disabled { background: var(--surface-3); color: var(--text-3); cursor: not-allowed; box-shadow: none; }
+#qqcCard .btn-ghost { background: transparent; color: var(--text-2); flex: 0 0 auto; width: auto; padding: 15px 18px; }
+#qqcCard .btn-ghost:hover { color: var(--text); background: var(--surface-2); }
+#qqcCard .nav .btn-primary { flex: 1; }
 
-/* ===== Submit error / SMS recovery box ===== */
-#qqcCard .qq-error {
-  display:none;
-  background: rgba(200,16,46,0.08);
-  border: 1px solid rgba(200,16,46,0.45);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 14px;
-  text-align: center;
-}
+#qqcCard .amount { text-align: center; font-size: 64px; font-weight: 700; letter-spacing: -0.04em; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+#qqcCard .amount.lit { animation: qqcAmountPop .45s cubic-bezier(.34,1.5,.64,1); }
+@keyframes qqcAmountPop { 0% { transform: scale(.88); } 100% { transform: scale(1); } }
+#qqcCard .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 20px; }
+#qqcCard .breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 22px; }
+#qqcCard .bd-head { font-size: 12px; font-weight: 640; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); padding: 8px 0 4px; }
+#qqcCard .inc-row { display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: 15px; font-weight: 520; }
+#qqcCard .inc-row + .inc-row { border-top: 1px solid var(--border); }
+#qqcCard .inc-check { width: 21px; height: 21px; border-radius: 50%; background: rgba(var(--accent-rgb), .18); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+#qqcCard .inc-check svg { width: 12px; height: 12px; }
+#qqcCard .inc-ctx { margin-top: 8px; padding-top: 11px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-3); }
+#qqcCard .inc-note { margin-top: 11px; padding: 11px 13px; font-size: 13.5px; color: var(--text-2); background: var(--surface-3); border-radius: 12px; line-height: 1.45; }
+#qqcCard .inc-note b { color: var(--text-3); font-weight: 600; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
+
+#qqcCard .form { display: grid; gap: 12px; margin-bottom: 6px; }
+#qqcCard .field { position: relative; }
+#qqcCard .field input, #qqcCard .field textarea { width: 100%; font: inherit; font-size: 16px; background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border); border-radius: 13px; padding: 16px; transition: border-color .2s ease, box-shadow .2s ease, background .2s; }
+#qqcCard .field textarea { resize: vertical; min-height: 76px; line-height: 1.45; padding: 14px 16px; }
+#qqcCard .field input::placeholder, #qqcCard .field textarea::placeholder { color: var(--text-3); }
+#qqcCard .field input:focus, #qqcCard .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
+#qqcCard .field input.err { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
+#qqcCard .field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
+#qqcCard .field.bad .msg { display: block; }
+#qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
+#qqcCard .trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
+#qqcCard .trust span { display: inline-flex; align-items: center; gap: 5px; }
+#qqcCard .trust svg { width: 13px; height: 13px; color: var(--success); }
+
+#qqcCard .qq-error { display: none; background: rgba(var(--accent-rgb), 0.08); border: 1px solid rgba(var(--accent-rgb), 0.45); border-radius: 12px; padding: 16px; margin: 14px 0; text-align: center; }
 #qqcCard .qq-error p { margin: 0 0 12px; font-size: 13.5px; color: #f0c4c4; line-height: 1.55; }
-#qqcCard .qq-error a {
-  display:inline-block; background:#C8102E; color:#fff;
-  padding:13px 20px; border-radius:9px; font-weight:800; font-size:14.5px;
-  text-decoration:none; transition:opacity .2s;
-}
-#qqcCard .qq-error a:hover { opacity:.9; }
+#qqcCard .qq-error a { display: inline-block; background: var(--accent); color: #fff; padding: 13px 20px; border-radius: 9px; font-weight: 800; font-size: 14.5px; text-decoration: none; }
 
-/* ===== Respect reduced motion ===== */
+#qqcCard .success { text-align: center; padding: 18px 0 8px; }
+#qqcCard .success .ring { position: relative; width: 78px; height: 78px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(140deg, #38c46a, var(--success)); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 32px -8px var(--success); animation: qqcRingPop .55s cubic-bezier(.34,1.56,.64,1) both; }
+#qqcCard .success .ring svg { width: 40px; height: 40px; color: #fff; position: relative; z-index: 1; }
+#qqcCard .success .ring::before, #qqcCard .success .ring::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--success); animation: qqcRipple 1.9s ease-out infinite; }
+#qqcCard .success .ring::after { animation-delay: .7s; }
+@keyframes qqcRingPop { 0% { transform: scale(0); opacity: 0; } 60% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes qqcRipple { 0% { transform: scale(1); opacity: .45; } 100% { transform: scale(2.1); opacity: 0; } }
+#qqcCard .success h3 { font-size: 24px; font-weight: 680; letter-spacing: -0.02em; margin: 0 0 8px; }
+#qqcCard .success p { font-size: 15px; color: var(--text-2); line-height: 1.5; margin: 0 0 6px; }
+#qqcCard .success a.call { color: var(--accent); font-weight: 680; text-decoration: none; }
+#qqcCard .success .sig { color: var(--text-3); font-size: 13px; margin-top: 14px; }
+
+@media (max-width: 380px) {
+  #qqcCard { padding: 26px 18px 22px; }
+  #qqcCard h2.qq-h { font-size: 26px; }
+  #qqcCard .amount { font-size: 54px; }
+  #qqcCard .duo, #qqcCard .addon-grid { grid-template-columns: 1fr; }
+}
 @media (prefers-reduced-motion: reduce) {
-  #qqcCard .qq-card.selected,
-  #qqcCard [id^="step"].qq-anim,
-  #qqcCard .qq-success-icon { animation: none; }
-}
-
-/* ========== DESKTOP RESPONSIVE ========== */
-@media (min-width: 640px) {
-  #qqcCard {
-    max-width: 640px;
-    padding: 40px 36px;
-    border-radius: 20px;
-  }
-  #qqcCard h2 {
-    font-size: 26px;
-  }
-  #qqcCard .qq-sub {
-    font-size: 15px;
-    margin-bottom: 24px;
-  }
-  #qqcCard .qq-grid {
-    gap: 14px;
-    margin-bottom: 24px;
-  }
-  #qqcCard .qq-card {
-    padding: 20px 18px;
-    border-radius: 14px;
-  }
-  #qqcCard .qq-card .qq-icon {
-    font-size: 34px;
-    margin-bottom: 8px;
-  }
-  #qqcCard .qq-card .qq-label {
-    font-size: 15px;
-  }
-  #qqcCard .qq-card .qq-desc {
-    font-size: 12px;
-    margin-top: 6px;
-  }
-  #qqcCard .qq-services-grid {
-    gap: 12px;
-  }
-  #qqcCard .qq-services-grid .qq-card {
-    padding: 16px 20px;
-    gap: 16px;
-  }
-  #qqcCard .qq-services-grid .qq-card .qq-check {
-    width: 26px;
-    height: 26px;
-    font-size: 14px;
-  }
-  #qqcCard .qq-services-grid .qq-card .qq-label {
-    font-size: 15px;
-  }
-  #qqcCard .qq-services-grid .qq-card .qq-desc {
-    font-size: 12px;
-  }
-  #qqcCard .qq-services-grid .qq-card .qq-svc-price {
-    font-size: 16px;
-  }
-  #qqcCard .qq-addons-label {
-    font-size: 14px;
-    margin: 20px 0 12px 0;
-  }
-  #qqcCard .qq-btn {
-    padding: 16px;
-    font-size: 16px;
-    border-radius: 12px;
-  }
-  #qqcCard .qq-btn-ghost {
-    font-size: 14px;
-    padding: 12px;
-  }
-  #qqcCard .qq-nav {
-    gap: 12px;
-    margin-top: 20px;
-  }
-  #qqcCard .qq-quote-amount {
-    font-size: 60px;
-    margin: 12px 0 6px 0;
-  }
-  #qqcCard .qq-quote-from {
-    font-size: 14px;
-    margin-bottom: 20px;
-  }
-  #qqcCard .qq-summary {
-    padding: 18px 20px;
-    border-radius: 12px;
-    margin-bottom: 24px;
-  }
-  #qqcCard .qq-summary p {
-    font-size: 14px;
-    margin: 6px 0;
-  }
-  #qqcCard .qq-book-block {
-    padding: 24px 24px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-  }
-  #qqcCard .qq-book-block h3 {
-    font-size: 18px;
-    margin-bottom: 16px;
-  }
-  #qqcCard .qq-form-fields {
-    flex-direction: row;
-    gap: 12px;
-  }
-  #qqcCard .qq-input {
-    font-size: 16px;
-    padding: 14px 18px;
-  }
-  #qqcCard .qq-form-note {
-    font-size: 13px;
-    margin-top: 12px;
-  }
-  #qqcCard .qq-steps-indicator {
-    gap: 10px;
-    margin-bottom: 24px;
-  }
-  #qqcCard .qq-dot {
-    width: 10px;
-    height: 10px;
-  }
-  #qqcCard .qq-success-icon {
-    font-size: 56px;
-  }
-  #qqcCard .qq-success h3 {
-    font-size: 24px;
-  }
-  #qqcCard .qq-success p {
-    font-size: 15px;
-  }
+  #qqcCard *, #qqcCard *::before, #qqcCard *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 </style>
 
 <div id="qqcCard">
 
-  <div class="qq-steps-indicator">
-    <div class="qq-dot active" id="dot1"></div>
-    <div class="qq-dot" id="dot2"></div>
-    <div class="qq-dot" id="dot3"></div>
-    <div class="qq-dot" id="dot4"></div>
+  <span class="qq-brand"><span class="dot"></span> Mikey's Detailing</span>
+  <h2 class="qq-h">Quick Quote</h2>
+  <p class="sub">Build your detail. Get a price in 30 seconds.</p>
+
+  <div class="progress">
+    <div class="progress-track">
+      <div class="progress-seg active" data-seg="1"><i></i></div>
+      <div class="progress-seg" data-seg="2"><i></i></div>
+      <div class="progress-seg" data-seg="3"><i></i></div>
+      <div class="progress-seg" data-seg="4"><i></i></div>
+    </div>
+    <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
   </div>
 
-  <div id="step1">
-    <h2>Quick Quote</h2>
-    <p class="qq-sub">Get your price in 30 seconds</p>
-    <div class="qq-grid">
-      <div class="qq-card" data-role="vehicle" data-value="0" data-label="Sedan / Compact">
-        <span class="qq-icon">&#128663;</span>
-        <span class="qq-label">Sedan / Compact</span>
+  <!-- STEP 1: VEHICLE -->
+  <div class="step show" id="step1">
+    <h3 class="q-title">What are we detailing?</h3>
+    <p class="q-hint">Pick your vehicle size.</p>
+    <div class="grid">
+      <div class="choice" data-role="vehicle" data-value="0" data-label="Sedan / Compact" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="3.5" y="13" width="21" height="6" rx="2.4"/><rect x="7.5" y="8.5" width="13" height="6" rx="2.4" opacity=".5"/><circle cx="8.5" cy="19.5" r="2.3"/><circle cx="19.5" cy="19.5" r="2.3"/></svg></span>
+        <span class="nm">Sedan</span><span class="ds">Compact / coupe</span>
       </div>
-      <div class="qq-card" data-role="vehicle" data-value="20" data-label="SUV / Truck">
-        <span class="qq-icon">&#128665;</span>
-        <span class="qq-label">SUV / Truck</span>
+      <div class="choice" data-role="vehicle" data-value="20" data-label="SUV / Truck" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="3" y="12.5" width="22" height="7" rx="2.4"/><rect x="6.5" y="6.5" width="15" height="7.5" rx="2.4" opacity=".5"/><circle cx="8.5" cy="20" r="2.5"/><circle cx="19.5" cy="20" r="2.5"/></svg></span>
+        <span class="nm">SUV / Truck</span><span class="ds">+$20</span>
       </div>
-      <div class="qq-card" data-role="vehicle" data-value="40" data-label="Van / XL SUV">
-        <span class="qq-icon">&#128656;</span>
-        <span class="qq-label">Van / XL SUV</span>
+      <div class="choice" data-role="vehicle" data-value="40" data-label="Van / XL SUV" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="3" y="7.5" width="22" height="12" rx="2.6"/><rect x="5" y="9.5" width="7" height="4.5" rx="1.4" opacity=".4"/><rect x="14.5" y="9.5" width="8" height="4.5" rx="1.4" opacity=".4"/><circle cx="8.5" cy="20" r="2.5"/><circle cx="19.5" cy="20" r="2.5"/></svg></span>
+        <span class="nm">Van / XL</span><span class="ds">+$40</span>
       </div>
-    </div>
-    <button class="qq-btn qq-btn-red" id="next1" disabled data-role="go-step" data-step="2">Next &#8594;</button>
-  </div>
-
-  <div id="step2">
-    <h2>How's the Interior?</h2>
-    <p class="qq-sub">Be honest — no judgment</p>
-    <div class="qq-grid">
-      <div class="qq-card" data-role="condition" data-value="0" data-label="Pretty Clean">
-        <span class="qq-icon">&#128077;</span>
-        <span class="qq-label">Pretty Clean</span>
-        <span class="qq-desc">Light dust, no major stains</span>
-      </div>
-      <div class="qq-card" data-role="condition" data-value="30" data-label="Needs Work">
-        <span class="qq-icon">&#128528;</span>
-        <span class="qq-label">Needs Work</span>
-        <span class="qq-desc">Some stains, pet hair, overdue</span>
-      </div>
-      <div class="qq-card" data-role="condition" data-value="60" data-label="War Zone">
-        <span class="qq-icon">&#128561;</span>
-        <span class="qq-label">War Zone</span>
-        <span class="qq-desc">Heavy stains, mud, pet hair</span>
-      </div>
-    </div>
-    <div class="qq-nav">
-      <button class="qq-btn qq-btn-ghost" data-role="go-step" data-step="1">&#8592; Back</button>
-      <button class="qq-btn qq-btn-red" id="next2" disabled data-role="go-step" data-step="3">Next &#8594;</button>
     </div>
   </div>
 
-  <div id="step3">
-    <h2>Pick Your Services</h2>
-    <p class="qq-sub">Select everything you want done</p>
-    <div class="qq-services-grid">
-      <div class="qq-card" data-role="service" data-name="Interior Detail" data-value="160">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info">
-          <span class="qq-label">Interior Detail</span>
-          <span class="qq-desc">Full vacuum, dash, console, windows, protection</span>
+  <!-- STEP 2: SERVICES -->
+  <div class="step" id="step2">
+    <h3 class="q-title">Choose your detail</h3>
+    <p class="q-hint">Grab the full package, or build your own.</p>
+    <div id="services">
+      <div class="hero" id="qqHeroFull" data-role="service" data-name="Full Detail" data-value="260" tabindex="0" role="button" aria-pressed="false">
+        <span class="ribbon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.4 1.4 6.4L12 17.8 5.9 20l1.5-6.4L2.5 9.2l6.6-.7z"/></svg> Most Popular</span>
+        <div class="hero-main">
+          <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="3.5" y="14" width="18.5" height="5.5" rx="2.2"/><rect x="7" y="10" width="11.5" height="5.5" rx="2.2" opacity=".5"/><circle cx="8" cy="19.8" r="2"/><circle cx="17" cy="19.8" r="2"/><path d="M22.5 3.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></svg></span>
+          <div class="hero-info">
+            <span class="t">Full Detail</span>
+            <span class="d">Inside &amp; out &mdash; the complete works</span>
+            <span class="save">Save $30 vs. buying separately</span>
+          </div>
+          <div class="hero-price">
+            <span class="amt">$260</span>
+            <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          </div>
         </div>
-        <span class="qq-svc-price">$160+</span>
       </div>
-      <div class="qq-card" data-role="service" data-name="Exterior Detail" data-value="130">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info">
-          <span class="qq-label">Exterior Detail</span>
-          <span class="qq-desc">Hand wash, clay bar, wax, tires, wheels, windows</span>
+      <div class="or-divider">or build your own</div>
+      <div class="duo">
+        <div class="svc-card" data-role="service" data-name="Interior Detail" data-value="160" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="6.5" y="5" width="5.5" height="12" rx="2.6"/><rect x="6.5" y="13.5" width="15" height="5.5" rx="2.6" opacity=".5"/><rect x="18.5" y="15.5" width="3" height="5" rx="1.4"/></svg></span>
+          <span class="t">Interior</span><span class="price">$160</span>
         </div>
-        <span class="qq-svc-price">$130+</span>
-      </div>
-      <div class="qq-card" data-role="service" data-name="Full Detail" data-value="260">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info">
-          <span class="qq-label">Full Interior + Exterior</span>
-          <span class="qq-desc">Complete inside &amp; out detail package</span>
+        <div class="svc-card" data-role="service" data-name="Exterior Detail" data-value="130" tabindex="0" role="button" aria-pressed="false">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          <span class="ic-tile"><svg viewBox="0 0 28 28"><path fill="currentColor" d="M14 4.5c3.2 3.8 6 7 6 10.2a6 6 0 0 1-12 0c0-3.2 2.8-6.4 6-10.2z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".5" d="M11 13.6a3.2 3.2 0 0 0 2.4 4.2"/></svg></span>
+          <span class="t">Exterior</span><span class="price">$130</span>
         </div>
-        <span class="qq-svc-price">$260+</span>
       </div>
     </div>
-    <div class="qq-addons-label">Add-ons</div>
-    <div class="qq-services-grid">
-      <div class="qq-card" data-role="addon" data-name="Carpet Shampoo" data-value="20">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info"><span class="qq-label">Carpet Shampoo</span></div>
-        <span class="qq-svc-price">$20+</span>
+    <div class="group-label">Add-ons</div>
+    <div class="addon-grid">
+      <div class="chip" data-role="addon" data-name="Carpet Shampoo" data-value="20" tabindex="0" role="button" aria-pressed="false">
+        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="13.5" r="4.2"/><circle cx="15" cy="10" r="3" opacity=".6"/><circle cx="16" cy="15.5" r="2.2" opacity=".8"/></svg></span>
+        <span class="ctext"><span class="ct">Carpet Shampoo</span><span class="cp">+$20</span></span>
       </div>
-      <div class="qq-card" data-role="addon" data-name="Ceramic Wax" data-value="20">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info"><span class="qq-label">Ceramic Wax</span></div>
-        <span class="qq-svc-price">$20+</span>
+      <div class="chip" data-role="addon" data-name="Ceramic Wax" data-value="20" tabindex="0" role="button" aria-pressed="false">
+        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l7.5 2.7v5.3c0 4.4-3.2 7.8-7.5 9-4.3-1.2-7.5-4.6-7.5-9V5.2z"/><path opacity=".4" d="M12 6l4 1.5v3c0 2.5-1.7 4.5-4 5.2z"/></svg></span>
+        <span class="ctext"><span class="ct">Ceramic Wax</span><span class="cp">+$20</span></span>
       </div>
-      <div class="qq-card" data-role="addon" data-name="Exterior Polish" data-value="30">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info"><span class="qq-label">Exterior Polish</span></div>
-        <span class="qq-svc-price">$30+</span>
+      <div class="chip" data-role="addon" data-name="Exterior Polish" data-value="30" tabindex="0" role="button" aria-pressed="false">
+        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg></span>
+        <span class="ctext"><span class="ct">Exterior Polish</span><span class="cp">+$30</span></span>
       </div>
-      <div class="qq-card" data-role="addon" data-name="RainX Window Treatment" data-value="20">
-        <div class="qq-check">&#10003;</div>
-        <div class="qq-svc-info"><span class="qq-label">RainX Window Treatment</span></div>
-        <span class="qq-svc-price">$20+</span>
+      <div class="chip" data-role="addon" data-name="RainX Windows" data-value="10" tabindex="0" role="button" aria-pressed="false">
+        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="13" rx="2.5" opacity=".45"/><path d="M14 8.5c1.7 2 3.1 3.7 3.1 5.4a3.1 3.1 0 0 1-6.2 0c0-1.7 1.4-3.4 3.1-5.4z"/></svg></span>
+        <span class="ctext"><span class="ct">RainX Windows</span><span class="cp">+$10</span></span>
       </div>
     </div>
-    <div class="qq-nav">
-      <button class="qq-btn qq-btn-ghost" data-role="go-step" data-step="2">&#8592; Back</button>
-      <button class="qq-btn qq-btn-red" id="next3" disabled data-role="calc-quote">See My Quote &#8594;</button>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="1">&lsaquo; Back</button>
+      <button type="button" class="btn btn-primary" id="qqNext2" data-role="go" data-step="3" disabled>Continue</button>
     </div>
   </div>
 
-  <div id="step4">
-    <h2>Your Estimated Quote</h2>
-    <div class="qq-quote-amount" id="quoteAmount">$0</div>
-    <p class="qq-quote-from">Based on your selections — final price confirmed at booking</p>
-    <div class="qq-summary" id="summaryList"></div>
-    <div class="qq-book-block">
-      <h3>Book Now — I'll Text You to Confirm</h3>
-      <div class="qq-form-fields">
-        <input type="text" class="qq-input" id="qqName" placeholder="Your name" autocomplete="name" />
-        <input type="tel" class="qq-input" id="qqPhone" placeholder="Phone number" autocomplete="tel" />
-        <input type="text" class="qq-input" id="qqLocation" list="qqCities" placeholder="Your city (optional)" autocomplete="address-level2" />
-        <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+  <!-- STEP 3: CONDITION + NOTES -->
+  <div class="step" id="step3">
+    <h3 class="q-title">What condition is it in?</h3>
+    <p class="q-hint">Overall &mdash; inside &amp; out. Just helps me prep the right way.</p>
+    <div class="grid">
+      <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M14 4l1.4 5.2L20.5 10.5l-5.1 1.3L14 17l-1.4-5.2L7.5 10.5l5.1-1.3z"/><path opacity=".5" d="M21 15l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></svg></span>
+        <span class="nm">Pretty Clean</span><span class="ds">Well kept</span>
+      </div>
+      <div class="choice" data-role="condition" data-value="30" data-label="Needs Work" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="9" fill="currentColor" opacity=".22"/><circle cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M14 9v5.2l3.3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="nm">Needs Work</span><span class="ds">Overdue</span>
+      </div>
+      <div class="choice" data-role="condition" data-value="60" data-label="War Zone" tabindex="0" role="button" aria-pressed="false">
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="ic-tile"><svg viewBox="0 0 28 28"><path fill="currentColor" fill-rule="evenodd" d="M12.27 4.8a2 2 0 0 1 3.46 0l8.3 14.4a2 2 0 0 1-1.73 3H5.7a2 2 0 0 1-1.73-3zM12.9 10h2.2v6h-2.2zM12.9 17.4h2.2v2.2h-2.2z"/></svg></span>
+        <span class="nm">War Zone</span><span class="ds">Really rough</span>
+      </div>
+    </div>
+    <label class="notes-label" for="qqNotes">Anything specific I should know? <span>(optional)</span></label>
+    <div class="field">
+      <textarea id="qqNotes" placeholder="Tree sap, bug splatter, mold, pet hair, deep stains, scratches&hellip; anything at all"></textarea>
+    </div>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="2">&lsaquo; Back</button>
+      <button type="button" class="btn btn-primary" id="qqNext3" data-role="calc" disabled>See my quote</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: QUOTE + BOOK -->
+  <div class="step" id="step4">
+    <h3 class="q-title" style="text-align:center;">Your estimate</h3>
+    <div class="amount" id="qqAmount">$0</div>
+    <p class="amount-sub">Final price confirmed at booking &mdash; no hidden fees.</p>
+    <div class="breakdown" id="qqBreakdown"></div>
+    <form class="form" id="qqForm" novalidate>
+      <div class="field" id="qqfName">
+        <input type="text" id="qqName" placeholder="Your name" autocomplete="name" />
+        <span class="msg">Please enter your name.</span>
+      </div>
+      <div class="field" id="qqfPhone">
+        <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" />
+        <span class="msg">Enter a valid phone number so I can text you.</span>
+      </div>
+      <div class="field"><input type="email" id="qqEmail" placeholder="Email (optional)" autocomplete="email" /></div>
+      <div class="field">
+        <input type="text" id="qqLocation" placeholder="Your city (optional)" list="qqCities" autocomplete="address-level2" />
         <datalist id="qqCities">
-          <option value="Snohomish"></option>
-          <option value="Monroe"></option>
-          <option value="Lake Stevens"></option>
-          <option value="Everett"></option>
-          <option value="Bothell"></option>
-          <option value="Mill Creek"></option>
-          <option value="Duvall"></option>
+          <option value="Snohomish"></option><option value="Monroe"></option>
+          <option value="Lake Stevens"></option><option value="Everett"></option>
+          <option value="Bothell"></option><option value="Mill Creek"></option><option value="Duvall"></option>
         </datalist>
       </div>
-      <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
-      <button class="qq-btn qq-btn-red" id="qqSubmitBtn" data-role="submit-quote">LOCK IN YOUR QUOTE &#8594;</button>
-      <p class="qq-guarantee-note">✓ You don't pay until you love it &#8226; No deposit &#8226; No obligation</p>
+      <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+      <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Lock in my quote</button>
+    </form>
+    <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
+    <p class="consent">By continuing you agree to receive a text about your quote. No spam &mdash; reply STOP to opt out.</p>
+    <div class="trust">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guaranteed</span>
     </div>
-    <p class="qq-form-note">100% Satisfaction Guarantee &#8226; Pay When Complete</p>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="3">&lsaquo; Edit details</button>
+    </div>
   </div>
 
-  <div id="step5">
-    <div class="qq-success">
-      <span class="qq-success-icon">&#10003;</span>
-      <h3>You're Locked In</h3>
+  <!-- STEP 5: SUCCESS -->
+  <div class="step" id="step5">
+    <div class="success">
+      <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h3>You're locked in</h3>
       <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
-      <p style="margin-top:14px;color:#999;font-size:13px;">In a hurry or didn't hear back? Text or call me directly: <a href="tel:+13607975831" style="color:#C8102E;font-weight:800;text-decoration:none;">(360) 797-5831</a></p>
-      <p style="margin-top:16px;color:#8a8a8a;font-size:13px;">— Mikey</p>
+      <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+13607975831">Call or text (360) 797-5831</a></p>
+      <p class="sig">&mdash; Mikey</p>
     </div>
   </div>
 
@@ -2300,188 +2208,175 @@ header li a[href="#booking"],
 
 <script>
 (function(){
-  var qqS = { vehicle: null, condition: null, services: {}, addons: {} };
-  var qqTotal = 0, qqItems = [], qqVehicle = '';
+  var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
+  var PRICE = { 'Full Detail':260, 'Interior Detail':160, 'Exterior Detail':130 };
+  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'success' };
+  var progLabels = {
+    1: 'Step 1 of 4 · Your vehicle',
+    2: 'Step 2 of 4 · Choose services',
+    3: 'Step 3 of 4 · Condition',
+    4: 'Step 4 of 4 · Your quote'
+  };
 
-  function findRole(el, stopAt) {
-    while (el && el !== stopAt) {
-      if (el.getAttribute && el.getAttribute('data-role')) return el;
-      el = el.parentNode;
+  function $(id){ return document.getElementById(id); }
+  function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+
+  function setProgress(n){
+    var to = (n >= 4) ? 4 : n;
+    var segs = document.querySelectorAll('#qqcCard .progress-seg');
+    for (var i=0;i<segs.length;i++){
+      var idx = parseInt(segs[i].getAttribute('data-seg'));
+      segs[i].classList.toggle('done', idx < to);
+      segs[i].classList.toggle('active', idx === to);
     }
-    return null;
+    var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[Math.min(n,4)] || progLabels[4];
+  }
+  function goStep(n){
+    for (var i=1;i<=5;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    var t = $('step'+n); if (t) t.classList.add('show');
+    setProgress(n);
+    if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
+    var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
-  function goStep(n) {
-    var i;
-    for (i = 1; i <= 5; i++) {
-      var s = document.getElementById('step' + i);
-      if (s) { s.style.display = 'none'; s.classList.remove('qq-anim'); }
+  function deselect(scope, sel){
+    var els = document.querySelectorAll('#'+scope+' '+sel);
+    for (var i=0;i<els.length;i++){ els[i].classList.remove('sel'); els[i].setAttribute('aria-pressed','false'); }
+  }
+  function unselectService(name){
+    var node = document.querySelector('#services [data-name="'+name+'"]');
+    if (node){ node.classList.remove('sel'); node.setAttribute('aria-pressed','false'); }
+    delete S.services[name];
+  }
+  function refreshNudge(){
+    var both = S.services['Interior Detail'] && S.services['Exterior Detail'];
+    $('qqHeroFull').classList.toggle('suggest', !!both);
+  }
+  function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
+
+  function calcQuote(){
+    var total = 0, items = [];
+    var sk = Object.keys(S.services); for (var i=0;i<sk.length;i++){ total += PRICE[sk[i]]; items.push(sk[i]); }
+    var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j]); }
+    if (S.vehicle) total += S.vehicle.value;        /* size factored in silently */
+    if (S.condition) total += S.condition.value;    /* condition factored in silently */
+    S.notes = ($('qqNotes').value || '').trim();
+    S.total = total; S.items = items;
+
+    var html = '<div class="bd-head">What\'s included</div>';
+    for (var k=0;k<items.length;k++){
+      html += '<div class="inc-row"><span class="inc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' + items[k] + '</div>';
     }
-    var target = document.getElementById('step' + n);
-    if (target) {
-      target.style.display = 'block';
-      void target.offsetWidth;        // force reflow so the entrance animation replays
-      target.classList.add('qq-anim');
-      target.setAttribute('tabindex', '-1');
-      try { target.focus({ preventScroll: true }); } catch (e) { target.focus(); }
-    }
-    for (i = 1; i <= 4; i++) {
-      var d = document.getElementById('dot' + i);
-      if (d) d.className = 'qq-dot' + (i <= n ? ' active' : '');
-    }
-    // GA4 funnel step tracking — shows exactly where people drop off
-    if (typeof gtag === 'function') {
-      var stepNames = { 1: 'vehicle', 2: 'condition', 3: 'services', 4: 'quote', 5: 'success' };
-      gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step' + n) });
-    }
-    var card = document.getElementById('qqcCard');
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    var ctx = [];
+    if (S.vehicle) ctx.push(S.vehicle.label);
+    if (S.condition) ctx.push(S.condition.label + ' condition');
+    if (ctx.length) html += '<div class="inc-ctx">' + ctx.join('  ·  ') + '</div>';
+    if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
+    $('qqBreakdown').innerHTML = html;
+
+    if (typeof gtag === 'function') gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: Object.keys(S.services).join(', ') });
+    goStep(4);
+    animateAmount(total);
+  }
+  function animateAmount(target){
+    var el = $('qqAmount'); el.classList.remove('lit');
+    var cur = 0, inc = Math.max(1, Math.ceil(target/22));
+    var iv = setInterval(function(){
+      cur = Math.min(cur+inc, target);
+      el.textContent = '$'+cur;
+      if (cur >= target){ clearInterval(iv); void el.offsetWidth; el.classList.add('lit'); }
+    }, 28);
   }
 
-  function deselectAll(parentId, selector) {
-    var els = document.querySelectorAll('#' + parentId + ' ' + selector);
-    for (var i = 0; i < els.length; i++) {
-      els[i].classList.remove('selected');
-      els[i].setAttribute('aria-pressed', 'false');
-    }
-  }
+  function findRole(el, stop){ while (el && el !== stop){ if (el.getAttribute && el.getAttribute('data-role')) return el; el = el.parentNode; } return null; }
 
-  function handleClick(e) {
-    var card = document.getElementById('qqcCard');
+  function handle(e){
+    var card = $('qqcCard');
     var el = findRole(e.target, card);
     if (!el) return;
     var role = el.getAttribute('data-role');
 
-    if (role === 'vehicle') {
-      deselectAll('step1', '.qq-card');
-      el.classList.add('selected');
-      el.setAttribute('aria-pressed', 'true');
-      qqS.vehicle = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
-      var n1 = document.getElementById('next1');
-      if (n1) n1.disabled = false;
-      setTimeout(function() { goStep(2); }, 300);
+    if (role === 'vehicle'){
+      deselect('step1','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+      S.vehicle = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      setTimeout(function(){ goStep(2); }, 280);
     }
-
-    else if (role === 'condition') {
-      deselectAll('step2', '.qq-card');
-      el.classList.add('selected');
-      el.setAttribute('aria-pressed', 'true');
-      qqS.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
-      var n2 = document.getElementById('next2');
-      if (n2) n2.disabled = false;
-      setTimeout(function() { goStep(3); }, 300);
+    else if (role === 'condition'){
+      deselect('step3','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
+      S.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
+      $('qqNext3').disabled = false;
     }
-
-    else if (role === 'service') {
-      el.classList.toggle('selected');
-      el.setAttribute('aria-pressed', el.classList.contains('selected') ? 'true' : 'false');
-      var sName = el.getAttribute('data-name');
-      var sVal = parseInt(el.getAttribute('data-value'));
-      if (el.classList.contains('selected')) {
-        qqS.services[sName] = sVal;
-        if (sName === 'Full Detail') {
-          var svcCards = document.querySelectorAll('#step3 .qq-services-grid .qq-card[data-role="service"]');
-          for (var j = 0; j < svcCards.length; j++) {
-            var n = svcCards[j].getAttribute('data-name');
-            if (n === 'Interior Detail' || n === 'Exterior Detail') {
-              svcCards[j].classList.remove('selected');
-              svcCards[j].setAttribute('aria-pressed', 'false');
-              delete qqS.services[n];
-            }
-          }
-        } else if (sName === 'Interior Detail' || sName === 'Exterior Detail') {
-          var svcCards = document.querySelectorAll('#step3 .qq-services-grid .qq-card[data-role="service"]');
-          for (var j = 0; j < svcCards.length; j++) {
-            if (svcCards[j].getAttribute('data-name') === 'Full Detail') {
-              svcCards[j].classList.remove('selected');
-              svcCards[j].setAttribute('aria-pressed', 'false');
-              delete qqS.services['Full Detail'];
-            }
-          }
-        }
-      } else {
-        delete qqS.services[sName];
-      }
-      var n3 = document.getElementById('next3');
-      if (n3) n3.disabled = Object.keys(qqS.services).length === 0;
+    else if (role === 'service'){
+      var on = el.classList.toggle('sel'); el.setAttribute('aria-pressed', on?'true':'false');
+      var name = el.getAttribute('data-name');
+      if (on){
+        S.services[name] = PRICE[name];
+        if (name === 'Full Detail'){ unselectService('Interior Detail'); unselectService('Exterior Detail'); S.services['Full Detail'] = PRICE['Full Detail']; }
+        else { unselectService('Full Detail'); }
+      } else { delete S.services[name]; }
+      refreshNudge(); refreshContinue();
     }
-
-    else if (role === 'addon') {
-      el.classList.toggle('selected');
-      el.setAttribute('aria-pressed', el.classList.contains('selected') ? 'true' : 'false');
-      var aName = el.getAttribute('data-name');
-      var aVal = parseInt(el.getAttribute('data-value'));
-      if (el.classList.contains('selected')) {
-        qqS.addons[aName] = aVal;
-      } else {
-        delete qqS.addons[aName];
-      }
+    else if (role === 'addon'){
+      var ao = el.classList.toggle('sel'); el.setAttribute('aria-pressed', ao?'true':'false');
+      var an = el.getAttribute('data-name');
+      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an];
     }
-
-    else if (role === 'go-step') {
+    else if (role === 'go'){
       if (el.disabled) return;
       goStep(parseInt(el.getAttribute('data-step')));
     }
-
-    else if (role === 'calc-quote') {
+    else if (role === 'calc'){
       if (el.disabled) return;
-      var vv = qqS.vehicle ? qqS.vehicle.value : 0;
-      var cv = qqS.condition ? qqS.condition.value : 0;
-      var st = 0, sn = Object.keys(qqS.services);
-      for (var i = 0; i < sn.length; i++) st += qqS.services[sn[i]];
-      var at = 0, an = Object.keys(qqS.addons);
-      for (var i = 0; i < an.length; i++) at += qqS.addons[an[i]];
-      var total = st + vv + cv + at;
-      var html = '';
-      for (var i = 0; i < sn.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + sn[i] + '</p>';
-      for (var i = 0; i < an.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + an[i] + '</p>';
-      if (qqS.vehicle) html += '<p style="color:#8a8a8a;">&#8226; ' + qqS.vehicle.label + '</p>';
-      if (qqS.condition && qqS.condition.value > 0) html += '<p style="color:#8a8a8a;">&#8226; Condition: ' + qqS.condition.label + '</p>';
-      var sl = document.getElementById('summaryList');
-      if (sl) sl.innerHTML = html;
-      qqTotal = total;
-      qqItems = sn.concat(an);
-      qqVehicle = qqS.vehicle ? qqS.vehicle.label : 'vehicle';
-      if (typeof gtag === 'function') {
-        gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: sn.join(', ') });
-      }
-      goStep(4);
-      var count = 0;
-      var display = document.getElementById('quoteAmount');
-      var inc = Math.max(1, Math.ceil(total / 20));
-      var iv = setInterval(function() {
-        count = Math.min(count + inc, total);
-        if (display) display.textContent = '$' + count;
-        if (count >= total) clearInterval(iv);
-      }, 30);
+      calcQuote();
     }
+  }
 
-    else if (role === 'submit-quote') {
-      // Honeypot: real users never see/fill this. Bots do — silently succeed without sending.
-      var hp = document.getElementById('qqCompany');
-      if (hp && hp.value) { goStep(5); return; }
-      var nameEl = document.getElementById('qqName');
-      var phoneEl = document.getElementById('qqPhone');
-      var locEl = document.getElementById('qqLocation');
-      var name = nameEl ? nameEl.value.trim() : '';
-      var phone = phoneEl ? phoneEl.value.trim() : '';
-      var location = locEl ? locEl.value.trim() : '';
-      if (!name) { if (nameEl) { nameEl.style.borderColor = '#C8102E'; nameEl.focus(); } return; }
-      if (!phone || phone.length < 7) { if (phoneEl) { phoneEl.style.borderColor = '#C8102E'; phoneEl.focus(); } return; }
-      if (nameEl) nameEl.style.borderColor = 'rgba(200,16,46,0.25)';
-      if (phoneEl) phoneEl.style.borderColor = 'rgba(200,16,46,0.25)';
-      var errBox = document.getElementById('qqError');
-      if (errBox) errBox.style.display = 'none';
-      var btn = document.getElementById('qqSubmitBtn');
-      if (btn) { btn.disabled = true; btn.textContent = 'SENDING...'; }
-      var cond = (qqS.condition && qqS.condition.label) ? qqS.condition.label : 'Pretty Clean';
-      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone + (location ? '\nLocation: ' + location : '') + '\nQuote: $' + qqTotal + '\nVehicle: ' + qqVehicle + '\nCondition: ' + cond + '\nServices: ' + qqItems.join(', ');
+  function attach(){
+    var card = $('qqcCard');
+    if (!card) return false;
+    card.addEventListener('click', handle, false);
+    card.addEventListener('keydown', function(e){
+      if (e.key==='Enter' || e.key===' ' || e.key==='Spacebar'){
+        var el = findRole(e.target, card);
+        if (el && (el.classList.contains('choice') || el.classList.contains('hero') || el.classList.contains('svc-card') || el.classList.contains('chip'))){
+          e.preventDefault(); handle(e);
+        }
+      }
+    }, false);
 
-      // If the backend ever fails, the lead is NOT lost — we hand them a
-      // one-tap SMS pre-filled with their quote so it still reaches Mikey.
-      function showSubmitError() {
-        if (btn) { btn.disabled = false; btn.textContent = 'LOCK IN YOUR QUOTE →'; }
-        if (errBox) {
+    var form = $('qqForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      // Honeypot: bots fill this hidden field — silently "succeed" without sending.
+      var hp = $('qqCompany'); if (hp && hp.value) { goStep(5); return; }
+
+      var nW = $('qqfName'), nE = $('qqName');
+      var pW = $('qqfPhone'), pE = $('qqPhone');
+      var ok = true;
+      if (!nE.value.trim()){ nW.classList.add('bad'); nE.classList.add('err'); ok=false; } else { nW.classList.remove('bad'); nE.classList.remove('err'); }
+      var phone = (pE.value || '').trim();
+      var digits = phone.replace(/\D/g,'');
+      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
+      if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
+
+      var name = nE.value.trim();
+      var email = ($('qqEmail').value || '').trim();
+      var location = ($('qqLocation').value || '').trim();
+      var notes = ($('qqNotes').value || '').trim();
+      var cond = (S.condition && S.condition.label) ? S.condition.label : 'Pretty Clean';
+      var veh = S.vehicle ? S.vehicle.label : 'vehicle';
+
+      var errBox = $('qqError'); if (errBox) errBox.style.display = 'none';
+      var btn = $('qqSubmitBtn'); if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone +
+        (email ? '\nEmail: ' + email : '') + (location ? '\nLocation: ' + location : '') +
+        '\nQuote: $' + S.total + '\nVehicle: ' + veh + '\nCondition: ' + cond +
+        '\nServices: ' + S.items.join(', ') + (notes ? '\nNotes: ' + notes : '');
+
+      function showSubmitError(){
+        if (btn){ btn.disabled = false; btn.textContent = 'Lock in my quote'; }
+        if (errBox){
           var smsHref = 'sms:+13607975831?&body=' + encodeURIComponent("Hi Mikey! Here's my quote request:\n" + msgBody);
           errBox.innerHTML = "<p>That didn’t go through — but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
             "<a href=\"" + smsHref + "\">💬 Text My Quote to Mikey</a>";
@@ -2490,76 +2385,36 @@ header li a[href="#booking"],
         if (typeof gtag === 'function') gtag('event', 'qqc_submit_error', {});
       }
 
-      var formData = new FormData();
-      formData.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
-      formData.append('subject', 'New Quote: $' + qqTotal + ' - ' + name);
-      formData.append('from_name', 'Mikeys QQC');
-      formData.append('name', name);
-      formData.append('phone', phone);
-      if (location) formData.append('location', location);
-      formData.append('message', msgBody);
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      }).then(function(res) { return res.json(); }).then(function(data) {
-        if (data && data.success) {
-          if (typeof gtag === 'function') {
-            gtag('event', 'qqc_submission', { source: 'qqc_form', value: qqTotal, currency: 'USD' });
-          }
-          goStep(5);
-        } else {
-          showSubmitError();
-        }
-      }).catch(function() {
-        showSubmitError();
-      });
-    }
+      var fd = new FormData();
+      fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
+      fd.append('subject', 'New Quote: $' + S.total + ' - ' + name);
+      fd.append('from_name', 'Mikeys QQC');
+      fd.append('name', name);
+      fd.append('phone', phone);
+      if (email) fd.append('email', email);
+      if (location) fd.append('location', location);
+      if (notes) fd.append('notes', notes);
+      fd.append('message', msgBody);
+      fetch('https://api.web3forms.com/submit', { method:'POST', body: fd })
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+          if (data && data.success){
+            if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
+            goStep(5);
+          } else { showSubmitError(); }
+        })
+        .catch(function(){ showSubmitError(); });
+    }, false);
+    return true;
   }
 
-  function setupA11y(card) {
-    var cards = card.querySelectorAll('.qq-card');
-    for (var i = 0; i < cards.length; i++) {
-      cards[i].setAttribute('role', 'button');
-      cards[i].setAttribute('tabindex', '0');
-      cards[i].setAttribute('aria-pressed', 'false');
-    }
-  }
-
-  function attach() {
-    var card = document.getElementById('qqcCard');
-    if (card) {
-      card.addEventListener('click', handleClick, false);
-      // Keyboard: Enter / Space activates a card (real <button>s keep native behavior)
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
-          var el = findRole(e.target, card);
-          if (el && el.classList && el.classList.contains('qq-card')) {
-            e.preventDefault();
-            handleClick(e);
-          }
-        }
-      }, false);
-      setupA11y(card);
-      return true;
-    }
-    return false;
-  }
-
-  if (!attach()) {
-    var delays = [100, 300, 600, 1000, 2000];
-    var di = 0;
-    (function retry() {
-      if (di >= delays.length) return;
-      setTimeout(function() {
-        if (!attach()) { di++; retry(); }
-      }, delays[di]);
-    })();
+  if (!attach()){
+    var delays = [100,300,600,1000,2000], di = 0;
+    (function retry(){ if (di>=delays.length) return; setTimeout(function(){ if(!attach()){ di++; retry(); } }, delays[di]); })();
   }
 })();
 </script>
-
-
-</div>
+      </div>
     </div>
   </section>
       
