@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quick Quote — Apple-style redesign (mockup v2)</title>
+<title>Quick Quote — Apple-style redesign (mockup v3)</title>
 <style>
 /* =================================================================
-   MIKEY'S QUICK QUOTE — Apple-style mockup v2
-   • Deeper, richer red  • Filled duotone icons in gradient tiles
-   • Tiered service layout (featured "Full" + duo + add-on chips)
-   • Animation & graphic accents, all motion-safe
-   Self-contained. No external requests. Light + Dark.
+   MIKEY'S QUICK QUOTE — Apple-style mockup v3 (dark only)
+   • Permanent dark theme
+   • Condition = general car condition (price not shown)
+   • Optional "anything specific?" note field
+   • RainX Windows = $10
+   Self-contained. No external requests.
    ================================================================= */
 
 * { box-sizing: border-box; }
@@ -25,45 +26,13 @@ body {
 }
 
 #stage {
-  --success: #2Fb358;
-  min-height: 100vh;
-  background:
-    radial-gradient(130% 90% at 50% -15%, rgba(var(--accent-rgb), .07), transparent 55%),
-    var(--bg);
-  color: var(--text);
-  transition: background .4s ease, color .4s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 28px 16px 64px;
-}
-
-/* ---- Light (default): deeper crimson ---- */
-#stage[data-theme="light"] {
-  --accent: #A00D25;
-  --accent-rgb: 160,13,37;
-  --accent-press: #7C0A1C;
-  --gold: #C9A24B;
-  --gold-ink: #3a2a05;
-  --bg: #f5f5f7;
-  --surface: #ffffff;
-  --surface-2: #f3f3f5;
-  --surface-3: #e9e9ec;
-  --text: #1d1d1f;
-  --text-2: #5c5c61;
-  --text-3: #86868b;
-  --border: rgba(0,0,0,0.10);
-  --border-2: rgba(0,0,0,0.18);
-  --shadow: 0 14px 50px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-}
-/* ---- Dark: true deep red (no more pink) ---- */
-#stage[data-theme="dark"] {
+  /* deep red brand accent on true black */
   --accent: #C8102E;
   --accent-rgb: 200,16,46;
   --accent-press: #e11533;
   --gold: #d8b25c;
   --gold-ink: #2a1e02;
+  --success: #2fb358;
   --bg: #000000;
   --surface: #1c1c1e;
   --surface-2: #262629;
@@ -75,28 +44,19 @@ body {
   --border-2: rgba(255,255,255,0.24);
   --shadow: 0 16px 56px rgba(0,0,0,0.6);
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+
+  min-height: 100vh;
+  background:
+    radial-gradient(130% 90% at 50% -15%, rgba(var(--accent-rgb), .10), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 16px 64px;
 }
 
-/* ============ TOP BAR ============ */
-.topbar {
-  width: 100%; max-width: 480px;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; margin-bottom: 22px;
-}
-.mock-note { font-size: 12px; color: var(--text-3); font-weight: 500; }
-.seg { display: inline-flex; background: var(--surface-3); border-radius: 980px; padding: 3px; position: relative; }
-.seg button {
-  appearance: none; border: 0; background: transparent; font: inherit;
-  font-size: 13px; font-weight: 590; color: var(--text-2);
-  padding: 6px 16px; border-radius: 980px; cursor: pointer; position: relative; z-index: 1;
-  transition: color .25s ease;
-}
-.seg button.on { color: var(--text); }
-.seg .seg-pill {
-  position: absolute; top: 3px; left: 3px; height: calc(100% - 6px);
-  background: var(--surface); border-radius: 980px; box-shadow: var(--shadow-sm);
-  transition: transform .34s cubic-bezier(.34,1.3,.64,1), width .34s cubic-bezier(.34,1.3,.64,1);
-}
+.mock-note { font-size: 12px; color: var(--text-3); font-weight: 500; margin: 0 0 18px; }
 
 /* ============ CARD ============ */
 .qq {
@@ -106,22 +66,20 @@ body {
   border-radius: 28px; border: 1px solid var(--border);
   box-shadow: var(--shadow);
   padding: 30px 26px 26px; overflow: hidden;
-  transition: background .4s ease, border-color .4s ease;
 }
-.qq::before {                       /* soft graphic glow, top-right */
+.qq::before {
   content: ''; position: absolute; top: -90px; right: -70px;
   width: 230px; height: 230px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(var(--accent-rgb), .14), transparent 70%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .16), transparent 70%);
   pointer-events: none;
 }
 
 .qq-brand {
-  position: relative;
-  display: inline-flex; align-items: center; gap: 7px;
+  position: relative; display: inline-flex; align-items: center; gap: 7px;
   font-size: 12px; font-weight: 680; letter-spacing: 0.05em; text-transform: uppercase;
   color: var(--accent); margin-bottom: 14px;
 }
-.qq-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+.qq-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .22); }
 .qq h1 { position: relative; font-size: 30px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 6px; }
 .qq .sub { position: relative; font-size: 16px; color: var(--text-2); margin: 0 0 22px; font-weight: 400; }
 
@@ -165,12 +123,12 @@ body {
 }
 .choice .ic-tile { margin: 0 auto 10px; }
 .choice:hover { border-color: var(--border-2); transform: translateY(-2px); }
-.choice:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
-.choice.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); box-shadow: 0 8px 22px -10px var(--accent); }
+.choice:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); border-color: var(--accent); }
+.choice.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .08); box-shadow: 0 8px 22px -10px var(--accent); }
 .choice .nm { display: block; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
 .choice .ds { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 4px; line-height: 1.3; }
 
-/* selection check badge (vehicle / condition / svc-card) */
+/* selection check badge */
 .badge {
   position: absolute; top: 9px; right: 9px; width: 21px; height: 21px; border-radius: 50%;
   background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center;
@@ -181,19 +139,18 @@ body {
 .sel > .badge, .sel > .hero-main .badge { opacity: 1; transform: scale(1); }
 
 /* ============ SERVICES — tiered layout ============ */
-/* Featured "Full Detail" hero */
 .hero {
   position: relative; display: block; width: 100%; text-align: left; cursor: pointer;
   margin: 12px 0 0; border: 1.8px solid var(--border-2); border-radius: 20px; padding: 18px;
-  background: linear-gradient(150deg, rgba(var(--accent-rgb), .09), var(--surface-2) 70%);
+  background: linear-gradient(150deg, rgba(var(--accent-rgb), .12), var(--surface-2) 70%);
   transition: border-color .25s ease, box-shadow .25s ease, transform .2s ease, background .3s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .hero:hover { border-color: var(--accent); transform: translateY(-2px); }
-.hero:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); }
+.hero:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .22); }
 .hero.sel {
   border-color: var(--accent);
-  background: linear-gradient(150deg, rgba(var(--accent-rgb), .16), var(--surface-2) 75%);
+  background: linear-gradient(150deg, rgba(var(--accent-rgb), .2), var(--surface-2) 75%);
   box-shadow: 0 14px 34px -14px var(--accent);
 }
 .ribbon {
@@ -201,13 +158,13 @@ body {
   display: inline-flex; align-items: center; gap: 4px;
   background: linear-gradient(135deg, var(--gold), #a9802c);
   color: var(--gold-ink); font-size: 10.5px; font-weight: 760; letter-spacing: .04em;
-  padding: 5px 11px; border-radius: 980px; box-shadow: 0 5px 14px rgba(0,0,0,.22);
+  padding: 5px 11px; border-radius: 980px; box-shadow: 0 5px 14px rgba(0,0,0,.35);
   overflow: hidden;
 }
 .ribbon svg { width: 11px; height: 11px; }
 .ribbon::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.55) 50%, transparent 65%);
+  background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.5) 50%, transparent 65%);
   transform: translateX(-130%); animation: shimmer 4s ease-in-out infinite;
 }
 @keyframes shimmer { 0%, 55% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
@@ -218,16 +175,15 @@ body {
 .hero-info { flex: 1; min-width: 0; }
 .hero-info .t { display: block; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 .hero-info .d { display: block; font-size: 13px; color: var(--text-2); margin-top: 2px; }
-.hero-info .save { display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 680; color: var(--accent); background: rgba(var(--accent-rgb), .1); padding: 3px 9px; border-radius: 980px; }
+.hero-info .save { display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 680; color: var(--accent); background: rgba(var(--accent-rgb), .14); padding: 3px 9px; border-radius: 980px; }
 .hero-price { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; flex-shrink: 0; }
 .hero-price .amt { font-weight: 800; font-size: 25px; letter-spacing: -0.03em; }
-.hero .badge { position: static; opacity: .25; transform: scale(1); width: 24px; height: 24px; background: transparent; border: 2px solid var(--border-2); color: var(--accent); }
+.hero .badge { position: static; opacity: .3; transform: scale(1); width: 24px; height: 24px; background: transparent; border: 2px solid var(--border-2); color: var(--accent); }
 .hero .badge svg { width: 13px; height: 13px; opacity: 0; transition: opacity .2s; }
 .hero.sel .badge { opacity: 1; background: var(--accent); border-color: var(--accent); color: #fff; }
 .hero.sel .badge svg { opacity: 1; }
-/* gentle pulse that suggests switching to the bundle */
 .hero.suggest { border-color: var(--accent); animation: suggest 1.7s ease-in-out infinite; }
-@keyframes suggest { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); } 50% { box-shadow: 0 0 0 6px rgba(var(--accent-rgb), .14); } }
+@keyframes suggest { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); } 50% { box-shadow: 0 0 0 6px rgba(var(--accent-rgb), .16); } }
 
 .or-divider { display: flex; align-items: center; gap: 12px; margin: 18px 2px 14px; color: var(--text-3); font-size: 12px; font-weight: 560; }
 .or-divider::before, .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
@@ -242,11 +198,10 @@ body {
 .svc-card .ic-tile { width: 46px; height: 46px; border-radius: 13px; }
 .svc-card .ic-tile svg { width: 27px; height: 27px; }
 .svc-card:hover { border-color: var(--border-2); transform: translateY(-2px); }
-.svc-card:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
-.svc-card.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); box-shadow: 0 8px 22px -12px var(--accent); }
+.svc-card:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); border-color: var(--accent); }
+.svc-card.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .08); box-shadow: 0 8px 22px -12px var(--accent); }
 .svc-card .t { font-size: 15px; font-weight: 620; letter-spacing: -0.01em; }
 .svc-card .price { font-size: 18px; font-weight: 740; letter-spacing: -0.02em; }
-.svc-card .price small { font-weight: 500; font-size: 12px; color: var(--text-3); }
 
 /* ---- Add-on chips ---- */
 .group-label { font-size: 12px; font-weight: 640; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); margin: 22px 4px 10px; }
@@ -258,14 +213,18 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 .chip:hover { border-color: var(--border-2); }
-.chip:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); border-color: var(--accent); }
+.chip:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
 .chip .ic-mini { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--surface-3); color: var(--text-2); transition: background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1); }
 .chip .ic-mini svg { width: 21px; height: 21px; }
 .chip .ctext { flex: 1; min-width: 0; line-height: 1.2; }
 .chip .ct { display: block; font-size: 13.5px; font-weight: 580; }
 .chip .cp { display: block; font-size: 12px; color: var(--text-3); margin-top: 1px; }
-.chip.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .07); }
+.chip.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .09); }
 .chip.sel .ic-mini { background: linear-gradient(140deg, rgb(var(--accent-rgb)), var(--accent-press)); color: #fff; transform: scale(1.06); }
+
+/* ---- Notes field ---- */
+.notes-label { display: block; font-size: 13.5px; font-weight: 580; color: var(--text); margin: 24px 2px 9px; }
+.notes-label span { color: var(--text-3); font-weight: 400; }
 
 /* ---- Buttons / nav ---- */
 .nav { display: flex; gap: 10px; margin-top: 22px; }
@@ -288,25 +247,28 @@ body {
 .amount.lit { animation: amountPop .45s cubic-bezier(.34,1.5,.64,1); }
 @keyframes amountPop { 0% { transform: scale(.88); } 100% { transform: scale(1); } }
 .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 20px; }
-.breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 6px 16px; margin-bottom: 22px; }
-.bd-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14.5px; }
-.bd-row:last-child { border-bottom: 0; }
-.bd-row .l { color: var(--text); font-weight: 500; }
-.bd-row .l small { display: block; color: var(--text-3); font-size: 12px; font-weight: 400; }
-.bd-row .v { color: var(--text-2); font-weight: 560; font-variant-numeric: tabular-nums; }
-.bd-total { font-weight: 700 !important; }
-.bd-total .v { color: var(--text); }
+
+.breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 22px; }
+.bd-head { font-size: 12px; font-weight: 640; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); padding: 8px 0 4px; }
+.inc-row { display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: 15px; font-weight: 520; }
+.inc-row + .inc-row { border-top: 1px solid var(--border); }
+.inc-check { width: 21px; height: 21px; border-radius: 50%; background: rgba(var(--accent-rgb), .18); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.inc-check svg { width: 12px; height: 12px; }
+.inc-ctx { margin-top: 8px; padding-top: 11px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-3); }
+.inc-note { margin-top: 11px; padding: 11px 13px; font-size: 13.5px; color: var(--text-2); background: var(--surface-3); border-radius: 12px; line-height: 1.45; }
+.inc-note b { color: var(--text-3); font-weight: 600; font-style: normal; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
 
 /* ---- Form ---- */
 .form { display: grid; gap: 12px; margin-bottom: 6px; }
 .field { position: relative; }
-.field input {
+.field input, .field textarea {
   width: 100%; font: inherit; font-size: 16px; background: var(--surface-2); color: var(--text);
   border: 1.5px solid var(--border); border-radius: 13px; padding: 16px;
   transition: border-color .2s ease, box-shadow .2s ease, background .2s;
 }
-.field input::placeholder { color: var(--text-3); }
-.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
+.field textarea { resize: vertical; min-height: 76px; line-height: 1.45; padding: 14px 16px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-3); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
 .field input.err { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
 .field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
 .field.bad .msg { display: block; }
@@ -350,16 +312,9 @@ body {
 </head>
 <body>
 
-<div id="stage" data-theme="light">
+<div id="stage">
 
-  <div class="topbar">
-    <span class="mock-note">Design mockup · interactive preview</span>
-    <div class="seg" role="tablist" aria-label="Theme">
-      <span class="seg-pill" id="segPill"></span>
-      <button class="on" data-theme-btn="light" aria-selected="true">Light</button>
-      <button data-theme-btn="dark" aria-selected="false">Dark</button>
-    </div>
-  </div>
+  <p class="mock-note">Design mockup · interactive preview</p>
 
   <div class="qq" id="qq">
 
@@ -409,7 +364,6 @@ body {
       <p class="q-hint">Grab the full package, or build your own.</p>
 
       <div id="services">
-        <!-- Featured -->
         <div class="hero" id="heroFull" data-role="service" data-name="Full Detail" data-value="260" tabindex="0" role="button" aria-pressed="false">
           <span class="ribbon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.4 1.4 6.4L12 17.8 5.9 20l1.5-6.4L2.5 9.2l6.6-.7z"/></svg> Most Popular</span>
           <div class="hero-main">
@@ -458,9 +412,9 @@ body {
           <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg></span>
           <span class="ctext"><span class="ct">Exterior Polish</span><span class="cp">+$30</span></span>
         </div>
-        <div class="chip" data-role="addon" data-name="RainX Windows" data-value="20" tabindex="0" role="button" aria-pressed="false">
+        <div class="chip" data-role="addon" data-name="RainX Windows" data-value="10" tabindex="0" role="button" aria-pressed="false">
           <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="13" rx="2.5" opacity=".45"/><path d="M14 8.5c1.7 2 3.1 3.7 3.1 5.4a3.1 3.1 0 0 1-6.2 0c0-1.7 1.4-3.4 3.1-5.4z"/></svg></span>
-          <span class="ctext"><span class="ct">RainX Windows</span><span class="cp">+$20</span></span>
+          <span class="ctext"><span class="ct">RainX Windows</span><span class="cp">+$10</span></span>
         </div>
       </div>
 
@@ -470,32 +424,39 @@ body {
       </div>
     </div>
 
-    <!-- ============ STEP 3: CONDITION (only if interior involved) ============ -->
+    <!-- ============ STEP 3: CONDITION + NOTES ============ -->
     <div class="step" id="step3">
-      <h2 class="q-title">How's the interior?</h2>
-      <p class="q-hint">Be honest — it helps me bring the right gear. No judgment.</p>
+      <h2 class="q-title">What condition is it in?</h2>
+      <p class="q-hint">Overall — inside &amp; out. Just helps me prep the right way.</p>
       <div class="grid">
         <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
           <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M14 4l1.4 5.2L20.5 10.5l-5.1 1.3L14 17l-1.4-5.2L7.5 10.5l5.1-1.3z"/><path opacity=".5" d="M21 15l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></svg></span>
           <span class="nm">Pretty Clean</span>
-          <span class="ds">Light dust</span>
+          <span class="ds">Well kept</span>
         </div>
         <div class="choice" data-role="condition" data-value="30" data-label="Needs Work" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
           <span class="ic-tile"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="9" fill="currentColor" opacity=".22"/><circle cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M14 9v5.2l3.3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span class="nm">Needs Work</span>
-          <span class="ds">Overdue · +$30</span>
+          <span class="ds">Overdue</span>
         </div>
         <div class="choice" data-role="condition" data-value="60" data-label="War Zone" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
           <span class="ic-tile"><svg viewBox="0 0 28 28"><path fill="currentColor" fill-rule="evenodd" d="M12.27 4.8a2 2 0 0 1 3.46 0l8.3 14.4a2 2 0 0 1-1.73 3H5.7a2 2 0 0 1-1.73-3zM12.9 10h2.2v6h-2.2zM12.9 17.4h2.2v2.2h-2.2z"/></svg></span>
           <span class="nm">War Zone</span>
-          <span class="ds">Heavy · +$60</span>
+          <span class="ds">Really rough</span>
         </div>
       </div>
+
+      <label class="notes-label" for="notes">Anything specific I should know? <span>(optional)</span></label>
+      <div class="field">
+        <textarea id="notes" placeholder="Tree sap, bug splatter, mold, pet hair, deep stains, scratches… anything at all"></textarea>
+      </div>
+
       <div class="nav">
         <button class="btn btn-ghost" data-role="go" data-step="2">‹ Back</button>
+        <button class="btn btn-primary" id="next3" data-role="calc" disabled>See my quote</button>
       </div>
     </div>
 
@@ -535,7 +496,7 @@ body {
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guaranteed</span>
       </div>
       <div class="nav">
-        <button class="btn btn-ghost" data-role="go" data-step="2">‹ Edit services</button>
+        <button class="btn btn-ghost" data-role="go" data-step="3">‹ Edit details</button>
       </div>
     </div>
 
@@ -555,39 +516,21 @@ body {
 
 <script>
 (function(){
-  var stage = document.getElementById('stage');
-
-  /* ---------- Theme toggle ---------- */
-  var pill = document.getElementById('segPill');
-  var themeBtns = document.querySelectorAll('[data-theme-btn]');
-  function positionPill(btn){
-    pill.style.width = btn.offsetWidth + 'px';
-    pill.style.transform = 'translateX(' + (btn.offsetLeft - 3) + 'px)';
-  }
-  function setTheme(t){
-    stage.setAttribute('data-theme', t);
-    themeBtns.forEach(function(b){
-      var on = b.getAttribute('data-theme-btn') === t;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-selected', on ? 'true' : 'false');
-      if (on) positionPill(b);
-    });
-  }
-  themeBtns.forEach(function(b){ b.addEventListener('click', function(){ setTheme(b.getAttribute('data-theme-btn')); }); });
-  window.addEventListener('load', function(){ positionPill(document.querySelector('[data-theme-btn="light"]')); });
-  window.addEventListener('resize', function(){ positionPill(document.querySelector('.seg button.on')); });
-
   /* ---------- State ---------- */
-  var S = { vehicle: null, condition: null, services: {}, addons: {} };
+  var S = { vehicle: null, condition: null, services: {}, addons: {}, notes: '' };
   var PRICE = { 'Full Detail':260, 'Interior Detail':160, 'Exterior Detail':130 };
   var stepLabels = {
     1: 'Step 1 of 4 · Your vehicle',
     2: 'Step 2 of 4 · Choose services',
-    3: 'Step 3 of 4 · Interior condition',
+    3: 'Step 3 of 4 · Condition',
     4: 'Step 4 of 4 · Your quote'
   };
 
-  function interiorInvolved(){ return !!(S.services['Full Detail'] || S.services['Interior Detail']); }
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
 
   function setProgress(n){
     var to = (n >= 4) ? 4 : n;
@@ -603,12 +546,6 @@ body {
     var t = document.getElementById('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     document.getElementById('qq').scrollIntoView({ behavior:'smooth', block:'start' });
-  }
-
-  /* Smart routing: skip interior-condition step for exterior-only jobs */
-  function advanceFromServices(){
-    if (interiorInvolved()) goStep(3);
-    else { S.condition = null; calcQuote(); }
   }
 
   function deselect(scope, sel){
@@ -630,19 +567,24 @@ body {
   }
 
   function calcQuote(){
-    var total = 0, lines = [];
-    Object.keys(S.services).forEach(function(k){ total += PRICE[k]; lines.push({l:k, v:PRICE[k]}); });
-    Object.keys(S.addons).forEach(function(k){ total += S.addons[k]; lines.push({l:k, v:S.addons[k]}); });
-    if (S.vehicle && S.vehicle.value > 0){ total += S.vehicle.value; lines.push({l:'Vehicle size', sub:S.vehicle.label, v:S.vehicle.value}); }
-    if (interiorInvolved() && S.condition && S.condition.value > 0){
-      total += S.condition.value; lines.push({l:'Interior condition', sub:S.condition.label, v:S.condition.value});
-    }
-    var html = '';
-    lines.forEach(function(x){
-      html += '<div class="bd-row"><span class="l">'+x.l+(x.sub?' <small>'+x.sub+'</small>':'')+'</span><span class="v">$'+x.v+'</span></div>';
+    var total = 0, items = [];
+    Object.keys(S.services).forEach(function(k){ total += PRICE[k]; items.push(k); });
+    Object.keys(S.addons).forEach(function(k){ total += S.addons[k]; items.push(k); });
+    if (S.vehicle) total += S.vehicle.value;          /* size factored in silently */
+    if (S.condition) total += S.condition.value;      /* condition factored in silently */
+    S.notes = (document.getElementById('notes').value || '').trim();
+
+    var html = '<div class="bd-head">What\'s included</div>';
+    items.forEach(function(name){
+      html += '<div class="inc-row"><span class="inc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' + name + '</div>';
     });
-    html += '<div class="bd-row bd-total"><span class="l">Estimated total</span><span class="v">$'+total+'</span></div>';
+    var ctx = [];
+    if (S.vehicle) ctx.push(S.vehicle.label);
+    if (S.condition) ctx.push(S.condition.label + ' condition');
+    if (ctx.length) html += '<div class="inc-ctx">' + ctx.join('  ·  ') + '</div>';
+    if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     document.getElementById('breakdown').innerHTML = html;
+
     goStep(4);
     animateAmount(total);
   }
@@ -673,7 +615,7 @@ body {
     else if (role === 'condition'){
       deselect('step3','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
       S.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
-      setTimeout(calcQuote, 280);
+      document.getElementById('next3').disabled = false;
     }
     else if (role === 'service'){
       var on = el.classList.toggle('sel'); el.setAttribute('aria-pressed', on?'true':'false');
@@ -692,8 +634,11 @@ body {
     }
     else if (role === 'go'){
       if (el.disabled) return;
-      var step = parseInt(el.getAttribute('data-step'));
-      if (step === 3) advanceFromServices(); else goStep(step);
+      goStep(parseInt(el.getAttribute('data-step')));
+    }
+    else if (role === 'calc'){
+      if (el.disabled) return;
+      calcQuote();
     }
   }
 
