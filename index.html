@@ -65,6 +65,24 @@
     "ratingValue": "5.0",
     "reviewCount": "38"
   },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "C Wilson" },
+      "reviewBody": "Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "author": { "@type": "Person", "name": "Matt K." },
+      "reviewBody": "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days."
+    }
+  ],
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".mh-headline", ".subhead"]
+  },
   "sameAs": [
     "https://g.page/r/CRCuKQ982VIZEBE",
     "https://blog.mikeysdetailing.com"
@@ -109,38 +127,38 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How long does a mobile car detail take in Snohomish, WA?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Most full details take 2–4 hours depending on vehicle size and condition. Bigger SUVs and trucks may take longer. I'll give you a realistic time estimate when you book." }
+      "name": "Do you really come to me?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yep — that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day." }
     },
     {
       "@type": "Question",
-      "name": "Do you really come to my home or work location?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes! I bring everything — water, power, products, and towels — to your home or workplace in Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, and Duvall." }
+      "name": "Do I need to provide water or power?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. I bring my own water and power, so I can detail your car even if you're not home. If a hose or outlet is handy I'll happily use it, but it's never required." }
     },
     {
       "@type": "Question",
-      "name": "What payment methods do you accept?",
-      "acceptedAnswer": { "@type": "Answer", "text": "I accept cash, credit/debit cards, Venmo, Zelle, and Cash App. Payment is due when the job is done and you've approved the work." }
+      "name": "How long does it take?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A basic interior runs about 90 minutes, a full detail takes 3–5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm." }
     },
     {
       "@type": "Question",
-      "name": "Do you offer recurring detailing plans?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — the Clean Club is a recurring detail membership at $125 per visit with priority scheduling and locked-in pricing. Limited to 5 spots." }
+      "name": "What does it cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote for a price in about 30 seconds — no surprises, no hidden fees." }
     },
     {
       "@type": "Question",
-      "name": "Do you guarantee your detailing work?",
-      "acceptedAnswer": { "@type": "Answer", "text": "100% satisfaction guarantee. I walk around the car with you when I'm done. Anything you don't like gets fixed on the spot, for free. If you're still not happy, I'll refund you in full." }
+      "name": "When and how do I pay?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You pay when I'm done and you're happy with it — not before. I take cash, card, and the usual apps." }
     },
     {
       "@type": "Question",
-      "name": "What areas do you serve in Snohomish County?",
-      "acceptedAnswer": { "@type": "Answer", "text": "I serve Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and surrounding areas in Snohomish County, WA." }
+      "name": "What if it rains?",
+      "acceptedAnswer": { "@type": "Answer", "text": "This is the PNW, so I work around the weather all the time. If it's pouring I'll reach out to reschedule. A lot of the work is interior or done under cover anyway." }
     },
     {
       "@type": "Question",
-      "name": "How much does mobile car detailing cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Interior detail starts at $160, exterior detail starts at $130, and full detail (interior + exterior) starts at $260. Pricing varies by vehicle size. Get an instant quote at mikeysdetailing.com." }
+      "name": "What if I'm not happy with it?",
+      "acceptedAnswer": { "@type": "Answer", "text": "We walk around the car together when I'm done. See something off? I fix it on the spot. Notice it later? I come back free. Still not happy? You get a full refund. Simple as that." }
     }
   ]
 }
@@ -160,7 +178,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,800;0,900;1,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <!-- GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
@@ -176,20 +194,33 @@
    DESIGN TOKENS
    ========================================================= */
 :root {
-  --brand-red: #FF0000;
-  --brand-red-dark: #ED2100;
+  /* Primary brand red — reserved for CTAs, key accents, focus states */
+  --brand-red: #dc2626;
+  --brand-red-dark: #b91c1c;
   --brand-red-glow: rgba(220,38,38,0.3);
-  --brand-gold: #d97706;
+  /* Premium secondary accent (membership / value highlights) */
+  --brand-gold: #e0a106;
   --bg-black: #0a0a0a;
   --bg-card: #141414;
   --bg-card-light: #1a1a1a;
-  --border-dark: #222;
+  --border-dark: #2a2a2a;
+  /* Text scale — all pass WCAG AA on the dark surfaces used here */
   --text-white: #fff;
-  --text-gray: #999;
-  --text-muted: #666;
+  --text-gray: #c2c2c2;
+  --text-muted: #9a9a9a;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+/* Global accessibility: honor reduced-motion across every section's animations */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 body {
   background: var(--bg-card);
   color: var(--text-white);
@@ -443,7 +474,7 @@ header li a[href="#booking"],
 }
 
 .red{
-  color:#FF0000;
+  color:#dc2626;
 }
 
 /* =========================
@@ -473,7 +504,7 @@ header li a[href="#booking"],
 .mh-cta-primary{
   display:inline-block;
   padding:20px 42px;
-  background:#FF0000;
+  background:#dc2626;
   color:#fff;
   font-size:16px;
   font-weight:800;
@@ -504,7 +535,7 @@ header li a[href="#booking"],
 }
 
 .mh-cta-secondary:hover{
-  border-color:#FF0000;
+  border-color:#dc2626;
   color:#fff;
 }
 
@@ -541,7 +572,7 @@ header li a[href="#booking"],
 .mh-pill-price{
   font-size:22px;
   font-weight:900;
-  color:#FF0000;
+  color:#dc2626;
   line-height:1;
 }
 
@@ -600,166 +631,6 @@ header li a[href="#booking"],
 
 
 /* =========================================================
-   GALLERY
-   ========================================================= */
-.gallery-wrapper {
-  width: 100%; max-width: 1200px; margin: 0 auto;
-  border-radius: 8px; overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-/* =========================================================
-   SERVICES TABS
-   ==
-   GUARANTEE
-   ========================================================= */
-.gt-wrap { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
-.gt-box { position: relative; background: #141414; border: 2px solid #222; border-radius: 16px; overflow: hidden; }
-.gt-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--brand-red); }
-.gt-top { padding: 40px 32px 28px; text-align: center; }
-.gt-tag { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); background: rgba(220,38,38,0.1); border: 1px solid rgba(220,38,38,0.25); padding: 6px 18px; border-radius: 100px; margin-bottom: 18px; }
-.gt-title { font-size: 32px; font-weight: 900; color: #fff; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 14px; }
-.gt-title em { font-style: italic; color: var(--brand-red); }
-.gt-desc { font-size: 15px; color: #999; line-height: 1.7; max-width: 520px; margin: 0 auto; }
-.gt-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid #222; }
-.gt-step { padding: 28px 24px; text-align: center; }
-.gt-step + .gt-step { border-left: 1px solid #222; }
-.gt-num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: var(--brand-red); color: #fff; font-size: 15px; font-weight: 900; border-radius: 50%; margin-bottom: 14px; box-shadow: 0 4px 16px var(--brand-red-glow); }
-.gt-step-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-.gt-step-text { font-size: 13px; color: #999; line-height: 1.5; }
-@media (max-width: 680px) {
-  .gt-top { padding: 32px 22px 24px; }
-  .gt-title { font-size: 24px; }
-  .gt-desc { font-size: 14px; }
-  .gt-steps { grid-template-columns: 1fr; }
-  .gt-step + .gt-step { border-left: none; border-top: 1px solid #222; }
-  .gt-step { padding: 22px; }
-}
-
-/* =========================================================
-   FLASH PROMO
-   ========================================================= */
-.mkd-flash { --red: #c0392b; --red-dark: #a5311f; --red-light: #e74c3c; font-family: 'Outfit', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 12px; }
-.mkd-flash * { box-sizing: border-box; }
-.mkd-flash-card { border-radius: 16px; overflow: hidden; box-shadow: 0 0 60px rgba(192,57,43,0.2),0 20px 60px rgba(0,0,0,0.4); animation: mkd-f-glow 3s ease-in-out infinite; position: relative; }
-@keyframes mkd-f-glow { 0%,100%{box-shadow:0 0 60px rgba(192,57,43,0.2),0 20px 60px rgba(0,0,0,0.4);}50%{box-shadow:0 0 90px rgba(192,57,43,0.3),0 20px 60px rgba(0,0,0,0.4);} }
-.mkd-flash-inner { display: flex; min-height: 500px; }
-@media (max-width: 600px) { .mkd-flash-inner { flex-direction: column; min-height: auto; } }
-.mkd-flash-left { flex: 0 0 42%; background: var(--red); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 24px; position: relative; overflow: hidden; }
-.mkd-flash-left::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(0,0,0,0.06) 18px, rgba(0,0,0,0.06) 20px); pointer-events: none; }
-.mkd-flash-left::after { content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); animation: mkd-f-shimmer 3s ease-in-out infinite; }
-@keyframes mkd-f-shimmer { 0%{left:-60%;}100%{left:160%;} }
-.mkd-flash-bolt { position: relative; z-index: 1; margin-bottom: 10px; }
-.mkd-flash-bolt svg { width: 90px; height: 130px; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3)); }
-.mkd-flash-limited { position: relative; z-index: 1; background: rgba(0,0,0,0.25); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; padding: 5px 16px; border-radius: 3px; margin-bottom: 14px; }
-.mkd-flash-word { position: relative; z-index: 1; color: #fff; font-size: 52px; font-weight: 900; line-height: 1; letter-spacing: -1px; text-shadow: 0 3px 15px rgba(0,0,0,0.3); }
-.mkd-flash-word-sub { position: relative; z-index: 1; display: inline-block; background: #111; color: #fff; font-size: 22px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; padding: 6px 20px; margin-top: 6px; border-radius: 4px; }
-@media (max-width: 600px) { .mkd-flash-left { padding: 30px 20px; flex: none; } .mkd-flash-word { font-size: 40px; } .mkd-flash-word-sub { font-size: 18px; } .mkd-flash-bolt svg { width: 60px; height: 90px; } }
-.mkd-flash-right { flex: 1; background: #0a0a0a; padding: 36px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; }
-.mkd-flash-right::before { content: 'FREE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 140px; font-weight: 900; color: rgba(192,57,43,0.03); letter-spacing: 8px; pointer-events: none; white-space: nowrap; }
-.mkd-flash-pretitle { color: var(--red); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; position: relative; }
-.mkd-flash-headline { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 2px; position: relative; }
-.mkd-flash-headline em { font-style: italic; color: var(--red); }
-.mkd-flash-headline-sub { font-size: 15px; font-weight: 600; color: #fff; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; position: relative; }
-.mkd-flash-divider { width: 60px; height: 2px; background: var(--red); margin: 0 auto 16px; position: relative; }
-.mkd-flash-urgency { display: flex; align-items: center; justify-content: center; gap: 10px; background: rgba(192,57,43,0.06); border: 1px solid rgba(192,57,43,0.2); border-radius: 8px; padding: 12px 20px; margin-bottom: 20px; position: relative; max-width: 360px; }
-.mkd-flash-live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); flex-shrink: 0; position: relative; }
-.mkd-flash-live-dot::after { content: ''; position: absolute; top: -3px; left: -3px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--red); animation: mkd-f-ping 1.5s ease-out infinite; }
-@keyframes mkd-f-ping { 0%{transform:scale(1);opacity:0.8;}100%{transform:scale(1.8);opacity:0;} }
-.mkd-flash-urgency-text { font-size: 13px; font-weight: 600; color: #ccc; line-height: 1.4; text-align: left; }
-.mkd-flash-urgency-text strong { color: #fff; font-weight: 800; }
-.mkd-flash-urgency-text em { color: var(--red); font-style: normal; font-weight: 800; }
-.mkd-flash-includes { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; margin-bottom: 20px; position: relative; }
-.mkd-flash-includes span { color: #aaa; font-size: 12px; display: flex; align-items: center; gap: 4px; }
-.mkd-flash-includes span::before { content: "✓"; color: var(--red); font-weight: 800; font-size: 10px; }
-.mkd-flash-cta { display: inline-block; background: var(--red); color: #fff; font-size: 14px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; padding: 15px 40px; border-radius: 6px; cursor: pointer; transition: transform .2s, box-shadow .3s, background .2s; box-shadow: 0 4px 20px rgba(192,57,43,0.35); animation: mkd-f-cta-pulse 2s ease-in-out infinite; position: relative; }
-@keyframes mkd-f-cta-pulse { 0%,100%{box-shadow:0 4px 20px rgba(192,57,43,0.35);}50%{box-shadow:0 6px 30px rgba(192,57,43,0.5);} }
-.mkd-flash-cta:hover { transform: translateY(-2px); background: var(--red-light); animation: none; box-shadow: 0 8px 36px rgba(192,57,43,0.5); }
-.mkd-flash-fine { color: #444; font-size: 10px; margin-top: 12px; line-height: 1.5; position: relative; }
-@media (max-width: 600px) {
-  .mkd-flash-right { padding: 28px 18px; }
-  .mkd-flash-headline { font-size: 30px; }
-  .mkd-flash-headline-sub { font-size: 13px; letter-spacing: 2px; }
-  .mkd-flash-cta { width: 100%; padding: 14px 20px; }
-  .mkd-flash-right::before { font-size: 80px; }
-  .mkd-flash-urgency { padding: 10px 14px; }
-}
-/*=========================================================
-   CLEAN CLUB MENTION
-   ========================================================= */
-.clean-club-banner {
-  max-width: 820px; margin: 0 auto; padding: 0 16px 30px;
-  text-align: center;
-}
-.clean-club-box {
-  background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-  border: 1px solid #d97706;
-  border-radius: 12px; padding: 28px 32px;
-  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
-  justify-content: center;
-}
-.clean-club-icon { font-size: 36px; }
-.clean-club-text { flex: 1; min-width: 200px; text-align: left; }
-.clean-club-text strong { color: #d97706; font-size: 18px; font-weight: 900; display: block; margin-bottom: 4px; }
-.clean-club-text span { color: #aaa; font-size: 14px; line-height: 1.5; }
-.clean-club-cta {
-  display: inline-block; padding: 12px 28px;
-  background: #d97706; color: #fff; text-decoration: none;
-  font-weight: 800; font-size: 13px; letter-spacing: 1px;
-  text-transform: uppercase; border-radius: 8px;
-  transition: transform .15s, box-shadow .15s;
-  box-shadow: 0 4px 16px rgba(217,119,6,0.35);
-  white-space: nowrap;
-}
-.clean-club-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(217,119,6,0.5); }
-
-/* =========================================================
-   FAQ
-   ========================================================= */
-.faq-section { max-width: 820px; margin: 0 auto; padding: 30px 16px; }
-.faq-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; text-align: center; }
-.faq-title { font-size: 32px; font-weight: 900; color: #fff; text-align: center; margin-bottom: 32px; }
-.faq-item { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.2s; }
-.faq-item:hover { border-color: #444; }
-.faq-item summary {
-  padding: 18px 22px; font-size: 15px; font-weight: 700; color: #fff;
-  cursor: pointer; list-style: none;
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 12px;
-}
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: '+'; font-size: 24px; color: var(--brand-red); font-weight: 700; flex-shrink: 0; }
-.faq-item[open] summary::after { content: '−'; }
-.faq-item p { padding: 0 22px 18px; color: #aaa; font-size: 14px; line-height: 1.65; }
-
-/* =========================================================
-   REVIEWS
-   ========================================================= */
-.reviews-section { max-width: 1100px; margin: 0 auto; padding: 30px 16px; text-align: center; }
-.reviews-label { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--brand-red); margin-bottom: 12px; }
-.reviews-title { font-size: 32px; font-weight: 900; color: #fff; margin-bottom: 24px; }
-.reviews-iframe-wrap { width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-.about-section { background: #000; position: relative; overflow: hidden; padding: 60px 20px; }
-.about-section::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-.about-container { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.about-header { text-align: center; margin-bottom: 40px; }
-.about-header h2 { font-size: clamp(28px, 5vw, 40px); font-weight: 800; color: #fff; margin: 0 0 12px; }
-.about-header .about-subtitle { font-size: 15px; color: #999; }
-.about-text-full { background: #1a1a1a; border: 2px solid #2d2d2d; border-radius: 20px; padding: 40px 36px; max-width: 900px; margin: 0 auto; position: relative; }
-.about-text-full::before { content: '"'; position: absolute; top: 15px; left: 25px; font-size: 6rem; color: var(--brand-red); opacity: 0.15; font-family: Georgia, serif; line-height: 1; }
-.about-text-full h3 { font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 20px; text-align: center; }
-.about-text-full p { font-size: 15.5px; color: #b0b0b0; line-height: 1.75; margin: 0 0 16px; }
-.about-text-full p strong { color: #ff3333; font-weight: 600; }
-.about-signature { font-size: 24px; font-weight: 700; color: var(--brand-red); text-align: center; font-family: 'Brush Script MT', cursive; margin-top: 8px; }
-.about-badge { display: inline-block; background: linear-gradient(135deg, var(--brand-red), #ff0000); color: #fff; padding: 12px 26px; border-radius: 50px; font-weight: 800; font-size: 13px; box-shadow: 0 6px 22px rgba(220,38,38,0.5); margin-top: 18px; }
-.about-badge-wrap { text-align: center; }
-@media (max-width: 768px) { .about-text-full { padding: 30px 22px; } }
-
-/* =========================================================
    FOOTER
    ========================================================= */
 .site-footer { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
@@ -774,7 +645,7 @@ header li a[href="#booking"],
 .footer-col ul li { margin-bottom: 2px; }
 .footer-cta { display: inline-block; padding: 11px 22px; background: var(--brand-red); color: #fff; font-weight: 800; border-radius: 8px; text-decoration: none; box-shadow: 0 0 12px rgba(220,38,38,0.5); transition: transform .15s; font-size: 13.5px; }
 .footer-cta:hover { transform: translateY(-2px); }
-.footer-copy { margin-top: 24px; text-align: center; color: #555; font-size: 12px; }
+.footer-copy { margin-top: 24px; text-align: center; color: #8a8a8a; font-size: 12px; }
 
 /* =========================================================
    MOBILE STICKY CTA BAR
@@ -821,9 +692,10 @@ header li a[href="#booking"],
     </a>
     <ul id="desktopMenu">
       <li><a href="#allservices">Services</a></li>
+      <li><a href="#beforeafter">Before/After</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#beforeafter">Before/After</a></li>
+      <li><a href="#qanda">FAQ</a></li>
       <li><a href="#booking">BOOK NOW</a></li>
     </ul>
     <button id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
@@ -831,6 +703,7 @@ header li a[href="#booking"],
     </button>
     <ul id="mobileMenu">
       <li><a href="#allservices">Services</a></li>
+      <li><a href="#beforeafter">Before/After</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#qanda">FAQ</a></li>
@@ -1611,6 +1484,257 @@ header li a[href="#booking"],
   }
 </style>
 
+  <section id="beforeafter" aria-label="Before and after gallery">
+    <div class="section-inner">
+      <div id="ba-gallery">
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  #ba-gallery { background: transparent; }
+  #ba-gallery {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    padding: 60px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    line-height: 1;
+    color: #fff;
+  }
+  .section-title span { color: #dc2626; }
+  .section-sub {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 50px;
+    font-weight: 400;
+  }
+  .slider-grid { display: grid; gap: 40px; }
+
+  .slider-card {
+    background: #1a1a1a;
+    border: 2px solid #dc2626;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .slider-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 50px rgba(220, 38, 38, 0.5);
+  }
+
+  .slider-label {
+    background: #dc2626;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    touch-action: none;
+    background: #000;
+  }
+  .slider img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .slider .img-after {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider .img-before {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 50% 0 0);
+    will-change: clip-path;
+  }
+
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #fff;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  }
+  .slider-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #dc2626;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), 0 4px 16px rgba(0,0,0,0.4);
+    border: 3px solid #fff;
+  }
+  .slider-handle::after {
+    content: '\25C0  \25B6';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 900;
+    z-index: 2;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .tag {
+    position: absolute;
+    top: 16px;
+    padding: 6px 14px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .tag-before {
+    left: 16px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    border: 2px solid #dc2626;
+  }
+  .tag-after {
+    right: 16px;
+    background: #dc2626;
+    color: #fff;
+  }
+
+  .hint {
+    text-align: center;
+    margin-top: 16px;
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0 16px 4px;
+  }
+
+  @media (min-width: 900px) {
+    .slider-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+</style>
+
+<div class="container">
+  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
+  <p class="section-sub">Drag the slider — real cars, real results.</p>
+
+  <div class="slider-grid">
+
+    <div class="slider-card">
+      <div class="slider-label">Back Seats &mdash; Family SUV</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
+        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Cheerios, juice, road snacks &mdash; all gone.</p>
+    </div>
+
+    <div class="slider-card">
+      <div class="slider-label">Cargo Area &mdash; Acura MDX</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
+        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Months of haul-everything mess. Reset.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-slider]').forEach(function(slider){
+    var beforeImg = slider.querySelector('.img-before');
+    var handle = slider.querySelector('.slider-handle');
+    var dragging = false;
+
+    function setPosition(percent){
+      percent = Math.max(0, Math.min(100, percent));
+      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+      handle.style.left = percent + '%';
+    }
+    function getPercent(clientX){
+      var rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+    function onDown(e){
+      dragging = true;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onUp(){ dragging = false; }
+
+    slider.addEventListener('mousedown', onDown);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    slider.addEventListener('touchstart', onDown, {passive: false});
+    document.addEventListener('touchmove', onMove, {passive: false});
+    document.addEventListener('touchend', onUp);
+  });
+
+  // postMessage height for iframe parent (Carrd auto-resize)
+  function sendHeight() {
+    var h = document.documentElement.scrollHeight;
+    if (window.parent !== window) {
+      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
+    }
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+
+</div>
+    </div>
+  </section>
+
+
 <!-- ===================== OFFER SECTION (copy from here) ===================== -->
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
   <div class="mko__inner">
@@ -1655,7 +1779,7 @@ header li a[href="#booking"],
     <!-- CTA -->
     <div class="mko__cta">
       <a class="mko__btn mko__btn--primary"
-         href="sms:+13607975831?&body=Hi%20Mikey!%20I%20want%20to%20claim%20the%20FREE%20exterior%20detail%20with%20my%20interior%20detail%20this%20week.%20My%20vehicle%20is%20a%20_______%20and%20I'm%20located%20in%20_______.">
+         href="sms:+13607975831?&body=Hi%20Mikey!%20I'd%20like%20to%20claim%20the%20free%20exterior%20detail%20with%20an%20interior%20detail%20this%20week.%20When's%20your%20next%20opening%3F">
         Text Mikey to Lock It In &rarr;
       </a>
       <span class="mko__finehint">Takes 20 seconds &middot; I'll text right back to confirm your spot</span>
@@ -1715,7 +1839,7 @@ header li a[href="#booking"],
     
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.3);border-radius:999px;padding:7px 18px;font-size:0.82rem;font-weight:800;color:#dc2626;letter-spacing:0.05em;">
         <span style="width:8px;height:8px;background:#dc2626;border-radius:50%;box-shadow:0 0 8px #dc2626;animation:pulse 1.8s ease-in-out infinite;display:inline-block;"></span>
-        limited Spots Available Per Week — book now to grab your spot
+        Limited spots available per week — book now to grab yours
       </div>
     </div>
 
@@ -1789,7 +1913,7 @@ header li a[href="#booking"],
 #qqcCard .qq-services-grid .qq-card.selected .qq-check { border-color: #dc2626; background: #dc2626; }
 #qqcCard .qq-services-grid .qq-card .qq-svc-info { flex: 1; }
 #qqcCard .qq-services-grid .qq-card .qq-svc-price { color: #dc2626; font-weight: 700; font-size: 14px; flex-shrink: 0; }
-#qqcCard .qq-addons-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 10px 0; font-weight: 600; }
+#qqcCard .qq-addons-label { font-size: 13px; color: #8a8a8a; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 10px 0; font-weight: 600; }
 
 #qqcCard .qq-btn {
   display: block; width: 100%; padding: 14px; border: none; border-radius: 10px;
@@ -1800,14 +1924,14 @@ header li a[href="#booking"],
 #qqcCard .qq-btn:active { transform: scale(0.98); }
 #qqcCard .qq-btn-red { background: #dc2626; color: #fff; }
 #qqcCard .qq-btn-red:hover { opacity: 0.9; }
-#qqcCard .qq-btn-red:disabled { background: #333; color: #666; cursor: not-allowed; opacity: 1; }
+#qqcCard .qq-btn-red:disabled { background: #333; color: #8a8a8a; cursor: not-allowed; opacity: 1; }
 #qqcCard .qq-btn-ghost { background: transparent; color: #888; border: 1px solid #333; font-size: 13px; padding: 10px; }
-#qqcCard .qq-btn-ghost:hover { border-color: #555; color: #bbb; }
+#qqcCard .qq-btn-ghost:hover { border-color: #8a8a8a; color: #bbb; }
 #qqcCard .qq-nav { display: flex; gap: 10px; margin-top: 16px; }
 #qqcCard .qq-nav .qq-btn { flex: 1; }
 
 #qqcCard .qq-quote-amount { font-size: 52px; font-weight: 900; text-align: center; color: #fff; margin: 8px 0 4px 0; letter-spacing: -2px; }
-#qqcCard .qq-quote-from { text-align: center; font-size: 13px; color: #666; margin-bottom: 16px; }
+#qqcCard .qq-quote-from { text-align: center; font-size: 13px; color: #8a8a8a; margin-bottom: 16px; }
 #qqcCard .qq-summary { background: #1c1c1c; border-radius: 10px; padding: 14px 16px; margin-bottom: 20px; }
 #qqcCard .qq-summary p { margin: 4px 0; font-size: 13px; color: #ccc; }
 #qqcCard .qq-summary .qq-sum-check { color: #dc2626; font-weight: 700; }
@@ -1823,9 +1947,10 @@ header li a[href="#booking"],
   padding: 13px 16px; color: #fff; font-family: 'Outfit', sans-serif; font-size: 15px;
   width: 100%; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
 }
-#qqcCard .qq-input::placeholder { color: #666; }
+#qqcCard .qq-input::placeholder { color: #8a8a8a; }
 #qqcCard .qq-input:focus { border-color: #dc2626; box-shadow: 0 0 12px rgba(220,38,38,0.2); }
-#qqcCard .qq-form-note { text-align: center; font-size: 12px; color: #555; margin-top: 10px; }
+#qqcCard .qq-form-note { text-align: center; font-size: 12px; color: #8a8a8a; margin-top: 10px; }
+#qqcCard .qq-guarantee-note { text-align: center; font-size: 12.5px; font-weight: 600; color: #34d399; margin-top: 12px; letter-spacing: .2px; }
 
 #qqcCard .qq-success { text-align: center; padding: 20px 0; }
 #qqcCard .qq-success-icon { font-size: 48px; margin-bottom: 12px; display: block; }
@@ -2138,6 +2263,7 @@ header li a[href="#booking"],
         <input type="text" class="qq-input" id="qqName" placeholder="Your name" autocomplete="name" />
         <input type="tel" class="qq-input" id="qqPhone" placeholder="Phone number" autocomplete="tel" />
         <input type="text" class="qq-input" id="qqLocation" list="qqCities" placeholder="Your city (optional)" autocomplete="address-level2" />
+        <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
         <datalist id="qqCities">
           <option value="Snohomish"></option>
           <option value="Monroe"></option>
@@ -2150,6 +2276,7 @@ header li a[href="#booking"],
       </div>
       <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
       <button class="qq-btn qq-btn-red" id="qqSubmitBtn" data-role="submit-quote">LOCK IN YOUR QUOTE &#8594;</button>
+      <p class="qq-guarantee-note">✓ You don't pay until you love it &#8226; No deposit &#8226; No obligation</p>
     </div>
     <p class="qq-form-note">100% Satisfaction Guarantee &#8226; Pay When Complete</p>
   </div>
@@ -2160,7 +2287,7 @@ header li a[href="#booking"],
       <h3>You're Locked In</h3>
       <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
       <p style="margin-top:14px;color:#999;font-size:13px;">In a hurry or didn't hear back? Text or call me directly: <a href="tel:+13607975831" style="color:#dc2626;font-weight:800;text-decoration:none;">(360) 797-5831</a></p>
-      <p style="margin-top:16px;color:#666;font-size:13px;">— Mikey</p>
+      <p style="margin-top:16px;color:#8a8a8a;font-size:13px;">— Mikey</p>
     </div>
   </div>
 
@@ -2303,8 +2430,8 @@ header li a[href="#booking"],
       var html = '';
       for (var i = 0; i < sn.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + sn[i] + '</p>';
       for (var i = 0; i < an.length; i++) html += '<p><span class="qq-sum-check">&#10003;</span> ' + an[i] + '</p>';
-      if (qqS.vehicle) html += '<p style="color:#666;">&#8226; ' + qqS.vehicle.label + '</p>';
-      if (qqS.condition && qqS.condition.value > 0) html += '<p style="color:#666;">&#8226; Condition: ' + qqS.condition.label + '</p>';
+      if (qqS.vehicle) html += '<p style="color:#8a8a8a;">&#8226; ' + qqS.vehicle.label + '</p>';
+      if (qqS.condition && qqS.condition.value > 0) html += '<p style="color:#8a8a8a;">&#8226; Condition: ' + qqS.condition.label + '</p>';
       var sl = document.getElementById('summaryList');
       if (sl) sl.innerHTML = html;
       qqTotal = total;
@@ -2325,6 +2452,9 @@ header li a[href="#booking"],
     }
 
     else if (role === 'submit-quote') {
+      // Honeypot: real users never see/fill this. Bots do — silently succeed without sending.
+      var hp = document.getElementById('qqCompany');
+      if (hp && hp.value) { goStep(5); return; }
       var nameEl = document.getElementById('qqName');
       var phoneEl = document.getElementById('qqPhone');
       var locEl = document.getElementById('qqLocation');
@@ -2428,256 +2558,6 @@ header li a[href="#booking"],
     </div>
   </section>
       
-  <section id="beforeafter" aria-label="Before and after gallery">
-    <div class="section-inner">
-      <div id="ba-gallery">
-<style>
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  #ba-gallery { background: transparent; }
-  #ba-gallery {
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    padding: 60px 20px;
-  }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    line-height: 1;
-    color: #fff;
-  }
-  .section-title span { color: #dc2626; }
-  .section-sub {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #888;
-    margin-bottom: 50px;
-    font-weight: 400;
-  }
-  .slider-grid { display: grid; gap: 40px; }
-
-  .slider-card {
-    background: #1a1a1a;
-    border: 2px solid #dc2626;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(220, 38, 38, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .slider-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 50px rgba(220, 38, 38, 0.5);
-  }
-
-  .slider-label {
-    background: #dc2626;
-    color: #fff;
-    text-align: center;
-    padding: 14px 20px;
-    font-weight: 900;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    cursor: ew-resize;
-    user-select: none;
-    touch-action: none;
-    background: #000;
-  }
-  .slider img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-  }
-  .slider .img-after {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .slider .img-before {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: inset(0 50% 0 0);
-    will-change: clip-path;
-  }
-
-  .slider-handle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: #fff;
-    pointer-events: none;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
-  }
-  .slider-handle::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: #dc2626;
-    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5), 0 4px 16px rgba(0,0,0,0.4);
-    border: 3px solid #fff;
-  }
-  .slider-handle::after {
-    content: '\25C0  \25B6';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 900;
-    z-index: 2;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-
-  .tag {
-    position: absolute;
-    top: 16px;
-    padding: 6px 14px;
-    font-weight: 900;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-    pointer-events: none;
-    z-index: 3;
-  }
-  .tag-before {
-    left: 16px;
-    background: rgba(0,0,0,0.85);
-    color: #fff;
-    border: 2px solid #dc2626;
-  }
-  .tag-after {
-    right: 16px;
-    background: #dc2626;
-    color: #fff;
-  }
-
-  .hint {
-    text-align: center;
-    margin-top: 16px;
-    color: #888;
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 0 16px 4px;
-  }
-
-  @media (min-width: 900px) {
-    .slider-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-</style>
-
-<div class="container">
-  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
-  <p class="section-sub">Drag the slider — real cars, real results.</p>
-
-  <div class="slider-grid">
-
-    <div class="slider-card">
-      <div class="slider-label">Back Seats &mdash; Family SUV</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
-        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Cheerios, juice, road snacks &mdash; all gone.</p>
-    </div>
-
-    <div class="slider-card">
-      <div class="slider-label">Cargo Area &mdash; Acura MDX</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
-        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Months of haul-everything mess. Reset.</p>
-    </div>
-
-  </div>
-</div>
-
-<script>
-(function(){
-  document.querySelectorAll('[data-slider]').forEach(function(slider){
-    var beforeImg = slider.querySelector('.img-before');
-    var handle = slider.querySelector('.slider-handle');
-    var dragging = false;
-
-    function setPosition(percent){
-      percent = Math.max(0, Math.min(100, percent));
-      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
-      handle.style.left = percent + '%';
-    }
-    function getPercent(clientX){
-      var rect = slider.getBoundingClientRect();
-      return ((clientX - rect.left) / rect.width) * 100;
-    }
-    function onDown(e){
-      dragging = true;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onMove(e){
-      if(!dragging) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onUp(){ dragging = false; }
-
-    slider.addEventListener('mousedown', onDown);
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-    slider.addEventListener('touchstart', onDown, {passive: false});
-    document.addEventListener('touchmove', onMove, {passive: false});
-    document.addEventListener('touchend', onUp);
-  });
-
-  // postMessage height for iframe parent (Carrd auto-resize)
-  function sendHeight() {
-    var h = document.documentElement.scrollHeight;
-    if (window.parent !== window) {
-      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
-    }
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  setTimeout(sendHeight, 500);
-})();
-</script>
-
-</div>
-    </div>
-  </section>
-
 <!-- ============================================================
      MIKEY'S DETAILING — SERVICES SECTION
      Drop-in replacement. Self-contained styles scoped to .mmd-svc.
@@ -2988,7 +2868,7 @@ header li a[href="#booking"],
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: #666;
+    color: #8a8a8a;
     margin-top: 12px;
     text-transform: uppercase;
   }
@@ -3435,10 +3315,10 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .about-mikey{ background:#141414; padding:60px 20px; border-top:2px solid #dc2626; font-family:'Outfit',sans-serif; }
+  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
   .about-inner{ max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
   .about-photo{ flex:1 1 280px; min-width:260px; display:flex; justify-content:center; }
-  .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:2px solid #dc2626; box-shadow:0 0 30px rgba(220,38,38,0.4); background:#1a1a1a; }
+  .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:1px solid var(--border-dark); box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#1a1a1a; }
   .about-copy{ flex:1 1 420px; min-width:300px; }
   .about-eyebrow{ display:inline-block; background:#dc2626; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
   .about-copy h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 16px; }
@@ -3495,7 +3375,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .faq2{ background:#141414; padding:60px 20px; border-top:2px solid #dc2626; border-bottom:2px solid #dc2626; font-family:'Outfit',sans-serif; }
+  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
   .faq2-inner{ max-width:800px; margin:0 auto; }
   .faq2-eyebrow{ display:inline-block; background:#dc2626; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
   .faq2 h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 28px; }
@@ -3531,7 +3411,7 @@ header li a[href="#booking"],
 <style>
   .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
   .explore-inner{ max-width:1100px; margin:0 auto; }
-  .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#777; margin:0 0 14px; }
+  .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#9a9a9a; margin:0 0 14px; }
   .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
   .explore-links a{ display:inline-block; padding:8px 14px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:0.85rem; font-weight:600; text-decoration:none; transition:border-color .15s ease, color .15s ease; }
   .explore-links a:hover{ border-color:#dc2626; color:#fff; }
