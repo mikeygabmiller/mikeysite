@@ -1994,6 +1994,10 @@ header li a[href="#booking"],
 #qqcCard .field input.err { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
 #qqcCard .field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
 #qqcCard .field.bad .msg { display: block; }
+/* Required-field highlight: only Name + Phone need filling, so make that obvious */
+#qqcCard #qqfName input, #qqcCard #qqfPhone input { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); }
+#qqcCard #qqfName input:focus, #qqcCard #qqfPhone input:focus { background: var(--surface-2); }
+#qqcCard #qqfName::after, #qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
 #qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
 #qqcCard .trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
 #qqcCard .trust span { display: inline-flex; align-items: center; gap: 5px; }
@@ -2163,11 +2167,11 @@ header li a[href="#booking"],
     <div class="breakdown" id="qqBreakdown"></div>
     <form class="form" id="qqForm" novalidate>
       <div class="field" id="qqfName">
-        <input type="text" id="qqName" placeholder="Your name" autocomplete="name" />
+        <input type="text" id="qqName" placeholder="Your name" autocomplete="name" aria-required="true" />
         <span class="msg">Please enter your name.</span>
       </div>
       <div class="field" id="qqfPhone">
-        <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" />
+        <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
         <span class="msg">Enter a valid phone number so I can text you.</span>
       </div>
       <div class="field"><input type="email" id="qqEmail" placeholder="Email (optional)" autocomplete="email" /></div>
