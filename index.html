@@ -1745,7 +1745,7 @@ header li a[href="#booking"],
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
   <div class="mko__inner">
 
-    <span class="mko__eyebrow"><span class="dot"></span>This week &middot; Limited spots</span>
+    <span class="mko__eyebrow" id="mkoEyebrow"><span class="dot" id="mkoDot"></span><span id="mkoEyebrowText">Fri – Mon &middot; Limited spots</span></span>
 
     <h2 class="mko__head">
       Free Exterior Detail<br />
@@ -1773,7 +1773,7 @@ header li a[href="#booking"],
 
     <!-- countdown -->
     <div class="mko__timerwrap">
-      <div class="mko__timerlabel">Offer ends <b>Sunday</b> at midnight</div>
+      <div class="mko__timerlabel" id="mkoTimerLabel">Offer ends <b>Monday</b> at midnight</div>
       <div class="mko__clock" id="mkoClock" role="timer" aria-live="off">
         <div class="mko__seg"><div class="num" id="mkoD">0</div><div class="unit">Days</div></div>
         <div class="mko__seg"><div class="num" id="mkoH">00</div><div class="unit">Hours</div></div>
@@ -1805,32 +1805,96 @@ header li a[href="#booking"],
 
   </div>
 
-  <!-- Countdown clock: the only script. Resets every week, always counts to Sunday 11:59:59 PM local. -->
+  <!-- Offer active Fri 12:00am – Mon 11:59:59pm local. Off Tue/Wed/Thu. -->
   <script>
     (function () {
-      var d = document.getElementById("mkoD"),
-          h = document.getElementById("mkoH"),
-          m = document.getElementById("mkoM"),
-          s = document.getElementById("mkoS");
+      var elD    = document.getElementById("mkoD"),
+          elH    = document.getElementById("mkoH"),
+          elM    = document.getElementById("mkoM"),
+          elS    = document.getElementById("mkoS"),
+          label  = document.getElementById("mkoTimerLabel"),
+          brow   = document.getElementById("mkoEyebrow"),
+          browTx = document.getElementById("mkoEyebrowText"),
+          dot    = document.getElementById("mkoDot"),
+          section= document.getElementById("free-exterior-offer"),
+          cta    = section.querySelector(".mko__cta"),
+          head   = section.querySelector(".mko__head"),
+          sub    = section.querySelector(".mko__sub"),
+          deal   = section.querySelector(".mko__deal");
+
       function pad(n) { return n < 10 ? "0" + n : "" + n; }
-      function endOfThisSunday() {
-        var now = new Date();
+
+      // Returns true if now is within Fri 00:00 – Mon 23:59:59
+      function isActive(now) {
+        var day = now.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
+        return day === 5 || day === 6 || day === 0 || day === 1;
+      }
+
+      // End of Monday (this week or next)
+      function nextOfferEnd(now) {
+        var day = now.getDay();
+        // Days until Monday: Mon=1 → 0, Tue-Sat: forward to next Mon, Sun=0 → 1
+        var daysUntilMon = (1 - day + 7) % 7;
+        if (daysUntilMon === 0 && now.getHours() >= 0) {
+          // today is Monday, end is tonight
+        }
         var end = new Date(now);
-        var daysUntilSun = (7 - now.getDay()) % 7; // 0 = Sunday today
-        end.setDate(now.getDate() + daysUntilSun);
+        end.setDate(now.getDate() + daysUntilMon);
         end.setHours(23, 59, 59, 999);
-        if (end < now) end.setDate(end.getDate() + 7); // already past Sunday midnight
+        if (end < now) end.setDate(end.getDate() + 7);
         return end;
       }
-      function tick() {
-        var diff = endOfThisSunday() - new Date();
-        if (diff < 0) diff = 0;
-        var sec = Math.floor(diff / 1000);
-        d.textContent = Math.floor(sec / 86400);
-        h.textContent = pad(Math.floor((sec % 86400) / 3600));
-        m.textContent = pad(Math.floor((sec % 3600) / 60));
-        s.textContent = pad(sec % 60);
+
+      // Start of next Friday
+      function nextOfferStart(now) {
+        var day = now.getDay();
+        var daysUntilFri = (5 - day + 7) % 7;
+        if (daysUntilFri === 0) daysUntilFri = 7; // already Friday but in off-state (shouldn't happen, but safe)
+        var start = new Date(now);
+        start.setDate(now.getDate() + daysUntilFri);
+        start.setHours(0, 0, 0, 0);
+        return start;
       }
+
+      var wasActive = null;
+
+      function applyState(active) {
+        if (active) {
+          brow.style.background = "";
+          dot.style.display = "";
+          browTx.textContent = "Fri – Mon · Limited spots";
+          label.innerHTML = 'Offer ends <b>Monday</b> at midnight';
+          section.style.opacity = "";
+          if (cta) cta.style.display = "";
+          if (head) head.style.opacity = "";
+          if (sub) sub.style.opacity = "";
+          if (deal) deal.style.opacity = "";
+        } else {
+          brow.style.background = "#444";
+          dot.style.display = "none";
+          browTx.textContent = "Offer Closed · Opens Friday";
+          label.innerHTML = 'Next offer starts <b>Friday</b>';
+          section.style.opacity = "0.72";
+          if (cta) cta.style.display = "none";
+          if (head) head.style.opacity = "0.45";
+          if (sub) sub.style.opacity = "0.55";
+          if (deal) deal.style.opacity = "0.45";
+        }
+      }
+
+      function tick() {
+        var now = new Date();
+        var active = isActive(now);
+        if (active !== wasActive) { applyState(active); wasActive = active; }
+        var target = active ? nextOfferEnd(now) : nextOfferStart(now);
+        var diff = Math.max(0, target - now);
+        var sec = Math.floor(diff / 1000);
+        elD.textContent = Math.floor(sec / 86400);
+        elH.textContent = pad(Math.floor((sec % 86400) / 3600));
+        elM.textContent = pad(Math.floor((sec % 3600) / 60));
+        elS.textContent = pad(sec % 60);
+      }
+
       tick();
       setInterval(tick, 1000);
     })();
