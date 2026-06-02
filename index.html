@@ -2741,7 +2741,7 @@ header li a[href="#booking"],
   </div>
 </div>
 <!-- =========================================================
-     HOW IT WORKS + GUARANTEE — v4 (research-backed, conversion-optimized)
+     HOW IT WORKS + GUARANTEE (v4, research backed, conversion optimized)
      Self-contained. Scoped under .hg4 / .hiw4 / .grt4.
      Tokens reused: --brand-red #C8102E, --brand-gold #C9A24B, Outfit font.
      Signature uses Caveat (loaded in <head>).
@@ -2834,7 +2834,7 @@ header li a[href="#booking"],
     position: relative;
     text-align: left;
   }
-  /* connector track (directional cue) — desktop */
+  /* connector track (directional cue), desktop */
   .hiw4-grid::before {
     content: '';
     position: absolute;
@@ -2970,6 +2970,14 @@ header li a[href="#booking"],
     color: #a8a8a8;
     line-height: 1.62;
   }
+  .hiw4-desc a {
+    color: var(--brand-gold-bright);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+  .hiw4-desc a:hover { color: #fff; }
   .hiw4-foot {
     margin-top: 20px;
     padding-top: 16px;
@@ -3238,6 +3246,8 @@ header li a[href="#booking"],
   }
   .grt4-proof .stars { color: var(--brand-gold); letter-spacing: 2px; }
   .grt4-proof .sep { color: #444; margin: 0 8px; }
+  .grt4-proof a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--brand-gold-line); }
+  .grt4-proof a:hover { color: var(--brand-gold-bright); }
   .grt4-sigmark {
     font-family: 'Caveat', cursive;
     font-weight: 700;
@@ -3312,7 +3322,7 @@ header li a[href="#booking"],
       Three Steps. <em>Zero Effort.</em><br>One Jaw-Dropping Car.
     </h2>
     <p class="hiw4-sub">
-      No deposit. No phone tag. No leaving your driveway. You hand me the keys &mdash; <strong>I handle everything else.</strong> Here's exactly how it goes:
+      No deposit. No phone tag. No leaving your driveway. You hand me the keys and <strong>I handle everything else.</strong> Here's exactly how it goes.
     </p>
 
     <div class="hiw4-grid">
@@ -3329,10 +3339,10 @@ header li a[href="#booking"],
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.3l2.3 2.3 4.4-4.6"/></svg>
           </div>
         </div>
-        <span class="hiw4-chip">60 Seconds &middot; No Deposit</span>
+        <span class="hiw4-chip">Instant Price &middot; No Deposit</span>
         <h3 class="hiw4-title">Tell Me About Your Car</h3>
-        <p class="hiw4-desc">Tap the button, pick your service, drop your address. No phone tag, no waiting on a callback &mdash; you get an instant price and a spot on my calendar before your coffee's cold.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Takes ~1 minute <span class="kill">No deposit</span></div>
+        <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then I text you back to lock in a time that works for you.</p>
+        <div class="hiw4-foot"><span class="dot"></span> Instant price online <span class="kill">No deposit</span></div>
       </article>
 
       <!-- STEP 2 -->
@@ -3345,9 +3355,9 @@ header li a[href="#booking"],
           </div>
         </div>
         <span class="hiw4-chip">I Bring Everything</span>
-        <h3 class="hiw4-title">Relax &mdash; I've Got It From Here</h3>
-        <p class="hiw4-desc">I roll up on time with my own water, power, and every product. You get on with your day &mdash; work, errands, or back to bed. I'll text you the second your car is done.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Done in 2&ndash;5 hours <span class="kill">Stay in your PJs</span></div>
+        <h3 class="hiw4-title">Relax. I've Got It From Here.</h3>
+        <p class="hiw4-desc">I roll up on time with my own water, power, and every product. You get on with your day, whether that's work, errands, or back to bed. I text you the moment your car is finished.</p>
+        <div class="hiw4-foot"><span class="dot"></span> Done the same day <span class="kill">Stay in your PJs</span></div>
       </article>
 
       <!-- STEP 3 -->
@@ -3361,7 +3371,7 @@ header li a[href="#booking"],
         </div>
         <span class="hiw4-chip">Pay Only If You Love It</span>
         <h3 class="hiw4-title">Open the Door and Grin</h3>
-        <p class="hiw4-desc">That new-car smell hits. You run your hand down paint that feels like glass. We walk around it together &mdash; and you don't pay a dime until you're grinning ear to ear.</p>
+        <p class="hiw4-desc">That fresh, clean car smell hits. You run your hand down paint that feels like glass. We walk around it together, and you don't pay a dime until you're grinning ear to ear.</p>
         <div class="hiw4-foot"><span class="dot"></span> Pay when happy <span class="kill">Love it or free</span></div>
       </article>
     </div>
@@ -3372,7 +3382,7 @@ header li a[href="#booking"],
         <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
         <a class="hg4-btn hg4-btn--ghost" href="tel:+13607975831">&#128222;&nbsp;(360) 797-5831</a>
       </div>
-      <p class="hg4-micro">Takes 60 seconds &middot; <b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
+      <p class="hg4-micro">Instant price &middot; <b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
     </div>
   </section>
 
@@ -3386,12 +3396,12 @@ header li a[href="#booking"],
           <span class="grt4-seal-lbl">LOVE IT<br>OR IT'S FREE</span>
         </div>
 
-        <span class="grt4-tag">The Love-It Guarantee</span>
+        <span class="grt4-tag">The Love It Guarantee</span>
         <h2 class="grt4-title" id="grt4-title">
           Don't Love It?<br>You <em>Don't Pay.</em> Period.
         </h2>
         <p class="grt4-body">
-          I don't pack up and leave until you're grinning. When I'm done, we walk around your car together &mdash; you point at anything you want changed, I make it right on the spot. In <span class="proof">300+ cars across Snohomish County, not one person has ever asked for a refund.</span> If you're the first, you get <strong>every penny back</strong> &mdash; no awkward conversation, no hard feelings.
+          I don't pack up and leave until you're grinning. When I'm done, we walk around your car together so you can point at anything you want changed, and I make it right on the spot. In <span class="proof">300+ cars across Snohomish County, not one person has ever asked for a refund.</span> If you're the first, you get <strong>every penny back</strong>, no awkward conversation and no hard feelings.
         </p>
 
         <div class="grt4-pillars">
@@ -3408,7 +3418,7 @@ header li a[href="#booking"],
             <div class="grt4-picon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 3 8m0 0 6-6M3 8h12a6 6 0 0 1 0 12h-4"/></svg>
             </div>
-            <h3 class="grt4-ptitle">Free Come-Back</h3>
+            <h3 class="grt4-ptitle">Free Comeback</h3>
             <p class="grt4-ptext">Notice something the next day? I drive back and redo it. No charge, no hassle, no questions.</p>
           </div>
           <div class="grt4-pillar">
@@ -3417,21 +3427,21 @@ header li a[href="#booking"],
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.6-3.1 7.8-7 9-3.9-1.2-7-4.4-7-9V6z"/><path d="M9 12l2 2 4-4.2"/></svg>
             </div>
             <h3 class="grt4-ptitle">Every Penny Back</h3>
-            <p class="grt4-ptext">Still not happy? You pay nothing. The detail's on me &mdash; that's how sure I am you'll love it.</p>
+            <p class="grt4-ptext">Still not happy? You pay nothing. The detail's on me. That's how sure I am you'll love it.</p>
           </div>
         </div>
 
         <div class="grt4-sign">
           <p class="grt4-proof">
-            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 from 38 Google reviews<span class="sep">&middot;</span>300+ cars detailed<span class="sep">&middot;</span>0 refunds, ever
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <a href="/reviews/">5.0 from 38 Google reviews</a><span class="sep">&middot;</span><a href="#beforeafter">300+ cars detailed</a><span class="sep">&middot;</span>0 refunds, ever
           </p>
           <div class="grt4-sigmark">Mikey</div>
-          <div class="grt4-sigrole">Mikey &mdash; <b>Owner &amp; your detailer</b> &middot; The same hands on every car</div>
+          <div class="grt4-sigrole">Mikey, <b>Owner &amp; your detailer</b> &middot; The same hands on every car</div>
         </div>
 
         <div class="grt4-action">
           <div class="hg4-btnrow">
-            <a class="hg4-btn hg4-btn--primary" href="#booking">Book Risk-Free &rarr;</a>
+            <a class="hg4-btn hg4-btn--primary" href="#booking">Book With Zero Risk &rarr;</a>
             <a class="hg4-btn hg4-btn--ghost" href="tel:+13607975831">&#128222;&nbsp;Text or Call</a>
           </div>
           <p class="hg4-micro">You're protected <b>before I ever touch your car.</b></p>
@@ -3440,14 +3450,14 @@ header li a[href="#booking"],
     </div>
 
     <div class="grt4-scarcity">
-      <span class="dot"></span><strong>I take just 2&ndash;3 cars a day</strong> so every one gets done right. When the week fills up, it's full.
+      <span class="dot"></span><strong>I take just two or three cars a day</strong> so every one gets done right. When the week fills up, it's full.
     </div>
   </section>
 
 </div>
 
 <script>
-/* How It Works: staggered scroll-reveal — only with JS + motion allowed */
+/* How It Works: staggered scroll reveal, only with JS + motion allowed */
 (function () {
   var hg = document.querySelector('.hg4');
   if (!hg) return;
