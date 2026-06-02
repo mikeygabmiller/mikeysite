@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Mikey's Mobile Detailing</title>
+<meta name="description" content="Privacy Policy for Mikey's Mobile Detailing — how we collect, use, and protect your personal information, including SMS consent and phone number data.">
+<link rel="canonical" href="https://mikeysdetailing.com/privacy-policy/">
+<meta name="robots" content="index,follow">
+
+<link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G9WMXW2MF5');
+</script>
+
+<style>
+:root {
+  --brand-red: #C8102E;
+  --brand-red-dark: #A00C24;
+  --brand-red-glow: rgba(200,16,46,0.30);
+  --bg-black: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-light: #1a1a1a;
+  --border-dark: #2a2a2a;
+  --text-white: #fff;
+  --text-gray: #c2c2c2;
+  --text-muted: #9a9a9a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+body {
+  background: var(--bg-card);
+  color: var(--text-white);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-top: 90px;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand-red); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HEADER ── */
+.skip-nav {
+  position: absolute; top: -100px; left: 16px;
+  background: var(--brand-red); color: #fff;
+  padding: 8px 16px; font-size: 14px; font-weight: 700;
+  border-radius: 4px; z-index: 99999; transition: top 0.2s;
+}
+.skip-nav:focus { top: 8px; }
+
+#mikeyHeader {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%;
+  background: rgba(12,12,12,0.92);
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+#mikeyHeader nav {
+  max-width: 1200px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 40px; color: white; position: relative;
+}
+#mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; transition: opacity 0.2s ease; }
+#mikeyHeader a:hover img { opacity: 0.85; }
+
+#desktopMenu {
+  list-style: none; display: flex; gap: 4px; align-items: center;
+  margin: 0; padding: 0;
+}
+#desktopMenu a {
+  color: rgba(255,255,255,0.85); text-decoration: none;
+  font-weight: 600; font-size: 0.82rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 16px; position: relative; transition: color 0.25s ease; display: inline-block;
+}
+#desktopMenu a:not([href*="booking"])::before {
+  content: ''; position: absolute; bottom: 4px; left: 50%;
+  width: 0; height: 2px; background: var(--brand-red);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+#desktopMenu a:not([href*="booking"]):hover { color: #fff; }
+#desktopMenu a:not([href*="booking"]):hover::before { width: 70%; left: 15%; }
+#desktopMenu a:focus-visible { outline: 1px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
+
+#desktopMenu a[href*="booking"] {
+  display: inline-block; padding: 11px 22px; margin-left: 10px;
+  background: var(--brand-red); color: #fff !important;
+  font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em;
+  text-transform: uppercase; border-radius: 6px; transition: background 0.2s ease;
+}
+#desktopMenu a[href*="booking"]:hover { background: var(--brand-red-dark); }
+
+#hamburgerBtn {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; z-index: 10001;
+  background: none; border: none; padding: 6px;
+}
+#hamburgerBtn span { width: 26px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s ease; display: block; }
+#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
+#hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
+
+#mobileMenu {
+  list-style: none; position: absolute; top: 100%; left: 0; width: 100%;
+  background: #0a0a0a; max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  border-top: 1px solid rgba(255,255,255,0.08); margin: 0; padding: 0;
+}
+#mobileMenu.open { max-height: 600px; opacity: 1; }
+#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+#mobileMenu li:last-child { border-bottom: none; }
+#mobileMenu a {
+  color: white; text-decoration: none; padding: 18px 24px; display: block;
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s, padding-left 0.2s, color 0.2s; position: relative;
+}
+#mobileMenu a::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0; background: var(--brand-red); transition: width 0.2s ease;
+}
+#mobileMenu a:hover { background: rgba(200,16,46,0.1); padding-left: 34px; color: var(--brand-red); }
+#mobileMenu a:hover::before { width: 3px; }
+
+@media (max-width: 768px) {
+  body { padding-top: 70px; }
+  #desktopMenu { display: none !important; }
+  #hamburgerBtn { display: flex !important; }
+  #mikeyHeader img { height: 38px; }
+  #mikeyHeader nav { padding: 10px 16px; }
+}
+
+/* ── HERO BANNER ── */
+.page-hero {
+  background: #0a0a0a;
+  border-bottom: 2px solid var(--brand-red);
+  padding: 60px 40px 50px;
+  text-align: center;
+  box-shadow: 0 4px 40px var(--brand-red-glow);
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+  line-height: 1.1;
+}
+.page-hero h1 span { color: var(--brand-red); }
+.page-hero .meta {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ── CONTENT ── */
+.policy-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+.policy-section {
+  margin-bottom: 48px;
+}
+.policy-section:last-child { margin-bottom: 0; }
+
+.policy-section h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--brand-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-left: 4px solid var(--brand-red);
+  padding-left: 14px;
+  margin-bottom: 18px;
+  box-shadow: -2px 0 18px var(--brand-red-glow);
+}
+
+.policy-section p,
+.policy-section li {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-gray);
+  margin-bottom: 14px;
+}
+.policy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+.policy-section ul li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.policy-section ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--brand-red);
+  font-size: 0.85rem;
+  top: 2px;
+}
+
+.highlight-box {
+  background: #0f0f0f;
+  border: 2px solid var(--brand-red);
+  border-radius: 8px;
+  padding: 22px 24px;
+  margin: 24px 0;
+  box-shadow: 0 0 20px var(--brand-red-glow);
+}
+.highlight-box p {
+  margin-bottom: 0 !important;
+  color: var(--text-white) !important;
+  font-weight: 600;
+}
+
+.policy-divider {
+  border: none;
+  border-top: 1px solid var(--border-dark);
+  margin: 48px 0;
+}
+
+@media (max-width: 600px) {
+  .policy-wrap { padding: 40px 20px 60px; }
+  .page-hero { padding: 40px 20px 36px; }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #111; color: #fff;
+  font-family: 'Outfit', sans-serif;
+  padding: 40px 20px 20px;
+  border-top: 2px solid var(--brand-red);
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 28px;
+  justify-content: space-between; align-items: flex-start;
+}
+.footer-col { flex: 1 1 200px; min-width: 180px; }
+.footer-col h3 { font-size: 16px; margin-bottom: 10px; }
+.footer-col h3.brand { color: var(--brand-red); }
+.footer-col h3.gold { color: #C8102E; font-size: 14px; }
+.footer-col p, .footer-col a, .footer-col li { color: #ccc; font-size: 13.5px; line-height: 1.6; text-decoration: none; }
+.footer-col ul { list-style: none; }
+.footer-col ul a:hover { color: var(--brand-red); }
+.footer-col ul li { margin-bottom: 2px; }
+.footer-cta {
+  display: inline-block; padding: 11px 22px;
+  background: var(--brand-red); color: #fff;
+  font-weight: 800; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 0 12px rgba(200,16,46,0.5); transition: transform .15s; font-size: 13.5px;
+}
+.footer-cta:hover { transform: translateY(-2px); }
+.footer-copy { margin-top: 24px; text-align: center; color: #8a8a8a; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<!-- HEADER -->
+<header id="mikeyHeader">
+  <nav>
+    <a href="/" aria-label="Home — Mikey's Mobile Detailing">
+      <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing logo" decoding="async">
+    </a>
+    <ul id="desktopMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a href="/#booking">BOOK NOW</a></li>
+    </ul>
+    <button id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="mobileMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a href="/#booking">Book Now</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>Privacy <span>Policy</span></h1>
+  <p class="meta">Mikey's Mobile Detailing &nbsp;|&nbsp; Effective Date: June 2, 2026 &nbsp;|&nbsp; Last Updated: June 2, 2026</p>
+</div>
+
+<!-- CONTENT -->
+<main id="main-content">
+  <div class="policy-wrap">
+
+    <div class="policy-section">
+      <h2>1. About This Policy</h2>
+      <p>This Privacy Policy describes how <strong>Mikey's Mobile Detailing</strong> ("we," "us," or "our"), a sole proprietorship operating in Snohomish County, Washington, collects, uses, and protects your personal information when you visit our website, submit a quote request, or communicate with us — including via SMS text message.</p>
+      <p>By using our website or submitting your information, you agree to the practices described in this policy. If you have questions, contact us at <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a> or <a href="tel:+13607975831">(360) 797-5831</a>.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>2. Information We Collect</h2>
+      <p>We collect personal information that you voluntarily provide to us through our quote request form and other communications. This includes:</p>
+      <ul>
+        <li><strong>Name</strong> — your first and last name, so we know who we're talking to</li>
+        <li><strong>Phone number</strong> — to contact you about your quote, schedule your appointment, and send appointment reminders via SMS if you opt in</li>
+        <li><strong>Email address</strong> — to send your quote summary and service confirmations</li>
+        <li><strong>Vehicle information</strong> — make, model, year, and condition of your vehicle, used to calculate an accurate quote</li>
+        <li><strong>Service information</strong> — the type of detailing service you are requesting (e.g., interior, exterior, full detail)</li>
+        <li><strong>Location / service address</strong> — where you need the mobile service performed</li>
+        <li><strong>SMS opt-in consent</strong> — recorded when you check the SMS consent box on our quote form</li>
+      </ul>
+      <p>We may also automatically collect limited technical data (such as browser type, referring URL, and pages visited) through standard web analytics tools (Google Analytics 4) to help us understand how visitors use our site. This data is aggregated and not linked to your identity.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>3. How We Use Your Information</h2>
+      <p>We use the information you provide solely to operate our mobile detailing business and serve you. Specifically, we use it to:</p>
+      <ul>
+        <li>Respond to your quote request and provide pricing</li>
+        <li>Contact you to confirm, schedule, or reschedule your detailing appointment</li>
+        <li>Send appointment reminders or follow-up messages (including via SMS if you have opted in)</li>
+        <li>Answer questions or resolve issues related to your service</li>
+        <li>Improve our website and booking experience using aggregated analytics data</li>
+      </ul>
+      <p>We do not use your information for automated profiling, advertising networks, or any purpose unrelated to providing you with mobile detailing services.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>4. SMS Messaging — Consent, Use &amp; Your Rights</h2>
+      <p>When you check the SMS consent box on our quote form, you are opting in to receive text messages from Mikey's Mobile Detailing at the phone number you provide. These messages may include:</p>
+      <ul>
+        <li>Quote confirmations and pricing details</li>
+        <li>Appointment scheduling and reminders</li>
+        <li>Follow-up messages related to your service</li>
+      </ul>
+      <p>Message frequency varies depending on your service needs. <strong>Msg &amp; data rates may apply.</strong></p>
+      <p>To stop receiving SMS messages at any time, reply <strong>STOP</strong> to any message we send you. For help, reply <strong>HELP</strong> or contact us at <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a> or <a href="tel:+13607975831">(360) 797-5831</a>.</p>
+
+      <div class="highlight-box">
+        <p>Your phone number and SMS consent are <strong>never shared with or sold to third parties for marketing purposes</strong> — period. We use your number only to contact you about your detailing service.</p>
+      </div>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>5. How We Share Your Information</h2>
+      <p>We do not sell, rent, lease, or share your personal information — including your name, phone number, email, or SMS opt-in status — with any third party for marketing, advertising, or any other commercial purpose.</p>
+      <p>We may share limited information only in the following narrow circumstances:</p>
+      <ul>
+        <li><strong>Service providers:</strong> We use third-party tools (such as our booking platform, SMS provider, and Google Analytics) that process data on our behalf, solely to help us run our business. These providers are contractually restricted from using your data for any other purpose.</li>
+        <li><strong>Legal compliance:</strong> If required by law, subpoena, or government authority, we may disclose information as necessary to comply with our legal obligations.</li>
+      </ul>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>6. Data Retention</h2>
+      <p>We retain your information only as long as necessary to fulfill the purpose for which it was collected — typically for the duration of our service relationship plus a reasonable period for follow-up and recordkeeping. When data is no longer needed, we delete or anonymize it.</p>
+      <p>SMS opt-out records (STOP requests) are retained indefinitely to ensure we honor your preference.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>7. Data Security</h2>
+      <p>We take reasonable technical and organizational measures to protect your personal information from unauthorized access, loss, misuse, or disclosure. However, no transmission over the internet or electronic storage system is 100% secure. If you have concerns about data security, contact us directly.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>8. Your Rights &amp; Choices</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Request access to the personal information we hold about you</li>
+        <li>Request correction of inaccurate or incomplete information</li>
+        <li>Request deletion of your information (subject to legal retention requirements)</li>
+        <li>Opt out of SMS messages at any time by replying <strong>STOP</strong></li>
+        <li>Contact us with questions or complaints about how we handle your data</li>
+      </ul>
+      <p>To exercise any of these rights, email us at <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a> or call <a href="tel:+13607975831">(360) 797-5831</a>. We will respond promptly.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>9. Children's Privacy</h2>
+      <p>Our services are not directed to individuals under 13 years of age, and we do not knowingly collect personal information from children under 13. If we learn that we have collected such information, we will delete it promptly.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically. Continued use of our website or services after any changes constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>11. Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or how we handle your information, please reach out:</p>
+      <ul>
+        <li><strong>Business:</strong> Mikey's Mobile Detailing</li>
+        <li><strong>Owner:</strong> Mikey (sole proprietor)</li>
+        <li><strong>Location:</strong> Snohomish County, WA</li>
+        <li><strong>Phone:</strong> <a href="tel:+13607975831">(360) 797-5831</a></li>
+        <li><strong>Email:</strong> <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></li>
+        <li><strong>Website:</strong> <a href="https://mikeysdetailing.com">mikeysdetailing.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="brand">Mikey's Mobile Detailing</h3>
+      <p>Professional mobile car detailing in Snohomish County — serving Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and nearby areas.</p>
+    </div>
+    <div class="footer-col">
+      <h3 class="gold">Quick Links</h3>
+      <ul>
+        <li><a href="/#allservices">Services</a></li>
+        <li><a href="/#booking">Book Now</a></li>
+        <li><a href="/#qanda">FAQ</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms/">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 class="gold">Contact</h3>
+      <address style="font-style:normal;">
+        <p>📍 Snohomish, WA</p>
+        <p>📞 <a href="tel:+13607975831">(360) 797-5831</a></p>
+        <p>✉ <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></p>
+      </address>
+    </div>
+    <div class="footer-col" style="display:flex; align-items:center;">
+      <a href="/#booking" class="footer-cta">Book Your Detail Today →</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish, WA. All rights reserved. &nbsp;|&nbsp; <a href="/privacy-policy/" style="color:#8a8a8a;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms/" style="color:#8a8a8a;">Terms &amp; Conditions</a></p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  menu.classList.remove('open');
+  function openMenu() { menu.classList.add('open'); btn.classList.add('active'); btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Close navigation menu'); }
+  function closeMenu() { menu.classList.remove('open'); btn.classList.remove('active'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open navigation menu'); }
+  function toggle() { menu.classList.contains('open') ? closeMenu() : openMenu(); }
+  btn.addEventListener('click', toggle);
+  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('click', function(e){ if(!btn.contains(e.target)&&!menu.contains(e.target)) closeMenu(); });
+})();
+</script>
+</body>
+</html>
