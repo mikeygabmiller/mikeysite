@@ -1,0 +1,13 @@
+name       = "mikeys-detailing-sms"
+main       = "src/index.js"
+compatibility_date = "2024-09-23"
+
+# Routes — replace YOUR_ZONE with your Cloudflare zone ID if using a custom domain,
+# or leave workers_dev = true to use the *.workers.dev subdomain for now.
+workers_dev = true
+
+# Secrets are NOT stored here. Set them with:
+#   wrangler secret put TWILIO_ACCOUNT_SID
+#   wrangler secret put TWILIO_AUTH_TOKEN
+#   wrangler secret put TWILIO_FROM
+#   wrangler secret put MIKEY_PHONE

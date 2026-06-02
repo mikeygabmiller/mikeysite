@@ -2464,15 +2464,25 @@ header li a[href="#booking"],
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
       fd.append('message', msgBody);
-      fetch('https://api.web3forms.com/submit', { method:'POST', body: fd })
-        .then(function(res){ return res.json(); })
-        .then(function(data){
-          if (data && data.success){
-            if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
-            goStep(5);
-          } else { showSubmitError(); }
-        })
-        .catch(function(){ showSubmitError(); });
+      // Fire web3forms (email to Mikey) + Worker (SMS via Twilio) in parallel.
+      // Success if either goes through so the customer is never blocked.
+      var smsPayload = JSON.stringify({
+        name: name, phone: phone, email: email || '', location: location || '',
+        total: S.total, vehicle: veh, condition: cond,
+        services: S.items, notes: notes || ''
+      });
+      var WORKER_URL = 'https://mikeys-detailing-sms.YOUR_SUBDOMAIN.workers.dev/submit';
+      Promise.allSettled([
+        fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
+        fetch(WORKER_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: smsPayload })
+      ]).then(function(results){
+        var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
+        var smsOk   = results[1].status==='fulfilled';
+        if (emailOk || smsOk){
+          if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
+          goStep(5);
+        } else { showSubmitError(); }
+      }).catch(function(){ showSubmitError(); });
     }, false);
     return true;
   }
