@@ -2063,6 +2063,12 @@ header li a[href="#booking"],
 #qqcCard #qqfName input:focus, #qqcCard #qqfPhone input:focus { background: var(--surface-2); }
 #qqcCard #qqfName::after, #qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
 #qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
+#qqcCard .sms-consent-wrap { display: flex; align-items: flex-start; gap: 11px; margin: 14px 0 10px; padding: 14px; background: rgba(200,16,46,0.06); border: 1px solid rgba(200,16,46,0.25); border-radius: 10px; cursor: pointer; }
+#qqcCard .sms-consent-wrap input[type="checkbox"] { margin-top: 2px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--accent); cursor: pointer; }
+#qqcCard .sms-consent-wrap label { font-size: 11.5px; line-height: 1.55; color: var(--text-3); cursor: pointer; }
+#qqcCard .sms-consent-wrap label a { color: var(--accent); text-decoration: none; }
+#qqcCard .sms-consent-wrap label a:hover { text-decoration: underline; }
+#qqcCard .sms-consent-wrap.bad { border-color: var(--accent); background: rgba(var(--accent-rgb), 0.12); }
 #qqcCard .trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
 #qqcCard .trust span { display: inline-flex; align-items: center; gap: 5px; }
 #qqcCard .trust svg { width: 13px; height: 13px; color: var(--success); }
@@ -2248,10 +2254,15 @@ header li a[href="#booking"],
         </datalist>
       </div>
       <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+      <div class="sms-consent-wrap" id="qqConsentWrap">
+        <input type="checkbox" id="qqSmsConsent" name="sms_consent" value="yes" aria-describedby="qqConsentText">
+        <label for="qqSmsConsent" id="qqConsentText">
+          I agree to receive SMS text messages from Mikey's Mobile Detailing at the phone number above. Messages may include quote confirmations, scheduling, and appointment reminders. Message frequency varies. <strong>Msg &amp; data rates may apply.</strong> Reply <strong>STOP</strong> to opt out anytime. Reply <strong>HELP</strong> for help. See our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a>.
+        </label>
+      </div>
       <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Lock in my quote</button>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
-    <p class="consent">By continuing you agree to receive a text about your quote. No spam &mdash; reply STOP to opt out.</p>
     <div class="trust">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
@@ -2426,7 +2437,9 @@ header li a[href="#booking"],
       var phone = (pE.value || '').trim();
       var digits = phone.replace(/\D/g,'');
       if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
-      if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
+      var consentBox = $('qqSmsConsent'); var consentWrap = $('qqConsentWrap');
+      if (consentBox && !consentBox.checked){ if(consentWrap) consentWrap.classList.add('bad'); ok=false; } else { if(consentWrap) consentWrap.classList.remove('bad'); }
+      if (!ok){ (nW.classList.contains('bad')?nE:pW.classList.contains('bad')?pE:consentBox).focus(); return; }
 
       var name = nE.value.trim();
       var email = ($('qqEmail').value || '').trim();
@@ -2464,6 +2477,7 @@ header li a[href="#booking"],
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
       fd.append('message', msgBody);
+      fd.append('sms_consent', 'yes');
       fetch('https://api.web3forms.com/submit', { method:'POST', body: fd })
         .then(function(res){ return res.json(); })
         .then(function(data){
