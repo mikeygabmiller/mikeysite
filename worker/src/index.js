@@ -5,14 +5,17 @@
  *                  1. Confirmation text to the client
  *                  2. Lead alert to Mikey
  *
- * POST /sms      → Twilio inbound SMS webhook; forwards the client's reply
- *                  to Mikey and sends a read-receipt to the client so
- *                  two-way conversations flow through this number.
+ * POST /sms      → Twilio inbound SMS webhook; forwards client texts to Mikey
+ *                  and sends an auto-ack back to the client.
+ *
+ * POST /call     → Twilio inbound voice webhook; rings Mikey's cell.
+ *                  If he doesn't answer, caller can leave a voicemail
+ *                  and Mikey gets a text alert with the recording link.
  *
  * Required Worker Secrets (set with `wrangler secret put`):
  *   TWILIO_ACCOUNT_SID
  *   TWILIO_AUTH_TOKEN
- *   TWILIO_FROM          — your Twilio number, E.164 e.g. +12065550100
+ *   TWILIO_FROM          — your Twilio number, E.164 e.g. +13607975831
  *   MIKEY_PHONE          — your personal cell, E.164 e.g. +13607975831
  */
 
@@ -31,6 +34,18 @@ export default {
 
     if (request.method === 'POST' && url.pathname === '/sms') {
       return handleInboundSms(request, env);
+    }
+
+    if (request.method === 'POST' && url.pathname === '/call') {
+      return handleInboundCall(request, env);
+    }
+
+    if (request.method === 'POST' && url.pathname === '/voicemail') {
+      return handleVoicemail(request, env);
+    }
+
+    if (request.method === 'POST' && url.pathname === '/voicemail-done') {
+      return handleVoicemailDone(request, env);
     }
 
     return new Response('Not found', { status: 404 });
@@ -142,6 +157,83 @@ async function handleInboundSms(request, env) {
   // Auto-acknowledge the client so they know the message landed
   const ack = `Got it! Mikey will get back to you soon. 🚗✨`;
   return twimlResponse(ack);
+}
+
+// ---------------------------------------------------------------------------
+// Inbound call → forward to Mikey's cell
+// ---------------------------------------------------------------------------
+async function handleInboundCall(request, env) {
+  const form   = await request.formData();
+  const from   = form.get('From') || 'Unknown';
+  const mikeyPhone = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+
+  // Ring Mikey for up to 20 seconds, then drop to voicemail
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Dial timeout="20" action="/voicemail" method="POST">
+    <Number>${escapeXml(mikeyPhone)}</Number>
+  </Dial>
+</Response>`;
+
+  // Also fire a text to Mikey so he knows someone called even if he picks up
+  // (async — don't await, so the call connects fast)
+  sendSms(env, mikeyPhone,
+    `📞 Incoming call from ${from} to your Mikey's Detailing number.`
+  ).catch(() => {});
+
+  return new Response(xml, { headers: { 'Content-Type': 'text/xml' } });
+}
+
+// ---------------------------------------------------------------------------
+// Voicemail — fires when Mikey doesn't answer the forwarded call
+// ---------------------------------------------------------------------------
+async function handleVoicemail(request, env) {
+  const form        = await request.formData();
+  const from        = form.get('From') || 'Unknown';
+  const dialStatus  = form.get('DialCallStatus') || '';
+  const mikeyPhone  = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+
+  // Only record if Mikey didn't answer
+  if (dialStatus === 'completed') {
+    // He answered — nothing to do
+    return new Response('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', {
+      headers: { 'Content-Type': 'text/xml' },
+    });
+  }
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say voice="alice">Hey, you've reached Mikey's Mobile Detailing. Leave a message and Mikey will text or call you right back.</Say>
+  <Record maxLength="120" action="/voicemail-done" method="POST" playBeep="true" />
+</Response>`;
+
+  // Alert Mikey that he missed a call
+  sendSms(env, mikeyPhone,
+    `📵 Missed call from ${from} — they're leaving a voicemail now.`
+  ).catch(() => {});
+
+  return new Response(xml, { headers: { 'Content-Type': 'text/xml' } });
+}
+
+// ---------------------------------------------------------------------------
+// Voicemail recording complete — text Mikey the recording link
+// ---------------------------------------------------------------------------
+async function handleVoicemailDone(request, env) {
+  const form         = await request.formData();
+  const from         = form.get('From') || 'Unknown';
+  const recordingUrl = form.get('RecordingUrl') || '';
+  const duration     = form.get('RecordingDuration') || '?';
+  const mikeyPhone   = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+
+  if (recordingUrl) {
+    await sendSms(env, mikeyPhone,
+      `🎙️ Voicemail from ${from} (${duration}s):\n${recordingUrl}.mp3`
+    ).catch(() => {});
+  }
+
+  return new Response('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', {
+    headers: { 'Content-Type': 'text/xml' },
+  });
 }
 
 // ---------------------------------------------------------------------------

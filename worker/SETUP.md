@@ -54,10 +54,17 @@ var WORKER_URL = 'https://mikeys-detailing-sms.YOUR_SUBDOMAIN.workers.dev/submit
 ```
 Replace `YOUR_SUBDOMAIN` with the actual subdomain from Step 3.
 
-### 6. Wire Twilio inbound webhook
-- In Twilio Console → Phone Numbers → your number → Messaging
-- Set **"A message comes in"** → Webhook → `POST`
+### 6. Wire Twilio webhooks (both SMS and calls)
+- In Twilio Console → Phone Numbers → your number
+
+**Messaging section:**
+- "A message comes in" → Webhook → `POST`
 - URL: `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/sms`
+
+**Voice section:**
+- "A call comes in" → Webhook → `POST`
+- URL: `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/call`
+
 - Save.
 
 ### 7. Commit and push the updated index.html
