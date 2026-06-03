@@ -1,119 +1,107 @@
-# Mikey's Detailing — SMS Worker Setup
+# Mikey's Detailing — SMS Worker + Dashboard Setup
 
 ## What this does
 
-Every time someone fills out the quote form on your site, this Cloudflare Worker:
-
-1. **Texts the client** an instant confirmation with their quote total, vehicle, and services — from YOUR Twilio number.
-2. **Texts you (Mikey)** a full lead alert with every detail the form captured.
-3. **Relays inbound replies** — when the client texts back, you get a forwarded copy instantly.
+- **Auto-texts clients** the moment they submit your quote form
+- **Alerts you** with a full lead breakdown via text
+- **Forwards inbound texts** to your cell in real time
+- **Forwards calls** to your cell; voicemail recording link texted to you if missed
+- **SMS Dashboard** — web app at your Worker URL to read and reply to every conversation
 
 ---
 
-## One-time setup (takes ~20 minutes)
+## One-time setup (~30 minutes)
 
 ### 1. Get your Twilio credentials
 - Log in at twilio.com → Console Dashboard
 - Copy **Account SID** and **Auth Token**
-- Your Twilio phone number (the one you bought) — note it in E.164 format: `+12065551234`
+- Note your Twilio phone number in E.164 format: `+12065551234`
 
-### 2. Install Wrangler (Cloudflare's CLI)
+### 2. Install Wrangler
 ```bash
 npm install -g wrangler
-wrangler login   # opens browser, sign in to Cloudflare
+wrangler login
 ```
 
-### 3. Deploy the Worker
+### 3. Create the KV namespace (message storage)
 ```bash
-cd worker
+wrangler kv:namespace create MESSAGES
+```
+It prints something like:
+```
+id = "abc123def456..."
+```
+Paste that `id` into `wrangler.toml` under `[[kv_namespaces]]`.
+
+### 4. Deploy
+```bash
 npm install
 wrangler deploy
 ```
-It will print a URL like:
-`https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev`
+You'll get a URL like `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev`
 
-### 4. Set secrets (never hard-coded — stored encrypted in Cloudflare)
+### 5. Set secrets
 ```bash
 wrangler secret put TWILIO_ACCOUNT_SID
-# paste your SID when prompted
-
 wrangler secret put TWILIO_AUTH_TOKEN
-# paste your Auth Token
-
-wrangler secret put TWILIO_FROM
-# paste your Twilio number: +12065551234
-
-wrangler secret put MIKEY_PHONE
-# paste YOUR personal cell: +13607975831
+wrangler secret put TWILIO_FROM          # e.g. +12065551234
+wrangler secret put MIKEY_PHONE          # e.g. +13607975831
+wrangler secret put DASHBOARD_PASSWORD   # pick any password you want
 ```
 
-### 5. Update the Worker URL in index.html
-Find this line in `index.html`:
-```
+### 6. Update the Worker URL in index.html
+Find this line in the main site's `index.html`:
+```js
 var WORKER_URL = 'https://mikeys-detailing-sms.YOUR_SUBDOMAIN.workers.dev/submit';
 ```
-Replace `YOUR_SUBDOMAIN` with the actual subdomain from Step 3.
+Replace `YOUR_SUBDOMAIN` with your actual workers.dev subdomain.
 
-### 6. Wire Twilio webhooks (both SMS and calls)
-- In Twilio Console → Phone Numbers → your number
+### 7. Wire Twilio webhooks
+In Twilio Console → Phone Numbers → your number:
 
-**Messaging section:**
-- "A message comes in" → Webhook → `POST`
-- URL: `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/sms`
+**Messaging:**
+- "A message comes in" → Webhook → POST
+- `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/sms`
 
-**Voice section:**
-- "A call comes in" → Webhook → `POST`
-- URL: `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/call`
-
-- Save.
-
-### 7. Commit and push the updated index.html
+**Voice:**
+- "A call comes in" → Webhook → POST
+- `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev/call`
 
 ---
 
-## Full SMS communication system
+## Using the dashboard
 
-This is your primary client communication channel now. Here's the full picture:
+Open `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev` in your browser.
 
-| Flow | How it works |
-|------|-------------|
-| Client submits form | Auto-text sent to client + alert to you instantly |
-| Client replies to your Twilio number | Forwarded to your cell as a notification |
-| You reply to a client | Text them directly FROM YOUR PERSONAL NUMBER or via the Twilio console/app |
-| You want to text first | Use the Twilio mobile app (free) or text from your phone |
+Sign in with the `DASHBOARD_PASSWORD` you set. It stays logged in for 30 days.
 
-### Recommended: Twilio mobile app
-Download the **Twilio app** (iOS/Android). It lets you send/receive from your Twilio number directly — keeps your personal number private and all client threads in one place.
+**Features:**
+- See all conversations in the left panel, sorted by most recent
+- Red badge = unread messages
+- Click a thread to read the full history
+- Type and hit Enter (or tap ➤) to send a reply
+- Tap "Rename" on any contact to save their name
+- "+ New" button to start a fresh conversation with any number
+- Auto-refreshes every 5 seconds — no need to reload
 
-### Message templates to have ready
+**Bookmark it on your phone** — add to home screen from Safari/Chrome for an app-like experience.
 
-**After getting the lead alert, reply with:**
-```
-Hey [Name]! It's Mikey — got your quote request. 
-I'm free [day] at [time] — does that work for you?
-```
+---
 
-**To confirm a booking:**
-```
-You're locked in! [Date] at [Time], [Address].
-I'll send a reminder the morning of. See you then! 🚗
-```
+## Notifications you get at (360) 797-5831
 
-**Day-before reminder:**
-```
-Hey [Name], reminder — Mikey's Detail tomorrow at [Time]. 
-Reply CONFIRM to lock it in or text me to reschedule. 👍
-```
-
-**After the job:**
-```
-Thanks [Name]! Hope you love the detail. 
-If you have 2 min, a Google review means the world: [your review link]
-```
+| Event | Text you get |
+|---|---|
+| Quote form submitted | 🔔 Full lead alert |
+| Client texts your Twilio number | 📱 Forwarded instantly |
+| Someone calls | 📞 Alert + your cell rings |
+| Missed call | 📵 Alert while they record |
+| Voicemail left | 🎙️ Direct MP3 link |
 
 ---
 
 ## Costs
-- Cloudflare Workers free tier: 100,000 requests/day — effectively free for your volume
-- Twilio SMS: ~$0.0079/message (pennies per lead)
+- Cloudflare Workers free tier: 100k requests/day — free for your volume
+- Cloudflare KV free tier: 100k reads/day, 1k writes/day — free for your volume
+- Twilio SMS: ~$0.0079/message
 - Twilio number: ~$1.15/month
