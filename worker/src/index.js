@@ -209,7 +209,7 @@ async function handleSubmit(request, env) {
   try { body = await request.json(); }
   catch { return cors(json({ ok: false, error: 'bad_json' }, 400)); }
 
-  const { name, phone, email, location, total, vehicle, condition, services, notes } = body;
+  const { name, phone, email, location, total, vehicle, condition, services, notes, smsConsent } = body;
   if (!name || !phone) return cors(json({ ok: false, error: 'missing_fields' }, 422));
 
   const clientPhone = normalizePhone(phone);
@@ -240,7 +240,9 @@ async function handleSubmit(request, env) {
 
   const ts = Date.now();
   const [r1, r2] = await Promise.allSettled([
-    sendSms(env, clientPhone, clientMsg),
+    smsConsent
+      ? sendSms(env, clientPhone, clientMsg)
+      : Promise.resolve({ skipped: true }),
     sendSms(env, env.MIKEY_PHONE, mikeyMsg),
   ]);
 
