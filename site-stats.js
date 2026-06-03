@@ -9,7 +9,7 @@
    When you get a new Google review, just bump reviewCount.
    ============================================================ */
 window.MD_STATS = {
-  reviewCount: 38,    // ← number of Google reviews   (update this one!)
+  reviewCount: 39,    // ← number of Google reviews   (update this one!)
   rating: "5.0",      // ← average star rating
   carsDetailed: 300   // ← cars detailed
 };
