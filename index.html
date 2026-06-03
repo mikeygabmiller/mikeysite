@@ -2471,7 +2471,7 @@ header li a[href="#booking"],
         total: S.total, vehicle: veh, condition: cond,
         services: S.items, notes: notes || ''
       });
-      var WORKER_URL = 'https://mikeys-detailing-sms.YOUR_SUBDOMAIN.workers.dev/submit';
+      var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
         fetch(WORKER_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: smsPayload })
