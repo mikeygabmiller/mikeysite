@@ -1,0 +1,19 @@
+name       = "mikeys-detailing-sms"
+main       = "src/index.js"
+compatibility_date = "2024-09-23"
+
+workers_dev = true
+
+# KV namespace for storing messages and conversation threads.
+# Create it with: wrangler kv:namespace create MESSAGES
+# Then paste the resulting id below.
+[[kv_namespaces]]
+binding = "MESSAGES"
+id      = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# Secrets — set with `wrangler secret put <name>`:
+#   TWILIO_ACCOUNT_SID
+#   TWILIO_AUTH_TOKEN
+#   TWILIO_FROM          your Twilio number e.g. +12065551234
+#   MIKEY_PHONE          your personal cell e.g. +13607975831
+#   DASHBOARD_PASSWORD   password to access the dashboard
