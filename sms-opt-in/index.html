@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMS Opt-In &amp; Consent | Mikey's Mobile Detailing</title>
+<meta name="description" content="How customers opt in to SMS text messages from Mikey's Mobile Detailing — the consent checkbox on our quote form, program details, message frequency, and opt-out instructions.">
+<link rel="canonical" href="https://mikeysdetailing.com/sms-opt-in/">
+<meta name="robots" content="index,follow">
+
+<link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G9WMXW2MF5');
+</script>
+
+<style>
+:root {
+  --brand-red: #C8102E;
+  --brand-red-dark: #A00C24;
+  --brand-red-glow: rgba(200,16,46,0.30);
+  --accent-rgb: 200,16,46;
+  --bg-black: #0a0a0a;
+  --bg-card: #141414;
+  --bg-card-light: #1a1a1a;
+  --border-dark: #2a2a2a;
+  --text-white: #fff;
+  --text-gray: #c2c2c2;
+  --text-muted: #9a9a9a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+body {
+  background: var(--bg-card);
+  color: var(--text-white);
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-top: 90px;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand-red); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── HEADER ── */
+.skip-nav {
+  position: absolute; top: -100px; left: 16px;
+  background: var(--brand-red); color: #fff;
+  padding: 8px 16px; font-size: 14px; font-weight: 700;
+  border-radius: 4px; z-index: 99999; transition: top 0.2s;
+}
+.skip-nav:focus { top: 8px; }
+
+#mikeyHeader {
+  position: fixed; top: 0; left: 0; right: 0; width: 100%;
+  background: rgba(12,12,12,0.92);
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+}
+#mikeyHeader nav {
+  max-width: 1200px; margin: auto;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 40px; color: white; position: relative;
+}
+#mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; transition: opacity 0.2s ease; }
+#mikeyHeader a:hover img { opacity: 0.85; }
+
+#desktopMenu {
+  list-style: none; display: flex; gap: 4px; align-items: center;
+  margin: 0; padding: 0;
+}
+#desktopMenu a {
+  color: rgba(255,255,255,0.85); text-decoration: none;
+  font-weight: 600; font-size: 0.82rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 10px 16px; position: relative; transition: color 0.25s ease; display: inline-block;
+}
+#desktopMenu a:not([href*="booking"])::before {
+  content: ''; position: absolute; bottom: 4px; left: 50%;
+  width: 0; height: 2px; background: var(--brand-red);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+#desktopMenu a:not([href*="booking"]):hover { color: #fff; }
+#desktopMenu a:not([href*="booking"]):hover::before { width: 70%; left: 15%; }
+#desktopMenu a:focus-visible { outline: 1px solid var(--brand-red); outline-offset: 4px; border-radius: 2px; }
+
+#desktopMenu a[href*="booking"] {
+  display: inline-block; padding: 11px 22px; margin-left: 10px;
+  background: var(--brand-red); color: #fff !important;
+  font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em;
+  text-transform: uppercase; border-radius: 6px; transition: background 0.2s ease;
+}
+#desktopMenu a[href*="booking"]:hover { background: var(--brand-red-dark); }
+
+#hamburgerBtn {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; z-index: 10001;
+  background: none; border: none; padding: 6px;
+}
+#hamburgerBtn span { width: 26px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s ease; display: block; }
+#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
+#hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
+
+#mobileMenu {
+  list-style: none; position: absolute; top: 100%; left: 0; width: 100%;
+  background: #0a0a0a; max-height: 0; opacity: 0; overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  border-top: 1px solid rgba(255,255,255,0.08); margin: 0; padding: 0;
+}
+#mobileMenu.open { max-height: 600px; opacity: 1; }
+#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.06); }
+#mobileMenu li:last-child { border-bottom: none; }
+#mobileMenu a {
+  color: white; text-decoration: none; padding: 18px 24px; display: block;
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: background 0.2s, padding-left 0.2s, color 0.2s; position: relative;
+}
+#mobileMenu a::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 0; background: var(--brand-red); transition: width 0.2s ease;
+}
+#mobileMenu a:hover { background: rgba(200,16,46,0.1); padding-left: 34px; color: var(--brand-red); }
+#mobileMenu a:hover::before { width: 3px; }
+
+@media (max-width: 768px) {
+  body { padding-top: 70px; }
+  #desktopMenu { display: none !important; }
+  #hamburgerBtn { display: flex !important; }
+  #mikeyHeader img { height: 38px; }
+  #mikeyHeader nav { padding: 10px 16px; }
+}
+
+/* ── HERO BANNER ── */
+.page-hero {
+  background: #0a0a0a;
+  border-bottom: 2px solid var(--brand-red);
+  padding: 60px 40px 50px;
+  text-align: center;
+  box-shadow: 0 4px 40px var(--brand-red-glow);
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-white);
+  line-height: 1.1;
+}
+.page-hero h1 span { color: var(--brand-red); }
+.page-hero .meta {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ── CONTENT ── */
+.policy-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 60px 40px 80px;
+}
+
+.policy-section { margin-bottom: 48px; }
+.policy-section:last-child { margin-bottom: 0; }
+
+.policy-section h2 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--brand-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-left: 4px solid var(--brand-red);
+  padding-left: 14px;
+  margin-bottom: 18px;
+  box-shadow: -2px 0 18px var(--brand-red-glow);
+}
+
+.policy-section p,
+.policy-section li {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-gray);
+  margin-bottom: 14px;
+}
+.policy-section ul { list-style: none; padding: 0; margin: 0 0 14px; }
+.policy-section ul li { padding-left: 20px; position: relative; margin-bottom: 8px; }
+.policy-section ul li::before {
+  content: '▸'; position: absolute; left: 0;
+  color: var(--brand-red); font-size: 0.85rem; top: 2px;
+}
+
+.policy-divider { border: none; border-top: 1px solid var(--border-dark); margin: 48px 0; }
+
+/* ── OPT-IN DEMO MOCKUP (visual reproduction of the live quote-form step) ── */
+.optin-demo {
+  background: #0f0f0f;
+  border: 2px solid var(--brand-red);
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  margin: 0 0 18px;
+  box-shadow: 0 0 30px var(--brand-red-glow);
+}
+.optin-demo .demo-label {
+  display: inline-block;
+  background: var(--brand-red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.optin-demo .demo-step {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+.demo-field { margin-bottom: 12px; }
+.demo-field input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 2px solid var(--border-dark);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--text-white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  pointer-events: none;
+}
+.demo-field.req input { border-color: var(--brand-red); background: rgba(200,16,46,0.06); }
+.demo-field .req-tag {
+  font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
+  color: var(--brand-red); display: block; margin-bottom: 5px;
+}
+/* the actual consent checkbox, replicated 1:1 from the live form */
+.sms-consent-wrap {
+  display: flex; align-items: flex-start; gap: 11px;
+  margin: 14px 0 16px; padding: 14px;
+  background: rgba(200,16,46,0.06);
+  border: 1px solid rgba(200,16,46,0.25);
+  border-radius: 10px;
+}
+.sms-consent-wrap input[type="checkbox"] {
+  margin-top: 2px; width: 18px; height: 18px; flex-shrink: 0;
+  accent-color: var(--brand-red);
+}
+.sms-consent-wrap label {
+  font-size: 12.5px; line-height: 1.55; color: var(--text-gray);
+}
+.sms-consent-wrap label em { color: var(--text-muted); font-style: italic; }
+.demo-submit {
+  width: 100%;
+  background: var(--brand-red);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 12px rgba(200,16,46,0.5);
+  pointer-events: none;
+}
+.demo-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 14px 2px 0;
+  line-height: 1.55;
+}
+
+/* program-details table */
+.sms-table { width: 100%; border-collapse: collapse; }
+.sms-table td {
+  padding: 9px 0; vertical-align: top;
+  font-size: 0.97rem; line-height: 1.6;
+  color: var(--text-gray); border-bottom: 1px solid var(--border-dark);
+}
+.sms-table td:first-child {
+  font-weight: 700; color: var(--text-white);
+  width: 36%; padding-right: 16px;
+}
+.sms-table tr:last-child td { border-bottom: none; }
+.kw { color: var(--text-white); font-weight: 900; }
+
+@media (max-width: 600px) {
+  .policy-wrap { padding: 40px 20px 60px; }
+  .page-hero { padding: 40px 20px 36px; }
+  .optin-demo { padding: 22px 18px; }
+  .sms-table td { display: block; width: 100%; }
+  .sms-table td:first-child { padding-bottom: 2px; border-bottom: none; }
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #111; color: #fff;
+  font-family: 'Outfit', sans-serif;
+  padding: 40px 20px 20px;
+  border-top: 2px solid var(--brand-red);
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 28px;
+  justify-content: space-between; align-items: flex-start;
+}
+.footer-col { flex: 1 1 200px; min-width: 180px; }
+.footer-col h3 { font-size: 16px; margin-bottom: 10px; }
+.footer-col h3.brand { color: var(--brand-red); }
+.footer-col h3.gold { color: #C8102E; font-size: 14px; }
+.footer-col p, .footer-col a, .footer-col li { color: #ccc; font-size: 13.5px; line-height: 1.6; text-decoration: none; }
+.footer-col ul { list-style: none; }
+.footer-col ul a:hover { color: var(--brand-red); }
+.footer-col ul li { margin-bottom: 2px; }
+.footer-cta {
+  display: inline-block; padding: 11px 22px;
+  background: var(--brand-red); color: #fff;
+  font-weight: 800; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 0 12px rgba(200,16,46,0.5); transition: transform .15s; font-size: 13.5px;
+}
+.footer-cta:hover { transform: translateY(-2px); }
+.footer-copy { margin-top: 24px; text-align: center; color: #8a8a8a; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<a class="skip-nav" href="#main-content">Skip to main content</a>
+
+<!-- HEADER -->
+<header id="mikeyHeader">
+  <nav>
+    <a href="/" aria-label="Home — Mikey's Mobile Detailing">
+      <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing logo" decoding="async">
+    </a>
+    <ul id="desktopMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a href="/#booking">BOOK NOW</a></li>
+    </ul>
+    <button id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="mobileMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a href="/#booking">Book Now</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>SMS <span>Opt-In</span> &amp; Consent</h1>
+  <p class="meta">This page shows exactly how customers consent to receive text messages from Mikey's Mobile Detailing, and the full terms of our SMS program — for transparency and for carrier (A2P 10DLC) review.</p>
+</div>
+
+<!-- CONTENT -->
+<main id="main-content">
+  <div class="policy-wrap">
+
+    <div class="policy-section">
+      <h2>How Customers Opt In</h2>
+      <p>Customers opt in to SMS messages on our public website at <a href="https://mikeysdetailing.com">mikeysdetailing.com</a>. On the <strong>"Get a Quote" / Quick Quote</strong> form, after entering their name and phone number, the customer can check an <strong>optional SMS consent checkbox</strong> that sits directly above the "Lock in my quote" submit button.</p>
+      <p>The checkbox is <strong>unchecked by default</strong>, and consent is <strong>not required</strong> to receive a quote or any service — the form submits either way. Below is an exact reproduction of what the customer sees:</p>
+
+      <!-- VISUAL REPRODUCTION OF THE LIVE QUOTE-FORM STEP -->
+      <div class="optin-demo" role="img" aria-label="Reproduction of the SMS consent checkbox on the Mikey's Mobile Detailing quote form">
+        <span class="demo-label">As seen on our quote form</span>
+        <div class="demo-step">Step 4 of 4 · Your quote</div>
+        <div class="demo-field req">
+          <span class="req-tag">Required</span>
+          <input type="text" value="Your name" disabled aria-hidden="true">
+        </div>
+        <div class="demo-field req">
+          <span class="req-tag">Required</span>
+          <input type="text" value="Phone number" disabled aria-hidden="true">
+        </div>
+        <div class="demo-field">
+          <input type="text" value="Email (optional)" disabled aria-hidden="true">
+        </div>
+
+        <div class="sms-consent-wrap">
+          <input type="checkbox" disabled aria-hidden="true">
+          <label>Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em> &mdash; msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
+        </div>
+
+        <button class="demo-submit" type="button" disabled aria-hidden="true">Lock in my quote</button>
+        <p class="demo-caption">↑ The consent checkbox is optional and unchecked by default. Customers receive their quote whether or not they check it.</p>
+      </div>
+
+      <p>Next to the checkbox, customers can read our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a> before opting in.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>SMS Program Details</h2>
+      <table class="sms-table">
+        <tr>
+          <td>Program Name</td>
+          <td>Mikey's Mobile Detailing SMS</td>
+        </tr>
+        <tr>
+          <td>Program Description</td>
+          <td>Transactional, service-related text messages — quote confirmations, appointment scheduling, reminders, and follow-ups — sent only to customers who opt in via the checkbox on our quote form. We do not send marketing blasts.</td>
+        </tr>
+        <tr>
+          <td>Message Frequency</td>
+          <td>Varies based on your service needs and appointment status.</td>
+        </tr>
+        <tr>
+          <td>Cost</td>
+          <td><strong>Msg &amp; data rates may apply.</strong></td>
+        </tr>
+        <tr>
+          <td>Opt Out</td>
+          <td>Reply <span class="kw">STOP</span> to any message to unsubscribe. You'll get one confirmation and no further texts.</td>
+        </tr>
+        <tr>
+          <td>Help</td>
+          <td>Reply <span class="kw">HELP</span>, or contact us at <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a> or <a href="tel:+13607975831">(360) 797-5831</a>.</td>
+        </tr>
+        <tr>
+          <td>Privacy</td>
+          <td>Your phone number and SMS consent are <strong>never shared with or sold to third parties</strong> for marketing. See our <a href="/privacy-policy/">Privacy Policy</a>.</td>
+        </tr>
+      </table>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>Sample Messages</h2>
+      <ul>
+        <li>"Hi {Name}, it's Mikey's Mobile Detailing — thanks for your quote request! Your full detail estimate is {price}. Reply YES to book or call/text (360) 797-5831. Reply STOP to opt out."</li>
+        <li>"Hi {Name}, it's Mikey's Mobile Detailing — confirming your detail for {date} at {time} in {city}. Reply C to confirm or R to reschedule. Reply STOP to opt out."</li>
+      </ul>
+    </div>
+
+    <hr class="policy-divider">
+
+    <div class="policy-section">
+      <h2>Questions?</h2>
+      <p>Contact Mikey's Mobile Detailing anytime:</p>
+      <ul>
+        <li><strong>Phone:</strong> <a href="tel:+13607975831">(360) 797-5831</a></li>
+        <li><strong>Email:</strong> <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h3 class="brand">Mikey's Mobile Detailing</h3>
+      <p>Professional mobile car detailing in Snohomish County — serving Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and nearby areas.</p>
+    </div>
+    <div class="footer-col">
+      <h3 class="gold">Quick Links</h3>
+      <ul>
+        <li><a href="/#allservices">Services</a></li>
+        <li><a href="/#booking">Book Now</a></li>
+        <li><a href="/#qanda">FAQ</a></li>
+        <li><a href="/reviews/">Reviews</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="/terms/">Terms &amp; Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3 class="gold">Contact</h3>
+      <address style="font-style:normal;">
+        <p>📍 Snohomish, WA</p>
+        <p>📞 <a href="tel:+13607975831">(360) 797-5831</a></p>
+        <p>✉ <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></p>
+      </address>
+    </div>
+    <div class="footer-col" style="display:flex; align-items:center;">
+      <a href="/#booking" class="footer-cta">Book Your Detail Today →</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish, WA. All rights reserved. &nbsp;|&nbsp; <a href="/privacy-policy/" style="color:#8a8a8a;">Privacy Policy</a> &nbsp;|&nbsp; <a href="/terms/" style="color:#8a8a8a;">Terms &amp; Conditions</a></p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('hamburgerBtn');
+  var menu = document.getElementById('mobileMenu');
+  menu.classList.remove('open');
+  function openMenu() { menu.classList.add('open'); btn.classList.add('active'); btn.setAttribute('aria-expanded','true'); btn.setAttribute('aria-label','Close navigation menu'); }
+  function closeMenu() { menu.classList.remove('open'); btn.classList.remove('active'); btn.setAttribute('aria-expanded','false'); btn.setAttribute('aria-label','Open navigation menu'); }
+  function toggle() { menu.classList.contains('open') ? closeMenu() : openMenu(); }
+  btn.addEventListener('click', toggle);
+  btn.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('click', function(e){ if(!btn.contains(e.target)&&!menu.contains(e.target)) closeMenu(); });
+})();
+</script>
+</body>
+</html>
