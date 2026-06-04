@@ -955,6 +955,12 @@ header li a[href="#booking"],
       </figcaption>
     </figure>
 
+    <!-- Recent work strip -->
+    <div class="trust-work" aria-label="Recent detailing work">
+      <img src="https://lh3.googleusercontent.com/d/1KXZcymcndKbXRg0nxsijHeDOBRyu6CGA=w800" alt="Recent detailing job in Snohomish County" loading="lazy" onerror="this.style.display='none';">
+      <img src="https://lh3.googleusercontent.com/d/1vJbKfP9obAcXK3a4ElDu2KYygbjirTbY=w800" alt="Recent car detailing result by Mikey" loading="lazy" onerror="this.style.display='none';">
+    </div>
+
     <!-- All reviews CTA -->
     <a href="/reviews" class="trust-cta">
       Read all reviews
@@ -963,6 +969,12 @@ header li a[href="#booking"],
 
   </div>
 </section>
+
+<style>
+  .trust-work{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:32px 0 8px; }
+  .trust-work img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 10px 30px rgba(0,0,0,0.45); }
+  @media (max-width:520px){ .trust-work{ gap:10px; } }
+</style>
 
 <style>
   .trust-section {
@@ -1784,14 +1796,10 @@ header li a[href="#booking"],
   <h3>Real Work, <span>Real Results</span></h3>
   <p class="rw-sub">Fresh off jobs in Snohomish County &mdash; your car next.</p>
   <div class="rw-grid">
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1cpf-70LI3KDRX4wp9MqVr4swrNWhwe4-" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Z9vV_fc2WV-1Pqfmjy9vhhS62PJKMtSr" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Ylw9_lHLppNkNHNtpaXDY9Grwm_yZUeE" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1KXZcymcndKbXRg0nxsijHeDOBRyu6CGA" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Lax_oGzGQradeZzuK_wvs9P9MswleT8o" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1vJbKfP9obAcXK3a4ElDu2KYygbjirTbY" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=19k1tiDLAJylimGIcQErp2R8qqvc5DK0H" alt="Detailing result" loading="lazy"></div>
-    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1vBT2DkC6dWoy_tY_UUWzlGt6Wwm2wXo2" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://lh3.googleusercontent.com/d/1cpf-70LI3KDRX4wp9MqVr4swrNWhwe4-=w800" alt="Freshly detailed car in Snohomish County" loading="lazy"></div>
+    <div class="rw-item"><img src="https://lh3.googleusercontent.com/d/1Z9vV_fc2WV-1Pqfmjy9vhhS62PJKMtSr=w800" alt="Detailed vehicle exterior, washed and waxed" loading="lazy"></div>
+    <div class="rw-item"><img src="https://lh3.googleusercontent.com/d/1vBT2DkC6dWoy_tY_UUWzlGt6Wwm2wXo2=w800" alt="Detailing result after a full clean" loading="lazy"></div>
+    <div class="rw-item"><img src="https://lh3.googleusercontent.com/d/1Ylw9_lHLppNkNHNtpaXDY9Grwm_yZUeE=w800" alt="Clean car interior after detailing" loading="lazy"></div>
   </div>
 </div>
 
@@ -1814,6 +1822,14 @@ header li a[href="#booking"],
     <p class="mko__sub">
       Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax &mdash; a $130 value &mdash; free.</b> You pay the interior price and drive away with a full detail.
     </p>
+
+    <div class="mko__shot">
+      <img src="https://lh3.googleusercontent.com/d/19k1tiDLAJylimGIcQErp2R8qqvc5DK0H=w1000" alt="Exterior detail — washed and waxed by Mikey's Mobile Detailing" loading="lazy" onerror="this.closest('.mko__shot').style.display='none';">
+    </div>
+    <style>
+      .mko__shot{ max-width:520px; margin:4px auto 28px; }
+      .mko__shot img{ width:100%; display:block; border-radius:14px; border:2px solid var(--red-bright,#C8102E); box-shadow:0 0 30px rgba(200,16,46,0.4); }
+    </style>
 
     <!-- value math -->
     <div class="mko__deal">
@@ -3554,8 +3570,8 @@ header li a[href="#booking"],
 <section id="about" class="about-mikey" aria-labelledby="about-title">
   <div class="about-inner">
     <div class="about-photo">
-      <!-- Swap this logo for a real photo of Mikey + his rig when you have one: <img src="/images/mikey.jpg" alt="Mikey, owner of Mikey's Mobile Detailing"> -->
-      <img src="https://i.ibb.co/Kxzv8C6d/logo.jpg" alt="Mikey's Mobile Detailing" loading="lazy" decoding="async">
+      <!-- Feature photo of Mikey's work. Falls back to the logo if the image can't load. -->
+      <img src="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1000" alt="A car detailed by Mikey in Snohomish County" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://i.ibb.co/Kxzv8C6d/logo.jpg';">
     </div>
     <div class="about-copy">
       <span class="about-eyebrow">Meet Your Detailer</span>
