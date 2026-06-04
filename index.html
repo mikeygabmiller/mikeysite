@@ -1736,6 +1736,65 @@ header li a[href="#booking"],
 })();
 </script>
 
+<style>
+  .real-work { margin-top: 60px; }
+  .real-work h3 {
+    text-align: center;
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .real-work h3 span { color: #C8102E; }
+  .real-work .rw-sub {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    margin-bottom: 36px;
+  }
+  .rw-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (min-width: 700px) {
+    .rw-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  .rw-item {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #C8102E;
+    box-shadow: 0 0 18px rgba(200,16,46,0.3);
+    aspect-ratio: 1;
+    background: #111;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .rw-item:hover { transform: scale(1.03); box-shadow: 0 0 32px rgba(200,16,46,0.5); }
+  .rw-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>
+
+<div class="container real-work">
+  <h3>Real Work, <span>Real Results</span></h3>
+  <p class="rw-sub">Fresh off jobs in Snohomish County &mdash; your car next.</p>
+  <div class="rw-grid">
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1cpf-70LI3KDRX4wp9MqVr4swrNWhwe4-" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Z9vV_fc2WV-1Pqfmjy9vhhS62PJKMtSr" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Ylw9_lHLppNkNHNtpaXDY9Grwm_yZUeE" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1KXZcymcndKbXRg0nxsijHeDOBRyu6CGA" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1Lax_oGzGQradeZzuK_wvs9P9MswleT8o" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1vJbKfP9obAcXK3a4ElDu2KYygbjirTbY" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=19k1tiDLAJylimGIcQErp2R8qqvc5DK0H" alt="Detailing result" loading="lazy"></div>
+    <div class="rw-item"><img src="https://drive.google.com/uc?export=view&id=1vBT2DkC6dWoy_tY_UUWzlGt6Wwm2wXo2" alt="Detailing result" loading="lazy"></div>
+  </div>
+</div>
+
 </div>
     </div>
   </section>
