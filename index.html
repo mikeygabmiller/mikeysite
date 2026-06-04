@@ -1662,16 +1662,6 @@ header li a[href="#booking"],
     .slider-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* Split-composite slider: one side-by-side image, left half = before, right half = after */
-  .ba-split .img-before, .ba-split .img-after {
-    background-repeat: no-repeat;
-    background-size: 200% auto;
-    background-color: #000;
-    pointer-events: none;
-  }
-  .ba-split .img-before { background-position: left center; }
-  .ba-split .img-after  { background-position: right center; }
-
 </style>
 
 <div class="container">
@@ -1706,9 +1696,9 @@ header li a[href="#booking"],
 
     <div class="slider-card">
       <div class="slider-label">Exterior Wash &amp; Wax &mdash; Ford Focus</div>
-      <div class="slider ba-split" data-slider style="aspect-ratio: 1000/820;">
-        <div class="img-after" style="background-image:url('https://lh3.googleusercontent.com/d/1Ylw9_lHLppNkNHNtpaXDY9Grwm_yZUeE=w1600');"></div>
-        <div class="img-before" style="background-image:url('https://lh3.googleusercontent.com/d/1Ylw9_lHLppNkNHNtpaXDY9Grwm_yZUeE=w1600');"></div>
+      <div class="slider" data-slider style="aspect-ratio: 4/3;">
+        <img class="img-after" src="https://lh3.googleusercontent.com/d/127F50xlHGtZU5DtG9pcOZWyjnsV3shTX=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
+        <img class="img-before" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
         <div class="tag tag-before">Before</div>
         <div class="tag tag-after">After</div>
         <div class="slider-handle"></div>
