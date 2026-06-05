@@ -946,24 +946,20 @@ header li a[href="#booking"],
   .grcard:hover .grcard-arw{ transform:translateX(3px) }
 
   /* Satisfaction guarantee seal */
-  .guarbox{ display:flex; align-items:center; gap:24px; background:radial-gradient(120% 120% at 0% 0%, #1d1812, #121110 70%); border:1px solid #2a2520; border-radius:16px; padding:24px 22px; margin-bottom:40px; }
-  .guarseal{ width:116px; height:116px; flex:none; border-radius:50%; display:grid; place-content:center; text-align:center; color:#3a2d0e; position:relative; background:radial-gradient(circle at 36% 28%, #f2e2b4, #C9A24B 48%, #8C6D2F); box-shadow:0 16px 34px -12px rgba(201,162,75,.55), inset 0 2px 6px rgba(255,255,255,.55), inset 0 -10px 16px rgba(120,90,30,.5); }
-  .guarseal::before{ content:""; position:absolute; inset:9px; border:2px dashed rgba(60,45,14,.4); border-radius:50% }
-  .guarseal-p{ font-family:'Outfit',sans-serif; font-weight:900; font-size:30px; line-height:.9 }
-  .guarseal-l{ font-size:8.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; margin-top:3px }
+  .guarbox{ display:flex; align-items:center; gap:22px; background:radial-gradient(120% 120% at 0% 0%, #1d1812, #121110 70%); border:1px solid #2a2520; border-radius:16px; padding:20px 22px; margin-bottom:40px; }
+  .guarseal{ width:100px; height:100px; flex:none; border-radius:50%; display:grid; place-content:center; text-align:center; color:#3a2d0e; position:relative; background:radial-gradient(circle at 36% 28%, #f2e2b4, #C9A24B 48%, #8C6D2F); box-shadow:0 14px 30px -12px rgba(201,162,75,.55), inset 0 2px 6px rgba(255,255,255,.55), inset 0 -9px 14px rgba(120,90,30,.5); }
+  .guarseal::before{ content:""; position:absolute; inset:8px; border:2px dashed rgba(60,45,14,.4); border-radius:50% }
+  .guarseal-p{ font-family:'Outfit',sans-serif; font-weight:900; font-size:27px; line-height:.9 }
+  .guarseal-l{ font-size:8px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; margin-top:2px }
   .guartext{ flex:1; min-width:0 }
   .guartext h3{ font-family:'Outfit',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
   .guar-rr{ color:var(--brand-gold) }
-  .guartext p{ color:#cdbfa6; font-size:14px; line-height:1.55; margin:9px 0 0 }
-  .guarchips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px }
-  .guarchip{ font-size:12px; font-weight:700; color:#f5ecd6; background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.35); padding:6px 12px; border-radius:99px }
-  .guarchip::before{ content:"\2713\00a0"; color:var(--brand-gold); font-weight:900 }
+  .guartext p{ color:#cdbfa6; font-size:14px; line-height:1.5; margin:8px 0 0 }
 
   @media (max-width:560px){
     .grcard-body{ flex-direction:column; align-items:stretch; gap:14px }
     .grcard-num{ font-size:40px }
     .guarbox{ flex-direction:column; text-align:center; gap:18px }
-    .guarchips{ justify-content:center }
   }
 </style>
 <section class="trust-section">
@@ -998,11 +994,6 @@ header li a[href="#booking"],
       <div class="guartext">
         <h3>Love it, or you <span class="guar-rr">don&rsquo;t pay</span>.</h3>
         <p>No deposit, no risk &mdash; I don&rsquo;t take a dime until your car makes you smile. That&rsquo;s my promise on every detail.</p>
-        <div class="guarchips">
-          <span class="guarchip">No deposit</span>
-          <span class="guarchip">Licensed &amp; insured</span>
-          <span class="guarchip">Flat, upfront pricing</span>
-        </div>
       </div>
     </div>
 
