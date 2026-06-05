@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Stats Section — 3 Directions · Mikey's</title>
+<title>Stats Cluster — 5 Variations · Mikey's</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,199 +12,226 @@
   :root{
     --red:#C8102E; --red2:#A00C24; --red-glow:rgba(200,16,46,.55);
     --gold:#C9A24B; --gold2:#E4CD8B; --gold-deep:#8C6D2F;
-    --bg:#0b0b0c; --muted:#9aa0a6; --line:#2a2a2e;
+    --bg:#0b0b0c; --card:#1a1a1a; --line:#2a2a2e; --muted:#9aa0a6;
   }
   *{box-sizing:border-box; margin:0; padding:0}
-  body{
-    font-family:'Outfit',sans-serif; color:#fff; -webkit-font-smoothing:antialiased;
-    padding:30px 16px 90px;
+  body{ font-family:'Outfit',sans-serif; color:#fff; -webkit-font-smoothing:antialiased; padding:30px 16px 90px;
     background:
-      radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.10), transparent 60%),
-      radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.07), transparent 55%),
-      var(--bg);
-    min-height:100vh;
-  }
+      radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.09), transparent 60%),
+      radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.06), transparent 55%), var(--bg); }
   .wrap{ max-width:1000px; margin:0 auto }
-  .intro{ text-align:center; margin:6px 0 40px }
+  .intro{ text-align:center; margin:6px 0 38px }
   .intro h1{ font-size:clamp(22px,5vw,32px); font-weight:800; letter-spacing:-.02em }
-  .intro p{ color:var(--muted); margin-top:8px; font-size:14px }
-  .intro .cur{ display:inline-block; margin-top:14px; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--muted); border:1px dashed #33333a; border-radius:999px; padding:5px 12px }
+  .intro p{ color:var(--muted); margin-top:10px; font-size:14px; line-height:1.55 }
+  .scale{ display:flex; align-items:center; justify-content:center; gap:8px; margin-top:16px; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+  .scale .bar{ width:120px; height:4px; border-radius:99px; background:linear-gradient(90deg,#3a3a40,var(--red)) }
 
-  .opt{ margin:0 0 58px }
+  .opt{ margin:0 0 52px }
   .opt-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 18px; padding-bottom:12px; border-bottom:1px solid var(--line) }
   .opt-num{ font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--red);
     background:rgba(200,16,46,.12); border:1px solid rgba(200,16,46,.3); padding:4px 10px; border-radius:999px }
-  .opt-head h2{ font-size:20px; font-weight:800; letter-spacing:-.01em }
-  .opt-head .pick{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#0b0b0c;
-    background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:4px 10px; border-radius:999px; box-shadow:0 4px 14px -4px rgba(201,162,75,.7) }
+  .opt-head h2{ font-size:19px; font-weight:800; letter-spacing:-.01em }
+  .tag{ font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px }
+  .tag.blend{ color:#8fd6a3; background:rgba(70,170,90,.12); border:1px solid rgba(70,170,90,.35) }
+  .tag.mid{ color:var(--gold2); background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.35) }
+  .tag.bold{ color:#ff8f9f; background:rgba(200,16,46,.14); border:1px solid rgba(200,16,46,.4) }
   .opt-head .desc{ flex-basis:100%; color:var(--muted); font-size:13px; margin-top:2px; line-height:1.5 }
 
-  /* ============ OPTION 1 — AURORA GLASS ============ */
-  .o1{ position:relative; border-radius:24px; padding:30px 20px; overflow:hidden;
-    border:1px solid rgba(255,255,255,.06); background:rgba(255,255,255,.015) }
-  .o1::before{ content:""; position:absolute; inset:-45%; z-index:0; pointer-events:none;
-    background:
-      radial-gradient(closest-side, rgba(200,16,46,.55), transparent) 22% 28%/48% 48% no-repeat,
-      radial-gradient(closest-side, rgba(201,162,75,.45), transparent) 80% 74%/52% 52% no-repeat;
-    filter:blur(46px); animation:o1drift 16s ease-in-out infinite alternate }
-  @keyframes o1drift{ to{ transform:translate(7%,-7%) rotate(9deg) } }
-  .o1-grid{ position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:14px }
-  .gcard{ position:relative; border-radius:18px; padding:22px 14px 18px; text-align:center; overflow:hidden;
-    background:rgba(18,18,22,.55); backdrop-filter:blur(16px) saturate(140%); -webkit-backdrop-filter:blur(16px) saturate(140%);
-    border:1px solid rgba(255,255,255,.10);
-    box-shadow:0 20px 44px -24px rgba(0,0,0,.85), inset 0 1px 0 rgba(255,255,255,.06);
-    transition:transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s }
-  .gcard::after{ content:""; position:absolute; inset:0; border-radius:18px; padding:1px; pointer-events:none;
-    background:linear-gradient(140deg, rgba(201,162,75,.65), rgba(200,16,46,.5) 55%, transparent 80%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
-    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude; opacity:.7 }
-  .gcard:hover{ transform:translateY(-6px); box-shadow:0 30px 54px -24px rgba(200,16,46,.5), inset 0 1px 0 rgba(255,255,255,.09) }
-  .gcard .sheen{ content:""; position:absolute; top:0; left:-70%; width:55%; height:100%; transform:skewX(-20deg); pointer-events:none;
-    background:linear-gradient(90deg,transparent, rgba(255,255,255,.10), transparent); animation:o1sheen 6s ease-in-out infinite }
-  @keyframes o1sheen{ 0%,72%{ left:-70% } 100%{ left:150% } }
-  .gicon{ width:46px; height:46px; margin:0 auto 12px; border-radius:13px; display:grid; place-items:center;
-    background:linear-gradient(140deg,var(--red),var(--gold)); box-shadow:0 8px 20px -6px rgba(200,16,46,.65) }
-  .gicon svg{ width:24px; height:24px; fill:#fff }
-  .gnum{ font-size:clamp(28px,6.4vw,42px); font-weight:900; line-height:1; letter-spacing:-.02em }
-  .gnum .suf{ font-size:.52em; color:var(--gold2); vertical-align:super; margin-left:1px }
-  .gcard .stars{ color:var(--gold); font-size:16px; letter-spacing:2px; line-height:1; display:block; margin-top:6px }
-  .glabel{ margin-top:9px; font-size:10.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted) }
+  /* shared gauge (270°) */
+  .gauge .track{ fill:none; stroke:#26262b; stroke-width:13; stroke-linecap:round }
+  .gauge .val{ fill:none; stroke:url(#gg); stroke-width:13; stroke-linecap:round; stroke-dashoffset:377;
+    transition:stroke-dashoffset 1.8s cubic-bezier(.12,.85,.25,1) }
+  .gauge.go .val{ stroke-dashoffset:0 }
+  /* shared ring (full circle) */
+  .ring .rtrack{ fill:none; stroke:#26262b; stroke-width:9 }
+  .ring .rval{ fill:none; stroke:url(#gg); stroke-width:9; stroke-linecap:round; stroke-dasharray:289; stroke-dashoffset:289;
+    transition:stroke-dashoffset 1.7s cubic-bezier(.15,.85,.25,1) }
+  .ring.go .rval{ stroke-dashoffset:calc(289 - 289 * var(--p,1)) }
+  /* shared Google source line */
+  .src{ display:inline-flex; align-items:center; gap:5px; font-size:11px; color:var(--muted); font-weight:600; white-space:nowrap }
+  .src svg{ width:13px; height:13px; flex:none }
+  .stars{ color:var(--gold); letter-spacing:2px; line-height:1 }
 
-  /* ============ OPTION 2 — PERFORMANCE CLUSTER ============ */
-  .o2{ position:relative; border-radius:22px; padding:28px 20px 26px; overflow:hidden;
+  /* ===== V0 — CARBON CLUSTER (your pick, refined) ===== */
+  .cf{ position:relative; border-radius:22px; padding:26px 20px; overflow:hidden;
     background:linear-gradient(180deg,#1a1a1d,#0d0d10); border:1px solid #232327;
     box-shadow:0 34px 64px -32px #000, inset 0 1px 0 rgba(255,255,255,.04), 0 0 70px -22px rgba(200,16,46,.3) }
-  .o2::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.55;
+  .cf::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
     background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.022) 0 2px, transparent 2px 4px),
       repeating-linear-gradient(-45deg, rgba(0,0,0,.22) 0 2px, transparent 2px 4px); background-size:6px 6px }
-  .o2-name{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:9px; margin-bottom:20px;
+  .cf-name{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:9px; margin-bottom:18px;
     font-size:11px; font-weight:800; letter-spacing:.24em; text-transform:uppercase; color:var(--gold) }
-  .o2-name .dot{ width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 9px var(--red) }
-  .o2-inner{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap }
-  .gauge-wrap{ position:relative; width:208px; height:208px; flex:none }
+  .cf-name .d{ width:6px; height:6px; border-radius:50%; background:var(--red); box-shadow:0 0 9px var(--red) }
+  .cf-inner{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap }
+  .gwrap{ position:relative; width:206px; height:206px; flex:none }
   .gauge{ width:100%; height:100%; filter:drop-shadow(0 0 12px rgba(200,16,46,.3)) }
-  .gauge .track{ fill:none; stroke:#26262b; stroke-width:14; stroke-linecap:round }
-  .gauge .gauge-val{ fill:none; stroke:url(#gg); stroke-width:14; stroke-linecap:round; stroke-dashoffset:377;
-    transition:stroke-dashoffset 1.8s cubic-bezier(.12,.85,.25,1) }
-  .gauge.go .gauge-val{ stroke-dashoffset:0 }
-  .gauge-center{ position:absolute; inset:0; display:grid; place-content:center; text-align:center }
-  .gauge-center .gv{ font-family:'Orbitron',sans-serif; font-size:42px; font-weight:800; line-height:1; text-shadow:0 0 18px rgba(201,162,75,.55) }
-  .gauge-center .gstars{ color:var(--gold); font-size:13px; letter-spacing:2px; margin-top:5px }
-  .gauge-center .gl{ font-size:9px; letter-spacing:.2em; color:var(--muted); margin-top:6px; text-transform:uppercase }
-  .readouts{ display:flex; gap:12px; justify-content:center; flex:1; min-width:260px }
-  .ro{ flex:1; border-radius:14px; padding:16px 10px; text-align:center; background:linear-gradient(180deg,#161619,#0c0c0e);
+  .gc{ position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:4px }
+  .gc .gv{ font-family:'Orbitron',sans-serif; font-size:40px; font-weight:800; line-height:1; text-shadow:0 0 18px rgba(201,162,75,.55) }
+  .gc .stars{ font-size:13px }
+  .gc .src{ margin-top:3px }
+  .readouts{ display:flex; gap:12px; justify-content:center; flex:1; min-width:250px }
+  .ro{ flex:1; border-radius:14px; padding:15px 10px; text-align:center; background:linear-gradient(180deg,#161619,#0c0c0e);
     border:1px solid #242429; box-shadow:inset 0 0 20px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.03) }
   .ro .rl{ font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); opacity:.85 }
-  .ro .rv{ font-family:'Orbitron',sans-serif; font-weight:800; font-size:28px; line-height:1; margin-top:9px; color:#fff; text-shadow:0 0 15px var(--red-glow) }
+  .ro .rv{ font-family:'Orbitron',sans-serif; font-weight:800; font-size:27px; line-height:1; margin-top:8px; color:#fff; text-shadow:0 0 15px var(--red-glow) }
   .ro .rv .suf{ color:var(--red); font-size:.7em }
 
-  /* ============ OPTION 3 — GOLD LEAF EDITORIAL ============ */
-  .o3{ position:relative; border-radius:22px; padding:8px 20px 0; overflow:hidden;
-    background:linear-gradient(180deg,#161311,#0d0c0b); border:1px solid #2a2520 }
-  .o3::before{ content:""; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(80% 120% at 50% -25%, rgba(201,162,75,.13), transparent 60%) }
-  .o3 .rule{ height:1px; background:linear-gradient(90deg,transparent,var(--gold-deep),var(--gold),var(--gold-deep),transparent); opacity:.5 }
-  .o3-row{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; padding:30px 0 }
-  .eblock{ flex:1; min-width:130px; text-align:center; padding:8px 14px; position:relative }
-  .eblock + .eblock::before{ content:""; position:absolute; left:0; top:50%; transform:translateY(-50%); width:1px; height:58px;
-    background:linear-gradient(180deg,transparent,var(--gold-deep),transparent); opacity:.55 }
-  .enum{ font-size:clamp(40px,9vw,66px); font-weight:800; line-height:.95; letter-spacing:-.03em;
-    background:linear-gradient(110deg,#8C6D2F 0%,#E4CD8B 26%,#fff 42%,#E4CD8B 58%,#8C6D2F 100%); background-size:220% 100%;
-    -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 6.5s linear infinite }
-  @keyframes shine{ to{ background-position:-220% 0 } }
-  .enum .suf{ font-size:.5em; vertical-align:super }
-  .estars{ font-size:clamp(18px,4.6vw,26px); letter-spacing:3px; display:block;
-    background:linear-gradient(110deg,#8C6D2F,#E4CD8B 45%,#fff 55%,#8C6D2F); background-size:220% 100%;
-    -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 6.5s linear infinite }
-  .elabel{ margin-top:12px; font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:#b8a98a }
-  .marquee{ position:relative; z-index:1; overflow:hidden; padding:13px 0; border-top:1px solid rgba(201,162,75,.18);
-    -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent); mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent) }
-  .marquee-track{ display:inline-flex; align-items:center; gap:30px; white-space:nowrap; animation:marq 24s linear infinite; will-change:transform }
-  .marquee b{ font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold) }
-  .marquee i{ width:7px; height:7px; transform:rotate(45deg); background:var(--red); display:inline-block; flex:none }
-  @keyframes marq{ to{ transform:translateX(-50%) } }
+  /* ===== V1 — ON-BRAND CONSOLE (blends in) ===== */
+  .va{ background:var(--card); border:2px solid var(--line); border-radius:12px; padding:24px 18px }
+  .va-inner{ display:flex; align-items:center; gap:22px }
+  .va .gwrap{ width:150px; height:150px }
+  .va .gc .gv{ font-family:'Outfit',sans-serif; font-weight:900; font-size:34px; text-shadow:none }
+  .va-div{ width:1px; align-self:stretch; background:var(--line) }
+  .va-stats{ flex:1; display:flex; justify-content:space-around; gap:10px; text-align:center }
+  .va-stat .n{ font-family:'Outfit',sans-serif; font-weight:900; font-size:30px; line-height:1; color:#fff }
+  .va-stat .n .suf{ font-size:.55em; color:var(--gold); vertical-align:super }
+  .va-stat .l{ margin-top:8px; font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
 
-  /* ============ responsive ============ */
+  /* ===== V2 — RING QUARTET (modern dashboard) ===== */
+  .vb{ background:#141416; border:1px solid #232327; border-radius:18px; padding:26px 16px;
+    box-shadow:0 24px 50px -30px #000 }
+  .vb-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px }
+  .runit{ text-align:center; position:relative }
+  .ring{ width:118px; height:118px; max-width:100%; display:block; margin:0 auto; filter:drop-shadow(0 6px 14px rgba(0,0,0,.4)) }
+  .rc{ position:absolute; top:0; left:0; right:0; height:118px; display:grid; place-content:center; text-align:center }
+  .rc .rn{ font-family:'Outfit',sans-serif; font-weight:900; font-size:26px; line-height:1 }
+  .rc .rn .suf{ font-size:.55em; color:var(--gold); vertical-align:super }
+  .rc .rsub{ font-size:10px; color:var(--gold); letter-spacing:1px }
+  .runit .l{ margin-top:12px; font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted) }
+  .runit .src{ margin-top:6px; justify-content:center; font-size:10px }
+
+  /* ===== V3 — BACKLIT MATTE (toned-down cluster) ===== */
+  .vc{ position:relative; background:#141414; border:1px solid #262626; border-radius:16px; padding:26px 20px; overflow:hidden }
+  .vc::after{ content:""; position:absolute; left:0; right:0; bottom:-40px; height:90px; pointer-events:none;
+    background:radial-gradient(60% 100% at 50% 0%, rgba(200,16,46,.22), transparent 70%); filter:blur(8px) }
+  .vc-inner{ position:relative; z-index:1; display:flex; align-items:center; justify-content:center; gap:26px; flex-wrap:wrap }
+  .vc .gwrap{ width:180px; height:180px }
+  .vc .gc .gv{ font-family:'Orbitron',sans-serif; font-size:36px; font-weight:800; text-shadow:0 0 16px rgba(201,162,75,.45) }
+  .vc .readouts{ min-width:250px }
+  .vc .ro{ background:#181818; border:1px solid #2a2a2a; box-shadow:inset 0 0 14px rgba(0,0,0,.5) }
+  .vc .ro .rv{ font-size:26px; text-shadow:0 0 12px rgba(200,16,46,.4) }
+
+  /* ===== V4 — SPEEDO STATEMENT (boldest) ===== */
+  .vd{ position:relative; border-radius:22px; padding:30px 20px 24px; overflow:hidden; text-align:center;
+    background:radial-gradient(120% 90% at 50% 0%, #1c1c20, #0c0c0e 70%); border:1px solid #242428;
+    box-shadow:0 36px 70px -34px #000, 0 0 90px -30px rgba(200,16,46,.35) }
+  .vd .gwrap{ width:248px; height:248px; margin:0 auto; position:relative }
+  .vd .gauge .track{ stroke-width:11 } .vd .gauge .val{ stroke-width:11 }
+  .vd .tick{ stroke:#3a3a40; stroke-width:2 }
+  .vd .gc .gv{ font-family:'Orbitron',sans-serif; font-size:54px; font-weight:800; text-shadow:0 0 24px rgba(201,162,75,.6) }
+  .vd .gc .stars{ font-size:15px }
+  .vd-stats{ display:flex; justify-content:center; gap:12px; margin-top:22px; flex-wrap:wrap }
+  .vd-card{ min-width:120px; flex:1; max-width:180px; border-radius:14px; padding:16px 12px;
+    background:linear-gradient(180deg,#17171a,#0d0d0f); border:1px solid #242429 }
+  .vd-card .n{ font-family:'Orbitron',sans-serif; font-weight:800; font-size:28px; line-height:1; color:#fff; text-shadow:0 0 14px var(--red-glow) }
+  .vd-card .n .suf{ color:var(--red); font-size:.7em }
+  .vd-card .l{ margin-top:8px; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); opacity:.9 }
+
   @media (max-width:640px){
-    .o1-grid{ grid-template-columns:repeat(2,1fr) }
-    .o2-inner{ flex-direction:column; gap:22px }
+    .cf-inner,.vc-inner{ flex-direction:column; gap:20px }
     .readouts{ width:100%; min-width:0 }
-    .ro .rv{ font-size:24px }
+    .va-inner{ flex-direction:column; gap:18px; text-align:center }
+    .va-div{ width:100%; height:1px }
+    .va-stats{ width:100% }
+    .vb-grid{ grid-template-columns:repeat(2,1fr); gap:8px }
   }
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important }
-    .gauge .gauge-val{ stroke-dashoffset:0 }
+    .gauge .val{ stroke-dashoffset:0 } .ring .rval{ stroke-dashoffset:calc(289 - 289 * var(--p,1)) }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="gg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#C8102E"/><stop offset="1" stop-color="#E4CD8B"/></linearGradient>
+  <symbol id="glogo" viewBox="0 0 24 24">
+    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+    <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
+    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+  </symbol>
+</defs></svg>
+
+<div class="wrap">
   <div class="intro">
-    <h1>Stats Section &mdash; 3 Directions</h1>
-    <p>Same four numbers, three very different "fancy." Scroll to see each animate.</p>
-    <span class="cur">Your current version: a flat 4&#8209;column row with hairline dividers</span>
+    <h1>Performance Cluster &mdash; 5 Variations</h1>
+    <p>Your pick, now showing it's <strong>39 Google reviews</strong> under the 5.0 &mdash; plus 4 ways to dial it<br>from "blends right into your site" to "bold statement." Scroll; each animates.</p>
+    <div class="scale"><span>Blends in</span><span class="bar"></span><span>Bold</span></div>
   </div>
 
-  <!-- OPTION 1 -->
+  <!-- V1 — CONSOLE (most integrated) -->
   <section class="opt">
-    <div class="opt-head">
-      <span class="opt-num">Option 1</span>
-      <h2>Aurora Glass</h2>
-      <span class="desc">Frosted glass cards floating over a drifting red/gold aurora, gradient-lit borders, a glowing icon per stat, and numbers that count up. Modern, expensive, "tech-premium."</span>
-    </div>
-    <div class="o1">
-      <div class="o1-grid">
-        <div class="gcard"><span class="sheen"></span>
-          <div class="gicon"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.88-5-4.87 7.1-1.01L12 2z"/></svg></div>
-          <div class="gnum countup" data-target="5" data-dec="1"><span class="num">0.0</span></div>
-          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <div class="glabel">Star Rating</div>
-        </div>
-        <div class="gcard"><span class="sheen"></span>
-          <div class="gicon"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></div>
-          <div class="gnum countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div>
-          <div class="glabel">Reviews</div>
-        </div>
-        <div class="gcard"><span class="sheen"></span>
-          <div class="gicon"><svg viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11h1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-1v1a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h1zm2.2 0h9.6l-1-3H8.2l-1 3zM7 14.5A1.5 1.5 0 1 0 4 14.5 1.5 1.5 0 0 0 7 14.5zm13 0A1.5 1.5 0 1 0 17 14.5a1.5 1.5 0 0 0 3 0z"/></svg></div>
-          <div class="gnum countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div>
-          <div class="glabel">Cars Detailed</div>
-        </div>
-        <div class="gcard"><span class="sheen"></span>
-          <div class="gicon"><svg viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 7v10H5V9h14z"/></svg></div>
-          <div class="gnum countup" data-target="5" data-dec="0"><span class="num">0</span><span class="suf">yr</span></div>
-          <div class="glabel">Experience</div>
-        </div>
+    <div class="opt-head"><span class="opt-num">Var 1</span><h2>On-Brand Console</h2><span class="tag blend">Blends in most</span>
+      <span class="desc">Uses your site's exact card (flat <code>#1a1a1a</code>, 2px border, 12px radius) with one tidy rating gauge + plain numbers. Looks native &mdash; the gauge is the only "fancy."</span></div>
+    <div class="va"><div class="va-inner">
+      <div class="gwrap">
+        <svg class="gauge" viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/><circle class="val" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/></svg>
+        <div class="gc"><div class="gv countup" data-target="5" data-dec="1"><span class="num">0.0</span></div><div class="stars" style="font-size:12px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="src"><svg><use href="#glogo"/></svg>39 Google reviews</span></div>
       </div>
-    </div>
+      <div class="va-div"></div>
+      <div class="va-stats">
+        <div class="va-stat"><div class="n countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div><div class="l">Cars Detailed</div></div>
+        <div class="va-stat"><div class="n countup" data-target="5" data-dec="0"><span class="num">0</span><span class="suf">yr</span></div><div class="l">Experience</div></div>
+      </div>
+    </div></div>
   </section>
 
-  <!-- OPTION 2 -->
+  <!-- V2 — RING QUARTET -->
   <section class="opt">
-    <div class="opt-head">
-      <span class="opt-num">Option 2</span>
-      <h2>Performance Cluster</h2>
-      <span class="pick">&#9733; My pick</span>
-      <span class="desc">Your stats as a luxury-car instrument cluster: a radial rating gauge that sweeps to a perfect 5.0, backlit "odometer" readouts on a carbon-fibre panel with a red ambient glow. Unmistakably a <em>car</em> brand.</span>
-    </div>
-    <div class="o2">
-      <div class="o2-name"><span class="dot"></span> Mikey&rsquo;s &middot; Performance <span class="dot"></span></div>
-      <div class="o2-inner">
-        <div class="gauge-wrap">
-          <svg class="gauge" viewBox="0 0 200 200" aria-hidden="true">
-            <defs><linearGradient id="gg" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0" stop-color="#C8102E"/><stop offset="1" stop-color="#E4CD8B"/>
-            </linearGradient></defs>
-            <circle class="track" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/>
-            <circle class="gauge-val" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/>
-          </svg>
-          <div class="gauge-center">
-            <div class="gv countup" data-target="5" data-dec="1"><span class="num">0.0</span></div>
-            <div class="gstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="gl">Google Rating</div>
-          </div>
+    <div class="opt-head"><span class="opt-num">Var 2</span><h2>Ring Quartet</h2><span class="tag mid">Modern</span>
+      <span class="desc">All four stats as clean progress rings &mdash; fitness-tracker / dashboard energy. Cohesive and current without the heavy car-dash texture.</span></div>
+    <div class="vb"><div class="vb-grid">
+      <div class="runit">
+        <svg class="ring" viewBox="0 0 120 120"><circle class="rtrack" cx="60" cy="60" r="46"/><circle class="rval" cx="60" cy="60" r="46" transform="rotate(-90 60 60)" style="--p:1"/></svg>
+        <div class="rc"><div class="rn countup" data-target="5" data-dec="1"><span class="num">0.0</span></div><div class="rsub">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        <div class="l">Rating</div><span class="src"><svg><use href="#glogo"/></svg>39 reviews</span>
+      </div>
+      <div class="runit">
+        <svg class="ring" viewBox="0 0 120 120"><circle class="rtrack" cx="60" cy="60" r="46"/><circle class="rval" cx="60" cy="60" r="46" transform="rotate(-90 60 60)" style="--p:.78"/></svg>
+        <div class="rc"><div class="rn countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div></div>
+        <div class="l">Reviews</div>
+      </div>
+      <div class="runit">
+        <svg class="ring" viewBox="0 0 120 120"><circle class="rtrack" cx="60" cy="60" r="46"/><circle class="rval" cx="60" cy="60" r="46" transform="rotate(-90 60 60)" style="--p:.92"/></svg>
+        <div class="rc"><div class="rn countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div></div>
+        <div class="l">Cars Detailed</div>
+      </div>
+      <div class="runit">
+        <svg class="ring" viewBox="0 0 120 120"><circle class="rtrack" cx="60" cy="60" r="46"/><circle class="rval" cx="60" cy="60" r="46" transform="rotate(-90 60 60)" style="--p:.6"/></svg>
+        <div class="rc"><div class="rn countup" data-target="5" data-dec="0"><span class="num">0</span><span class="suf">yr</span></div></div>
+        <div class="l">Experience</div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- V3 — BACKLIT MATTE -->
+  <section class="opt">
+    <div class="opt-head"><span class="opt-num">Var 3</span><h2>Backlit Matte</h2><span class="tag mid">Toned-down cluster</span>
+      <span class="desc">The cluster idea, but on a flat matte panel like your site &mdash; soft red underglow, glowing digital read-outs. The cluster feel, calmed down.</span></div>
+    <div class="vc"><div class="vc-inner">
+      <div class="gwrap">
+        <svg class="gauge" viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/><circle class="val" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/></svg>
+        <div class="gc"><div class="gv countup" data-target="5" data-dec="1"><span class="num">0.0</span></div><div class="stars" style="font-size:13px">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="src"><svg><use href="#glogo"/></svg>39 Google reviews</span></div>
+      </div>
+      <div class="readouts">
+        <div class="ro"><div class="rl">Reviews</div><div class="rv countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div></div>
+        <div class="ro"><div class="rl">Cars</div><div class="rv countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div></div>
+        <div class="ro"><div class="rl">Years</div><div class="rv countup" data-target="5" data-dec="0"><span class="num">0</span></div></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- V0 — CARBON CLUSTER (your pick refined) -->
+  <section class="opt">
+    <div class="opt-head"><span class="opt-num">Var 4</span><h2>Carbon Cluster <span style="color:var(--muted);font-weight:600;font-size:13px">(your pick, refined)</span></h2><span class="tag bold">Bold</span>
+      <span class="desc">The original instrument-cluster on a carbon-fibre panel &mdash; now with the Google review count under the 5.0. The most "wow," the most different from the rest of your site.</span></div>
+    <div class="cf">
+      <div class="cf-name"><span class="d"></span> Mikey&rsquo;s &middot; Performance <span class="d"></span></div>
+      <div class="cf-inner">
+        <div class="gwrap">
+          <svg class="gauge" viewBox="0 0 200 200"><circle class="track" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/><circle class="val" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/></svg>
+          <div class="gc"><div class="gv countup" data-target="5" data-dec="1"><span class="num">0.0</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="src"><svg><use href="#glogo"/></svg>39 Google reviews</span></div>
         </div>
         <div class="readouts">
           <div class="ro"><div class="rl">Reviews</div><div class="rv countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div></div>
@@ -215,39 +242,27 @@
     </div>
   </section>
 
-  <!-- OPTION 3 -->
+  <!-- V4 — SPEEDO STATEMENT -->
   <section class="opt">
-    <div class="opt-head">
-      <span class="opt-num">Option 3</span>
-      <h2>Gold Leaf Editorial</h2>
-      <span class="desc">Oversized numbers in shimmering gold foil, hairline gold dividers, and a slow scrolling trust ribbon underneath. Minimal, magazine-luxe, boutique-detailer energy.</span>
-    </div>
-    <div class="o3">
-      <div class="rule"></div>
-      <div class="o3-row">
-        <div class="eblock">
-          <div class="enum countup" data-target="5" data-dec="1"><span class="num">0.0</span></div>
-          <span class="estars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-          <div class="elabel">Star Rating</div>
-        </div>
-        <div class="eblock">
-          <div class="enum countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div>
-          <div class="elabel">Reviews</div>
-        </div>
-        <div class="eblock">
-          <div class="enum countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div>
-          <div class="elabel">Cars Detailed</div>
-        </div>
-        <div class="eblock">
-          <div class="enum countup" data-target="5" data-dec="0"><span class="num">0</span></div>
-          <div class="elabel">Years Exp.</div>
-        </div>
+    <div class="opt-head"><span class="opt-num">Var 5</span><h2>Speedo Statement</h2><span class="tag bold">Boldest</span>
+      <span class="desc">One oversized speedometer as the centrepiece, stats as cards beneath. The most dramatic, full lean into the car theme.</span></div>
+    <div class="vd">
+      <div class="gwrap">
+        <svg class="gauge" viewBox="0 0 200 200">
+          <circle class="track" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/>
+          <circle class="val" cx="100" cy="100" r="80" stroke-dasharray="377 503" transform="rotate(135 100 100)"/>
+          <g transform="rotate(135 100 100)">
+            <line class="tick" x1="100" y1="20" x2="100" y2="30"/><line class="tick" x1="100" y1="20" x2="100" y2="30" transform="rotate(54 100 100)"/>
+            <line class="tick" x1="100" y1="20" x2="100" y2="30" transform="rotate(108 100 100)"/><line class="tick" x1="100" y1="20" x2="100" y2="30" transform="rotate(162 100 100)"/>
+            <line class="tick" x1="100" y1="20" x2="100" y2="30" transform="rotate(216 100 100)"/><line class="tick" x1="100" y1="20" x2="100" y2="30" transform="rotate(270 100 100)"/>
+          </g>
+        </svg>
+        <div class="gc"><div class="gv countup" data-target="5" data-dec="1"><span class="num">0.0</span></div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="src"><svg><use href="#glogo"/></svg>39 Google reviews</span></div>
       </div>
-      <div class="marquee">
-        <div class="marquee-track">
-          <b>5&#9733; Rated</b><i></i><b>Mobile &amp; Convenient</b><i></i><b>Licensed &amp; Insured</b><i></i><b>300+ Cars Detailed</b><i></i><b>Satisfaction Guaranteed</b><i></i><b>Snohomish County</b><i></i>
-          <b>5&#9733; Rated</b><i></i><b>Mobile &amp; Convenient</b><i></i><b>Licensed &amp; Insured</b><i></i><b>300+ Cars Detailed</b><i></i><b>Satisfaction Guaranteed</b><i></i><b>Snohomish County</b><i></i>
-        </div>
+      <div class="vd-stats">
+        <div class="vd-card"><div class="n countup" data-target="39" data-dec="0"><span class="num">0</span><span class="suf">+</span></div><div class="l">Reviews</div></div>
+        <div class="vd-card"><div class="n countup" data-target="300" data-dec="0"><span class="num">0</span><span class="suf">+</span></div><div class="l">Cars Detailed</div></div>
+        <div class="vd-card"><div class="n countup" data-target="5" data-dec="0"><span class="num">0</span><span class="suf">yr</span></div><div class="l">Experience</div></div>
       </div>
     </div>
   </section>
@@ -257,27 +272,18 @@
 <script>
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function countup(el){
-    var t = parseFloat(el.getAttribute('data-target')),
-        dec = parseInt(el.getAttribute('data-dec')||'0',10),
-        num = el.querySelector('.num');
-    if(reduce){ num.textContent = t.toFixed(dec); return; }
-    var dur = 1500, start = performance.now();
-    function frame(now){
-      var p = Math.min(1,(now-start)/dur), e = 1-Math.pow(1-p,3);
-      num.textContent = (t*e).toFixed(dec);
-      if(p<1) requestAnimationFrame(frame); else num.textContent = t.toFixed(dec);
-    }
-    requestAnimationFrame(frame);
+    var t=parseFloat(el.getAttribute('data-target')), dec=parseInt(el.getAttribute('data-dec')||'0',10), num=el.querySelector('.num');
+    if(reduce){ num.textContent=t.toFixed(dec); return; }
+    var dur=1500, s=performance.now();
+    function f(n){ var p=Math.min(1,(n-s)/dur), e=1-Math.pow(1-p,3); num.textContent=(t*e).toFixed(dec);
+      if(p<1) requestAnimationFrame(f); else num.textContent=t.toFixed(dec); }
+    requestAnimationFrame(f);
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){
-        en.target.querySelectorAll('.countup').forEach(countup);
-        en.target.querySelectorAll('.gauge').forEach(function(g){ g.classList.add('go'); });
-        io.unobserve(en.target);
-      }
-    });
-  }, {threshold:0.35});
+  var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){
+    en.target.querySelectorAll('.countup').forEach(countup);
+    en.target.querySelectorAll('.gauge,.ring').forEach(function(g){ g.classList.add('go'); });
+    io.unobserve(en.target);
+  }}); },{threshold:0.3});
   document.querySelectorAll('.opt').forEach(function(o){ io.observe(o); });
 </script>
 </body>
