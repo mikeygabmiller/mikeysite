@@ -925,29 +925,84 @@ header li a[href="#booking"],
 </section>
 
 <!-- TRUST SECTION -->
+<style>
+  /* Google review card */
+  .grcard{ display:block; text-decoration:none; color:#202124; background:#fff; border-radius:16px; padding:22px 22px 18px; margin-bottom:18px; box-shadow:0 26px 54px -26px rgba(0,0,0,.75); transition:transform .2s ease, box-shadow .2s ease; }
+  .grcard:hover{ transform:translateY(-3px); box-shadow:0 34px 64px -26px rgba(0,0,0,.85) }
+  .grcard:focus-visible{ outline:3px solid var(--brand-red); outline-offset:3px }
+  .grcard-brand{ display:flex; align-items:center; gap:8px; font-weight:600; color:#5f6368; font-size:15px; margin-bottom:14px }
+  .grcard-brand svg{ display:block }
+  .grcard-body{ display:flex; align-items:center; gap:24px }
+  .grcard-score{ text-align:center; flex:none }
+  .grcard-num{ font-family:'Outfit',sans-serif; font-size:46px; font-weight:800; line-height:1; color:#202124 }
+  .grcard-stars{ color:#fbbc04; font-size:18px; letter-spacing:2px; margin-top:3px }
+  .grcard-count{ color:#5f6368; font-size:12.5px; margin-top:5px }
+  .grcard-bars{ flex:1; display:grid; gap:6px; min-width:0 }
+  .grb{ display:flex; align-items:center; gap:9px; font-size:12px; color:#5f6368 }
+  .grbar{ flex:1; height:9px; background:#e8eaed; border-radius:99px; overflow:hidden }
+  .grbar b{ display:block; height:100%; width:0; background:#fbbc04; border-radius:99px }
+  .grcard-foot{ margin-top:16px; padding-top:13px; border-top:1px solid #e8eaed; color:#1a73e8; font-weight:600; font-size:14px; display:flex; align-items:center; gap:6px }
+  .grcard-arw{ transition:transform .2s ease }
+  .grcard:hover .grcard-arw{ transform:translateX(3px) }
+
+  /* Satisfaction guarantee seal */
+  .guarbox{ display:flex; align-items:center; gap:24px; background:radial-gradient(120% 120% at 0% 0%, #1d1812, #121110 70%); border:1px solid #2a2520; border-radius:16px; padding:24px 22px; margin-bottom:40px; }
+  .guarseal{ width:116px; height:116px; flex:none; border-radius:50%; display:grid; place-content:center; text-align:center; color:#3a2d0e; position:relative; background:radial-gradient(circle at 36% 28%, #f2e2b4, #C9A24B 48%, #8C6D2F); box-shadow:0 16px 34px -12px rgba(201,162,75,.55), inset 0 2px 6px rgba(255,255,255,.55), inset 0 -10px 16px rgba(120,90,30,.5); }
+  .guarseal::before{ content:""; position:absolute; inset:9px; border:2px dashed rgba(60,45,14,.4); border-radius:50% }
+  .guarseal-p{ font-family:'Outfit',sans-serif; font-weight:900; font-size:30px; line-height:.9 }
+  .guarseal-l{ font-size:8.5px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; margin-top:3px }
+  .guartext{ flex:1; min-width:0 }
+  .guartext h3{ font-family:'Outfit',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
+  .guar-rr{ color:var(--brand-gold) }
+  .guartext p{ color:#cdbfa6; font-size:14px; line-height:1.55; margin:9px 0 0 }
+  .guarchips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px }
+  .guarchip{ font-size:12px; font-weight:700; color:#f5ecd6; background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.35); padding:6px 12px; border-radius:99px }
+  .guarchip::before{ content:"\2713\00a0"; color:var(--brand-gold); font-weight:900 }
+
+  @media (max-width:560px){
+    .grcard-body{ flex-direction:column; align-items:stretch; gap:14px }
+    .grcard-num{ font-size:40px }
+    .guarbox{ flex-direction:column; text-align:center; gap:18px }
+    .guarchips{ justify-content:center }
+  }
+</style>
 <section class="trust-section">
   <div class="trust-container">
 
-    <!-- Stats bar -->
-    <div class="trust-stats">
-      <div class="stat-item">
-        <div class="stat-stars">★★★★★</div>
-        <div class="stat-label">5.0 Rating</div>
+    <!-- Google review card -->
+    <a class="grcard" href="https://g.page/r/CRCuKQ982VIZEBE" target="_blank" rel="noopener noreferrer" aria-label="Read our reviews on Google">
+      <div class="grcard-brand">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+        <span>Google Reviews</span>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-number"><span data-md-reviews="{n}">38</span><span>+</span></div>
-        <div class="stat-label">Reviews</div>
+      <div class="grcard-body">
+        <div class="grcard-score">
+          <div class="grcard-num" data-md-rating>5.0</div>
+          <div class="grcard-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="grcard-count"><span data-md-reviews="{n}">39</span> reviews</div>
+        </div>
+        <div class="grcard-bars" aria-hidden="true">
+          <div class="grb"><span>5</span><i class="grbar"><b style="width:100%"></b></i></div>
+          <div class="grb"><span>4</span><i class="grbar"><b></b></i></div>
+          <div class="grb"><span>3</span><i class="grbar"><b></b></i></div>
+          <div class="grb"><span>2</span><i class="grbar"><b></b></i></div>
+          <div class="grb"><span>1</span><i class="grbar"><b></b></i></div>
+        </div>
       </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-number">300<span>+</span></div>
-        <div class="stat-label">Cars Detailed</div>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <div class="stat-number">5<span>yr</span></div>
-        <div class="stat-label">Experience</div>
+      <div class="grcard-foot">Read all <span data-md-reviews="{n}">39</span> reviews on Google <span class="grcard-arw">&rarr;</span></div>
+    </a>
+
+    <!-- Satisfaction guarantee (risk reversal) -->
+    <div class="guarbox">
+      <div class="guarseal"><span class="guarseal-p">100%</span><span class="guarseal-l">Guaranteed</span></div>
+      <div class="guartext">
+        <h3>Love it, or you <span class="guar-rr">don&rsquo;t pay</span>.</h3>
+        <p>No deposit, no risk &mdash; I don&rsquo;t take a dime until your car makes you smile. That&rsquo;s my promise on every detail.</p>
+        <div class="guarchips">
+          <span class="guarchip">No deposit</span>
+          <span class="guarchip">Licensed &amp; insured</span>
+          <span class="guarchip">Flat, upfront pricing</span>
+        </div>
       </div>
     </div>
 
