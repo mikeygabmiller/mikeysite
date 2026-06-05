@@ -25,6 +25,9 @@
     padding:26px 20px 120px; }
   .wrap{ max-width:1120px; margin:0 auto }
 
+  /* consistent lucide icon defaults */
+  svg.ic{ fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+
   /* mockup chrome */
   .note{ max-width:760px; margin:0 auto 44px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px 22px }
   .note b{ color:#cbb98a }
@@ -51,7 +54,7 @@
   .acard > *{ position:relative; z-index:2 }
 
   /* ===== atoms ===== */
-  .ck{ width:15px; height:15px; flex:none; fill:var(--gold) }
+  .ck{ width:15px; height:15px; flex:none; stroke:var(--gold) }
   .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:15px 24px; border-radius:12px;
     border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
     transition:transform .15s, background .15s, opacity .2s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
@@ -59,9 +62,9 @@
   .cta:disabled{ opacity:.4; cursor:not-allowed; box-shadow:none } .cta:disabled:hover{ transform:none; background:var(--red) }
   .cta.ghost{ background:transparent; border-color:rgba(255,255,255,.22); box-shadow:none; color:#fff } .cta.ghost:hover{ border-color:#fff; background:rgba(255,255,255,.04) }
   .cta.block{ display:block; width:100% }
-  .learn{ display:inline-flex; align-items:center; gap:6px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .learn:hover{ color:var(--gold) } .learn .ck{ fill:var(--gold2) }
+  .learn{ display:inline-flex; align-items:center; gap:6px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .learn:hover{ color:var(--gold) } .learn .ck{ stroke:var(--gold2) }
   .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 13px; border-radius:99px; white-space:nowrap }
-  .pill .ck{ fill:#1a1205; width:12px; height:12px }
+  .pill .ck{ stroke:#1a1205; width:12px; height:12px }
 
   /* ====================================================== */
   /*  CONCIERGE (the quiz)                                   */
@@ -72,7 +75,7 @@
   .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px }
   .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
     background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
-  .cc-icon svg{ width:27px; height:27px }
+  .cc-icon svg{ width:26px; height:26px }
   .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
   .cc-prog{ margin-left:auto; display:flex; gap:6px } .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
 
@@ -91,22 +94,22 @@
   .cc-opt.sel{ border-color:var(--red); background:rgba(200,16,46,.1) }
   .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
     background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
-  .cc-tile svg{ width:28px; height:28px }
+  .cc-tile svg{ width:26px; height:26px }
   .cc-opt:hover .cc-tile, .cc-opt.sel .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
   .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
-  .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .cc-opt .tick svg{ width:12px; height:12px; fill:#fff } .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
+  .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .cc-opt .tick svg{ width:12px; height:12px; stroke:#fff } .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
 
   /* note field (lives in the condition step) */
   .cc-note-wrap{ margin-top:18px }
-  .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .cc-note-label span{ color:var(--muted); font-weight:500 } .cc-note-label svg{ width:16px; height:16px; fill:var(--gold) }
+  .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .cc-note-label span{ color:var(--muted); font-weight:500 } .cc-note-label svg{ width:16px; height:16px; stroke:var(--gold) }
   .cc-note{ width:100%; min-height:64px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
     background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
   .cc-note::placeholder{ color:#6e6e76 } .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
-  .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .cc-note-hint svg{ width:13px; height:13px; fill:var(--gold) }
+  .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .cc-note-hint svg{ width:13px; height:13px; stroke:var(--gold) }
 
   /* step nav */
   .cc-nav{ display:flex; align-items:center; gap:12px; margin-top:20px }
-  .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .cc-back:hover{ color:#fff } .cc-back svg{ width:15px; height:15px; fill:currentColor }
+  .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .cc-back:hover{ color:#fff } .cc-back svg{ width:16px; height:16px; stroke:currentColor }
   .cc-nav .cta{ margin-left:auto }
 
   /* result */
@@ -117,7 +120,7 @@
   .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
   .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
     background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
-  .cc-reco-tile svg{ width:36px; height:36px }
+  .cc-reco-tile svg{ width:34px; height:34px }
   .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
   .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
   .cc-reco-price{ font-size:32px; font-weight:900; letter-spacing:-.02em; line-height:1 }
@@ -125,7 +128,7 @@
   .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 0 } .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
   .cc-reco-note{ margin-top:18px; padding:13px 15px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:13px; color:#dcdcde; line-height:1.5 } .cc-reco-note b{ display:block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px }
   .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px } .cc-reco-cta .cta{ flex:1; min-width:180px }
-  .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .cc-retake:hover{ color:#fff } .cc-retake svg{ width:14px; height:14px; fill:currentColor }
+  .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .cc-retake:hover{ color:#fff } .cc-retake svg{ width:14px; height:14px; stroke:currentColor }
 
   @media (max-width:560px){
     .cc-reco-main{ flex-wrap:wrap } .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .cc-reco-est{ margin-left:0; max-width:none }
@@ -144,7 +147,7 @@
   .svc-badge{ position:absolute; top:15px; left:50%; transform:translateX(-50%); z-index:3 }
   .svc-top{ display:flex; align-items:center; gap:13px }
   .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
-    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc-tile svg{ width:30px; height:30px }
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc-tile svg{ width:28px; height:28px }
   .feature .svc-tile{ color:#fff; background:linear-gradient(140deg,var(--red),var(--red2)) }
   .svc-name{ font-size:21px; font-weight:900; letter-spacing:-.01em } .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:2px }
   .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:18px } .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
@@ -179,44 +182,31 @@
 </head>
 <body>
 
-<!-- ============ ICON LIBRARY (reused from the QQC + custom) ============ -->
+<!-- ============ ICON LIBRARY — Lucide (ISC license), one consistent set ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
-  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></symbol>
-  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15.5 4 8 11.5 15.5 19l1.4-1.4-6.1-6.1 6.1-6.1z"/></symbol>
-  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
-  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C6.5 5 2.7 8.6 1 12c1.7 3.4 5.5 7 11 7s9.3-3.6 11-7c-1.7-3.4-5.5-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol>
-  <!-- custom: recommendation wand -->
-  <symbol id="i-wand" viewBox="0 0 28 28">
-    <path d="M5 23.7a1.5 1.5 0 0 1 0-2.1L16.4 10.2l2.1 2.1L7.1 23.7a1.5 1.5 0 0 1-2.1 0z"/>
-    <path d="M20.3 3.2l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z"/>
-    <path d="M24.6 11.4l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z" opacity=".6"/>
-  </symbol>
-  <!-- custom: condition icons -->
-  <symbol id="c-clean" viewBox="0 0 28 28">
-    <path d="M14 3.4l1.9 6.4 6.4 1.9-6.4 1.9L14 20l-1.9-6.4-6.4-1.9 6.4-1.9z"/>
-    <path d="M22 17.6l.8 2.6 2.6.8-2.6.8-.8 2.6-.8-2.6-2.6-.8 2.6-.8z" opacity=".55"/>
-  </symbol>
-  <symbol id="c-work" viewBox="0 0 28 28">
-    <circle cx="14" cy="14" r="10.4" fill="none" stroke="currentColor" stroke-width="2.3"/>
-    <path d="M14 7.6v6.9l4.7 2.8" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-  <symbol id="c-rough" viewBox="0 0 28 28">
-    <path fill-rule="evenodd" d="M12.27 4.4a2 2 0 0 1 3.46 0l8.7 15.1a2 2 0 0 1-1.73 3H5.3a2 2 0 0 1-1.73-3zM12.9 10.3h2.2v6h-2.2zM12.9 17.9h2.2v2.2h-2.2z"/>
-  </symbol>
-  <!-- vehicles (from QQC) -->
-  <symbol id="v-sedan" viewBox="0 0 28 28"><path d="M4 16.6v-1.3c0-.5.34-.92.83-1.02l1.9-.4 2.1-2.45c.43-.5 1.05-.79 1.71-.79h4.9c.6 0 1.18.21 1.64.6l2.46 2.06 2.2.46c.5.1.86.55.86 1.06v1.5c0 .39-.31.7-.7.7H4.7a.7.7 0 0 1-.7-.7z"/><path opacity=".45" d="M9.1 11.9l-1.4 1.7h3.9v-1.7zM12.4 11.9v1.7h5l-1.5-1.6a1.4 1.4 0 0 0-.9-.31z"/><circle cx="9.2" cy="17.0" r="1.7"/><circle cx="18.6" cy="17.0" r="1.7"/></symbol>
-  <symbol id="v-suv" viewBox="0 0 28 28"><path d="M3.4 16.8v-2.1c0-.5.34-.92.82-1.03l1.4-.32 1.9-2.9c.43-.66 1.16-1.05 1.95-1.05h6.2c.7 0 1.36.3 1.82.83l2.1 2.4 2.4.46c.66.13 1.14.7 1.14 1.38v2.35c0 .4-.32.72-.72.72H4.12a.72.72 0 0 1-.72-.72z"/><path opacity=".45" d="M8.4 10.2l-1.5 2.4h3.9v-2.4zM11.6 10.2v2.4h5.6l-1.9-2.1a1.5 1.5 0 0 0-1.1-.49z"/><circle cx="8.9" cy="17.3" r="2.0"/><circle cx="19.1" cy="17.3" r="2.0"/></symbol>
-  <symbol id="v-van" viewBox="0 0 28 28"><path d="M3 17v-6c0-.9.73-1.64 1.64-1.64h10.7c.55 0 1.07.23 1.45.63l3.5 3.7 1.66.34c.7.14 1.2.76 1.2 1.47v1.5c0 .4-.32.73-.72.73H3.72A.72.72 0 0 1 3 17z"/><path opacity=".45" d="M5.1 11.1v2.5h3.3v-2.5zM10 11.1v2.5h3.3v-2.5zM14.9 11.4v2.2h3.4l-2-2.1a1 1 0 0 0-.7-.3z"/><circle cx="8.3" cy="17.2" r="1.9"/><circle cx="19.4" cy="17.2" r="1.9"/></symbol>
-  <!-- services (from QQC) -->
-  <symbol id="s-interior" viewBox="0 0 28 28"><circle cx="14" cy="14" r="6.4" fill="none" stroke="currentColor" stroke-width="2.1"/><circle cx="14" cy="14" r="1.9" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" d="M14 15.9V20.1M12.45 13.05 8.7 11.2M15.55 13.05 19.3 11.2"/><path d="M3.89 22.48 L4.43 21.45 L3.75 20.49 L4.90 20.68 L5.60 19.74 L5.78 20.90 L6.89 21.27 L5.84 21.80 L5.83 22.97 L5.01 22.13 Z"/><path d="M1.45 18.08 L2.34 17.32 L2.06 16.18 L3.06 16.79 L4.06 16.18 L3.79 17.32 L4.68 18.08 L3.51 18.17 L3.06 19.25 L2.61 18.17 Z"/><path d="M0.80 14.00 L1.88 13.55 L1.97 12.38 L2.74 13.27 L3.88 13.00 L3.27 14.00 L3.88 15.00 L2.74 14.73 L1.97 15.62 L1.88 14.45 Z"/><path d="M1.45 9.92 L2.61 9.83 L3.06 8.75 L3.51 9.83 L4.68 9.92 L3.79 10.68 L4.06 11.82 L3.06 11.21 L2.06 11.82 L2.34 10.68 Z"/><path d="M3.89 5.52 L5.01 5.87 L5.83 5.03 L5.84 6.20 L6.89 6.73 L5.78 7.10 L5.60 8.26 L4.90 7.32 L3.75 7.51 L4.43 6.55 Z"/></symbol>
-  <symbol id="s-exterior" viewBox="0 0 28 28"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M24.57 5.13 L24.00 6.23 L24.72 7.24 L23.50 7.04 L22.76 8.03 L22.57 6.81 L21.40 6.41 L22.51 5.86 L22.52 4.62 L23.39 5.50 Z"/><path d="M27.12 9.74 L26.18 10.54 L26.47 11.75 L25.41 11.10 L24.35 11.75 L24.64 10.54 L23.70 9.74 L24.94 9.64 L25.41 8.49 L25.89 9.64 Z"/><path d="M27.80 14.00 L26.66 14.48 L26.56 15.71 L25.75 14.77 L24.54 15.06 L25.19 14.00 L24.54 12.94 L25.75 13.23 L26.56 12.29 L26.66 13.52 Z"/><path d="M27.12 18.26 L25.89 18.36 L25.41 19.51 L24.94 18.36 L23.70 18.26 L24.64 17.46 L24.35 16.25 L25.41 16.90 L26.47 16.25 L26.18 17.46 Z"/><path d="M24.57 22.87 L23.39 22.50 L22.52 23.38 L22.51 22.14 L21.40 21.59 L22.57 21.19 L22.76 19.97 L23.50 20.96 L24.72 20.76 L24.00 21.77 Z"/></symbol>
-  <symbol id="s-full" viewBox="0 0 28 28"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M14.00 0.90 L14.56 2.24 L16.00 2.35 L14.90 3.29 L15.23 4.70 L14.00 3.95 L12.77 4.70 L13.10 3.29 L12.00 2.35 L13.44 2.24 Z"/><path d="M21.78 4.12 L22.33 5.46 L23.78 5.57 L22.68 6.51 L23.01 7.92 L21.78 7.17 L20.54 7.92 L20.88 6.51 L19.78 5.57 L21.22 5.46 Z"/><path d="M25.00 11.90 L25.56 13.24 L27.00 13.35 L25.90 14.29 L26.23 15.70 L25.00 14.95 L23.77 15.70 L24.10 14.29 L23.00 13.35 L24.44 13.24 Z"/><path d="M21.78 19.68 L22.33 21.01 L23.78 21.13 L22.68 22.07 L23.01 23.48 L21.78 22.72 L20.54 23.48 L20.88 22.07 L19.78 21.13 L21.22 21.01 Z"/><path d="M14.00 22.90 L14.56 24.24 L16.00 24.35 L14.90 25.29 L15.23 26.70 L14.00 25.95 L12.77 26.70 L13.10 25.29 L12.00 24.35 L13.44 24.24 Z"/><path d="M6.22 19.68 L6.78 21.01 L8.22 21.13 L7.12 22.07 L7.46 23.48 L6.22 22.72 L4.99 23.48 L5.32 22.07 L4.22 21.13 L5.67 21.01 Z"/><path d="M3.00 11.90 L3.56 13.24 L5.00 13.35 L3.90 14.29 L4.23 15.70 L3.00 14.95 L1.77 15.70 L2.10 14.29 L1.00 13.35 L2.44 13.24 Z"/><path d="M6.22 4.12 L6.78 5.46 L8.22 5.57 L7.12 6.51 L7.46 7.92 L6.22 7.17 L4.99 7.92 L5.32 6.51 L4.22 5.57 L5.67 5.46 Z"/></symbol>
+  <symbol id="sv-ck" class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="sv-redo" class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="sv-back" class="ic" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="sv-pencil" class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+  <symbol id="sv-eye" class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="sv-wand" class="ic" viewBox="0 0 24 24"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.66a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></symbol>
+  <!-- vehicles: car / truck / bus -->
+  <symbol id="sv-car" class="ic" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="sv-truck" class="ic" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="sv-bus" class="ic" viewBox="0 0 24 24"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></symbol>
+  <!-- services: armchair (interior) / car-front (exterior) / sparkles (full) -->
+  <symbol id="sv-armchair" class="ic" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-carfront" class="ic" viewBox="0 0 24 24"><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-sparkles" class="ic" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+  <!-- conditions: circle-check / clock / triangle-alert -->
+  <symbol id="sv-clean" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="sv-work" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="sv-rough" class="ic" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
 </defs></svg>
 
 <div class="wrap">
   <div class="note">
-    <b>Interactive mockup.</b> The concierge now has three quick steps (need → vehicle → condition + your note). Tap through it, add a note, retake it. Every <b>Book</b> button opens a simulated panel showing what happens on the live site, where it'll jump straight to the QQC's final step with the price, service, condition &amp; note locked in. Not wired to the real QQC yet.
+    <b>Interactive mockup.</b> All icons are now a single consistent set (Lucide). Tap through the concierge, add a note, retake it. Every <b>Book</b> button opens a simulated panel showing what happens on the live site, where it jumps to the QQC's final step with the price, service, condition &amp; note locked in.
   </div>
 
   <!-- ===================== LIVE SECTION ===================== -->
@@ -230,7 +220,7 @@
     <!-- CONCIERGE -->
     <div class="acard feature concierge" id="cc">
       <div class="cc-head">
-        <div class="cc-icon"><svg><use href="#i-wand"/></svg></div>
+        <div class="cc-icon"><svg class="ic"><use href="#sv-wand"/></svg></div>
         <div><div class="t">Find my detail</div><div class="s">A few quick taps &mdash; I'll point you to the right one.</div></div>
         <div class="cc-prog" id="ccProg"><i class="on"></i><i></i><i></i></div>
       </div>
@@ -242,13 +232,13 @@
           <div class="cc-qh">Pick the one that bugs you most.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="need" data-val="interior" type="button">
-              <span class="cc-tile"><svg><use href="#s-interior"/></svg></span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
             </button>
             <button class="cc-opt" data-q="need" data-val="exterior" type="button">
-              <span class="cc-tile"><svg><use href="#s-exterior"/></svg></span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
             </button>
             <button class="cc-opt" data-q="need" data-val="full" type="button">
-              <span class="cc-tile"><svg><use href="#s-full"/></svg></span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
             </button>
           </div>
         </div>
@@ -259,16 +249,16 @@
           <div class="cc-qh">Helps me size up your estimate.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="size" data-val="sedan" type="button">
-              <span class="cc-tile"><svg><use href="#v-sedan"/></svg></span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-car"/></svg></span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
             </button>
             <button class="cc-opt" data-q="size" data-val="suv" type="button">
-              <span class="cc-tile"><svg><use href="#v-suv"/></svg></span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-truck"/></svg></span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
             </button>
             <button class="cc-opt" data-q="size" data-val="van" type="button">
-              <span class="cc-tile"><svg><use href="#v-van"/></svg></span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-bus"/></svg></span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
             </button>
           </div>
-          <div class="cc-nav"><button class="cc-back" data-back="1" type="button"><svg><use href="#i-back"/></svg> Back</button></div>
+          <div class="cc-nav"><button class="cc-back" data-back="1" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button></div>
         </div>
 
         <!-- Q3: CONDITION + NOTE -->
@@ -277,37 +267,37 @@
           <div class="cc-qh">Just helps me prep the right way &mdash; no judgment.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="cond" data-val="clean" type="button">
-              <span class="tick"><svg><use href="#ck"/></svg></span>
-              <span class="cc-tile"><svg><use href="#c-clean"/></svg></span><span><span class="ot">Pretty clean</span><span class="od">Well kept</span></span>
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-clean"/></svg></span><span><span class="ot">Pretty clean</span><span class="od">Well kept</span></span>
             </button>
             <button class="cc-opt" data-q="cond" data-val="work" type="button">
-              <span class="tick"><svg><use href="#ck"/></svg></span>
-              <span class="cc-tile"><svg><use href="#c-work"/></svg></span><span><span class="ot">Needs work</span><span class="od">Overdue</span></span>
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-work"/></svg></span><span><span class="ot">Needs work</span><span class="od">Overdue</span></span>
             </button>
             <button class="cc-opt" data-q="cond" data-val="rough" type="button">
-              <span class="tick"><svg><use href="#ck"/></svg></span>
-              <span class="cc-tile"><svg><use href="#c-rough"/></svg></span><span><span class="ot">Really rough</span><span class="od">Deep clean needed</span></span>
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-rough"/></svg></span><span><span class="ot">Really rough</span><span class="od">Deep clean needed</span></span>
             </button>
           </div>
 
           <div class="cc-note-wrap">
-            <label class="cc-note-label" for="ccNote"><svg><use href="#i-pencil"/></svg> Anything specific I should know? <span>(optional)</span></label>
+            <label class="cc-note-label" for="ccNote"><svg class="ic"><use href="#sv-pencil"/></svg> Anything specific I should know? <span>(optional)</span></label>
             <textarea class="cc-note" id="ccNote" placeholder="Mold, pet hair, deep stains, tree sap, scratches… mention it and I'll make sure your quote covers it."></textarea>
-            <div class="cc-note-hint"><svg><use href="#ck"/></svg> I read every one of these before I send your quote.</div>
+            <div class="cc-note-hint"><svg class="ic"><use href="#sv-ck"/></svg> I read every one of these before I send your quote.</div>
           </div>
 
           <div class="cc-nav">
-            <button class="cc-back" data-back="2" type="button"><svg><use href="#i-back"/></svg> Back</button>
+            <button class="cc-back" data-back="2" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button>
             <button class="cta" id="ccSee" type="button" disabled>See my recommendation &rarr;</button>
           </div>
         </div>
 
         <!-- RESULT -->
         <div class="cc-result" id="ccResult">
-          <div class="cc-reco-top"><span class="pill"><svg class="ck"><use href="#ck"/></svg> Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
+          <div class="cc-reco-top"><span class="pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
           <div class="cc-reco">
             <div class="cc-reco-main">
-              <div class="cc-reco-tile" id="ccTile"><svg><use href="#s-full"/></svg></div>
+              <div class="cc-reco-tile" id="ccTile"><svg class="ic"><use href="#sv-sparkles"/></svg></div>
               <div>
                 <div class="cc-reco-name" id="ccName">Full Detail</div>
                 <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
@@ -324,7 +314,7 @@
               <a class="cta ghost" href="#browse">See all services &darr;</a>
             </div>
           </div>
-          <button class="cc-retake" id="ccRetake" type="button"><svg><use href="#i-redo"/></svg> Start over</button>
+          <button class="cc-retake" id="ccRetake" type="button"><svg class="ic"><use href="#sv-redo"/></svg> Start over</button>
         </div>
       </div>
     </div>
@@ -335,44 +325,44 @@
     <div class="cards">
       <!-- INTERIOR -->
       <div class="acard">
-        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-interior"/></svg></span><div><div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div></div></div>
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><div><div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div></div></div>
         <div class="svc-price"><span class="from">from </span>$160<small>$160–$240 · based on vehicle size</small></div>
-        <a class="learn svc-learn" href="/services/interior.html"><svg class="ck"><use href="#i-eye"/></svg> See what's included →</a>
+        <a class="learn svc-learn" href="/services/interior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
-          <li><svg class="ck"><use href="#ck"/></svg>Full vacuum + crevice detail</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Steam clean seats &amp; carpet</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Leather clean &amp; condition</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Streak-free windows</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Full vacuum + crevice detail</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Steam clean seats &amp; carpet</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Leather clean &amp; condition</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Streak-free windows</li>
         </ul>
         <button class="cta ghost block" data-book="interior" type="button">Book Interior &rarr;</button>
       </div>
       <!-- FULL -->
       <div class="acard feature">
-        <span class="svc-badge pill"><svg class="ck"><use href="#ck"/></svg> Most Popular</span>
-        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-full"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div></div></div>
+        <span class="svc-badge pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Most Popular</span>
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div></div></div>
         <div class="svc-price"><span class="from">from </span>$260<small>$260–$340 · based on vehicle size</small></div>
         <div class="divider"></div>
         <ul class="feat">
-          <li><svg class="ck"><use href="#ck"/></svg>Everything in Interior</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Everything in Exterior</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li>
-          <li><svg class="ck"><use href="#ck"/></svg>No hidden fees, no surprises</li>
-          <li><svg class="ck"><use href="#ck"/></svg>You don't pay until you love it</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Everything in Interior</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Everything in Exterior</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Same-day turnaround</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>No hidden fees, no surprises</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>You don't pay until you love it</li>
         </ul>
         <button class="cta block" data-book="full" type="button">Book Full Detail &rarr;</button>
       </div>
       <!-- EXTERIOR -->
       <div class="acard">
-        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-exterior"/></svg></span><div><div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div></div></div>
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><div><div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div></div></div>
         <div class="svc-price"><span class="from">from </span>$130<small>$130–$200 · based on vehicle size</small></div>
-        <a class="learn svc-learn" href="/services/exterior.html"><svg class="ck"><use href="#i-eye"/></svg> See what's included →</a>
+        <a class="learn svc-learn" href="/services/exterior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
-          <li><svg class="ck"><use href="#ck"/></svg>Full hand wash &amp; dry</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Tire &amp; wheel deep clean</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Tire dressing applied</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Full hand wash &amp; dry</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Tire &amp; wheel deep clean</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Tire dressing applied</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Spray sealant protection</li>
         </ul>
         <button class="cta ghost block" data-book="exterior" type="button">Book Exterior &rarr;</button>
       </div>
@@ -399,9 +389,9 @@
     <div class="locked"><span class="ln" id="hoName">Full Detail</span><span class="lp" id="hoPrice">$260</span></div>
     <div class="ho-note" id="hoNote" style="display:none"><b>Your note comes with it</b><span id="hoNoteText"></span></div>
     <ul class="steps">
-      <li><svg class="ck"><use href="#ck"/></svg><span>Service, condition &amp; price <b>pre-filled</b> — no re-picking</span></li>
-      <li><svg class="ck"><use href="#ck"/></svg><span>Customer just adds <b>name &amp; number</b></span></li>
-      <li><svg class="ck"><use href="#ck"/></svg><span>One tap to <b>lock in the quote</b></span></li>
+      <li><svg class="ic ck"><use href="#sv-ck"/></svg><span>Service, condition &amp; price <b>pre-filled</b> — no re-picking</span></li>
+      <li><svg class="ic ck"><use href="#sv-ck"/></svg><span>Customer just adds <b>name &amp; number</b></span></li>
+      <li><svg class="ic ck"><use href="#sv-ck"/></svg><span>One tap to <b>lock in the quote</b></span></li>
     </ul>
     <button class="close" id="hoClose" type="button">Got it, close</button>
   </div>
@@ -409,13 +399,12 @@
 
 <script>
   (function () {
-    // --- model: mirrors the real QQC pricing (base + size + condition) ---
     var SVC = {
-      interior: { name: 'Interior Detail', label: 'Interior', base: 160, icon: 's-interior', tag: 'Inside-only deep clean',
+      interior: { name: 'Interior Detail', label: 'Interior', base: 160, icon: 'sv-armchair', tag: 'Inside-only deep clean',
         feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather clean & condition', 'Streak-free glass'] },
-      exterior: { name: 'Exterior Detail', label: 'Exterior', base: 130, icon: 's-exterior', tag: 'Outside-only wash & protect',
+      exterior: { name: 'Exterior Detail', label: 'Exterior', base: 130, icon: 'sv-carfront', tag: 'Outside-only wash & protect',
         feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Tire dressing', 'Spray sealant protection'] },
-      full: { name: 'Full Detail', label: 'Full Detail', base: 260, icon: 's-full', tag: 'Inside & out — bumper to bumper',
+      full: { name: 'Full Detail', label: 'Full Detail', base: 260, icon: 'sv-sparkles', tag: 'Inside & out — bumper to bumper',
         feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', "You don't pay until you love it"] }
     };
     var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 20 }, van: { label: 'van/XL', add: 40 } };
@@ -437,9 +426,7 @@
       var p = $('ccProg').children;
       for (var j = 0; j < 3; j++) p[j].classList.toggle('on', j < n);
     }
-    function estimate() {
-      return SVC[pick.need].base + SIZE[pick.size].add + COND[pick.cond].add;
-    }
+    function estimate() { return SVC[pick.need].base + SIZE[pick.size].add + COND[pick.cond].add; }
     function showResult() {
       var s = SVC[pick.need], total = estimate();
       $('ccLead').textContent = LEAD[pick.need];
@@ -448,7 +435,7 @@
       $('ccTag').textContent = s.tag;
       $('ccPrice').textContent = '$' + total;
       $('ccEst').textContent = 'Estimate for your ' + SIZE[pick.size].label + ', ' + COND[pick.cond].label + ' inside · final price confirmed at booking.';
-      var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ck"><use href="#ck"/></svg>' + s.feats[i] + '</li>';
+      var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ic ck"><use href="#sv-ck"/></svg>' + s.feats[i] + '</li>';
       $('ccFeat').innerHTML = fl;
       var note = $('ccNote').value.trim();
       if (note) { $('ccNoteEchoText').innerHTML = esc(note); $('ccNoteEcho').style.display = 'block'; }

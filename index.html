@@ -2584,6 +2584,49 @@ header li a[href="#booking"],
     return true;
   }
 
+  // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
+  // window.MikeyQQC.book({ service:'full'|'interior'|'exterior', vehicle:'sedan'|'suv'|'van', condition:'clean'|'work'|'rough', note:'...' })
+  window.MikeyQQC = {
+    book: function (o) {
+      o = o || {};
+      var svcMap = { full: 'Full Detail', interior: 'Interior Detail', exterior: 'Exterior Detail' };
+      var name = svcMap[o.service] || o.service;
+      if (!PRICE[name]) return;
+
+      // reset + select the service
+      deselect('services', '.hero'); deselect('services', '.svc-card');
+      S.services = {}; S.services[name] = PRICE[name];
+      var svcNode = document.querySelector('#services [data-name="' + name + '"]');
+      if (svcNode){ svcNode.classList.add('sel'); svcNode.setAttribute('aria-pressed', 'true'); }
+
+      // vehicle (optional)
+      var vMap = { sedan: { v: 0, l: 'Sedan / Compact' }, suv: { v: 20, l: 'SUV / Truck' }, van: { v: 40, l: 'Van / XL SUV' } };
+      if (o.vehicle && vMap[o.vehicle]){
+        var vm = vMap[o.vehicle]; S.vehicle = { value: vm.v, label: vm.l };
+        deselect('step1', '.choice');
+        var vn = document.querySelector('#step1 .choice[data-value="' + vm.v + '"]');
+        if (vn){ vn.classList.add('sel'); vn.setAttribute('aria-pressed', 'true'); }
+      }
+
+      // condition (optional)
+      var cMap = { clean: { v: 0, l: 'Pretty Clean' }, work: { v: 30, l: 'Needs Work' }, rough: { v: 60, l: 'War Zone' } };
+      if (o.condition && cMap[o.condition]){
+        var cm = cMap[o.condition]; S.condition = { value: cm.v, label: cm.l };
+        deselect('step3', '.choice');
+        var cn = document.querySelector('#step3 .choice[data-value="' + cm.v + '"]');
+        if (cn){ cn.classList.add('sel'); cn.setAttribute('aria-pressed', 'true'); }
+        var n3 = $('qqNext3'); if (n3) n3.disabled = false;
+      }
+
+      // note (optional)
+      if (o.note){ var nt = $('qqNotes'); if (nt) nt.value = o.note; }
+
+      refreshNudge(); refreshContinue();
+      if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: 'services_section' });
+      calcQuote(); // computes total + shows step 4 (quote + name/phone form)
+    }
+  };
+
   if (!attach()){
     var delays = [100,300,600,1000,2000], di = 0;
     (function retry(){ if (di>=delays.length) return; setTimeout(function(){ if(!attach()){ di++; retry(); } }, delays[di]); })();
@@ -2595,242 +2638,435 @@ header li a[href="#booking"],
   </section>
       
 <!-- ============================================================
-     MIKEY'S DETAILING — SERVICES SECTION
-     Drop-in replacement. Self-contained styles scoped to .mmd-svc.
-     Uses your existing tokens: #141414 bg, #C8102E red, Outfit font.
+     MIKEY'S DETAILING — SERVICES SECTION (concierge + cards)
+     Self-contained, scoped to .svc2. Lucide icons (ISC license).
+     "Book" buttons call window.MikeyQQC.book() to prefill the QQC.
      ============================================================ -->
 <style>
-  .mmd-svc { 
-    background:#141414; color:#fff; padding:80px 20px;
-    font-family:'Outfit',system-ui,sans-serif;
+  @property --sva{ syntax:'<angle>'; inherits:false; initial-value:0deg }
+  .svc2{
+    --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
+    --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
+    --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
+    position:relative; font-family:'Outfit',system-ui,sans-serif; color:var(--ink); line-height:1.5;
+    padding:80px 20px;
+    background:
+      radial-gradient(1000px 560px at 82% -10%, rgba(200,16,46,.10), transparent 60%),
+      radial-gradient(900px 480px at 0% 110%, rgba(201,162,75,.06), transparent 55%),
+      #0c0c0c;
   }
-  .mmd-svc .mmd-wrap { max-width:1200px; margin:0 auto; }
+  .svc2 *{ box-sizing:border-box }
+  .svc2 .svc2-wrap{ max-width:1120px; margin:0 auto }
+  .svc2 svg.ic{ fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
 
-  /* Section header */
-  .mmd-svc .mmd-eyebrow {
-    display:inline-block; color:#C8102E; font-weight:700;
-    font-size:.85rem; letter-spacing:.18em; text-transform:uppercase;
-    border:2px solid #C8102E; padding:6px 14px; border-radius:999px;
-    margin-bottom:18px;
-  }
-  .mmd-svc h2 {
-    font-size:clamp(2rem,5vw,3.25rem); font-weight:900; line-height:1.05;
-    margin:0 0 14px; letter-spacing:-.02em;
-  }
-  .mmd-svc h2 em { color:#C8102E; font-style:normal; }
-  .mmd-svc .mmd-sub {
-    font-size:1.05rem; color:#a1a1aa; max-width:620px;
-    margin:0 0 48px; line-height:1.5;
-  }
+  .svc2 .sec-head{ text-align:center; margin-bottom:34px }
+  .svc2 .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
+  .svc2 .sec-head h2{ font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin:10px 0 0; line-height:1.02 }
+  .svc2 .sec-head h2 em{ color:var(--red); font-style:normal }
+  .svc2 .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.2vw,18px); margin:16px auto 0; max-width:600px; font-weight:500 }
 
-  /* Card grid */
-  .mmd-svc .mmd-grid {
-    display:grid; gap:20px;
-    grid-template-columns:repeat(3,1fr);
-  }
-  @media (max-width:900px){ .mmd-svc .mmd-grid { grid-template-columns:1fr; } }
+  .svc2 .acard{ position:relative; border-radius:22px; overflow:hidden; transform-style:preserve-3d;
+    transition:transform .14s ease, box-shadow .3s;
+    background:var(--card); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
+    border:1px solid var(--line); box-shadow:0 22px 46px -26px #000 }
+  .svc2 .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:22px; padding:1.5px; pointer-events:none;
+    background:conic-gradient(from var(--sva), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
+    animation:svspin 6s linear infinite; opacity:.55 }
+  .svc2 .acard.feature::before{ opacity:1 }
+  @keyframes svspin{ to{ --sva:360deg } }
+  .svc2 .acard > *{ position:relative; z-index:2 }
 
-  /* Card base */
-  .mmd-svc .mmd-card {
-    background:#1c1c1c; border:2px solid #2a2a2a; border-radius:14px;
-    padding:32px 26px; display:flex; flex-direction:column;
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-    position:relative;
-  }
-  .mmd-svc .mmd-card:hover {
-    transform:translateY(-4px); border-color:#C8102E;
-    box-shadow:0 0 0 1px rgba(200,16,46,.25), 0 18px 40px -20px rgba(200,16,46,.4);
-  }
+  .svc2 .ck{ width:15px; height:15px; flex:none; stroke:var(--gold) }
+  .svc2 .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:15px 24px; border-radius:12px;
+    border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
+    transition:transform .15s, background .15s, opacity .2s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
+  .svc2 .cta:hover{ background:var(--red2); transform:translateY(-2px) }
+  .svc2 .cta:disabled{ opacity:.4; cursor:not-allowed; box-shadow:none } .svc2 .cta:disabled:hover{ transform:none; background:var(--red) }
+  .svc2 .cta.ghost{ background:transparent; border-color:rgba(255,255,255,.22); box-shadow:none; color:#fff } .svc2 .cta.ghost:hover{ border-color:#fff; background:rgba(255,255,255,.04) }
+  .svc2 .cta.block{ display:block; width:100% }
+  .svc2 .learn{ display:inline-flex; align-items:center; gap:6px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .svc2 .learn:hover{ color:var(--gold) } .svc2 .learn .ck{ stroke:var(--gold2) }
+  .svc2 .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 13px; border-radius:99px; white-space:nowrap }
+  .svc2 .pill .ck{ stroke:#1a1205; width:12px; height:12px }
 
-  /* Highlighted card (Full Detail) */
-  .mmd-svc .mmd-card.mmd-popular {
-    border-color:#C9A24B; background:linear-gradient(180deg,#1a1614 0%,#1c1c1c 60%);
-    box-shadow:0 0 0 1px rgba(201,162,75,.40), 0 20px 50px -20px rgba(201,162,75,.28);
-  }
-  .mmd-svc .mmd-card.mmd-popular::before {
-    content:"MOST BOOKED"; position:absolute; top:-12px; left:50%;
-    transform:translateX(-50%);
-    background:#C8102E; color:#fff; font-size:.72rem; font-weight:900;
-    letter-spacing:.15em; padding:6px 14px; border-radius:999px;
-    box-shadow:0 6px 18px -4px rgba(200,16,46,.6);
-  }
+  /* concierge */
+  .svc2 .concierge{ padding:34px 36px 32px; margin-bottom:34px }
+  .svc2 .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px }
+  .svc2 .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
+  .svc2 .cc-icon svg{ width:26px; height:26px }
+  .svc2 .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .svc2 .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
+  .svc2 .cc-prog{ margin-left:auto; display:flex; gap:6px } .svc2 .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .svc2 .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
+  .svc2 .cc-stage{ min-height:188px }
+  .svc2 .cc-q{ display:none } .svc2 .cc-q.show{ display:block; animation:svfade .4s cubic-bezier(.22,1,.36,1) both }
+  @keyframes svfade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  .svc2 .cc-qt{ font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:5px } .svc2 .cc-qh{ font-size:13.5px; color:var(--muted); margin-bottom:18px }
+  .svc2 .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px }
+  .svc2 .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:16px; padding:16px;
+    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:14px; align-items:center }
+  .svc2 .cc-opt:hover{ border-color:var(--red); transform:translateY(-2px); background:rgba(200,16,46,.06) }
+  .svc2 .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
+  .svc2 .cc-opt.sel{ border-color:var(--red); background:rgba(200,16,46,.1) }
+  .svc2 .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
+  .svc2 .cc-tile svg{ width:26px; height:26px }
+  .svc2 .cc-opt:hover .cc-tile, .svc2 .cc-opt.sel .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
+  .svc2 .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .svc2 .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
+  .svc2 .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .svc2 .cc-opt .tick svg{ width:12px; height:12px; stroke:#fff } .svc2 .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
+  .svc2 .cc-note-wrap{ margin-top:18px }
+  .svc2 .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .svc2 .cc-note-label span{ color:var(--muted); font-weight:500 } .svc2 .cc-note-label svg{ width:16px; height:16px; stroke:var(--gold) }
+  .svc2 .cc-note{ width:100%; min-height:64px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
+  .svc2 .cc-note::placeholder{ color:#6e6e76 } .svc2 .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
+  .svc2 .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .svc2 .cc-note-hint svg{ width:13px; height:13px; stroke:var(--gold) }
+  .svc2 .cc-nav{ display:flex; align-items:center; gap:12px; margin-top:20px }
+  .svc2 .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .svc2 .cc-back:hover{ color:#fff } .svc2 .cc-back svg{ width:16px; height:16px; stroke:currentColor }
+  .svc2 .cc-nav .cta{ margin-left:auto }
+  .svc2 .cc-result{ display:none } .svc2 .cc-result.show{ display:block; animation:svfade .45s cubic-bezier(.22,1,.36,1) both }
+  .svc2 .cc-reco-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap }
+  .svc2 .cc-reco-lead{ font-size:13.5px; color:#cfcfd2 }
+  .svc2 .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:18px; padding:24px }
+  .svc2 .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
+  .svc2 .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
+  .svc2 .cc-reco-tile svg{ width:34px; height:34px }
+  .svc2 .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .svc2 .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
+  .svc2 .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
+  .svc2 .cc-reco-price{ font-size:32px; font-weight:900; letter-spacing:-.02em; line-height:1 }
+  .svc2 .cc-reco-est{ font-size:12px; color:var(--gold2); margin-top:6px; max-width:180px; margin-left:auto }
+  .svc2 .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 0 } .svc2 .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
+  .svc2 .cc-reco-note{ margin-top:18px; padding:13px 15px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:13px; color:#dcdcde; line-height:1.5 } .svc2 .cc-reco-note b{ display:block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px }
+  .svc2 .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px } .svc2 .cc-reco-cta .cta{ flex:1; min-width:180px }
+  .svc2 .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .svc2 .cc-retake:hover{ color:#fff } .svc2 .cc-retake svg{ width:14px; height:14px; stroke:currentColor }
 
-  /* Card header */
-  .mmd-svc .mmd-name {
-    font-size:1.5rem; font-weight:900; margin:0 0 4px; letter-spacing:-.01em;
-  }
-  .mmd-svc .mmd-tag {
-    font-size:.85rem; color:#a1a1aa; margin:0 0 22px;
-  }
+  /* browse cards */
+  .svc2 .browse-div{ display:flex; align-items:center; gap:18px; margin:8px 2px 28px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
+  .svc2 .browse-div::before, .svc2 .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
+  .svc2 .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:20px; align-items:stretch }
+  .svc2 .cards .acard{ padding:42px 24px 26px; display:flex; flex-direction:column }
+  .svc2 .svc-badge{ position:absolute; top:15px; left:50%; transform:translateX(-50%); z-index:3 }
+  .svc2 .svc-top{ display:flex; align-items:center; gap:13px }
+  .svc2 .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc2 .svc-tile svg{ width:28px; height:28px }
+  .svc2 .feature .svc-tile{ color:#fff; background:linear-gradient(140deg,var(--red),var(--red2)) }
+  .svc2 .svc-name{ font-size:21px; font-weight:900; letter-spacing:-.01em } .svc2 .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:2px }
+  .svc2 .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:18px } .svc2 .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
+  .svc2 .svc-price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px }
+  .svc2 .divider{ height:1px; background:var(--line); margin:16px 0 }
+  .svc2 .feat{ list-style:none; display:grid; gap:11px; flex:1; margin-bottom:20px } .svc2 .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
+  .svc2 .svc-learn{ margin:14px 0 16px; display:inline-flex }
 
-  /* Price block */
-  .mmd-svc .mmd-price {
-    font-size:2.25rem; font-weight:900; line-height:1; color:#fff;
-  }
-  .mmd-svc .mmd-price small {
-    font-size:.85rem; color:#a1a1aa; font-weight:500;
-    display:block; margin-top:6px;
-  }
-  .mmd-svc .mmd-divider {
-    height:2px; background:#2a2a2a; margin:24px 0 22px; border-radius:2px;
-  }
-  .mmd-svc .mmd-popular .mmd-divider { background:#C9A24B; }
-  .mmd-svc .mmd-popular .mmd-feat li::before { background:#C9A24B; }
+  .svc2 .trustrow{ display:flex; justify-content:center; gap:12px 28px; flex-wrap:wrap; margin-top:34px; font-size:12.5px; color:var(--muted) }
+  .svc2 .trustrow span{ display:inline-flex; align-items:center; gap:8px } .svc2 .trustrow strong{ color:var(--gold); font-weight:800 }
+  .svc2 .quote{ display:flex; gap:14px; align-items:flex-start; max-width:700px; margin:28px auto 0; text-align:left }
+  .svc2 .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:Georgia,serif }
+  .svc2 .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .svc2 .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .svc2 .quote cite b{ color:#fff } .svc2 .quote .s{ color:var(--gold) }
 
-  /* Feature list */
-  .mmd-svc .mmd-feat {
-    list-style:none; padding:0; margin:0 0 28px; flex-grow:1;
+  @media (max-width:860px){ .svc2 .cards{ grid-template-columns:1fr } .svc2 .cards .feature{ order:-1 } }
+  @media (max-width:620px){ .svc2 .cc-opts{ grid-template-columns:1fr } }
+  @media (max-width:560px){
+    .svc2{ padding:60px 16px } .svc2 .concierge{ padding:24px 20px }
+    .svc2 .cc-reco-main{ flex-wrap:wrap } .svc2 .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .svc2 .cc-reco-est{ margin-left:0; max-width:none }
+    .svc2 .cc-reco-feat{ grid-template-columns:1fr }
   }
-  .mmd-svc .mmd-feat li {
-    display:flex; align-items:flex-start; gap:10px;
-    padding:7px 0; font-size:.97rem; color:#e4e4e7;
-  }
-  .mmd-svc .mmd-feat li::before {
-    content:""; flex-shrink:0; width:18px; height:18px; margin-top:2px;
-    background:#C8102E; border-radius:50%;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
-    background-size:11px; background-position:center; background-repeat:no-repeat;
-  }
-
-/* CTA */
-  .mmd-svc .mmd-cta {
-    display:block; text-align:center; padding:14px 20px;
-    background:transparent; color:#fff; font-weight:800; font-size:1rem;
-    border:2px solid #fff; border-radius:10px; text-decoration:none;
-    transition:all .2s ease; letter-spacing:.02em;
-  }
-  .mmd-svc .mmd-cta:hover {
-    background:#fff; color:#141414; transform:translateY(-2px);
-  }
-  .mmd-svc .mmd-popular .mmd-cta {
-    background:#C8102E; border-color:#C8102E;
-    box-shadow:0 8px 24px -8px rgba(200,16,46,.6);
-  }
-  .mmd-svc .mmd-popular .mmd-cta:hover {
-    background:#fff; color:#C8102E; border-color:#fff;
-  }
-
-  /* Learn More Link — small text under price */
-  .mmd-svc .mmd-learn-more {
-    display:inline-block; margin-top:8px;
-    color:#71717a; font-size:.8rem; font-weight:500;
-    text-decoration:underline; transition:color .2s ease;
-  }
-  .mmd-svc .mmd-learn-more:hover { color:#a1a1aa; }
-
-  /* First-Timer Badge — animated banner on Full Detail */
-  .mmd-svc .mmd-firsttimer {
-    position:relative;
-    margin:-6px -26px 18px;
-    padding:10px 16px;
-    background:linear-gradient(90deg, #E4CD8B 0%, #C9A24B 50%, #8C6D2F 100%);
-    background-size:200% 100%;
-    color:#0b0b0d; font-size:.78rem; font-weight:900;
-    letter-spacing:.12em; text-transform:uppercase;
-    text-align:center;
-    overflow:hidden;
-    animation:mmd-shimmer 3s linear infinite;
-  }
-  .mmd-svc .mmd-firsttimer::before {
-    content:""; position:absolute; top:0; left:-100%;
-    width:60%; height:100%;
-    background:linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-    animation:mmd-sweep 2.5s ease-in-out infinite;
-  }
-  @keyframes mmd-shimmer {
-    0% { background-position:0% 50%; }
-    100% { background-position:200% 50%; }
-  }
-  @keyframes mmd-sweep {
-    0% { left:-60%; }
-    100% { left:160%; }
-  }
-
-  /* Trust strip below cards */
-  .mmd-svc .mmd-trust {
-    margin-top:48px; padding:20px 24px;
-    background:#1c1c1c; border:2px solid #2a2a2a; border-radius:12px;
-    display:flex; flex-wrap:wrap; justify-content:center; gap:14px 32px;
-    font-size:.95rem; color:#e4e4e7;
-  }
-  .mmd-svc .mmd-trust span { display:flex; align-items:center; gap:8px; }
-  .mmd-svc .mmd-trust strong { color:#C9A24B; font-weight:800; }
+  @media (prefers-reduced-motion:reduce){ .svc2 *{ animation:none !important } }
 </style>
 
-<section id="allservices" class="mmd-svc">
-  <div class="mmd-wrap">
+<!-- icon library — Lucide (ISC license), one consistent set -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="sv-ck" class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="sv-redo" class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="sv-back" class="ic" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="sv-pencil" class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+  <symbol id="sv-eye" class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="sv-wand" class="ic" viewBox="0 0 24 24"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.66a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></symbol>
+  <symbol id="sv-car" class="ic" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="sv-truck" class="ic" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="sv-bus" class="ic" viewBox="0 0 24 24"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></symbol>
+  <symbol id="sv-armchair" class="ic" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-carfront" class="ic" viewBox="0 0 24 24"><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-sparkles" class="ic" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+  <symbol id="sv-clean" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="sv-work" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="sv-rough" class="ic" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+</defs></svg>
 
-    <span class="mmd-eyebrow">Services & Pricing</span>
-    <h2>Car Detailing Services <em>& Pricing</em></h2>
-    <p class="mmd-sub">
-      "Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days." — Matt K. ★★★★★
-    </p>
+<section id="allservices" class="svc2">
+  <div class="svc2-wrap">
 
-    <div class="mmd-grid">
-
-      <!-- INTERIOR -->
-      <div class="mmd-card">
-        <h3 class="mmd-name">Interior</h3>
-        <p class="mmd-tag">Inside-only deep clean</p>
-        <div class="mmd-price">$160–$240<small>Based on vehicle size</small></div>
-        <a href="/services/interior.html" class="mmd-learn-more">See what's included →</a>
-        <div class="mmd-divider"></div>
-        <ul class="mmd-feat">
-          <li>Full vacuum + crevice detail</li>
-          <li>Steam clean seats &amp; carpet</li>
-          <li>Leather clean &amp; condition</li>
-          <li>Dashboard &amp; trim dressed</li>
-          <li>Windows + mirrors streak-free</li>
-          <li>Door jambs wiped down</li>
-        </ul>
-        <a href="#booking" class="mmd-cta">Get My Quote →</a>
-      </div>
-
-      <!-- FULL DETAIL — HIGHLIGHTED -->
-      <div class="mmd-card mmd-popular">
-        <div class="mmd-firsttimer">★ Most Popular For First-Timers ★</div>
-        <h3 class="mmd-name">Full Detail</h3>
-        <p class="mmd-tag">Inside &amp; out — bumper to bumper</p>
-        <div class="mmd-price">$260–$340<small>Based on vehicle size</small></div>
-        <div class="mmd-divider"></div>
-        <ul class="mmd-feat">
-          <li>Everything in Interior</li>
-          <li>Everything in Exterior</li>
-          <li>Same-day turnaround</li>
-          <li>100% satisfaction guarantee</li>
-          <li>No hidden fees, no surprises</li>
-          <li>You don't pay until you love it</li>
-        </ul>
-        <a href="#booking" class="mmd-cta">Book Full Detail →</a>
-      </div>
-
-      <!-- EXTERIOR -->
-      <div class="mmd-card">
-        <h3 class="mmd-name">Exterior</h3>
-        <p class="mmd-tag">Outside-only wash &amp; protect</p>
-        <div class="mmd-price">$130–$200<small>Based on vehicle size</small></div>
-        <a href="/services/exterior.html" class="mmd-learn-more">See what's included →</a>
-        <div class="mmd-divider"></div>
-        <ul class="mmd-feat">
-          <li>Full hand wash &amp; dry</li>
-          <li>Tire &amp; wheel deep clean</li>
-          <li>Tire dressing applied</li>
-          <li>Exterior windows cleaned</li>
-          <li>Spray sealant protection</li>
-        </ul>
-        <a href="#booking" class="mmd-cta">Get My Quote →</a>
-      </div>
-
+    <div class="sec-head">
+      <span class="eyebrow">Mikey's Mobile Detailing</span>
+      <h2>Our <em>Services</em></h2>
+      <p class="sub">Not sure what you need? Answer three quick questions and I'll recommend the right package.</p>
     </div>
 
-    <div class="mmd-trust">
-      <span><strong>5.0</strong> on Google</span>
-      <span>Snohomish County</span>
-      <span>Pay when you love it</span>
-      <span>I come to you</span>
+    <!-- CONCIERGE -->
+    <div class="acard feature concierge" id="cc">
+      <div class="cc-head">
+        <div class="cc-icon"><svg class="ic"><use href="#sv-wand"/></svg></div>
+        <div><div class="t">Find my detail</div><div class="s">A few quick taps &mdash; I'll point you to the right one.</div></div>
+        <div class="cc-prog" id="ccProg"><i class="on"></i><i></i><i></i></div>
+      </div>
+
+      <div class="cc-stage">
+        <!-- Q1: NEED -->
+        <div class="cc-q show" id="ccQ1">
+          <div class="cc-qt">What needs the most love?</div>
+          <div class="cc-qh">Pick the one that bugs you most.</div>
+          <div class="cc-opts">
+            <button class="cc-opt" data-q="need" data-val="interior" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
+            </button>
+            <button class="cc-opt" data-q="need" data-val="exterior" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
+            </button>
+            <button class="cc-opt" data-q="need" data-val="full" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q2: SIZE -->
+        <div class="cc-q" id="ccQ2">
+          <div class="cc-qt">What are you driving?</div>
+          <div class="cc-qh">Helps me size up your estimate.</div>
+          <div class="cc-opts">
+            <button class="cc-opt" data-q="size" data-val="sedan" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-car"/></svg></span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
+            </button>
+            <button class="cc-opt" data-q="size" data-val="suv" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-truck"/></svg></span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
+            </button>
+            <button class="cc-opt" data-q="size" data-val="van" type="button">
+              <span class="cc-tile"><svg class="ic"><use href="#sv-bus"/></svg></span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
+            </button>
+          </div>
+          <div class="cc-nav"><button class="cc-back" data-back="1" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button></div>
+        </div>
+
+        <!-- Q3: CONDITION + NOTE -->
+        <div class="cc-q" id="ccQ3">
+          <div class="cc-qt">What kind of shape is it in?</div>
+          <div class="cc-qh">Just helps me prep the right way &mdash; no judgment.</div>
+          <div class="cc-opts">
+            <button class="cc-opt" data-q="cond" data-val="clean" type="button">
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-clean"/></svg></span><span><span class="ot">Pretty clean</span><span class="od">Well kept</span></span>
+            </button>
+            <button class="cc-opt" data-q="cond" data-val="work" type="button">
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-work"/></svg></span><span><span class="ot">Needs work</span><span class="od">Overdue</span></span>
+            </button>
+            <button class="cc-opt" data-q="cond" data-val="rough" type="button">
+              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
+              <span class="cc-tile"><svg class="ic"><use href="#sv-rough"/></svg></span><span><span class="ot">Really rough</span><span class="od">Deep clean needed</span></span>
+            </button>
+          </div>
+
+          <div class="cc-note-wrap">
+            <label class="cc-note-label" for="ccNote"><svg class="ic"><use href="#sv-pencil"/></svg> Anything specific I should know? <span>(optional)</span></label>
+            <textarea class="cc-note" id="ccNote" placeholder="Mold, pet hair, deep stains, tree sap, scratches… mention it and I'll make sure your quote covers it."></textarea>
+            <div class="cc-note-hint"><svg class="ic"><use href="#sv-ck"/></svg> I read every one of these before I send your quote.</div>
+          </div>
+
+          <div class="cc-nav">
+            <button class="cc-back" data-back="2" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button>
+            <button class="cta" id="ccSee" type="button" disabled>See my recommendation &rarr;</button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="cc-result" id="ccResult">
+          <div class="cc-reco-top"><span class="pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
+          <div class="cc-reco">
+            <div class="cc-reco-main">
+              <div class="cc-reco-tile" id="ccTile"><svg class="ic"><use href="#sv-sparkles"/></svg></div>
+              <div>
+                <div class="cc-reco-name" id="ccName">Full Detail</div>
+                <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
+              </div>
+              <div class="cc-reco-pricewrap">
+                <div class="cc-reco-price" id="ccPrice"></div>
+                <div class="cc-reco-est" id="ccEst"></div>
+              </div>
+            </div>
+            <ul class="cc-reco-feat" id="ccFeat"></ul>
+            <div class="cc-reco-note" id="ccNoteEcho" style="display:none"><b>Your note</b><span id="ccNoteEchoText"></span></div>
+            <div class="cc-reco-cta">
+              <button class="cta" id="ccBook" type="button">Book this &rarr;</button>
+              <a class="cta ghost" href="#allservices-browse">See all services &darr;</a>
+            </div>
+          </div>
+          <button class="cc-retake" id="ccRetake" type="button"><svg class="ic"><use href="#sv-redo"/></svg> Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BROWSE -->
+    <div class="browse-div" id="allservices-browse">Or browse all services</div>
+
+    <div class="cards">
+      <!-- INTERIOR -->
+      <div class="acard">
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><div><div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div></div></div>
+        <div class="svc-price"><span class="from">from </span>$160<small>$160&ndash;$240 · based on vehicle size</small></div>
+        <a class="learn svc-learn" href="/services/interior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included &rarr;</a>
+        <div class="divider"></div>
+        <ul class="feat">
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Full vacuum + crevice detail</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Steam clean seats &amp; carpet</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Leather clean &amp; condition</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Streak-free windows</li>
+        </ul>
+        <button class="cta ghost block" data-book="interior" type="button">Book Interior &rarr;</button>
+      </div>
+      <!-- FULL -->
+      <div class="acard feature">
+        <span class="svc-badge pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Most Popular</span>
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div></div></div>
+        <div class="svc-price"><span class="from">from </span>$260<small>$260&ndash;$340 · based on vehicle size</small></div>
+        <div class="divider"></div>
+        <ul class="feat">
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Everything in Interior</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Everything in Exterior</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Same-day turnaround</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>No hidden fees, no surprises</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>You don't pay until you love it</li>
+        </ul>
+        <button class="cta block" data-book="full" type="button">Book Full Detail &rarr;</button>
+      </div>
+      <!-- EXTERIOR -->
+      <div class="acard">
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><div><div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div></div></div>
+        <div class="svc-price"><span class="from">from </span>$130<small>$130&ndash;$200 · based on vehicle size</small></div>
+        <a class="learn svc-learn" href="/services/exterior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included &rarr;</a>
+        <div class="divider"></div>
+        <ul class="feat">
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Full hand wash &amp; dry</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Tire &amp; wheel deep clean</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Tire dressing applied</li>
+          <li><svg class="ic ck"><use href="#sv-ck"/></svg>Spray sealant protection</li>
+        </ul>
+        <button class="cta ghost block" data-book="exterior" type="button">Book Exterior &rarr;</button>
+      </div>
+    </div>
+
+    <div class="trustrow">
+      <span><strong>5.0</strong> on Google</span><span><strong>39</strong> reviews</span><span><strong>300+</strong> cars detailed</span><span>I come to you · pay when you love it</span>
+    </div>
+
+    <div class="quote">
+      <span class="qmark">&ldquo;</span>
+      <div><p>Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.</p>
+      <cite><b>Matt K.</b> <span class="s">★★★★★</span></cite></div>
     </div>
 
   </div>
+
+  <script>
+  (function () {
+    var root = document.getElementById('allservices');
+    if (!root) return;
+    var SVC = {
+      interior: { label: 'Interior', base: 160, icon: 'sv-armchair', tag: 'Inside-only deep clean',
+        feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather clean & condition', 'Streak-free glass'] },
+      exterior: { label: 'Exterior', base: 130, icon: 'sv-carfront', tag: 'Outside-only wash & protect',
+        feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Tire dressing', 'Spray sealant protection'] },
+      full: { label: 'Full Detail', base: 260, icon: 'sv-sparkles', tag: 'Inside & out — bumper to bumper',
+        feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', "You don't pay until you love it"] }
+    };
+    var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 20 }, van: { label: 'van/XL', add: 40 } };
+    var COND = { clean: { label: 'clean', add: 0 }, work: { label: 'well-used', add: 30 }, rough: { label: 'rough', add: 60 } };
+    var LEAD = {
+      interior: "A fresh, like-new cabin is exactly what you need.",
+      exterior: "Let's bring that paint and shine back to life.",
+      full: "Best value — the whole car handled in one visit."
+    };
+
+    var pick = { need: null, size: null, cond: null };
+    function $(id) { return document.getElementById(id); }
+    function esc(s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+    var qEls = { 1: $('ccQ1'), 2: $('ccQ2'), 3: $('ccQ3') };
+    function showStep(n) {
+      $('ccResult').classList.remove('show');
+      for (var i = 1; i <= 3; i++) qEls[i].classList.toggle('show', i === n);
+      var p = $('ccProg').children;
+      for (var j = 0; j < 3; j++) p[j].classList.toggle('on', j < n);
+    }
+    function estimate() { return SVC[pick.need].base + SIZE[pick.size].add + COND[pick.cond].add; }
+    function showResult() {
+      var s = SVC[pick.need], total = estimate();
+      $('ccLead').textContent = LEAD[pick.need];
+      $('ccTile').querySelector('use').setAttribute('href', '#' + s.icon);
+      $('ccName').textContent = s.label;
+      $('ccTag').textContent = s.tag;
+      $('ccPrice').textContent = '$' + total;
+      $('ccEst').textContent = 'Estimate for your ' + SIZE[pick.size].label + ', ' + COND[pick.cond].label + ' inside · final price confirmed at booking.';
+      var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ic ck"><use href="#sv-ck"/></svg>' + s.feats[i] + '</li>';
+      $('ccFeat').innerHTML = fl;
+      var note = $('ccNote').value.trim();
+      if (note) { $('ccNoteEchoText').innerHTML = esc(note); $('ccNoteEcho').style.display = 'block'; }
+      else { $('ccNoteEcho').style.display = 'none'; }
+      var p = $('ccProg').children; for (var k = 0; k < 3; k++) p[k].classList.add('on');
+      for (var m = 1; m <= 3; m++) qEls[m].classList.remove('show');
+      $('ccResult').classList.add('show');
+    }
+    function handoff(opts) {
+      if (window.MikeyQQC && typeof window.MikeyQQC.book === 'function') window.MikeyQQC.book(opts);
+      else { var b = document.getElementById('booking'); if (b) b.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+
+    root.addEventListener('click', function (e) {
+      var opt = e.target.closest('.cc-opt');
+      if (opt) {
+        var q = opt.getAttribute('data-q'), v = opt.getAttribute('data-val');
+        if (q === 'need') { pick.need = v; setTimeout(function () { showStep(2); }, 180); }
+        else if (q === 'size') { pick.size = v; setTimeout(function () { showStep(3); }, 180); }
+        else if (q === 'cond') {
+          pick.cond = v;
+          var sibs = opt.parentNode.querySelectorAll('.cc-opt');
+          for (var i = 0; i < sibs.length; i++) sibs[i].classList.remove('sel');
+          opt.classList.add('sel');
+          $('ccSee').disabled = false;
+        }
+        return;
+      }
+      var back = e.target.closest('[data-back]');
+      if (back) { showStep(parseInt(back.getAttribute('data-back'), 10)); }
+    });
+
+    $('ccSee').addEventListener('click', function () { if (!pick.cond) return; showResult(); });
+    $('ccRetake').addEventListener('click', function () {
+      pick = { need: null, size: null, cond: null };
+      $('ccNote').value = '';
+      $('ccSee').disabled = true;
+      var sels = root.querySelectorAll('#ccQ3 .cc-opt.sel'); for (var i = 0; i < sels.length; i++) sels[i].classList.remove('sel');
+      showStep(1);
+    });
+    $('ccBook').addEventListener('click', function () {
+      handoff({ service: pick.need, vehicle: pick.size, condition: pick.cond, note: $('ccNote').value.trim() });
+    });
+    root.querySelectorAll('[data-book]').forEach(function (b) {
+      b.addEventListener('click', function () { handoff({ service: b.getAttribute('data-book') }); });
+    });
+
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      root.querySelectorAll('.acard').forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          if (e.pointerType === 'touch') return;
+          if (e.target.closest('textarea, input, button, a')) { c.style.transform = ''; return; }
+          var rc = c.getBoundingClientRect();
+          var px = (e.clientX - rc.left) / rc.width, py = (e.clientY - rc.top) / rc.height;
+          c.style.transform = 'perspective(1100px) rotateX(' + ((0.5 - py) * 2.2) + 'deg) rotateY(' + ((px - 0.5) * 2.2) + 'deg) translateY(-2px)';
+        });
+        c.addEventListener('pointerleave', function () { c.style.transform = ''; });
+      });
+    }
+  })();
+  </script>
 </section>
 <!-- ============================================ -->
 <!-- CTA CARD #3 — STICKY / COMPACT BOTTOM BAR -->
