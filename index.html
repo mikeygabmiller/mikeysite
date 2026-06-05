@@ -45,7 +45,7 @@
   "url": "https://mikeysdetailing.com",
   "telephone": "+1-360-797-5831",
   "email": "book@mikeysdetailing.com",
-  "priceRange": "$130–$340",
+  "priceRange": "$130-$340",
   "description": "Mobile car detailing in Snohomish County, WA. Interior, exterior, and full detail packages. 5-star rated, 38+ reviews, 300+ cars detailed. I come to your driveway.",
   "address": {
     "@type": "PostalAddress",
@@ -132,7 +132,7 @@
     {
       "@type": "Question",
       "name": "Do you really come to me?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yep — that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yep - that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day." }
     },
     {
       "@type": "Question",
@@ -142,17 +142,17 @@
     {
       "@type": "Question",
       "name": "How long does it take?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A basic interior runs about 90 minutes, a full detail takes 3–5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm." }
+      "acceptedAnswer": { "@type": "Answer", "text": "A basic interior runs about 90 minutes, a full detail takes 3-5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm." }
     },
     {
       "@type": "Question",
       "name": "What does it cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote for a price in about 30 seconds — no surprises, no hidden fees." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote for a price in about 30 seconds - no surprises, no hidden fees." }
     },
     {
       "@type": "Question",
       "name": "When and how do I pay?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You pay when I'm done and you're happy with it — not before. I take cash, card, and the usual apps." }
+      "acceptedAnswer": { "@type": "Answer", "text": "You pay when I'm done and you're happy with it - not before. I take cash, card, and the usual apps." }
     },
     {
       "@type": "Question",
@@ -198,7 +198,7 @@
    DESIGN TOKENS
    ========================================================= */
 :root {
-  /* Primary brand red — reserved for CTAs, key accents, focus states */
+  /* Primary brand red - reserved for CTAs, key accents, focus states */
   --brand-red: #C8102E;
   --brand-red-dark: #A00C24;
   --brand-red-glow: rgba(200,16,46,0.30);
@@ -212,7 +212,7 @@
   --bg-card: #141414;
   --bg-card-light: #1a1a1a;
   --border-dark: #2a2a2a;
-  /* Text scale — all pass WCAG AA on the dark surfaces used here */
+  /* Text scale - all pass WCAG AA on the dark surfaces used here */
   --text-white: #fff;
   --text-gray: #c2c2c2;
   --text-muted: #9a9a9a;
@@ -267,7 +267,7 @@ section:nth-of-type(even) { background: #1a1a1a; }
 }
 
 /* =========================================================
-   HEADER — clean fixed bar: logo, nav, book button
+   HEADER - clean fixed bar: logo, nav, book button
    ========================================================= */
 
 /* push body down so fixed header doesn't cover content */
@@ -655,6 +655,28 @@ header li a[href="#booking"],
   <script src="/site-stats.js" defer></script>
 </head>
 <body>
+<style>svg.ic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}</style>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="sv-ck" class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="sv-redo" class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="sv-back" class="ic" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="sv-pencil" class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
+  <symbol id="sv-eye" class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="sv-wand" class="ic" viewBox="0 0 24 24"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.66a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></symbol>
+  <symbol id="sv-car" class="ic" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="sv-truck" class="ic" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="sv-bus" class="ic" viewBox="0 0 24 24"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></symbol>
+  <symbol id="sv-armchair" class="ic" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-carfront" class="ic" viewBox="0 0 24 24"><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
+  <symbol id="sv-sparkles" class="ic" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+  <symbol id="sv-clean" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="sv-work" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="sv-rough" class="ic" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+  <symbol id="sv-droplet" class="ic" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+  <symbol id="sv-shield" class="ic" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="sv-rain" class="ic" viewBox="0 0 24 24"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/></symbol>
+</defs></svg>
+
 <main id="main-content">
 <a id="top"></a>
 <header id="mikeyHeader">
@@ -993,7 +1015,7 @@ header li a[href="#booking"],
       <div class="guarseal"><span class="guarseal-p">100%</span><span class="guarseal-l">Guaranteed</span></div>
       <div class="guartext">
         <h3>Love it, or you <span class="guar-rr">don&rsquo;t pay</span>.</h3>
-        <p>No deposit, no risk &mdash; I don&rsquo;t take a dime until your car makes you smile. That&rsquo;s my promise on every detail.</p>
+        <p>No deposit, no risk - I don&rsquo;t take a dime until your car makes you smile. That&rsquo;s my promise on every detail.</p>
       </div>
     </div>
 
@@ -1247,7 +1269,7 @@ header li a[href="#booking"],
 
 <style>
   /* ============================================================
-     MIKEY'S OFFER SECTION  —  paste this whole block into your site.
+     MIKEY'S OFFER SECTION  -  paste this whole block into your site.
      Colors / fonts match mikeysdetailing.com (black + vivid red).
      The only JavaScript is the countdown clock at the very bottom.
      ============================================================ */
@@ -1724,12 +1746,12 @@ header li a[href="#booking"],
 
 <div class="container">
   <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
-  <p class="section-sub">Drag the slider — real cars, real results.</p>
+  <p class="section-sub">Drag the slider - real cars, real results.</p>
 
   <div class="slider-grid">
 
     <div class="slider-card">
-      <div class="slider-label">Back Seats &mdash; Family SUV</div>
+      <div class="slider-label">Back Seats - Family SUV</div>
       <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
         <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
         <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
@@ -1737,11 +1759,11 @@ header li a[href="#booking"],
         <div class="tag tag-after">After</div>
         <div class="slider-handle"></div>
       </div>
-      <p class="hint">Cheerios, juice, road snacks &mdash; all gone.</p>
+      <p class="hint">Cheerios, juice, road snacks - all gone.</p>
     </div>
 
     <div class="slider-card">
-      <div class="slider-label">Cargo Area &mdash; Acura MDX</div>
+      <div class="slider-label">Cargo Area - Acura MDX</div>
       <div class="slider" data-slider style="aspect-ratio: 1200/938;">
         <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
         <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
@@ -1753,7 +1775,7 @@ header li a[href="#booking"],
     </div>
 
     <div class="slider-card">
-      <div class="slider-label">Exterior Wash &amp; Wax &mdash; Ford Focus</div>
+      <div class="slider-label">Exterior Wash &amp; Wax - Ford Focus</div>
       <div class="slider" data-slider style="aspect-ratio: 4/3;">
         <img class="img-after" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
         <img class="img-before" src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
@@ -1761,7 +1783,7 @@ header li a[href="#booking"],
         <div class="tag tag-after">After</div>
         <div class="slider-handle"></div>
       </div>
-      <p class="hint">Pollen, road film &amp; water spots &mdash; washed off and waxed.</p>
+      <p class="hint">Pollen, road film &amp; water spots - washed off and waxed.</p>
     </div>
 
   </div>
@@ -1827,7 +1849,7 @@ header li a[href="#booking"],
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
   <div class="mko__inner">
 
-    <span class="mko__eyebrow" id="mkoEyebrow"><span class="dot" id="mkoDot"></span><span id="mkoEyebrowText">Fri – Mon &middot; Limited spots</span></span>
+    <span class="mko__eyebrow" id="mkoEyebrow"><span class="dot" id="mkoDot"></span><span id="mkoEyebrowText">Fri - Mon &middot; Limited spots</span></span>
 
     <h2 class="mko__head">
       Free Exterior Detail<br />
@@ -1835,11 +1857,11 @@ header li a[href="#booking"],
     </h2>
 
     <p class="mko__sub">
-      Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax &mdash; a $130 value &mdash; free.</b> You pay the interior price and drive away with a full detail.
+      Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax - a $130 value - free.</b> You pay the interior price and drive away with a full detail.
     </p>
 
     <div class="mko__shot">
-      <img src="https://lh3.googleusercontent.com/d/19k1tiDLAJylimGIcQErp2R8qqvc5DK0H=w1000" alt="Exterior detail — washed and waxed by Mikey's Mobile Detailing" loading="lazy" onerror="this.closest('.mko__shot').style.display='none';">
+      <img src="https://lh3.googleusercontent.com/d/19k1tiDLAJylimGIcQErp2R8qqvc5DK0H=w1000" alt="Exterior detail - washed and waxed by Mikey's Mobile Detailing" loading="lazy" onerror="this.closest('.mko__shot').style.display='none';">
     </div>
     <style>
       .mko__shot{ max-width:520px; margin:4px auto 28px; }
@@ -1895,7 +1917,7 @@ header li a[href="#booking"],
 
   </div>
 
-  <!-- Offer active Fri 12:00am – Mon 11:59:59pm local. Off Tue/Wed/Thu. -->
+  <!-- Offer active Fri 12:00am - Mon 11:59:59pm local. Off Tue/Wed/Thu. -->
   <script>
     (function () {
       var elD    = document.getElementById("mkoD"),
@@ -1914,7 +1936,7 @@ header li a[href="#booking"],
 
       function pad(n) { return n < 10 ? "0" + n : "" + n; }
 
-      // Returns true if now is within Fri 00:00 – Mon 23:59:59
+      // Returns true if now is within Fri 00:00 - Mon 23:59:59
       function isActive(now) {
         var day = now.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
         return day === 5 || day === 6 || day === 0 || day === 1;
@@ -1952,7 +1974,7 @@ header li a[href="#booking"],
         if (active) {
           brow.style.background = "";
           dot.style.display = "";
-          browTx.textContent = "Fri – Mon · Limited spots";
+          browTx.textContent = "Fri - Mon · Limited spots";
           label.innerHTML = 'Offer ends <b>Monday</b> at midnight';
           section.style.opacity = "";
           if (cta) cta.style.display = "";
@@ -1999,12 +2021,12 @@ header li a[href="#booking"],
     
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:999px;padding:7px 18px;font-size:0.82rem;font-weight:800;color:#C8102E;letter-spacing:0.05em;">
         <span style="width:8px;height:8px;background:#C8102E;border-radius:50%;box-shadow:0 0 8px #C8102E;animation:pulse 1.8s ease-in-out infinite;display:inline-block;"></span>
-        Limited spots available per week — book now to grab yours
+        Limited spots available per week - book now to grab yours
       </div>
     </div>
 
       <div style="max-width:480px;margin:0 auto;padding:0 16px;">
-<!-- ===== MIKEY'S QQC v4 — Apple-style redesign · real backend (Web3Forms + honeypot + SMS fallback + GA4) ===== -->
+<!-- ===== MIKEY'S QQC v4 - Apple-style redesign · real backend (Web3Forms + honeypot + SMS fallback + GA4) ===== -->
 <style>
 #qqcCard {
   --accent: #C8102E; --accent-rgb: 200,16,46; --accent-press: #e11533;
@@ -2210,17 +2232,17 @@ header li a[href="#booking"],
     <div class="grid">
       <div class="choice" data-role="vehicle" data-value="0" data-label="Sedan / Compact" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M4 16.6v-1.3c0-.5.34-.92.83-1.02l1.9-.4 2.1-2.45c.43-.5 1.05-.79 1.71-.79h4.9c.6 0 1.18.21 1.64.6l2.46 2.06 2.2.46c.5.1.86.55.86 1.06v1.5c0 .39-.31.7-.7.7H4.7a.7.7 0 0 1-.7-.7z"/><path opacity=".45" d="M9.1 11.9l-1.4 1.7h3.9v-1.7zM12.4 11.9v1.7h5l-1.5-1.6a1.4 1.4 0 0 0-.9-.31z"/><circle cx="9.2" cy="17.0" r="1.7"/><circle cx="18.6" cy="17.0" r="1.7"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-car"/></svg></span>
         <span class="nm">Sedan</span><span class="ds">Compact / coupe</span>
       </div>
       <div class="choice" data-role="vehicle" data-value="20" data-label="SUV / Truck" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M3.4 16.8v-2.1c0-.5.34-.92.82-1.03l1.4-.32 1.9-2.9c.43-.66 1.16-1.05 1.95-1.05h6.2c.7 0 1.36.3 1.82.83l2.1 2.4 2.4.46c.66.13 1.14.7 1.14 1.38v2.35c0 .4-.32.72-.72.72H4.12a.72.72 0 0 1-.72-.72z"/><path opacity=".45" d="M8.4 10.2l-1.5 2.4h3.9v-2.4zM11.6 10.2v2.4h5.6l-1.9-2.1a1.5 1.5 0 0 0-1.1-.49z"/><circle cx="8.9" cy="17.3" r="2.0"/><circle cx="19.1" cy="17.3" r="2.0"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-truck"/></svg></span>
         <span class="nm">SUV / Truck</span><span class="ds">+$20</span>
       </div>
       <div class="choice" data-role="vehicle" data-value="40" data-label="Van / XL SUV" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M3 17v-6c0-.9.73-1.64 1.64-1.64h10.7c.55 0 1.07.23 1.45.63l3.5 3.7 1.66.34c.7.14 1.2.76 1.2 1.47v1.5c0 .4-.32.73-.72.73H3.72A.72.72 0 0 1 3 17z"/><path opacity=".45" d="M5.1 11.1v2.5h3.3v-2.5zM10 11.1v2.5h3.3v-2.5zM14.9 11.4v2.2h3.4l-2-2.1a1 1 0 0 0-.7-.3z"/><circle cx="8.3" cy="17.2" r="1.9"/><circle cx="19.4" cy="17.2" r="1.9"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-bus"/></svg></span>
         <span class="nm">Van / XL</span><span class="ds">+$40</span>
       </div>
     </div>
@@ -2234,10 +2256,10 @@ header li a[href="#booking"],
       <div class="hero" id="qqHeroFull" data-role="service" data-name="Full Detail" data-value="260" tabindex="0" role="button" aria-pressed="false">
         <span class="ribbon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.4 1.4 6.4L12 17.8 5.9 20l1.5-6.4L2.5 9.2l6.6-.7z"/></svg> Most Popular</span>
         <div class="hero-main">
-          <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M14.00 0.90 L14.56 2.24 L16.00 2.35 L14.90 3.29 L15.23 4.70 L14.00 3.95 L12.77 4.70 L13.10 3.29 L12.00 2.35 L13.44 2.24 Z"/><path d="M21.78 4.12 L22.33 5.46 L23.78 5.57 L22.68 6.51 L23.01 7.92 L21.78 7.17 L20.54 7.92 L20.88 6.51 L19.78 5.57 L21.22 5.46 Z"/><path d="M25.00 11.90 L25.56 13.24 L27.00 13.35 L25.90 14.29 L26.23 15.70 L25.00 14.95 L23.77 15.70 L24.10 14.29 L23.00 13.35 L24.44 13.24 Z"/><path d="M21.78 19.68 L22.33 21.01 L23.78 21.13 L22.68 22.07 L23.01 23.48 L21.78 22.72 L20.54 23.48 L20.88 22.07 L19.78 21.13 L21.22 21.01 Z"/><path d="M14.00 22.90 L14.56 24.24 L16.00 24.35 L14.90 25.29 L15.23 26.70 L14.00 25.95 L12.77 26.70 L13.10 25.29 L12.00 24.35 L13.44 24.24 Z"/><path d="M6.22 19.68 L6.78 21.01 L8.22 21.13 L7.12 22.07 L7.46 23.48 L6.22 22.72 L4.99 23.48 L5.32 22.07 L4.22 21.13 L5.67 21.01 Z"/><path d="M3.00 11.90 L3.56 13.24 L5.00 13.35 L3.90 14.29 L4.23 15.70 L3.00 14.95 L1.77 15.70 L2.10 14.29 L1.00 13.35 L2.44 13.24 Z"/><path d="M6.22 4.12 L6.78 5.46 L8.22 5.57 L7.12 6.51 L7.46 7.92 L6.22 7.17 L4.99 7.92 L5.32 6.51 L4.22 5.57 L5.67 5.46 Z"/></svg></span>
+          <span class="ic-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span>
           <div class="hero-info">
             <span class="t">Full Detail</span>
-            <span class="d">Inside &amp; out &mdash; the complete works</span>
+            <span class="d">Inside &amp; out - the complete works</span>
             <span class="save">Save $30 vs. buying separately</span>
           </div>
           <div class="hero-price">
@@ -2250,12 +2272,12 @@ header li a[href="#booking"],
       <div class="duo">
         <div class="svc-card" data-role="service" data-name="Interior Detail" data-value="160" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><circle cx="14" cy="14" r="6.4" fill="none" stroke="currentColor" stroke-width="2.1"/><circle cx="14" cy="14" r="1.9" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" d="M14 15.9V20.1M12.45 13.05 8.7 11.2M15.55 13.05 19.3 11.2"/><path d="M3.89 22.48 L4.43 21.45 L3.75 20.49 L4.90 20.68 L5.60 19.74 L5.78 20.90 L6.89 21.27 L5.84 21.80 L5.83 22.97 L5.01 22.13 Z"/><path d="M1.45 18.08 L2.34 17.32 L2.06 16.18 L3.06 16.79 L4.06 16.18 L3.79 17.32 L4.68 18.08 L3.51 18.17 L3.06 19.25 L2.61 18.17 Z"/><path d="M0.80 14.00 L1.88 13.55 L1.97 12.38 L2.74 13.27 L3.88 13.00 L3.27 14.00 L3.88 15.00 L2.74 14.73 L1.97 15.62 L1.88 14.45 Z"/><path d="M1.45 9.92 L2.61 9.83 L3.06 8.75 L3.51 9.83 L4.68 9.92 L3.79 10.68 L4.06 11.82 L3.06 11.21 L2.06 11.82 L2.34 10.68 Z"/><path d="M3.89 5.52 L5.01 5.87 L5.83 5.03 L5.84 6.20 L6.89 6.73 L5.78 7.10 L5.60 8.26 L4.90 7.32 L3.75 7.51 L4.43 6.55 Z"/></svg></span>
+          <span class="ic-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span>
           <span class="t">Interior</span><span class="price">$160</span>
         </div>
         <div class="svc-card" data-role="service" data-name="Exterior Detail" data-value="130" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-          <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M24.57 5.13 L24.00 6.23 L24.72 7.24 L23.50 7.04 L22.76 8.03 L22.57 6.81 L21.40 6.41 L22.51 5.86 L22.52 4.62 L23.39 5.50 Z"/><path d="M27.12 9.74 L26.18 10.54 L26.47 11.75 L25.41 11.10 L24.35 11.75 L24.64 10.54 L23.70 9.74 L24.94 9.64 L25.41 8.49 L25.89 9.64 Z"/><path d="M27.80 14.00 L26.66 14.48 L26.56 15.71 L25.75 14.77 L24.54 15.06 L25.19 14.00 L24.54 12.94 L25.75 13.23 L26.56 12.29 L26.66 13.52 Z"/><path d="M27.12 18.26 L25.89 18.36 L25.41 19.51 L24.94 18.36 L23.70 18.26 L24.64 17.46 L24.35 16.25 L25.41 16.90 L26.47 16.25 L26.18 17.46 Z"/><path d="M24.57 22.87 L23.39 22.50 L22.52 23.38 L22.51 22.14 L21.40 21.59 L22.57 21.19 L22.76 19.97 L23.50 20.96 L24.72 20.76 L24.00 21.77 Z"/></svg></span>
+          <span class="ic-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span>
           <span class="t">Exterior</span><span class="price">$130</span>
         </div>
       </div>
@@ -2263,19 +2285,19 @@ header li a[href="#booking"],
     <div class="group-label">Add-ons</div>
     <div class="addon-grid">
       <div class="chip" data-role="addon" data-name="Carpet Shampoo" data-value="20" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="13.5" r="4.2"/><circle cx="15" cy="10" r="3" opacity=".6"/><circle cx="16" cy="15.5" r="2.2" opacity=".8"/></svg></span>
+        <span class="ic-mini"><svg class="ic"><use href="#sv-droplet"/></svg></span>
         <span class="ctext"><span class="ct">Carpet Shampoo</span><span class="cp">+$20</span></span>
       </div>
       <div class="chip" data-role="addon" data-name="Ceramic Wax" data-value="20" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l7.5 2.7v5.3c0 4.4-3.2 7.8-7.5 9-4.3-1.2-7.5-4.6-7.5-9V5.2z"/><path opacity=".4" d="M12 6l4 1.5v3c0 2.5-1.7 4.5-4 5.2z"/></svg></span>
+        <span class="ic-mini"><svg class="ic"><use href="#sv-shield"/></svg></span>
         <span class="ctext"><span class="ct">Ceramic Wax</span><span class="cp">+$20</span></span>
       </div>
       <div class="chip" data-role="addon" data-name="Exterior Polish" data-value="30" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg></span>
+        <span class="ic-mini"><svg class="ic"><use href="#sv-sparkles"/></svg></span>
         <span class="ctext"><span class="ct">Exterior Polish</span><span class="cp">+$30</span></span>
       </div>
       <div class="chip" data-role="addon" data-name="RainX Windows" data-value="10" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="13" rx="2.5" opacity=".45"/><path d="M14 8.5c1.7 2 3.1 3.7 3.1 5.4a3.1 3.1 0 0 1-6.2 0c0-1.7 1.4-3.4 3.1-5.4z"/></svg></span>
+        <span class="ic-mini"><svg class="ic"><use href="#sv-rain"/></svg></span>
         <span class="ctext"><span class="ct">RainX Windows</span><span class="cp">+$10</span></span>
       </div>
     </div>
@@ -2288,21 +2310,21 @@ header li a[href="#booking"],
   <!-- STEP 3: CONDITION + NOTES -->
   <div class="step" id="step3">
     <h3 class="q-title">What condition is it in?</h3>
-    <p class="q-hint">Overall &mdash; inside &amp; out. Just helps me prep the right way.</p>
+    <p class="q-hint">Overall - inside &amp; out. Just helps me prep the right way.</p>
     <div class="grid">
       <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><path d="M14 4l1.4 5.2L20.5 10.5l-5.1 1.3L14 17l-1.4-5.2L7.5 10.5l5.1-1.3z"/><path opacity=".5" d="M21 15l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7z"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-clean"/></svg></span>
         <span class="nm">Pretty Clean</span><span class="ds">Well kept</span>
       </div>
       <div class="choice" data-role="condition" data-value="30" data-label="Needs Work" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="9" fill="currentColor" opacity=".22"/><circle cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M14 9v5.2l3.3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-work"/></svg></span>
         <span class="nm">Needs Work</span><span class="ds">Overdue</span>
       </div>
       <div class="choice" data-role="condition" data-value="60" data-label="War Zone" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg viewBox="0 0 28 28"><path fill="currentColor" fill-rule="evenodd" d="M12.27 4.8a2 2 0 0 1 3.46 0l8.3 14.4a2 2 0 0 1-1.73 3H5.7a2 2 0 0 1-1.73-3zM12.9 10h2.2v6h-2.2zM12.9 17.4h2.2v2.2h-2.2z"/></svg></span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-rough"/></svg></span>
         <span class="nm">War Zone</span><span class="ds">Really rough</span>
       </div>
     </div>
@@ -2320,7 +2342,7 @@ header li a[href="#booking"],
   <div class="step" id="step4">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
     <div class="amount" id="qqAmount">$0</div>
-    <p class="amount-sub">Final price confirmed at booking &mdash; no hidden fees.</p>
+    <p class="amount-sub">Final price confirmed at booking - no hidden fees.</p>
     <div class="breakdown" id="qqBreakdown"></div>
     <form class="form" id="qqForm" novalidate>
       <div class="field" id="qqfName">
@@ -2343,7 +2365,7 @@ header li a[href="#booking"],
       <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
       <div class="sms-opt">
         <input type="checkbox" id="qqSmsConsent" />
-        <label for="qqSmsConsent">Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em> &mdash; msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
+        <label for="qqSmsConsent">Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em> - msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
       </div>
       <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Lock in my quote</button>
     </form>
@@ -2365,7 +2387,7 @@ header li a[href="#booking"],
       <h3>You're locked in</h3>
       <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
       <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+13607975831">Call or text (360) 797-5831</a></p>
-      <p class="sig">&mdash; Mikey</p>
+      <p class="sig">- Mikey</p>
     </div>
   </div>
 
@@ -2512,7 +2534,7 @@ header li a[href="#booking"],
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      // Honeypot: bots fill this hidden field — silently "succeed" without sending.
+      // Honeypot: bots fill this hidden field - silently "succeed" without sending.
       var hp = $('qqCompany'); if (hp && hp.value) { goStep(5); return; }
 
       var nW = $('qqfName'), nE = $('qqName');
@@ -2543,7 +2565,7 @@ header li a[href="#booking"],
         if (btn){ btn.disabled = false; btn.textContent = 'Lock in my quote'; }
         if (errBox){
           var smsHref = 'sms:+13607975831?&body=' + encodeURIComponent("Hi Mikey! Here's my quote request:\n" + msgBody);
-          errBox.innerHTML = "<p>That didn’t go through — but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
+          errBox.innerHTML = "<p>That didn’t go through - but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
             "<a href=\"" + smsHref + "\">💬 Text My Quote to Mikey</a>";
           errBox.style.display = 'block';
         }
@@ -2638,7 +2660,7 @@ header li a[href="#booking"],
   </section>
       
 <!-- ============================================================
-     MIKEY'S DETAILING — SERVICES SECTION (concierge + cards)
+     MIKEY'S DETAILING - SERVICES SECTION (concierge + cards)
      Self-contained, scoped to .svc2. Lucide icons (ISC license).
      "Book" buttons call window.MikeyQQC.book() to prefill the QQC.
      ============================================================ -->
@@ -2774,24 +2796,8 @@ header li a[href="#booking"],
   @media (prefers-reduced-motion:reduce){ .svc2 *{ animation:none !important } }
 </style>
 
-<!-- icon library — Lucide (ISC license), one consistent set -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="sv-ck" class="ic" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-  <symbol id="sv-redo" class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
-  <symbol id="sv-back" class="ic" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
-  <symbol id="sv-pencil" class="ic" viewBox="0 0 24 24"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></symbol>
-  <symbol id="sv-eye" class="ic" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></symbol>
-  <symbol id="sv-wand" class="ic" viewBox="0 0 24 24"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.66a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"/><path d="m14 7 3 3"/><path d="M5 6v4"/><path d="M19 14v4"/><path d="M10 2v2"/><path d="M7 8H3"/><path d="M21 16h-4"/><path d="M11 3H9"/></symbol>
-  <symbol id="sv-car" class="ic" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
-  <symbol id="sv-truck" class="ic" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
-  <symbol id="sv-bus" class="ic" viewBox="0 0 24 24"><path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/><circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/></symbol>
-  <symbol id="sv-armchair" class="ic" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0Z"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
-  <symbol id="sv-carfront" class="ic" viewBox="0 0 24 24"><path d="m21 8-2 2-1.5-3.7A2 2 0 0 0 15.646 5H8.4a2 2 0 0 0-1.903 1.257L5 10 3 8"/><path d="M7 14h.01"/><path d="M17 14h.01"/><rect width="18" height="8" x="3" y="10" rx="2"/><path d="M5 18v2"/><path d="M19 18v2"/></symbol>
-  <symbol id="sv-sparkles" class="ic" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
-  <symbol id="sv-clean" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="sv-work" class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
-  <symbol id="sv-rough" class="ic" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
-</defs></svg>
+<!-- icon library - Lucide (ISC license), one consistent set -->
+
 
 <section id="allservices" class="svc2">
   <div class="svc2-wrap">
@@ -2806,7 +2812,7 @@ header li a[href="#booking"],
     <div class="acard feature concierge" id="cc">
       <div class="cc-head">
         <div class="cc-icon"><svg class="ic"><use href="#sv-wand"/></svg></div>
-        <div><div class="t">Find my detail</div><div class="s">A few quick taps &mdash; I'll point you to the right one.</div></div>
+        <div><div class="t">Find my detail</div><div class="s">A few quick taps - I'll point you to the right one.</div></div>
         <div class="cc-prog" id="ccProg"><i class="on"></i><i></i><i></i></div>
       </div>
 
@@ -2849,7 +2855,7 @@ header li a[href="#booking"],
         <!-- Q3: CONDITION + NOTE -->
         <div class="cc-q" id="ccQ3">
           <div class="cc-qt">What kind of shape is it in?</div>
-          <div class="cc-qh">Just helps me prep the right way &mdash; no judgment.</div>
+          <div class="cc-qh">Just helps me prep the right way - no judgment.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="cond" data-val="clean" type="button">
               <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
@@ -2885,7 +2891,7 @@ header li a[href="#booking"],
               <div class="cc-reco-tile" id="ccTile"><svg class="ic"><use href="#sv-sparkles"/></svg></div>
               <div>
                 <div class="cc-reco-name" id="ccName">Full Detail</div>
-                <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
+                <div class="cc-reco-tag" id="ccTag">Inside &amp; out - bumper to bumper</div>
               </div>
               <div class="cc-reco-pricewrap">
                 <div class="cc-reco-price" id="ccPrice"></div>
@@ -2911,7 +2917,7 @@ header li a[href="#booking"],
       <!-- INTERIOR -->
       <div class="acard">
         <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><div><div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div></div></div>
-        <div class="svc-price"><span class="from">from </span>$160<small>$160&ndash;$240 · based on vehicle size</small></div>
+        <div class="svc-price"><span class="from">from </span>$160<small>$160-$240 · based on vehicle size</small></div>
         <a class="learn svc-learn" href="/services/interior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included &rarr;</a>
         <div class="divider"></div>
         <ul class="feat">
@@ -2925,8 +2931,8 @@ header li a[href="#booking"],
       <!-- FULL -->
       <div class="acard feature">
         <span class="svc-badge pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Most Popular</span>
-        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div></div></div>
-        <div class="svc-price"><span class="from">from </span>$260<small>$260&ndash;$340 · based on vehicle size</small></div>
+        <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out - bumper to bumper</div></div></div>
+        <div class="svc-price"><span class="from">from </span>$260<small>$260-$340 · based on vehicle size</small></div>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ic ck"><use href="#sv-ck"/></svg>Everything in Interior</li>
@@ -2940,7 +2946,7 @@ header li a[href="#booking"],
       <!-- EXTERIOR -->
       <div class="acard">
         <div class="svc-top"><span class="svc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><div><div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div></div></div>
-        <div class="svc-price"><span class="from">from </span>$130<small>$130&ndash;$200 · based on vehicle size</small></div>
+        <div class="svc-price"><span class="from">from </span>$130<small>$130-$200 · based on vehicle size</small></div>
         <a class="learn svc-learn" href="/services/exterior.html"><svg class="ic ck"><use href="#sv-eye"/></svg> See what's included &rarr;</a>
         <div class="divider"></div>
         <ul class="feat">
@@ -2974,7 +2980,7 @@ header li a[href="#booking"],
         feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather clean & condition', 'Streak-free glass'] },
       exterior: { label: 'Exterior', base: 130, icon: 'sv-carfront', tag: 'Outside-only wash & protect',
         feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Tire dressing', 'Spray sealant protection'] },
-      full: { label: 'Full Detail', base: 260, icon: 'sv-sparkles', tag: 'Inside & out — bumper to bumper',
+      full: { label: 'Full Detail', base: 260, icon: 'sv-sparkles', tag: 'Inside & out - bumper to bumper',
         feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', "You don't pay until you love it"] }
     };
     var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 20 }, van: { label: 'van/XL', add: 40 } };
@@ -2982,7 +2988,7 @@ header li a[href="#booking"],
     var LEAD = {
       interior: "A fresh, like-new cabin is exactly what you need.",
       exterior: "Let's bring that paint and shine back to life.",
-      full: "Best value — the whole car handled in one visit."
+      full: "Best value - the whole car handled in one visit."
     };
 
     var pick = { need: null, size: null, cond: null };
@@ -3069,14 +3075,14 @@ header li a[href="#booking"],
   </script>
 </section>
 <!-- ============================================ -->
-<!-- CTA CARD #3 — STICKY / COMPACT BOTTOM BAR -->
+<!-- CTA CARD #3 - STICKY / COMPACT BOTTOM BAR -->
 <!-- Drop in as floating mobile CTA or inline -->
 <!-- ============================================ -->
 <div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:1px solid #2a2a2a;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:12px;">
   <div style="flex:1;">
     <div style="color:#C8102E;font-size:10px;font-weight:900;letter-spacing:1.2px;margin-bottom:2px;">READY WHEN YOU ARE</div>
     <div style="color:#fff;font-size:16px;font-weight:900;line-height:1.2;">Book your detail today</div>
-    <div style="color:#999;font-size:12px;margin-top:2px;">Usually onsite in 24–48 hrs</div>
+    <div style="color:#999;font-size:12px;margin-top:2px;">Usually onsite in 24-48 hrs</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:6px;">
     <a href="#booking" style="background:#C8102E;color:#fff;padding:10px 16px;border-radius:8px;font-weight:900;font-size:13px;text-decoration:none;text-align:center;white-space:nowrap;">BOOK</a>
@@ -3827,7 +3833,7 @@ header li a[href="#booking"],
     <div class="about-copy">
       <span class="about-eyebrow">Meet Your Detailer</span>
       <h2 id="about-title">Hey, I'm Mikey.</h2>
-      <p>I've detailed 300+ cars around Snohomish County out of my own rig &mdash; I bring the water, the power, and every product, so all you do is hand me the keys.</p>
+      <p>I've detailed 300+ cars around Snohomish County out of my own rig - I bring the water, the power, and every product, so all you do is hand me the keys.</p>
       <p>It's just me. That means you get the same person every time, I treat your car like it's mine, and I don't pack up until you're grinning. Local, careful, and usually five minutes from your driveway.</p>
       <div class="about-trust">
         <span><span class="about-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 on Google</span>
@@ -3867,7 +3873,7 @@ header li a[href="#booking"],
 
     <details class="faq2-item">
       <summary>Do you really come to me?</summary>
-      <p>Yep &mdash; that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day.</p>
+      <p>Yep - that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day.</p>
     </details>
     <details class="faq2-item">
       <summary>Do I need to provide water or power?</summary>
@@ -3875,15 +3881,15 @@ header li a[href="#booking"],
     </details>
     <details class="faq2-item">
       <summary>How long does it take?</summary>
-      <p>A basic interior runs about 90 minutes, a full detail takes 3&ndash;5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm.</p>
+      <p>A basic interior runs about 90 minutes, a full detail takes 3-5 hours depending on the size and condition of your car. I'll give you a clear time window when we confirm.</p>
     </details>
     <details class="faq2-item">
       <summary>What does it cost?</summary>
-      <p>Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote above for a price in about 30 seconds &mdash; no surprises, no hidden fees.</p>
+      <p>Exterior details start at $130, interiors at $160, and a full inside-and-out detail starts at $260. Run the Quick Quote above for a price in about 30 seconds - no surprises, no hidden fees.</p>
     </details>
     <details class="faq2-item">
       <summary>When and how do I pay?</summary>
-      <p>You pay when I'm done and you're happy with it &mdash; not before. I take cash, card, and the usual apps.</p>
+      <p>You pay when I'm done and you're happy with it - not before. I take cash, card, and the usual apps.</p>
     </details>
     <details class="faq2-item">
       <summary>What if it rains?</summary>
@@ -3921,7 +3927,7 @@ header li a[href="#booking"],
   .faq2-btn--ghost:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
 </style>
 
-<!-- EXPLORE MORE — compact internal links (SEO) -->
+<!-- EXPLORE MORE - compact internal links (SEO) -->
 <section class="explore" aria-labelledby="explore-title">
   <div class="explore-inner">
     <h2 id="explore-title" class="explore-title">More Detailing Info</h2>
@@ -3951,7 +3957,7 @@ header li a[href="#booking"],
   <div class="footer-grid">
     <div class="footer-col">
       <h3 class="brand">Mikey's Mobile Detailing</h3>
-      <p>Professional mobile car detailing in Snohomish County — serving Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and nearby areas.</p>
+      <p>Professional mobile car detailing in Snohomish County - serving Snohomish, Monroe, Lake Stevens, Everett, Bothell, Mill Creek, Duvall, and nearby areas.</p>
     </div>
     <div class="footer-col">
       <h3 class="gold">Quick Links</h3>
@@ -3985,7 +3991,7 @@ header li a[href="#booking"],
       <a href="#booking" class="footer-cta">Book Your Detail Today →</a>
     </div>
   </div>
-  <p class="footer-copy">© 2026 Mikey's Mobile Detailing — Snohomish, WA. All rights reserved.</p>
+  <p class="footer-copy">© 2026 Mikey's Mobile Detailing - Snohomish, WA. All rights reserved.</p>
 </footer>
 
 <!-- Mobile sticky CTA bar -->
@@ -4048,7 +4054,7 @@ header li a[href="#booking"],
 })();
 </script>
 <!-- ============================================================
-     MIKEY'S DETAILING — GA4 EVENT TRACKING
+     MIKEY'S DETAILING - GA4 EVENT TRACKING
      Paste right before </body> on every page of mikeysdetailing.com
      Must load AFTER your GA4 gtag snippet.
      ============================================================ -->

@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quick Quote — Apple-style redesign (mockup v3)</title>
+<title>Quick Quote - Apple-style redesign (mockup v3)</title>
 <style>
 /* =================================================================
-   MIKEY'S QUICK QUOTE — Apple-style mockup v3 (dark only)
+   MIKEY'S QUICK QUOTE - Apple-style mockup v3 (dark only)
    • Permanent dark theme
    • Condition = general car condition (price not shown)
    • Optional "anything specific?" note field
@@ -138,7 +138,7 @@ body {
 .badge svg { width: 12px; height: 12px; }
 .sel > .badge, .sel > .hero-main .badge { opacity: 1; transform: scale(1); }
 
-/* ============ SERVICES — tiered layout ============ */
+/* ============ SERVICES - tiered layout ============ */
 .hero {
   position: relative; display: block; width: 100%; text-align: left; cursor: pointer;
   margin: 12px 0 0; border: 1.8px solid var(--border-2); border-radius: 20px; padding: 18px;
@@ -370,7 +370,7 @@ body {
             <span class="ic-tile"><svg viewBox="0 0 28 28" fill="currentColor"><rect x="3.5" y="14" width="18.5" height="5.5" rx="2.2"/><rect x="7" y="10" width="11.5" height="5.5" rx="2.2" opacity=".5"/><circle cx="8" cy="19.8" r="2"/><circle cx="17" cy="19.8" r="2"/><path d="M22.5 3.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9z"/></svg></span>
             <div class="hero-info">
               <span class="t">Full Detail</span>
-              <span class="d">Inside &amp; out — the complete works</span>
+              <span class="d">Inside &amp; out - the complete works</span>
               <span class="save">Save $30 vs. buying separately</span>
             </div>
             <div class="hero-price">
@@ -427,7 +427,7 @@ body {
     <!-- ============ STEP 3: CONDITION + NOTES ============ -->
     <div class="step" id="step3">
       <h2 class="q-title">What condition is it in?</h2>
-      <p class="q-hint">Overall — inside &amp; out. Just helps me prep the right way.</p>
+      <p class="q-hint">Overall - inside &amp; out. Just helps me prep the right way.</p>
       <div class="grid">
         <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -464,7 +464,7 @@ body {
     <div class="step" id="step4">
       <h2 class="q-title" style="text-align:center;">Your estimate</h2>
       <div class="amount" id="amount">$0</div>
-      <p class="amount-sub">Final price confirmed at booking — no hidden fees.</p>
+      <p class="amount-sub">Final price confirmed at booking - no hidden fees.</p>
 
       <div class="breakdown" id="breakdown"></div>
 
@@ -488,7 +488,7 @@ body {
         </div>
         <button class="btn btn-primary" type="submit" id="submitBtn" style="margin-top:4px;">Lock in my quote</button>
       </form>
-      <p class="consent">By continuing you agree to receive a text about your quote. No spam — reply STOP to opt out.</p>
+      <p class="consent">By continuing you agree to receive a text about your quote. No spam - reply STOP to opt out.</p>
 
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
@@ -507,7 +507,7 @@ body {
         <h2>You're locked in</h2>
         <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
         <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+13607975831">Call or text (360) 797-5831</a></p>
-        <p class="sig">— Mikey</p>
+        <p class="sig">- Mikey</p>
       </div>
     </div>
 
@@ -664,7 +664,7 @@ body {
     if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
     if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
     var btn = document.getElementById('submitBtn'); btn.disabled = true; btn.textContent = 'Sending…';
-    setTimeout(function(){ goStep(5); }, 650); // demo only — real version posts the lead
+    setTimeout(function(){ goStep(5); }, 650); // demo only - real version posts the lead
   });
 })();
 </script>
