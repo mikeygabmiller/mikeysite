@@ -4,214 +4,138 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Services & Pricing — Round 2 · Mikey's</title>
+<title>Neon Tilt Glass — 5 Versions · Mikey's</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   @property --a{ syntax:'<angle>'; inherits:false; initial-value:0deg }
-  :root{ --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B; --gold-deep:#8C6D2F; --bg:#0b0b0c; --card:#161618; --line:#2a2a2e; --muted:#9aa0a6; }
+  :root{ --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B; --bg:#0b0b0c; --muted:#9aa0a6; }
   *{box-sizing:border-box; margin:0; padding:0}
   body{ font-family:'Outfit',sans-serif; color:#fff; -webkit-font-smoothing:antialiased; padding:30px 16px 90px;
-    background:radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.09), transparent 60%), radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.06), transparent 55%), var(--bg); }
-  .wrap{ max-width:940px; margin:0 auto }
+    background:radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.10), transparent 60%), radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.06), transparent 55%), var(--bg); }
+  .wrap{ max-width:980px; margin:0 auto }
   .intro{ text-align:center; margin:6px 0 40px }
   .intro h1{ font-size:clamp(22px,5vw,30px); font-weight:800; letter-spacing:-.02em }
   .intro p{ color:var(--muted); margin-top:10px; font-size:14px; line-height:1.55 }
   .opt{ margin:0 0 58px }
-  .opt-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 18px; padding-bottom:11px; border-bottom:1px solid var(--line) }
+  .opt-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 20px; padding-bottom:11px; border-bottom:1px solid #2a2a2e }
   .opt-num{ font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--red); background:rgba(200,16,46,.12); border:1px solid rgba(200,16,46,.3); padding:4px 10px; border-radius:999px }
   .opt-head h2{ font-size:18px; font-weight:800 }
   .opt-head .tag{ font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--gold2); background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.3); padding:3px 9px; border-radius:999px }
   .opt-head .desc{ flex-basis:100%; color:var(--muted); font-size:12.5px; margin-top:2px; line-height:1.5 }
   .ck{ width:15px; height:15px; flex:none; fill:var(--gold) }
-  .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:.4px; padding:13px 20px; border-radius:10px; border:2px solid var(--red); background:var(--red); color:#fff; transition:transform .15s ease, background .15s ease; cursor:pointer }
-  .cta:hover{ background:var(--red2); border-color:var(--red2); transform:translateY(-2px) }
-  .from{ font-size:.5em; color:var(--muted); font-weight:600 }
 
-  /* ===== A — DETAIL BUILDER (interactive) ===== */
-  .db{ background:linear-gradient(180deg,#16161a,#0f0f12); border:1px solid #26262b; border-radius:20px; padding:24px; box-shadow:0 30px 60px -30px #000 }
-  .db-top{ display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:center; margin-bottom:18px }
-  .db-cap{ font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted) }
-  .db-seg{ display:inline-flex; background:#0d0d10; border:1px solid #26262b; border-radius:99px; padding:4px }
-  .db-seg button{ border:0; background:transparent; color:#cfcfd2; font:inherit; font-weight:700; font-size:13px; padding:8px 15px; border-radius:99px; cursor:pointer; transition:.2s }
-  .db-seg button.on{ background:var(--red); color:#fff }
-  .db-body{ display:grid; grid-template-columns:1fr 230px; gap:22px; align-items:stretch }
-  .db-toggles{ display:grid; gap:12px; align-content:start }
-  .db-toggle{ display:flex; align-items:center; gap:14px; padding:16px; border-radius:14px; border:1.5px solid #26262b; background:#141416; cursor:pointer; transition:.2s; user-select:none }
-  .db-toggle.on{ border-color:rgba(201,162,75,.6); background:linear-gradient(140deg,#1c1813,#141110) }
-  .db-box{ width:24px; height:24px; border-radius:7px; border:2px solid #3a3a40; display:grid; place-content:center; flex:none; transition:.2s } .db-toggle.on .db-box{ background:var(--gold); border-color:var(--gold) }
-  .db-box svg{ width:14px; fill:#1a1408; opacity:0; transition:.2s } .db-toggle.on .db-box svg{ opacity:1 }
-  .db-toggle .nm{ font-weight:800 } .db-toggle .tg{ color:var(--muted); font-size:12px } .db-toggle .pp{ margin-left:auto; font-weight:800 }
-  .db-out{ text-align:center; background:radial-gradient(circle at 50% 0%, #1d1916, #101012 70%); border:1px solid rgba(201,162,75,.4); border-radius:16px; padding:22px 16px; display:flex; flex-direction:column; justify-content:center }
-  .db-out .ol{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:800; min-height:14px }
-  .db-out .price{ font-size:50px; font-weight:900; letter-spacing:-.02em; line-height:1; margin:8px 0 4px }
-  .db-out .save{ font-size:12px; color:var(--gold2); font-weight:700; min-height:16px }
-  .db-out .cta{ margin-top:14px }
-  .db-feat{ list-style:none; margin-top:18px; border-top:1px solid #26262b; padding-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:9px }
-  .db-feat li{ font-size:12.5px; display:flex; gap:8px; color:#d8d8da }
+  /* ===== shared card ===== */
+  .tgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; perspective:1100px }
+  .tcard{ position:relative; border-radius:18px; padding:24px 20px; overflow:hidden; transform-style:preserve-3d; will-change:transform;
+    background:rgba(18,18,22,.7); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
+    border:1px solid rgba(255,255,255,.08); box-shadow:0 22px 46px -26px #000; transition:transform .12s ease, box-shadow .3s ease }
+  .tcard > *{ position:relative; z-index:2 }
+  .pop-tag{ position:absolute; top:14px; right:14px; z-index:3; background:linear-gradient(135deg,var(--gold2),var(--gold)); color:#241c08; font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:4px 9px; border-radius:99px }
+  .tcard .nm{ font-size:20px; font-weight:800 } .tcard .nm .s{ color:var(--gold) }
+  .tcard .tg{ color:var(--muted); font-size:12px; margin-top:2px }
+  .tcard .pr{ font-size:36px; font-weight:900; letter-spacing:-.02em; margin:14px 0 0 } .tcard .pr .from{ font-size:.4em; color:var(--muted); font-weight:600 }
+  .tcard .feat{ list-style:none; margin:16px 0; display:grid; gap:8px } .tcard .feat li{ font-size:12.5px; display:flex; gap:8px; color:#d8d8da }
+  .cta{ display:block; text-align:center; text-decoration:none; font-weight:800; font-size:13.5px; text-transform:uppercase; letter-spacing:.4px; padding:12px 16px; border-radius:10px; border:1.5px solid var(--red); background:var(--red); color:#fff; transition:transform .15s, background .15s }
+  .cta:hover{ background:var(--red2); transform:translateY(-2px) }
+  .cta.gh{ background:transparent; border-color:rgba(255,255,255,.22) } .cta.gh:hover{ border-color:#fff; background:rgba(255,255,255,.06) }
 
-  /* ===== B — TRIM SELECTOR (interactive) ===== */
-  .tr-tabs{ display:flex; gap:8px; background:#0d0d10; border:1px solid #26262b; border-radius:99px; padding:5px; margin-bottom:16px }
-  .tr-tabs button{ flex:1; border:0; background:transparent; color:#cfcfd2; font:inherit; font-weight:800; font-size:13px; padding:11px; border-radius:99px; cursor:pointer; transition:.2s; text-transform:uppercase; letter-spacing:.04em }
-  .tr-tabs button.on{ background:linear-gradient(135deg,var(--red),var(--red2)); color:#fff; box-shadow:0 8px 20px -8px rgba(200,16,46,.6) }
-  .tr-panel{ display:none; background:linear-gradient(150deg,#1a1a1e,#101012); border:1px solid #26262b; border-radius:18px; padding:26px; position:relative; overflow:hidden }
-  .tr-panel.on{ display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center }
-  .tr-panel.full{ border-color:rgba(201,162,75,.5); background:linear-gradient(150deg,#1f1a13,#101012) }
-  .tr-car{ position:absolute; right:-30px; bottom:-30px; opacity:.06; z-index:0 } .tr-car svg{ width:260px; fill:#fff }
-  .tr-l{ position:relative; z-index:1 } .tr-trim{ font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold) }
-  .tr-nm{ font-size:28px; font-weight:900; letter-spacing:-.01em; margin:4px 0 2px } .tr-tg{ color:var(--muted); font-size:13px }
-  .tr-feat{ list-style:none; margin-top:14px; display:grid; gap:7px } .tr-feat li{ font-size:13px; display:flex; gap:8px; color:#d8d8da }
-  .tr-r{ position:relative; z-index:1; text-align:center; flex:none } .tr-price{ font-size:46px; font-weight:900; letter-spacing:-.02em; line-height:1 } .tr-r .cta{ margin-top:12px }
-
-  /* ===== C — WINDOW STICKER (Monroney) ===== */
-  .ws-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
-  .ws{ background:#fbf9f4; color:#1a1a1a; border-radius:8px; overflow:hidden; border:1px solid #d8d2c4; box-shadow:0 22px 44px -26px #000 }
-  .ws.pop{ outline:3px solid var(--gold); outline-offset:-1px }
-  .ws-h{ background:#111; color:#fff; padding:12px 14px; text-align:center } .ws-h .b{ font-weight:900; letter-spacing:.16em; font-size:10px; color:var(--gold) } .ws-h .n{ font-weight:900; font-size:18px; text-transform:uppercase; margin-top:2px }
-  .ws-sub{ background:#1a1a1a; color:#bbb; text-align:center; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; padding:5px }
-  .ws-body{ padding:12px 14px }
-  .ws-line{ display:flex; justify-content:space-between; gap:10px; font-size:11.5px; padding:6px 0; border-bottom:1px dashed #cfc8b8; color:#333 } .ws-line:last-child{ border-bottom:0 } .ws-line span:last-child{ color:#0a7a3b; font-weight:700 }
-  .ws-total{ background:#111; color:#fff; padding:11px 14px; display:flex; justify-content:space-between; align-items:baseline } .ws-total .t{ font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#999 } .ws-total .p{ font-size:26px; font-weight:900 } .ws-total .p .from{ color:#888 }
-  .ws-foot{ padding:9px 14px; font-family:ui-monospace,monospace; font-size:13px; letter-spacing:2px; color:#222; text-align:center; background:#f2efe7 }
-
-  /* ===== D — CINEMATIC CARDS ===== */
-  .cin-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
-  .cin{ position:relative; min-height:300px; border-radius:18px; overflow:hidden; border:1px solid #26262b; display:flex; flex-direction:column; justify-content:flex-end; padding:20px; isolation:isolate }
-  .cin .scene{ position:absolute; inset:0; z-index:0 }
-  .cin.ext .scene{ background:radial-gradient(120% 80% at 70% 20%, rgba(200,16,46,.45), transparent 60%), linear-gradient(160deg,#2a1014,#0c0c0e) }
-  .cin.full .scene{ background:radial-gradient(120% 80% at 30% 15%, rgba(201,162,75,.4), transparent 60%), linear-gradient(160deg,#241c10,#0c0c0e) }
-  .cin.intr .scene{ background:radial-gradient(120% 80% at 60% 25%, rgba(80,90,120,.5), transparent 60%), linear-gradient(160deg,#161a24,#0c0c0e) }
-  .cin .scene::after{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(115deg, transparent 0 26px, rgba(255,255,255,.02) 26px 27px) }
-  .cin .ov{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, transparent 35%, rgba(8,8,10,.9)) }
-  .cin .wm{ position:absolute; top:16px; right:14px; z-index:1; opacity:.16 } .cin .wm svg{ width:60px; fill:#fff }
-  .cin .ph{ position:absolute; top:14px; left:14px; z-index:2; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.45); border:1px dashed rgba(255,255,255,.25); padding:3px 7px; border-radius:6px }
-  .cin .c{ position:relative; z-index:2 }
-  .cin .nm{ font-size:23px; font-weight:900 } .cin .pr{ font-size:15px; color:var(--gold2); font-weight:800; margin-top:2px }
-  .cin .feat{ list-style:none; max-height:0; opacity:0; overflow:hidden; transition:.35s ease } .cin:hover .feat,.cin:focus-within .feat{ max-height:170px; opacity:1; margin-top:12px }
-  .cin .feat li{ font-size:12.5px; display:flex; gap:8px; color:#e0e0e2; padding:3px 0 } .cin .feat .ck{ fill:var(--gold2) }
-  .cin .cta{ margin-top:14px; position:relative; z-index:2 }
-
-  /* ===== E — NEON TILT GLASS ===== */
-  .tilt-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; perspective:1100px }
-  .tilt{ position:relative; border-radius:18px; padding:24px 20px; background:rgba(18,18,22,.72); backdrop-filter:blur(12px) saturate(140%); -webkit-backdrop-filter:blur(12px) saturate(140%); border:1px solid rgba(255,255,255,.08); box-shadow:0 22px 46px -26px #000; transition:transform .12s ease, box-shadow .3s; transform-style:preserve-3d; will-change:transform }
-  .tilt::before{ content:""; position:absolute; inset:0; border-radius:18px; padding:1.5px; background:conic-gradient(from var(--a), transparent 0%, var(--gold) 20%, var(--red) 38%, transparent 55%); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude; animation:spin 6s linear infinite; opacity:.9; pointer-events:none }
+  /* ===== V1 — AURORA EDGE (brand red→gold rotating border) ===== */
+  .v1 .tcard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:1.5px; pointer-events:none;
+    background:conic-gradient(from var(--a), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude; animation:spin 6s linear infinite; opacity:.9 }
   @keyframes spin{ to{ --a:360deg } }
-  .tilt.pop{ box-shadow:0 26px 54px -26px rgba(200,16,46,.5) }
-  .tilt .nm{ font-size:20px; font-weight:800 } .tilt .tg{ color:var(--muted); font-size:12px; margin-top:2px }
-  .tilt .pr{ font-size:38px; font-weight:900; letter-spacing:-.02em; margin:14px 0 0 }
-  .tilt .feat{ list-style:none; margin:16px 0; display:grid; gap:8px } .tilt .feat li{ font-size:12.5px; display:flex; gap:8px; color:#d8d8da }
-  .tilt .cta{ display:block }
 
-  @media (max-width:680px){
-    .db-body{ grid-template-columns:1fr } .db-feat{ grid-template-columns:1fr }
-    .tr-panel.on{ grid-template-columns:1fr; text-align:center } .tr-feat{ justify-items:center } .tr-feat li{ justify-content:center }
-    .ws-grid,.cin-grid,.tilt-grid{ grid-template-columns:1fr }
-  }
-  @media (prefers-reduced-motion:reduce){ *{ animation:none !important } .tilt::before{ animation:none } }
+  /* ===== V2 — CURSOR SPOTLIGHT (light follows your pointer) ===== */
+  .v2 .tcard{ border-color:rgba(255,255,255,.06) }
+  .v2 .tcard::before{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity .25s;
+    background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%), rgba(201,162,75,.22), transparent 60%) }
+  .v2 .tcard::after{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:1px; pointer-events:none; opacity:0; transition:opacity .25s;
+    background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.6), transparent 45%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude }
+  .v2 .tcard:hover::before,.v2 .tcard:hover::after{ opacity:1 }
+
+  /* ===== V3 — HOLOGRAPHIC (iridescent sheen reacts to tilt) ===== */
+  .v3 .tcard{ background:linear-gradient(160deg, rgba(34,20,46,.7), rgba(16,16,24,.72)) }
+  .v3 .tcard::after{ content:""; position:absolute; inset:0; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.55;
+    background:linear-gradient(110deg, rgba(255,0,128,.30), rgba(140,0,255,.24) 22%, rgba(0,190,255,.26) 46%, rgba(0,255,150,.22) 68%, rgba(255,200,0,.30));
+    background-size:260% 100%; background-position:var(--sx,50%) 0 }
+  .v3 .tcard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:1.5px; pointer-events:none;
+    background:conic-gradient(from var(--a), #ff00aa, #00c8ff, #b478ff, #ffd200, #ff00aa); animation:spin 7s linear infinite; opacity:.7;
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude }
+
+  /* ===== V4 — QUIET FROST (understated, classy) ===== */
+  .v4 .tcard{ backdrop-filter:blur(22px) saturate(120%); -webkit-backdrop-filter:blur(22px) saturate(120%); background:rgba(24,24,28,.55);
+    border:1px solid rgba(255,255,255,.12); box-shadow:0 20px 50px -28px #000, inset 0 1px 0 rgba(255,255,255,.10) }
+  .v4 .tcard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:1px; pointer-events:none;
+    background:linear-gradient(155deg, rgba(255,255,255,.30), transparent 38%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude }
+  .v4 .tcard .pr{ background:linear-gradient(180deg,#fff,#cfcfcf); -webkit-background-clip:text; background-clip:text; color:transparent }
+
+  /* ===== V5 — NEON TRACE (bright light races the border) ===== */
+  .v5 .tcard{ background:rgba(10,10,12,.82); border:1px solid rgba(200,16,46,.22); box-shadow:0 22px 46px -26px #000, 0 0 32px -14px rgba(200,16,46,.5) }
+  .v5 .tcard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:2px; pointer-events:none;
+    background:conic-gradient(from var(--a), transparent 0 78%, #ff5a6e 86%, #ffffff 91%, var(--gold) 95%, transparent 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
+    animation:spin 3.4s linear infinite; filter:drop-shadow(0 0 5px rgba(255,70,90,.9)) }
+
+  @media (max-width:680px){ .tgrid{ grid-template-columns:1fr; gap:26px } }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none !important } }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
-  <symbol id="car" viewBox="0 0 24 24"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.4L19 11h1a1 1 0 0 1 1 1v4h-2.1a2.4 2.4 0 0 1-4.8 0H9.9a2.4 2.4 0 0 1-4.8 0H3v-4a1 1 0 0 1 1-1h1zm2.3 0h9.4l-1-3H8.3z"/></symbol>
-</defs></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol></defs></svg>
 
 <div class="wrap">
   <div class="intro">
-    <h1>Services &amp; Pricing &mdash; Round 2</h1>
-    <p>Going bolder: interactive and on-theme, not just nicer cards. Tap, toggle, and hover &mdash; these <em>do</em> things.</p>
+    <h1>Neon Tilt Glass &mdash; 5 Versions</h1>
+    <p>Same frosted glass + 3D tilt, five different light treatments &mdash; from understated to full neon.<br><strong>Move your cursor across the cards (desktop) to feel each one.</strong></p>
   </div>
 
-  <!-- A -->
-  <section class="opt"><div class="opt-head"><span class="opt-num">06</span><h2>The Detail Builder</h2><span class="tag">Interactive</span><span class="desc">Pick your vehicle size, toggle Interior / Exterior, and the price + included items update live. Select both and it becomes the Full Detail with the bundle savings. Try it.</span></div>
-    <div class="db">
-      <div class="db-top"><span class="db-cap">Build your detail</span>
-        <div class="db-seg" id="dbSize"><button data-size="sedan" class="on">Sedan</button><button data-size="suv">SUV</button><button data-size="truck">Truck</button></div>
-      </div>
-      <div class="db-body">
-        <div class="db-toggles">
-          <div class="db-toggle on" data-svc="interior"><span class="db-box"><svg viewBox="0 0 24 24"><use href="#ck"/></svg></span><div><div class="nm">Interior</div><div class="tg">Deep clean inside</div></div><span class="pp" data-pp="int">$160</span></div>
-          <div class="db-toggle on" data-svc="exterior"><span class="db-box"><svg viewBox="0 0 24 24"><use href="#ck"/></svg></span><div><div class="nm">Exterior</div><div class="tg">Wash &amp; protect outside</div></div><span class="pp" data-pp="ext">$130</span></div>
-        </div>
-        <div class="db-out">
-          <div class="ol" id="dbLabel">Full Detail</div>
-          <div class="price" id="dbPrice">$260</div>
-          <div class="save" id="dbSave">Save $30 vs. separately</div>
-          <a class="cta" href="#">Book it &rarr;</a>
-        </div>
-      </div>
-      <ul class="db-feat" id="dbFeat"></ul>
+  <!-- V1 -->
+  <section class="opt"><div class="opt-head"><span class="opt-num">01</span><h2>Aurora Edge</h2><span class="tag">On-brand</span><span class="desc">A red&rarr;gold gradient that rotates around the rim &mdash; your brand colors as living light. The signature look, refined.</span></div>
+    <div class="tgrid v1">
+      <div class="tcard"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
+      <div class="tcard"><span class="pop-tag">&#9733; Popular</span><div class="nm">Full Detail <span class="s">&#9733;</span></div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
+      <div class="tcard"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
     </div>
   </section>
 
-  <!-- B -->
-  <section class="opt"><div class="opt-head"><span class="opt-num">07</span><h2>Spec Your Detail</h2><span class="tag">Car-configurator</span><span class="desc">Choose your "trim" like you'd spec a car. Tabs swap the package &mdash; Full Detail is the loaded top trim. Familiar, premium, and very on-brand for a detailer.</span></div>
-    <div>
-      <div class="tr-tabs" id="trTabs"><button data-t="ext">Exterior</button><button data-t="int">Interior</button><button data-t="full" class="on">Full Detail</button></div>
-      <div class="tr-panel full on" data-p="full">
-        <span class="tr-car"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="tr-l"><div class="tr-trim">Top Trim &middot; Most Popular</div><div class="tr-nm">Full Detail</div><div class="tr-tg">Inside &amp; out, bumper to bumper.</div>
-          <ul class="tr-feat"><li><svg class="ck"><use href="#ck"/></svg>Everything Interior + Exterior</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>No hidden fees &middot; pay when you love it</li></ul>
-        </div>
-        <div class="tr-r"><div class="tr-price"><span class="from">from </span>$260</div><a class="cta" href="#">Book &rarr;</a></div>
-      </div>
-      <div class="tr-panel" data-p="int">
-        <span class="tr-car"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="tr-l"><div class="tr-trim">Interior Trim</div><div class="tr-nm">Interior</div><div class="tr-tg">Inside-only deep clean.</div>
-          <ul class="tr-feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + crevice detail</li><li><svg class="ck"><use href="#ck"/></svg>Steam seats &amp; carpet</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim dressed</li></ul>
-        </div>
-        <div class="tr-r"><div class="tr-price"><span class="from">from </span>$160</div><a class="cta" href="#">Book &rarr;</a></div>
-      </div>
-      <div class="tr-panel" data-p="ext">
-        <span class="tr-car"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="tr-l"><div class="tr-trim">Exterior Trim</div><div class="tr-nm">Exterior</div><div class="tr-tg">Outside-only wash &amp; protect.</div>
-          <ul class="tr-feat"><li><svg class="ck"><use href="#ck"/></svg>Full hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels, tires &amp; dressing</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li></ul>
-        </div>
-        <div class="tr-r"><div class="tr-price"><span class="from">from </span>$130</div><a class="cta" href="#">Book &rarr;</a></div>
-      </div>
+  <!-- V2 -->
+  <section class="opt"><div class="opt-head"><span class="opt-num">02</span><h2>Cursor Spotlight</h2><span class="tag">Interactive light</span><span class="desc">A soft gold glow and a bright edge-highlight that <em>chase your pointer</em> across the card. Feels alive and high-end (Linear / Apple style).</span></div>
+    <div class="tgrid v2">
+      <div class="tcard"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
+      <div class="tcard"><span class="pop-tag">&#9733; Popular</span><div class="nm">Full Detail <span class="s">&#9733;</span></div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
+      <div class="tcard"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
     </div>
   </section>
 
-  <!-- C -->
-  <section class="opt"><div class="opt-head"><span class="opt-num">08</span><h2>Window Sticker</h2><span class="tag">Dealership theme</span><span class="desc">Each package as a new-car window sticker &mdash; itemized "standard equipment," a bold total, barcode footer. Unmistakably automotive and genuinely different.</span></div>
-    <div class="ws-grid">
-      <div class="ws"><div class="ws-h"><div class="b">Mikey&rsquo;s Mobile Detailing</div><div class="n">Exterior</div></div><div class="ws-sub">Standard Equipment</div>
-        <div class="ws-body"><div class="ws-line"><span>Full hand wash &amp; dry</span><span>incl.</span></div><div class="ws-line"><span>Wheel &amp; tire deep clean</span><span>incl.</span></div><div class="ws-line"><span>Tire dressing</span><span>incl.</span></div><div class="ws-line"><span>Spray sealant</span><span>incl.</span></div></div>
-        <div class="ws-total"><span class="t">Total from</span><span class="p"><span class="from">$</span>130</span></div><div class="ws-foot">||| ||&nbsp;|| |||&nbsp;| ||</div>
-      </div>
-      <div class="ws pop"><div class="ws-h"><div class="b">★ Most Popular</div><div class="n">Full Detail</div></div><div class="ws-sub">Standard Equipment</div>
-        <div class="ws-body"><div class="ws-line"><span>Everything Interior</span><span>incl.</span></div><div class="ws-line"><span>Everything Exterior</span><span>incl.</span></div><div class="ws-line"><span>Same-day turnaround</span><span>incl.</span></div><div class="ws-line"><span>Satisfaction guarantee</span><span>incl.</span></div></div>
-        <div class="ws-total"><span class="t">Total from</span><span class="p"><span class="from">$</span>260</span></div><div class="ws-foot">||| ||&nbsp;|| |||&nbsp;| ||</div>
-      </div>
-      <div class="ws"><div class="ws-h"><div class="b">Mikey&rsquo;s Mobile Detailing</div><div class="n">Interior</div></div><div class="ws-sub">Standard Equipment</div>
-        <div class="ws-body"><div class="ws-line"><span>Vacuum + crevice detail</span><span>incl.</span></div><div class="ws-line"><span>Steam seats &amp; carpet</span><span>incl.</span></div><div class="ws-line"><span>Leather clean &amp; condition</span><span>incl.</span></div><div class="ws-line"><span>Windows streak-free</span><span>incl.</span></div></div>
-        <div class="ws-total"><span class="t">Total from</span><span class="p"><span class="from">$</span>160</span></div><div class="ws-foot">||| ||&nbsp;|| |||&nbsp;| ||</div>
-      </div>
+  <!-- V3 -->
+  <section class="opt"><div class="opt-head"><span class="opt-num">03</span><h2>Holographic</h2><span class="tag">Off-brand on purpose</span><span class="desc">An iridescent rainbow sheen that shifts as you move &mdash; like a holographic trading card. Bold and futuristic (departs from red/gold).</span></div>
+    <div class="tgrid v3">
+      <div class="tcard"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
+      <div class="tcard"><span class="pop-tag">&#9733; Popular</span><div class="nm">Full Detail <span class="s">&#9733;</span></div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
+      <div class="tcard"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
     </div>
   </section>
 
-  <!-- D -->
-  <section class="opt"><div class="opt-head"><span class="opt-num">09</span><h2>Cinematic Cards</h2><span class="tag">Premium / image-ready</span><span class="desc">Full-bleed dark "scenes," price pinned to the bottom, hover reveals the details. Built to drop your real before/after photos straight in (placeholders for now).</span></div>
-    <div class="cin-grid">
-      <div class="cin ext" tabindex="0"><div class="scene"></div><div class="ov"></div><span class="ph">Your photo here</span><span class="wm"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="c"><div class="nm">Exterior</div><div class="pr">from $130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta" href="#">Get quote &rarr;</a></div>
-      </div>
-      <div class="cin full" tabindex="0"><div class="scene"></div><div class="ov"></div><span class="ph">Your photo here</span><span class="wm"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="c"><div class="nm">Full Detail &#9733;</div><div class="pr">from $260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Inside &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book Full Detail &rarr;</a></div>
-      </div>
-      <div class="cin intr" tabindex="0"><div class="scene"></div><div class="ov"></div><span class="ph">Your photo here</span><span class="wm"><svg viewBox="0 0 24 24"><use href="#car"/></svg></span>
-        <div class="c"><div class="nm">Interior</div><div class="pr">from $160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta" href="#">Get quote &rarr;</a></div>
-      </div>
+  <!-- V4 -->
+  <section class="opt"><div class="opt-head"><span class="opt-num">04</span><h2>Quiet Frost</h2><span class="tag">Understated</span><span class="desc">Heavy frosted glass, a single fine top-light hairline, silver price. No neon &mdash; calm, expensive, and the easiest to sit beside the rest of your site.</span></div>
+    <div class="tgrid v4">
+      <div class="tcard"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
+      <div class="tcard"><span class="pop-tag">&#9733; Popular</span><div class="nm">Full Detail <span class="s">&#9733;</span></div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
+      <div class="tcard"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
     </div>
   </section>
 
-  <!-- E -->
-  <section class="opt"><div class="opt-head"><span class="opt-num">10</span><h2>Neon Tilt Glass</h2><span class="tag">Max flair</span><span class="desc">Frosted glass cards with a live rotating gradient edge that tilt in 3D as you move over them. Pure "expensive website" energy. (Move your cursor across them on desktop.)</span></div>
-    <div class="tilt-grid">
-      <div class="tilt"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta" href="#">Get quote &rarr;</a></div>
-      <div class="tilt pop"><div class="nm">Full Detail &#9733;</div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in / out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
-      <div class="tilt"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta" href="#">Get quote &rarr;</a></div>
+  <!-- V5 -->
+  <section class="opt"><div class="opt-head"><span class="opt-num">05</span><h2>Neon Trace</h2><span class="tag">Max neon</span><span class="desc">A single hot streak of light races around the border with a real glow, on near-black glass. The loudest, most "nightlife" version.</span></div>
+    <div class="tgrid v5">
+      <div class="tcard"><div class="nm">Exterior</div><div class="tg">Outside wash &amp; protect</div><div class="pr"><span class="from">from </span>$130</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
+      <div class="tcard"><span class="pop-tag">&#9733; Popular</span><div class="nm">Full Detail <span class="s">&#9733;</span></div><div class="tg">Inside &amp; out, the works</div><div class="pr"><span class="from">from </span>$260</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>Pay when you love it</li></ul><a class="cta" href="#">Book &rarr;</a></div>
+      <div class="tcard"><div class="nm">Interior</div><div class="tg">Inside-only deep clean</div><div class="pr"><span class="from">from </span>$160</div><ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Vacuum + steam</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim</li><li><svg class="ck"><use href="#ck"/></svg>Windows streak-free</li></ul><a class="cta gh" href="#">Get quote &rarr;</a></div>
     </div>
   </section>
 
@@ -219,39 +143,13 @@
 
 <script>
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  /* ---- A: Detail Builder ---- */
-  (function(){
-    var P={sedan:{ext:130,int:160,full:260},suv:{ext:165,int:200,full:300},truck:{ext:200,int:240,full:340}};
-    var IF=['Vacuum + crevice detail','Steam seats &amp; carpet','Leather &amp; trim dressed','Windows streak-free'];
-    var EF=['Hand wash &amp; dry','Wheels &amp; tires cleaned','Tire dressing','Spray sealant'];
-    var size='sedan', sel={interior:true,exterior:true};
-    var elP=document.getElementById('dbPrice'), elL=document.getElementById('dbLabel'), elS=document.getElementById('dbSave'), elF=document.getElementById('dbFeat');
-    function animateTo(to){ var from=parseInt((elP.textContent||'0').replace(/[^0-9]/g,''))||0;
-      if(to===0){ elP.textContent='—'; return; } if(reduce){ elP.textContent='$'+to; return; }
-      var s=performance.now(); (function f(n){ var p=Math.min(1,(n-s)/450), e=1-Math.pow(1-p,3), v=Math.round(from+(to-from)*e); elP.textContent='$'+v; if(p<1)requestAnimationFrame(f); else elP.textContent='$'+to; })(s); }
-    function render(){
-      var p=P[size];
-      document.querySelector('[data-pp="int"]').textContent='$'+p.int;
-      document.querySelector('[data-pp="ext"]').textContent='$'+p.ext;
-      var price=0,label='Pick a service',save='',list=[];
-      if(sel.interior&&sel.exterior){ price=p.full; label='Full Detail'; save='Save $'+(p.int+p.ext-p.full)+' vs. separately'; list=IF.concat(EF,['Same-day turnaround','Pay when you love it']); }
-      else if(sel.interior){ price=p.int; label='Interior Detail'; list=IF.slice(); }
-      else if(sel.exterior){ price=p.ext; label='Exterior Detail'; list=EF.slice(); }
-      elL.textContent=label; elS.textContent=save; animateTo(price);
-      elF.innerHTML=list.map(function(f){return '<li><svg class="ck"><use href="#ck"/></svg>'+f+'</li>';}).join('');
-    }
-    document.querySelectorAll('.db-toggle').forEach(function(t){ t.addEventListener('click',function(){ var k=t.dataset.svc; sel[k]=!sel[k]; t.classList.toggle('on',sel[k]); render(); }); });
-    document.querySelectorAll('#dbSize button').forEach(function(b){ b.addEventListener('click',function(){ size=b.dataset.size; document.querySelectorAll('#dbSize button').forEach(function(x){x.classList.toggle('on',x===b);}); render(); }); });
-    render();
-  })();
-  /* ---- B: Trim tabs ---- */
-  document.querySelectorAll('#trTabs button').forEach(function(b){ b.addEventListener('click',function(){
-    document.querySelectorAll('#trTabs button').forEach(function(x){x.classList.toggle('on',x===b);});
-    document.querySelectorAll('.tr-panel').forEach(function(pn){ pn.classList.toggle('on', pn.dataset.p===b.dataset.t); });
-  }); });
-  /* ---- E: Tilt ---- */
-  if(!reduce){ document.querySelectorAll('.tilt').forEach(function(c){
-    c.addEventListener('pointermove',function(e){ if(e.pointerType==='touch')return; var r=c.getBoundingClientRect(); var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5; c.style.transform='perspective(900px) rotateY('+(x*9)+'deg) rotateX('+(-y*9)+'deg) translateY(-4px)'; });
+  if(!reduce){ document.querySelectorAll('.tcard').forEach(function(c){
+    c.addEventListener('pointermove',function(e){ if(e.pointerType==='touch')return;
+      var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+      c.style.transform='perspective(900px) rotateX('+((0.5-py)*10)+'deg) rotateY('+((px-0.5)*10)+'deg) translateY(-4px)';
+      c.style.setProperty('--mx',(px*100)+'%'); c.style.setProperty('--my',(py*100)+'%');
+      c.style.setProperty('--sx',(px*200-50)+'%');
+    });
     c.addEventListener('pointerleave',function(){ c.style.transform=''; });
   }); }
 </script>
