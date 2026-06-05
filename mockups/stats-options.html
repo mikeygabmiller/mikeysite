@@ -13,7 +13,7 @@
   :root{
     --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
     --bg:#0b0b0c; --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
-    --card:rgba(17,17,21,.74); --surface2:#1c1c1f;
+    --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
   }
   *{ box-sizing:border-box; margin:0; padding:0 }
   html{ scroll-behavior:smooth }
@@ -22,26 +22,26 @@
       radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.10), transparent 60%),
       radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.06), transparent 55%),
       var(--bg);
-    padding:26px 16px 110px; }
-  .wrap{ max-width:1000px; margin:0 auto }
+    padding:26px 20px 120px; }
+  .wrap{ max-width:1120px; margin:0 auto }
 
   /* mockup chrome */
-  .note{ max-width:720px; margin:0 auto 40px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px 20px }
+  .note{ max-width:760px; margin:0 auto 44px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px 22px }
   .note b{ color:#cbb98a }
 
   /* ===== section header ===== */
-  .sec-head{ text-align:center; margin-bottom:26px }
+  .sec-head{ text-align:center; margin-bottom:34px }
   .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
-  .sec-head h2{ font-size:clamp(30px,6vw,48px); font-weight:900; letter-spacing:-.025em; margin-top:8px; line-height:1.02 }
+  .sec-head h2{ font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin-top:10px; line-height:1.02 }
   .sec-head h2 em{ color:var(--red); font-style:normal }
-  .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.4vw,18px); margin-top:14px; max-width:560px; margin-inline:auto; font-weight:500 }
+  .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.2vw,18px); margin-top:16px; max-width:580px; margin-inline:auto; font-weight:500 }
 
   /* ===== shared aurora glass ===== */
-  .acard{ position:relative; border-radius:20px; overflow:hidden; transform-style:preserve-3d;
+  .acard{ position:relative; border-radius:22px; overflow:hidden; transform-style:preserve-3d;
     transition:transform .14s ease, box-shadow .3s;
     background:var(--card); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
     border:1px solid var(--line); box-shadow:0 22px 46px -26px #000 }
-  .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:20px; padding:1.5px; pointer-events:none;
+  .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:22px; padding:1.5px; pointer-events:none;
     background:conic-gradient(from var(--a), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
     -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
     mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
@@ -52,7 +52,7 @@
 
   /* ===== atoms ===== */
   .ck{ width:15px; height:15px; flex:none; fill:var(--gold) }
-  .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:14px 22px; border-radius:12px;
+  .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:15px 24px; border-radius:12px;
     border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
     transition:transform .15s, background .15s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
   .cta:hover{ background:var(--red2); transform:translateY(-2px) }
@@ -60,94 +60,143 @@
   .cta.block{ display:block; width:100% }
   .cta.lg{ font-size:16px; padding:16px 24px }
   .learn{ display:inline-flex; align-items:center; gap:5px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .learn:hover{ color:var(--gold) }
-  .pill{ display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:5px 12px; border-radius:99px }
+  .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:5px 12px; border-radius:99px }
+  .pill .ck{ fill:#1a1205; width:12px; height:12px }
 
   /* ====================================================== */
   /*  CONCIERGE (the quiz)                                   */
   /* ====================================================== */
-  .concierge{ padding:30px 28px; margin-bottom:30px }
-  @media (max-width:560px){ .concierge{ padding:24px 18px } }
+  .concierge{ padding:34px 36px 32px; margin-bottom:34px }
+  @media (max-width:560px){ .concierge{ padding:24px 20px } }
 
-  .cc-head{ display:flex; align-items:center; gap:12px; margin-bottom:22px }
-  .cc-avatar{ width:46px; height:46px; border-radius:50%; flex:none; display:grid; place-items:center; font-size:22px;
+  .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px }
+  .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
     background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
-  .cc-head .t{ font-size:16px; font-weight:800 } .cc-head .s{ font-size:12.5px; color:var(--muted) }
-  .cc-prog{ margin-left:auto; display:flex; gap:6px } .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
+  .cc-icon svg{ width:27px; height:27px }
+  .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
+  .cc-prog{ margin-left:auto; display:flex; gap:6px } .cc-prog i{ width:24px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
 
-  .cc-stage{ min-height:60px }
+  .cc-stage{ min-height:150px; display:flex; align-items:center }
+  .cc-stage > div{ width:100% }
   .cc-q{ display:none } .cc-q.show{ display:block; animation:fade .4s cubic-bezier(.22,1,.36,1) both }
   @keyframes fade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
-  .cc-qt{ font-size:20px; font-weight:800; letter-spacing:-.01em; margin-bottom:4px } .cc-qh{ font-size:13px; color:var(--muted); margin-bottom:16px }
+  .cc-qt{ font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:5px } .cc-qh{ font-size:13.5px; color:var(--muted); margin-bottom:18px }
 
-  .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px }
-  @media (max-width:560px){ .cc-opts{ grid-template-columns:1fr } }
+  .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px }
+  @media (max-width:620px){ .cc-opts{ grid-template-columns:1fr } }
   .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
-    background:var(--surface2); border:1.5px solid var(--line); border-radius:15px; padding:15px 15px 14px;
-    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:12px; align-items:center }
-  .cc-opts.col1 .cc-opt{ } /* single-column rows already row layout */
-  .cc-opt:hover{ border-color:rgba(255,255,255,.28); transform:translateY(-2px) }
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:16px; padding:16px;
+    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:14px; align-items:center }
+  .cc-opt:hover{ border-color:var(--red); transform:translateY(-2px); background:rgba(200,16,46,.06) }
   .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
-  .cc-opt .emo{ font-size:24px; flex:none; width:34px; text-align:center }
-  .cc-opt .ot{ font-size:14.5px; font-weight:800; display:block } .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
+  .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
+  .cc-tile svg{ width:28px; height:28px }
+  .cc-opt:hover .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
+  .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
 
   /* result */
   .cc-result{ display:none } .cc-result.show{ display:block; animation:fade .45s cubic-bezier(.22,1,.36,1) both }
-  .cc-reco-top{ display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap }
-  .cc-reco-lead{ font-size:13px; color:var(--muted) } .cc-reco-lead b{ color:#fff }
-  .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:16px; padding:20px 20px 22px }
-  .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em } .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:2px }
-  .cc-reco-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; margin:14px 0 2px } .cc-reco-price .from{ font-size:.46em; color:var(--muted); font-weight:600 }
-  .cc-reco-est{ font-size:12.5px; color:var(--gold2) }
-  .cc-reco-feat{ list-style:none; display:grid; gap:9px; margin:16px 0 18px } .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde }
-  .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap } .cc-reco-cta .cta{ flex:1; min-width:160px }
-  .cc-retake{ display:inline-flex; align-items:center; gap:6px; margin-top:16px; background:none; border:none; color:var(--muted); font-size:12.5px; cursor:pointer; font-family:inherit } .cc-retake:hover{ color:#fff }
+  .cc-reco-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap }
+  .cc-reco-lead{ font-size:13.5px; color:#cfcfd2 } .cc-reco-lead b{ color:#fff }
+  .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:18px; padding:24px }
+  .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
+  .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
+  .cc-reco-tile svg{ width:36px; height:36px }
+  .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
+  .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
+  .cc-reco-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1 } .cc-reco-price .from{ font-size:.5em; color:var(--muted); font-weight:600 }
+  .cc-reco-est{ font-size:12px; color:var(--gold2); margin-top:5px; max-width:170px; margin-left:auto }
+  .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 4px } .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
+
+  .cc-note-wrap{ margin:18px 0 20px }
+  .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .cc-note-label span{ color:var(--muted); font-weight:500 } .cc-note-label svg{ width:16px; height:16px; fill:var(--gold) }
+  .cc-note{ width:100%; min-height:62px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
+  .cc-note::placeholder{ color:#6e6e76 } .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
+  .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:7px; display:flex; align-items:center; gap:6px } .cc-note-hint svg{ width:13px; height:13px; fill:var(--gold) }
+
+  .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap } .cc-reco-cta .cta{ flex:1; min-width:180px }
+  .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .cc-retake:hover{ color:#fff } .cc-retake svg{ width:14px; height:14px; fill:currentColor }
+
+  @media (max-width:560px){
+    .cc-reco-main{ flex-wrap:wrap } .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .cc-reco-est{ margin-left:0; max-width:none }
+    .cc-reco-feat{ grid-template-columns:1fr }
+  }
 
   /* ====================================================== */
   /*  BROWSE CARDS                                          */
   /* ====================================================== */
-  .browse-div{ display:flex; align-items:center; gap:16px; margin:6px 2px 24px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase }
+  .browse-div{ display:flex; align-items:center; gap:18px; margin:8px 2px 26px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
   .browse-div::before, .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
 
-  .cards{ display:grid; grid-template-columns:1fr 1.1fr 1fr; gap:18px; align-items:stretch }
+  .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:20px; align-items:stretch }
   @media (max-width:860px){ .cards{ grid-template-columns:1fr } .cards .feature{ order:-1 } }
-  .cards .acard{ padding:24px 22px; display:flex; flex-direction:column }
-  .svc-badge{ position:absolute; top:0; left:50%; transform:translate(-50%,-50%); z-index:3; }
-  .svc-name{ font-size:21px; font-weight:900 } .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:3px }
-  .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:14px } .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
+  .cards .acard{ padding:26px 24px; display:flex; flex-direction:column }
+  .svc-top{ display:flex; align-items:center; gap:13px }
+  .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc-tile svg{ width:30px; height:30px }
+  .feature .svc-tile{ color:#fff; background:linear-gradient(140deg,var(--red),var(--red2)) }
+  .svc-badge{ position:absolute; top:0; left:50%; transform:translate(-50%,-50%); z-index:3 }
+  .svc-name{ font-size:21px; font-weight:900; letter-spacing:-.01em } .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:2px }
+  .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:18px } .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
   .svc-price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px }
   .divider{ height:1px; background:var(--line); margin:16px 0 }
-  .feat{ list-style:none; display:grid; gap:10px; flex:1; margin-bottom:18px } .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
-  .svc-foot .learn{ margin:12px 0 14px; display:inline-flex }
+  .feat{ list-style:none; display:grid; gap:11px; flex:1; margin-bottom:20px } .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
+  .svc-learn{ margin:14px 0 16px; display:inline-flex }
 
   /* trust + testimonial */
-  .trustrow{ display:flex; justify-content:center; gap:12px 26px; flex-wrap:wrap; margin-top:30px; font-size:12.5px; color:var(--muted) }
+  .trustrow{ display:flex; justify-content:center; gap:12px 28px; flex-wrap:wrap; margin-top:34px; font-size:12.5px; color:var(--muted) }
   .trustrow span{ display:inline-flex; align-items:center; gap:8px } .trustrow strong{ color:var(--gold); font-weight:800 }
-  .quote{ display:flex; gap:13px; align-items:flex-start; max-width:680px; margin:26px auto 0; text-align:left }
-  .quote .qmark{ font-size:34px; line-height:1; color:var(--red); font-weight:900; flex:none }
-  .quote p{ font-size:14px; color:#e3e3e5; line-height:1.5 } .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:6px } .quote cite b{ color:#fff } .quote .s{ color:var(--gold) }
+  .quote{ display:flex; gap:14px; align-items:flex-start; max-width:700px; margin:28px auto 0; text-align:left }
+  .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:Georgia,serif }
+  .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .quote cite b{ color:#fff } .quote .s{ color:var(--gold) }
 
   /* ====================================================== */
   /*  SIMULATED HAND-OFF PANEL (mockup only)               */
   /* ====================================================== */
   .ho-back{ position:fixed; inset:0; background:rgba(0,0,0,.66); backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; padding:20px; z-index:50 }
   .ho-back.show{ display:flex; animation:fade .25s both }
-  .ho{ max-width:430px; width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:20px; padding:26px 24px; box-shadow:0 30px 80px -20px #000; text-align:center }
+  .ho{ max-width:440px; width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:22px; padding:28px 26px; box-shadow:0 30px 80px -20px #000; text-align:center }
   .ho .simtag{ display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--gold2); background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.3); padding:4px 10px; border-radius:99px; margin-bottom:14px }
-  .ho h3{ font-size:20px; font-weight:900; margin-bottom:6px } .ho p{ font-size:13.5px; color:#cfcfd2; line-height:1.55 }
-  .ho .locked{ margin:16px 0; padding:14px 16px; border-radius:13px; background:rgba(200,16,46,.1); border:1px solid rgba(200,16,46,.3); display:flex; align-items:center; justify-content:space-between; gap:10px }
+  .ho h3{ font-size:21px; font-weight:900; margin-bottom:6px } .ho > p{ font-size:13.5px; color:#cfcfd2; line-height:1.55 }
+  .ho .locked{ margin:16px 0; padding:15px 17px; border-radius:14px; background:rgba(200,16,46,.1); border:1px solid rgba(200,16,46,.3); display:flex; align-items:center; justify-content:space-between; gap:10px }
   .ho .locked .ln{ font-weight:800; font-size:15px } .ho .locked .lp{ font-weight:900; font-size:20px; color:var(--gold2) }
-  .ho .steps{ text-align:left; font-size:12.5px; color:var(--muted); margin:14px 0 18px; display:grid; gap:8px } .ho .steps li{ display:flex; gap:8px } .ho .steps b{ color:#fff }
-  .ho .close{ background:none; border:1px solid var(--line); color:#fff; border-radius:10px; padding:11px 18px; font-weight:700; cursor:pointer; font-family:inherit; font-size:13.5px } .ho .close:hover{ border-color:#fff }
+  .ho .ho-note{ text-align:left; font-size:12.5px; color:#cfcfd2; background:var(--surface3); border-radius:11px; padding:11px 13px; margin:-6px 0 16px } .ho .ho-note b{ color:#fff; display:block; margin-bottom:3px; font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--gold2) }
+  .ho .steps{ text-align:left; font-size:12.5px; color:var(--muted); margin:14px 0 20px; display:grid; gap:9px; list-style:none } .ho .steps li{ display:flex; gap:9px } .ho .steps b{ color:#fff }
+  .ho .close{ background:none; border:1px solid var(--line); color:#fff; border-radius:11px; padding:12px 20px; font-weight:700; cursor:pointer; font-family:inherit; font-size:13.5px } .ho .close:hover{ border-color:#fff }
 
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; scroll-behavior:auto } }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol></defs></svg>
+
+<!-- ============ ICON LIBRARY (reused from the QQC + custom) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol>
+  <symbol id="i-redo" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C6.5 5 2.7 8.6 1 12c1.7 3.4 5.5 7 11 7s9.3-3.6 11-7c-1.7-3.4-5.5-7-11-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></symbol>
+  <!-- custom: recommendation wand -->
+  <symbol id="i-wand" viewBox="0 0 28 28">
+    <path d="M5 23.7a1.5 1.5 0 0 1 0-2.1L16.4 10.2l2.1 2.1L7.1 23.7a1.5 1.5 0 0 1-2.1 0z"/>
+    <path d="M20.3 3.2l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z"/>
+    <path d="M24.6 11.4l.6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6z" opacity=".6"/>
+  </symbol>
+  <!-- vehicles (from QQC) -->
+  <symbol id="v-sedan" viewBox="0 0 28 28"><path d="M4 16.6v-1.3c0-.5.34-.92.83-1.02l1.9-.4 2.1-2.45c.43-.5 1.05-.79 1.71-.79h4.9c.6 0 1.18.21 1.64.6l2.46 2.06 2.2.46c.5.1.86.55.86 1.06v1.5c0 .39-.31.7-.7.7H4.7a.7.7 0 0 1-.7-.7z"/><path opacity=".45" d="M9.1 11.9l-1.4 1.7h3.9v-1.7zM12.4 11.9v1.7h5l-1.5-1.6a1.4 1.4 0 0 0-.9-.31z"/><circle cx="9.2" cy="17.0" r="1.7"/><circle cx="18.6" cy="17.0" r="1.7"/></symbol>
+  <symbol id="v-suv" viewBox="0 0 28 28"><path d="M3.4 16.8v-2.1c0-.5.34-.92.82-1.03l1.4-.32 1.9-2.9c.43-.66 1.16-1.05 1.95-1.05h6.2c.7 0 1.36.3 1.82.83l2.1 2.4 2.4.46c.66.13 1.14.7 1.14 1.38v2.35c0 .4-.32.72-.72.72H4.12a.72.72 0 0 1-.72-.72z"/><path opacity=".45" d="M8.4 10.2l-1.5 2.4h3.9v-2.4zM11.6 10.2v2.4h5.6l-1.9-2.1a1.5 1.5 0 0 0-1.1-.49z"/><circle cx="8.9" cy="17.3" r="2.0"/><circle cx="19.1" cy="17.3" r="2.0"/></symbol>
+  <symbol id="v-van" viewBox="0 0 28 28"><path d="M3 17v-6c0-.9.73-1.64 1.64-1.64h10.7c.55 0 1.07.23 1.45.63l3.5 3.7 1.66.34c.7.14 1.2.76 1.2 1.47v1.5c0 .4-.32.73-.72.73H3.72A.72.72 0 0 1 3 17z"/><path opacity=".45" d="M5.1 11.1v2.5h3.3v-2.5zM10 11.1v2.5h3.3v-2.5zM14.9 11.4v2.2h3.4l-2-2.1a1 1 0 0 0-.7-.3z"/><circle cx="8.3" cy="17.2" r="1.9"/><circle cx="19.4" cy="17.2" r="1.9"/></symbol>
+  <!-- services (from QQC) -->
+  <symbol id="s-interior" viewBox="0 0 28 28"><circle cx="14" cy="14" r="6.4" fill="none" stroke="currentColor" stroke-width="2.1"/><circle cx="14" cy="14" r="1.9" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2.0" stroke-linecap="round" d="M14 15.9V20.1M12.45 13.05 8.7 11.2M15.55 13.05 19.3 11.2"/><path d="M3.89 22.48 L4.43 21.45 L3.75 20.49 L4.90 20.68 L5.60 19.74 L5.78 20.90 L6.89 21.27 L5.84 21.80 L5.83 22.97 L5.01 22.13 Z"/><path d="M1.45 18.08 L2.34 17.32 L2.06 16.18 L3.06 16.79 L4.06 16.18 L3.79 17.32 L4.68 18.08 L3.51 18.17 L3.06 19.25 L2.61 18.17 Z"/><path d="M0.80 14.00 L1.88 13.55 L1.97 12.38 L2.74 13.27 L3.88 13.00 L3.27 14.00 L3.88 15.00 L2.74 14.73 L1.97 15.62 L1.88 14.45 Z"/><path d="M1.45 9.92 L2.61 9.83 L3.06 8.75 L3.51 9.83 L4.68 9.92 L3.79 10.68 L4.06 11.82 L3.06 11.21 L2.06 11.82 L2.34 10.68 Z"/><path d="M3.89 5.52 L5.01 5.87 L5.83 5.03 L5.84 6.20 L6.89 6.73 L5.78 7.10 L5.60 8.26 L4.90 7.32 L3.75 7.51 L4.43 6.55 Z"/></symbol>
+  <symbol id="s-exterior" viewBox="0 0 28 28"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M24.57 5.13 L24.00 6.23 L24.72 7.24 L23.50 7.04 L22.76 8.03 L22.57 6.81 L21.40 6.41 L22.51 5.86 L22.52 4.62 L23.39 5.50 Z"/><path d="M27.12 9.74 L26.18 10.54 L26.47 11.75 L25.41 11.10 L24.35 11.75 L24.64 10.54 L23.70 9.74 L24.94 9.64 L25.41 8.49 L25.89 9.64 Z"/><path d="M27.80 14.00 L26.66 14.48 L26.56 15.71 L25.75 14.77 L24.54 15.06 L25.19 14.00 L24.54 12.94 L25.75 13.23 L26.56 12.29 L26.66 13.52 Z"/><path d="M27.12 18.26 L25.89 18.36 L25.41 19.51 L24.94 18.36 L23.70 18.26 L24.64 17.46 L24.35 16.25 L25.41 16.90 L26.47 16.25 L26.18 17.46 Z"/><path d="M24.57 22.87 L23.39 22.50 L22.52 23.38 L22.51 22.14 L21.40 21.59 L22.57 21.19 L22.76 19.97 L23.50 20.96 L24.72 20.76 L24.00 21.77 Z"/></symbol>
+  <symbol id="s-full" viewBox="0 0 28 28"><path fill-rule="evenodd" d="M14 9.4c-2.1 0-3.2.3-3.9 1.05-.55.62-.92 1.6-1.2 2.85l-.5.12c-.62.15-1.0.62-1.0 1.25v2.9c0 .5.4.9.9.9h.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h7.5v.65c0 .4.32.72.72.72h1.0c.4 0 .72-.32.72-.72v-.65h.5c.5 0 .9-.4.9-.9v-2.9c0-.63-.38-1.1-1.0-1.25l-.5-.12c-.28-1.25-.65-2.23-1.2-2.85C17.2 9.7 16.1 9.4 14 9.4zM11.6 12.9c.24-.92.5-1.5.85-1.85.42-.42 1.1-.5 1.55-.5s1.13.08 1.55.5c.35.35.6.93.85 1.85zM10.0 14.7c.5-.12 1.05.18 1.18.74.12.5-.18 1.05-.72 1.16-.5.12-1.05-.18-1.16-.72-.13-.52.17-1.06.7-1.18zM17.0 14.72c.5-.12 1.05.18 1.16.72.13.54-.17 1.06-.7 1.18-.52.12-1.06-.18-1.18-.74-.12-.5.18-1.04.72-1.16z"/><path d="M14.00 0.90 L14.56 2.24 L16.00 2.35 L14.90 3.29 L15.23 4.70 L14.00 3.95 L12.77 4.70 L13.10 3.29 L12.00 2.35 L13.44 2.24 Z"/><path d="M21.78 4.12 L22.33 5.46 L23.78 5.57 L22.68 6.51 L23.01 7.92 L21.78 7.17 L20.54 7.92 L20.88 6.51 L19.78 5.57 L21.22 5.46 Z"/><path d="M25.00 11.90 L25.56 13.24 L27.00 13.35 L25.90 14.29 L26.23 15.70 L25.00 14.95 L23.77 15.70 L24.10 14.29 L23.00 13.35 L24.44 13.24 Z"/><path d="M21.78 19.68 L22.33 21.01 L23.78 21.13 L22.68 22.07 L23.01 23.48 L21.78 22.72 L20.54 23.48 L20.88 22.07 L19.78 21.13 L21.22 21.01 Z"/><path d="M14.00 22.90 L14.56 24.24 L16.00 24.35 L14.90 25.29 L15.23 26.70 L14.00 25.95 L12.77 26.70 L13.10 25.29 L12.00 24.35 L13.44 24.24 Z"/><path d="M6.22 19.68 L6.78 21.01 L8.22 21.13 L7.12 22.07 L7.46 23.48 L6.22 22.72 L4.99 23.48 L5.32 22.07 L4.22 21.13 L5.67 21.01 Z"/><path d="M3.00 11.90 L3.56 13.24 L5.00 13.35 L3.90 14.29 L4.23 15.70 L3.00 14.95 L1.77 15.70 L2.10 14.29 L1.00 13.35 L2.44 13.24 Z"/><path d="M6.22 4.12 L6.78 5.46 L8.22 5.57 L7.12 6.51 L7.46 7.92 L6.22 7.17 L4.99 7.92 L5.32 6.51 L4.22 5.57 L5.67 5.46 Z"/></symbol>
+</defs></svg>
 
 <div class="wrap">
   <div class="note">
-    <b>Interactive mockup.</b> The concierge quiz below is fully working &mdash; tap through it. Every <b>Book</b> button opens a simulated panel showing what happens on the live site, where it'll jump straight to the QQC's final step with the price &amp; service locked in. Nothing is wired to the real QQC yet.
+    <b>Interactive mockup.</b> The concierge below is fully working &mdash; tap through it, add a note, retake it. Every <b>Book</b> button opens a simulated panel showing what happens on the live site, where it'll jump straight to the QQC's final step with the price, service &amp; your note locked in. Not wired to the real QQC yet.
   </div>
 
   <!-- ===================== LIVE SECTION ===================== -->
@@ -155,14 +204,14 @@
     <div class="sec-head">
       <span class="eyebrow">Mikey's Mobile Detailing</span>
       <h2>Our <em>Services</em></h2>
-      <p class="sub">Tell me what you need and I'll recommend the right package &mdash; takes 10 seconds.</p>
+      <p class="sub">Not sure what you need? Answer two quick questions and I'll recommend the right package.</p>
     </div>
 
     <!-- CONCIERGE -->
     <div class="acard feature concierge" id="cc">
       <div class="cc-head">
-        <div class="cc-avatar">👋</div>
-        <div><div class="t">Hey, I'm Mikey</div><div class="s">Two quick taps and I'll point you to the right detail.</div></div>
+        <div class="cc-icon"><svg><use href="#i-wand"/></svg></div>
+        <div><div class="t">Find my detail</div><div class="s">Two quick questions &mdash; I'll point you to the right one.</div></div>
         <div class="cc-prog" id="ccProg"><i class="on"></i><i></i></div>
       </div>
 
@@ -173,13 +222,13 @@
           <div class="cc-qh">Pick the one that bugs you most.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="need" data-val="interior" type="button">
-              <span class="emo">🧽</span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
+              <span class="cc-tile"><svg><use href="#s-interior"/></svg></span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
             </button>
             <button class="cc-opt" data-q="need" data-val="exterior" type="button">
-              <span class="emo">✨</span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
+              <span class="cc-tile"><svg><use href="#s-exterior"/></svg></span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
             </button>
             <button class="cc-opt" data-q="need" data-val="full" type="button">
-              <span class="emo">🚗</span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
+              <span class="cc-tile"><svg><use href="#s-full"/></svg></span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
             </button>
           </div>
         </div>
@@ -190,32 +239,46 @@
           <div class="cc-qh">Helps me size up your estimate.</div>
           <div class="cc-opts">
             <button class="cc-opt" data-q="size" data-val="sedan" type="button">
-              <span class="emo">🚙</span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
+              <span class="cc-tile"><svg><use href="#v-sedan"/></svg></span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
             </button>
             <button class="cc-opt" data-q="size" data-val="suv" type="button">
-              <span class="emo">🚐</span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
+              <span class="cc-tile"><svg><use href="#v-suv"/></svg></span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
             </button>
             <button class="cc-opt" data-q="size" data-val="van" type="button">
-              <span class="emo">🚌</span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
+              <span class="cc-tile"><svg><use href="#v-van"/></svg></span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
             </button>
           </div>
         </div>
 
         <!-- RESULT -->
         <div class="cc-result" id="ccResult">
-          <div class="cc-reco-top"><span class="pill">★ Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
+          <div class="cc-reco-top"><span class="pill"><svg class="ck"><use href="#ck"/></svg> Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
           <div class="cc-reco">
-            <div class="cc-reco-name" id="ccName">Full Detail</div>
-            <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
-            <div class="cc-reco-price" id="ccPrice"></div>
-            <div class="cc-reco-est" id="ccEst"></div>
+            <div class="cc-reco-main">
+              <div class="cc-reco-tile" id="ccTile"><svg><use href="#s-full"/></svg></div>
+              <div>
+                <div class="cc-reco-name" id="ccName">Full Detail</div>
+                <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
+              </div>
+              <div class="cc-reco-pricewrap">
+                <div class="cc-reco-price" id="ccPrice"></div>
+                <div class="cc-reco-est" id="ccEst"></div>
+              </div>
+            </div>
             <ul class="cc-reco-feat" id="ccFeat"></ul>
+
+            <div class="cc-note-wrap">
+              <label class="cc-note-label" for="ccNote"><svg><use href="#i-pencil"/></svg> Anything specific I should know? <span>(optional)</span></label>
+              <textarea class="cc-note" id="ccNote" placeholder="Mold, pet hair, deep stains, tree sap, scratches… mention it and I'll make sure your quote covers it."></textarea>
+              <div class="cc-note-hint"><svg><use href="#ck"/></svg> I read every one of these before I send your quote.</div>
+            </div>
+
             <div class="cc-reco-cta">
-              <button class="cta" id="ccBook" type="button">Book this →</button>
-              <a class="cta ghost" href="#browse">See all services ↓</a>
+              <button class="cta" id="ccBook" type="button">Book this &rarr;</button>
+              <a class="cta ghost" href="#browse">See all services &darr;</a>
             </div>
           </div>
-          <button class="cc-retake" id="ccRetake" type="button">↺ Start over</button>
+          <button class="cc-retake" id="ccRetake" type="button"><svg><use href="#i-redo"/></svg> Start over</button>
         </div>
       </div>
     </div>
@@ -226,9 +289,9 @@
     <div class="cards">
       <!-- INTERIOR -->
       <div class="acard">
-        <div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div>
+        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-interior"/></svg></span><div><div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div></div></div>
         <div class="svc-price"><span class="from">from </span>$160<small>$160–$240 · based on vehicle size</small></div>
-        <a class="learn" href="/services/interior.html" style="margin-top:12px">See what's included →</a>
+        <a class="learn svc-learn" href="/services/interior.html"><svg class="ck"><use href="#i-eye"/></svg> See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ck"><use href="#ck"/></svg>Full vacuum + crevice detail</li>
@@ -236,12 +299,12 @@
           <li><svg class="ck"><use href="#ck"/></svg>Leather clean &amp; condition</li>
           <li><svg class="ck"><use href="#ck"/></svg>Streak-free windows</li>
         </ul>
-        <button class="cta ghost block" data-book="interior" type="button">Book Interior →</button>
+        <button class="cta ghost block" data-book="interior" type="button">Book Interior &rarr;</button>
       </div>
       <!-- FULL -->
       <div class="acard feature">
-        <span class="svc-badge pill">★ Most Popular</span>
-        <div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div>
+        <span class="svc-badge pill"><svg class="ck"><use href="#ck"/></svg> Most Popular</span>
+        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-full"/></svg></span><div><div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div></div></div>
         <div class="svc-price"><span class="from">from </span>$260<small>$260–$340 · based on vehicle size</small></div>
         <div class="divider"></div>
         <ul class="feat">
@@ -251,13 +314,13 @@
           <li><svg class="ck"><use href="#ck"/></svg>No hidden fees, no surprises</li>
           <li><svg class="ck"><use href="#ck"/></svg>You don't pay until you love it</li>
         </ul>
-        <button class="cta block" data-book="full" type="button">Book Full Detail →</button>
+        <button class="cta block" data-book="full" type="button">Book Full Detail &rarr;</button>
       </div>
       <!-- EXTERIOR -->
       <div class="acard">
-        <div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div>
+        <div class="svc-top"><span class="svc-tile"><svg><use href="#s-exterior"/></svg></span><div><div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div></div></div>
         <div class="svc-price"><span class="from">from </span>$130<small>$130–$200 · based on vehicle size</small></div>
-        <a class="learn" href="/services/exterior.html" style="margin-top:12px">See what's included →</a>
+        <a class="learn svc-learn" href="/services/exterior.html"><svg class="ck"><use href="#i-eye"/></svg> See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ck"><use href="#ck"/></svg>Full hand wash &amp; dry</li>
@@ -265,7 +328,7 @@
           <li><svg class="ck"><use href="#ck"/></svg>Tire dressing applied</li>
           <li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li>
         </ul>
-        <button class="cta ghost block" data-book="exterior" type="button">Book Exterior →</button>
+        <button class="cta ghost block" data-book="exterior" type="button">Book Exterior &rarr;</button>
       </div>
     </div>
 
@@ -274,7 +337,7 @@
     </div>
 
     <div class="quote">
-      <span class="qmark">“</span>
+      <span class="qmark">&ldquo;</span>
       <div><p>Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.</p>
       <cite><b>Matt K.</b> <span class="s">★★★★★</span></cite></div>
     </div>
@@ -288,6 +351,7 @@
     <h3>On the live site…</h3>
     <p>This jumps straight to the booking form with your pick already locked in:</p>
     <div class="locked"><span class="ln" id="hoName">Full Detail</span><span class="lp" id="hoPrice">$260</span></div>
+    <div class="ho-note" id="hoNote" style="display:none"><b>Your note comes with it</b><span id="hoNoteText"></span></div>
     <ul class="steps">
       <li><svg class="ck"><use href="#ck"/></svg><span>Service &amp; price <b>pre-filled</b> — no re-picking</span></li>
       <li><svg class="ck"><use href="#ck"/></svg><span>Customer just adds <b>name &amp; number</b></span></li>
@@ -301,11 +365,11 @@
   (function () {
     // --- model: mirrors the real QQC pricing (base + size offset) ---
     var SVC = {
-      interior: { name: 'Interior Detail', label: 'Interior', base: 160, tag: 'Inside-only deep clean',
+      interior: { name: 'Interior Detail', label: 'Interior', base: 160, icon: 's-interior', tag: 'Inside-only deep clean',
         feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather clean & condition', 'Streak-free glass'] },
-      exterior: { name: 'Exterior Detail', label: 'Exterior', base: 130, tag: 'Outside-only wash & protect',
+      exterior: { name: 'Exterior Detail', label: 'Exterior', base: 130, icon: 's-exterior', tag: 'Outside-only wash & protect',
         feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Tire dressing', 'Spray sealant protection'] },
-      full: { name: 'Full Detail', label: 'Full Detail', base: 260, tag: 'Inside & out — bumper to bumper',
+      full: { name: 'Full Detail', label: 'Full Detail', base: 260, icon: 's-full', tag: 'Inside & out — bumper to bumper',
         feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', "You don't pay until you love it"] }
     };
     var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 20 }, van: { label: 'van/XL', add: 40 } };
@@ -317,8 +381,8 @@
 
     var pick = { need: null, size: null };
     function $(id) { return document.getElementById(id); }
+    function esc(s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
 
-    // ---- concierge flow ----
     var qEls = { 1: $('ccQ1'), 2: $('ccQ2') };
     function showQ(n) {
       $('ccResult').classList.remove('show');
@@ -335,10 +399,11 @@
     function showResult() {
       var s = SVC[pick.need], r = rangeFor(pick.need, pick.size);
       $('ccLead').innerHTML = LEAD[pick.need];
+      $('ccTile').querySelector('use').setAttribute('href', '#' + s.icon);
       $('ccName').textContent = s.label;
       $('ccTag').textContent = s.tag;
       $('ccPrice').innerHTML = '<span class="from">$</span>' + r.low + '<span style="font-size:.6em;color:#9aa0a6"> – $' + r.high + '</span>';
-      $('ccEst').textContent = 'Estimated for your ' + SIZE[pick.size].label + ' · final price confirmed at booking.';
+      $('ccEst').textContent = 'Typical for your ' + SIZE[pick.size].label + ' · final price confirmed at booking.';
       var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ck"><use href="#ck"/></svg>' + s.feats[i] + '</li>';
       $('ccFeat').innerHTML = fl;
       $('ccProg').children[0].classList.add('on'); $('ccProg').children[1].classList.add('on');
@@ -353,23 +418,23 @@
       if (q === 'need') { pick.need = v; setTimeout(function () { showQ(2); }, 180); }
       else if (q === 'size') { pick.size = v; setTimeout(showResult, 180); }
     });
-    $('ccRetake').addEventListener('click', function () { pick = { need: null, size: null }; showQ(1); });
+    $('ccRetake').addEventListener('click', function () { pick = { need: null, size: null }; $('ccNote').value = ''; showQ(1); });
     $('ccBook').addEventListener('click', function () {
       var r = rangeFor(pick.need, pick.size);
-      openHandoff(SVC[pick.need].label, '$' + r.locked + '+');
+      openHandoff(SVC[pick.need].label, '$' + r.locked + '+', $('ccNote').value.trim());
     });
 
-    // ---- browse-card booking ----
     document.querySelectorAll('[data-book]').forEach(function (b) {
       b.addEventListener('click', function () {
         var k = b.getAttribute('data-book');
-        openHandoff(SVC[k].label, 'from $' + SVC[k].base);
+        openHandoff(SVC[k].label, 'from $' + SVC[k].base, '');
       });
     });
 
-    // ---- simulated hand-off panel ----
-    function openHandoff(name, price) {
+    function openHandoff(name, price, note) {
       $('hoName').textContent = name; $('hoPrice').textContent = price;
+      if (note) { $('hoNoteText').innerHTML = esc(note); $('hoNote').style.display = 'block'; }
+      else { $('hoNote').style.display = 'none'; }
       $('hoBack').classList.add('show');
     }
     function closeHandoff() { $('hoBack').classList.remove('show'); }
@@ -377,14 +442,14 @@
     $('hoBack').addEventListener('click', function (e) { if (e.target === $('hoBack')) closeHandoff(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeHandoff(); });
 
-    // ---- tilt ----
     if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.acard').forEach(function (c) {
         c.addEventListener('pointermove', function (e) {
           if (e.pointerType === 'touch') return;
+          if (e.target.closest('textarea, input')) { c.style.transform = ''; return; }
           var rc = c.getBoundingClientRect();
           var px = (e.clientX - rc.left) / rc.width, py = (e.clientY - rc.top) / rc.height;
-          c.style.transform = 'perspective(1000px) rotateX(' + ((0.5 - py) * 3) + 'deg) rotateY(' + ((px - 0.5) * 3) + 'deg) translateY(-2px)';
+          c.style.transform = 'perspective(1100px) rotateX(' + ((0.5 - py) * 2.4) + 'deg) rotateY(' + ((px - 0.5) * 2.4) + 'deg) translateY(-2px)';
         });
         c.addEventListener('pointerleave', function () { c.style.transform = ''; });
       });
