@@ -30,6 +30,9 @@
 <meta name="geo.placename" content="Snohomish">
 
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
+<!-- Hero image: speed up its load (it's the largest above-the-fold element) -->
+<link rel="preconnect" href="https://iili.io">
+<link rel="preload" as="image" href="https://iili.io/CKL8Pvj.jpg" fetchpriority="high">
 
 <!-- Schema: LocalBusiness / AutoDetailing -->
 <script type="application/ld+json">
@@ -691,17 +694,15 @@ header li a[href="#booking"],
   padding:90px 20px 70px;
   position:relative;
   background:
-    radial-gradient(1100px 520px at 50% -8%, rgba(200,16,46,.12), transparent 60%),
-    radial-gradient(900px 480px at 50% 118%, rgba(201,162,75,.06), transparent 55%),
+    linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.58) 42%, rgba(10,10,10,.88) 100%),
+    url('https://iili.io/CKL8Pvj.jpg') center center / cover no-repeat,
     #0d0d0d;
   overflow:hidden;
 }
-/* IMAGE-READY: to add a hero photo, drop the file in /images/ and replace the
-   `background:` value above with the two lines below (dark overlay keeps text legible):
-     background:linear-gradient(180deg, rgba(8,8,8,.72), rgba(8,8,8,.55) 45%, rgba(8,8,8,.92)), url('/images/hero.jpg');
-     background-size:cover; background-position:center;
-   Best photo: a wide, well-lit shot of a freshly detailed car (glossy paint or clean interior),
-   landscape, at least 2000px wide. */
+/* HERO PHOTO is wired into the background above (hosted on freeimage.host / iili.io).
+   To swap it later, just change the url('...') to a new image URL or a self-hosted
+   /images/file.jpg. The dark linear-gradient overlay on top keeps the headline,
+   subhead and CTAs legible over the photo; tune its alpha values if needed. */
 .mh{
   font-family:'Outfit',sans-serif;
   text-align:center;
