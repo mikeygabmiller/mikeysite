@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>Services & Pricing — 5 Pro Layouts · Mikey's</title>
+<title>Our Services — Concierge + Cards (interactive mockup) · Mikey's</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   :root{
     --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
     --bg:#0b0b0c; --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
-    --card:rgba(17,17,21,.74);
+    --card:rgba(17,17,21,.74); --surface2:#1c1c1f;
   }
   *{ box-sizing:border-box; margin:0; padding:0 }
   html{ scroll-behavior:smooth }
@@ -22,126 +22,123 @@
       radial-gradient(1200px 600px at 82% -8%, rgba(200,16,46,.10), transparent 60%),
       radial-gradient(1000px 520px at 0% 112%, rgba(201,162,75,.06), transparent 55%),
       var(--bg);
-    padding:30px 16px 100px; }
-  .wrap{ max-width:1040px; margin:0 auto }
+    padding:26px 16px 110px; }
+  .wrap{ max-width:1000px; margin:0 auto }
 
-  /* page intro + per-option headers (mockup chrome only) */
-  .intro{ text-align:center; margin:6px 0 46px }
-  .intro h1{ font-size:clamp(22px,5vw,32px); font-weight:900; letter-spacing:-.02em }
-  .intro p{ color:var(--muted); margin-top:12px; font-size:14px; line-height:1.6; max-width:680px; margin-inline:auto }
-  .opt{ margin:0 0 72px }
-  .opt-head{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0 0 26px; padding-bottom:12px; border-bottom:1px solid #2a2a2e }
-  .opt-num{ font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--red); background:rgba(200,16,46,.12); border:1px solid rgba(200,16,46,.3); padding:4px 10px; border-radius:999px }
-  .opt-head h2{ font-size:18px; font-weight:800 }
-  .opt-head .principle{ font-size:10px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--gold2); background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.3); padding:3px 9px; border-radius:999px }
-  .opt-head .desc{ flex-basis:100%; color:var(--muted); font-size:12.5px; margin-top:4px; line-height:1.55 }
-  .opt-head .desc b{ color:#cbb98a; font-weight:700 }
+  /* mockup chrome */
+  .note{ max-width:720px; margin:0 auto 40px; text-align:center; color:var(--muted); font-size:13px; line-height:1.6; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:14px; padding:16px 20px }
+  .note b{ color:#cbb98a }
 
-  /* ===== shared aurora glass card ===== */
-  .acard{ position:relative; border-radius:18px; overflow:hidden; transform-style:preserve-3d;
+  /* ===== section header ===== */
+  .sec-head{ text-align:center; margin-bottom:26px }
+  .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
+  .sec-head h2{ font-size:clamp(30px,6vw,48px); font-weight:900; letter-spacing:-.025em; margin-top:8px; line-height:1.02 }
+  .sec-head h2 em{ color:var(--red); font-style:normal }
+  .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.4vw,18px); margin-top:14px; max-width:560px; margin-inline:auto; font-weight:500 }
+
+  /* ===== shared aurora glass ===== */
+  .acard{ position:relative; border-radius:20px; overflow:hidden; transform-style:preserve-3d;
     transition:transform .14s ease, box-shadow .3s;
     background:var(--card); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
     border:1px solid var(--line); box-shadow:0 22px 46px -26px #000 }
-  .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:18px; padding:1.5px; pointer-events:none;
+  .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:20px; padding:1.5px; pointer-events:none;
     background:conic-gradient(from var(--a), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
     -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
     mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
-    animation:spin 6s linear infinite; opacity:.6 }
+    animation:spin 6s linear infinite; opacity:.55 }
   .acard.feature::before{ opacity:1 }
   @keyframes spin{ to{ --a:360deg } }
   .acard > *{ position:relative; z-index:2 }
 
-  /* ===== shared atoms ===== */
-  .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
-  .h2{ font-size:clamp(24px,4vw,34px); font-weight:900; letter-spacing:-.02em; margin-top:8px }
-  .h2 em{ color:var(--red); font-style:normal }
-  .lead{ color:var(--muted); font-size:14px; margin-top:12px; max-width:680px }
-  .lead .stars{ color:var(--gold); letter-spacing:1px }
-  .sectop{ text-align:center; margin-bottom:30px } .sectop .lead{ margin-inline:auto }
-
+  /* ===== atoms ===== */
   .ck{ width:15px; height:15px; flex:none; fill:var(--gold) }
-  .name{ font-size:21px; font-weight:900 }
-  .tagl{ color:var(--muted); font-size:12.5px; margin-top:3px }
-  .price{ font-size:34px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:14px }
-  .price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px; letter-spacing:0 }
-  .price .from{ font-size:.4em; color:var(--muted); font-weight:600; vertical-align:middle; margin-right:2px }
-  .divider{ height:1px; background:var(--line); margin:18px 0 }
-  .feat{ list-style:none; display:grid; gap:10px } .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
-  .cta{ display:block; text-align:center; text-decoration:none; font-weight:800; font-size:14px; letter-spacing:.3px; padding:14px 18px; border-radius:11px;
-    border:1.5px solid var(--red); background:var(--red); color:#fff; transition:transform .15s, background .15s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
+  .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:14px 22px; border-radius:12px;
+    border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
+    transition:transform .15s, background .15s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
   .cta:hover{ background:var(--red2); transform:translateY(-2px) }
   .cta.ghost{ background:transparent; border-color:rgba(255,255,255,.22); box-shadow:none; color:#fff } .cta.ghost:hover{ border-color:#fff; background:rgba(255,255,255,.04) }
+  .cta.block{ display:block; width:100% }
   .cta.lg{ font-size:16px; padding:16px 24px }
-  .learn{ display:inline-flex; align-items:center; gap:5px; margin-top:12px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .learn:hover{ color:var(--gold) }
-  .textlink{ display:block; text-align:center; margin-top:11px; color:var(--muted); font-size:12.5px; text-decoration:none } .textlink b{ color:#fff }
-  .badge{ position:absolute; top:0; left:50%; transform:translate(-50%,-50%); z-index:3; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 14px; border-radius:99px; white-space:nowrap; box-shadow:0 8px 18px -8px rgba(201,162,75,.8) }
+  .learn{ display:inline-flex; align-items:center; gap:5px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .learn:hover{ color:var(--gold) }
+  .pill{ display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:5px 12px; border-radius:99px }
 
-  /* shared trust row + testimonial */
+  /* ====================================================== */
+  /*  CONCIERGE (the quiz)                                   */
+  /* ====================================================== */
+  .concierge{ padding:30px 28px; margin-bottom:30px }
+  @media (max-width:560px){ .concierge{ padding:24px 18px } }
+
+  .cc-head{ display:flex; align-items:center; gap:12px; margin-bottom:22px }
+  .cc-avatar{ width:46px; height:46px; border-radius:50%; flex:none; display:grid; place-items:center; font-size:22px;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
+  .cc-head .t{ font-size:16px; font-weight:800 } .cc-head .s{ font-size:12.5px; color:var(--muted) }
+  .cc-prog{ margin-left:auto; display:flex; gap:6px } .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
+
+  .cc-stage{ min-height:60px }
+  .cc-q{ display:none } .cc-q.show{ display:block; animation:fade .4s cubic-bezier(.22,1,.36,1) both }
+  @keyframes fade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  .cc-qt{ font-size:20px; font-weight:800; letter-spacing:-.01em; margin-bottom:4px } .cc-qh{ font-size:13px; color:var(--muted); margin-bottom:16px }
+
+  .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px }
+  @media (max-width:560px){ .cc-opts{ grid-template-columns:1fr } }
+  .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:15px; padding:15px 15px 14px;
+    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:12px; align-items:center }
+  .cc-opts.col1 .cc-opt{ } /* single-column rows already row layout */
+  .cc-opt:hover{ border-color:rgba(255,255,255,.28); transform:translateY(-2px) }
+  .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
+  .cc-opt .emo{ font-size:24px; flex:none; width:34px; text-align:center }
+  .cc-opt .ot{ font-size:14.5px; font-weight:800; display:block } .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
+
+  /* result */
+  .cc-result{ display:none } .cc-result.show{ display:block; animation:fade .45s cubic-bezier(.22,1,.36,1) both }
+  .cc-reco-top{ display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap }
+  .cc-reco-lead{ font-size:13px; color:var(--muted) } .cc-reco-lead b{ color:#fff }
+  .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:16px; padding:20px 20px 22px }
+  .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em } .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:2px }
+  .cc-reco-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; margin:14px 0 2px } .cc-reco-price .from{ font-size:.46em; color:var(--muted); font-weight:600 }
+  .cc-reco-est{ font-size:12.5px; color:var(--gold2) }
+  .cc-reco-feat{ list-style:none; display:grid; gap:9px; margin:16px 0 18px } .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde }
+  .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap } .cc-reco-cta .cta{ flex:1; min-width:160px }
+  .cc-retake{ display:inline-flex; align-items:center; gap:6px; margin-top:16px; background:none; border:none; color:var(--muted); font-size:12.5px; cursor:pointer; font-family:inherit } .cc-retake:hover{ color:#fff }
+
+  /* ====================================================== */
+  /*  BROWSE CARDS                                          */
+  /* ====================================================== */
+  .browse-div{ display:flex; align-items:center; gap:16px; margin:6px 2px 24px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase }
+  .browse-div::before, .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
+
+  .cards{ display:grid; grid-template-columns:1fr 1.1fr 1fr; gap:18px; align-items:stretch }
+  @media (max-width:860px){ .cards{ grid-template-columns:1fr } .cards .feature{ order:-1 } }
+  .cards .acard{ padding:24px 22px; display:flex; flex-direction:column }
+  .svc-badge{ position:absolute; top:0; left:50%; transform:translate(-50%,-50%); z-index:3; }
+  .svc-name{ font-size:21px; font-weight:900 } .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:3px }
+  .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:14px } .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
+  .svc-price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px }
+  .divider{ height:1px; background:var(--line); margin:16px 0 }
+  .feat{ list-style:none; display:grid; gap:10px; flex:1; margin-bottom:18px } .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
+  .svc-foot .learn{ margin:12px 0 14px; display:inline-flex }
+
+  /* trust + testimonial */
   .trustrow{ display:flex; justify-content:center; gap:12px 26px; flex-wrap:wrap; margin-top:30px; font-size:12.5px; color:var(--muted) }
   .trustrow span{ display:inline-flex; align-items:center; gap:8px } .trustrow strong{ color:var(--gold); font-weight:800 }
-  .quote{ display:flex; gap:13px; align-items:flex-start; max-width:680px; margin:0 auto 4px; text-align:left }
+  .quote{ display:flex; gap:13px; align-items:flex-start; max-width:680px; margin:26px auto 0; text-align:left }
   .quote .qmark{ font-size:34px; line-height:1; color:var(--red); font-weight:900; flex:none }
   .quote p{ font-size:14px; color:#e3e3e5; line-height:1.5 } .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:6px } .quote cite b{ color:#fff } .quote .s{ color:var(--gold) }
 
-  /* ============ 01 — CLARITY GRID (tiered, anchored center) ============ */
-  .o1-grid{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:18px; align-items:stretch }
-  .o1-grid .acard{ padding:26px 22px; display:flex; flex-direction:column }
-  .o1-grid .acard.feature{ padding-top:32px }
-  .o1-grid .feat{ flex:1; margin-bottom:20px }
-  .o1-grid .cta{ margin-top:auto }
+  /* ====================================================== */
+  /*  SIMULATED HAND-OFF PANEL (mockup only)               */
+  /* ====================================================== */
+  .ho-back{ position:fixed; inset:0; background:rgba(0,0,0,.66); backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; padding:20px; z-index:50 }
+  .ho-back.show{ display:flex; animation:fade .25s both }
+  .ho{ max-width:430px; width:100%; background:var(--surface2); border:1px solid var(--line); border-radius:20px; padding:26px 24px; box-shadow:0 30px 80px -20px #000; text-align:center }
+  .ho .simtag{ display:inline-block; font-size:10px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--gold2); background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.3); padding:4px 10px; border-radius:99px; margin-bottom:14px }
+  .ho h3{ font-size:20px; font-weight:900; margin-bottom:6px } .ho p{ font-size:13.5px; color:#cfcfd2; line-height:1.55 }
+  .ho .locked{ margin:16px 0; padding:14px 16px; border-radius:13px; background:rgba(200,16,46,.1); border:1px solid rgba(200,16,46,.3); display:flex; align-items:center; justify-content:space-between; gap:10px }
+  .ho .locked .ln{ font-weight:800; font-size:15px } .ho .locked .lp{ font-weight:900; font-size:20px; color:var(--gold2) }
+  .ho .steps{ text-align:left; font-size:12.5px; color:var(--muted); margin:14px 0 18px; display:grid; gap:8px } .ho .steps li{ display:flex; gap:8px } .ho .steps b{ color:#fff }
+  .ho .close{ background:none; border:1px solid var(--line); color:#fff; border-radius:10px; padding:11px 18px; font-weight:700; cursor:pointer; font-family:inherit; font-size:13.5px } .ho .close:hover{ border-color:#fff }
 
-  /* ============ 02 — DECISION TABLE (comparison matrix) ============ */
-  .o2-card{ padding:8px 8px 22px; overflow:hidden }
-  .o2-tbl{ width:100%; border-collapse:collapse }
-  .o2-tbl th,.o2-tbl td{ padding:13px 12px; text-align:center; border-bottom:1px solid var(--line) }
-  .o2-tbl thead th{ vertical-align:bottom }
-  .o2-tbl .rowlbl{ text-align:left; font-size:13px; color:#dcdcde; font-weight:500 }
-  .o2-tbl .colname{ font-size:15px; font-weight:900 } .o2-tbl .colprice{ font-size:13px; color:var(--gold); font-weight:800; margin-top:2px } .o2-tbl .coltag{ font-size:11px; color:var(--muted); font-weight:500 }
-  .o2-tbl .best{ background:linear-gradient(180deg, rgba(200,16,46,.10), rgba(200,16,46,.02)); position:relative }
-  .o2-tbl thead .best{ border-top-left-radius:12px; border-top-right-radius:12px }
-  .o2-best-pill{ display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:3px 9px; border-radius:99px; margin-bottom:8px }
-  .o2-yes{ color:var(--gold); font-weight:900; font-size:16px } .o2-no{ color:#4f4f55; font-size:15px }
-  .o2-ctas{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; padding:18px 12px 0 }
-  .o2-mobilehint{ display:none; text-align:center; color:var(--muted); font-size:12px; padding:10px 0 0 }
-
-  /* ============ 03 — GUIDED PATH (chooser + benefit bands) ============ */
-  .o3-chooser{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:18px 22px; margin-bottom:22px; border-radius:14px; background:rgba(255,255,255,.03); border:1px solid var(--line) }
-  .o3-chooser b{ color:#fff; font-weight:800 } .o3-chooser span{ color:var(--muted); font-size:13.5px }
-  .o3-band{ display:grid; grid-template-columns:auto 1fr auto; gap:22px; align-items:center; padding:22px 24px }
-  .o3-band + .o3-band{ margin-top:16px }
-  .o3-step{ width:46px; height:46px; border-radius:12px; display:grid; place-items:center; font-size:20px; font-weight:900; color:var(--gold2); background:rgba(201,162,75,.1); border:1px solid rgba(201,162,75,.3); flex:none }
-  .o3-mid .name{ font-size:19px } .o3-benefit{ color:#dcdcde; font-size:13px; margin-top:5px; line-height:1.45 }
-  .o3-tags{ display:flex; gap:8px 14px; flex-wrap:wrap; margin-top:10px } .o3-tags li{ list-style:none; font-size:12px; color:var(--muted); display:flex; gap:7px; align-items:center }
-  .o3-right{ text-align:right; flex:none } .o3-right .price{ margin-top:0; font-size:28px } .o3-right .cta{ margin-top:12px; padding:11px 20px }
-
-  /* ============ 04 — FLAGSHIP ANCHOR (hero + supporting) ============ */
-  .o4-grid{ display:grid; grid-template-columns:1.5fr 1fr; gap:18px; align-items:stretch }
-  .o4-hero{ padding:30px 28px; display:flex; flex-direction:column; gap:16px }
-  .o4-hero .top{ display:flex; justify-content:space-between; align-items:flex-start; gap:14px; flex-wrap:wrap }
-  .o4-hero .featrow{ display:grid; grid-template-columns:1fr 1fr; gap:11px }
-  .o4-side{ display:grid; grid-template-rows:1fr 1fr; gap:18px }
-  .o4-mini{ padding:22px 22px; display:flex; flex-direction:column }
-  .o4-mini .name{ font-size:18px } .o4-mini .price{ font-size:25px; margin-top:8px } .o4-mini .cta{ margin-top:auto }
-  .o4-mini .feat{ margin:14px 0 16px } .o4-mini .feat li{ font-size:12.5px }
-  .o4-anchor{ font-size:12.5px; color:var(--muted) } .o4-anchor s{ color:#6f6f76 } .o4-anchor b{ color:var(--gold2) }
-
-  /* ============ 05 — PROOF-LED OUTCOME ============ */
-  .o5-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:stretch }
-  .o5-grid .acard{ padding:24px 22px; display:flex; flex-direction:column }
-  .o5-out{ font-size:18px; font-weight:800; line-height:1.3; letter-spacing:-.01em } .o5-out em{ color:var(--gold2); font-style:normal }
-  .o5-rev{ font-size:12.5px; color:#cfcfd2; line-height:1.45; margin-top:12px; padding-left:12px; border-left:2px solid rgba(200,16,46,.6) } .o5-rev b{ color:#fff }
-  .o5-meta{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-top:16px }
-  .o5-meta .price{ margin-top:0; font-size:26px } .o5-meta .pn{ font-size:13px; font-weight:800; color:var(--muted) }
-  .o5-grid .feat{ flex:1; margin:16px 0 18px } .o5-grid .feat li{ font-size:12.5px } .o5-grid .cta{ margin-top:auto }
-
-  @media (max-width:860px){
-    .o1-grid{ grid-template-columns:1fr } .o1-grid .acard.feature{ order:-1 }
-    .o4-grid{ grid-template-columns:1fr } .o4-side{ grid-template-rows:auto auto }
-    .o5-grid{ grid-template-columns:1fr }
-    .o3-band{ grid-template-columns:1fr; gap:14px; text-align:center } .o3-step{ margin:0 auto } .o3-tags{ justify-content:center } .o3-right{ text-align:center } .o3-right .cta{ display:block }
-    .o2-card{ padding:0; background:transparent; border:none; box-shadow:none } .o2-card::before{ display:none }
-    .o2-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch } .o2-tbl{ min-width:520px } .o2-mobilehint{ display:block } .o2-ctas{ min-width:520px }
-  }
   @media (prefers-reduced-motion:reduce){ *{ animation:none !important; scroll-behavior:auto } }
 </style>
 </head>
@@ -149,295 +146,250 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="ck" viewBox="0 0 24 24"><path d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></symbol></defs></svg>
 
 <div class="wrap">
-  <div class="intro">
-    <h1>Services &amp; Pricing &mdash; 5 Pro Layouts</h1>
-    <p>Five fresh takes on the <strong>#allservices</strong> section &mdash; same Aurora-glass brand, but each built around a different, proven conversion principle. Real prices, real reviews, honest copy. The gold tag on each shows the design rule it leans on. Pick one and I'll build it into <strong>index.html</strong>.</p>
+  <div class="note">
+    <b>Interactive mockup.</b> The concierge quiz below is fully working &mdash; tap through it. Every <b>Book</b> button opens a simulated panel showing what happens on the live site, where it'll jump straight to the QQC's final step with the price &amp; service locked in. Nothing is wired to the real QQC yet.
   </div>
 
-  <!-- ===================== 01 — CLARITY GRID ===================== -->
-  <section class="opt">
-    <div class="opt-head"><span class="opt-num">01</span><h2>Clarity Grid</h2><span class="principle">Visual hierarchy + price anchoring</span>
-      <span class="desc">The proven SaaS pricing pattern: three scannable tiers, the most-popular one <b>physically larger and centered</b> so the eye lands there first. One job per card, one clear button. <b>Hick's Law</b> &mdash; fewer, clearer choices close faster.</span></div>
-
-    <div class="sectop">
-      <span class="eyebrow">Services &amp; Pricing</span>
-      <h2 class="h2">Pick your <em>detail</em></h2>
-      <p class="lead">Every job comes to your driveway &mdash; and <strong>you don't pay until you love it.</strong></p>
+  <!-- ===================== LIVE SECTION ===================== -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Mikey's Mobile Detailing</span>
+      <h2>Our <em>Services</em></h2>
+      <p class="sub">Tell me what you need and I'll recommend the right package &mdash; takes 10 seconds.</p>
     </div>
 
-    <div class="o1-grid">
-      <!-- Interior -->
+    <!-- CONCIERGE -->
+    <div class="acard feature concierge" id="cc">
+      <div class="cc-head">
+        <div class="cc-avatar">👋</div>
+        <div><div class="t">Hey, I'm Mikey</div><div class="s">Two quick taps and I'll point you to the right detail.</div></div>
+        <div class="cc-prog" id="ccProg"><i class="on"></i><i></i></div>
+      </div>
+
+      <div class="cc-stage">
+        <!-- Q1 -->
+        <div class="cc-q show" id="ccQ1">
+          <div class="cc-qt">What needs the most love?</div>
+          <div class="cc-qh">Pick the one that bugs you most.</div>
+          <div class="cc-opts">
+            <button class="cc-opt" data-q="need" data-val="interior" type="button">
+              <span class="emo">🧽</span><span><span class="ot">The inside</span><span class="od">Seats, carpets, the mess</span></span>
+            </button>
+            <button class="cc-opt" data-q="need" data-val="exterior" type="button">
+              <span class="emo">✨</span><span><span class="ot">The outside</span><span class="od">Paint, wheels, the shine</span></span>
+            </button>
+            <button class="cc-opt" data-q="need" data-val="full" type="button">
+              <span class="emo">🚗</span><span><span class="ot">The whole car</span><span class="od">Top to bottom</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="cc-q" id="ccQ2">
+          <div class="cc-qt">What are you driving?</div>
+          <div class="cc-qh">Helps me size up your estimate.</div>
+          <div class="cc-opts">
+            <button class="cc-opt" data-q="size" data-val="sedan" type="button">
+              <span class="emo">🚙</span><span><span class="ot">Sedan</span><span class="od">Car / coupe</span></span>
+            </button>
+            <button class="cc-opt" data-q="size" data-val="suv" type="button">
+              <span class="emo">🚐</span><span><span class="ot">SUV / Truck</span><span class="od">Mid-size</span></span>
+            </button>
+            <button class="cc-opt" data-q="size" data-val="van" type="button">
+              <span class="emo">🚌</span><span><span class="ot">Van / XL</span><span class="od">3rd row, large</span></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- RESULT -->
+        <div class="cc-result" id="ccResult">
+          <div class="cc-reco-top"><span class="pill">★ Recommended for you</span><span class="cc-reco-lead" id="ccLead"></span></div>
+          <div class="cc-reco">
+            <div class="cc-reco-name" id="ccName">Full Detail</div>
+            <div class="cc-reco-tag" id="ccTag">Inside &amp; out — bumper to bumper</div>
+            <div class="cc-reco-price" id="ccPrice"></div>
+            <div class="cc-reco-est" id="ccEst"></div>
+            <ul class="cc-reco-feat" id="ccFeat"></ul>
+            <div class="cc-reco-cta">
+              <button class="cta" id="ccBook" type="button">Book this →</button>
+              <a class="cta ghost" href="#browse">See all services ↓</a>
+            </div>
+          </div>
+          <button class="cc-retake" id="ccRetake" type="button">↺ Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BROWSE -->
+    <div class="browse-div" id="browse">Or browse all services</div>
+
+    <div class="cards">
+      <!-- INTERIOR -->
       <div class="acard">
-        <div class="name">Interior</div><div class="tagl">Inside-only deep clean</div>
-        <div class="price"><span class="from">from </span>$160<small>$160&ndash;$240 &middot; based on vehicle size</small></div>
-        <a class="learn" href="/services/interior.html">See what's included &rarr;</a>
+        <div class="svc-name">Interior</div><div class="svc-tag">Inside-only deep clean</div>
+        <div class="svc-price"><span class="from">from </span>$160<small>$160–$240 · based on vehicle size</small></div>
+        <a class="learn" href="/services/interior.html" style="margin-top:12px">See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ck"><use href="#ck"/></svg>Full vacuum + crevice detail</li>
           <li><svg class="ck"><use href="#ck"/></svg>Steam clean seats &amp; carpet</li>
           <li><svg class="ck"><use href="#ck"/></svg>Leather clean &amp; condition</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Dash &amp; trim dressed</li>
           <li><svg class="ck"><use href="#ck"/></svg>Streak-free windows</li>
         </ul>
-        <a class="cta ghost" href="#booking">Get My Quote &rarr;</a>
+        <button class="cta ghost block" data-book="interior" type="button">Book Interior →</button>
       </div>
-      <!-- Full Detail (feature) -->
+      <!-- FULL -->
       <div class="acard feature">
-        <span class="badge">&#9733; Most Popular</span>
-        <div class="name">Full Detail</div><div class="tagl">Inside &amp; out &mdash; bumper to bumper</div>
-        <div class="price"><span class="from">from </span>$260<small>$260&ndash;$340 &middot; based on vehicle size</small></div>
+        <span class="svc-badge pill">★ Most Popular</span>
+        <div class="svc-name">Full Detail</div><div class="svc-tag">Inside &amp; out — bumper to bumper</div>
+        <div class="svc-price"><span class="from">from </span>$260<small>$260–$340 · based on vehicle size</small></div>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ck"><use href="#ck"/></svg>Everything in Interior</li>
           <li><svg class="ck"><use href="#ck"/></svg>Everything in Exterior</li>
           <li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li>
-          <li><svg class="ck"><use href="#ck"/></svg>100% satisfaction guarantee</li>
           <li><svg class="ck"><use href="#ck"/></svg>No hidden fees, no surprises</li>
           <li><svg class="ck"><use href="#ck"/></svg>You don't pay until you love it</li>
         </ul>
-        <a class="cta" href="#booking">Book Full Detail &rarr;</a>
+        <button class="cta block" data-book="full" type="button">Book Full Detail →</button>
       </div>
-      <!-- Exterior -->
+      <!-- EXTERIOR -->
       <div class="acard">
-        <div class="name">Exterior</div><div class="tagl">Outside-only wash &amp; protect</div>
-        <div class="price"><span class="from">from </span>$130<small>$130&ndash;$200 &middot; based on vehicle size</small></div>
-        <a class="learn" href="/services/exterior.html">See what's included &rarr;</a>
+        <div class="svc-name">Exterior</div><div class="svc-tag">Outside-only wash &amp; protect</div>
+        <div class="svc-price"><span class="from">from </span>$130<small>$130–$200 · based on vehicle size</small></div>
+        <a class="learn" href="/services/exterior.html" style="margin-top:12px">See what's included →</a>
         <div class="divider"></div>
         <ul class="feat">
           <li><svg class="ck"><use href="#ck"/></svg>Full hand wash &amp; dry</li>
           <li><svg class="ck"><use href="#ck"/></svg>Tire &amp; wheel deep clean</li>
           <li><svg class="ck"><use href="#ck"/></svg>Tire dressing applied</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Exterior windows cleaned</li>
           <li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li>
         </ul>
-        <a class="cta ghost" href="#booking">Get My Quote &rarr;</a>
+        <button class="cta ghost block" data-book="exterior" type="button">Book Exterior →</button>
       </div>
     </div>
 
     <div class="trustrow">
-      <span><strong>5.0</strong> on Google</span><span><strong>39</strong> reviews</span><span><strong>300+</strong> cars detailed</span><span>Licensed &amp; insured</span>
-    </div>
-  </section>
-
-  <!-- ===================== 02 — DECISION TABLE ===================== -->
-  <section class="opt">
-    <div class="opt-head"><span class="opt-num">02</span><h2>Decision Table</h2><span class="principle">Reduce cognitive load</span>
-      <span class="desc">One side-by-side comparison so a shopper can see <b>exactly what each tier adds</b> at a glance &mdash; no scrolling back and forth. The matrix naturally sells the Full Detail by showing it's the only column with every check. Great for the <b>analytical buyer</b>.</span></div>
-
-    <div class="sectop">
-      <span class="eyebrow">Services &amp; Pricing</span>
-      <h2 class="h2">Compare &amp; <em>choose</em></h2>
-      <p class="lead">Same pro work, three levels of clean. Here's what each one includes.</p>
+      <span><strong>5.0</strong> on Google</span><span><strong>39</strong> reviews</span><span><strong>300+</strong> cars detailed</span><span>I come to you · pay when you love it</span>
     </div>
 
-    <div class="acard o2-card">
-      <div class="o2-scroll">
-        <table class="o2-tbl">
-          <thead>
-            <tr>
-              <th class="rowlbl"></th>
-              <th><div class="colname">Exterior</div><div class="colprice">from $130</div><div class="coltag">Outside only</div></th>
-              <th class="best"><div class="o2-best-pill">&#9733; Most Popular</div><div class="colname">Full Detail</div><div class="colprice">from $260</div><div class="coltag">Inside &amp; out</div></th>
-              <th><div class="colname">Interior</div><div class="colprice">from $160</div><div class="coltag">Inside only</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="rowlbl">Hand wash, dry &amp; wheels</td><td class="o2-yes">&#10003;</td><td class="best o2-yes">&#10003;</td><td class="o2-no">&ndash;</td></tr>
-            <tr><td class="rowlbl">Tire dressing + spray sealant</td><td class="o2-yes">&#10003;</td><td class="best o2-yes">&#10003;</td><td class="o2-no">&ndash;</td></tr>
-            <tr><td class="rowlbl">Full vacuum + crevice detail</td><td class="o2-no">&ndash;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-            <tr><td class="rowlbl">Steam seats &amp; carpet</td><td class="o2-no">&ndash;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-            <tr><td class="rowlbl">Leather clean &amp; condition</td><td class="o2-no">&ndash;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-            <tr><td class="rowlbl">Same-day turnaround</td><td class="o2-yes">&#10003;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-            <tr><td class="rowlbl">Comes to your driveway</td><td class="o2-yes">&#10003;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-            <tr><td class="rowlbl">Pay only when you love it</td><td class="o2-yes">&#10003;</td><td class="best o2-yes">&#10003;</td><td class="o2-yes">&#10003;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="o2-mobilehint">&larr; swipe to compare all three &rarr;</div>
-      <div class="o2-ctas">
-        <a class="cta ghost" href="#booking">Get Quote</a>
-        <a class="cta" href="#booking">Book Full Detail &rarr;</a>
-        <a class="cta ghost" href="#booking">Get Quote</a>
-      </div>
-    </div>
-
-    <div class="trustrow">
-      <span><strong>5.0</strong> on Google &middot; 39 reviews</span><span>No hidden fees</span><span>Licensed &amp; insured</span>
-    </div>
-  </section>
-
-  <!-- ===================== 03 — GUIDED PATH ===================== -->
-  <section class="opt">
-    <div class="opt-head"><span class="opt-num">03</span><h2>Guided Path</h2><span class="principle">Jobs-to-be-done + less anxiety</span>
-      <span class="desc">Leads with a one-line <b>helper</b> for the unsure ("not sure which?") then stacks services as benefit-first bands &mdash; outcome on the left, proof-tags, price + button on the right. Reads top-to-bottom, <b>mobile-native</b>, and frames each tier by the problem it solves.</span></div>
-
-    <div class="sectop">
-      <span class="eyebrow">Services &amp; Pricing</span>
-      <h2 class="h2">What does your car <em>need?</em></h2>
-    </div>
-
-    <div class="o3-chooser">
-      <span>Not sure which one? <b>Tell me your car &amp; what's bugging you</b> &mdash; I'll recommend the right detail.</span>
-      <a class="cta" style="padding:11px 18px" href="#booking">Get a recommendation &rarr;</a>
-    </div>
-
-    <div class="acard o3-band">
-      <div class="o3-step">1</div>
-      <div class="o3-mid">
-        <div class="name">Exterior &mdash; <span style="color:var(--gold2)">make it shine again</span></div>
-        <p class="o3-benefit">Bring back that just-bought gloss. Hand wash, wheels, tires and a spray sealant that beads water for weeks.</p>
-        <ul class="o3-tags"><li><svg class="ck"><use href="#ck"/></svg>Hand wash &amp; dry</li><li><svg class="ck"><use href="#ck"/></svg>Wheels &amp; tires</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant</li></ul>
-      </div>
-      <div class="o3-right"><div class="price"><span class="from">from </span>$130</div><a class="cta ghost" href="#booking">Get Quote &rarr;</a></div>
-    </div>
-
-    <div class="acard o3-band feature">
-      <div class="o3-step" style="color:#1a1205;background:linear-gradient(135deg,var(--gold2),var(--gold));border:none">&#9733;</div>
-      <div class="o3-mid">
-        <div class="name">Full Detail &mdash; <span style="color:var(--gold2)">like a brand-new car</span> <span style="font-size:11px;color:var(--red);font-weight:800;letter-spacing:.05em">MOST POPULAR</span></div>
-        <p class="o3-benefit">Inside and out, bumper to bumper. The one most first-timers pick &mdash; and the best value. You don't pay until you love it.</p>
-        <ul class="o3-tags"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day</li><li><svg class="ck"><use href="#ck"/></svg>Satisfaction guarantee</li></ul>
-      </div>
-      <div class="o3-right"><div class="price"><span class="from">from </span>$260</div><a class="cta" href="#booking">Book It &rarr;</a></div>
-    </div>
-
-    <div class="acard o3-band">
-      <div class="o3-step">3</div>
-      <div class="o3-mid">
-        <div class="name">Interior &mdash; <span style="color:var(--gold2)">reset the inside</span></div>
-        <p class="o3-benefit">Kids, pets, spills, daily life. Steam, vacuum and condition every surface until it smells and feels new again.</p>
-        <ul class="o3-tags"><li><svg class="ck"><use href="#ck"/></svg>Steam &amp; vacuum</li><li><svg class="ck"><use href="#ck"/></svg>Leather conditioned</li><li><svg class="ck"><use href="#ck"/></svg>Streak-free glass</li></ul>
-      </div>
-      <div class="o3-right"><div class="price"><span class="from">from </span>$160</div><a class="cta ghost" href="#booking">Get Quote &rarr;</a></div>
-    </div>
-
-    <div class="trustrow">
-      <span><strong>5.0</strong> on Google</span><span><strong>300+</strong> cars detailed</span><span>I come to you</span><span>Pay when you love it</span>
-    </div>
-  </section>
-
-  <!-- ===================== 04 — FLAGSHIP ANCHOR ===================== -->
-  <section class="opt">
-    <div class="opt-head"><span class="opt-num">04</span><h2>Flagship Anchor</h2><span class="principle">Price anchoring + focal point</span>
-      <span class="desc">Puts the Full Detail front-and-center as a big hero card with its bundle value shown, so Interior/Exterior read as smaller "building blocks." The eye anchors on the flagship first; the two minis make it feel like the obvious, complete choice. <b>One dominant focal point.</b></span></div>
-
-    <div class="sectop">
-      <span class="eyebrow">Services &amp; Pricing</span>
-      <h2 class="h2">The <em>whole car</em>, handled</h2>
-      <p class="lead">Most folks book the Full Detail &mdash; inside &amp; out in one visit, best value. Or build it from a single side.</p>
-    </div>
-
-    <div class="o4-grid">
-      <div class="acard o4-hero feature">
-        <div class="top">
-          <div><div class="name" style="font-size:24px">Full Detail</div><div class="tagl">Inside &amp; out &mdash; bumper to bumper</div></div>
-          <span class="badge" style="position:static;transform:none">&#9733; Most Popular</span>
-        </div>
-        <div class="price" style="font-size:42px"><span class="from">from </span>$260<small>$260&ndash;$340 &middot; based on vehicle size</small></div>
-        <div class="o4-anchor"><s>Interior + Exterior booked separately ≈ $290+</s> &mdash; <b>bundle &amp; save</b></div>
-        <div class="divider"></div>
-        <ul class="feat featrow">
-          <li><svg class="ck"><use href="#ck"/></svg>Full interior deep clean</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Hand wash + wheels</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Steam seats &amp; carpet</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li>
-          <li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li>
-          <li><svg class="ck"><use href="#ck"/></svg>I come to your driveway</li>
-        </ul>
-        <div style="font-size:12.5px;color:#cbbfa6;display:flex;gap:8px;align-items:center"><svg class="ck"><use href="#ck"/></svg>Licensed &amp; insured &middot; you don't pay until you love it</div>
-        <a class="cta lg" href="#booking">Book Full Detail &rarr;</a>
-        <a class="textlink" href="tel:+13607975831">or text <b>(360) 797-5831</b> &mdash; usually reply in minutes</a>
-      </div>
-
-      <div class="o4-side">
-        <div class="acard o4-mini">
-          <div class="name">Interior</div><div class="tagl">Inside-only deep clean</div>
-          <div class="price"><span class="from">from </span>$160</div>
-          <ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Steam, vacuum &amp; shampoo</li><li><svg class="ck"><use href="#ck"/></svg>Leather &amp; trim dressed</li></ul>
-          <a class="learn" href="/services/interior.html">See what's included &rarr;</a>
-          <a class="cta ghost" href="#booking">Get Quote &rarr;</a>
-        </div>
-        <div class="acard o4-mini">
-          <div class="name">Exterior</div><div class="tagl">Outside-only wash &amp; protect</div>
-          <div class="price"><span class="from">from </span>$130</div>
-          <ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash + wheels</li><li><svg class="ck"><use href="#ck"/></svg>Tire dressing + sealant</li></ul>
-          <a class="learn" href="/services/exterior.html">See what's included &rarr;</a>
-          <a class="cta ghost" href="#booking">Get Quote &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="trustrow">
-      <span><strong>5.0</strong> on Google &middot; 39 reviews</span><span><strong>300+</strong> cars</span><span>Snohomish County</span>
-    </div>
-  </section>
-
-  <!-- ===================== 05 — PROOF-LED OUTCOME ===================== -->
-  <section class="opt">
-    <div class="opt-head"><span class="opt-num">05</span><h2>Proof-Led Outcome</h2><span class="principle">Social proof + outcome framing</span>
-      <span class="desc">Each card opens with the <b>result you get</b>, backed immediately by a real 5&#9733; review, then the price and what's included. People buy outcomes and trust other people &mdash; this leads with both before the spec sheet. The <b>guarantee removes the risk</b> at the button.</span></div>
-
-    <div class="sectop">
-      <span class="eyebrow">Services &amp; Pricing</span>
-      <h2 class="h2">Real results, <em>real reviews</em></h2>
-      <p class="lead"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 from 39 neighbors across Snohomish County.</p>
-    </div>
-
-    <div class="o5-grid">
-      <div class="acard">
-        <div class="o5-out">Outside looking <em>showroom-new</em></div>
-        <p class="o5-rev">&ldquo;Very punctual and informative about the work. He did a great job!&rdquo;<br><b>&mdash; Ashlyn J.</b>, Google review</p>
-        <div class="o5-meta"><span class="pn">Exterior</span><div class="price"><span class="from">from </span>$130</div></div>
-        <div class="divider"></div>
-        <ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Hand wash, dry &amp; wheels</li><li><svg class="ck"><use href="#ck"/></svg>Tire dressing</li><li><svg class="ck"><use href="#ck"/></svg>Spray sealant protection</li></ul>
-        <a class="learn" href="/services/exterior.html">See what's included &rarr;</a>
-        <a class="cta ghost" href="#booking">Get Quote &rarr;</a>
-      </div>
-
-      <div class="acard feature">
-        <span class="badge">&#9733; Most Popular</span>
-        <div class="o5-out">The whole car, <em>like new again</em></div>
-        <p class="o5-rev">&ldquo;My car looks brand new again! Easy, fast, reliable and reasonable prices.&rdquo;<br><b>&mdash; Vijay M.</b>, Google review</p>
-        <div class="o5-meta"><span class="pn">Full Detail</span><div class="price"><span class="from">from </span>$260</div></div>
-        <div class="divider"></div>
-        <ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Everything in &amp; out</li><li><svg class="ck"><use href="#ck"/></svg>Same-day turnaround</li><li><svg class="ck"><use href="#ck"/></svg>You don't pay until you love it</li></ul>
-        <a class="cta" href="#booking">Book Full Detail &rarr;</a>
-      </div>
-
-      <div class="acard">
-        <div class="o5-out">Inside feels <em>brand new</em></div>
-        <p class="o5-rev">&ldquo;Done my car 4 times &mdash; quick, thorough, fabulous result every time. 10/10.&rdquo;<br><b>&mdash; C. Wilson</b>, Snohomish</p>
-        <div class="o5-meta"><span class="pn">Interior</span><div class="price"><span class="from">from </span>$160</div></div>
-        <div class="divider"></div>
-        <ul class="feat"><li><svg class="ck"><use href="#ck"/></svg>Steam seats &amp; carpet</li><li><svg class="ck"><use href="#ck"/></svg>Leather conditioned</li><li><svg class="ck"><use href="#ck"/></svg>Streak-free glass</li></ul>
-        <a class="learn" href="/services/interior.html">See what's included &rarr;</a>
-        <a class="cta ghost" href="#booking">Get Quote &rarr;</a>
-      </div>
-    </div>
-
-    <div class="quote" style="margin-top:30px">
-      <span class="qmark">&ldquo;</span>
+    <div class="quote">
+      <span class="qmark">“</span>
       <div><p>Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.</p>
-      <cite><b>Matt K.</b> <span class="s">&#9733;&#9733;&#9733;&#9733;&#9733;</span></cite></div>
+      <cite><b>Matt K.</b> <span class="s">★★★★★</span></cite></div>
     </div>
   </section>
+</div>
 
+<!-- SIMULATED HAND-OFF (mockup only) -->
+<div class="ho-back" id="hoBack">
+  <div class="ho">
+    <span class="simtag">Mockup preview — not wired yet</span>
+    <h3>On the live site…</h3>
+    <p>This jumps straight to the booking form with your pick already locked in:</p>
+    <div class="locked"><span class="ln" id="hoName">Full Detail</span><span class="lp" id="hoPrice">$260</span></div>
+    <ul class="steps">
+      <li><svg class="ck"><use href="#ck"/></svg><span>Service &amp; price <b>pre-filled</b> — no re-picking</span></li>
+      <li><svg class="ck"><use href="#ck"/></svg><span>Customer just adds <b>name &amp; number</b></span></li>
+      <li><svg class="ck"><use href="#ck"/></svg><span>One tap to <b>lock in the quote</b></span></li>
+    </ul>
+    <button class="close" id="hoClose" type="button">Got it, close</button>
+  </div>
 </div>
 
 <script>
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce) {
-    document.querySelectorAll('.acard').forEach(function (c) {
-      c.addEventListener('pointermove', function (e) {
-        if (e.pointerType === 'touch') return;
-        var r = c.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width;
-        var py = (e.clientY - r.top) / r.height;
-        c.style.transform = 'perspective(1000px) rotateX(' + ((0.5 - py) * 4) + 'deg) rotateY(' + ((px - 0.5) * 4) + 'deg) translateY(-3px)';
-      });
-      c.addEventListener('pointerleave', function () { c.style.transform = ''; });
+  (function () {
+    // --- model: mirrors the real QQC pricing (base + size offset) ---
+    var SVC = {
+      interior: { name: 'Interior Detail', label: 'Interior', base: 160, tag: 'Inside-only deep clean',
+        feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather clean & condition', 'Streak-free glass'] },
+      exterior: { name: 'Exterior Detail', label: 'Exterior', base: 130, tag: 'Outside-only wash & protect',
+        feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Tire dressing', 'Spray sealant protection'] },
+      full: { name: 'Full Detail', label: 'Full Detail', base: 260, tag: 'Inside & out — bumper to bumper',
+        feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', "You don't pay until you love it"] }
+    };
+    var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 20 }, van: { label: 'van/XL', add: 40 } };
+    var LEAD = {
+      interior: "A fresh, like-new cabin is exactly what you need.",
+      exterior: "Let's bring that paint and shine back to life.",
+      full: "Best value — the whole car handled in one visit."
+    };
+
+    var pick = { need: null, size: null };
+    function $(id) { return document.getElementById(id); }
+
+    // ---- concierge flow ----
+    var qEls = { 1: $('ccQ1'), 2: $('ccQ2') };
+    function showQ(n) {
+      $('ccResult').classList.remove('show');
+      qEls[1].classList.toggle('show', n === 1);
+      qEls[2].classList.toggle('show', n === 2);
+      var p = $('ccProg').children;
+      p[0].classList.toggle('on', n >= 1);
+      p[1].classList.toggle('on', n >= 2);
+    }
+    function rangeFor(needKey, sizeKey) {
+      var base = SVC[needKey].base + (sizeKey ? SIZE[sizeKey].add : 0);
+      return { low: base, high: base + 60, locked: base };
+    }
+    function showResult() {
+      var s = SVC[pick.need], r = rangeFor(pick.need, pick.size);
+      $('ccLead').innerHTML = LEAD[pick.need];
+      $('ccName').textContent = s.label;
+      $('ccTag').textContent = s.tag;
+      $('ccPrice').innerHTML = '<span class="from">$</span>' + r.low + '<span style="font-size:.6em;color:#9aa0a6"> – $' + r.high + '</span>';
+      $('ccEst').textContent = 'Estimated for your ' + SIZE[pick.size].label + ' · final price confirmed at booking.';
+      var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ck"><use href="#ck"/></svg>' + s.feats[i] + '</li>';
+      $('ccFeat').innerHTML = fl;
+      $('ccProg').children[0].classList.add('on'); $('ccProg').children[1].classList.add('on');
+      qEls[1].classList.remove('show'); qEls[2].classList.remove('show');
+      $('ccResult').classList.add('show');
+    }
+
+    $('cc').addEventListener('click', function (e) {
+      var opt = e.target.closest('.cc-opt');
+      if (!opt) return;
+      var q = opt.getAttribute('data-q'), v = opt.getAttribute('data-val');
+      if (q === 'need') { pick.need = v; setTimeout(function () { showQ(2); }, 180); }
+      else if (q === 'size') { pick.size = v; setTimeout(showResult, 180); }
     });
-  }
+    $('ccRetake').addEventListener('click', function () { pick = { need: null, size: null }; showQ(1); });
+    $('ccBook').addEventListener('click', function () {
+      var r = rangeFor(pick.need, pick.size);
+      openHandoff(SVC[pick.need].label, '$' + r.locked + '+');
+    });
+
+    // ---- browse-card booking ----
+    document.querySelectorAll('[data-book]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var k = b.getAttribute('data-book');
+        openHandoff(SVC[k].label, 'from $' + SVC[k].base);
+      });
+    });
+
+    // ---- simulated hand-off panel ----
+    function openHandoff(name, price) {
+      $('hoName').textContent = name; $('hoPrice').textContent = price;
+      $('hoBack').classList.add('show');
+    }
+    function closeHandoff() { $('hoBack').classList.remove('show'); }
+    $('hoClose').addEventListener('click', closeHandoff);
+    $('hoBack').addEventListener('click', function (e) { if (e.target === $('hoBack')) closeHandoff(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeHandoff(); });
+
+    // ---- tilt ----
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.acard').forEach(function (c) {
+        c.addEventListener('pointermove', function (e) {
+          if (e.pointerType === 'touch') return;
+          var rc = c.getBoundingClientRect();
+          var px = (e.clientX - rc.left) / rc.width, py = (e.clientY - rc.top) / rc.height;
+          c.style.transform = 'perspective(1000px) rotateX(' + ((0.5 - py) * 3) + 'deg) rotateY(' + ((px - 0.5) * 3) + 'deg) translateY(-2px)';
+        });
+        c.addEventListener('pointerleave', function () { c.style.transform = ''; });
+      });
+    }
+  })();
 </script>
 </body>
 </html>
