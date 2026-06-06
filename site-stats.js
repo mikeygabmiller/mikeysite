@@ -1,5 +1,5 @@
 /* ============================================================
-   MIKEY'S MOBILE DETAILING — SITE STATS
+   MIKEY'S MOBILE DETAILING - SITE STATS
    ------------------------------------------------------------
    ★ THIS IS THE ONLY PLACE YOU EDIT THESE NUMBERS. ★
    Change a number below and it updates automatically on EVERY
