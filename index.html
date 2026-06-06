@@ -201,6 +201,7 @@
   /* Primary brand red - reserved for CTAs, key accents, focus states */
   --brand-red: #C8102E;
   --brand-red-dark: #A00C24;
+  --brand-red-bright: #E23744;
   --brand-red-glow: rgba(200,16,46,0.30);
   /* Premium secondary accent (membership / value highlights) */
   --brand-gold: #C9A24B;
@@ -1153,7 +1154,7 @@ header li a[href="#booking"],
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
     font-size: 72px;
-    color: #C8102E;
+    color: var(--brand-red);
     line-height: 0.8;
     margin-bottom: 8px;
   }
@@ -1293,12 +1294,12 @@ header li a[href="#booking"],
      ============================================================ */
 
   .mko {
-    --bg: #141414;
+    --bg: var(--bg-card);
     --panel: #1a1a1a;
     --panel-2: #232323;
-    --red: #C8102E;
-    --red-bright: #E23744;
-    --gold: #C9A24B;
+    --red: var(--brand-red);
+    --red-bright: var(--brand-red-bright);
+    --gold: var(--brand-gold);
     --line: rgba(255, 255, 255, 0.10);
     --text: #ffffff;
     --muted: #9aa0a6;
@@ -1554,7 +1555,7 @@ header li a[href="#booking"],
     box-shadow: 0 16px 40px rgba(200,16,46,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
   }
   .mko__btn--primary:hover {
-    background: #E23744;
+    background: var(--red-bright);
     transform: translateY(-2px);
     box-shadow: 0 22px 56px rgba(200,16,46,0.6), inset 0 1px 0 rgba(255,255,255,0.22);
   }
@@ -2047,14 +2048,14 @@ header li a[href="#booking"],
 <!-- ===== MIKEY'S QQC v4, Apple-style redesign · real backend (Web3Forms + honeypot + SMS fallback + GA4) ===== -->
 <style>
 #qqcCard {
-  --accent: #C8102E; --accent-rgb: 200,16,46; --accent-press: #e11533;
-  --gold: #d8b25c; --gold-ink: #2a1e02; --success: #2fb358;
+  --accent: var(--brand-red); --accent-rgb: 200,16,46; --accent-press: var(--brand-red-bright);
+  --gold: var(--brand-gold); --gold-ink: #2a1e02; --success: #2fb358;
   --surface: #1c1c1e; --surface-2: #262629; --surface-3: #38383b;
   --text: #f5f5f7; --text-2: #b0b0b6; --text-3: #8e8e93;
   --border: rgba(255,255,255,0.12); --border-2: rgba(255,255,255,0.24);
   --shadow: 0 16px 56px rgba(0,0,0,0.6); --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Outfit', sans-serif;
   max-width: 480px; margin: 0 auto;
   background: var(--surface); color: var(--text);
   border-radius: 28px; border: 1px solid var(--border); box-shadow: var(--shadow);
@@ -2801,7 +2802,7 @@ header li a[href="#booking"],
   .svc2 .trustrow{ display:flex; justify-content:center; gap:12px 28px; flex-wrap:wrap; margin-top:34px; font-size:12.5px; color:var(--muted) }
   .svc2 .trustrow span{ display:inline-flex; align-items:center; gap:8px } .svc2 .trustrow strong{ color:var(--gold); font-weight:800 }
   .svc2 .quote{ display:flex; gap:14px; align-items:flex-start; max-width:700px; margin:28px auto 0; text-align:left }
-  .svc2 .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:Georgia,serif }
+  .svc2 .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:'Outfit',sans-serif }
   .svc2 .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .svc2 .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .svc2 .quote cite b{ color:#fff } .svc2 .quote .s{ color:var(--gold) }
 
   @media (max-width:860px){ .svc2 .cards{ grid-template-columns:1fr } .svc2 .cards .feature{ order:-1 } }
@@ -3709,7 +3710,7 @@ header li a[href="#booking"],
         <span class="hiw4-chip">Instant Price &middot; No Deposit</span>
         <h3 class="hiw4-title">Tell Me About Your Car</h3>
         <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then I text you back to lock in a time that works for you.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Instant price online <span class="kill">No deposit</span></div>
+        <div class="hiw4-foot"><span class="dot"></span> Pick your own time <span class="kill">No phone tag</span></div>
       </article>
 
       <!-- STEP 2 -->
@@ -3749,7 +3750,7 @@ header li a[href="#booking"],
         <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
         <a class="hg4-btn hg4-btn--ghost" href="tel:+13607975831">&#128222;&nbsp;(360) 797-5831</a>
       </div>
-      <p class="hg4-micro">Instant price &middot; <b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
+      <p class="hg4-micro"><b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
     </div>
   </section>
 
@@ -3866,7 +3867,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .about-mikey{ background:var(--bg-card); padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
   .about-inner{ max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
   .about-photo{ flex:1 1 280px; min-width:260px; display:flex; justify-content:center; }
   .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:1px solid var(--border-dark); box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#1a1a1a; }
@@ -3926,7 +3927,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .faq2{ background:var(--bg-card); padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
   .faq2-inner{ max-width:800px; margin:0 auto; }
   .faq2-eyebrow{ display:inline-block; background:#C8102E; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
   .faq2 h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 28px; }
@@ -3960,7 +3961,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
+  .explore{ background:var(--bg-card); padding:48px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
   .explore-inner{ max-width:1100px; margin:0 auto; }
   .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#9a9a9a; margin:0 0 14px; }
   .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
