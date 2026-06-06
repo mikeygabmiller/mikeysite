@@ -619,38 +619,56 @@ header li a[href="#booking"],
 .footer-copy { margin-top: 24px; text-align: center; color: #8a8a8a; font-size: 12px; }
 
 /* =========================================================
-   MOBILE STICKY CTA BAR
+   MOBILE STICKY BOOKING BAR (slides up after the hero)
    ========================================================= */
 .sticky-cta-bar {
   display: none;
   position: fixed; bottom: 0; left: 0; right: 0;
-  background: #000; border-top: 2px solid var(--brand-red);
-  padding: 12px 16px; z-index: 9998;
-  gap: 10px;
+  align-items: stretch; gap: 10px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(12,12,14,0.96);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 -8px 28px rgba(0,0,0,0.5);
+  z-index: 9998;
+  transform: translateY(140%); opacity: 0; visibility: hidden;
+  transition: transform .38s cubic-bezier(.16,.84,.44,1), opacity .3s ease, visibility .38s;
 }
+.sticky-cta-bar.is-visible { transform: translateY(0); opacity: 1; visibility: visible; }
+.sticky-cta-call {
+  flex: 1 1 44%; display: flex; align-items: center; justify-content: center;
+  gap: 9px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #fff; border-radius: 12px; padding: 8px 12px; text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.sticky-cta-call:hover, .sticky-cta-call:active {
+  background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.26);
+}
+.sticky-cta-call svg { flex-shrink: 0; color: var(--brand-red); }
+.sticky-cta-call .scb-txt { display: flex; flex-direction: column; line-height: 1.05; text-align: left; }
+.sticky-cta-call .scb-label {
+  font-size: 10px; font-weight: 600; letter-spacing: .05em;
+  text-transform: uppercase; color: #9aa0a6;
+}
+.sticky-cta-call .scb-num { font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+.sticky-cta-book {
+  flex: 1 1 56%; display: flex; align-items: center; justify-content: center;
+  gap: 6px; background: var(--brand-red); color: #fff;
+  font-weight: 800; font-size: 15px; letter-spacing: .04em; text-transform: uppercase;
+  border-radius: 12px; padding: 8px 14px; text-decoration: none;
+  box-shadow: 0 6px 18px rgba(200,16,46,0.45);
+  transition: transform 0.15s, background 0.15s;
+}
+.sticky-cta-book:hover { background: var(--brand-red-dark); }
+.sticky-cta-book:active { transform: translateY(1px); }
 @media (max-width: 768px) {
   .sticky-cta-bar { display: flex; }
-  main { padding-bottom: 72px; }
+  main { padding-bottom: 76px; }
 }
-.sticky-cta-call {
-  flex: 1; display: flex; align-items: center; justify-content: center;
-  gap: 8px; background: #1a1a1a; border: 1px solid #333;
-  color: #fff; font-weight: 700; font-size: 14px;
-  border-radius: 8px; padding: 12px; text-decoration: none;
-  transition: background 0.15s;
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta-bar { transition: opacity .2s ease, visibility .2s; transform: none; }
 }
-.sticky-cta-call:hover { background: #222; }
-.sticky-cta-book {
-  flex: 2; display: flex; align-items: center; justify-content: center;
-  background: var(--brand-red); color: #fff;
-  font-weight: 800; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
-  border-radius: 8px; padding: 12px; text-decoration: none;
-  box-shadow: 0 4px 16px rgba(200,16,46,0.4);
-  transition: transform 0.15s;
-}
-.sticky-cta-book:hover { transform: translateY(-1px); } /* ============================================
-
-
 </style>
   <script src="/site-stats.js" defer></script>
 </head>
@@ -3994,14 +4012,35 @@ header li a[href="#booking"],
   <p class="footer-copy">© 2026 Mikey's Mobile Detailing, Snohomish, WA. All rights reserved.</p>
 </footer>
 
-<!-- Mobile sticky CTA bar -->
-<div class="sticky-cta-bar" aria-label="Quick action bar" role="complementary">
-  <a href="tel:+13607975831" class="sticky-cta-call" aria-label="Call Mikey now">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Call
+<!-- Mobile sticky booking bar (slides up after the hero) -->
+<div class="sticky-cta-bar" id="mobileBookingBar" aria-label="Call or book Mikey's Mobile Detailing" role="complementary">
+  <a href="tel:+13607975831" class="sticky-cta-call" aria-label="Call Mikey at (360) 797-5831">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="scb-txt">
+      <span class="scb-label">Call now</span>
+      <span class="scb-num">(360) 797-5831</span>
+    </span>
   </a>
-  <a href="#booking" class="sticky-cta-book" aria-label="Get a quote">Get a Quote →</a>
+  <a href="#booking" class="sticky-cta-book" aria-label="Book your detail">Book Now →</a>
 </div>
+<script>
+(function(){
+  var bar = document.getElementById('mobileBookingBar');
+  var hero = document.querySelector('.mh-hero');
+  if (!bar || !hero) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries){
+      bar.classList.toggle('is-visible', !entries[0].isIntersecting);
+    }, { threshold: 0, rootMargin: '-40px 0px 0px 0px' }).observe(hero);
+  } else {
+    var onScroll = function(){
+      bar.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.7);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+})();
+</script>
 
 <!-- Visually hidden utility -->
 <style>.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
