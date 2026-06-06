@@ -4026,19 +4026,16 @@ header li a[href="#booking"],
 <script>
 (function(){
   var bar = document.getElementById('mobileBookingBar');
+  if (!bar) return;
   var hero = document.querySelector('.mh-hero');
-  if (!bar || !hero) return;
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(entries){
-      bar.classList.toggle('is-visible', !entries[0].isIntersecting);
-    }, { threshold: 0, rootMargin: '-40px 0px 0px 0px' }).observe(hero);
-  } else {
-    var onScroll = function(){
-      bar.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.7);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+  function update(){
+    // Show once the bottom of the hero has (almost) scrolled off the top.
+    var heroBottom = hero ? hero.getBoundingClientRect().bottom : window.innerHeight;
+    bar.classList.toggle('is-visible', heroBottom <= 60);
   }
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
 })();
 </script>
 
