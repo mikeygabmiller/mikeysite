@@ -2043,7 +2043,54 @@ header li a[href="#booking"],
       </div>
     </div>
 
-      <div style="max-width:480px;margin:0 auto;padding:0 16px;">
+<!-- ===== QQC desktop shell: side info panel on wide screens, card-only on mobile ===== -->
+<style>
+  .qqc-shell{ max-width:480px; margin:0 auto; padding:0 16px; }
+  .qqc-card-col{ width:100%; }
+  .qqc-aside{ display:none; }
+  @media (min-width:980px){
+    .qqc-shell{ max-width:980px; display:flex; align-items:center; gap:56px; padding:0 24px; }
+    .qqc-aside{ display:block; flex:1 1 0; min-width:0; }
+    .qqc-card-col{ flex:0 0 480px; }
+  }
+  .qqc-aside{ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:#f5f5f7; -webkit-font-smoothing:antialiased; }
+  .qqc-aside .qa-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#C8102E; margin-bottom:18px; }
+  .qqc-aside .qa-dot{ width:7px; height:7px; border-radius:50%; background:#C8102E; box-shadow:0 0 0 3px rgba(200,16,46,.22); }
+  .qqc-aside .qa-title{ font-size:clamp(34px,3.4vw,46px); line-height:1.04; font-weight:800; letter-spacing:-.03em; margin:0 0 18px; }
+  .qqc-aside .qa-title em{ color:#C8102E; font-style:normal; }
+  .qqc-aside .qa-lead{ font-size:17px; line-height:1.55; color:#b0b0b6; margin:0 0 26px; max-width:390px; }
+  .qqc-aside .qa-list{ list-style:none; padding:0; margin:0 0 26px; display:grid; gap:13px; }
+  .qqc-aside .qa-list li{ display:flex; align-items:center; gap:12px; font-size:15.5px; font-weight:560; color:#e7e7ea; }
+  .qqc-aside .qa-ck{ width:24px; height:24px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:rgba(47,179,88,.16); color:#2fb358; }
+  .qqc-aside .qa-ck svg{ width:13px; height:13px; }
+  .qqc-aside .qa-rating{ display:flex; align-items:center; gap:12px; padding:16px 0; border-top:1px solid rgba(255,255,255,.12); border-bottom:1px solid rgba(255,255,255,.12); }
+  .qqc-aside .qa-stars{ color:#d8b25c; font-size:18px; letter-spacing:2px; line-height:1; }
+  .qqc-aside .qa-rmeta{ font-size:14px; color:#b0b0b6; }
+  .qqc-aside .qa-rmeta strong{ color:#f5f5f7; font-weight:700; }
+  .qqc-aside .qa-review{ margin:22px 0 0; }
+  .qqc-aside .qa-review blockquote{ margin:0; font-size:15.5px; line-height:1.55; color:#d7d7da; font-style:italic; }
+  .qqc-aside .qa-review figcaption{ margin-top:10px; font-size:13px; font-weight:600; color:#8e8e93; }
+</style>
+      <div class="qqc-shell">
+      <aside class="qqc-aside">
+        <span class="qa-eyebrow"><span class="qa-dot"></span> Instant Online Quote</span>
+        <h2 class="qa-title">Know your price <em>before</em> you book.</h2>
+        <p class="qa-lead">No waiting on a callback, no guessing. Build your detail and get a real, itemized price in about 30 seconds.</p>
+        <ul class="qa-list">
+          <li><span class="qa-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Mobile service, I come to you</li>
+          <li><span class="qa-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Pay when complete, no deposit</li>
+          <li><span class="qa-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span> Love it or you don't pay, guaranteed</li>
+        </ul>
+        <div class="qa-rating">
+          <span class="qa-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="qa-rmeta"><strong data-md-rating>5.0</strong> on Google, <span data-md-reviews="{n}">39</span> reviews</span>
+        </div>
+        <figure class="qa-review">
+          <blockquote>"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!"</blockquote>
+          <figcaption>C Wilson, Snohomish WA</figcaption>
+        </figure>
+      </aside>
+      <div class="qqc-card-col">
 <!-- ===== MIKEY'S QQC v4, Apple-style redesign · real backend (Web3Forms + honeypot + SMS fallback + GA4) ===== -->
 <style>
 #qqcCard {
@@ -2673,7 +2720,8 @@ header li a[href="#booking"],
   }
 })();
 </script>
-      </div>
+      </div><!-- /qqc-card-col -->
+      </div><!-- /qqc-shell -->
     </div>
   </section>
       
