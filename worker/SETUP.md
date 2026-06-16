@@ -45,7 +45,7 @@ You'll get a URL like `https://mikeys-detailing-sms.YOUR_ACCOUNT.workers.dev`
 wrangler secret put TWILIO_ACCOUNT_SID
 wrangler secret put TWILIO_AUTH_TOKEN
 wrangler secret put TWILIO_FROM          # e.g. +12065551234
-wrangler secret put MIKEY_PHONE          # e.g. +13607975831
+wrangler secret put MIKEY_PHONE          # e.g. +14256007897
 wrangler secret put DASHBOARD_PASSWORD   # pick any password you want
 ```
 
@@ -88,7 +88,7 @@ Sign in with the `DASHBOARD_PASSWORD` you set. It stays logged in for 30 days.
 
 ---
 
-## Notifications you get at (360) 797-5831
+## Notifications you get at (425) 600-7897
 
 | Event | Text you get |
 |---|---|

@@ -19,7 +19,7 @@
  *   TWILIO_ACCOUNT_SID
  *   TWILIO_AUTH_TOKEN
  *   TWILIO_FROM        — Twilio number e.g. +12065551234
- *   MIKEY_PHONE        — personal cell e.g. +13607975831
+ *   MIKEY_PHONE        — personal cell e.g. +14256007897
  *   DASHBOARD_PASSWORD — password to access the dashboard
  *
  * Required KV Namespace binding (wrangler.toml):
@@ -287,7 +287,7 @@ async function handleInboundSms(request, env) {
 async function handleInboundCall(request, env) {
   const form       = await request.formData();
   const from       = form.get('From') || 'Unknown';
-  const mikeyPhone = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+  const mikeyPhone = normalizePhone(env.MIKEY_PHONE) || '+14256007897';
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -304,7 +304,7 @@ async function handleVoicemail(request, env) {
   const form       = await request.formData();
   const from       = form.get('From') || 'Unknown';
   const dialStatus = form.get('DialCallStatus') || '';
-  const mikeyPhone = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+  const mikeyPhone = normalizePhone(env.MIKEY_PHONE) || '+14256007897';
 
   if (dialStatus === 'completed') {
     return new Response('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', { headers: { 'Content-Type': 'text/xml' } });
@@ -324,7 +324,7 @@ async function handleVoicemailDone(request, env) {
   const from         = form.get('From') || 'Unknown';
   const recordingUrl = form.get('RecordingUrl') || '';
   const duration     = form.get('RecordingDuration') || '?';
-  const mikeyPhone   = normalizePhone(env.MIKEY_PHONE) || '+13607975831';
+  const mikeyPhone   = normalizePhone(env.MIKEY_PHONE) || '+14256007897';
 
   if (recordingUrl) {
     await sendSms(env, mikeyPhone, `🎙️ Voicemail from ${from} (${duration}s):\n${recordingUrl}.mp3`).catch(() => {});

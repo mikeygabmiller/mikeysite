@@ -15,5 +15,5 @@ id      = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
 #   TWILIO_ACCOUNT_SID
 #   TWILIO_AUTH_TOKEN
 #   TWILIO_FROM          your Twilio number e.g. +12065551234
-#   MIKEY_PHONE          your personal cell e.g. +13607975831
+#   MIKEY_PHONE          your personal cell e.g. +14256007897
 #   DASHBOARD_PASSWORD   password to access the dashboard

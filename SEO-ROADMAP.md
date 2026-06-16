@@ -54,7 +54,7 @@ come from the Map Pack / Google Business Profile, not classic web search.
 
 ### 3. Citations / NAP consistency
 - Same Name/Address/Phone on Yelp, Apple Maps, Bing Places, Nextdoor, FB.
-- Phone everywhere: **(360) 797-5831**. Get listed in local/auto directories.
+- Phone everywhere: **(425) 600-7897**. Get listed in local/auto directories.
 
 ---
 
