@@ -2286,6 +2286,7 @@ header li a[href="#booking"],
       <div class="progress-seg" data-seg="2"><i></i></div>
       <div class="progress-seg" data-seg="3"><i></i></div>
       <div class="progress-seg" data-seg="4"><i></i></div>
+      <div class="progress-seg" data-seg="5"><i></i></div>
     </div>
     <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
   </div>
@@ -2432,7 +2433,7 @@ header li a[href="#booking"],
         <input type="checkbox" id="qqSmsConsent" />
         <label for="qqSmsConsent">Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em>, msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
       </div>
-      <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Lock in my quote</button>
+      <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Pick a Time &rarr;</button>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
     <div class="trust">
@@ -2445,13 +2446,76 @@ header li a[href="#booking"],
     </div>
   </div>
 
-  <!-- STEP 5: SUCCESS -->
+  <!-- STEP 5: PICK A TIME -->
   <div class="step" id="step5">
+<style>
+#qqcCard .slot-loading{ display:flex; align-items:center; gap:12px; padding:28px 0; color:var(--text-2); font-size:14px; }
+#qqcCard .slot-spinner{ width:22px; height:22px; border-radius:50%; border:3px solid var(--surface-3); border-top-color:var(--accent); animation:qqcSpin .7s linear infinite; flex-shrink:0; }
+@keyframes qqcSpin{ to{ transform:rotate(360deg) } }
+
+#qqcCard .date-chips{ display:flex; gap:8px; overflow-x:auto; padding-bottom:4px; scrollbar-width:none; -ms-overflow-style:none; }
+#qqcCard .date-chips::-webkit-scrollbar{ display:none; }
+#qqcCard .date-chip{ flex-shrink:0; text-align:center; background:var(--surface-2); border:1.5px solid var(--border); border-radius:14px; padding:10px 14px; cursor:pointer; transition:border-color .2s, background .2s, transform .15s; -webkit-tap-highlight-color:transparent; min-width:60px; }
+#qqcCard .date-chip:hover{ border-color:var(--border-2); transform:translateY(-1px); }
+#qqcCard .date-chip.sel{ border-color:var(--accent); background:rgba(var(--accent-rgb),.1); }
+#qqcCard .date-chip .dc-dow{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--text-3); }
+#qqcCard .date-chip .dc-num{ font-size:22px; font-weight:800; line-height:1.1; color:var(--text-1); }
+#qqcCard .date-chip .dc-mon{ font-size:11px; color:var(--text-3); font-weight:600; }
+#qqcCard .date-chip.sel .dc-dow, #qqcCard .date-chip.sel .dc-num, #qqcCard .date-chip.sel .dc-mon{ color:var(--accent); }
+
+#qqcCard .time-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; animation:qqcStepIn .35s cubic-bezier(.22,1,.36,1) both; }
+#qqcCard .time-slot{ background:var(--surface-2); border:1.5px solid var(--border); border-radius:14px; padding:14px 10px; text-align:center; cursor:pointer; transition:border-color .2s, background .2s, transform .15s; -webkit-tap-highlight-color:transparent; }
+#qqcCard .time-slot:hover:not(.taken){ border-color:var(--border-2); transform:translateY(-1px); }
+#qqcCard .time-slot.sel{ border-color:var(--accent); background:rgba(var(--accent-rgb),.1); box-shadow:0 6px 18px -10px var(--accent); }
+#qqcCard .time-slot.taken{ opacity:.38; cursor:not-allowed; }
+#qqcCard .time-slot .ts-label{ font-size:17px; font-weight:700; }
+#qqcCard .time-slot .ts-avail{ font-size:11px; color:var(--text-3); margin-top:3px; }
+#qqcCard .time-slot.sel .ts-label{ color:var(--accent); }
+#qqcCard .time-slot.taken .ts-avail{ color:#ff6b6b; }
+#qqcCard .no-slots{ text-align:center; padding:28px 0; color:var(--text-2); font-size:14px; line-height:1.6; }
+#qqcCard .no-slots a{ color:var(--accent); }
+#qqcCard #qqBookBtn{ margin-top:18px; width:100%; }
+#qqcCard .slot-section-label{ font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin:16px 0 10px; }
+</style>
+    <h3 class="q-title">Pick your time</h3>
+    <p class="q-hint">Choose a day &amp; time — I come to you.</p>
+
+    <div id="qqSlotLoading" class="slot-loading">
+      <div class="slot-spinner"></div>
+      Checking availability…
+    </div>
+
+    <div id="qqSlotPicker" style="display:none">
+      <div class="date-chips" id="qqDateChips"></div>
+      <div class="slot-section-label" id="qqTimesLabel" style="display:none">Available times</div>
+      <div class="time-grid" id="qqTimeGrid" style="display:none"></div>
+      <div class="no-slots" id="qqNoSlots" style="display:none">
+        No openings this day.<br>Try another date or <a href="tel:+14256007897">call&nbsp;Mikey</a>.
+      </div>
+    </div>
+
+    <div class="no-slots" id="qqNoAvail" style="display:none">
+      No open slots right now.<br>
+      <a href="tel:+14256007897">Call or text (425) 600-7897</a> to schedule directly.
+    </div>
+
+    <button class="btn btn-primary" id="qqBookBtn" disabled style="display:none">Confirm Booking &rarr;</button>
+
+    <div class="qq-error" id="qqBookError" role="alert" aria-live="assertive"></div>
+
+    <div class="nav" style="margin-top:8px;">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="4">&lsaquo; Edit info</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: SUCCESS -->
+  <div class="step" id="step6">
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <h3>You're locked in</h3>
-      <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
-      <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
+      <h3>You're booked!</h3>
+      <p id="qqSuccessTime" style="font-weight:600;color:var(--accent);margin-bottom:6px;"></p>
+      <p>I'll see you then! I'll send a reminder the day before. If anything changes, just reply to my text.</p>
+      <p style="margin-top:12px;">Questions? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
     </div>
   </div>
@@ -2462,33 +2526,39 @@ header li a[href="#booking"],
 (function(){
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
   var PRICE = { 'Full Detail':260, 'Interior Detail':160, 'Exterior Detail':130 };
-  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'success' };
+  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'pick_time', 6:'success' };
   var progLabels = {
-    1: 'Step 1 of 4 · Your vehicle',
-    2: 'Step 2 of 4 · Choose services',
-    3: 'Step 3 of 4 · Condition',
-    4: 'Step 4 of 4 · Your quote'
+    1: 'Step 1 of 5 · Your vehicle',
+    2: 'Step 2 of 5 · Choose services',
+    3: 'Step 3 of 5 · Condition',
+    4: 'Step 4 of 5 · Your info',
+    5: 'Step 5 of 5 · Pick a time'
   };
+  var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev';
+  var slotsCache = null;
+  var selectedDate = null;
+  var selectedTime = null;
 
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
   function setProgress(n){
-    var to = (n >= 4) ? 4 : n;
+    var to = (n >= 5) ? 5 : n;
     var segs = document.querySelectorAll('#qqcCard .progress-seg');
     for (var i=0;i<segs.length;i++){
       var idx = parseInt(segs[i].getAttribute('data-seg'));
       segs[i].classList.toggle('done', idx < to);
       segs[i].classList.toggle('active', idx === to);
     }
-    var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[Math.min(n,4)] || progLabels[4];
+    var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[Math.min(n,5)] || progLabels[5];
   }
   function goStep(n){
-    for (var i=1;i<=5;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    for (var i=1;i<=6;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
     var t = $('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
     var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
+    if (n === 5) loadSlots();
   }
 
   function deselect(scope, sel){
@@ -2596,78 +2666,208 @@ header li a[href="#booking"],
       }
     }, false);
 
-    var form = $('qqForm');
-    form.addEventListener('submit', function(e){
+    var form = $(‘qqForm’);
+    form.addEventListener(‘submit’, function(e){
       e.preventDefault();
       // Honeypot: bots fill this hidden field - silently "succeed" without sending.
-      var hp = $('qqCompany'); if (hp && hp.value) { goStep(5); return; }
+      var hp = $(‘qqCompany’); if (hp && hp.value) { goStep(6); return; }
 
-      var nW = $('qqfName'), nE = $('qqName');
-      var pW = $('qqfPhone'), pE = $('qqPhone');
+      var nW = $(‘qqfName’), nE = $(‘qqName’);
+      var pW = $(‘qqfPhone’), pE = $(‘qqPhone’);
       var ok = true;
-      if (!nE.value.trim()){ nW.classList.add('bad'); nE.classList.add('err'); ok=false; } else { nW.classList.remove('bad'); nE.classList.remove('err'); }
-      var phone = (pE.value || '').trim();
-      var digits = phone.replace(/\D/g,'');
-      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
-      if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
+      if (!nE.value.trim()){ nW.classList.add(‘bad’); nE.classList.add(‘err’); ok=false; } else { nW.classList.remove(‘bad’); nE.classList.remove(‘err’); }
+      var phone = (pE.value || ‘’).trim();
+      var digits = phone.replace(/\D/g,’’);
+      if (digits.length < 10){ pW.classList.add(‘bad’); pE.classList.add(‘err’); ok=false; } else { pW.classList.remove(‘bad’); pE.classList.remove(‘err’); }
+      if (!ok){ (nW.classList.contains(‘bad’)?nE:pE).focus(); return; }
 
-      var name = nE.value.trim();
-      var email = ($('qqEmail').value || '').trim();
-      var location = ($('qqLocation').value || '').trim();
-      var notes = ($('qqNotes').value || '').trim();
-      var cond = (S.condition && S.condition.label) ? S.condition.label : 'Pretty Clean';
-      var veh = S.vehicle ? S.vehicle.label : 'vehicle';
+      // Store contact info in S, then advance to time picker (step 5)
+      S.name     = nE.value.trim();
+      S.phone    = phone;
+      S.email    = ($(‘qqEmail’).value || ‘’).trim();
+      S.location = ($(‘qqLocation’).value || ‘’).trim();
+      S.notes    = ($(‘qqNotes’).value || ‘’).trim();
+      S.smsConsent = !!($(‘qqSmsConsent’) && $(‘qqSmsConsent’).checked);
 
-      var errBox = $('qqError'); if (errBox) errBox.style.display = 'none';
-      var btn = $('qqSubmitBtn'); if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
-
-      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone +
-        (email ? '\nEmail: ' + email : '') + (location ? '\nLocation: ' + location : '') +
-        '\nQuote: $' + S.total + '\nVehicle: ' + veh + '\nCondition: ' + cond +
-        '\nServices: ' + S.items.join(', ') + (notes ? '\nNotes: ' + notes : '');
-
-      function showSubmitError(){
-        if (btn){ btn.disabled = false; btn.textContent = 'Lock in my quote'; }
-        if (errBox){
-          var smsHref = 'sms:+14256007897?&body=' + encodeURIComponent("Hi Mikey! Here's my quote request:\n" + msgBody);
-          errBox.innerHTML = "<p>That didn’t go through, but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
-            "<a href=\"" + smsHref + "\">💬 Text My Quote to Mikey</a>";
-          errBox.style.display = 'block';
-        }
-        if (typeof gtag === 'function') gtag('event', 'qqc_submit_error', {});
-      }
-
-      var fd = new FormData();
-      fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
-      fd.append('subject', 'New Quote: $' + S.total + ', ' + name);
-      fd.append('from_name', 'Mikeys QQC');
-      fd.append('name', name);
-      fd.append('phone', phone);
-      if (email) fd.append('email', email);
-      if (location) fd.append('location', location);
-      if (notes) fd.append('notes', notes);
-      fd.append('message', msgBody);
-      // Fire web3forms (email to Mikey) + Worker (SMS via Twilio) in parallel.
-      // Success if either goes through so the customer is never blocked.
-      var smsConsent = !!($('qqSmsConsent') && $('qqSmsConsent').checked);
-      var smsPayload = JSON.stringify({
-        name: name, phone: phone, email: email || '', location: location || '',
-        total: S.total, vehicle: veh, condition: cond,
-        services: S.items, notes: notes || '', smsConsent: smsConsent
-      });
-      var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev/submit';
-      Promise.allSettled([
-        fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
-        fetch(WORKER_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: smsPayload })
-      ]).then(function(results){
-        var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
-        var smsOk   = results[1].status==='fulfilled';
-        if (emailOk || smsOk){
-          if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
-          goStep(5);
-        } else { showSubmitError(); }
-      }).catch(function(){ showSubmitError(); });
+      var errBox = $(‘qqError’); if (errBox) errBox.style.display = ‘none’;
+      selectedDate = null; selectedTime = null; // reset any previous selection
+      goStep(5);
     }, false);
+
+    // ===== Slot loading & rendering =====
+    function loadSlots(){
+      slotsCache = null; selectedDate = null; selectedTime = null;
+      var loading = $(‘qqSlotLoading’), picker = $(‘qqSlotPicker’), noAvail = $(‘qqNoAvail’);
+      var bookBtn = $(‘qqBookBtn’);
+      if (loading) loading.style.display = ‘flex’;
+      if (picker)  picker.style.display  = ‘none’;
+      if (noAvail) noAvail.style.display = ‘none’;
+      if (bookBtn) bookBtn.style.display = ‘none’;
+
+      fetch(WORKER_URL + ‘/slots’)
+        .then(function(r){ return r.json(); })
+        .then(function(data){
+          if (loading) loading.style.display = ‘none’;
+          slotsCache = data.slots || {};
+          var dates = Object.keys(slotsCache);
+          if (dates.length === 0){
+            if (noAvail) noAvail.style.display = ‘block’;
+            return;
+          }
+          if (picker) picker.style.display = ‘block’;
+          renderDateChips(dates);
+          // Auto-select first date with available slots
+          for (var i=0;i<dates.length;i++){
+            var hasOpen = slotsCache[dates[i]].slots.some(function(s){ return s.available; });
+            if (hasOpen){ selectDate(dates[i]); break; }
+          }
+        })
+        .catch(function(){
+          if (loading) loading.style.display = ‘none’;
+          if (noAvail){ noAvail.style.display = ‘block’; noAvail.innerHTML = ‘Could not load availability.<br><a href="tel:+14256007897">Call or text (425) 600-7897</a> to book directly.’; }
+        });
+    }
+
+    function renderDateChips(dates){
+      var chips = $(‘qqDateChips’);
+      if (!chips) return;
+      chips.innerHTML = ‘’;
+      dates.forEach(function(dateStr){
+        var info = slotsCache[dateStr];
+        var parts = info.shortDate.split(‘, ‘); // "Mon, Jan 15"
+        var dow = parts[0] || ‘’;
+        var monDay = (parts[1] || ‘’).split(‘ ‘);
+        var mon = monDay[0] || ‘’;
+        var day = monDay[1] || ‘’;
+        var hasOpen = info.slots.some(function(s){ return s.available; });
+        var chip = document.createElement(‘button’);
+        chip.type = ‘button’;
+        chip.className = ‘date-chip’ + (hasOpen ? ‘’ : ‘ taken’);
+        chip.setAttribute(‘data-date’, dateStr);
+        chip.innerHTML = ‘<div class="dc-dow">’ + dow + ‘</div><div class="dc-num">’ + day + ‘</div><div class="dc-mon">’ + mon + ‘</div>’;
+        chip.addEventListener(‘click’, function(){ selectDate(dateStr); });
+        chips.appendChild(chip);
+      });
+    }
+
+    function selectDate(dateStr){
+      selectedDate = dateStr; selectedTime = null;
+      var bookBtn = $(‘qqBookBtn’); if (bookBtn){ bookBtn.disabled = true; }
+
+      // Update chip selection
+      var chips = document.querySelectorAll(‘#qqDateChips .date-chip’);
+      for (var i=0;i<chips.length;i++) chips[i].classList.toggle(‘sel’, chips[i].getAttribute(‘data-date’) === dateStr);
+
+      // Render time slots
+      var grid = $(‘qqTimeGrid’), noSlots = $(‘qqNoSlots’), label = $(‘qqTimesLabel’);
+      var info = slotsCache && slotsCache[dateStr];
+      if (!info || !info.slots || info.slots.length === 0){
+        if (grid)    grid.style.display    = ‘none’;
+        if (noSlots) noSlots.style.display = ‘block’;
+        if (label)   label.style.display   = ‘none’;
+        return;
+      }
+      if (noSlots) noSlots.style.display = ‘none’;
+      if (label)   label.style.display   = ‘block’;
+      if (grid)    grid.style.display    = ‘grid’;
+      grid.innerHTML = ‘’;
+      info.slots.forEach(function(slot){
+        var btn = document.createElement(‘button’);
+        btn.type = ‘button’;
+        btn.className = ‘time-slot’ + (slot.available ? ‘’ : ‘ taken’);
+        btn.setAttribute(‘data-time’, slot.time);
+        btn.innerHTML = ‘<div class="ts-label">’ + slot.label + ‘</div><div class="ts-avail">’ + (slot.available ? ‘Available’ : ‘Booked’) + ‘</div>’;
+        if (slot.available){
+          btn.addEventListener(‘click’, function(){
+            var all = document.querySelectorAll(‘#qqTimeGrid .time-slot’);
+            for (var i=0;i<all.length;i++) all[i].classList.remove(‘sel’);
+            btn.classList.add(‘sel’);
+            selectedTime = slot.time;
+            var bb = $(‘qqBookBtn’); if (bb){ bb.disabled = false; bb.style.display = ‘block’; }
+          });
+        }
+        grid.appendChild(btn);
+      });
+    }
+
+    // ===== Confirm booking =====
+    var bookBtn = $(‘qqBookBtn’);
+    if (bookBtn){
+      bookBtn.addEventListener(‘click’, function(){
+        if (!selectedDate || !selectedTime || !S.name) return;
+        bookBtn.disabled = true; bookBtn.textContent = ‘Booking…’;
+
+        var errBox = $(‘qqBookError’); if (errBox) errBox.style.display = ‘none’;
+        var cond = (S.condition && S.condition.label) ? S.condition.label : ‘Pretty Clean’;
+        var veh  = S.vehicle ? S.vehicle.label : ‘vehicle’;
+
+        var bookPayload = JSON.stringify({
+          date: selectedDate, time: selectedTime,
+          name: S.name, phone: S.phone, email: S.email || ‘’, location: S.location || ‘’,
+          total: S.total, vehicle: veh, condition: cond,
+          services: S.items, notes: S.notes || ‘’, smsConsent: S.smsConsent
+        });
+
+        // Also build web3forms email payload
+        var fd = new FormData();
+        fd.append(‘access_key’, ‘aa7076da-8d1c-427b-979f-03c238686a8e’);
+        fd.append(‘subject’, ‘✅ BOOKING: ‘ + S.name + ‘ · ‘ + selectedDate + ‘ ‘ + selectedTime);
+        fd.append(‘from_name’, ‘Mikeys Booking’);
+        fd.append(‘name’, S.name);
+        fd.append(‘phone’, S.phone);
+        if (S.email) fd.append(‘email’, S.email);
+        if (S.location) fd.append(‘location’, S.location);
+        fd.append(‘date’, selectedDate);
+        fd.append(‘time’, selectedTime);
+        fd.append(‘message’, ‘BOOKING: ‘ + S.name + ‘ | ‘ + selectedDate + ‘ at ‘ + selectedTime + ‘ | $’ + S.total + ‘ | ‘ + S.items.join(‘, ‘) + ‘ | ‘ + veh + ‘ | ‘ + cond + (S.notes ? ‘ | ‘ + S.notes : ‘’));
+
+        Promise.allSettled([
+          fetch(WORKER_URL + ‘/book’, { method:’POST’, headers:{‘Content-Type’:’application/json’}, body: bookPayload }),
+          fetch(‘https://api.web3forms.com/submit’, { method:’POST’, body: fd }).then(function(r){ return r.json(); })
+        ]).then(function(results){
+          var workerRes = results[0];
+          var emailOk  = results[1].status===’fulfilled’ && results[1].value && results[1].value.success;
+
+          // Check if booking succeeded (worker is authoritative for slot reservation)
+          if (workerRes.status === ‘fulfilled’){
+            workerRes.value.json().then(function(wData){
+              if (wData.ok || emailOk){
+                if (typeof gtag === ‘function’) gtag(‘event’, ‘qqc_booking’, { value: S.total, currency: ‘USD’, services: S.items.join(‘, ‘) });
+                // Show success with booked time
+                var info = slotsCache && slotsCache[selectedDate];
+                var dayStr = info ? info.shortDate : selectedDate;
+                var slot = info && info.slots.find(function(s){ return s.time === selectedTime; });
+                var timeStr = slot ? slot.label : selectedTime;
+                var el = $(‘qqSuccessTime’);
+                if (el) el.textContent = ‘📅 ‘ + dayStr + ‘ at ‘ + timeStr;
+                goStep(6);
+              } else if (wData.error === ‘slot_taken’ || wData.error === ‘slot_blocked’){
+                // Slot was just taken by someone else — refresh and ask to repick
+                bookBtn.disabled = false; bookBtn.textContent = ‘Confirm Booking →’;
+                if (errBox){
+                  errBox.innerHTML = ‘<p>That slot was just taken — pick another time below.</p>’;
+                  errBox.style.display = ‘block’;
+                }
+                slotsCache = null; loadSlots();
+              } else { showBookError(); }
+            }).catch(showBookError);
+          } else if (emailOk){
+            // Worker failed but email went through — still show success
+            if (typeof gtag === ‘function’) gtag(‘event’, ‘qqc_booking_email_only’, { value: S.total });
+            goStep(6);
+          } else { showBookError(); }
+        }).catch(showBookError);
+
+        function showBookError(){
+          bookBtn.disabled = false; bookBtn.textContent = ‘Confirm Booking →’;
+          if (errBox){
+            var smsHref = ‘sms:+14256007897?&body=’ + encodeURIComponent(‘Hi Mikey! I want to book a ‘ + S.items.join(‘, ‘) + ‘ on ‘ + selectedDate + ‘ at ‘ + selectedTime + ‘. Name: ‘ + S.name);
+            errBox.innerHTML = ‘<p>Something went wrong. Text Mikey directly to lock in your time:</p><a href="’ + smsHref + ‘">💬 Text Mikey to Book</a>’;
+            errBox.style.display = ‘block’;
+          }
+        }
+      });
+    }
     return true;
   }
 
