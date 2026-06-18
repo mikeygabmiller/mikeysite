@@ -353,6 +353,11 @@ h2.qq-h { position: relative; font-size: 30px; line-height: 1.08; font-weight: 7
         </div>
         <button class="btn btn-primary" type="submit">Pick a Time →</button>
       </form>
+      <div class="qq-or"><span>or</span></div>
+      <a id="demoTalkBtn" href="sms:+14256007897" class="qq-talk-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Prefer to talk first? Text Mikey →
+      </a>
       <div class="trust">
         <span><svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
         <span><svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
@@ -371,6 +376,48 @@ h2.qq-h { position: relative; font-size: 30px; line-height: 1.08; font-weight: 7
         <div class="time-grid" id="timeGrid"></div>
       </div>
       <button class="btn btn-primary" id="confirmBtn" disabled onclick="confirmBooking()" style="margin-top:20px">Confirm Booking →</button>
+
+      <!-- What happens after I book -->
+      <button class="wte-toggle" type="button" id="wteToggle" aria-expanded="false" onclick="toggleWte()">
+        <span class="wte-toggle-inner">
+          <svg class="wte-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          What happens after I book?
+        </span>
+        <svg class="wte-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="wte-body" id="wteBody">
+        <div class="wte-steps">
+          <div class="wte-step">
+            <div class="wte-dot">1</div>
+            <div class="wte-text">
+              <strong>Mikey confirms within the hour</strong>
+              <span>You'll get a text from Mikey confirming your date & time. Feel free to reply with any questions.</span>
+            </div>
+          </div>
+          <div class="wte-step">
+            <div class="wte-dot">2</div>
+            <div class="wte-text">
+              <strong>Day-before reminder text</strong>
+              <span>The evening before your appointment Mikey texts a reminder so you don't have to think about it.</span>
+            </div>
+          </div>
+          <div class="wte-step">
+            <div class="wte-dot">3</div>
+            <div class="wte-text">
+              <strong>Mikey arrives at your driveway</strong>
+              <span>He shows up on time with everything he needs — no need to be there the whole time, just leave the car accessible.</span>
+            </div>
+          </div>
+          <div class="wte-step">
+            <div class="wte-dot">4</div>
+            <div class="wte-text">
+              <strong>You approve, then pay</strong>
+              <span>Do a walkthrough together. You don't pay until you love it. Cash, card, or Venmo — all accepted.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="nav"><button class="btn btn-ghost" onclick="goStep(4)" style="margin-top:10px">‹ Edit info</button></div>
     </div>
 
@@ -425,6 +472,28 @@ h2.qq-h { position: relative; font-size: 30px; line-height: 1.08; font-weight: 7
 .svc-btn:hover { border-color: var(--border-2); transform: translateY(-2px); }
 .svc-btn.sel { border-color: var(--accent); background: rgba(var(--accent-rgb),.1); }
 .feature-svc { background: linear-gradient(150deg, rgba(var(--accent-rgb),.1), var(--surface-2) 70%); border-color: rgba(var(--accent-rgb),.3); }
+
+/* Talk-first */
+.qq-or { display: flex; align-items: center; gap: 12px; margin: 18px 0 12px; color: var(--text-3); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.qq-or::before, .qq-or::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.qq-talk-link { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 18px; border-radius: 14px; border: 1.5px solid var(--border); background: var(--surface-2); color: var(--text-2); font-size: 14.5px; font-weight: 700; text-decoration: none; transition: border-color .2s, background .2s, color .2s, transform .15s; -webkit-tap-highlight-color: transparent; }
+.qq-talk-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(var(--accent-rgb), .06); transform: translateY(-1px); }
+
+/* What to expect accordion */
+.wte-toggle { width:100%; background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; justify-content:space-between; margin-top:24px; -webkit-tap-highlight-color:transparent; font-family: inherit; }
+.wte-toggle-inner { display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:680; color:var(--text-2); letter-spacing:.01em; }
+.wte-icon { color:var(--accent); flex-shrink:0; }
+.wte-arrow { transition:transform .3s cubic-bezier(.4,0,.2,1); color:var(--text-3); flex-shrink:0; }
+.wte-toggle[aria-expanded="true"] .wte-arrow { transform:rotate(180deg); }
+.wte-body { overflow:hidden; max-height:0; transition:max-height .4s cubic-bezier(.4,0,.2,1), opacity .3s; opacity:0; }
+.wte-body.open { max-height:400px; opacity:1; }
+.wte-steps { display:flex; flex-direction:column; gap:0; padding:14px 0 4px; }
+.wte-step { display:flex; gap:12px; align-items:flex-start; position:relative; }
+.wte-step:not(:last-child)::after { content:''; position:absolute; left:15px; top:32px; width:2px; height:calc(100% - 4px); background:var(--border); }
+.wte-dot { width:30px; height:30px; border-radius:50%; background:var(--surface-2); border:2px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:12px; font-weight:800; color:var(--accent); z-index:1; }
+.wte-text { padding:4px 0 18px; }
+.wte-text strong { display:block; font-size:14px; font-weight:700; color:var(--text-1); line-height:1.3; }
+.wte-text span { font-size:13px; color:var(--text-2); line-height:1.5; }
 </style>
 
 <script>
@@ -545,8 +614,25 @@ function goToTimePicker(e) {
   if (S.condition) ctx.push(S.condition + ' condition');
   if (ctx.length) html += '<div class="inc-ctx">' + ctx.join('  ·  ') + '</div>';
   document.getElementById('quoteBreakdown').innerHTML = html;
+
+  // Update "talk first" SMS link with quote context
+  var talkBtn = document.getElementById('demoTalkBtn');
+  if (talkBtn) {
+    var svcs = Object.keys(selectedServices);
+    var talkMsg = 'Hi Mikey! I just got a quote on your site for ' + (svcs.length ? svcs.join(' + ') : 'a detail') + ' ($' + total + ')' + (S.vehicle ? ' — ' + S.vehicle : '') + '. Can we chat about scheduling?';
+    talkBtn.href = 'sms:+14256007897?&body=' + encodeURIComponent(talkMsg);
+  }
+
   selectedDate = null; selectedTime = null;
   goStep(5);
+}
+
+function toggleWte() {
+  var toggle = document.getElementById('wteToggle');
+  var body = document.getElementById('wteBody');
+  var expanded = toggle.getAttribute('aria-expanded') === 'true';
+  toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  body.classList.toggle('open', !expanded);
 }
 
 function initTimePicker() {
