@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikey's Detailing — Booking Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --accent: #C8102E; --accent-rgb: 200,16,46; --accent-press: #A00C24;
+  --gold: #C9A24B; --gold-bright: #E4CD8B;
+  --bg: #0a0a0a; --surface-1: #141414; --surface-2: #1a1a1a; --surface-3: #222;
+  --border: rgba(255,255,255,.08); --border-2: rgba(255,255,255,.16);
+  --text-1: #fff; --text-2: #c2c2c2; --text-3: #9a9a9a;
+}
+body {
+  background: var(--bg);
+  font-family: 'Outfit', system-ui, sans-serif;
+  color: var(--text-1);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 80px;
+}
+
+/* ── Demo banner ── */
+.demo-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  background: linear-gradient(90deg, var(--gold) 0%, #e4cd8b 100%);
+  color: #1a0e00; font-size: 13px; font-weight: 700;
+  text-align: center; padding: 9px 16px; letter-spacing: .02em;
+}
+
+.page { width: 100%; max-width: 480px; padding-top: 44px; }
+
+/* ── QQC Card ── */
+#qqcCard {
+  --card-bg: #111;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 28px 24px 24px;
+  position: relative;
+  overflow: hidden;
+}
+#qqcCard::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(var(--accent-rgb),.12), transparent 70%);
+  pointer-events: none;
+}
+#qqcCard * { box-sizing: border-box; }
+
+.qq-brand { position: relative; display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 680; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.qq-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb),.22); }
+
+h2.qq-h { position: relative; font-size: 30px; line-height: 1.08; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 6px; }
+.sub { position: relative; font-size: 16px; color: var(--text-2); margin: 0 0 22px; font-weight: 400; }
+
+/* Progress */
+.progress { position: relative; margin-bottom: 26px; }
+.progress-track { display: flex; gap: 6px; }
+.progress-seg { flex: 1; height: 4px; border-radius: 980px; background: var(--surface-3); overflow: hidden; }
+.progress-seg i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-press)); border-radius: 980px; transition: width .5s cubic-bezier(.4,0,.2,1); }
+.progress-seg.done i, .progress-seg.active i { width: 100%; }
+.progress-label { margin-top: 10px; font-size: 12.5px; font-weight: 560; color: var(--text-3); }
+
+/* Steps */
+.step { display: none; }
+.step.show { display: block; animation: stepIn .45s cubic-bezier(.22,1,.36,1) both; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.q-title { font-size: 21px; font-weight: 650; letter-spacing: -0.02em; margin: 0 0 4px; }
+.q-hint  { font-size: 14px; color: var(--text-2); margin: 0 0 20px; }
+
+/* ── Buttons ── */
+.btn {
+  display: block; width: 100%;
+  font-family: inherit; font-size: 16px; font-weight: 700;
+  padding: 16px 20px; border-radius: 14px;
+  border: none; cursor: pointer;
+  transition: background .15s, transform .12s, opacity .15s;
+  text-align: center;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 12px 28px -10px rgba(var(--accent-rgb),.55);
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-press); transform: translateY(-1px); }
+.btn-primary:disabled { opacity: .38; cursor: not-allowed; box-shadow: none; transform: none; }
+.btn-ghost {
+  background: none;
+  border: 1.5px solid var(--border-2);
+  color: var(--text-2);
+  font-size: 14px; padding: 12px;
+}
+.btn-ghost:hover { border-color: #fff; color: #fff; }
+
+/* ── Quote summary ── */
+.amount {
+  font-size: 52px; font-weight: 900; letter-spacing: -.04em;
+  text-align: center; margin: 4px 0 6px;
+  background: linear-gradient(135deg, #fff 30%, var(--text-2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.amount.lit {
+  background: linear-gradient(135deg, #fff 0%, var(--gold-bright) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.amount-sub { font-size: 13px; color: var(--text-3); text-align: center; margin-bottom: 18px; }
+
+.breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+.bd-head { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 10px; }
+.inc-row { display: flex; align-items: center; gap: 9px; font-size: 14px; color: var(--text-2); padding: 4px 0; }
+.inc-check { width: 18px; height: 18px; border-radius: 50%; background: rgba(var(--accent-rgb),.15); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.inc-check svg { width: 10px; height: 10px; }
+.inc-ctx { font-size: 12px; color: var(--text-3); margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); }
+
+/* Contact form */
+.form { display: grid; gap: 10px; margin-bottom: 14px; }
+.field input {
+  width: 100%; background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: 12px; color: var(--text-1); font-family: inherit; font-size: 16px;
+  padding: 14px 16px; outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb),.12); }
+.field input::placeholder { color: var(--text-3); }
+.sms-opt { display: flex; align-items: flex-start; gap: 10px; font-size: 12.5px; color: var(--text-3); line-height: 1.45; }
+.sms-opt input[type=checkbox] { margin-top: 2px; flex-shrink: 0; accent-color: var(--accent); }
+.sms-opt em { color: var(--text-3); }
+
+.trust { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 12px; color: var(--text-3); }
+.trust span { display: flex; align-items: center; gap: 5px; }
+.trust svg { width: 13px; height: 13px; color: #22c55e; }
+
+.nav { margin-top: 14px; }
+
+/* ── STEP 5: Time Picker ── */
+.slot-loading { display: flex; align-items: center; gap: 12px; padding: 24px 0; color: var(--text-2); font-size: 14px; }
+.slot-spinner { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--surface-3); border-top-color: var(--accent); animation: spin .7s linear infinite; flex-shrink: 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.date-chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none; -ms-overflow-style: none; margin-bottom: 4px; }
+.date-chips::-webkit-scrollbar { display: none; }
+.date-chip {
+  flex-shrink: 0; text-align: center;
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 10px 14px;
+  cursor: pointer; transition: border-color .2s, background .2s, transform .15s;
+  -webkit-tap-highlight-color: transparent; min-width: 62px;
+  font-family: inherit;
+}
+.date-chip:hover { border-color: var(--border-2); transform: translateY(-1px); }
+.date-chip.sel { border-color: var(--accent); background: rgba(var(--accent-rgb),.1); }
+.date-chip.fully-booked { opacity: .45; }
+.dc-dow { font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--text-3); }
+.dc-num { font-size: 22px; font-weight: 800; line-height: 1.1; color: var(--text-1); }
+.dc-mon { font-size: 10.5px; color: var(--text-3); font-weight: 600; }
+.date-chip.sel .dc-dow, .date-chip.sel .dc-num, .date-chip.sel .dc-mon { color: var(--accent); }
+
+.section-label { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin: 18px 0 10px; }
+
+.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; animation: stepIn .3s cubic-bezier(.22,1,.36,1) both; }
+.time-slot {
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 16px 10px; text-align: center;
+  cursor: pointer; font-family: inherit;
+  transition: border-color .2s, background .2s, transform .15s, box-shadow .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.time-slot:hover:not(.taken) { border-color: var(--border-2); transform: translateY(-1px); }
+.time-slot:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb),.2); border-color: var(--accent); }
+.time-slot.sel { border-color: var(--accent); background: rgba(var(--accent-rgb),.1); box-shadow: 0 8px 22px -10px rgba(var(--accent-rgb),.5); }
+.time-slot.taken { opacity: .32; cursor: not-allowed; }
+.ts-label { font-size: 18px; font-weight: 800; color: var(--text-1); }
+.ts-avail { font-size: 11px; color: var(--text-3); margin-top: 3px; font-weight: 600; }
+.time-slot.sel .ts-label { color: var(--accent); }
+.time-slot.sel .ts-avail { color: rgba(var(--accent-rgb),.7); }
+.time-slot.taken .ts-avail { color: #ff6b6b; }
+
+#confirmBtn { margin-top: 18px; }
+
+/* ── Success ── */
+.success { text-align: center; padding: 16px 0; }
+.ring {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),.2), rgba(var(--accent-rgb),.05));
+  border: 2px solid var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  animation: ringPop .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes ringPop { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.ring svg { width: 28px; height: 28px; color: var(--accent); stroke-dasharray: 30; stroke-dashoffset: 30; animation: checkDraw .4s .2s ease forwards; }
+@keyframes checkDraw { to { stroke-dashoffset: 0; } }
+.success h3 { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+.booked-time-card {
+  background: rgba(var(--accent-rgb),.08); border: 1px solid rgba(var(--accent-rgb),.25);
+  border-radius: 14px; padding: 14px 20px; margin: 14px 0 18px;
+  display: flex; flex-direction: column; gap: 4px; align-items: center;
+}
+.booked-time-card .btc-day { font-size: 13px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .06em; }
+.booked-time-card .btc-date { font-size: 20px; font-weight: 800; letter-spacing: -.02em; }
+.booked-time-card .btc-time { font-size: 14px; color: var(--accent); font-weight: 700; }
+.success p { font-size: 14.5px; color: var(--text-2); line-height: 1.55; margin-bottom: 8px; }
+.success a.call { color: var(--accent); text-decoration: none; font-weight: 600; }
+.success .sig { font-size: 26px; color: var(--text-3); margin-top: 12px; }
+
+/* ── Navigation tabs ── */
+.demo-nav {
+  display: flex; gap: 8px; margin-bottom: 20px;
+  background: var(--surface-2); border-radius: 14px; padding: 5px;
+}
+.demo-tab {
+  flex: 1; text-align: center; padding: 9px; border-radius: 10px;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  border: none; font-family: inherit; color: var(--text-3);
+  background: none; transition: all .2s;
+}
+.demo-tab.active { background: var(--surface-3); color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🎨 DEMO — Preview of your new booking flow. Slots are fake — on your real site they pull live from your schedule.
+</div>
+
+<div class="page">
+
+  <div class="demo-nav">
+    <button class="demo-tab active" onclick="showDemo('flow',event)">Full Flow</button>
+    <button class="demo-tab" onclick="showDemo('step4',event)">Step 4 · Info</button>
+    <button class="demo-tab" onclick="showDemo('step5',event)">Step 5 · Times</button>
+    <button class="demo-tab" onclick="showDemo('step6',event)">Confirmation</button>
+  </div>
+
+  <div id="qqcCard">
+    <div class="qq-brand"><div class="dot"></div> Mikey's Mobile Detailing</div>
+    <h2 class="qq-h">Get an instant quote</h2>
+    <p class="sub">Takes 60 seconds · No commitment</p>
+
+    <div class="progress">
+      <div class="progress-track">
+        <div class="progress-seg" id="seg1" data-seg="1"><i></i></div>
+        <div class="progress-seg" id="seg2" data-seg="2"><i></i></div>
+        <div class="progress-seg" id="seg3" data-seg="3"><i></i></div>
+        <div class="progress-seg" id="seg4" data-seg="4"><i></i></div>
+        <div class="progress-seg" id="seg5" data-seg="5"><i></i></div>
+      </div>
+      <div class="progress-label" id="progLabel">Step 1 of 5 · Your vehicle</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step show" id="step1">
+      <div class="q-title">What are you driving?</div>
+      <div class="q-hint" style="margin-bottom:20px">Helps me size your estimate</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <button class="choice-btn" onclick="pickVehicle(this,'Sedan / Compact',0)">
+          <div class="cb-icon">🚗</div><div class="cb-label">Sedan</div><div class="cb-sub">Car / coupe</div>
+        </button>
+        <button class="choice-btn" onclick="pickVehicle(this,'SUV / Truck',20)">
+          <div class="cb-icon">🚙</div><div class="cb-label">SUV / Truck</div><div class="cb-sub">Mid-size</div>
+        </button>
+        <button class="choice-btn" onclick="pickVehicle(this,'Van / XL',40)">
+          <div class="cb-icon">🚐</div><div class="cb-label">Van / XL</div><div class="cb-sub">3rd row</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="step2">
+      <div class="q-title">What do you need?</div>
+      <div class="q-hint">Pick one or more services</div>
+      <div style="display:grid;gap:10px;margin-bottom:12px">
+        <button class="svc-btn feature-svc" onclick="pickService(this,'Full Detail',260)">
+          <span style="position:absolute;top:0;left:16px;transform:translateY(-50%);background:linear-gradient(135deg,#C9A24B,#8C6D2F);color:#1a0e00;font-size:10px;font-weight:800;padding:4px 10px;border-radius:99px;letter-spacing:.04em">⭐ MOST POPULAR</span>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="font-size:28px">✨</div>
+            <div style="text-align:left">
+              <div style="font-size:17px;font-weight:800">Full Detail</div>
+              <div style="font-size:12px;color:var(--text-3);margin-top:2px">Inside + outside, bumper to bumper</div>
+            </div>
+            <div style="margin-left:auto;font-size:20px;font-weight:900">$260<span style="font-size:12px;color:var(--text-3);font-weight:500">+</span></div>
+          </div>
+        </button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="svc-btn" onclick="pickService(this,'Interior Detail',160)">
+            <div style="font-size:22px;margin-bottom:6px">🪑</div>
+            <div style="font-size:15px;font-weight:700">Interior</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:2px">$160+</div>
+          </button>
+          <button class="svc-btn" onclick="pickService(this,'Exterior Detail',130)">
+            <div style="font-size:22px;margin-bottom:6px">🚿</div>
+            <div style="font-size:15px;font-weight:700">Exterior</div>
+            <div style="font-size:12px;color:var(--text-3);margin-top:2px">$130+</div>
+          </button>
+        </div>
+      </div>
+      <button class="btn btn-primary" id="step2Next" onclick="goStep(3)" disabled>Next →</button>
+      <div class="nav"><button class="btn btn-ghost" onclick="goStep(1)" style="margin-top:10px">‹ Back</button></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="step3">
+      <div class="q-title">What's the condition?</div>
+      <div class="q-hint">No judgment — just helps me prepare</div>
+      <div style="display:grid;gap:10px;margin-bottom:16px">
+        <button class="choice-btn wide-btn" onclick="pickCondition(this,'Pretty Clean',0)">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="font-size:24px">😊</div>
+            <div style="text-align:left"><div style="font-size:15px;font-weight:700">Pretty Clean</div><div style="font-size:12px;color:var(--text-3);margin-top:1px">Well kept, regular maintenance</div></div>
+            <div style="margin-left:auto;font-size:13px;color:var(--text-3)">base price</div>
+          </div>
+        </button>
+        <button class="choice-btn wide-btn" onclick="pickCondition(this,'Needs Work',30)">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="font-size:24px">😅</div>
+            <div style="text-align:left"><div style="font-size:15px;font-weight:700">Needs Work</div><div style="font-size:12px;color:var(--text-3);margin-top:1px">Overdue, some mess</div></div>
+            <div style="margin-left:auto;font-size:13px;color:var(--gold)">+$30</div>
+          </div>
+        </button>
+        <button class="choice-btn wide-btn" onclick="pickCondition(this,'War Zone',60)">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="font-size:24px">😬</div>
+            <div style="text-align:left"><div style="font-size:15px;font-weight:700">War Zone</div><div style="font-size:12px;color:var(--text-3);margin-top:1px">Deep clean needed</div></div>
+            <div style="margin-left:auto;font-size:13px;color:var(--gold)">+$60</div>
+          </div>
+        </button>
+      </div>
+      <button class="btn btn-primary" id="step3Next" onclick="goStep(4)" disabled>See my quote →</button>
+      <div class="nav"><button class="btn btn-ghost" onclick="goStep(2)" style="margin-top:10px">‹ Back</button></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step" id="step4">
+      <div class="amount" id="quoteAmount">$0</div>
+      <p class="amount-sub">Final price confirmed on-site · no hidden fees</p>
+      <div class="breakdown" id="quoteBreakdown"></div>
+      <form class="form" onsubmit="goToTimePicker(event)">
+        <div class="field"><input type="text" id="demoName" placeholder="Your name" required /></div>
+        <div class="field"><input type="tel" id="demoPhone" placeholder="Phone number" required /></div>
+        <div class="field"><input type="email" id="demoEmail" placeholder="Email (optional)" /></div>
+        <div class="field"><input type="text" id="demoCity" placeholder="Your city (Snohomish, Monroe…)" /></div>
+        <div class="sms-opt">
+          <input type="checkbox" id="demoSms" />
+          <label for="demoSms">Yes, text me updates from Mikey's Mobile Detailing. <em>Optional</em> · msg &amp; data rates may apply.</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Pick a Time →</button>
+      </form>
+      <div class="trust">
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
+        <span><svg fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Satisfaction guaranteed</span>
+      </div>
+      <div class="nav"><button class="btn btn-ghost" onclick="goStep(3)" style="margin-top:10px">‹ Edit details</button></div>
+    </div>
+
+    <!-- STEP 5: TIME PICKER -->
+    <div class="step" id="step5">
+      <div class="q-title">Pick your time</div>
+      <div class="q-hint">Choose a day &amp; time — I come to you 🚗</div>
+      <div class="date-chips" id="dateChips"></div>
+      <div id="timesSection" style="display:none">
+        <div class="section-label" id="timesLabel"></div>
+        <div class="time-grid" id="timeGrid"></div>
+      </div>
+      <button class="btn btn-primary" id="confirmBtn" disabled onclick="confirmBooking()" style="margin-top:20px">Confirm Booking →</button>
+      <div class="nav"><button class="btn btn-ghost" onclick="goStep(4)" style="margin-top:10px">‹ Edit info</button></div>
+    </div>
+
+    <!-- STEP 6: SUCCESS -->
+    <div class="step" id="step6">
+      <div class="success">
+        <div class="ring">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>You're booked!</h3>
+        <div class="booked-time-card">
+          <div class="btc-day" id="btcDay"></div>
+          <div class="btc-date" id="btcDate"></div>
+          <div class="btc-time" id="btcTime"></div>
+        </div>
+        <p>I'll come straight to your driveway — no need to go anywhere. I'll text you a reminder the day before.</p>
+        <p style="margin-top:10px">Questions? <a class="call" href="tel:+14256007897">(425) 600-7897</a></p>
+        <p class="sig">— Mikey</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="text-align:center;font-size:12px;color:#444;margin-top:24px">Demo only — no real data sent. On your live site, slots pull from your live schedule.</p>
+
+</div>
+
+<style>
+.choice-btn {
+  position: relative;
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 14px 10px;
+  cursor: pointer; font-family: inherit; color: var(--text-1);
+  transition: border-color .2s, background .2s, transform .15s;
+  -webkit-tap-highlight-color: transparent; text-align: center;
+}
+.choice-btn:hover { border-color: var(--border-2); transform: translateY(-2px); }
+.choice-btn.sel { border-color: var(--accent); background: rgba(var(--accent-rgb),.08); }
+.cb-icon { font-size: 26px; margin-bottom: 6px; }
+.cb-label { font-size: 13px; font-weight: 700; }
+.cb-sub { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+.wide-btn { text-align: left; padding: 14px 16px; }
+
+.svc-btn {
+  position: relative;
+  background: var(--surface-2); border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 18px 16px;
+  cursor: pointer; font-family: inherit; color: var(--text-1);
+  transition: border-color .2s, background .2s, transform .15s;
+  -webkit-tap-highlight-color: transparent; text-align: center;
+}
+.svc-btn:hover { border-color: var(--border-2); transform: translateY(-2px); }
+.svc-btn.sel { border-color: var(--accent); background: rgba(var(--accent-rgb),.1); }
+.feature-svc { background: linear-gradient(150deg, rgba(var(--accent-rgb),.1), var(--surface-2) 70%); border-color: rgba(var(--accent-rgb),.3); }
+</style>
+
+<script>
+var S = { vehicle: null, vehicleExtra: 0, condition: null, conditionExtra: 0, total: 0, name: '' };
+var selectedServices = {};
+var selectedDate = null, selectedTime = null;
+
+function getFakeSlots() {
+  var now = new Date();
+  var slots = {};
+  var DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var TIMES = [
+    { time: '08:00', label: '8 AM' },
+    { time: '10:00', label: '10 AM' },
+    { time: '12:00', label: '12 PM' },
+    { time: '14:00', label: '2 PM' },
+  ];
+  var preBooked = { 1: ['08:00','10:00'], 3: ['12:00'], 5: ['08:00','10:00','12:00','14:00'] };
+  for (var i = 1; i <= 12; i++) {
+    var d = new Date(now);
+    d.setDate(d.getDate() + i);
+    if (d.getDay() === 0) continue;
+    var yr = d.getFullYear(), mo = d.getMonth(), dy = d.getDate();
+    var dateStr = yr + '-' + String(mo+1).padStart(2,'0') + '-' + String(dy).padStart(2,'0');
+    var shortDate = DAYS[d.getDay()] + ', ' + MONTHS[mo] + ' ' + dy;
+    var bookedTimes = preBooked[i] || [];
+    slots[dateStr] = {
+      dayName: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()],
+      shortDate: shortDate,
+      slots: TIMES.map(function(t) {
+        return { time: t.time, label: t.label, available: bookedTimes.indexOf(t.time) === -1 };
+      })
+    };
+  }
+  return slots;
+}
+var FAKE_SLOTS = getFakeSlots();
+
+var PROG_LABELS = {
+  1: 'Step 1 of 5 · Your vehicle',
+  2: 'Step 2 of 5 · Choose services',
+  3: 'Step 3 of 5 · Condition',
+  4: 'Step 4 of 5 · Your info',
+  5: 'Step 5 of 5 · Pick a time',
+};
+
+function setProgress(n) {
+  for (var i = 1; i <= 5; i++) {
+    var seg = document.getElementById('seg' + i);
+    seg.classList.remove('active','done');
+    if (i < n) seg.classList.add('done');
+    if (i === n) seg.classList.add('active');
+  }
+  document.getElementById('progLabel').textContent = PROG_LABELS[Math.min(n,5)] || PROG_LABELS[5];
+}
+
+function goStep(n) {
+  for (var i = 1; i <= 6; i++) {
+    var s = document.getElementById('step' + i);
+    if (s) s.classList.remove('show');
+  }
+  document.getElementById('step' + n).classList.add('show');
+  setProgress(n);
+  document.getElementById('qqcCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (n === 5) initTimePicker();
+}
+
+function pickVehicle(btn, label, extra) {
+  document.querySelectorAll('.choice-btn').forEach(function(b) { b.classList.remove('sel'); });
+  btn.classList.add('sel');
+  S.vehicle = label; S.vehicleExtra = extra;
+  setTimeout(function() { goStep(2); }, 280);
+}
+
+function pickService(btn, name, price) {
+  if (btn.classList.contains('sel')) {
+    btn.classList.remove('sel');
+    delete selectedServices[name];
+  } else {
+    if (name === 'Full Detail') {
+      document.querySelectorAll('.svc-btn').forEach(function(b) { b.classList.remove('sel'); });
+      selectedServices = {};
+    } else {
+      var fd = document.querySelector('.svc-btn.feature-svc');
+      if (fd) fd.classList.remove('sel');
+      delete selectedServices['Full Detail'];
+    }
+    btn.classList.add('sel');
+    selectedServices[name] = price;
+  }
+  document.getElementById('step2Next').disabled = Object.keys(selectedServices).length === 0;
+}
+
+function pickCondition(btn, label, extra) {
+  document.querySelectorAll('.wide-btn').forEach(function(b) { b.classList.remove('sel'); });
+  btn.classList.add('sel');
+  S.condition = label; S.conditionExtra = extra;
+  document.getElementById('step3Next').disabled = false;
+}
+
+function goToTimePicker(e) {
+  e.preventDefault();
+  var name = document.getElementById('demoName').value.trim();
+  var phone = document.getElementById('demoPhone').value.trim();
+  if (!name || !phone) return;
+  var total = 0;
+  Object.values(selectedServices).forEach(function(p) { total += p; });
+  total += (S.vehicleExtra || 0) + (S.conditionExtra || 0);
+  S.total = total; S.name = name;
+  document.getElementById('quoteAmount').textContent = '$' + total;
+  var html = '<div class="bd-head">What\'s included</div>';
+  Object.keys(selectedServices).forEach(function(svc) {
+    html += '<div class="inc-row"><span class="inc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' + svc + '</div>';
+  });
+  var ctx = [];
+  if (S.vehicle) ctx.push(S.vehicle);
+  if (S.condition) ctx.push(S.condition + ' condition');
+  if (ctx.length) html += '<div class="inc-ctx">' + ctx.join('  ·  ') + '</div>';
+  document.getElementById('quoteBreakdown').innerHTML = html;
+  selectedDate = null; selectedTime = null;
+  goStep(5);
+}
+
+function initTimePicker() {
+  renderDateChips();
+  var dates = Object.keys(FAKE_SLOTS);
+  for (var i = 0; i < dates.length; i++) {
+    var hasOpen = FAKE_SLOTS[dates[i]].slots.some(function(s) { return s.available; });
+    if (hasOpen) { selectDate(dates[i]); break; }
+  }
+}
+
+function renderDateChips() {
+  var container = document.getElementById('dateChips');
+  container.innerHTML = '';
+  Object.keys(FAKE_SLOTS).forEach(function(dateStr) {
+    var info = FAKE_SLOTS[dateStr];
+    var parts = info.shortDate.split(', ');
+    var dow = parts[0];
+    var monDay = (parts[1] || '').split(' ');
+    var mon = monDay[0], day = monDay[1];
+    var hasOpen = info.slots.some(function(s) { return s.available; });
+    var btn = document.createElement('button');
+    btn.className = 'date-chip' + (hasOpen ? '' : ' fully-booked');
+    btn.setAttribute('data-date', dateStr);
+    btn.innerHTML = '<div class="dc-dow">' + dow + '</div><div class="dc-num">' + day + '</div><div class="dc-mon">' + mon + '</div>';
+    btn.onclick = function() { selectDate(dateStr); };
+    container.appendChild(btn);
+  });
+}
+
+function selectDate(dateStr) {
+  selectedDate = dateStr; selectedTime = null;
+  document.getElementById('confirmBtn').disabled = true;
+  document.querySelectorAll('.date-chip').forEach(function(c) {
+    c.classList.toggle('sel', c.getAttribute('data-date') === dateStr);
+  });
+  var info = FAKE_SLOTS[dateStr];
+  var section = document.getElementById('timesSection');
+  var grid = document.getElementById('timeGrid');
+  var label = document.getElementById('timesLabel');
+  section.style.display = 'block';
+  label.textContent = info.dayName + ' · available times';
+  grid.innerHTML = '';
+  grid.style.animation = 'none'; void grid.offsetWidth; grid.style.animation = '';
+  info.slots.forEach(function(slot) {
+    var btn = document.createElement('button');
+    btn.className = 'time-slot' + (slot.available ? '' : ' taken');
+    btn.innerHTML = '<div class="ts-label">' + slot.label + '</div><div class="ts-avail">' + (slot.available ? 'Available' : 'Booked') + '</div>';
+    if (slot.available) {
+      btn.onclick = function() {
+        document.querySelectorAll('.time-slot').forEach(function(b) { b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        selectedTime = slot.time;
+        document.getElementById('confirmBtn').disabled = false;
+      };
+    }
+    grid.appendChild(btn);
+  });
+}
+
+function confirmBooking() {
+  if (!selectedDate || !selectedTime) return;
+  var info = FAKE_SLOTS[selectedDate];
+  var slot = info.slots.find(function(s) { return s.time === selectedTime; });
+  var parts = info.shortDate.split(', ');
+  document.getElementById('btcDay').textContent = parts[0];
+  document.getElementById('btcDate').textContent = info.dayName + ', ' + parts[1];
+  document.getElementById('btcTime').textContent = '⏰ ' + slot.label;
+  goStep(6);
+}
+
+function showDemo(which, e) {
+  document.querySelectorAll('.demo-tab').forEach(function(t) { t.classList.remove('active'); });
+  if (e && e.target) e.target.classList.add('active');
+  if (which === 'flow') {
+    selectedDate = null; selectedTime = null;
+    S = { vehicle: null, vehicleExtra: 0, condition: null, conditionExtra: 0, total: 0, name: '' };
+    selectedServices = {};
+    document.getElementById('step2Next').disabled = true;
+    document.getElementById('step3Next').disabled = true;
+    goStep(1);
+  } else if (which === 'step4') {
+    selectedServices = { 'Full Detail': 260 };
+    S.vehicle = 'SUV / Truck'; S.vehicleExtra = 20;
+    S.condition = 'Needs Work'; S.conditionExtra = 30;
+    S.total = 310;
+    document.getElementById('quoteAmount').textContent = '$310';
+    document.getElementById('quoteBreakdown').innerHTML = '<div class="bd-head">What\'s included</div><div class="inc-row"><span class="inc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Full Detail</div><div class="inc-ctx">SUV / Truck  ·  Needs Work condition</div>';
+    goStep(4);
+  } else if (which === 'step5') {
+    S.name = 'You'; selectedDate = null; selectedTime = null;
+    goStep(5);
+  } else if (which === 'step6') {
+    var dates = Object.keys(FAKE_SLOTS);
+    var dateStr = dates[1];
+    var info = FAKE_SLOTS[dateStr];
+    var parts = info.shortDate.split(', ');
+    document.getElementById('btcDay').textContent = parts[0];
+    document.getElementById('btcDate').textContent = info.dayName + ', ' + parts[1];
+    document.getElementById('btcTime').textContent = '⏰ 10 AM';
+    goStep(6);
+  }
+}
+
+setProgress(1);
+document.getElementById('seg1').classList.add('active');
+</script>
+</body>
+</html>
