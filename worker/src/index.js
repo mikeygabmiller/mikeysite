@@ -608,6 +608,9 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
   #send-btn { background: var(--red); border: none; border-radius: 10px; color: #fff; width: 44px; height: 44px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
   #send-btn:hover { background: var(--red2); }
   #send-btn:disabled { background: #444; cursor: default; }
+  #ai-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; color: var(--green); width: 44px; height: 44px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
+  #ai-btn:hover { background: #2c2c2c; }
+  #ai-btn:disabled { opacity: .5; cursor: default; }
 
   /* Toast */
   #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: .85rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99; }
@@ -667,6 +670,7 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
       </div>
       <div id="compose">
         <textarea id="msg-input" placeholder="Type a message…" rows="1" onkeydown="handleKey(event)"></textarea>
+        <button id="ai-btn" onclick="regenDraft()" title="Draft a reply with AI">✨</button>
         <button id="send-btn" onclick="sendMessage()">➤</button>
       </div>
     </div>
@@ -757,7 +761,9 @@ async function loadDraft() {
 
 async function regenDraft() {
   if (!activePhone) return;
-  toast('Generating draft…');
+  const aiBtn = document.getElementById('ai-btn');
+  aiBtn.disabled = true;
+  toast('Writing a draft…');
   try {
     const res = await fetch('/api/draft', {
       method: 'POST',
@@ -772,9 +778,10 @@ async function regenDraft() {
       document.getElementById('draft-hint').style.display = 'flex';
       input.focus();
     } else {
-      toast('No draft available — is the Gemini key set?');
+      toast('No draft — check the GEMINI_API_KEY secret in Cloudflare.');
     }
   } catch(e) { toast('Could not generate draft'); }
+  aiBtn.disabled = false;
 }
 
 async function loadMessages() {
