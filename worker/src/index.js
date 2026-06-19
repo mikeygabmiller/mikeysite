@@ -193,13 +193,20 @@ async function apiGetDraft(env, url) {
   return new Response(raw || '{}', { headers: { 'Content-Type': 'application/json' } });
 }
 
-// Force-generate a fresh AI draft for a conversation and return it.
+// Force-generate a fresh AI draft for a conversation and return it (or the error).
 async function apiRegenDraft(request, env) {
   const { phone } = await request.json();
   if (!phone) return new Response('missing phone', { status: 400 });
-  await generateAndStoreDraft(env, normalizePhone(phone) || phone);
-  const raw = await env.MESSAGES.get(`draft:${phone}`);
-  return new Response(raw || '{}', { headers: { 'Content-Type': 'application/json' } });
+  const p = normalizePhone(phone) || phone;
+  try {
+    const body = await buildDraft(env, p);
+    if (!body) {
+      return new Response(JSON.stringify({ error: 'No reply generated — the conversation may have no messages.' }), { headers: { 'Content-Type': 'application/json' } });
+    }
+    return new Response(JSON.stringify({ body, ts: Date.now() }), { headers: { 'Content-Type': 'application/json' } });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: String(e && e.message || e) }), { headers: { 'Content-Type': 'application/json' } });
+  }
 }
 
 async function apiGetPlaybook(env) {
@@ -315,26 +322,30 @@ async function callGemini(env, systemText, userText) {
   return (data?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
 }
 
-// Generate an AI reply suggestion for a conversation and store it under draft:<phone>.
-// Best-effort: any failure is swallowed so it can never break a webhook.
+// Build a draft reply, store it under draft:<phone>, and return the text.
+// Throws on a real failure (missing key, Gemini error) so callers can report it.
+async function buildDraft(env, phone) {
+  if (!env.GEMINI_API_KEY) throw new Error('GEMINI_API_KEY secret is not set on the Worker.');
+  if (phone === normalizePhone(env.MIKEY_PHONE)) return '';
+  const msgs = await getMessages(env, phone);
+  if (!msgs.length) return '';
+
+  const playbook   = await getPlaybook(env);
+  const systemText = buildSystemPrompt(playbook);
+  const transcript = msgs.slice(-20)
+    .map(m => (m.direction === 'in' ? 'Customer: ' : 'Mikey: ') + (m.body || ''))
+    .join('\n') + "\n\nDraft Mikey's next reply:";
+
+  const draft = await callGemini(env, systemText, transcript);
+  if (draft) {
+    await env.MESSAGES.put(`draft:${phone}`, JSON.stringify({ body: draft, ts: Date.now() }));
+  }
+  return draft;
+}
+
+// Best-effort wrapper for webhooks: never throw, never block the SMS flow.
 async function generateAndStoreDraft(env, phone) {
-  try {
-    if (!env.GEMINI_API_KEY) return;
-    if (phone === normalizePhone(env.MIKEY_PHONE)) return;
-    const msgs = await getMessages(env, phone);
-    if (!msgs.length) return;
-
-    const playbook   = await getPlaybook(env);
-    const systemText = buildSystemPrompt(playbook);
-    const transcript = msgs.slice(-20)
-      .map(m => (m.direction === 'in' ? 'Customer: ' : 'Mikey: ') + (m.body || ''))
-      .join('\n') + "\n\nDraft Mikey's next reply:";
-
-    const draft = await callGemini(env, systemText, transcript);
-    if (draft) {
-      await env.MESSAGES.put(`draft:${phone}`, JSON.stringify({ body: draft, ts: Date.now() }));
-    }
-  } catch (e) { /* drafting is best-effort */ }
+  try { await buildDraft(env, phone); } catch (e) { /* drafting is best-effort */ }
 }
 
 // ============================================================
@@ -613,7 +624,7 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
   #ai-btn:disabled { opacity: .5; cursor: default; }
 
   /* Toast */
-  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: .85rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99; }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: .85rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99; max-width: 90vw; text-align: center; word-break: break-word; }
   #toast.show { opacity: 1; }
 
   /* Status dot */
@@ -778,9 +789,9 @@ async function regenDraft() {
       document.getElementById('draft-hint').style.display = 'flex';
       input.focus();
     } else {
-      toast('No draft — check the GEMINI_API_KEY secret in Cloudflare.');
+      toast(d && d.error ? d.error : 'No draft generated.', 9000);
     }
-  } catch(e) { toast('Could not generate draft'); }
+  } catch(e) { toast('Could not reach the worker — try again.', 6000); }
   aiBtn.disabled = false;
 }
 
@@ -912,11 +923,12 @@ function esc(s) {
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\\n/g,'<br>');
 }
 
-function toast(msg) {
+function toast(msg, ms) {
   const el = document.getElementById('toast');
   el.textContent = msg;
   el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 3000);
+  clearTimeout(el._t);
+  el._t = setTimeout(() => el.classList.remove('show'), ms || 3000);
 }
 </script>
 </body>
