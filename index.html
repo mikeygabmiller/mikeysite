@@ -1863,6 +1863,54 @@ header li a[href="#booking"],
   </section>
 
 
+<!-- ===================== PHOTO GALLERY STRIP ===================== -->
+<section aria-label="Photo gallery of detailing results" style="padding:56px 0;background:#141414;overflow:hidden;position:relative;">
+  <style>
+    .hp-gallery-strip::before,.hp-gallery-strip::after{content:"";position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+    .hp-gallery-strip::before{left:0;background:linear-gradient(to right,#141414,transparent)}
+    .hp-gallery-strip::after{right:0;background:linear-gradient(to left,#141414,transparent)}
+    .hp-gallery-track{display:flex;gap:14px;width:max-content;animation:hp-scroll 45s linear infinite}
+    .hp-gallery-track:hover{animation-play-state:paused}
+    @keyframes hp-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .hp-gimg{width:280px;height:200px;object-fit:cover;border-radius:12px;border:2px solid #2a2a2a;flex-shrink:0;display:block;background:#1a1a1a}
+    @media(max-width:640px){.hp-gimg{width:210px;height:150px}}
+    @media(prefers-reduced-motion:reduce){.hp-gallery-track{animation:none}}
+  </style>
+  <div style="text-align:center;margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:700;color:#C8102E;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;">The Work</div>
+    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
+  </div>
+  <div class="hp-gallery-strip" style="position:relative;">
+    <div class="hp-gallery-track">
+      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels and tire dressing after detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
+      <!-- duplicate set for seamless loop -->
+      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels and tire dressing after detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
 <!-- ===================== OFFER SECTION (copy from here) ===================== -->
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
   <div class="mko__inner">
