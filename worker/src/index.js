@@ -22,6 +22,10 @@
  *   MIKEY_PHONE        — personal cell e.g. +14256007897
  *   DASHBOARD_PASSWORD — password to access the dashboard
  *
+ * Optional Worker Secret:
+ *   AUTOMATION_TOKEN   — bearer token for API access without the dashboard
+ *                        password (Authorization: Bearer <token>)
+ *
  * Required KV Namespace binding (wrangler.toml):
  *   MESSAGES
  */
@@ -53,9 +57,19 @@ export default {
 // Dashboard auth
 // ============================================================
 function checkAuth(request, env) {
+  // Browser login: password stored in the mkd_token cookie
   const cookie = request.headers.get('Cookie') || '';
   const token  = cookie.match(/mkd_token=([^;]+)/)?.[1];
-  return token === env.DASHBOARD_PASSWORD;
+  if (token && token === env.DASHBOARD_PASSWORD) return true;
+
+  // Automation access: Authorization: Bearer <AUTOMATION_TOKEN>
+  // Lets a trusted automation use the API without the dashboard password.
+  // Revoke any time by rotating/clearing the AUTOMATION_TOKEN secret.
+  const auth   = request.headers.get('Authorization') || '';
+  const bearer = auth.match(/^Bearer\s+(.+)$/i)?.[1];
+  if (bearer && env.AUTOMATION_TOKEN && bearer === env.AUTOMATION_TOKEN) return true;
+
+  return false;
 }
 
 function serveDashboard(request, env) {
