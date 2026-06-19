@@ -218,13 +218,7 @@ async function handleSubmit(request, env) {
   const serviceList = Array.isArray(services) ? services.join(', ') : (services || '');
   const quoteLine   = total ? `$${total}` : 'TBD';
 
-  const clientMsg = [
-    `Hey ${name.split(' ')[0]}! 👋 Got your quote request — Mikey's Mobile Detailing.`,
-    `Your estimate: ${quoteLine}`,
-    vehicle     ? `Vehicle: ${vehicle}` : null,
-    serviceList ? `Services: ${serviceList}` : null,
-    `Mikey will text you back shortly to confirm. Reply here anytime!`,
-  ].filter(Boolean).join('\n');
+  const clientMsg = `Hey ${name.split(' ')[0]}, it's Mikey! I got your form submission on my site. Whenever you have a moment, please send over the car(s) year, make, and model and I can confirm that price for you. Thanks!`;
 
   const mikeyMsg = [
     `🔔 NEW QUOTE — ${name}`,
