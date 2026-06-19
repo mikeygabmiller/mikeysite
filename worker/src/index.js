@@ -27,7 +27,7 @@
  *                        password (Authorization: Bearer <token>)
  *   GEMINI_API_KEY     — Google Gemini API key; enables AI-drafted reply
  *                        suggestions on inbound texts
- *   GEMINI_MODEL       — optional Gemini model id (default: gemini-2.0-flash)
+ *   GEMINI_MODEL       — optional Gemini model id (default: gemini-2.5-flash)
  *
  * Required KV Namespace binding (wrangler.toml):
  *   MESSAGES
@@ -306,7 +306,7 @@ function buildSystemPrompt(pb) {
 }
 
 async function callGemini(env, systemText, userText) {
-  const model = env.GEMINI_MODEL || 'gemini-2.0-flash';
+  const model = env.GEMINI_MODEL || 'gemini-2.5-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`;
   const res = await fetch(url, {
     method: 'POST',

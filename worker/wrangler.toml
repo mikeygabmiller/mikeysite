@@ -19,4 +19,4 @@ id      = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
 #   DASHBOARD_PASSWORD   password to access the dashboard
 #   AUTOMATION_TOKEN     (optional) bearer token for API automation access
 #   GEMINI_API_KEY       (optional) Google Gemini key — enables AI draft replies
-#   GEMINI_MODEL         (optional) Gemini model id, default gemini-2.0-flash
+#   GEMINI_MODEL         (optional) Gemini model id, default gemini-2.5-flash
