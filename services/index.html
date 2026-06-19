@@ -142,6 +142,16 @@ h2 .red{color:var(--red)}
 .cta-block p{color:rgba(255,255,255,.9);margin-bottom:28px;font-size:18px}
 .cta-block .btn-primary{background:white;color:var(--red);border-color:white;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 
+.gallery-strip{overflow:hidden;position:relative;padding:0}
+.gallery-strip::before,.gallery-strip::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.gallery-strip::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.gallery-strip::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.gallery-track{display:flex;gap:12px;width:max-content;animation:scroll-gallery 40s linear infinite}
+.gallery-track:hover{animation-play-state:paused}
+@keyframes scroll-gallery{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.gallery-img{width:260px;height:190px;object-fit:cover;border-radius:10px;border:2px solid var(--border);flex-shrink:0;display:block;background:var(--bg-card)}
+@media(max-width:700px){.gallery-img{width:200px;height:148px}}
+
 footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;color:var(--text-muted);font-size:14px}
 .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
 .footer-links a:hover{color:var(--red)}
@@ -312,6 +322,48 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
         <span class="stars">★★★★★</span>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="gallery-strip" style="padding:50px 0;border-top:2px solid var(--border);">
+  <div class="container" style="margin-bottom:28px;text-align:center;">
+    <div class="section-eyebrow">The Work</div>
+    <h2>Real Cars. <span class="red">Real Results.</span></h2>
+  </div>
+  <div class="gallery-track" aria-label="Photo gallery of Mikey's Mobile Detailing results">
+    <img class="gallery-img" src="/images/ba_1.jpg" alt="Before and after car detail — exterior paint restored by Mikey's Mobile Detailing" loading="lazy">
+    <img class="gallery-img" src="/images/ba_2.jpg" alt="Before and after full detail — clean interior by Mikey's Mobile Detailing" loading="lazy">
+    <img class="gallery-img" src="/images/ba_3.jpg" alt="Before and after detailing result — paint and trim treatment" loading="lazy">
+    <img class="gallery-img" src="/images/ba_4.jpg" alt="Before and after car detailing — wheels and exterior cleaned" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (2).jpg" alt="Detailed car exterior — glossy paint finish after hand wash and wax" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing service in Snohomish County" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (4).webp" alt="Shiny car exterior after clay bar and sealant treatment" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (5).webp" alt="Car detailing result — clean wheels and tire dressing applied" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (6).webp" alt="Interior detailing result — dashboard and console wiped and protected" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (8).webp" alt="Exterior paint after hand wash and wax by Mikey's Mobile Detailing" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (10).webp" alt="Detailing result — car exterior and trim restored" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County — full detail" loading="lazy">
+    <img class="gallery-img" src="/images/unnamed (12).webp" alt="Car after Mikey's full detail — showroom finish in your driveway" loading="lazy">
+    <!-- duplicate set for seamless loop -->
+    <img class="gallery-img" src="/images/ba_1.jpg" alt="Before and after car detail — exterior paint restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/ba_2.jpg" alt="Before and after full detail — clean interior by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/ba_3.jpg" alt="Before and after detailing result — paint and trim treatment" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/ba_4.jpg" alt="Before and after car detailing — wheels and exterior cleaned" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (2).jpg" alt="Detailed car exterior — glossy paint finish after hand wash and wax" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing service in Snohomish County" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (4).webp" alt="Shiny car exterior after clay bar and sealant treatment" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (5).webp" alt="Car detailing result — clean wheels and tire dressing applied" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (6).webp" alt="Interior detailing result — dashboard and console wiped and protected" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (8).webp" alt="Exterior paint after hand wash and wax by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (10).webp" alt="Detailing result — car exterior and trim restored" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County — full detail" loading="lazy" aria-hidden="true">
+    <img class="gallery-img" src="/images/unnamed (12).webp" alt="Car after Mikey's full detail — showroom finish in your driveway" loading="lazy" aria-hidden="true">
   </div>
 </section>
 
