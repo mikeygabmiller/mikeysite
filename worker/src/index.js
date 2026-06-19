@@ -22,16 +22,19 @@
  *   MIKEY_PHONE        — personal cell e.g. +14256007897
  *   DASHBOARD_PASSWORD — password to access the dashboard
  *
- * Optional Worker Secret:
+ * Optional Worker Secrets:
  *   AUTOMATION_TOKEN   — bearer token for API access without the dashboard
  *                        password (Authorization: Bearer <token>)
+ *   GEMINI_API_KEY     — Google Gemini API key; enables AI-drafted reply
+ *                        suggestions on inbound texts
+ *   GEMINI_MODEL       — optional Gemini model id (default: gemini-2.0-flash)
  *
  * Required KV Namespace binding (wrangler.toml):
  *   MESSAGES
  */
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     if (request.method === 'OPTIONS') {
@@ -39,8 +42,8 @@ export default {
     }
 
     // --- Twilio webhooks (no auth needed — Twilio calls these) ---
-    if (request.method === 'POST' && url.pathname === '/submit')        return handleSubmit(request, env);
-    if (request.method === 'POST' && url.pathname === '/sms')           return handleInboundSms(request, env);
+    if (request.method === 'POST' && url.pathname === '/submit')        return handleSubmit(request, env, ctx);
+    if (request.method === 'POST' && url.pathname === '/sms')           return handleInboundSms(request, env, ctx);
     if (request.method === 'POST' && url.pathname === '/call')          return handleInboundCall(request, env);
     if (request.method === 'POST' && url.pathname === '/voicemail')     return handleVoicemail(request, env);
     if (request.method === 'POST' && url.pathname === '/voicemail-done') return handleVoicemailDone(request, env);
@@ -125,10 +128,14 @@ async function handleApi(request, env, url) {
     });
   }
 
-  if (url.pathname === '/api/threads' && request.method === 'GET')  return apiThreads(env);
-  if (url.pathname === '/api/thread'  && request.method === 'GET')  return apiThread(env, url);
-  if (url.pathname === '/api/send'    && request.method === 'POST') return apiSend(request, env);
-  if (url.pathname === '/api/name'    && request.method === 'POST') return apiSaveName(request, env);
+  if (url.pathname === '/api/threads'  && request.method === 'GET')  return apiThreads(env);
+  if (url.pathname === '/api/thread'   && request.method === 'GET')  return apiThread(env, url);
+  if (url.pathname === '/api/send'     && request.method === 'POST') return apiSend(request, env);
+  if (url.pathname === '/api/name'     && request.method === 'POST') return apiSaveName(request, env);
+  if (url.pathname === '/api/draft'    && request.method === 'GET')  return apiGetDraft(env, url);
+  if (url.pathname === '/api/draft'    && request.method === 'POST') return apiRegenDraft(request, env);
+  if (url.pathname === '/api/playbook' && request.method === 'GET')  return apiGetPlaybook(env);
+  if (url.pathname === '/api/playbook' && request.method === 'POST') return apiSavePlaybook(request, env);
 
   return new Response('Not found', { status: 404 });
 }
@@ -163,6 +170,8 @@ async function apiSend(request, env) {
   await sendSms(env, phone, body);
   const msg = { id: genId(), ts: Date.now(), direction: 'out', from: env.TWILIO_FROM, to: phone, body };
   await storeMessage(env, phone, msg);
+  // A real reply was sent — the AI draft is now stale, clear it.
+  await env.MESSAGES.delete(`draft:${phone}`).catch(() => {});
   return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type': 'application/json' } });
 }
 
@@ -174,6 +183,39 @@ async function apiSaveName(request, env) {
   const t = threads.find(x => x.phone === phone);
   if (t) { t.name = name; await env.MESSAGES.put('threads', JSON.stringify(threads)); }
   return new Response(JSON.stringify({ ok: true }), { headers: { 'Content-Type': 'application/json' } });
+}
+
+// Return the stored AI draft for a conversation (or {} if none).
+async function apiGetDraft(env, url) {
+  const phone = url.searchParams.get('phone');
+  if (!phone) return new Response('missing phone', { status: 400 });
+  const raw = await env.MESSAGES.get(`draft:${phone}`);
+  return new Response(raw || '{}', { headers: { 'Content-Type': 'application/json' } });
+}
+
+// Force-generate a fresh AI draft for a conversation and return it.
+async function apiRegenDraft(request, env) {
+  const { phone } = await request.json();
+  if (!phone) return new Response('missing phone', { status: 400 });
+  await generateAndStoreDraft(env, normalizePhone(phone) || phone);
+  const raw = await env.MESSAGES.get(`draft:${phone}`);
+  return new Response(raw || '{}', { headers: { 'Content-Type': 'application/json' } });
+}
+
+async function apiGetPlaybook(env) {
+  const pb = await getPlaybook(env);
+  return new Response(JSON.stringify(pb), { headers: { 'Content-Type': 'application/json' } });
+}
+
+async function apiSavePlaybook(request, env) {
+  const body = await request.json();
+  const pb = {
+    voice: typeof body.voice === 'string' ? body.voice : DEFAULT_PLAYBOOK.voice,
+    facts: typeof body.facts === 'string' ? body.facts : DEFAULT_PLAYBOOK.facts,
+    scenarios: Array.isArray(body.scenarios) ? body.scenarios : [],
+  };
+  await env.MESSAGES.put('config:playbook', JSON.stringify(pb));
+  return new Response(JSON.stringify({ ok: true, playbook: pb }), { headers: { 'Content-Type': 'application/json' } });
 }
 
 // ============================================================
@@ -213,6 +255,86 @@ async function markRead(env, phone) {
   const threads = JSON.parse(raw);
   const t = threads.find(x => x.phone === phone);
   if (t) { t.unread = 0; await env.MESSAGES.put('threads', JSON.stringify(threads)); }
+}
+
+// ============================================================
+// AI draft replies (Google Gemini)
+// ============================================================
+const DEFAULT_PLAYBOOK = {
+  voice: "Friendly, warm, and casual but professional — like a real person texting, not a corporate bot. Short sentences. No emojis overload (one is fine). Get to the point, be helpful, and sound genuinely happy to help.",
+  facts: "Mikey's Mobile Detailing is a mobile car detailing service in Snohomish County, WA (Snohomish, Monroe, Lake Stevens, Everett, Marysville, Mill Creek, Bothell, Duvall, and nearby). We come to the customer. Phone: (425) 600-7897. Services include full detail, interior detail, exterior detail, ceramic coating, paint correction, and pet hair removal.",
+  scenarios: [],
+};
+
+async function getPlaybook(env) {
+  const raw = await env.MESSAGES.get('config:playbook');
+  if (!raw) return DEFAULT_PLAYBOOK;
+  try { return { ...DEFAULT_PLAYBOOK, ...JSON.parse(raw) }; }
+  catch { return DEFAULT_PLAYBOOK; }
+}
+
+function buildSystemPrompt(pb) {
+  const scenarioText = (pb.scenarios && pb.scenarios.length)
+    ? pb.scenarios.map(s => `- When ${s.trigger}: ${s.response}`).join('\n')
+    : '(none yet)';
+  return [
+    "You are drafting a text-message reply on behalf of Mikey, the owner of Mikey's Mobile Detailing.",
+    "Write the reply exactly as Mikey would text it himself.",
+    "",
+    "MIKEY'S TEXTING VOICE:",
+    pb.voice,
+    "",
+    "BUSINESS FACTS YOU CAN USE:",
+    pb.facts,
+    "",
+    "HOW TO HANDLE SPECIFIC SITUATIONS:",
+    scenarioText,
+    "",
+    "RULES:",
+    "- Keep it short and natural, like a real SMS.",
+    "- Never invent specific prices, dates, or commitments you aren't sure about — if unsure, say Mikey will confirm shortly.",
+    "- Match Mikey's tone from the conversation.",
+    "- Output ONLY the reply text. No quotes, no labels, no explanation.",
+  ].join('\n');
+}
+
+async function callGemini(env, systemText, userText) {
+  const model = env.GEMINI_MODEL || 'gemini-2.0-flash';
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      system_instruction: { parts: [{ text: systemText }] },
+      contents: [{ role: 'user', parts: [{ text: userText }] }],
+      generationConfig: { temperature: 0.7, maxOutputTokens: 300 },
+    }),
+  });
+  if (!res.ok) { const e = await res.text(); throw new Error(`Gemini ${res.status}: ${e}`); }
+  const data = await res.json();
+  return (data?.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+}
+
+// Generate an AI reply suggestion for a conversation and store it under draft:<phone>.
+// Best-effort: any failure is swallowed so it can never break a webhook.
+async function generateAndStoreDraft(env, phone) {
+  try {
+    if (!env.GEMINI_API_KEY) return;
+    if (phone === normalizePhone(env.MIKEY_PHONE)) return;
+    const msgs = await getMessages(env, phone);
+    if (!msgs.length) return;
+
+    const playbook   = await getPlaybook(env);
+    const systemText = buildSystemPrompt(playbook);
+    const transcript = msgs.slice(-20)
+      .map(m => (m.direction === 'in' ? 'Customer: ' : 'Mikey: ') + (m.body || ''))
+      .join('\n') + "\n\nDraft Mikey's next reply:";
+
+    const draft = await callGemini(env, systemText, transcript);
+    if (draft) {
+      await env.MESSAGES.put(`draft:${phone}`, JSON.stringify({ body: draft, ts: Date.now() }));
+    }
+  } catch (e) { /* drafting is best-effort */ }
 }
 
 // ============================================================
@@ -265,14 +387,14 @@ async function handleSubmit(request, env) {
     id: genId(), ts, direction: 'out',
     from: env.TWILIO_FROM, to: clientPhone,
     body: clientMsg,
-    meta: { name, quote: quoteLine, vehicle, services: serviceList },
+    meta: { name, quote: quoteLine, vehicle, services: serviceList, condition, notes, email, location },
   }).catch(() => {});
 
   const ok = r1.status === 'fulfilled' && r2.status === 'fulfilled';
   return cors(json({ ok, clientSms: r1.status, mikeySms: r2.status }, ok ? 200 : 207));
 }
 
-async function handleInboundSms(request, env) {
+async function handleInboundSms(request, env, ctx) {
   const form     = await request.formData();
   const from     = form.get('From')  || '';
   const body     = form.get('Body')  || '';
@@ -280,15 +402,20 @@ async function handleInboundSms(request, env) {
 
   const mikeyPhone = normalizePhone(env.MIKEY_PHONE);
   const fromNorm   = normalizePhone(from);
+  const convoPhone = fromNorm || from;
 
   // Store the inbound message
-  await storeMessage(env, fromNorm || from, {
+  await storeMessage(env, convoPhone, {
     id: genId(), ts: Date.now(), direction: 'in',
     from, to: env.TWILIO_FROM, body,
     media: numMedia > 0 ? numMedia : undefined,
   }).catch(() => {});
 
   if (fromNorm === mikeyPhone) return twimlResponse('');
+
+  // Draft a suggested reply in the background (best-effort, never blocks Twilio).
+  const draftJob = generateAndStoreDraft(env, convoPhone);
+  if (ctx && ctx.waitUntil) ctx.waitUntil(draftJob); else await draftJob.catch(() => {});
 
   const mediaNote = numMedia > 0 ? `\n📎 ${numMedia} attachment(s) — check dashboard.` : '';
   await sendSms(env, env.MIKEY_PHONE,
@@ -534,6 +661,10 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
         <button id="rename-btn" onclick="renameContact()">Rename</button>
       </div>
       <div id="messages"></div>
+      <div id="draft-hint" style="display:none;align-items:center;gap:10px;padding:6px 16px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);background:var(--surface)">
+        <span style="color:var(--green)">✨ AI draft — edit &amp; send</span>
+        <button onclick="regenDraft()" style="margin-left:auto;background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);padding:3px 9px;cursor:pointer;font-size:.74rem">↻ Regenerate</button>
+      </div>
       <div id="compose">
         <textarea id="msg-input" placeholder="Type a message…" rows="1" onkeydown="handleKey(event)"></textarea>
         <button id="send-btn" onclick="sendMessage()">➤</button>
@@ -600,11 +731,50 @@ async function openThread(phone) {
   document.getElementById('chat-header-phone').textContent = t.name ? formatPhone(phone) : '';
   document.getElementById('msg-input').focus();
 
+  document.getElementById('draft-hint').style.display = 'none';
   renderThreadList(); // refresh active highlight
   await loadMessages();
+  loadDraft();
 
   clearInterval(msgPollTimer);
   msgPollTimer = setInterval(loadMessages, 5000); // poll active thread every 5s
+}
+
+async function loadDraft() {
+  if (!activePhone) return;
+  try {
+    const res = await fetch('/api/draft?phone=' + encodeURIComponent(activePhone));
+    const d = await res.json();
+    const input = document.getElementById('msg-input');
+    const hint = document.getElementById('draft-hint');
+    if (d && d.body && !input.value.trim()) {
+      input.value = d.body;
+      autoResize(input);
+      hint.style.display = 'flex';
+    }
+  } catch(e) {}
+}
+
+async function regenDraft() {
+  if (!activePhone) return;
+  toast('Generating draft…');
+  try {
+    const res = await fetch('/api/draft', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: activePhone }),
+    });
+    const d = await res.json();
+    const input = document.getElementById('msg-input');
+    if (d && d.body) {
+      input.value = d.body;
+      autoResize(input);
+      document.getElementById('draft-hint').style.display = 'flex';
+      input.focus();
+    } else {
+      toast('No draft available — is the Gemini key set?');
+    }
+  } catch(e) { toast('Could not generate draft'); }
 }
 
 async function loadMessages() {
@@ -642,6 +812,7 @@ async function sendMessage() {
   btn.disabled = true;
   input.value = '';
   autoResize(input);
+  document.getElementById('draft-hint').style.display = 'none';
 
   try {
     const res = await fetch('/api/send', {
