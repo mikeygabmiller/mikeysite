@@ -196,10 +196,37 @@ async function tryStart() {
   document.getElementById('login').style.display = 'none';
   document.getElementById('app').style.display = 'flex';
   renderThreadList();
-  clearInterval(window._threadPoll);
-  window._threadPoll = setInterval(loadThreads, 8000);
+  startThreadPoll();
   return true;
 }
+
+// ---- Polling (kept light to stay inside Netlify's free tier) ----
+// We refresh on a relaxed 20s interval AND pause entirely whenever the tab
+// isn't visible, so an open-but-ignored tab costs nothing.
+const POLL_MS = 20000;
+
+function startThreadPoll() {
+  clearInterval(window._threadPoll);
+  if (document.visibilityState === 'hidden') return;
+  window._threadPoll = setInterval(loadThreads, POLL_MS);
+}
+
+function startMsgPoll() {
+  clearInterval(msgPollTimer);
+  if (!activePhone || document.visibilityState === 'hidden') return;
+  msgPollTimer = setInterval(loadMessages, POLL_MS);
+}
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    clearInterval(window._threadPoll);
+    clearInterval(msgPollTimer);
+  } else if (getPass()) {
+    loadThreads();
+    startThreadPoll();
+    if (activePhone) { loadMessages(); startMsgPoll(); }
+  }
+});
 
 // ---- Boot ----
 if (getPass()) { tryStart(); }
@@ -256,9 +283,7 @@ async function openThread(phone) {
 
   renderThreadList();
   await loadMessages();
-
-  clearInterval(msgPollTimer);
-  msgPollTimer = setInterval(loadMessages, 5000);
+  startMsgPoll();
 }
 
 async function loadMessages() {
