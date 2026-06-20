@@ -2704,6 +2704,8 @@ header li a[href="#booking"],
         total: S.total, vehicle: veh, condition: cond,
         services: S.items, notes: notes || '', smsConsent: smsConsent
       });
+      // SMS engine endpoint. To switch from Cloudflare to Netlify, change this
+      // to 'https://YOUR-SITE.netlify.app/submit' (see NETLIFY-SETUP.md, step 4).
       var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),

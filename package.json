@@ -1,0 +1,10 @@
+{
+  "name": "mikeysite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mikey's Detailing — marketing site + SMS dashboard (Netlify).",
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^10.0.0"
+  }
+}

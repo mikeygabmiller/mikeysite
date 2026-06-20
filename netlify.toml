@@ -1,0 +1,13 @@
+# Netlify configuration for Mikey's Detailing
+#
+# The whole repo is published as-is (static marketing site + dashboard),
+# and the SMS engine runs as a serverless function in /netlify/functions.
+# Netlify auto-deploys every time you push to GitHub — no command-line needed.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # Use the modern Node runtime + bundler so the function can import packages.
+  node_bundler = "esbuild"

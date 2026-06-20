@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikey's Detailing — SMS Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f0f0f; --surface: #1a1a1a; --surface2: #222;
+    --border: #2a2a2a; --red: #C8102E; --red2: #a00c24;
+    --text: #f0f0f0; --muted: #888; --green: #22c55e;
+  }
+  html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; font-size: 15px; }
+
+  /* Layout */
+  #app { display: flex; height: 100vh; }
+  #sidebar { width: 300px; min-width: 260px; border-right: 1px solid var(--border); display: flex; flex-direction: column; background: var(--surface); }
+  #main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+
+  /* Sidebar header */
+  .sidebar-head { padding: 16px; border-bottom: 1px solid var(--border); }
+  .sidebar-head h1 { font-size: 1rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .sidebar-head h1 span { color: var(--red); }
+  .sidebar-head .subtitle { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+
+  /* New conversation */
+  .new-convo { padding: 10px 16px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; }
+  .new-convo input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--text); padding: 7px 10px; font-size: .85rem; }
+  .new-convo input::placeholder { color: var(--muted); }
+  .new-convo button { background: var(--red); border: none; border-radius: 8px; color: #fff; padding: 7px 12px; cursor: pointer; font-size: .85rem; font-weight: 600; white-space: nowrap; }
+
+  /* Thread list */
+  #thread-list { flex: 1; overflow-y: auto; }
+  .thread-item { padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--border); transition: background .1s; display: flex; align-items: center; gap: 10px; }
+  .thread-item:hover { background: var(--surface2); }
+  .thread-item.active { background: #1f0a0e; border-left: 3px solid var(--red); }
+  .thread-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; flex-shrink: 0; }
+  .thread-info { flex: 1; min-width: 0; }
+  .thread-name { font-weight: 600; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .thread-preview { font-size: .78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+  .thread-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+  .thread-time { font-size: .72rem; color: var(--muted); }
+  .unread-badge { background: var(--red); color: #fff; border-radius: 999px; font-size: .7rem; font-weight: 700; padding: 1px 6px; min-width: 18px; text-align: center; }
+
+  /* Main header */
+  #chat-header { padding: 14px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; background: var(--surface); }
+  #chat-header-name { font-weight: 700; font-size: 1rem; }
+  #chat-header-phone { font-size: .8rem; color: var(--muted); }
+  #rename-btn { margin-left: auto; background: none; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); padding: 4px 10px; cursor: pointer; font-size: .78rem; }
+  #rename-btn:hover { border-color: var(--red); color: var(--text); }
+
+  /* Messages */
+  #messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .msg-wrap { display: flex; }
+  .msg-wrap.out { justify-content: flex-end; }
+  .bubble { max-width: 65%; padding: 10px 14px; border-radius: 16px; font-size: .9rem; line-height: 1.45; word-break: break-word; white-space: pre-wrap; }
+  .msg-wrap.in  .bubble { background: var(--surface2); border-bottom-left-radius: 4px; }
+  .msg-wrap.out .bubble { background: var(--red); color: #fff; border-bottom-right-radius: 4px; }
+  .msg-time { font-size: .68rem; color: var(--muted); margin-top: 3px; text-align: right; }
+  .msg-wrap.in .msg-time { text-align: left; }
+  .msg-col { display: flex; flex-direction: column; max-width: 65%; }
+
+  /* Empty state */
+  #empty-state { flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: var(--muted); }
+  #empty-state .icon { font-size: 3rem; }
+
+  /* Compose */
+  #compose { padding: 14px 16px; border-top: 1px solid var(--border); display: flex; gap: 10px; align-items: flex-end; background: var(--surface); }
+  #compose textarea { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 12px; color: var(--text); padding: 10px 14px; font-size: .9rem; font-family: inherit; resize: none; min-height: 44px; max-height: 120px; line-height: 1.4; }
+  #compose textarea:focus { outline: none; border-color: var(--red); }
+  #compose textarea::placeholder { color: var(--muted); }
+  #send-btn { background: var(--red); border: none; border-radius: 10px; color: #fff; width: 44px; height: 44px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background .15s; }
+  #send-btn:hover { background: var(--red2); }
+  #send-btn:disabled { background: #444; cursor: default; }
+
+  /* Toast */
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: .85rem; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 99; }
+  #toast.show { opacity: 1; }
+
+  /* Status dot */
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; margin-left: 6px; }
+
+  /* Login overlay */
+  #login { position: fixed; inset: 0; background: #111; display: flex; align-items: center; justify-content: center; z-index: 200; }
+  #login .box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 40px; width: 100%; max-width: 360px; text-align: center; }
+  #login h1 { color: #fff; font-size: 1.3rem; margin-bottom: 8px; }
+  #login p { color: var(--muted); font-size: .9rem; margin-bottom: 24px; }
+  #login input { width: 100%; padding: 12px; background: var(--bg); border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 1rem; margin-bottom: 16px; }
+  #login button { width: 100%; padding: 12px; background: var(--red); border: none; border-radius: 8px; color: #fff; font-weight: 700; font-size: 1rem; cursor: pointer; }
+  #login .err { color: #ff6b6b; font-size: .85rem; margin-bottom: 12px; min-height: 1em; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    #sidebar { width: 100%; position: absolute; z-index: 10; height: 100%; transform: translateX(0); transition: transform .2s; }
+    #sidebar.hidden { transform: translateX(-100%); }
+    #main { width: 100%; }
+    #back-btn { display: flex !important; }
+  }
+  #back-btn { display: none; background: none; border: none; color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 4px; }
+</style>
+</head>
+<body>
+
+<!-- Login overlay -->
+<div id="login">
+  <div class="box">
+    <h1>🚗 Mikey's Detailing</h1>
+    <p>SMS Dashboard</p>
+    <div class="err" id="login-err"></div>
+    <input type="password" id="login-pass" placeholder="Password" autofocus onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Sign In</button>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="sidebar-head">
+      <h1>🚗 <span>Mikey's</span> Detailing</h1>
+      <div class="subtitle">SMS Dashboard <span class="dot"></span></div>
+    </div>
+    <div class="new-convo">
+      <input id="new-phone" type="tel" placeholder="New: (360) 555-0100">
+      <button onclick="startNewConvo()">+ New</button>
+    </div>
+    <div id="thread-list"></div>
+  </div>
+
+  <!-- Main -->
+  <div id="main">
+    <div id="empty-state">
+      <div class="icon">💬</div>
+      <div>Select a conversation or start a new one</div>
+    </div>
+
+    <div id="chat-view" style="display:none;flex:1;flex-direction:column;overflow:hidden;">
+      <div id="chat-header">
+        <button id="back-btn" onclick="showSidebar()">‹</button>
+        <div>
+          <div id="chat-header-name"></div>
+          <div id="chat-header-phone"></div>
+        </div>
+        <button id="rename-btn" onclick="renameContact()">Rename</button>
+      </div>
+      <div id="messages"></div>
+      <div id="compose">
+        <textarea id="msg-input" placeholder="Type a message…" rows="1" onkeydown="handleKey(event)"></textarea>
+        <button id="send-btn" onclick="sendMessage()">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+// The API (text engine) lives on the same Netlify site, so we can use
+// relative paths. If you ever host this dashboard somewhere else, set
+// API_BASE to your Netlify site URL, e.g. 'https://your-site.netlify.app'.
+const API_BASE = '';
+
+let activePhone = null;
+let threads = [];
+let msgPollTimer = null;
+
+// ---- Auth ----
+// The password is kept in this browser only and sent with every request.
+// The page itself has no secrets, so it's safe to host publicly.
+function getPass() { return localStorage.getItem('mkd_pass') || ''; }
+
+function authHeaders(extra) {
+  return Object.assign({ 'x-dashboard-pass': getPass() }, extra || {});
+}
+
+async function doLogin() {
+  const pass = document.getElementById('login-pass').value.trim();
+  if (!pass) return;
+  localStorage.setItem('mkd_pass', pass);
+  const ok = await tryStart();
+  if (!ok) {
+    localStorage.removeItem('mkd_pass');
+    document.getElementById('login-err').textContent = 'Wrong password';
+  }
+}
+
+async function tryStart() {
+  try {
+    const res = await fetch(API_BASE + '/api/threads', { headers: authHeaders() });
+    if (res.status === 401) return false;
+    threads = await res.json();
+  } catch (e) { return false; }
+  // Success — show the app
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  renderThreadList();
+  clearInterval(window._threadPoll);
+  window._threadPoll = setInterval(loadThreads, 8000);
+  return true;
+}
+
+// ---- Boot ----
+if (getPass()) { tryStart(); }
+
+async function loadThreads() {
+  try {
+    const res = await fetch(API_BASE + '/api/threads', { headers: authHeaders() });
+    if (res.status === 401) { logout(); return; }
+    threads = await res.json();
+    renderThreadList();
+  } catch(e) {}
+}
+
+function logout() {
+  localStorage.removeItem('mkd_pass');
+  location.reload();
+}
+
+function renderThreadList() {
+  const el = document.getElementById('thread-list');
+  if (!threads.length) {
+    el.innerHTML = '<div style="padding:20px;color:var(--muted);font-size:.85rem;text-align:center">No conversations yet</div>';
+    return;
+  }
+  el.innerHTML = threads.map(t => {
+    const display = t.name || formatPhone(t.phone);
+    const initial = (t.name || t.phone).slice(-2).toUpperCase();
+    const active  = t.phone === activePhone ? 'active' : '';
+    const badge   = t.unread > 0 ? `<div class="unread-badge">${t.unread}</div>` : '';
+    const time    = t.lastTime ? relTime(t.lastTime) : '';
+    return `<div class="thread-item ${active}" onclick="openThread('${t.phone}')">
+      <div class="thread-avatar">${initial}</div>
+      <div class="thread-info">
+        <div class="thread-name">${esc(display)}</div>
+        <div class="thread-preview">${esc((t.lastMessage||'').slice(0,50))}</div>
+      </div>
+      <div class="thread-meta"><div class="thread-time">${time}</div>${badge}</div>
+    </div>`;
+  }).join('');
+}
+
+async function openThread(phone) {
+  activePhone = phone;
+  const t = threads.find(x => x.phone === phone) || {};
+
+  document.getElementById('sidebar').classList.add('hidden');
+  document.getElementById('empty-state').style.display = 'none';
+  const cv = document.getElementById('chat-view');
+  cv.style.display = 'flex';
+
+  document.getElementById('chat-header-name').textContent = t.name || formatPhone(phone);
+  document.getElementById('chat-header-phone').textContent = t.name ? formatPhone(phone) : '';
+  document.getElementById('msg-input').focus();
+
+  renderThreadList();
+  await loadMessages();
+
+  clearInterval(msgPollTimer);
+  msgPollTimer = setInterval(loadMessages, 5000);
+}
+
+async function loadMessages() {
+  if (!activePhone) return;
+  try {
+    const res  = await fetch(API_BASE + '/api/thread?phone=' + encodeURIComponent(activePhone), { headers: authHeaders() });
+    if (res.status === 401) { logout(); return; }
+    const msgs = await res.json();
+    renderMessages(msgs);
+    const t = threads.find(x => x.phone === activePhone);
+    if (t) { t.unread = 0; renderThreadList(); }
+  } catch(e) {}
+}
+
+function renderMessages(msgs) {
+  const el  = document.getElementById('messages');
+  const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 60;
+  el.innerHTML = msgs.map(m => {
+    const dir  = m.direction === 'out' ? 'out' : 'in';
+    const time = m.ts ? new Date(m.ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) : '';
+    return `<div class="msg-wrap ${dir}"><div class="msg-col">
+      <div class="bubble">${esc(m.body)}</div>
+      <div class="msg-time">${time}</div>
+    </div></div>`;
+  }).join('');
+  if (atBottom || msgs.length < 5) el.scrollTop = el.scrollHeight;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('msg-input');
+  const body  = input.value.trim();
+  if (!body || !activePhone) return;
+
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  input.value = '';
+  autoResize(input);
+
+  try {
+    const res = await fetch(API_BASE + '/api/send', {
+      method: 'POST',
+      headers: authHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify({ to: activePhone, body }),
+    });
+    if (!res.ok) throw new Error('send failed');
+    await loadMessages();
+  } catch(e) {
+    toast('Failed to send — try again');
+    input.value = body;
+  }
+  btn.disabled = false;
+  input.focus();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  autoResize(e.target);
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+
+function startNewConvo() {
+  const input = document.getElementById('new-phone');
+  const phone = input.value.trim();
+  if (!phone) { input.focus(); return; }
+  const norm = normalizePhone(phone);
+  if (!norm) { toast('Invalid phone number'); return; }
+  input.value = '';
+  if (!threads.find(t => t.phone === norm)) {
+    threads.unshift({ phone: norm, name: '', ts: Date.now(), unread: 0, lastMessage: '' });
+    renderThreadList();
+  }
+  openThread(norm);
+}
+
+async function renameContact() {
+  if (!activePhone) return;
+  const t    = threads.find(x => x.phone === activePhone) || {};
+  const name = prompt('Name for ' + formatPhone(activePhone) + ':', t.name || '');
+  if (name === null) return;
+  await fetch(API_BASE + '/api/name', {
+    method: 'POST',
+    headers: authHeaders({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ phone: activePhone, name }),
+  });
+  t.name = name;
+  document.getElementById('chat-header-name').textContent = name || formatPhone(activePhone);
+  document.getElementById('chat-header-phone').textContent = name ? formatPhone(activePhone) : '';
+  renderThreadList();
+}
+
+function showSidebar() {
+  document.getElementById('sidebar').classList.remove('hidden');
+  clearInterval(msgPollTimer);
+}
+
+// ---- Utilities ----
+function formatPhone(p) {
+  const d = (p||'').replace(/\D/g,'');
+  if (d.length===11&&d[0]==='1') return '('+d.slice(1,4)+') '+d.slice(4,7)+'-'+d.slice(7);
+  if (d.length===10) return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
+  return p;
+}
+
+function normalizePhone(raw) {
+  if (!raw) return null;
+  if (/^\+1\d{10}$/.test(raw)) return raw;
+  const d = raw.replace(/\D/g,'');
+  if (d.length===10) return '+1'+d;
+  if (d.length===11&&d[0]==='1') return '+'+d;
+  return null;
+}
+
+function relTime(ts) {
+  const diff = Date.now() - ts;
+  if (diff < 60000)   return 'just now';
+  if (diff < 3600000) return Math.floor(diff/60000)+'m';
+  if (diff < 86400000) return Math.floor(diff/3600000)+'h';
+  return new Date(ts).toLocaleDateString([],{month:'short',day:'numeric'});
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
