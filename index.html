@@ -2696,7 +2696,7 @@ header li a[href="#booking"],
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
       fd.append('message', msgBody);
-      // Fire web3forms (email to Mikey) + Worker (SMS via Twilio) in parallel.
+      // Fire web3forms (email to Mikey) + Make webhook (SMS via Twilio) in parallel.
       // Success if either goes through so the customer is never blocked.
       var smsConsent = !!($('qqSmsConsent') && $('qqSmsConsent').checked);
       var smsPayload = JSON.stringify({
@@ -2704,7 +2704,7 @@ header li a[href="#booking"],
         total: S.total, vehicle: veh, condition: cond,
         services: S.items, notes: notes || '', smsConsent: smsConsent
       });
-      var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev/submit';
+      var WORKER_URL = 'https://hook.us2.make.com/i44it6ymloupsij91cc9m8fpzi8uytb8';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
         fetch(WORKER_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body: smsPayload })
