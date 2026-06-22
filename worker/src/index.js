@@ -275,7 +275,7 @@ async function handleInboundSms(request, env) {
     `📱 New text from ${from}:\n"${body}"${mediaNote}`
   );
 
-  return twimlResponse('Got it! Mikey will get back to you soon. 🚗✨');
+  return twimlResponse('');
 }
 
 async function handleInboundCall(request, env) {
