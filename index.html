@@ -2703,18 +2703,16 @@ header li a[href="#booking"],
       // directly without reformatting on its end.
       var smsDigits = (phone || '').replace(/\D/g, '').slice(-10);
       var phoneE164 = smsDigits.length === 10 ? '+1' + smsDigits : (phone || '');
-      // Send as form-encoded (a "simple" request) so the browser skips the CORS
-      // preflight that Make's webhook doesn't answer. JSON would get blocked.
-      var smsPayload = new URLSearchParams({
+      var smsPayload = JSON.stringify({
         name: name, phone: phoneE164, email: email || '', location: location || '',
         total: S.total, vehicle: veh, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
-        notes: notes || '', smsConsent: smsConsent ? 'true' : 'false'
+        notes: notes || '', smsConsent: smsConsent
       });
-      var WORKER_URL = 'https://hook.us2.make.com/i44it6ymloupsij91cc9m8fpzi8uytb8';
+      var WORKER_URL = 'https://mikeys-detailing-sms.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
-        fetch(WORKER_URL, { method:'POST', body: smsPayload })
+        fetch(WORKER_URL, { method:'POST', headers: {'Content-Type':'application/json'}, body: smsPayload })
       ]).then(function(results){
         var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
         var smsOk   = results[1].status==='fulfilled';
