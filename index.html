@@ -2699,10 +2699,14 @@ header li a[href="#booking"],
       // Fire web3forms (email to Mikey) + Make webhook (SMS via Twilio) in parallel.
       // Success if either goes through so the customer is never blocked.
       var smsConsent = !!($('qqSmsConsent') && $('qqSmsConsent').checked);
+      // Normalize phone to E.164 (+1XXXXXXXXXX) so the SMS automation can text it
+      // directly without reformatting on its end.
+      var smsDigits = (phone || '').replace(/\D/g, '').slice(-10);
+      var phoneE164 = smsDigits.length === 10 ? '+1' + smsDigits : (phone || '');
       // Send as form-encoded (a "simple" request) so the browser skips the CORS
       // preflight that Make's webhook doesn't answer. JSON would get blocked.
       var smsPayload = new URLSearchParams({
-        name: name, phone: phone, email: email || '', location: location || '',
+        name: name, phone: phoneE164, email: email || '', location: location || '',
         total: S.total, vehicle: veh, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
         notes: notes || '', smsConsent: smsConsent ? 'true' : 'false'
