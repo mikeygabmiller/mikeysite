@@ -2696,25 +2696,26 @@ header li a[href="#booking"],
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
       fd.append('message', msgBody);
-      // Fire web3forms (email to Mikey) + Make webhook (SMS via Twilio) in parallel.
+      // Fire web3forms (email to Mikey) + Netlify backend (auto-text + saves the
+      // lead into the SMS dashboard) in parallel.
       // Success if either goes through so the customer is never blocked.
       var smsConsent = !!($('qqSmsConsent') && $('qqSmsConsent').checked);
       // Normalize phone to E.164 (+1XXXXXXXXXX) so the SMS automation can text it
       // directly without reformatting on its end.
       var smsDigits = (phone || '').replace(/\D/g, '').slice(-10);
       var phoneE164 = smsDigits.length === 10 ? '+1' + smsDigits : (phone || '');
-      // Send as form-encoded (a "simple" request) so the browser skips the CORS
-      // preflight that Make's webhook doesn't answer. JSON would get blocked.
-      var smsPayload = new URLSearchParams({
+      // Send the lead as JSON to the Netlify backend. It parses JSON and answers
+      // the CORS preflight, so there's no need for the form-encoded workaround.
+      var smsPayload = {
         name: name, phone: phoneE164, email: email || '', location: location || '',
         total: S.total, vehicle: veh, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
-        notes: notes || '', smsConsent: smsConsent ? 'true' : 'false'
-      });
-      var WORKER_URL = 'https://hook.us2.make.com/i44it6ymloupsij91cc9m8fpzi8uytb8';
+        notes: notes || '', smsConsent: smsConsent
+      };
+      var WORKER_URL = 'https://mikeysms.netlify.app/submit';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
-        fetch(WORKER_URL, { method:'POST', body: smsPayload })
+        fetch(WORKER_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(smsPayload) })
       ]).then(function(results){
         var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
         var smsOk   = results[1].status==='fulfilled';
