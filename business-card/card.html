@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face{
+    font-family:'Outfit';
+    src:url('fonts/Outfit.ttf') format('truetype');
+    font-weight:100 900;
+  }
+  @font-face{
+    font-family:'Oswald';
+    src:url('fonts/Oswald.ttf') format('truetype');
+    font-weight:200 700;
+  }
+  :root{
+    --red:#C8102E;
+    --red-dark:#A00C24;
+    --gold:#C9A24B;
+    --ink:#0a0a0a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:transparent;}
+  /* Card = 85.5mm x 54mm @ ~300dpi base (rendered x2 for ~600dpi) */
+  .card{
+    position:relative;
+    width:1010px;
+    height:638px;
+    padding:50px 56px;
+    font-family:'Outfit',sans-serif;
+    color:var(--ink);
+    overflow:hidden;
+  }
+
+  /* corner shine accents */
+  .corner{position:absolute;width:160px;height:160px;}
+  .corner span{position:absolute;height:7px;border-radius:4px;background:var(--red);}
+  .corner.tr{top:34px;right:34px;}
+  .corner.tr span:nth-child(1){top:0;right:0;width:150px;}
+  .corner.tr span:nth-child(2){top:18px;right:0;width:96px;background:var(--gold);height:5px;}
+  .corner.bl{bottom:34px;left:34px;transform:rotate(180deg);}
+  .corner.bl span:nth-child(1){top:0;right:0;width:150px;}
+  .corner.bl span:nth-child(2){top:18px;right:0;width:96px;background:var(--gold);height:5px;}
+
+  /* ---- header ---- */
+  .header{display:flex;align-items:center;gap:30px;}
+  .emblem{flex:0 0 auto;}
+  .wordmark{display:flex;flex-direction:column;justify-content:center;}
+  .brand{
+    font-family:'Outfit';
+    font-weight:900;
+    font-size:92px;
+    line-height:.86;
+    letter-spacing:-3px;
+    color:var(--ink);
+    position:relative;
+  }
+  .brand .spark{position:absolute;top:-6px;right:-30px;color:var(--red);font-size:34px;}
+  .sub{
+    margin-top:12px;
+    font-family:'Oswald';
+    font-weight:600;
+    font-size:33px;
+    letter-spacing:11px;
+    color:var(--red);
+    text-transform:uppercase;
+  }
+
+  /* divider */
+  .divider{
+    margin:26px 0 22px;
+    height:0;
+    border-top:3px solid var(--gold);
+    position:relative;
+  }
+  .divider::after{
+    content:"";position:absolute;left:0;top:-3px;width:230px;border-top:3px solid var(--red);
+  }
+
+  /* trust */
+  .trust{
+    display:flex;align-items:center;gap:14px;
+    font-family:'Oswald';font-weight:500;font-size:25px;letter-spacing:2px;
+    color:var(--ink);text-transform:uppercase;margin-bottom:20px;
+  }
+  .stars{color:var(--gold);font-size:28px;letter-spacing:3px;}
+
+  /* contact grid */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px 30px;}
+  .row{display:flex;align-items:center;gap:16px;}
+  .row svg{flex:0 0 auto;}
+  .row .big{font-family:'Outfit';font-weight:800;font-size:38px;letter-spacing:0;color:var(--ink);}
+  .row .txt{font-family:'Outfit';font-weight:600;font-size:30px;color:var(--ink);}
+
+  /* service tags */
+  .tags{
+    position:absolute;left:0;right:0;bottom:54px;text-align:center;
+    font-family:'Oswald';font-weight:500;font-size:21px;letter-spacing:5px;
+    color:var(--ink);text-transform:uppercase;
+  }
+  .tags b{color:var(--red);font-weight:600;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="corner tr"><span></span><span></span></div>
+    <div class="corner bl"><span></span><span></span></div>
+
+    <div class="header">
+      <!-- Emblem -->
+      <svg class="emblem" width="210" height="210" viewBox="0 0 200 200">
+        <defs>
+          <path id="topArc" d="M28,100 A72,72 0 0 1 172,100" fill="none"/>
+          <path id="botArc" d="M36,112 A64,64 0 0 0 164,112" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#C8102E" stroke-width="9"/>
+        <circle cx="100" cy="100" r="80" fill="none" stroke="#C9A24B" stroke-width="2.5"/>
+        <text font-family="Oswald" font-weight="600" font-size="20" letter-spacing="3"
+              fill="#C8102E" text-anchor="middle">
+          <textPath href="#topArc" startOffset="50%">MIKEY'S DETAILING</textPath>
+        </text>
+        <text font-family="Oswald" font-weight="500" font-size="14" letter-spacing="2.5"
+              fill="#0a0a0a" text-anchor="middle">
+          <textPath href="#botArc" startOffset="50%">SNOHOMISH COUNTY</textPath>
+        </text>
+        <!-- monogram -->
+        <text x="100" y="128" font-family="Outfit" font-weight="900" font-size="86"
+              fill="#0a0a0a" text-anchor="middle">M</text>
+        <!-- shine sparkle -->
+        <path d="M150,58 l5,13 13,5 -13,5 -5,13 -5,-13 -13,-5 13,-5 z" fill="#C8102E"/>
+      </svg>
+
+      <div class="wordmark">
+        <div class="brand">MIKEY'S<span class="spark">✦</span></div>
+        <div class="sub">Mobile Detailing</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="trust">
+      <span class="stars">★★★★★</span> 5.0 · 38 Google Reviews
+    </div>
+
+    <div class="contact">
+      <div class="row">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span class="big">(425) 600-7897</span>
+      </div>
+      <div class="row">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span class="txt">mikeysdetailing.com</span>
+      </div>
+      <div class="row">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span class="txt">Snohomish County, WA</span>
+      </div>
+      <div class="row">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#C8102E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/>
+        </svg>
+        <span class="txt">book@mikeysdetailing.com</span>
+      </div>
+    </div>
+
+    <div class="tags">Interior · Exterior · <b>Full Detail</b> · Ceramic Coating</div>
+  </div>
+</body>
+</html>
