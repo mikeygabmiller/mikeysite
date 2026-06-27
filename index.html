@@ -2312,6 +2312,11 @@ header li a[href="#booking"],
 #qqcCard .success a.call { color: var(--accent); font-weight: 680; text-decoration: none; }
 #qqcCard .success .sig { color: var(--text-3); font-size: 13px; margin-top: 14px; }
 
+#qqcCard .qq-ticker { display:none; align-items:center; justify-content:space-between; background:rgba(var(--accent-rgb),.08); border:1px solid rgba(var(--accent-rgb),.22); border-radius:12px; padding:10px 16px; margin-bottom:20px; }
+#qqcCard .qq-ticker-label { font-size:12px; font-weight:640; letter-spacing:.04em; text-transform:uppercase; color:var(--text-3); }
+#qqcCard .qq-ticker-amount { font-size:22px; font-weight:780; letter-spacing:-.03em; color:var(--text); font-variant-numeric:tabular-nums; }
+#qqcCard .inc-row { justify-content:space-between; }
+#qqcCard .inc-price { margin-left:auto; font-size:14px; font-weight:640; color:var(--text-2); }
 @media (max-width: 380px) {
   #qqcCard { padding: 26px 18px 22px; }
   #qqcCard h2.qq-h { font-size: 26px; }
@@ -2338,6 +2343,8 @@ header li a[href="#booking"],
     </div>
     <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
   </div>
+
+  <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
 
   <!-- STEP 1: VEHICLE -->
   <div class="step show" id="step1">
@@ -2374,7 +2381,7 @@ header li a[href="#booking"],
           <div class="hero-info">
             <span class="t">Full Detail</span>
             <span class="d">Inside &amp; out, the complete works</span>
-            <span class="save">Save $60 vs. buying separately</span>
+            <span class="save">Save $61 vs. buying separately</span>
           </div>
           <div class="hero-price">
             <span class="amt">$299</span>
@@ -2510,7 +2517,7 @@ header li a[href="#booking"],
 <script>
 (function(){
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
-  var PRICE = { 'Full Detail':260, 'Interior Detail':160, 'Exterior Detail':130 };
+  var PRICE = { 'Full Detail':299, 'Interior Detail':200, 'Exterior Detail':160 };
   var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'success' };
   var progLabels = {
     1: 'Step 1 of 4 · Your vehicle',
@@ -2522,6 +2529,20 @@ header li a[href="#booking"],
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
 
+  function liveTotal(){
+    var t=0;
+    var sk=Object.keys(S.services); for(var i=0;i<sk.length;i++) t+=PRICE[sk[i]];
+    var ak=Object.keys(S.addons); for(var j=0;j<ak.length;j++) t+=S.addons[ak[j]];
+    if(S.vehicle) t+=S.vehicle.value;
+    if(S.condition) t+=S.condition.value;
+    return t;
+  }
+  function refreshTicker(){
+    var t=liveTotal();
+    var tick=$('qqTicker'), amt=$('qqTickerAmt');
+    if(tick) tick.style.display = t>0 ? 'flex' : 'none';
+    if(amt) amt.textContent='$'+t;
+  }
   function setProgress(n){
     var to = (n >= 4) ? 4 : n;
     var segs = document.querySelectorAll('#qqcCard .progress-seg');
@@ -2537,6 +2558,7 @@ header li a[href="#booking"],
     var t = $('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
+    if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
     var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -2564,14 +2586,20 @@ header li a[href="#booking"],
     S.notes = ($('qqNotes').value || '').trim();
     S.total = total; S.items = items;
 
-    var html = '<div class="bd-head">What\'s included</div>';
-    for (var k=0;k<items.length;k++){
-      html += '<div class="inc-row"><span class="inc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' + items[k] + '</div>';
+    var CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    var html = '<div class="bd-head">Price breakdown</div>';
+    var sk2=Object.keys(S.services); for(var k=0;k<sk2.length;k++){
+      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span>' + sk2[k] + '<span class="inc-price">$'+PRICE[sk2[k]]+'</span></div>';
     }
-    var ctx = [];
-    if (S.vehicle) ctx.push(S.vehicle.label);
-    if (S.condition) ctx.push(S.condition.label + ' condition');
-    if (ctx.length) html += '<div class="inc-ctx">' + ctx.join('  ·  ') + '</div>';
+    var ak2=Object.keys(S.addons); for(var m=0;m<ak2.length;m++){
+      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span>' + ak2[m] + '<span class="inc-price">+$'+S.addons[ak2[m]]+'</span></div>';
+    }
+    if(S.vehicle && S.vehicle.value>0){
+      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span>'+S.vehicle.label+' (size)<span class="inc-price">+$'+S.vehicle.value+'</span></div>';
+    }
+    if(S.condition && S.condition.value>0){
+      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span>'+S.condition.label+' condition<span class="inc-price">+$'+S.condition.value+'</span></div>';
+    }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
 
@@ -2605,7 +2633,7 @@ header li a[href="#booking"],
     else if (role === 'condition'){
       deselect('step3','.choice'); el.classList.add('sel'); el.setAttribute('aria-pressed','true');
       S.condition = { value: parseInt(el.getAttribute('data-value')), label: el.getAttribute('data-label') };
-      $('qqNext3').disabled = false;
+      $('qqNext3').disabled = false; refreshTicker();
     }
     else if (role === 'service'){
       var on = el.classList.toggle('sel'); el.setAttribute('aria-pressed', on?'true':'false');
@@ -2615,12 +2643,12 @@ header li a[href="#booking"],
         if (name === 'Full Detail'){ unselectService('Interior Detail'); unselectService('Exterior Detail'); S.services['Full Detail'] = PRICE['Full Detail']; }
         else { unselectService('Full Detail'); }
       } else { delete S.services[name]; }
-      refreshNudge(); refreshContinue();
+      refreshNudge(); refreshContinue(); refreshTicker();
     }
     else if (role === 'addon'){
       var ao = el.classList.toggle('sel'); el.setAttribute('aria-pressed', ao?'true':'false');
       var an = el.getAttribute('data-name');
-      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an];
+      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an]; refreshTicker();
     }
     else if (role === 'go'){
       if (el.disabled) return;
@@ -2765,7 +2793,7 @@ header li a[href="#booking"],
       // note (optional)
       if (o.note){ var nt = $('qqNotes'); if (nt) nt.value = o.note; }
 
-      refreshNudge(); refreshContinue();
+      refreshNudge(); refreshContinue(); refreshTicker();
       if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: 'services_section' });
       calcQuote(); // computes total + shows step 4 (quote + name/phone form)
     }
