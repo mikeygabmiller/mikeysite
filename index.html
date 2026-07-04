@@ -2275,6 +2275,14 @@ header li a[href="#booking"],
 #qqcCard .inc-note { margin-top: 11px; padding: 11px 13px; font-size: 13.5px; color: var(--text-2); background: var(--surface-3); border-radius: 12px; line-height: 1.45; }
 #qqcCard .inc-note b { color: var(--text-3); font-weight: 600; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
 
+/* High-value reassurance (bigger quotes get sticker shock, so front-load risk reversal + flexibility) */
+#qqcCard #qqHighValue { display: none; margin-bottom: 20px; }
+#qqcCard .qq-hv-riskbar { display: flex; align-items: center; gap: 13px; background: linear-gradient(140deg, rgba(47,179,88,.18), rgba(47,179,88,.05)); border: 1px solid rgba(47,179,88,.42); border-radius: 14px; padding: 13px 15px; font-size: 13.5px; line-height: 1.4; color: var(--text); }
+#qqcCard .qq-hv-zero { font-size: 27px; font-weight: 800; color: var(--success); letter-spacing: -.03em; flex-shrink: 0; line-height: 1; }
+#qqcCard .qq-hv-line { font-size: 13px; color: var(--text-2); line-height: 1.5; margin-top: 10px; padding: 0 2px; }
+#qqcCard .qq-hv-line b { color: var(--text); font-weight: 700; }
+#qqcCard .qq-hv-line a { color: var(--accent); font-weight: 700; text-decoration: none; white-space: nowrap; }
+
 #qqcCard .form { display: grid; gap: 12px; margin-bottom: 6px; }
 #qqcCard .field { position: relative; }
 #qqcCard .field input, #qqcCard .field textarea { width: 100%; font: inherit; font-size: 16px; background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border); border-radius: 13px; padding: 16px; transition: border-color .2s ease, box-shadow .2s ease, background .2s; }
@@ -2431,7 +2439,7 @@ header li a[href="#booking"],
   <!-- STEP 3: CONDITION + NOTES -->
   <div class="step" id="step3">
     <h3 class="q-title">What condition is it in?</h3>
-    <p class="q-hint">Overall, inside &amp; out. Just helps me prep the right way.</p>
+    <p class="q-hint">Optional &mdash; it just helps me prep. Or skip straight to your price.</p>
     <div class="grid">
       <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
@@ -2455,7 +2463,7 @@ header li a[href="#booking"],
     </div>
     <div class="nav">
       <button type="button" class="btn btn-ghost" data-role="go" data-step="2">&lsaquo; Back</button>
-      <button type="button" class="btn btn-primary" id="qqNext3" data-role="calc" disabled>See my quote</button>
+      <button type="button" class="btn btn-primary" id="qqNext3" data-role="calc">See my quote</button>
     </div>
   </div>
 
@@ -2465,6 +2473,7 @@ header li a[href="#booking"],
     <div class="amount" id="qqAmount">$0</div>
     <p class="amount-sub">Final price confirmed at booking, no hidden fees.</p>
     <div class="breakdown" id="qqBreakdown"></div>
+    <div id="qqHighValue"></div>
     <form class="form" id="qqForm" novalidate>
       <div class="field" id="qqfName">
         <input type="text" id="qqName" placeholder="Your name" autocomplete="name" aria-required="true" />
@@ -2603,6 +2612,24 @@ header li a[href="#booking"],
     }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
+
+    // Higher-value quotes convert worse (sticker shock), so front-load risk
+    // reversal + flexibility on larger totals to soften the number.
+    var hv = $('qqHighValue');
+    if (hv){
+      if (total >= 260){
+        var hvHtml = '<div class="qq-hv-riskbar"><span class="qq-hv-zero">$0</span><span><b>due today.</b> You don’t pay a cent until it’s done and you love it &mdash; no deposit, ever.</span></div>';
+        if (S.services['Full Detail']){
+          hvHtml += '<div class="qq-hv-line"><b>You’re saving $61</b> vs booking interior + exterior separately.</div>';
+        }
+        hvHtml += '<div class="qq-hv-line">Rather spread it out? Book one part now and add the rest later &mdash; just say so in the notes, or <a href="tel:+14256007897">call/text me</a>.</div>';
+        hv.innerHTML = hvHtml;
+        hv.style.display = 'block';
+      } else {
+        hv.style.display = 'none';
+        hv.innerHTML = '';
+      }
+    }
 
     if (typeof gtag === 'function') gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: Object.keys(S.services).join(', ') });
     goStep(4);
