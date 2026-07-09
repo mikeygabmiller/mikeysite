@@ -1,0 +1,14 @@
+@font-face{font-family:'Outfit';src:url('../fonts/Outfit.ttf') format('truetype');font-weight:100 900;}
+@font-face{font-family:'Caveat';src:url('../fonts/Caveat.ttf') format('truetype');font-weight:400 700;}
+:root{--red:#C8102E;--red-dark:#A00C24;--gold:#C9A24B;--ink:#0a0a0a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:transparent;}
+.card{position:relative;width:1010px;height:638px;font-family:'Outfit',sans-serif;color:var(--ink);overflow:hidden;}
+/* contact icon + text rows */
+.row{display:flex;align-items:center;gap:14px;}
+.row svg{flex:0 0 auto;}
+.row .big{font-family:'Outfit';font-weight:800;font-size:36px;color:var(--ink);}
+.row .txt{font-family:'Outfit';font-weight:600;font-size:27px;color:var(--ink);}
+.stars{color:var(--gold);letter-spacing:3px;}
+.tags{font-family:'Outfit';font-weight:700;letter-spacing:4px;color:var(--ink);text-transform:uppercase;}
+.tags b{color:var(--red);}
