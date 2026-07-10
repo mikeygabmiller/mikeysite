@@ -2740,7 +2740,7 @@ header li a[href="#booking"],
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
         notes: notes || '', smsConsent: smsConsent
       };
-      var WORKER_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/submit';
+      var WORKER_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/qqc-text';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
         fetch(WORKER_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(smsPayload) })
