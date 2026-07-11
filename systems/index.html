@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Anvil Local — Get Found. Get Booked. | Booking systems for local trades</title>
+<meta name="description" content="I build the same Google-ranking, website, and instant-text booking system that runs my own detailing business — 5.0 stars, 39 reviews, 300+ cars. You don't pay the build until it puts 15 booked leads on your calendar. For detailers, washers & mobile mechanics.">
+<link rel="canonical" href="https://mikeysdetailing.com/systems/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mikeysdetailing.com/systems/">
+<meta property="og:title" content="Anvil Local — Get Found. Get Booked.">
+<meta property="og:description" content="The booking-and-follow-up system that runs my own shop, installed for your trade. You don't pay the build until it brings you 15 booked leads.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #0B0B0D;
+    --bg-2:      #121216;
+    --surface:   #17171C;
+    --surface-2: #1E1E25;
+    --border:    #2A2A33;
+    --line:      #35353F;
+    --amber:     #E9A94B;   /* forged brass — the one accent */
+    --amber-2:   #F2C070;
+    --amber-dim: #7a5a26;
+    --text:      #F4F1EA;
+    --muted:     #A29C90;
+    --muted-2:   #756F65;
+    --green:     #4ADE80;
+    --maxw:      1140px;
+    --radius:    16px;
+  }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3, .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+
+  a { color: inherit; text-decoration: none; }
+  .accent { color: var(--amber); }
+  .em { color: var(--text); font-style: normal; border-bottom: 2px solid var(--amber); padding-bottom: 1px; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem;
+    padding: 15px 26px; border-radius: 999px; cursor: pointer;
+    border: 1px solid transparent; transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(180deg, var(--amber-2), var(--amber));
+    color: #201603; box-shadow: 0 8px 30px -8px rgba(233,169,75,.5);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px -8px rgba(233,169,75,.6); }
+  .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .btn-lg { padding: 18px 34px; font-size: 1.08rem; }
+
+  /* ---------- Nav ---------- */
+  header.nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(11,11,13,.72); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.28rem; letter-spacing: -0.01em; }
+  .brand .mark {
+    width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+    background: linear-gradient(150deg, var(--amber-2), var(--amber-dim));
+    display: grid; place-items: center; color: #17120a; font-weight: 700; font-size: .95rem;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  .brand .co { color: var(--muted); font-weight: 500; }
+  .nav-links { display: flex; align-items: center; gap: 30px; }
+  .nav-links a.link { color: var(--muted); font-size: .93rem; font-weight: 500; transition: color .15s; }
+  .nav-links a.link:hover { color: var(--text); }
+  @media (max-width: 860px) { .nav-links .link { display: none; } }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 96px 0; position: relative; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 20px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--amber); opacity: .6; }
+  .section-title { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: 18px; }
+  .section-sub { color: var(--muted); font-size: 1.12rem; max-width: 620px; }
+  .center { text-align: center; }
+  .center .section-sub { margin: 0 auto; }
+  .center .eyebrow::before { display: none; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 92px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(60% 55% at 78% 8%, rgba(233,169,75,.16), transparent 60%),
+      radial-gradient(50% 45% at 12% 30%, rgba(233,169,75,.07), transparent 60%);
+  }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+  @media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } }
+
+  .pill {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+    padding: 7px 15px 7px 12px; font-size: .84rem; color: var(--muted); margin-bottom: 26px;
+  }
+  .pill .stars { color: var(--amber); letter-spacing: 1px; }
+  .pill b { color: var(--text); font-weight: 600; }
+
+  .hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.15rem); font-weight: 600; margin-bottom: 22px; }
+  .hero h1 .line2 { display: block; }
+  .hero-sub { font-size: 1.2rem; color: var(--muted); max-width: 540px; margin-bottom: 18px; }
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+  .guarantee-line {
+    display: block; margin-bottom: 30px; max-width: 500px;
+    font-size: 1.02rem; color: var(--text); font-weight: 500; line-height: 1.5;
+    background: linear-gradient(90deg, rgba(233,169,75,.12), transparent);
+    border-left: 3px solid var(--amber); padding: 12px 18px; border-radius: 0 10px 10px 0;
+  }
+  .guarantee-line b { color: var(--amber); font-weight: 700; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .hero-note { font-size: .86rem; color: var(--muted-2); margin-top: 16px; }
+
+  /* Hero phone mock */
+  .phone-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 26px;
+    padding: 18px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); position: relative;
+  }
+  .phone-card::before {
+    content: ""; position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    width: 70px; height: 5px; background: var(--line); border-radius: 999px;
+  }
+  .pc-head { text-align: center; padding: 20px 0 14px; border-bottom: 1px solid var(--border); }
+  .pc-head .name { font-weight: 600; font-size: .98rem; }
+  .pc-head .sub { color: var(--muted-2); font-size: .78rem; }
+  .pc-body { padding: 18px 6px 6px; display: flex; flex-direction: column; gap: 12px; }
+  .bubble { max-width: 84%; padding: 11px 15px; font-size: .9rem; line-height: 1.45; border-radius: 18px; }
+  .bubble.in  { align-self: flex-start; background: var(--surface-2); border-bottom-left-radius: 5px; }
+  .bubble.out { align-self: flex-end; background: linear-gradient(180deg, var(--amber-2), var(--amber)); color: #201603; border-bottom-right-radius: 5px; font-weight: 500; }
+  .bubble .t { display: block; font-size: .66rem; margin-top: 5px; opacity: .6; }
+  .typing { align-self: flex-start; color: var(--muted-2); font-size: .8rem; padding-left: 6px; }
+  .pc-tag { text-align: center; font-size: .74rem; color: var(--green); margin-top: 8px; padding-bottom: 6px; }
+
+  /* ---------- Logos / trust strip ---------- */
+  .trust { padding: 30px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-2); }
+  .trust .wrap { display: flex; align-items: center; justify-content: center; gap: 14px 40px; flex-wrap: wrap; }
+  .trust span { color: var(--muted-2); font-size: .84rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .trust .t-item { color: var(--muted); font-weight: 600; font-size: .95rem; }
+
+  /* ---------- Problem ---------- */
+  .problem { background: var(--bg); }
+  .prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 46px; }
+  @media (max-width: 780px) { .prob-grid { grid-template-columns: 1fr; } }
+  .prob-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+  .prob-card.bad { border-color: #3a2626; }
+  .prob-card h3 { font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .prob-card p { color: var(--muted); font-size: .98rem; }
+  .x { color: #f87171; } .chk { color: var(--green); }
+
+  .reframe { margin-top: 54px; text-align: center; padding: 44px 24px; background: linear-gradient(180deg, var(--surface), var(--bg-2)); border: 1px solid var(--border); border-radius: 20px; }
+  .reframe p { font-family: 'Fraunces', serif; font-size: clamp(1.4rem, 3.4vw, 2.1rem); line-height: 1.28; max-width: 780px; margin: 0 auto; }
+
+  /* ---------- Pillars ---------- */
+  .pillars { background: var(--bg-2); }
+  .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+  @media (max-width: 880px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 32px 28px; position: relative; transition: border-color .2s, transform .2s;
+  }
+  .pillar:hover { border-color: var(--amber-dim); transform: translateY(-3px); }
+  .pillar .num { font-family: 'Fraunces', serif; font-size: 2.6rem; color: var(--line); line-height: 1; }
+  .pillar h3 { font-size: 1.35rem; margin: 12px 0 12px; }
+  .pillar p { color: var(--muted); font-size: .97rem; margin-bottom: 18px; }
+  .pillar ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .pillar li { font-size: .9rem; color: var(--text); padding-left: 24px; position: relative; }
+  .pillar li::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-weight: 700; }
+
+  /* ---------- How it works (flow) ---------- */
+  .how { background: var(--bg); }
+  .flow { display: flex; flex-direction: column; gap: 0; margin-top: 52px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .step { display: flex; gap: 22px; }
+  .step-rail { display: flex; flex-direction: column; align-items: center; }
+  .step-dot {
+    width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0;
+    background: var(--surface); border: 1px solid var(--amber-dim); color: var(--amber);
+    display: grid; place-items: center; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem;
+  }
+  .step-line { width: 2px; flex: 1; background: linear-gradient(var(--amber-dim), var(--border)); min-height: 26px; }
+  .step:last-child .step-line { display: none; }
+  .step-body { padding-bottom: 34px; }
+  .step-body h3 { font-size: 1.18rem; margin-bottom: 6px; }
+  .step-body p { color: var(--muted); font-size: .97rem; }
+  .step-body .tag { font-size: .78rem; color: var(--amber); font-weight: 600; }
+
+  /* ---------- Offer ---------- */
+  .offer { background: var(--bg-2); }
+  .offer-card {
+    max-width: 760px; margin: 52px auto 0; background: var(--surface);
+    border: 1px solid var(--amber-dim); border-radius: 22px; overflow: hidden;
+    box-shadow: 0 40px 90px -40px rgba(233,169,75,.28);
+  }
+  .offer-top { padding: 36px 36px 30px; text-align: center; background: radial-gradient(120% 100% at 50% 0%, rgba(233,169,75,.12), transparent 70%); border-bottom: 1px solid var(--border); }
+  .offer-top .badge { display: inline-block; background: rgba(233,169,75,.14); color: var(--amber); border: 1px solid var(--amber-dim); border-radius: 999px; padding: 6px 14px; font-size: .78rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 20px; }
+  .offer-top .promise { font-family: 'Fraunces', serif; font-size: clamp(1.5rem, 3.6vw, 2.15rem); line-height: 1.22; }
+  .offer-top .promise b { color: var(--amber); }
+  .stack { padding: 8px 36px; }
+  .stack-row { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: .96rem; }
+  .stack-row:last-child { border-bottom: none; }
+  .stack-row .v { color: var(--muted-2); white-space: nowrap; }
+  .stack-row.total { font-weight: 700; }
+  .stack-row.total .serif { font-family: 'Fraunces', serif; font-size: 1.1rem; }
+  .stack-row.total .v { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--muted-2); }
+  .offer-price { padding: 30px 36px 36px; text-align: center; border-top: 1px solid var(--border); }
+  .price-big { font-family: 'Fraunces', serif; font-size: 3rem; line-height: 1; }
+  .price-big .cur { color: var(--amber); }
+  .price-terms { color: var(--muted); margin: 10px 0 4px; font-size: 1.02rem; }
+  .price-terms strong { color: var(--text); }
+  .price-then { color: var(--muted-2); font-size: .92rem; margin-bottom: 24px; }
+  .offer-fine { max-width: 640px; margin: 26px auto 0; color: var(--muted-2); font-size: .84rem; text-align: center; }
+
+  /* ---------- For / not-for ---------- */
+  .fit { background: var(--bg); }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 46px; }
+  @media (max-width: 780px) { .fit-grid { grid-template-columns: 1fr; } }
+  .fit-col { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 30px; }
+  .fit-col h3 { font-size: 1.2rem; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+  .fit-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .fit-col li { font-size: .97rem; color: var(--text); padding-left: 28px; position: relative; }
+  .fit-col.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .fit-col.no li::before { content: "✕"; position: absolute; left: 0; color: #f87171; font-weight: 700; }
+  .fit-col.no li { color: var(--muted); }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--bg-2); }
+  .faq-list { max-width: 760px; margin: 46px auto 0; }
+  details { border-bottom: 1px solid var(--border); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: 'Fraunces', serif; font-size: 1.12rem; font-weight: 500; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 6px; top: 20px; font-family: 'Inter'; font-size: 1.5rem; color: var(--amber); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--muted); padding: 0 40px 22px 0; font-size: .98rem; margin-top: -4px; }
+
+  /* ---------- CTA / form ---------- */
+  .cta { background: var(--bg); }
+  .cta-card { max-width: 720px; margin: 0 auto; background: linear-gradient(180deg, var(--surface), var(--bg-2)); border: 1px solid var(--amber-dim); border-radius: 22px; padding: 48px 40px; text-align: center; }
+  .cta-card h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 14px; }
+  .cta-card p { color: var(--muted); font-size: 1.08rem; max-width: 500px; margin: 0 auto 30px; }
+  form.lead { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; text-align: left; }
+  @media (max-width: 620px) { form.lead { grid-template-columns: 1fr; } }
+  form.lead .full { grid-column: 1 / -1; }
+  form.lead label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
+  form.lead input, form.lead select, form.lead textarea {
+    width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 11px;
+    color: var(--text); padding: 13px 15px; font-size: .96rem; font-family: inherit;
+  }
+  form.lead input:focus, form.lead select:focus, form.lead textarea:focus { outline: none; border-color: var(--amber); }
+  form.lead select { appearance: none; }
+  .form-note { font-size: .82rem; color: var(--muted-2); margin-top: 16px; }
+
+  /* ---------- Footer ---------- */
+  footer.site { border-top: 1px solid var(--border); padding: 40px 0; color: var(--muted-2); }
+  footer.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; font-size: .88rem; }
+  footer.site .brand { font-size: 1.05rem; }
+  footer.site a:hover { color: var(--amber); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="mark">A</span>Anvil <span class="co">Local</span></a>
+    <nav class="nav-links">
+      <a class="link" href="#machine">The Machine</a>
+      <a class="link" href="#pillars">What I Do</a>
+      <a class="link" href="#offer">The Offer</a>
+      <a class="link" href="#proof">Proof</a>
+      <a href="#book" class="btn btn-primary" style="padding:10px 20px;font-size:.92rem;">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill"><span class="stars">★★★★★</span> <b>5.0</b> · <b data-md-reviews="{n}">39</b> reviews · <b data-md-cars="{n}+">300+</b> cars run through this exact system</span>
+        <h1>Your website isn't<br>the problem.<span class="line2 accent">Your phone not ringing is.</span></h1>
+        <p class="hero-sub">I install the same <strong>Google-ranking, website, and instant-text booking system</strong> that runs my own detailing shop — so leads get answered in seconds and actually turn into booked jobs.</p>
+        <div class="guarantee-line">💰 You don't pay the build until it puts <b>15 booked leads</b> on your calendar.</div>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-primary btn-lg">See if you qualify →</a>
+          <a href="#machine" class="btn btn-ghost btn-lg">Watch it work</a>
+        </div>
+        <p class="hero-note">For auto detailers, exterior/pressure washers & mobile mechanics.</p>
+      </div>
+
+      <!-- Phone demo -->
+      <div class="phone-card reveal">
+        <div class="pc-head">
+          <div class="name">New Lead · Auto-Reply</div>
+          <div class="sub">Powered by Anvil Local</div>
+        </div>
+        <div class="pc-body">
+          <div class="bubble in">Hey, do you have any openings this week? Just filled out the quote form 👀 <span class="t">2:14 PM</span></div>
+          <div class="bubble out">Hey Jordan — got your quote request! I can do Thursday AM or Friday PM. Which works? <span class="t">2:14 PM · sent in 8 sec</span></div>
+          <div class="bubble in">Whoa that was fast. Thursday works 🙌 <span class="t">2:15 PM</span></div>
+          <div class="bubble out">Locked in. Sending a confirmation + reminder now. See you Thursday! <span class="t">2:15 PM</span></div>
+          <div class="typing">Owner never touched their phone.</div>
+        </div>
+        <div class="pc-tag">● Booked while the competition was under a car</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST STRIP ===== -->
+<div class="trust">
+  <div class="wrap">
+    <span>Built &amp; proven on a real trade</span>
+    <div class="t-item">🚗 300+ jobs</div>
+    <div class="t-item">★ 5.0 rating</div>
+    <div class="t-item">💬 39 five-star reviews</div>
+    <div class="t-item">⚡ Leads answered in seconds</div>
+  </div>
+</div>
+
+<!-- ===== PROBLEM / REFRAME ===== -->
+<section class="problem" id="why">
+  <div class="wrap">
+    <span class="eyebrow">The real problem</span>
+    <h2 class="section-title">"I build websites" is dead.<br>Everyone's cousin does it now.</h2>
+    <p class="section-sub">Half of them do it for free with a template. The trouble was never the website. It's that the pretty page gets handed over — and then the phone still doesn't ring.</p>
+
+    <div class="prob-grid">
+      <div class="prob-card bad reveal">
+        <h3><span class="x">✕</span> What most "web guys" sell</h3>
+        <p>A file. A pretty page, then they vanish. You never get a lead from it, decide "web stuff doesn't work," and haggle the next guy down to $300. You've been burned before.</p>
+      </div>
+      <div class="prob-card reveal">
+        <h3><span class="chk">✓</span> What actually gets you booked</h3>
+        <p>A <em class="em">machine</em>: found on Google → quote form → instant text back → follow-up → repeat customer. The website is just one part. The system is the product.</p>
+      </div>
+    </div>
+
+    <div class="reframe reveal">
+      <p>You're not buying a website. You're buying <span class="accent">proof the phone rings</span> — the exact system that runs my shop, installed for yours, and kept running for a small monthly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PILLARS: WHAT I DO ===== -->
+<section class="pillars" id="pillars">
+  <div class="wrap center">
+    <span class="eyebrow">What I actually do</span>
+    <h2 class="section-title">Three things. One machine.</h2>
+    <p class="section-sub">Get found. Get a site that sells. Get booked — automatically.</p>
+  </div>
+  <div class="wrap">
+    <div class="pillar-grid">
+      <div class="pillar reveal">
+        <div class="num">01</div>
+        <h3>Get Found</h3>
+        <p>~70% of local jobs come from the Google Map Pack — not classic search. I rebuild and run your Google Business Profile so you show up first.</p>
+        <ul>
+          <li>Profile claimed, verified &amp; fully optimized</li>
+          <li>Right categories, services, prices &amp; photos</li>
+          <li>Reviews on autopilot after every job</li>
+          <li>Listed consistently everywhere Google checks</li>
+        </ul>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">02</div>
+        <h3>Get a Site That Sells</h3>
+        <p>Not a brochure — a fast, mobile page built to turn a click into a booked job, with local SEO baked in for every town you serve.</p>
+        <ul>
+          <li>One clear action: "Get a quote in 2 minutes"</li>
+          <li>City pages that rank for "[trade] near me"</li>
+          <li>Your reviews &amp; before/afters front and center</li>
+          <li>Wired to Google so we see what converts</li>
+        </ul>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">03</div>
+        <h3>Get Booked</h3>
+        <p>The part nobody else delivers — and the reason the phone rings. Every lead is answered in seconds and followed up until it books.</p>
+        <ul>
+          <li>Instant auto-text the moment a lead comes in</li>
+          <li>Missed-call capture → voicemail texted to you</li>
+          <li>One simple dashboard for every conversation</li>
+          <li>Follow-ups + a recurring membership offer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW THE MACHINE WORKS ===== -->
+<section class="how" id="machine">
+  <div class="wrap center">
+    <span class="eyebrow">The machine, step by step</span>
+    <h2 class="section-title">What happens when a lead finds you</h2>
+    <p class="section-sub">This is the exact flow running my detailing business right now. You keep it. I keep it running.</p>
+  </div>
+  <div class="wrap">
+    <div class="flow">
+      <div class="step reveal">
+        <div class="step-rail"><div class="step-dot">1</div><div class="step-line"></div></div>
+        <div class="step-body"><span class="tag">GET FOUND</span><h3>They find you on Google &amp; tap your site</h3><p>Ranked profile + a page built to convert. They hit one button: "Get a quote."</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-rail"><div class="step-dot">2</div><div class="step-line"></div></div>
+        <div class="step-body"><span class="tag">SPEED TO LEAD</span><h3>They get a text back in seconds</h3><p>The system texts them instantly — while you're under a car or up a ladder. Answer a lead in 5 minutes and you're far more likely to book it.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-rail"><div class="step-dot">3</div><div class="step-line"></div></div>
+        <div class="step-body"><span class="tag">YOU GET ALERTED</span><h3>You get the job details, pinged to your phone</h3><p>Name, number, vehicle, service, price — all in one alert. Plus a dashboard that holds every conversation like a mini CRM.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-rail"><div class="step-dot">4</div><div class="step-line"></div></div>
+        <div class="step-body"><span class="tag">NOTHING SLIPS</span><h3>Missed calls &amp; no-shows get caught</h3><p>Missed call? It rings your cell, then records a voicemail and texts you the recording. No-book-yet leads get an automatic nudge.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-rail"><div class="step-dot">5</div><div class="step-line"></div></div>
+        <div class="step-body"><span class="tag">THEY COME BACK</span><h3>One-time jobs become repeat revenue</h3><p>After the job: an automatic review request, then a membership offer — turning a single job into recurring income (my "Clean Club," built for your trade).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF ===== -->
+<section id="proof" style="background:var(--bg);">
+  <div class="wrap">
+    <span class="eyebrow">Why me</span>
+    <h2 class="section-title">I didn't read this in a course.<br>I run it every day.</h2>
+    <p class="section-sub">Nobody else pitching a detailer or a mobile mechanic down the road can say this: here's the system, and here's the business it built.</p>
+    <div class="prob-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="prob-card reveal" style="text-align:center;">
+        <div class="serif accent" style="font-size:2.8rem;line-height:1;">5.0★</div>
+        <p style="margin-top:8px;">Average rating across <span data-md-reviews="{n}">39</span> Google reviews — earned, not bought.</p>
+      </div>
+      <div class="prob-card reveal" style="text-align:center;">
+        <div class="serif accent" style="font-size:2.8rem;line-height:1;" data-md-cars="{n}+">300+</div>
+        <p style="margin-top:8px;">Cars booked and detailed through this exact quote-and-follow-up machine.</p>
+      </div>
+      <div class="prob-card reveal" style="text-align:center;">
+        <div class="serif accent" style="font-size:2.8rem;line-height:1;">8 sec</div>
+        <p style="margin-top:8px;">Typical time a new lead waits for a reply. Most of your competitors take hours.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:30px;color:var(--muted);">See it live on my own shop → <a href="/" class="accent" style="font-weight:600;border-bottom:1px solid var(--amber-dim);">mikeysdetailing.com</a></p>
+  </div>
+</section>
+
+<!-- ===== OFFER ===== -->
+<section class="offer" id="offer">
+  <div class="wrap center">
+    <span class="eyebrow">The offer</span>
+    <h2 class="section-title">You don't pay until it works.</h2>
+    <p class="section-sub">The only reason trades get burned is they pay first and hope. Flip it. I carry the risk.</p>
+  </div>
+  <div class="wrap">
+    <div class="offer-card reveal">
+      <div class="offer-top">
+        <span class="badge">Pay-on-performance guarantee</span>
+        <p class="promise">I build your entire system for <b>$0 up front</b>. You don't pay the build until it's put <b>15 booked leads</b> on your calendar. If it never does — you owe nothing and keep everything.</p>
+      </div>
+      <div class="stack">
+        <div class="stack-row"><span>Google Business Profile rebuilt &amp; ranked</span><span class="v">$1,000 value</span></div>
+        <div class="stack-row"><span>Conversion website + local SEO + city pages</span><span class="v">$2,000 value</span></div>
+        <div class="stack-row"><span>Instant-text booking + follow-up machine</span><span class="v">$1,500 value</span></div>
+        <div class="stack-row"><span>Missed-call capture + voicemail-to-text</span><span class="v">$500 value</span></div>
+        <div class="stack-row"><span>Review engine (auto-request after every job)</span><span class="v">$500 value</span></div>
+        <div class="stack-row"><span>Recurring membership funnel</span><span class="v">$500 value</span></div>
+        <div class="stack-row total"><span class="serif">Total value</span><span class="v">$6,000</span></div>
+      </div>
+      <div class="offer-price">
+        <div class="price-big"><span class="cur">$0</span> today</div>
+        <p class="price-terms">Then a <strong>$1,500</strong> one-time build — <strong>only</strong> after it delivers 15 booked leads.</p>
+        <p class="price-then">After that, <strong>$197/mo</strong> to keep the whole machine running — hosting, texting, Google posts, review requests, follow-ups &amp; support. Cancel anytime.</p>
+        <a href="#book" class="btn btn-primary btn-lg">Claim a founder spot →</a>
+      </div>
+    </div>
+    <p class="offer-fine">Guarantee is for qualified local trades who answer their leads. "Booked lead" = a real call or quote-form submission captured by your system within 90 days. Limited founder spots while I build case studies in each trade.</p>
+  </div>
+</section>
+
+<!-- ===== FIT ===== -->
+<section class="fit" id="fit">
+  <div class="wrap center">
+    <span class="eyebrow">Honest fit</span>
+    <h2 class="section-title">This isn't for everyone</h2>
+  </div>
+  <div class="wrap">
+    <div class="fit-grid">
+      <div class="fit-col yes reveal">
+        <h3>✅ Built for you if…</h3>
+        <ul>
+          <li>You're a detailer, washer, or mobile mechanic doing real jobs</li>
+          <li>You're losing leads because you can't answer while you work</li>
+          <li>Your website is dead, ugly, or doesn't exist</li>
+          <li>You want more booked jobs, not a prettier logo</li>
+          <li>You'll actually answer the leads I send you</li>
+        </ul>
+      </div>
+      <div class="fit-col no reveal">
+        <h3>🚫 Not for you if…</h3>
+        <ul>
+          <li>You want a one-off website and no ongoing system</li>
+          <li>You won't reply to leads or pick up the phone</li>
+          <li>You're national / e-commerce, not local &amp; appointment-based</li>
+          <li>Your business doesn't exist yet (I amplify demand, not invent it)</li>
+          <li>You're shopping purely on lowest price</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq" id="faq">
+  <div class="wrap center">
+    <span class="eyebrow">Straight answers</span>
+    <h2 class="section-title">Questions I get a lot</h2>
+  </div>
+  <div class="wrap">
+    <div class="faq-list">
+      <details><summary>Wait — I really don't pay anything up front?</summary><p>Right. I build the whole system on my dime. The $1,500 build fee only comes due once it's put 15 booked leads on your calendar — leads I can prove from your dashboard. If it never hits 15, you owe nothing and you keep the website and Google work. I only win when you win.</p></details>
+      <details><summary>What's the $197/month for?</summary><p>Keeping the machine alive: hosting, the texting system, weekly Google posts, automatic review requests, follow-up automation, tweaks, and support. It's the same recurring logic as a membership — the value is in it running month after month, not a one-time file. Cancel anytime.</p></details>
+      <details><summary>Can you really get me to the top of Google?</summary><p>I run the exact Map Pack playbook that made my own profile 5.0★ with 39 reviews — right categories, weekly photos and posts, review velocity, and consistent listings. I won't promise a magic #1 overnight (nobody honest can), but I'll promise the system that gets you found and answers every lead fast — and that's what actually books jobs.</p></details>
+      <details><summary>How long until it's live?</summary><p>Usually about 7 days once I have access to your Google profile, phone number, and a few photos. It's a proven template — I'm tuning it to your trade, not building from scratch.</p></details>
+      <details><summary>Do I own it, or is it locked to you?</summary><p>You own your website and Google profile — full stop. The monthly keeps the automated booking-and-follow-up engine running. Think of it like the tool staying sharp: you keep the results either way.</p></details>
+      <details><summary>Why should I trust you over the last web guy?</summary><p>Because I'm not a web guy. I run a real trade — 300+ cars, 5.0★, 39 reviews — on this exact system. You're getting the thing that built my business, not a portfolio of someone else's.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / FORM ===== -->
+<section class="cta" id="book">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <h2>Let's see if the machine fits your shop.</h2>
+      <p>Tell me about your business and I'll send you a free 3-minute "Rank &amp; Response Audit" — exactly where you're leaking leads and how I'd fix it. No pitch, no cost.</p>
+      <form class="lead" id="leadForm" onsubmit="return submitLead(event)">
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" required placeholder="Jordan">
+        </div>
+        <div>
+          <label for="phone">Cell (I'll text you the audit)</label>
+          <input id="phone" name="phone" type="tel" required placeholder="(425) 555-0100">
+        </div>
+        <div>
+          <label for="trade">Your trade</label>
+          <select id="trade" name="trade">
+            <option>Auto detailing</option>
+            <option>Exterior / pressure washing</option>
+            <option>Mobile mechanic</option>
+            <option>Other local trade</option>
+          </select>
+        </div>
+        <div>
+          <label for="biz">Business name</label>
+          <input id="biz" name="biz" placeholder="Jordan's Mobile Detailing">
+        </div>
+        <div class="full">
+          <label for="notes">Where are you losing jobs right now? (optional)</label>
+          <textarea id="notes" name="notes" rows="2" placeholder="Can't answer the phone while I'm working, no website, etc."></textarea>
+        </div>
+        <div class="full" style="text-align:center;margin-top:6px;">
+          <button type="submit" class="btn btn-primary btn-lg">Send me my free audit →</button>
+          <p class="form-note">Founder spots are limited while I build one case study per trade.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="mark">A</span>Anvil <span class="co">Local</span></a>
+    <div>Get found. Get booked. — booking systems for local trades.</div>
+    <div>Proven on <a href="/" class="accent">Mikey's Mobile Detailing</a> · Snohomish County, WA</div>
+  </div>
+</footer>
+
+<script src="/site-stats.js"></script>
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.14 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Lead form → opens a pre-filled SMS to the owner (wire to the Cloudflare Worker later).
+  // TODO: point this at your Worker's /submit endpoint to auto-text the lead + yourself,
+  // exactly like the detailing site does.
+  const OWNER_SMS = '+14256007897'; // ← your cell
+  function submitLead(e) {
+    e.preventDefault();
+    const f = e.target;
+    const msg =
+      `New Anvil Local audit request:\n` +
+      `Name: ${f.name.value}\n` +
+      `Phone: ${f.phone.value}\n` +
+      `Trade: ${f.trade.value}\n` +
+      `Business: ${f.biz.value || '—'}\n` +
+      `Losing jobs: ${f.notes.value || '—'}`;
+    // Owner-side fallback: open an SMS draft so nothing is lost even before the Worker is wired.
+    window.location.href = `sms:${OWNER_SMS}?body=${encodeURIComponent(msg)}`;
+    return false;
+  }
+</script>
+</body>
+</html>
