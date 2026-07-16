@@ -28,11 +28,16 @@
   "name": "Mikey's Mobile Detailing, Duvall",
   "image": "https://iili.io/qKtjLcx.jpg",
   "url": "https://mikeysdetailing.com/duvall/",
+  "telephone": "+1-425-600-7897",
   "priceRange": "$160-$379",
   "areaServed": {"@type":"City","name":"Duvall","containedInPlace":{"@type":"AdministrativeArea","name":"King County, WA"}},
   "address": {"@type":"PostalAddress","addressLocality":"Duvall","addressRegion":"WA","postalCode":"98019","addressCountry":"US"},
   "geo": {"@type":"GeoCoordinates","latitude":47.7423,"longitude":-121.9854},
   "aggregateRating": {"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"38"},
+  "review": [
+    {"@type":"Review","author":{"@type":"Person","name":"C Wilson"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"},
+    {"@type":"Review","author":{"@type":"Person","name":"Matt K"},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Mikey showed up on time, did exactly what he said, and charged exactly what he quoted. That kind of service is really rare these days."}
+  ],
   "openingHoursSpecification": [
     {"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday","Friday"],"opens":"14:00","closes":"19:00"},
     {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"18:00"}
@@ -136,6 +141,45 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 .footer-links a:hover{color:var(--red)}
 .intro-prose{max-width:760px;margin:0 auto;font-size:17px;color:var(--text-muted);line-height:1.75}
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
+/* ===== CONVERSION UPGRADES ===== */
+.nav .nav-call{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:800;font-size:14px;padding:10px 16px;border-radius:10px;box-shadow:0 0 20px var(--red-glow);transition:transform .15s;white-space:nowrap}
+.nav-call svg{width:16px;height:16px;flex-shrink:0}
+.nav-call:hover{transform:translateY(-1px)}
+@media(max-width:430px){.nav-call .nc-num{display:none}}
+.hero-callnote{margin-top:-22px;margin-bottom:36px;font-size:14px;color:var(--text-muted)}
+.hero-callnote a{color:var(--text);font-weight:800;border-bottom:2px solid var(--red)}
+.guarantee{max-width:780px;margin:0 auto;display:flex;gap:26px;align-items:center;background:var(--bg-card);border:2px solid var(--border);border-left:4px solid var(--gold);border-radius:16px;padding:30px 32px}
+.guar-seal{flex-shrink:0;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 50% 38%,#231d10,#141414);border:2px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.guar-seal .gp{font-size:26px;font-weight:900;color:var(--gold);line-height:1}
+.guar-seal .gl{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:4px}
+.guar-text h3{font-size:clamp(22px,3vw,28px);font-weight:900;margin-bottom:8px;line-height:1.15}
+.guar-text h3 .red{color:var(--red)}
+.guar-text p{color:var(--text-muted);font-size:15px}
+@media(max-width:600px){.guarantee{flex-direction:column;text-align:center;padding:26px 22px}}
+.ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}
+.ba-pair{background:var(--bg-card);border:2px solid var(--border);border-radius:14px;overflow:hidden}
+.ba-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.ba-imgs figure{position:relative;margin:0}
+.ba-imgs img{width:100%;height:210px;object-fit:cover;display:block}
+.ba-tag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 9px;border-radius:6px}
+.ba-tag.before{background:rgba(0,0,0,.78);color:#fff}
+.ba-tag.after{background:var(--red);color:#fff}
+.ba-cap{padding:14px 18px;font-size:14px;color:var(--text-muted);font-weight:600}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.reviews-grid .testimonial{max-width:none;margin:0}
+.book-frame{border:2px solid var(--border);border-radius:12px;background:var(--bg-card);width:100%;height:620px}
+.book-note{text-align:center;color:var(--text-muted);font-size:14px;margin-top:16px}
+.book-note a{color:var(--text);font-weight:700;border-bottom:1px solid var(--red)}
+.sticky-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;align-items:stretch;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(20,20,20,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--border);box-shadow:0 -8px 28px rgba(0,0,0,.5);z-index:9998;transform:translateY(140%);opacity:0;visibility:hidden;transition:transform .38s cubic-bezier(.16,.84,.44,1),opacity .3s,visibility .38s}
+.sticky-cta-bar.is-visible{transform:translateY(0);opacity:1;visibility:visible}
+.sticky-cta-call{flex:1 1 44%;display:flex;align-items:center;justify-content:center;gap:9px;background:var(--bg-card);border:1px solid var(--border);color:#fff;border-radius:12px;padding:8px 12px}
+.sticky-cta-call svg{flex-shrink:0;color:var(--red)}
+.sticky-cta-call .scb-txt{display:flex;flex-direction:column;line-height:1.05;text-align:left}
+.sticky-cta-call .scb-label{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-muted)}
+.sticky-cta-call .scb-num{font-size:15px;font-weight:800}
+.sticky-cta-book{flex:1 1 56%;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;padding:8px 14px;box-shadow:0 6px 18px var(--red-glow)}
+@media(max-width:768px){.sticky-cta-bar{display:flex}body{padding-bottom:76px}}
+@media(prefers-reduced-motion:reduce){.sticky-cta-bar{transition:opacity .2s,visibility .2s;transform:none}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Schema: BreadcrumbList -->
@@ -171,6 +215,7 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <a href="https://blog.mikeysdetailing.com">Blog</a>
       <a href="https://mikeygabmiller.github.io/MyQqc/">Get Quote</a>
     </nav>
+    <a href="tel:+14256007897" class="nav-call" aria-label="Call or text Mikey at (425) 600-7897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="nc-num">(425) 600-7897</span></a>
   </div>
 </header>
 
@@ -189,9 +234,10 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <div class="pill">Exterior <span class="price">$160-$240</span></div>
     </div>
     <div class="cta-row">
-      <a href="#booking" class="btn btn-primary">Get Your Quote</a>
-      <a href="#areas" class="btn btn-secondary">See Service Area</a>
+      <a href="#booking" class="btn btn-primary">Get Your Instant Quote →</a>
+      <a href="tel:+14256007897" class="btn btn-secondary">Call or Text Mikey</a>
     </div>
+    <p class="hero-callnote">Prefer to talk? Call or text <a href="tel:+14256007897">(425) 600-7897</a> — usually same-day reply.</p>
     <div class="stats">
       <div class="stat"><div class="stat-num">5.0</div><div class="stat-label">Rating</div></div>
       <div class="stat"><div class="stat-num">35+</div><div class="stat-label">Reviews</div></div>
@@ -229,6 +275,18 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
         detailed in 5+ years. <strong>If your car spends time in Duvall, it has
         problems I've already seen 50 times.</strong>
       </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="guarantee">
+      <div class="guar-seal"><span class="gp">100%</span><span class="gl">Guaranteed</span></div>
+      <div class="guar-text">
+        <h3>Love it, or you <span class="red">don't pay</span>.</h3>
+        <p>No deposit. No risk. I don't take a dime until you walk around your rig and it makes you smile — that's my promise on every detail I do in Duvall.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -299,13 +357,48 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 
 <section>
   <div class="container">
-    <div class="section-eyebrow">Real Review</div>
-    <h2>From a <span class="red">Local</span> Driver</h2>
-    <div class="testimonial">
-      <p>"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
-      <div class="author">
-        <span class="author-name">C. Wilson, Snohomish, WA</span>
-        <span class="stars">★★★★★</span>
+    <div class="section-eyebrow">Real Results</div>
+    <h2>Before &amp; <span class="red">After</span></h2>
+    <p class="section-sub">Actual cars I've detailed in the area — no stock photos, no filters.</p>
+    <div class="ba-grid">
+      <div class="ba-pair">
+        <div class="ba-imgs">
+          <figure><span class="ba-tag before">Before</span><img src="/images/ba_2.jpg" alt="Dirty back seats before detailing in Duvall" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img src="/images/ba_1.jpg" alt="Clean back seats after detailing in Duvall" loading="lazy"></figure>
+        </div>
+        <div class="ba-cap">Interior deep clean — seats &amp; carpets</div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-imgs">
+          <figure><span class="ba-tag before">Before</span><img src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img src="/images/ba_3.jpg" alt="Clean cargo area after detailing" loading="lazy"></figure>
+        </div>
+        <div class="ba-cap">Cargo area reset — vacuum &amp; steam</div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-imgs">
+          <figure><span class="ba-tag before">Before</span><img src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dull car exterior before detailing" loading="lazy" onerror="this.closest('.ba-pair').style.display='none'"></figure>
+          <figure><span class="ba-tag after">After</span><img src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Glossy car exterior after detailing" loading="lazy"></figure>
+        </div>
+        <div class="ba-cap">Exterior wash, decon &amp; sealant</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow">Real Reviews</div>
+    <h2>What <span class="red">Drivers Say</span></h2>
+    <p class="section-sub">5.0 stars across 38+ Google reviews. Here are two.</p>
+    <div class="reviews-grid">
+      <div class="testimonial">
+        <p>"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"</p>
+        <div class="author"><span class="author-name">C. Wilson, Snohomish, WA</span><span class="stars">★★★★★</span></div>
+      </div>
+      <div class="testimonial">
+        <p>"Mikey showed up on time, did exactly what he said, and charged exactly what he quoted. That kind of service is really rare these days."</p>
+        <div class="author"><span class="author-name">Matt K., Snohomish County</span><span class="stars">★★★★★</span></div>
       </div>
     </div>
   </div>
@@ -313,16 +406,11 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 
 <section id="booking" aria-labelledby="booking-heading">
   <div class="container">
-    <h2 id="booking-heading" style="text-align:center;font-size:32px;font-weight:900;margin-bottom:24px;">Get Your Instant Quote</h2>
-    <iframe
-      src="https://mikeygabmiller.github.io/MyQqc/"
-      title="Quick Quote Calculator, Mikey's Mobile Detailing"
-      width="100%"
-      height="600"
-      loading="lazy"
-      style="border: 2px solid var(--border); border-radius: 12px; background: var(--bg-card);"
-      allow="fullscreen">
-    </iframe>
+    <div class="section-eyebrow">Instant Quote</div>
+    <h2 id="booking-heading">Build Your Detail, <span class="red">See Your Price</span></h2>
+    <p class="section-sub">Pick your vehicle and services and get a real, itemized price in about 30 seconds. No deposit — you pay when it's done and you love it.</p>
+    <iframe class="book-frame" src="https://mikeygabmiller.github.io/MyQqc/" title="Quick Quote Calculator, Mikey's Mobile Detailing" loading="lazy" allow="fullscreen"></iframe>
+    <p class="book-note">Rather not use the form? Call or text <a href="tel:+14256007897">(425) 600-7897</a>.</p>
   </div>
 </section>
 
@@ -331,7 +419,7 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="cta-block">
       <h2>Ready for a Cleaner Truck?</h2>
       <p>Get your instant Duvall quote, no calls, no waiting.</p>
-      <a href="https://mikeygabmiller.github.io/MyQqc/" class="btn btn-primary">Get Your Quote Now →</a>
+      <a href="#booking" class="btn btn-primary">Get Your Quote Now →</a>
     </div>
   </div>
 </section>
@@ -363,6 +451,7 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <a href="/services/">Full Detail</a>
       <a href="https://blog.mikeysdetailing.com">Blog</a>
     </div>
+    <p style="margin-bottom:10px;">Call or text <a href="tel:+14256007897" style="color:var(--text);font-weight:700;">(425) 600-7897</a> • Mobile service across Snohomish &amp; King County</p>
     <p>© 2026 Mikey's Mobile Detailing • Snohomish County, WA</p>
   </div>
 </footer>
@@ -371,6 +460,17 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 document.querySelectorAll('.faq-item').forEach(item=>{
   item.querySelector('.faq-q').addEventListener('click',()=>item.classList.toggle('open'));
 });
+</script>
+<!-- Mobile sticky booking bar -->
+<div class="sticky-cta-bar" id="mobileBookingBar" aria-label="Call or book Mikey's Mobile Detailing" role="complementary">
+  <a href="tel:+14256007897" class="sticky-cta-call" aria-label="Call or text Mikey at (425) 600-7897">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span class="scb-txt"><span class="scb-label">Call or text</span><span class="scb-num">(425) 600-7897</span></span>
+  </a>
+  <a href="#booking" class="sticky-cta-book" aria-label="Book your detail">Book Now →</a>
+</div>
+<script>
+(function(){var bar=document.getElementById('mobileBookingBar');if(!bar)return;var hero=document.querySelector('.hero');function u(){var b=hero?hero.getBoundingClientRect().bottom:window.innerHeight;bar.classList.toggle('is-visible',b<=60);}u();window.addEventListener('scroll',u,{passive:true});window.addEventListener('resize',u,{passive:true});})();
 </script>
 </body>
 </html>
