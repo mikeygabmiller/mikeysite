@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saturn SL — Livery Build Plan</title>
+<style>
+  :root{
+    --f-display:"Bahnschrift","DIN Alternate","Oswald","Arial Narrow Bold","Arial Narrow",system-ui,sans-serif;
+    --f-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --f-mono:"SF Mono","Cascadia Code","Roboto Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --bg:#131519; --panel:#191c21; --panel2:#20242b; --ink:#e9ebee; --ink2:#aab1bb;
+    --muted:#7c828d; --line:#2a2e35; --accent:#e0322f; --good:#3fae6b; --radius:14px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{--bg:#e7eaee; --panel:#f6f7f9; --panel2:#eceff2; --ink:#181b20; --ink2:#454b54;
+      --muted:#6b727c; --line:#d2d7dd; --accent:#cf2b28; --good:#2f9257;}
+  }
+  :root[data-theme="dark"]{--bg:#131519; --panel:#191c21; --panel2:#20242b; --ink:#e9ebee; --ink2:#aab1bb; --muted:#7c828d; --line:#2a2e35; --accent:#e0322f; --good:#3fae6b;}
+  :root[data-theme="light"]{--bg:#e7eaee; --panel:#f6f7f9; --panel2:#eceff2; --ink:#181b20; --ink2:#454b54; --muted:#6b727c; --line:#d2d7dd; --accent:#cf2b28; --good:#2f9257;}
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-body); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px; margin:0 auto; padding:clamp(20px,4vw,52px) clamp(16px,4vw,38px) 72px;}
+  .eyebrow{font-family:var(--f-mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--accent);}
+  h1{font-family:var(--f-display); font-weight:700; text-transform:uppercase; font-size:clamp(34px,6vw,60px); line-height:.94; letter-spacing:.01em; margin:.3em 0 .2em; text-wrap:balance;}
+  h1 .thin{color:var(--ink2); font-weight:400;}
+  .dek{color:var(--ink2); font-size:clamp(15px,1.6vw,17px); max-width:60ch; margin:0 0 6px;}
+  .dek b{color:var(--ink);}
+  .navrow{display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 4px;}
+  .navrow a{font-family:var(--f-mono); font-size:12px; text-decoration:none; color:var(--ink2); border:1px solid var(--line); background:var(--panel); padding:6px 12px; border-radius:999px;}
+  .navrow a:hover{color:var(--ink); border-color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin:48px 0 16px;}
+  .sec-head .idx{font-family:var(--f-mono); font-size:12px; color:var(--accent); letter-spacing:.1em;}
+  .sec-head h2{font-family:var(--f-display); text-transform:uppercase; letter-spacing:.03em; font-size:clamp(19px,2.5vw,24px); font-weight:700; margin:0;}
+  .sec-head .rule{flex:1; height:1px; background:var(--line);}
+  .sec-head .tot{font-family:var(--f-mono); font-size:13px; color:var(--ink); background:var(--panel2); border:1px solid var(--line); padding:4px 11px; border-radius:8px;}
+  .sec-head .tot b{color:var(--accent);}
+
+  table{width:100%; border-collapse:collapse; font-size:14px;}
+  .tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:var(--radius); background:var(--panel);}
+  th,td{text-align:left; padding:12px 16px; border-bottom:1px solid var(--line);}
+  th{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); font-weight:600;}
+  td.item b{color:var(--ink);} td.item span{color:var(--muted); font-size:12.5px; display:block; margin-top:1px;}
+  td.zone{color:var(--ink2); font-size:13px;}
+  td.cost{font-family:var(--f-mono); text-align:right; color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap;}
+  tr:last-child td{border-bottom:none;}
+  tfoot td{font-family:var(--f-mono); font-weight:700; color:var(--ink); background:var(--panel2);}
+  tfoot td.cost b{color:var(--accent);}
+  .pill{display:inline-block; font-family:var(--f-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; padding:2px 7px; border-radius:5px; margin-left:6px; vertical-align:middle;}
+  .pill.paint{background:rgba(110,117,128,.22); color:#c7ccd3;} .pill.vinyl{background:rgba(224,50,47,.16); color:#e0655f;}
+  .pill.tool{background:rgba(63,174,107,.16); color:#57bd83;} .pill.prep{background:rgba(120,140,170,.18); color:#93a4bd;}
+
+  /* order of operations */
+  ol.steps{list-style:none; counter-reset:s; margin:0; padding:0; display:grid; gap:12px;}
+  ol.steps li{counter-increment:s; display:grid; grid-template-columns:auto 1fr; gap:15px; align-items:start;
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 17px;}
+  ol.steps li::before{content:counter(s,decimal-leading-zero); font-family:var(--f-mono); font-weight:700; font-size:15px; color:var(--accent); line-height:1.4;}
+  ol.steps .st{font-weight:600; color:var(--ink); font-size:14.5px;}
+  ol.steps .sd{color:var(--ink2); font-size:13px; margin-top:3px;}
+  ol.steps .phase{grid-column:1/-1; display:block; counter-increment:none; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:10px 2px -2px; border:none; background:none; padding:0;}
+  ol.steps .phase::before{content:none;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media (max-width:720px){.grid2{grid-template-columns:1fr;}}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px;}
+  .card h3{font-family:var(--f-display); text-transform:uppercase; letter-spacing:.04em; font-size:15px; margin:0 0 12px; display:flex; align-items:center; gap:9px;}
+  .card h3::before{content:""; width:8px; height:8px; background:var(--accent); border-radius:2px; transform:rotate(45deg);}
+  ul.rules{list-style:none; margin:0; padding:0; display:grid; gap:11px;}
+  ul.rules li{display:grid; grid-template-columns:auto 1fr; gap:10px; font-size:13.5px; color:var(--ink2);}
+  ul.rules li b{color:var(--ink);} ul.rules .mk{color:var(--accent); font-family:var(--f-mono); font-weight:700;}
+  ul.check{list-style:none; margin:0; padding:0; display:grid; gap:9px;}
+  ul.check li{display:grid; grid-template-columns:auto 1fr; gap:10px; font-size:13.5px; color:var(--ink2);}
+  ul.check li::before{content:"✓"; color:var(--good); font-weight:700;}
+  .note{background:linear-gradient(180deg,var(--panel2),var(--panel)); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:12px; padding:16px 20px; margin-top:18px;}
+  .note p{margin:0; font-size:14px; color:var(--ink2);} .note p b{color:var(--ink);}
+  footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line); font-family:var(--f-mono); font-size:11.5px; color:var(--muted); letter-spacing:.05em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Build Plan · Rev A</div>
+  <h1>Saturn SL Livery<br><span class="thin">Buy List &amp; Order of Ops</span></h1>
+  <p class="dek">Everything to turn a tired-clearcoat <b>'96 Saturn SL</b> into a clean race look for about
+    <b>$242 in materials</b>. The blackout lands exactly where 30-year-old clear fails — roof, hood, trunk —
+    so the flaw fix and the design are the same job.</p>
+  <div class="navrow">
+    <a href="saturn-livery-render.html">↗ Render</a>
+    <a href="saturn-livery-placement.html">↗ Placement guide</a>
+    <a href="livery-large-decals.svg">↗ Large decal sheet</a>
+    <a href="livery-small-decals.svg">↗ Small decal sheet</a>
+  </div>
+
+  <!-- BUY LIST -->
+  <div class="sec-head">
+    <span class="idx">01</span><h2>Materials Buy List</h2><span class="rule"></span>
+    <span class="tot">TOTAL&nbsp; <b>$242</b></span>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Item</th><th>Where it goes</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr><td class="item"><b>2K satin black</b> — 2 cans<span>aerosol clear-over urethane, satin</span></td>
+            <td class="zone">Roof · hood · trunk · rockers <span class="pill paint">paint</span></td><td class="cost">$60</td></tr>
+        <tr><td class="item"><b>Adhesion promoter + satin clear</b><span>for edges &amp; over-decal seal</span></td>
+            <td class="zone">Panel prep + top-seal <span class="pill paint">paint</span></td><td class="cost">$28</td></tr>
+        <tr><td class="item"><b>Red cast vinyl</b> — 1 roll<span>Oracal 751 / 951, gloss red</span></td>
+            <td class="zone">Bands · arrows · keyline <span class="pill vinyl">vinyl</span></td><td class="cost">$24</td></tr>
+        <tr><td class="item"><b>White cast vinyl</b> — 1 roll<span>numbers &amp; wordmark</span></td>
+            <td class="zone">Door 96 · roof 96 · SL <span class="pill vinyl">vinyl</span></td><td class="cost">$18</td></tr>
+        <tr><td class="item"><b>Bed-liner aerosol</b> — 2 cans<span>textured, spatter-free</span></td>
+            <td class="zone">Wheel arches + pinch weld <span class="pill paint">paint</span></td><td class="cost">$32</td></tr>
+        <tr><td class="item"><b>Transfer / application tape</b><span>medium tack, for weeded vinyl</span></td>
+            <td class="zone">All decal transfer <span class="pill vinyl">vinyl</span></td><td class="cost">$12</td></tr>
+        <tr><td class="item"><b>Prep kit</b><span>degreaser, IPA 70/30, tack cloths</span></td>
+            <td class="zone">Every surface, twice <span class="pill prep">prep</span></td><td class="cost">$22</td></tr>
+        <tr><td class="item"><b>Abrasives</b><span>400/600/800 wet, scuff pads</span></td>
+            <td class="zone">Scuff failing clear <span class="pill prep">prep</span></td><td class="cost">$14</td></tr>
+        <tr><td class="item"><b>Masking</b><span>2&Prime; tape + masking paper</span></td>
+            <td class="zone">Protect gray, glass, trim <span class="pill prep">prep</span></td><td class="cost">$18</td></tr>
+        <tr><td class="item"><b>Application tools</b><span>squeegee, felt edge, snap knife + blades</span></td>
+            <td class="zone">Lay &amp; trim decals <span class="pill vinyl">vinyl</span></td><td class="cost">$14</td></tr>
+      </tbody>
+      <tfoot><tr><td>Materials total</td><td></td><td class="cost"><b>$242</b></td></tr></tfoot>
+    </table>
+  </div>
+  <div class="note"><p><b>Cutting the vinyl is separate tooling, not materials.</b> Two ways to go: a used
+    <b>Cricut off Marketplace (~$100)</b> handles everything up to 11.5&Prime; wide — fine for arrows, keylines,
+    wordmarks, and the safety marks. Anything over 12&Prime; — the door and roof numbers, the roundel — goes to a
+    <b>local sign shop</b> (a few dollars each). Use <b>cut vinyl, never printed stickers</b>: printed edges yellow and lift.</p></div>
+
+  <!-- ORDER OF OPS -->
+  <div class="sec-head"><span class="idx">02</span><h2>Order of Operations</h2><span class="rule"></span></div>
+  <ol class="steps">
+    <li class="phase">Phase 1 · Prep the body</li>
+    <li><div><div class="st">Wash &amp; decontaminate</div><div class="sd">Full wash, clay bar, iron remover. The whole car has to be surgically clean before anything else — twice the prep, half the peeling later.</div></div></li>
+    <li><div><div class="st">Map the failing clear</div><div class="sd">Mark the roof, hood and trunk where the clearcoat is checking or lifting. That map <em>is</em> the black area — you're painting exactly what's failing.</div></div></li>
+    <li><div><div class="st">Scuff &amp; feather</div><div class="sd">Wet-sand the failing clear (400→600), feather the good edges, knock the gloss off the whole black zone with a scuff pad. Bare metal gets spot primer.</div></div></li>
+    <li><div><div class="st">Mask the keep-gray</div><div class="sd">Mask off the gray polymer doors &amp; fenders, all glass, lights and trim. Crisp tape lines now = crisp paint edges later.</div></div></li>
+
+    <li class="phase">Phase 2 · Paint the big shapes</li>
+    <li><div><div class="st">Satin black the steel panels</div><div class="sd">Promoter, then satin black on roof, hood, trunk and rockers. Light coats, full flash between. Rockers get <em>painted</em>, not lined — vinyl won't hold on bed-liner texture.</div></div></li>
+    <li><div><div class="st">Bed-liner the arches &amp; pinch weld</div><div class="sd">Re-mask to the arch lips and pinch weld; two coats of textured liner. This is the one place texture belongs — nothing structural, no wordmark.</div></div></li>
+    <li><div><div class="st">Cure &amp; unmask</div><div class="sd">Let paint cure hard (check the can — usually days, not hours, before decals). Pull masking, clean overspray.</div></div></li>
+
+    <li class="phase">Phase 3 · Cut &amp; lay the graphics</li>
+    <li><div><div class="st">Cut, weed &amp; tape</div><div class="sd">Cricut the small stuff, sign-shop the 12&Prime; numbers. Weed the negatives, apply transfer tape. Wipe every landing surface with IPA.</div></div></li>
+    <li><div><div class="st">Big decals first</div><div class="sd">Door number panel + 96, roof 96, red bands. Hinge method, squeegee from the center, heat to conform over swage lines. Big pieces set the alignment everything else references.</div></div></li>
+    <li><div><div class="st">Small decals &amp; markings</div><div class="sd">Tow arrows, battery cut-off triangle, rocker wordmark. These functional marks are what make it read as a real race car — place them deliberately, not scattered.</div></div></li>
+
+    <li class="phase">Phase 4 · Seal &amp; finish</li>
+    <li><div><div class="st">Post-heat &amp; seal edges</div><div class="sd">Heat-set the vinyl, roll the edges down. Optional satin clear over the decals blends the sheen so paint and vinyl read as one surface.</div></div></li>
+    <li><div><div class="st">Final inspect &amp; detail</div><div class="sd">Pull remaining masking, check every edge, dress the tires, stand back at 20 ft — that's the distance the number is designed for.</div></div></li>
+  </ol>
+
+  <!-- RULES + CHECKS -->
+  <div class="sec-head"><span class="idx">03</span><h2>Congruency Rules &amp; Gut-Checks</h2><span class="rule"></span></div>
+  <div class="grid2">
+    <div class="card"><h3>The rules that keep it clean</h3>
+      <ul class="rules">
+        <li><span class="mk">01</span><span><b>Red only on black.</b> Never on bare gray — too close in luminance, goes muddy.</span></li>
+        <li><span class="mk">02</span><span><b>Paint big, vinyl small.</b> Big shapes get satin black paint; vinyl is reserved for the small, replaceable stuff.</span></li>
+        <li><span class="mk">03</span><span><b>Chunky bands only.</b> Each red band ≈ ⅓ the height of its black carrier. No pinstripes.</span></li>
+        <li><span class="mk">04</span><span><b>Front-door number only.</b> The B-pillar kills a centered Cup-style number — keep it on the front door.</span></li>
+        <li><span class="mk">05</span><span><b>Function over decoration.</b> Numbers + safety marks do the work. Skip the Pixar character bits — go to the NASCAR source.</span></li>
+      </ul>
+    </div>
+    <div class="card"><h3>Before you commit</h3>
+      <ul class="check">
+        <li>Door digits look <b>too big</b> in the mock-up — that's correct, leave them.</li>
+        <li>Roof number <b>matches</b> the door number.</li>
+        <li>Red totals only <b>10–15%</b> of the car, and every bit sits on black.</li>
+        <li>Rockers are <b>satin paint</b>, not bed-liner.</li>
+        <li>No half-commitment: full livery or a clean gray car — nothing in between.</li>
+        <li>All decals are <b>cut vinyl</b>, not printed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <span>Saturn SL · Race Livery · Build Plan · Rev A</span>
+    <span>Materials ≈ $242 · Cricut ~$100 or sign shop</span>
+  </footer>
+</div>
+<script>
+  // year-agnostic: keep decals note current; no external calls
+</script>
+</body>
+</html>
