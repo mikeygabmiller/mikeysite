@@ -2520,8 +2520,10 @@ header li a[href="#booking"],
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>You're locked in</h3>
-      <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
-      <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
+      <p>Want to grab your exact time right now? Pick a slot in about 30 seconds and I'll confirm it.</p>
+      <p style="margin:14px 0;"><a href="#" onclick="if(window.MikeyQQC&amp;&amp;MikeyQQC.bookNow){MikeyQQC.bookNow();}return false;" style="display:inline-flex;align-items:center;gap:8px;background:#C8102E;color:#fff;font-weight:900;text-decoration:none;padding:14px 26px;border-radius:12px;box-shadow:0 8px 22px rgba(200,16,46,.35);">📅 Book my time now →</a></p>
+      <p style="color:#9a9aa2;font-size:0.9rem;">Or I'll text you within a few hours to confirm. Talk soon!</p>
+      <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
     </div>
   </div>
@@ -2810,6 +2812,19 @@ header li a[href="#booking"],
       refreshNudge(); refreshContinue(); refreshTicker();
       if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: 'services_section' });
       calcQuote(); // computes total + shows step 4 (quote + name/phone form)
+    },
+    // Roll the customer straight from their quote into the booking page, prefilled,
+    // so they pick a real time instead of waiting for a text back.
+    bookNow: function () {
+      var svcMap = { 'Full Detail': 'full', 'Interior Detail': 'interior', 'Exterior Detail': 'exterior' };
+      var svcName = Object.keys(S.services)[0] || '';
+      var q = [];
+      var service = svcMap[svcName]; if (service) q.push('service=' + service);
+      if (S.vehicle) { var v = S.vehicle.value; q.push('size=' + (v >= 40 ? 'truck' : (v >= 20 ? 'suv' : 'sedan'))); }
+      var fields = { name: 'qqName', phone: 'qqPhone', email: 'qqEmail', city: 'qqLocation' };
+      for (var k in fields) { var el = $(fields[k]); if (el && el.value.trim()) q.push(k + '=' + encodeURIComponent(el.value.trim())); }
+      if (typeof gtag === 'function') gtag('event', 'qqc_to_booking', { service: service || '' });
+      location.href = 'https://texting.mikeysdetailingsnohomish.workers.dev/book' + (q.length ? ('?' + q.join('&')) : '');
     }
   };
 
