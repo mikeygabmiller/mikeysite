@@ -2100,6 +2100,12 @@ header li a[href="#booking"],
       </div>
     </div>
 
+    <!-- Online booking CTA → real-time calendar (Mikey's Detailing booking system) -->
+    <div style="max-width:480px;margin:18px auto 26px;padding:0 16px;">
+      <a href="https://texting.mikeysdetailingsnohomish.workers.dev/book" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#C8102E;color:#fff;font-weight:900;font-size:1.06rem;text-decoration:none;padding:16px 20px;border-radius:14px;box-shadow:0 10px 30px rgba(200,16,46,.35);">📅 Book Online — Pick Your Time</a>
+      <div style="text-align:center;color:#9a9aa2;font-size:0.82rem;margin-top:9px;line-height:1.45;">See Mikey's real openings and lock in your spot in about 2 minutes — or get an instant price below.</div>
+    </div>
+
 <!-- ===== QQC desktop shell: side info panel on wide screens, card-only on mobile ===== -->
 <style>
   .qqc-shell{ max-width:480px; margin:0 auto; padding:0 16px; }
@@ -2468,6 +2474,24 @@ header li a[href="#booking"],
   </div>
 
   <!-- STEP 4: QUOTE + BOOK -->
+  <style>
+    #qqcCard .qq-book{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);text-align:left;}
+    #qqcCard .qq-book-head{font-weight:800;font-size:15px;color:#fff;}
+    #qqcCard .qq-book-sub{font-size:12.5px;color:#9a9aa2;margin:2px 0 12px;}
+    #qqcCard .qq-days{display:flex;gap:7px;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    #qqcCard .qq-days::-webkit-scrollbar{display:none;}
+    #qqcCard .qq-day{flex:0 0 auto;min-width:56px;text-align:center;border:1.5px solid rgba(255,255,255,.16);border-radius:11px;padding:8px 6px;background:rgba(255,255,255,.04);cursor:pointer;color:#e9e9ec;}
+    #qqcCard .qq-day.off{opacity:.3;pointer-events:none;}
+    #qqcCard .qq-day.sel{border-color:#C8102E;background:rgba(200,16,46,.18);}
+    #qqcCard .qq-day .dow{font-size:10px;color:#9a9aa2;text-transform:uppercase;font-weight:700;}
+    #qqcCard .qq-day .dnum{font-size:18px;font-weight:800;line-height:1.1;}
+    #qqcCard .qq-day .mon{font-size:9.5px;color:#77777f;text-transform:uppercase;}
+    #qqcCard .qq-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+    #qqcCard .qq-slot{border:1.5px solid rgba(255,255,255,.16);border-radius:10px;padding:11px 4px;font-weight:700;font-size:14px;background:rgba(255,255,255,.04);color:#e9e9ec;cursor:pointer;text-align:center;}
+    #qqcCard .qq-slot.sel{border-color:#C8102E;background:#C8102E;color:#fff;}
+    #qqcCard .qq-slots-msg{grid-column:1/-1;color:#9a9aa2;font-size:13px;text-align:center;padding:12px;}
+    #qqcCard .qq-disclaimer{margin-top:12px;background:rgba(245,165,36,.12);border:1px solid rgba(245,165,36,.4);border-radius:10px;padding:10px 12px;font-size:12.5px;color:#f5cf94;line-height:1.5;}
+  </style>
   <div class="step" id="step4">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
     <div class="amount" id="qqAmount">$0</div>
@@ -2496,7 +2520,15 @@ header li a[href="#booking"],
         <input type="checkbox" id="qqSmsConsent" />
         <label for="qqSmsConsent">Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em>, msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
       </div>
-      <button class="btn btn-primary" type="submit" id="qqSubmitBtn" style="margin-top:4px;">Lock in my quote</button>
+      <div class="qq-book" id="qqBook">
+        <div class="qq-book-head">📅 Pick your time — book it now</div>
+        <div class="qq-book-sub">See my real openings and lock in a slot. Or just text me your quote below.</div>
+        <div class="qq-days" id="qqDays"></div>
+        <div class="qq-slots" id="qqSlots"><div class="qq-slots-msg">Pick a day to see open times.</div></div>
+        <div class="qq-disclaimer" id="qqDisclaimer" style="display:none;"></div>
+        <button class="btn btn-primary" type="button" id="qqBookBtn" disabled style="margin-top:12px;">Pick a day &amp; time above</button>
+      </div>
+      <button class="btn btn-ghost" type="submit" id="qqSubmitBtn" style="margin-top:8px;">Or just text me my quote</button>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
     <div class="trust">
@@ -2514,8 +2546,10 @@ header li a[href="#booking"],
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>You're locked in</h3>
-      <p>I'll text you within a few hours to confirm your detail. Talk soon!</p>
-      <p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
+      <p>Want to grab your exact time right now? Pick a slot in about 30 seconds and I'll confirm it.</p>
+      <p style="margin:14px 0;"><a href="#" onclick="if(window.MikeyQQC&amp;&amp;MikeyQQC.pickTime){MikeyQQC.pickTime();}return false;" style="display:inline-flex;align-items:center;gap:8px;background:#C8102E;color:#fff;font-weight:900;text-decoration:none;padding:14px 26px;border-radius:12px;box-shadow:0 8px 22px rgba(200,16,46,.35);">📅 Pick my time now →</a></p>
+      <p style="color:#9a9aa2;font-size:0.9rem;">Or I'll text you within a few hours to confirm. Talk soon!</p>
+      <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
     </div>
   </div>
@@ -2567,6 +2601,7 @@ header li a[href="#booking"],
     setProgress(n);
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
     if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
+    if (n === 4){ try { bkOnStep4(); } catch(e){} }
     var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -2681,6 +2716,8 @@ header li a[href="#booking"],
       }
     }, false);
 
+    var _bkBtn = $('qqBookBtn'); if (_bkBtn) _bkBtn.addEventListener('click', bkBook, false);
+    var _bkLoc = $('qqLocation'); if (_bkLoc) _bkLoc.addEventListener('input', bkDisclaimer, false);
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -2804,8 +2841,78 @@ header li a[href="#booking"],
       refreshNudge(); refreshContinue(); refreshTicker();
       if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: 'services_section' });
       calcQuote(); // computes total + shows step 4 (quote + name/phone form)
-    }
+    },
+    // Jump to the inline booking picker (same page) from the text-only success step.
+    pickTime: function () { goStep(4); var b = $('qqBook'); if (b) setTimeout(function () { b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300); }
   };
+
+  // ===== Inline booking: pick a real time & book right here in the QQC =====
+  var BK_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev';
+  var BK = { date:null, dateLabel:'', slot:null };
+  function bkPad(n){ return (n<10?'0':'')+n; }
+  function bkIso(d){ return d.getFullYear()+'-'+bkPad(d.getMonth()+1)+'-'+bkPad(d.getDate()); }
+  function bkFmt12(hm){ if(!hm) return ''; var p=String(hm).split(':'),h=+p[0],m=+p[1]||0,ap=h>=12?'PM':'AM',hr=h%12; if(hr===0)hr=12; return hr+':'+bkPad(m)+' '+ap; }
+  function bkSvcId(){ var map={'Full Detail':'full','Interior Detail':'interior','Exterior Detail':'exterior'}; return map[Object.keys(S.services)[0]] || ''; }
+  function bkSize(){ if(!S.vehicle) return 'suv'; var v=S.vehicle.value; return v>=40?'truck':(v>=20?'suv':'sedan'); }
+  function bkOutOfArea(){ var c=(($('qqLocation')&&$('qqLocation').value)||'').toLowerCase(); return !!c && c.indexOf('monroe')<0 && c.indexOf('snohomish')<0; }
+  function bkDisclaimer(){ var d=$('qqDisclaimer'); if(!d) return;
+    if(bkOutOfArea()){ d.innerHTML="Heads up — "+escapeHtml($('qqLocation').value.trim())+" is outside my main Monroe/Snohomish area, so this time is an <b>estimate</b>. I'll confirm it works with my route before it's locked in — you're never charged until the job's done."; d.style.display='block'; }
+    else d.style.display='none';
+  }
+  function bkRenderDays(){
+    var wrap=$('qqDays'); if(!wrap) return; var out='', now=new Date();
+    for(var i=0;i<21;i++){ var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i); var dow=d.getDay(); var work=dow>=1&&dow<=6;
+      var iso=bkIso(d), lbl=d.toLocaleDateString('en-US',{weekday:'short'})+', '+d.toLocaleDateString('en-US',{month:'short'})+' '+d.getDate();
+      out+='<div class="qq-day'+(work?'':' off')+(BK.date===iso?' sel':'')+'" data-bkday="'+iso+'" data-bklabel="'+lbl+'"><div class="dow">'+d.toLocaleDateString('en-US',{weekday:'short'})+'</div><div class="dnum">'+d.getDate()+'</div><div class="mon">'+d.toLocaleDateString('en-US',{month:'short'})+'</div></div>';
+    }
+    wrap.innerHTML=out;
+    var days=wrap.querySelectorAll('.qq-day');
+    for(var k=0;k<days.length;k++){ (function(el){ if(el.className.indexOf('off')>=0) return; el.onclick=function(){ bkPickDay(el.getAttribute('data-bkday'), el.getAttribute('data-bklabel'), el); }; })(days[k]); }
+  }
+  function bkPickDay(iso,label,el){ BK.date=iso; BK.dateLabel=label; BK.slot=null;
+    var ds=$('qqDays').querySelectorAll('.qq-day'); for(var i=0;i<ds.length;i++) ds[i].classList.remove('sel'); if(el) el.classList.add('sel');
+    bkResetBtn(); bkLoadSlots();
+  }
+  function bkLoadSlots(){
+    var grid=$('qqSlots'); if(!grid) return; var svc=bkSvcId();
+    if(!svc){ grid.innerHTML='<div class="qq-slots-msg">Pick a service first (step 2).</div>'; return; }
+    grid.innerHTML='<div class="qq-slots-msg">Loading open times…</div>';
+    fetch(BK_URL+'/api/availability?date='+BK.date+'&service='+svc+'&size='+bkSize()).then(function(r){return r.json();}).then(function(j){
+      var slots=(j&&j.slots)||[];
+      if(!slots.length){ grid.innerHTML='<div class="qq-slots-msg">No open times that day — try another.</div>'; return; }
+      var out=''; for(var i=0;i<slots.length;i++){ out+='<div class="qq-slot" data-bkslot="'+slots[i]+'">'+bkFmt12(slots[i])+'</div>'; }
+      grid.innerHTML=out;
+      var els=grid.querySelectorAll('.qq-slot'); for(var k=0;k<els.length;k++){ (function(el){ el.onclick=function(){ bkPickSlot(el.getAttribute('data-bkslot'), el); }; })(els[k]); }
+    }).catch(function(){ grid.innerHTML='<div class="qq-slots-msg">Couldn\'t load times — try again or text (425) 600-7897.</div>'; });
+  }
+  function bkPickSlot(t,el){ BK.slot=t; var es=$('qqSlots').querySelectorAll('.qq-slot'); for(var i=0;i<es.length;i++) es[i].classList.remove('sel'); if(el) el.classList.add('sel'); bkResetBtn(); }
+  function bkResetBtn(){ var b=$('qqBookBtn'); if(!b) return; if(BK.date&&BK.slot){ b.disabled=false; b.textContent='Book '+BK.dateLabel+' at '+bkFmt12(BK.slot); } else { b.disabled=true; b.textContent='Pick a day & time above'; } }
+  function bkOnStep4(){ bkRenderDays(); BK.slot=null; if(BK.date){ bkLoadSlots(); } else { var g=$('qqSlots'); if(g) g.innerHTML='<div class="qq-slots-msg">Pick a day to see open times.</div>'; } bkResetBtn(); bkDisclaimer(); }
+  function bkNotes(){ var p=[]; if(S.items&&S.items.length) p.push('Quote: '+S.items.join(', ')+' = $'+S.total); if(S.condition&&S.condition.label) p.push('Condition: '+S.condition.label); if(S.vehicle&&S.vehicle.label) p.push('Vehicle size: '+S.vehicle.label); var n=(($('qqNotes')&&$('qqNotes').value)||'').trim(); if(n) p.push('Notes: '+n); return p.join(' | '); }
+  function bkFail(){ var e=$('qqError'); if(e){ e.innerHTML='<p>That didn\'t go through. Please try again, or text me at <a href="tel:+14256007897">(425) 600-7897</a> and I\'ll lock you in.</p>'; e.style.display='block'; } }
+  function bkBook(){
+    var nE=$('qqName'), pE=$('qqPhone'); var name=(nE.value||'').trim(); var phone=(pE.value||'').trim(); var digits=phone.replace(/\D/g,''); var ok=true;
+    if(!name){ $('qqfName').classList.add('bad'); nE.classList.add('err'); ok=false; } else { $('qqfName').classList.remove('bad'); nE.classList.remove('err'); }
+    if(digits.length<10){ $('qqfPhone').classList.add('bad'); pE.classList.add('err'); ok=false; } else { $('qqfPhone').classList.remove('bad'); pE.classList.remove('err'); }
+    if(!BK.date||!BK.slot) return;
+    if(!ok){ (name?pE:nE).focus(); return; }
+    var svc=bkSvcId(); if(!svc){ goStep(2); return; }
+    var errBox=$('qqError'); if(errBox) errBox.style.display='none';
+    var btn=$('qqBookBtn'); btn.disabled=true; btn.textContent='Booking…';
+    var payload={ service:svc, size:bkSize(), vehicle:'', date:BK.date, dateLabel:BK.dateLabel, slot:BK.slot, estimate:S.total, name:name, phone:phone, email:(($('qqEmail')&&$('qqEmail').value)||'').trim(), city:(($('qqLocation')&&$('qqLocation').value)||'').trim(), notes:bkNotes(), smsConsent: !!($('qqSmsConsent')&&$('qqSmsConsent').checked), ackWaterPower:true, wantQuote:false };
+    fetch(BK_URL+'/api/book',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(d){
+      if(d&&d.ok){ bkSuccess(); }
+      else if(d&&d.error==='slot_taken'){ btn.disabled=false; btn.textContent='That slot was just taken — pick another'; BK.slot=null; bkLoadSlots(); }
+      else { btn.disabled=false; bkResetBtn(); bkFail(); }
+    }).catch(function(){ btn.disabled=false; bkResetBtn(); bkFail(); });
+  }
+  function bkSuccess(){
+    var suc=document.querySelector('#step5 .success'); var when=BK.dateLabel+' at '+bkFmt12(BK.slot); var svcName=Object.keys(S.services)[0]||'detail';
+    var CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+    if(suc){ suc.innerHTML='<div class="ring">'+CK+'</div><h3>You\'re booked!</h3><p>Your '+escapeHtml(svcName)+' is set for <b>'+escapeHtml(when)+'</b>. I\'ll text you to confirm — usually within the hour.</p>'+(bkOutOfArea()?'<p style="color:#f5cf94;font-size:.9rem;margin-top:8px;">Since you\'re outside my main Monroe/Snohomish area, that time is an estimate — I\'ll confirm it works for the drive.</p>':'')+'<p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p><p class="sig">Mikey</p>'; }
+    if(typeof gtag==='function') gtag('event','qqc_booked',{value:S.total,currency:'USD'});
+    goStep(5);
+  }
 
   if (!attach()){
     var delays = [100,300,600,1000,2000], di = 0;
@@ -4162,7 +4269,7 @@ header li a[href="#booking"],
       <span class="scb-num">(425) 600-7897</span>
     </span>
   </a>
-  <a href="#booking" class="sticky-cta-book" aria-label="Book your detail">Book Now →</a>
+  <a href="https://texting.mikeysdetailingsnohomish.workers.dev/book" class="sticky-cta-book" aria-label="Book your detail">Book Now →</a>
 </div>
 <script>
 (function(){
