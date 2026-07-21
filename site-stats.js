@@ -71,3 +71,20 @@ window.MD_STATS = {
     apply();
   }
 })();
+
+/* ============================================================
+   FIRST-PARTY VISIT BEACON → the SMS dashboard's built-in
+   analytics (Grow → Website tab). One image ping per page load.
+   No cookies, no third party — the Worker hashes the IP for a
+   same-day unique count and never stores it. Only fires on the
+   live site so local previews don't pollute the numbers.
+   ============================================================ */
+(function () {
+  try {
+    if (!/(^|\.)mikeysdetailing\.com$/i.test(location.hostname)) return;
+    var img = new Image();
+    img.src = 'https://texting.mikeysdetailingsnohomish.workers.dev/px?p=' +
+      encodeURIComponent(location.pathname) + '&r=' +
+      encodeURIComponent(document.referrer) + '&t=' + Date.now();
+  } catch (e) { /* never break the page over analytics */ }
+})();
