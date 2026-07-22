@@ -2472,9 +2472,9 @@ header li a[href="#booking"],
 
   <!-- STEP 4: QUOTE + BOOK -->
   <style>
-    #qqcCard .qq-book{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);text-align:left;min-width:0;}
-    #qqcCard .qq-book-head{font-weight:800;font-size:16px;color:#fff;letter-spacing:-.01em;}
-    #qqcCard .qq-book-sub{font-size:13px;color:#9a9aa2;margin:3px 0 12px;line-height:1.45;}
+    #qqcCard .qq-book{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);text-align:left;min-width:0;}
+    #qqcCard .qq-book-head{font-weight:900;font-size:25px;color:#fff;letter-spacing:-.025em;line-height:1.15;}
+    #qqcCard .qq-book-sub{font-size:14.5px;color:#c2c2ca;margin:7px 0 14px;line-height:1.5;}
     #qqcCard .qq-day-hint{font-size:10.5px;color:#77777f;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin:0 0 7px;text-align:right;}
     #qqcCard .qq-days{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 9px;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-snap-type:x proximity;min-width:0;max-width:100%;}
     #qqcCard .qq-days::-webkit-scrollbar{display:none;}
@@ -2512,23 +2512,14 @@ header li a[href="#booking"],
         <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
         <span class="msg">Enter a valid phone number so I can text you.</span>
       </div>
-      <div class="field"><input type="email" id="qqEmail" placeholder="Email (optional)" autocomplete="email" /></div>
-      <div class="field">
-        <input type="text" id="qqLocation" placeholder="Your city (optional)" list="qqCities" autocomplete="address-level2" />
-        <datalist id="qqCities">
-          <option value="Snohomish"></option><option value="Monroe"></option>
-          <option value="Lake Stevens"></option><option value="Everett"></option>
-          <option value="Bothell"></option><option value="Mill Creek"></option><option value="Duvall"></option>
-        </datalist>
-      </div>
       <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
       <label class="sms-opt" for="qqSmsConsent">
         <input type="checkbox" id="qqSmsConsent" />
         <span class="sms-opt-txt">Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em> — msg &amp; data rates may apply, reply STOP anytime to opt out.</span>
       </label>
       <div class="qq-book" id="qqBook">
-        <div class="qq-book-head">📅 Pick your time</div>
-        <div class="qq-book-sub">Grab a slot that works for you — I'll text to confirm, usually within the hour.</div>
+        <div class="qq-book-head">📅 Book your time — instantly</div>
+        <div class="qq-book-sub">The fastest way to lock it in — no calls, no waiting. Tap a day and time below and it's yours. I'll text to confirm, usually within the hour.</div>
         <div class="qq-day-hint" id="qqDayHint">Swipe for more days ›</div>
         <div class="qq-days" id="qqDays"></div>
         <div class="qq-slots" id="qqSlots"><div class="qq-slots-msg">Pick a day to see open times.</div></div>
@@ -2742,8 +2733,8 @@ header li a[href="#booking"],
       if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
 
       var name = nE.value.trim();
-      var email = ($('qqEmail').value || '').trim();
-      var location = ($('qqLocation').value || '').trim();
+      var email = (($('qqEmail')&&$('qqEmail').value)||'').trim();
+      var location = (($('qqLocation')&&$('qqLocation').value)||'').trim();
       var notes = ($('qqNotes').value || '').trim();
       var cond = (S.condition && S.condition.label) ? S.condition.label : 'Pretty Clean';
       var veh = S.vehicle ? S.vehicle.label : 'vehicle';
