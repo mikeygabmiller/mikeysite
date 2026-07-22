@@ -2768,8 +2768,8 @@ header li a[href="#booking"],
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
       fd.append('message', msgBody);
-      // Fire web3forms (email to Mikey) + Netlify backend (auto-text + saves the
-      // lead into the SMS dashboard) in parallel.
+      // Fire web3forms (email to Mikey) + the SMS dashboard Worker (auto-text +
+      // saves the lead into the dashboard) in parallel.
       // Success if either goes through so the customer is never blocked.
       var smsConsent = !!($('qqSmsConsent') && $('qqSmsConsent').checked);
       // Normalize phone to E.164 (+1XXXXXXXXXX) so the SMS automation can text it
@@ -2784,7 +2784,7 @@ header li a[href="#booking"],
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
         notes: notes || '', smsConsent: smsConsent
       };
-      var LEAD_URL = 'https://mikeysms.netlify.app/submit';
+      var LEAD_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
         fetch('https://api.web3forms.com/submit', { method:'POST', body: fd }).then(function(r){ return r.json(); }),
         fetch(LEAD_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(smsPayload) })
@@ -2983,7 +2983,7 @@ header li a[href="#booking"],
     // Success if EITHER goes through, so a booking is never lost, and the lead lands in the dashboard.
     Promise.allSettled([
       fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}),
-      fetch('https://mikeysms.netlify.app/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(smsPayload)})
+      fetch('https://texting.mikeysdetailingsnohomish.workers.dev/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(smsPayload)})
     ]).then(function(results){
       var emailOk=results[0].status==='fulfilled' && results[0].value && results[0].value.success;
       var smsOk=results[1].status==='fulfilled';
