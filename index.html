@@ -2272,8 +2272,8 @@ header li a[href="#booking"],
 #qqcCard .amount { text-align: center; font-size: 64px; font-weight: 700; letter-spacing: -0.04em; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
 #qqcCard .amount.lit { animation: qqcAmountPop .45s cubic-bezier(.34,1.5,.64,1); }
 @keyframes qqcAmountPop { 0% { transform: scale(.88); } 100% { transform: scale(1); } }
-#qqcCard .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 20px; }
-#qqcCard .breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 22px; }
+#qqcCard .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 13px; }
+#qqcCard .breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 14px; }
 #qqcCard .bd-head { font-size: 12px; font-weight: 640; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); padding: 8px 0 4px; }
 #qqcCard .inc-row { display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: 15px; font-weight: 520; }
 #qqcCard .inc-row + .inc-row { border-top: 1px solid var(--border); }
@@ -2283,9 +2283,9 @@ header li a[href="#booking"],
 #qqcCard .inc-note { margin-top: 11px; padding: 11px 13px; font-size: 13.5px; color: var(--text-2); background: var(--surface-3); border-radius: 12px; line-height: 1.45; }
 #qqcCard .inc-note b { color: var(--text-3); font-weight: 600; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
 
-#qqcCard .form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 6px; }
+#qqcCard .form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; margin-bottom: 6px; }
 #qqcCard .field { position: relative; }
-#qqcCard .field input, #qqcCard .field textarea { width: 100%; font: inherit; font-size: 16px; background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border); border-radius: 13px; padding: 16px; transition: border-color .2s ease, box-shadow .2s ease, background .2s; }
+#qqcCard .field input, #qqcCard .field textarea { width: 100%; font: inherit; font-size: 16px; background: var(--surface-2); color: var(--text); border: 1.5px solid var(--border); border-radius: 13px; padding: 12px 16px; transition: border-color .2s ease, box-shadow .2s ease, background .2s; }
 #qqcCard .field textarea { resize: vertical; min-height: 76px; line-height: 1.45; padding: 14px 16px; }
 #qqcCard .field input::placeholder, #qqcCard .field textarea::placeholder { color: var(--text-3); }
 #qqcCard .field input:focus, #qqcCard .field textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
@@ -2297,11 +2297,11 @@ header li a[href="#booking"],
 #qqcCard #qqfName input:focus, #qqcCard #qqfPhone input:focus { background: var(--surface-2); }
 #qqcCard #qqfName::after, #qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
 #qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
-#qqcCard .sms-opt { display: flex; align-items: center; gap: 13px; margin: 6px 0 14px; text-align: left; padding: 14px 15px; background: rgba(255,255,255,.05); border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; transition: border-color .18s ease, background .18s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .sms-opt { display: flex; align-items: center; gap: 12px; margin: 4px 0 10px; text-align: left; padding: 9px 14px; background: rgba(255,255,255,.05); border: 1.5px solid var(--border); border-radius: 14px; cursor: pointer; transition: border-color .18s ease, background .18s ease; -webkit-tap-highlight-color: transparent; }
 #qqcCard .sms-opt:hover { border-color: var(--border-2); background: rgba(255,255,255,.07); }
 #qqcCard .sms-opt:has(input:checked) { border-color: var(--accent); background: rgba(var(--accent-rgb), .1); }
 #qqcCard .sms-opt input[type=checkbox] { width: 28px; height: 28px; min-width: 28px; margin: 0; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
-#qqcCard .sms-opt .sms-opt-txt { font-size: 13px; color: var(--text-2); line-height: 1.45; cursor: pointer; font-weight: 500; }
+#qqcCard .sms-opt .sms-opt-txt { font-size: 12.5px; color: var(--text-2); line-height: 1.4; cursor: pointer; font-weight: 500; }
 #qqcCard .sms-opt .sms-opt-txt em { color: var(--text); font-style: normal; font-weight: 700; }
 #qqcCard .trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
 #qqcCard .trust span { display: inline-flex; align-items: center; gap: 5px; }
@@ -2472,7 +2472,7 @@ header li a[href="#booking"],
 
   <!-- STEP 4: QUOTE + BOOK -->
   <style>
-    #qqcCard .qq-book{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);text-align:left;min-width:0;}
+    #qqcCard .qq-book{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);text-align:left;min-width:0;}
     #qqcCard .qq-book-head{font-weight:900;font-size:25px;color:#fff;letter-spacing:-.025em;line-height:1.15;}
     #qqcCard .qq-book-sub{font-size:14.5px;color:#c2c2ca;margin:7px 0 14px;line-height:1.5;}
     #qqcCard .qq-day-hint{font-size:10.5px;color:#77777f;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin:0 0 7px;text-align:right;}
