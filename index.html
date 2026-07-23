@@ -1997,6 +1997,41 @@ header li a[href="#booking"],
   </div>
 </section>
 
+<!-- ===== MID-PAGE CONVERSION BAND (reuses global .hg4-btn styles) ===== -->
+<style>
+  .qcta{ background:radial-gradient(130% 150% at 50% 0%, #1c1c1e 0%, #0f0f0f 62%); padding:60px 20px; }
+  .qcta-inner{ max-width:720px; margin:0 auto; text-align:center; background:linear-gradient(180deg,#181818,#111); border:1px solid #2b2b2b; border-radius:22px; padding:44px 28px 40px; box-shadow:0 34px 70px -34px rgba(0,0,0,.85); position:relative; overflow:hidden; }
+  .qcta-inner::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--brand-red,#C8102E),transparent); }
+  .qcta-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-red,#C8102E); margin-bottom:16px; }
+  .qcta-eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--brand-red,#C8102E); box-shadow:0 0 0 3px rgba(200,16,46,.22); }
+  .qcta h2{ font-family:'Outfit',sans-serif; font-size:clamp(26px,4.8vw,38px); font-weight:900; letter-spacing:-.02em; color:#fff; line-height:1.1; margin:0 0 14px; }
+  .qcta h2 em{ color:var(--brand-red,#C8102E); font-style:normal; }
+  .qcta-sub{ font-size:16px; line-height:1.55; color:#b0b0b6; margin:0 auto 26px; max-width:470px; }
+  .qcta-feats{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 0 30px; }
+  .qcta-feat{ display:inline-flex; align-items:center; gap:7px; font-size:13.5px; font-weight:600; color:#e7e7ea; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.09); border-radius:999px; padding:9px 15px; }
+  .qcta-feat svg{ width:15px; height:15px; color:#2fb358; flex:none; }
+  .qcta .hg4-btnrow{ justify-content:center; }
+  @media (max-width:560px){ .qcta-inner{ padding:34px 20px 32px; } .qcta .hg4-btn{ width:100%; justify-content:center; } }
+</style>
+<section class="qcta" aria-label="Get your instant quote">
+  <div class="qcta-inner">
+    <span class="qcta-eyebrow"><span class="dot"></span> 5.0 Rated &middot; 300+ Cars Detailed</span>
+    <h2>Your Car Could Be Next.<br><em>See Your Price in 60 Seconds.</em></h2>
+    <p class="qcta-sub">No calls to make, no waiting on a quote. Pick your service, get your exact price, and grab a time, all from right here.</p>
+    <div class="qcta-feats">
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant online price</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No deposit to book</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pay only when you love it</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>I come to you</span>
+    </div>
+    <div class="hg4-btnrow">
+      <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
+      <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
+    </div>
+    <p class="hg4-micro" style="margin-top:16px;">Takes about a minute &middot; No obligation &middot; Snohomish County</p>
+  </div>
+</section>
+
 <style>
   .trust-work{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:32px 0 8px; }
   .trust-work img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:12px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 10px 30px rgba(0,0,0,0.45); }
