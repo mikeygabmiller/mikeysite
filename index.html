@@ -2025,24 +2025,6 @@ header li a[href="#booking"],
   .qcta .hg4-btnrow{ justify-content:center; }
   @media (max-width:560px){ .qcta-inner{ padding:34px 20px 32px; } .qcta .hg4-btn{ width:100%; justify-content:center; } }
 </style>
-<section class="qcta" aria-label="Get your instant quote">
-  <div class="qcta-inner">
-    <span class="qcta-eyebrow"><span class="dot"></span> 5.0 Rated &middot; 300+ Cars Detailed</span>
-    <h2>Your Car Could Be Next.<br><em>See Your Price in 60 Seconds.</em></h2>
-    <p class="qcta-sub">No calls to make, no waiting on a quote. Pick your service, get your exact price, and grab a time, all from right here.</p>
-    <div class="qcta-feats">
-      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant online price</span>
-      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No deposit to book</span>
-      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pay only when you love it</span>
-      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>I come to you</span>
-    </div>
-    <div class="hg4-btnrow">
-      <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
-      <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
-    </div>
-    <p class="hg4-micro" style="margin-top:16px;">Takes about a minute &middot; No obligation &middot; Snohomish County</p>
-  </div>
-</section>
 
 <style>
   .trust-work{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:32px 0 8px; }
@@ -2576,627 +2558,78 @@ header li a[href="#booking"],
   }
 </style>
 
-  <section id="beforeafter" aria-label="Before and after gallery">
-    <div class="section-inner">
-      <div id="ba-gallery">
-<style>
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  #ba-gallery { background: transparent; }
-  #ba-gallery {
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    padding: 60px 20px;
-  }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    line-height: 1;
-    color: #fff;
-  }
-  .section-title span { color: #C8102E; }
-  .section-sub {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #888;
-    margin-bottom: 50px;
-    font-weight: 400;
-  }
-  .slider-grid { display: grid; gap: 40px; }
-
-  .slider-card {
-    background: #1a1a1a;
-    border: 2px solid #C8102E;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(200,16,46, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .slider-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 50px rgba(200,16,46, 0.5);
-  }
-
-  .slider-label {
-    background: #C8102E;
-    color: #fff;
-    text-align: center;
-    padding: 14px 20px;
-    font-weight: 900;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    cursor: ew-resize;
-    user-select: none;
-    touch-action: none;
-    background: #000;
-  }
-  .slider img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-  }
-  .slider .img-after {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .slider .img-before {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: inset(0 50% 0 0);
-    will-change: clip-path;
-  }
-
-  .slider-handle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: #fff;
-    pointer-events: none;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
-  }
-  .slider-handle::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: #C8102E;
-    box-shadow: 0 0 20px rgba(200,16,46, 0.5), 0 4px 16px rgba(0,0,0,0.4);
-    border: 3px solid #fff;
-  }
-  .slider-handle::after {
-    content: '\25C0  \25B6';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 900;
-    z-index: 2;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-
-  .tag {
-    position: absolute;
-    top: 16px;
-    padding: 6px 14px;
-    font-weight: 900;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-    pointer-events: none;
-    z-index: 3;
-  }
-  .tag-before {
-    left: 16px;
-    background: rgba(0,0,0,0.85);
-    color: #fff;
-    border: 2px solid #C8102E;
-  }
-  .tag-after {
-    right: 16px;
-    background: #C8102E;
-    color: #fff;
-  }
-
-  .hint {
-    text-align: center;
-    margin-top: 16px;
-    color: #888;
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 0 16px 4px;
-  }
-
-  @media (min-width: 900px) {
-    .slider-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-</style>
-
-<div class="container">
-  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
-  <p class="section-sub">Drag the slider, real cars, real results.</p>
-
-  <div class="slider-grid">
-
-    <div class="slider-card">
-      <div class="slider-label">Back Seats, Family SUV</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
-        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Cheerios, juice, road snacks, all gone.</p>
-    </div>
-
-    <!--
-    <div class="slider-card">
-      <div class="slider-label">Cargo Area, Acura MDX</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
-        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Months of haul-everything mess. Reset.</p>
-    </div>
-    -->
-
-    <div class="slider-card">
-      <div class="slider-label">Exterior Wash &amp; Wax, Ford Focus</div>
-      <div class="slider" data-slider style="aspect-ratio: 4/3;">
-        <img class="img-after" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
-        <img class="img-before" src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Pollen, road film &amp; water spots, washed off and waxed.</p>
-    </div>
-
-  </div>
-</div>
-
-<script>
-(function(){
-  document.querySelectorAll('[data-slider]').forEach(function(slider){
-    var beforeImg = slider.querySelector('.img-before');
-    var handle = slider.querySelector('.slider-handle');
-    var dragging = false;
-
-    function setPosition(percent){
-      percent = Math.max(0, Math.min(100, percent));
-      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
-      handle.style.left = percent + '%';
-    }
-    function getPercent(clientX){
-      var rect = slider.getBoundingClientRect();
-      return ((clientX - rect.left) / rect.width) * 100;
-    }
-    function onDown(e){
-      dragging = true;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onMove(e){
-      if(!dragging) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onUp(){ dragging = false; }
-
-    slider.addEventListener('mousedown', onDown);
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-    slider.addEventListener('touchstart', onDown, {passive: false});
-    document.addEventListener('touchmove', onMove, {passive: false});
-    document.addEventListener('touchend', onUp);
-  });
-
-  // postMessage height for iframe parent (Carrd auto-resize)
-  function sendHeight() {
-    var h = document.documentElement.scrollHeight;
-    if (window.parent !== window) {
-      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
-    }
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  setTimeout(sendHeight, 500);
-})();
-</script>
-
-</div>
-    </div>
-  </section>
-
-<!-- ===================== PHOTO GALLERY STRIP ===================== -->
-<section aria-label="Photo gallery of detailing results" style="padding:24px 0 40px;background:#141414;overflow:hidden;position:relative;">
-  <style>
-    .hp-gallery-strip::before,.hp-gallery-strip::after{content:"";position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
-    .hp-gallery-strip::before{left:0;background:linear-gradient(to right,#141414,transparent)}
-    .hp-gallery-strip::after{right:0;background:linear-gradient(to left,#141414,transparent)}
-    .hp-gallery-track{display:flex;gap:14px;width:max-content;animation:hp-scroll 45s linear infinite}
-    .hp-gallery-track:hover{animation-play-state:paused}
-    @keyframes hp-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    .hp-gimg{width:280px;height:200px;object-fit:cover;border-radius:12px;border:2px solid #2a2a2a;flex-shrink:0;display:block;background:#1a1a1a}
-    @media(max-width:640px){.hp-gimg{width:210px;height:150px}}
-    @media(prefers-reduced-motion:reduce){.hp-gallery-track{animation:none}}
-  </style>
-  <div style="text-align:center;margin-bottom:28px;">
-    <div style="font-size:12px;font-weight:700;color:#C8102E;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;">The Work</div>
-    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
-  </div>
-  <div class="hp-gallery-strip" style="position:relative;">
-    <div class="hp-gallery-track">
-      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
-      <!-- duplicate set for seamless loop -->
-      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
-    </div>
-  </div>
-</section>
-
-<!-- ===================== OFFER SECTION (copy from here) ===================== -->
-<section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
-  <div class="mko__inner">
-
-    <span class="mko__eyebrow" id="mkoEyebrow"><span class="dot" id="mkoDot"></span><span id="mkoEyebrowText">Fri-Mon &middot; Limited spots</span></span>
-
-    <h2 class="mko__head">
-      Free Exterior Detail<br />
-      <span class="free">This Week.</span>
+<div class="hg4">
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="hiw4" aria-labelledby="hiw4-title">
+    <span class="hg4-eyebrow">How It Works</span>
+    <h2 class="hiw4-head" id="hiw4-title">
+      Three Steps. <em>Zero Effort.</em><br>One Jaw-Dropping Car.
     </h2>
-
-    <p class="mko__sub">
-      Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax, a $160 value, free.</b> You pay the interior price and drive away with a full detail.
+    <p class="hiw4-sub">
+      No deposit. No phone tag. No leaving your driveway. You hand me the keys and <strong>I handle everything else.</strong> Here's exactly how it goes.
     </p>
 
-    <div class="mko__shot">
-      <img src="https://lh3.googleusercontent.com/d/19k1tiDLAJylimGIcQErp2R8qqvc5DK0H=w1000" alt="Exterior detail, washed and waxed by Mikey's Mobile Detailing" loading="lazy" onerror="this.closest('.mko__shot').style.display='none';">
-    </div>
-    <style>
-      .mko__shot{ max-width:520px; margin:4px auto 28px; }
-      .mko__shot img{ width:100%; display:block; border-radius:14px; border:2px solid var(--red-bright,#C8102E); box-shadow:0 0 30px rgba(200,16,46,0.4); }
-    </style>
+    <div class="hiw4-grid">
+      <!-- chevrons between cards (desktop directional cue) -->
+      <span class="hiw4-chev c1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
+      <span class="hiw4-chev c2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
 
-    <!-- value math -->
-    <div class="mko__deal">
-      <div class="mko__cell">
-        <span class="label">You book</span>
-        <span class="name">Interior Detail</span>
-        <span class="price">from $200</span>
+      <!-- STEP 1 -->
+      <article class="hiw4-card">
+        <div class="hiw4-bignum" aria-hidden="true">01</div>
+        <div class="hiw4-iconwrap">
+          <div class="hiw4-node" aria-hidden="true">01</div>
+          <div class="hiw4-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.3l2.3 2.3 4.4-4.6"/></svg>
+          </div>
+        </div>
+        <span class="hiw4-chip">Instant Price &middot; No Deposit</span>
+        <h3 class="hiw4-title">Tell Me About Your Car</h3>
+        <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then I text you back to lock in a time that works for you.</p>
+        <div class="hiw4-foot"><span class="dot"></span> Instant price online <span class="kill">No deposit</span></div>
+      </article>
+
+      <!-- STEP 2 -->
+      <article class="hiw4-card">
+        <div class="hiw4-bignum" aria-hidden="true">02</div>
+        <div class="hiw4-iconwrap">
+          <div class="hiw4-node" aria-hidden="true">02</div>
+          <div class="hiw4-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h10v9h-10z"/><path d="M12.5 9.5h4l3 3v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>
+          </div>
+        </div>
+        <span class="hiw4-chip">I Bring Everything</span>
+        <h3 class="hiw4-title">Relax. I've Got It From Here.</h3>
+        <p class="hiw4-desc">I roll up on time with all my own gear and every product. You get on with your day, whether that's work, errands, or back to bed. I text you the moment your car is finished.</p>
+        <div class="hiw4-foot"><span class="dot"></span> Done the same day <span class="kill">Stay in your PJs</span></div>
+      </article>
+
+      <!-- STEP 3 -->
+      <article class="hiw4-card">
+        <div class="hiw4-bignum" aria-hidden="true">03</div>
+        <div class="hiw4-iconwrap">
+          <div class="hiw4-node" aria-hidden="true">03</div>
+          <div class="hiw4-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.8L18.7 9.7 13.9 11.6 12 16.4l-1.9-4.8L5.3 9.7l4.8-1.9z"/><path d="M18.5 14.5l.9 2.2 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>
+          </div>
+        </div>
+        <span class="hiw4-chip">Pay Only If You Love It</span>
+        <h3 class="hiw4-title">Open the Door and Grin</h3>
+        <p class="hiw4-desc">That fresh, clean car smell hits. You run your hand down paint that feels like glass. We walk around it together, and you don't pay a dime until you're grinning ear to ear.</p>
+        <div class="hiw4-foot"><span class="dot"></span> Pay when happy <span class="kill">Love it or free</span></div>
+      </article>
+    </div>
+
+    <div class="hiw4-cta">
+      <div class="hiw4-cta-kicker">Ready for <b>step one?</b></div>
+      <div class="hg4-btnrow">
+        <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
+        <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
       </div>
-      <div class="mko__plus">+</div>
-      <div class="mko__cell free-cell">
-        <span class="label">You get</span>
-        <span class="name">Exterior Detail</span>
-        <span><span class="strike">$160</span> &nbsp;<span class="big-free">Free</span></span>
-      </div>
+      <p class="hg4-micro">Instant price &middot; <b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
     </div>
-
-    <!-- countdown -->
-    <div class="mko__timerwrap">
-      <div class="mko__timerlabel" id="mkoTimerLabel">Offer ends <b>Monday</b> at midnight</div>
-      <div class="mko__clock" id="mkoClock" role="timer" aria-live="off">
-        <div class="mko__seg"><div class="num" id="mkoD">0</div><div class="unit">Days</div></div>
-        <div class="mko__seg"><div class="num" id="mkoH">00</div><div class="unit">Hours</div></div>
-        <div class="mko__seg"><div class="num" id="mkoM">00</div><div class="unit">Mins</div></div>
-        <div class="mko__seg"><div class="num" id="mkoS">00</div><div class="unit">Secs</div></div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="mko__cta">
-      <a class="mko__btn mko__btn--primary"
-         href="sms:+14256007897?&body=Hi%20Mikey!%20I'd%20like%20to%20claim%20the%20free%20exterior%20detail%20with%20an%20interior%20detail%20this%20week.%20When's%20your%20next%20opening%3F">
-        Text Mikey to Lock It In &rarr;
-      </a>
-      <span class="mko__finehint">Takes 20 seconds &middot; I'll text right back to confirm your spot</span>
-      <a class="mko__btn mko__btn--ghost" href="tel:+14256007897">&#128222;&nbsp; Or call (425) 600-7897</a>
-    </div>
-
-    <!-- trust -->
-    <div class="mko__trust">
-      <span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0</span>
-      <span class="sep"></span>
-      <span><span data-md-reviews="{n}">38</span>+ five-star reviews</span>
-      <span class="sep"></span>
-      <span>You don't pay until you love it</span>
-      <span class="sep"></span>
-      <span class="hot">I only open a few spots a week</span>
-    </div>
-
-  </div>
-
-  <!-- Offer active Fri 12:00am, Mon 11:59:59pm local. Off Tue/Wed/Thu. -->
-  <script>
-    (function () {
-      var elD    = document.getElementById("mkoD"),
-          elH    = document.getElementById("mkoH"),
-          elM    = document.getElementById("mkoM"),
-          elS    = document.getElementById("mkoS"),
-          label  = document.getElementById("mkoTimerLabel"),
-          brow   = document.getElementById("mkoEyebrow"),
-          browTx = document.getElementById("mkoEyebrowText"),
-          dot    = document.getElementById("mkoDot"),
-          section= document.getElementById("free-exterior-offer"),
-          cta    = section.querySelector(".mko__cta"),
-          head   = section.querySelector(".mko__head"),
-          sub    = section.querySelector(".mko__sub"),
-          deal   = section.querySelector(".mko__deal");
-
-      function pad(n) { return n < 10 ? "0" + n : "" + n; }
-
-      // Returns true if now is within Fri 00:00 - Mon 23:59:59
-      function isActive(now) {
-        var day = now.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
-        return day === 5 || day === 6 || day === 0 || day === 1;
-      }
-
-      // End of Monday (this week or next)
-      function nextOfferEnd(now) {
-        var day = now.getDay();
-        // Days until Monday: Mon=1 → 0, Tue-Sat: forward to next Mon, Sun=0 → 1
-        var daysUntilMon = (1 - day + 7) % 7;
-        if (daysUntilMon === 0 && now.getHours() >= 0) {
-          // today is Monday, end is tonight
-        }
-        var end = new Date(now);
-        end.setDate(now.getDate() + daysUntilMon);
-        end.setHours(23, 59, 59, 999);
-        if (end < now) end.setDate(end.getDate() + 7);
-        return end;
-      }
-
-      // Start of next Friday
-      function nextOfferStart(now) {
-        var day = now.getDay();
-        var daysUntilFri = (5 - day + 7) % 7;
-        if (daysUntilFri === 0) daysUntilFri = 7; // already Friday but in off-state (shouldn't happen, but safe)
-        var start = new Date(now);
-        start.setDate(now.getDate() + daysUntilFri);
-        start.setHours(0, 0, 0, 0);
-        return start;
-      }
-
-      var wasActive = null;
-
-      function applyState(active) {
-        if (active) {
-          brow.style.background = "";
-          dot.style.display = "";
-          browTx.textContent = "Fri-Mon · Limited spots";
-          label.innerHTML = 'Offer ends <b>Monday</b> at midnight';
-          section.style.opacity = "";
-          if (cta) cta.style.display = "";
-          if (head) head.style.opacity = "";
-          if (sub) sub.style.opacity = "";
-          if (deal) deal.style.opacity = "";
-        } else {
-          brow.style.background = "#444";
-          dot.style.display = "none";
-          browTx.textContent = "Offer Closed · Opens Friday";
-          label.innerHTML = 'Next offer starts <b>Friday</b>';
-          section.style.opacity = "0.72";
-          if (cta) cta.style.display = "none";
-          if (head) head.style.opacity = "0.45";
-          if (sub) sub.style.opacity = "0.55";
-          if (deal) deal.style.opacity = "0.45";
-        }
-      }
-
-      function tick() {
-        var now = new Date();
-        var active = isActive(now);
-        if (active !== wasActive) { applyState(active); wasActive = active; }
-        var target = active ? nextOfferEnd(now) : nextOfferStart(now);
-        var diff = Math.max(0, target - now);
-        var sec = Math.floor(diff / 1000);
-        elD.textContent = Math.floor(sec / 86400);
-        elH.textContent = pad(Math.floor((sec % 86400) / 3600));
-        elM.textContent = pad(Math.floor((sec % 3600) / 60));
-        elS.textContent = pad(sec % 60);
-      }
-
-      tick();
-      setInterval(tick, 1000);
-    })();
-  </script>
-</section>
-
-      
-      
-<!-- ============================================================
-     MIKEY'S DETAILING, SERVICES SECTION (concierge + cards)
-     Self-contained, scoped to .svc2. Lucide icons (ISC license).
-     "Book" buttons call window.MikeyQQC.book() to prefill the QQC.
-     ============================================================ -->
-<style>
-  @property --sva{ syntax:'<angle>'; inherits:false; initial-value:0deg }
-  .svc2{
-    --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
-    --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
-    --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
-    position:relative; font-family:'Outfit',system-ui,sans-serif; color:var(--ink); line-height:1.5;
-    padding:80px 20px;
-    background:
-      radial-gradient(1000px 560px at 82% -10%, rgba(200,16,46,.10), transparent 60%),
-      radial-gradient(900px 480px at 0% 110%, rgba(201,162,75,.06), transparent 55%),
-      #0c0c0c;
-  }
-  .svc2 *{ box-sizing:border-box }
-  .svc2 .svc2-wrap{ max-width:1120px; margin:0 auto }
-  .svc2 svg.ic{ fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
-
-  .svc2 .sec-head{ text-align:center; margin-bottom:34px }
-  .svc2 .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
-  .svc2 .sec-head h2{ font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin:10px 0 0; line-height:1.02 }
-  .svc2 .sec-head h2 em{ color:var(--red); font-style:normal }
-  .svc2 .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.2vw,18px); margin:16px auto 0; max-width:600px; font-weight:500 }
-
-  .svc2 .acard{ position:relative; border-radius:22px; overflow:hidden; transform-style:preserve-3d;
-    transition:transform .14s ease, box-shadow .3s;
-    background:var(--card); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
-    border:1px solid var(--line); box-shadow:0 22px 46px -26px #000 }
-  .svc2 .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:22px; padding:1.5px; pointer-events:none;
-    background:conic-gradient(from var(--sva), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
-    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
-    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
-    animation:svspin 6s linear infinite; opacity:.55 }
-  .svc2 .acard.feature::before{ opacity:1 }
-  @keyframes svspin{ to{ --sva:360deg } }
-  .svc2 .acard > *{ position:relative; z-index:2 }
-
-  .svc2 .ck{ width:15px; height:15px; flex:none; stroke:var(--gold) }
-  .svc2 .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:15px 24px; border-radius:12px;
-    border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
-    transition:transform .15s, background .15s, opacity .2s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
-  .svc2 .cta:hover{ background:var(--red2); transform:translateY(-2px) }
-  .svc2 .cta:disabled{ opacity:.4; cursor:not-allowed; box-shadow:none } .svc2 .cta:disabled:hover{ transform:none; background:var(--red) }
-  .svc2 .cta.ghost{ background:transparent; border-color:rgba(255,255,255,.22); box-shadow:none; color:#fff } .svc2 .cta.ghost:hover{ border-color:#fff; background:rgba(255,255,255,.04) }
-  .svc2 .cta.block{ display:block; width:100% }
-  .svc2 .learn{ display:inline-flex; align-items:center; gap:6px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .svc2 .learn:hover{ color:var(--gold) } .svc2 .learn .ck{ stroke:var(--gold2) }
-  .svc2 .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 13px; border-radius:99px; white-space:nowrap }
-  .svc2 .pill .ck{ stroke:#1a1205; width:12px; height:12px }
-
-  /* concierge */
-  .svc2 .concierge{ padding:34px 36px 32px; margin-bottom:34px }
-  .svc2 .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px }
-  .svc2 .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
-    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
-  .svc2 .cc-icon svg{ width:26px; height:26px }
-  .svc2 .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .svc2 .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
-  .svc2 .cc-prog{ margin-left:auto; display:flex; gap:6px } .svc2 .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .svc2 .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
-  .svc2 .cc-stage{ min-height:188px }
-  .svc2 .cc-q{ display:none } .svc2 .cc-q.show{ display:block; animation:svfade .4s cubic-bezier(.22,1,.36,1) both }
-  @keyframes svfade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
-  .svc2 .cc-qt{ font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:5px } .svc2 .cc-qh{ font-size:13.5px; color:var(--muted); margin-bottom:18px }
-  .svc2 .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px }
-  .svc2 .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
-    background:var(--surface2); border:1.5px solid var(--line); border-radius:16px; padding:16px;
-    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:14px; align-items:center }
-  .svc2 .cc-opt:hover{ border-color:var(--red); transform:translateY(-2px); background:rgba(200,16,46,.06) }
-  .svc2 .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
-  .svc2 .cc-opt.sel{ border-color:var(--red); background:rgba(200,16,46,.1) }
-  .svc2 .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
-    background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
-  .svc2 .cc-tile svg{ width:26px; height:26px }
-  .svc2 .cc-opt:hover .cc-tile, .svc2 .cc-opt.sel .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
-  .svc2 .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .svc2 .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
-  .svc2 .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .svc2 .cc-opt .tick svg{ width:12px; height:12px; stroke:#fff } .svc2 .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
-  .svc2 .cc-note-wrap{ margin-top:18px }
-  .svc2 .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .svc2 .cc-note-label span{ color:var(--muted); font-weight:500 } .svc2 .cc-note-label svg{ width:16px; height:16px; stroke:var(--gold) }
-  .svc2 .cc-note{ width:100%; min-height:64px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
-    background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
-  .svc2 .cc-note::placeholder{ color:#6e6e76 } .svc2 .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
-  .svc2 .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .svc2 .cc-note-hint svg{ width:13px; height:13px; stroke:var(--gold) }
-  .svc2 .cc-nav{ display:flex; align-items:center; gap:12px; margin-top:20px }
-  .svc2 .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .svc2 .cc-back:hover{ color:#fff } .svc2 .cc-back svg{ width:16px; height:16px; stroke:currentColor }
-  .svc2 .cc-nav .cta{ margin-left:auto }
-  .svc2 .cc-result{ display:none } .svc2 .cc-result.show{ display:block; animation:svfade .45s cubic-bezier(.22,1,.36,1) both }
-  .svc2 .cc-reco-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap }
-  .svc2 .cc-reco-lead{ font-size:13.5px; color:#cfcfd2 }
-  .svc2 .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:18px; padding:24px }
-  .svc2 .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
-  .svc2 .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
-    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
-  .svc2 .cc-reco-tile svg{ width:34px; height:34px }
-  .svc2 .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .svc2 .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
-  .svc2 .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
-  .svc2 .cc-reco-price{ font-size:32px; font-weight:900; letter-spacing:-.02em; line-height:1 }
-  .svc2 .cc-reco-est{ font-size:12px; color:var(--gold2); margin-top:6px; max-width:180px; margin-left:auto }
-  .svc2 .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 0 } .svc2 .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
-  .svc2 .cc-reco-note{ margin-top:18px; padding:13px 15px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:13px; color:#dcdcde; line-height:1.5 } .svc2 .cc-reco-note b{ display:block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px }
-  .svc2 .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px } .svc2 .cc-reco-cta .cta{ flex:1; min-width:180px }
-  .svc2 .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .svc2 .cc-retake:hover{ color:#fff } .svc2 .cc-retake svg{ width:14px; height:14px; stroke:currentColor }
-
-  /* browse cards */
-  .svc2 .browse-div{ display:flex; align-items:center; gap:18px; margin:8px 2px 28px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
-  .svc2 .browse-div::before, .svc2 .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
-  .svc2 .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:20px; align-items:stretch }
-  .svc2 .cards .acard{ padding:42px 24px 26px; display:flex; flex-direction:column }
-  .svc2 .svc-badge{ position:absolute; top:15px; left:50%; transform:translateX(-50%); z-index:3 }
-  .svc2 .svc-top{ display:flex; align-items:center; gap:13px }
-  .svc2 .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
-    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc2 .svc-tile svg{ width:28px; height:28px }
-  .svc2 .feature .svc-tile{ color:#fff; background:linear-gradient(140deg,var(--red),var(--red2)) }
-  .svc2 .svc-name{ font-size:21px; font-weight:900; letter-spacing:-.01em } .svc2 .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:2px }
-  .svc2 .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:18px } .svc2 .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
-  .svc2 .svc-price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px }
-  .svc2 .divider{ height:1px; background:var(--line); margin:16px 0 }
-  .svc2 .feat{ list-style:none; display:grid; gap:11px; flex:1; margin-bottom:20px } .svc2 .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
-  .svc2 .svc-learn{ margin:14px 0 16px; display:inline-flex }
-
-  .svc2 .trustrow{ display:flex; justify-content:center; gap:12px 28px; flex-wrap:wrap; margin-top:34px; font-size:12.5px; color:var(--muted) }
-  .svc2 .trustrow span{ display:inline-flex; align-items:center; gap:8px } .svc2 .trustrow strong{ color:var(--gold); font-weight:800 }
-  .svc2 .quote{ display:flex; gap:14px; align-items:flex-start; max-width:700px; margin:28px auto 0; text-align:left }
-  .svc2 .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:Georgia,serif }
-  .svc2 .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .svc2 .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .svc2 .quote cite b{ color:#fff } .svc2 .quote .s{ color:var(--gold) }
-
-  @media (max-width:860px){ .svc2 .cards{ grid-template-columns:1fr } .svc2 .cards .feature{ order:-1 } }
-  @media (max-width:620px){ .svc2 .cc-opts{ grid-template-columns:1fr } }
-  @media (max-width:560px){
-    .svc2{ padding:60px 16px } .svc2 .concierge{ padding:24px 20px }
-    .svc2 .cc-reco-main{ flex-wrap:wrap } .svc2 .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .svc2 .cc-reco-est{ margin-left:0; max-width:none }
-    .svc2 .cc-reco-feat{ grid-template-columns:1fr }
-  }
-  @media (prefers-reduced-motion:reduce){ .svc2 *{ animation:none !important } }
-</style>
-
-<!-- icon library, Lucide (ISC license), one consistent set -->
-
+  </section>
+</div>
 
 <section id="allservices" class="svc2">
   <div class="svc2-wrap">
@@ -3473,6 +2906,631 @@ header li a[href="#booking"],
   })();
   </script>
 </section>
+
+  <section id="beforeafter" aria-label="Before and after gallery">
+    <div class="section-inner">
+      <div id="ba-gallery">
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  #ba-gallery { background: transparent; }
+  #ba-gallery {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    padding: 60px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    line-height: 1;
+    color: #fff;
+  }
+  .section-title span { color: #C8102E; }
+  .section-sub {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 50px;
+    font-weight: 400;
+  }
+  .slider-grid { display: grid; gap: 40px; }
+
+  .slider-card {
+    background: #1a1a1a;
+    border: 2px solid #C8102E;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(200,16,46, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .slider-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 50px rgba(200,16,46, 0.5);
+  }
+
+  .slider-label {
+    background: #C8102E;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    touch-action: none;
+    background: #000;
+  }
+  .slider img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .slider .img-after {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider .img-before {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 50% 0 0);
+    will-change: clip-path;
+  }
+
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #fff;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  }
+  .slider-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #C8102E;
+    box-shadow: 0 0 20px rgba(200,16,46, 0.5), 0 4px 16px rgba(0,0,0,0.4);
+    border: 3px solid #fff;
+  }
+  .slider-handle::after {
+    content: '\25C0  \25B6';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 900;
+    z-index: 2;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .tag {
+    position: absolute;
+    top: 16px;
+    padding: 6px 14px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .tag-before {
+    left: 16px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    border: 2px solid #C8102E;
+  }
+  .tag-after {
+    right: 16px;
+    background: #C8102E;
+    color: #fff;
+  }
+
+  .hint {
+    text-align: center;
+    margin-top: 16px;
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0 16px 4px;
+  }
+
+  @media (min-width: 900px) {
+    .slider-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+</style>
+
+<div class="container">
+  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
+  <p class="section-sub">Drag the slider, real cars, real results.</p>
+
+  <div class="slider-grid">
+
+    <div class="slider-card">
+      <div class="slider-label">Back Seats, Family SUV</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
+        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Cheerios, juice, road snacks, all gone.</p>
+    </div>
+
+    <!--
+    <div class="slider-card">
+      <div class="slider-label">Cargo Area, Acura MDX</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
+        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Months of haul-everything mess. Reset.</p>
+    </div>
+    -->
+
+    <div class="slider-card">
+      <div class="slider-label">Exterior Wash &amp; Wax, Ford Focus</div>
+      <div class="slider" data-slider style="aspect-ratio: 4/3;">
+        <img class="img-after" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
+        <img class="img-before" src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Pollen, road film &amp; water spots, washed off and waxed.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-slider]').forEach(function(slider){
+    var beforeImg = slider.querySelector('.img-before');
+    var handle = slider.querySelector('.slider-handle');
+    var dragging = false;
+
+    function setPosition(percent){
+      percent = Math.max(0, Math.min(100, percent));
+      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+      handle.style.left = percent + '%';
+    }
+    function getPercent(clientX){
+      var rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+    function onDown(e){
+      dragging = true;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onUp(){ dragging = false; }
+
+    slider.addEventListener('mousedown', onDown);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    slider.addEventListener('touchstart', onDown, {passive: false});
+    document.addEventListener('touchmove', onMove, {passive: false});
+    document.addEventListener('touchend', onUp);
+  });
+
+  // postMessage height for iframe parent (Carrd auto-resize)
+  function sendHeight() {
+    var h = document.documentElement.scrollHeight;
+    if (window.parent !== window) {
+      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
+    }
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+
+</div>
+    </div>
+  </section>
+
+<!-- ===================== OFFER SECTION (copy from here) ===================== -->
+<section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
+  <div class="mko__inner">
+
+    <span class="mko__eyebrow" id="mkoEyebrow"><span class="dot" id="mkoDot"></span><span id="mkoEyebrowText">Fri-Mon &middot; Limited spots</span></span>
+
+    <h2 class="mko__head">
+      Free Exterior Detail<br />
+      <span class="free">This Week.</span>
+    </h2>
+
+    <p class="mko__sub">
+      Book an <b>Interior Detail</b> this week and I'll throw in the <b>exterior wash &amp; wax, a $160 value, free.</b> You pay the interior price and drive away with a full detail.
+    </p>
+
+    <div class="mko__shot">
+      <img src="https://lh3.googleusercontent.com/d/19k1tiDLAJylimGIcQErp2R8qqvc5DK0H=w1000" alt="Exterior detail, washed and waxed by Mikey's Mobile Detailing" loading="lazy" onerror="this.closest('.mko__shot').style.display='none';">
+    </div>
+    <style>
+      .mko__shot{ max-width:520px; margin:4px auto 28px; }
+      .mko__shot img{ width:100%; display:block; border-radius:14px; border:2px solid var(--red-bright,#C8102E); box-shadow:0 0 30px rgba(200,16,46,0.4); }
+    </style>
+
+    <!-- value math -->
+    <div class="mko__deal">
+      <div class="mko__cell">
+        <span class="label">You book</span>
+        <span class="name">Interior Detail</span>
+        <span class="price">from $200</span>
+      </div>
+      <div class="mko__plus">+</div>
+      <div class="mko__cell free-cell">
+        <span class="label">You get</span>
+        <span class="name">Exterior Detail</span>
+        <span><span class="strike">$160</span> &nbsp;<span class="big-free">Free</span></span>
+      </div>
+    </div>
+
+    <!-- countdown -->
+    <div class="mko__timerwrap">
+      <div class="mko__timerlabel" id="mkoTimerLabel">Offer ends <b>Monday</b> at midnight</div>
+      <div class="mko__clock" id="mkoClock" role="timer" aria-live="off">
+        <div class="mko__seg"><div class="num" id="mkoD">0</div><div class="unit">Days</div></div>
+        <div class="mko__seg"><div class="num" id="mkoH">00</div><div class="unit">Hours</div></div>
+        <div class="mko__seg"><div class="num" id="mkoM">00</div><div class="unit">Mins</div></div>
+        <div class="mko__seg"><div class="num" id="mkoS">00</div><div class="unit">Secs</div></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mko__cta">
+      <a class="mko__btn mko__btn--primary"
+         href="sms:+14256007897?&body=Hi%20Mikey!%20I'd%20like%20to%20claim%20the%20free%20exterior%20detail%20with%20an%20interior%20detail%20this%20week.%20When's%20your%20next%20opening%3F">
+        Text Mikey to Lock It In &rarr;
+      </a>
+      <span class="mko__finehint">Takes 20 seconds &middot; I'll text right back to confirm your spot</span>
+      <a class="mko__btn mko__btn--ghost" href="tel:+14256007897">&#128222;&nbsp; Or call (425) 600-7897</a>
+    </div>
+
+    <!-- trust -->
+    <div class="mko__trust">
+      <span><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0</span>
+      <span class="sep"></span>
+      <span><span data-md-reviews="{n}">38</span>+ five-star reviews</span>
+      <span class="sep"></span>
+      <span>You don't pay until you love it</span>
+      <span class="sep"></span>
+      <span class="hot">I only open a few spots a week</span>
+    </div>
+
+  </div>
+
+  <!-- Offer active Fri 12:00am, Mon 11:59:59pm local. Off Tue/Wed/Thu. -->
+  <script>
+    (function () {
+      var elD    = document.getElementById("mkoD"),
+          elH    = document.getElementById("mkoH"),
+          elM    = document.getElementById("mkoM"),
+          elS    = document.getElementById("mkoS"),
+          label  = document.getElementById("mkoTimerLabel"),
+          brow   = document.getElementById("mkoEyebrow"),
+          browTx = document.getElementById("mkoEyebrowText"),
+          dot    = document.getElementById("mkoDot"),
+          section= document.getElementById("free-exterior-offer"),
+          cta    = section.querySelector(".mko__cta"),
+          head   = section.querySelector(".mko__head"),
+          sub    = section.querySelector(".mko__sub"),
+          deal   = section.querySelector(".mko__deal");
+
+      function pad(n) { return n < 10 ? "0" + n : "" + n; }
+
+      // Returns true if now is within Fri 00:00 - Mon 23:59:59
+      function isActive(now) {
+        var day = now.getDay(); // 0=Sun,1=Mon,2=Tue,3=Wed,4=Thu,5=Fri,6=Sat
+        return day === 5 || day === 6 || day === 0 || day === 1;
+      }
+
+      // End of Monday (this week or next)
+      function nextOfferEnd(now) {
+        var day = now.getDay();
+        // Days until Monday: Mon=1 → 0, Tue-Sat: forward to next Mon, Sun=0 → 1
+        var daysUntilMon = (1 - day + 7) % 7;
+        if (daysUntilMon === 0 && now.getHours() >= 0) {
+          // today is Monday, end is tonight
+        }
+        var end = new Date(now);
+        end.setDate(now.getDate() + daysUntilMon);
+        end.setHours(23, 59, 59, 999);
+        if (end < now) end.setDate(end.getDate() + 7);
+        return end;
+      }
+
+      // Start of next Friday
+      function nextOfferStart(now) {
+        var day = now.getDay();
+        var daysUntilFri = (5 - day + 7) % 7;
+        if (daysUntilFri === 0) daysUntilFri = 7; // already Friday but in off-state (shouldn't happen, but safe)
+        var start = new Date(now);
+        start.setDate(now.getDate() + daysUntilFri);
+        start.setHours(0, 0, 0, 0);
+        return start;
+      }
+
+      var wasActive = null;
+
+      function applyState(active) {
+        if (active) {
+          brow.style.background = "";
+          dot.style.display = "";
+          browTx.textContent = "Fri-Mon · Limited spots";
+          label.innerHTML = 'Offer ends <b>Monday</b> at midnight';
+          section.style.opacity = "";
+          if (cta) cta.style.display = "";
+          if (head) head.style.opacity = "";
+          if (sub) sub.style.opacity = "";
+          if (deal) deal.style.opacity = "";
+        } else {
+          brow.style.background = "#444";
+          dot.style.display = "none";
+          browTx.textContent = "Offer Closed · Opens Friday";
+          label.innerHTML = 'Next offer starts <b>Friday</b>';
+          section.style.opacity = "0.72";
+          if (cta) cta.style.display = "none";
+          if (head) head.style.opacity = "0.45";
+          if (sub) sub.style.opacity = "0.55";
+          if (deal) deal.style.opacity = "0.45";
+        }
+      }
+
+      function tick() {
+        var now = new Date();
+        var active = isActive(now);
+        if (active !== wasActive) { applyState(active); wasActive = active; }
+        var target = active ? nextOfferEnd(now) : nextOfferStart(now);
+        var diff = Math.max(0, target - now);
+        var sec = Math.floor(diff / 1000);
+        elD.textContent = Math.floor(sec / 86400);
+        elH.textContent = pad(Math.floor((sec % 86400) / 3600));
+        elM.textContent = pad(Math.floor((sec % 3600) / 60));
+        elS.textContent = pad(sec % 60);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
+</section>
+
+<!-- ===================== PHOTO GALLERY STRIP ===================== -->
+<section aria-label="Photo gallery of detailing results" style="padding:24px 0 40px;background:#141414;overflow:hidden;position:relative;">
+  <style>
+    .hp-gallery-strip::before,.hp-gallery-strip::after{content:"";position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+    .hp-gallery-strip::before{left:0;background:linear-gradient(to right,#141414,transparent)}
+    .hp-gallery-strip::after{right:0;background:linear-gradient(to left,#141414,transparent)}
+    .hp-gallery-track{display:flex;gap:14px;width:max-content;animation:hp-scroll 45s linear infinite}
+    .hp-gallery-track:hover{animation-play-state:paused}
+    @keyframes hp-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .hp-gimg{width:280px;height:200px;object-fit:cover;border-radius:12px;border:2px solid #2a2a2a;flex-shrink:0;display:block;background:#1a1a1a}
+    @media(max-width:640px){.hp-gimg{width:210px;height:150px}}
+    @media(prefers-reduced-motion:reduce){.hp-gallery-track{animation:none}}
+  </style>
+  <div style="text-align:center;margin-bottom:28px;">
+    <div style="font-size:12px;font-weight:700;color:#C8102E;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;">The Work</div>
+    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
+  </div>
+  <div class="hp-gallery-strip" style="position:relative;">
+    <div class="hp-gallery-track">
+      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
+      <!-- duplicate set for seamless loop -->
+      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+
+
+      
+      
+<!-- ============================================================
+     MIKEY'S DETAILING, SERVICES SECTION (concierge + cards)
+     Self-contained, scoped to .svc2. Lucide icons (ISC license).
+     "Book" buttons call window.MikeyQQC.book() to prefill the QQC.
+     ============================================================ -->
+<style>
+  @property --sva{ syntax:'<angle>'; inherits:false; initial-value:0deg }
+  .svc2{
+    --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
+    --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
+    --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
+    position:relative; font-family:'Outfit',system-ui,sans-serif; color:var(--ink); line-height:1.5;
+    padding:80px 20px;
+    background:
+      radial-gradient(1000px 560px at 82% -10%, rgba(200,16,46,.10), transparent 60%),
+      radial-gradient(900px 480px at 0% 110%, rgba(201,162,75,.06), transparent 55%),
+      #0c0c0c;
+  }
+  .svc2 *{ box-sizing:border-box }
+  .svc2 .svc2-wrap{ max-width:1120px; margin:0 auto }
+  .svc2 svg.ic{ fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round }
+
+  .svc2 .sec-head{ text-align:center; margin-bottom:34px }
+  .svc2 .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
+  .svc2 .sec-head h2{ font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin:10px 0 0; line-height:1.02 }
+  .svc2 .sec-head h2 em{ color:var(--red); font-style:normal }
+  .svc2 .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.2vw,18px); margin:16px auto 0; max-width:600px; font-weight:500 }
+
+  .svc2 .acard{ position:relative; border-radius:22px; overflow:hidden; transform-style:preserve-3d;
+    transition:transform .14s ease, box-shadow .3s;
+    background:var(--card); backdrop-filter:blur(13px) saturate(140%); -webkit-backdrop-filter:blur(13px) saturate(140%);
+    border:1px solid var(--line); box-shadow:0 22px 46px -26px #000 }
+  .svc2 .acard::before{ content:""; position:absolute; inset:0; z-index:1; border-radius:22px; padding:1.5px; pointer-events:none;
+    background:conic-gradient(from var(--sva), transparent, var(--gold) 18%, var(--red) 36%, transparent 54%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
+    animation:svspin 6s linear infinite; opacity:.55 }
+  .svc2 .acard.feature::before{ opacity:1 }
+  @keyframes svspin{ to{ --sva:360deg } }
+  .svc2 .acard > *{ position:relative; z-index:2 }
+
+  .svc2 .ck{ width:15px; height:15px; flex:none; stroke:var(--gold) }
+  .svc2 .cta{ display:inline-block; text-align:center; text-decoration:none; font-weight:800; font-size:15px; letter-spacing:.3px; padding:15px 24px; border-radius:12px;
+    border:1.5px solid var(--red); background:var(--red); color:#fff; cursor:pointer; font-family:inherit;
+    transition:transform .15s, background .15s, opacity .2s; box-shadow:0 12px 26px -12px rgba(200,16,46,.7) }
+  .svc2 .cta:hover{ background:var(--red2); transform:translateY(-2px) }
+  .svc2 .cta:disabled{ opacity:.4; cursor:not-allowed; box-shadow:none } .svc2 .cta:disabled:hover{ transform:none; background:var(--red) }
+  .svc2 .cta.ghost{ background:transparent; border-color:rgba(255,255,255,.22); box-shadow:none; color:#fff } .svc2 .cta.ghost:hover{ border-color:#fff; background:rgba(255,255,255,.04) }
+  .svc2 .cta.block{ display:block; width:100% }
+  .svc2 .learn{ display:inline-flex; align-items:center; gap:6px; color:var(--gold2); font-size:12.5px; text-decoration:none; font-weight:700 } .svc2 .learn:hover{ color:var(--gold) } .svc2 .learn .ck{ stroke:var(--gold2) }
+  .svc2 .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 13px; border-radius:99px; white-space:nowrap }
+  .svc2 .pill .ck{ stroke:#1a1205; width:12px; height:12px }
+
+  /* concierge */
+  .svc2 .concierge{ padding:34px 36px 32px; margin-bottom:34px }
+  .svc2 .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:26px }
+  .svc2 .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
+  .svc2 .cc-icon svg{ width:26px; height:26px }
+  .svc2 .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .svc2 .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
+  .svc2 .cc-prog{ margin-left:auto; display:flex; gap:6px } .svc2 .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .svc2 .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
+  .svc2 .cc-stage{ min-height:188px }
+  .svc2 .cc-q{ display:none } .svc2 .cc-q.show{ display:block; animation:svfade .4s cubic-bezier(.22,1,.36,1) both }
+  @keyframes svfade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  .svc2 .cc-qt{ font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:5px } .svc2 .cc-qh{ font-size:13.5px; color:var(--muted); margin-bottom:18px }
+  .svc2 .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px }
+  .svc2 .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:16px; padding:16px;
+    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:14px; align-items:center }
+  .svc2 .cc-opt:hover{ border-color:var(--red); transform:translateY(-2px); background:rgba(200,16,46,.06) }
+  .svc2 .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
+  .svc2 .cc-opt.sel{ border-color:var(--red); background:rgba(200,16,46,.1) }
+  .svc2 .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
+  .svc2 .cc-tile svg{ width:26px; height:26px }
+  .svc2 .cc-opt:hover .cc-tile, .svc2 .cc-opt.sel .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
+  .svc2 .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .svc2 .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
+  .svc2 .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .svc2 .cc-opt .tick svg{ width:12px; height:12px; stroke:#fff } .svc2 .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
+  .svc2 .cc-note-wrap{ margin-top:18px }
+  .svc2 .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .svc2 .cc-note-label span{ color:var(--muted); font-weight:500 } .svc2 .cc-note-label svg{ width:16px; height:16px; stroke:var(--gold) }
+  .svc2 .cc-note{ width:100%; min-height:64px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
+    background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
+  .svc2 .cc-note::placeholder{ color:#6e6e76 } .svc2 .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
+  .svc2 .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .svc2 .cc-note-hint svg{ width:13px; height:13px; stroke:var(--gold) }
+  .svc2 .cc-nav{ display:flex; align-items:center; gap:12px; margin-top:20px }
+  .svc2 .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .svc2 .cc-back:hover{ color:#fff } .svc2 .cc-back svg{ width:16px; height:16px; stroke:currentColor }
+  .svc2 .cc-nav .cta{ margin-left:auto }
+  .svc2 .cc-result{ display:none } .svc2 .cc-result.show{ display:block; animation:svfade .45s cubic-bezier(.22,1,.36,1) both }
+  .svc2 .cc-reco-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap }
+  .svc2 .cc-reco-lead{ font-size:13.5px; color:#cfcfd2 }
+  .svc2 .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:18px; padding:24px }
+  .svc2 .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
+  .svc2 .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
+    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
+  .svc2 .cc-reco-tile svg{ width:34px; height:34px }
+  .svc2 .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .svc2 .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
+  .svc2 .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
+  .svc2 .cc-reco-price{ font-size:32px; font-weight:900; letter-spacing:-.02em; line-height:1 }
+  .svc2 .cc-reco-est{ font-size:12px; color:var(--gold2); margin-top:6px; max-width:180px; margin-left:auto }
+  .svc2 .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 0 } .svc2 .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
+  .svc2 .cc-reco-note{ margin-top:18px; padding:13px 15px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:13px; color:#dcdcde; line-height:1.5 } .svc2 .cc-reco-note b{ display:block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px }
+  .svc2 .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px } .svc2 .cc-reco-cta .cta{ flex:1; min-width:180px }
+  .svc2 .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .svc2 .cc-retake:hover{ color:#fff } .svc2 .cc-retake svg{ width:14px; height:14px; stroke:currentColor }
+
+  /* browse cards */
+  .svc2 .browse-div{ display:flex; align-items:center; gap:18px; margin:8px 2px 28px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
+  .svc2 .browse-div::before, .svc2 .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
+  .svc2 .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:20px; align-items:stretch }
+  .svc2 .cards .acard{ padding:42px 24px 26px; display:flex; flex-direction:column }
+  .svc2 .svc-badge{ position:absolute; top:15px; left:50%; transform:translateX(-50%); z-index:3 }
+  .svc2 .svc-top{ display:flex; align-items:center; gap:13px }
+  .svc2 .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
+    background:linear-gradient(140deg,var(--surface3),var(--surface2)) } .svc2 .svc-tile svg{ width:28px; height:28px }
+  .svc2 .feature .svc-tile{ color:#fff; background:linear-gradient(140deg,var(--red),var(--red2)) }
+  .svc2 .svc-name{ font-size:21px; font-weight:900; letter-spacing:-.01em } .svc2 .svc-tag{ color:var(--muted); font-size:12.5px; margin-top:2px }
+  .svc2 .svc-price{ font-size:30px; font-weight:900; letter-spacing:-.02em; line-height:1; margin-top:18px } .svc2 .svc-price .from{ font-size:.4em; color:var(--muted); font-weight:600; margin-right:2px }
+  .svc2 .svc-price small{ display:block; font-size:12px; color:var(--muted); font-weight:500; margin-top:6px }
+  .svc2 .divider{ height:1px; background:var(--line); margin:16px 0 }
+  .svc2 .feat{ list-style:none; display:grid; gap:11px; flex:1; margin-bottom:20px } .svc2 .feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.4 }
+  .svc2 .svc-learn{ margin:14px 0 16px; display:inline-flex }
+
+  .svc2 .trustrow{ display:flex; justify-content:center; gap:12px 28px; flex-wrap:wrap; margin-top:34px; font-size:12.5px; color:var(--muted) }
+  .svc2 .trustrow span{ display:inline-flex; align-items:center; gap:8px } .svc2 .trustrow strong{ color:var(--gold); font-weight:800 }
+  .svc2 .quote{ display:flex; gap:14px; align-items:flex-start; max-width:700px; margin:28px auto 0; text-align:left }
+  .svc2 .quote .qmark{ font-size:38px; line-height:.8; color:var(--red); font-weight:900; flex:none; font-family:Georgia,serif }
+  .svc2 .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .svc2 .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .svc2 .quote cite b{ color:#fff } .svc2 .quote .s{ color:var(--gold) }
+
+  @media (max-width:860px){ .svc2 .cards{ grid-template-columns:1fr } .svc2 .cards .feature{ order:-1 } }
+  @media (max-width:620px){ .svc2 .cc-opts{ grid-template-columns:1fr } }
+  @media (max-width:560px){
+    .svc2{ padding:60px 16px } .svc2 .concierge{ padding:24px 20px }
+    .svc2 .cc-reco-main{ flex-wrap:wrap } .svc2 .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .svc2 .cc-reco-est{ margin-left:0; max-width:none }
+    .svc2 .cc-reco-feat{ grid-template-columns:1fr }
+  }
+  @media (prefers-reduced-motion:reduce){ .svc2 *{ animation:none !important } }
+</style>
+
+<!-- icon library, Lucide (ISC license), one consistent set -->
+
+
 <!-- ============================================ -->
 <!-- CTA CARD #3, STICKY / COMPACT BOTTOM BAR -->
 <!-- Drop in as floating mobile CTA or inline -->
@@ -4063,76 +4121,6 @@ header li a[href="#booking"],
 
 <div class="hg4">
 
-  <!-- ===================== HOW IT WORKS ===================== -->
-  <section class="hiw4" aria-labelledby="hiw4-title">
-    <span class="hg4-eyebrow">How It Works</span>
-    <h2 class="hiw4-head" id="hiw4-title">
-      Three Steps. <em>Zero Effort.</em><br>One Jaw-Dropping Car.
-    </h2>
-    <p class="hiw4-sub">
-      No deposit. No phone tag. No leaving your driveway. You hand me the keys and <strong>I handle everything else.</strong> Here's exactly how it goes.
-    </p>
-
-    <div class="hiw4-grid">
-      <!-- chevrons between cards (desktop directional cue) -->
-      <span class="hiw4-chev c1" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
-      <span class="hiw4-chev c2" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
-
-      <!-- STEP 1 -->
-      <article class="hiw4-card">
-        <div class="hiw4-bignum" aria-hidden="true">01</div>
-        <div class="hiw4-iconwrap">
-          <div class="hiw4-node" aria-hidden="true">01</div>
-          <div class="hiw4-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="M8.5 14.3l2.3 2.3 4.4-4.6"/></svg>
-          </div>
-        </div>
-        <span class="hiw4-chip">Instant Price &middot; No Deposit</span>
-        <h3 class="hiw4-title">Tell Me About Your Car</h3>
-        <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then I text you back to lock in a time that works for you.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Instant price online <span class="kill">No deposit</span></div>
-      </article>
-
-      <!-- STEP 2 -->
-      <article class="hiw4-card">
-        <div class="hiw4-bignum" aria-hidden="true">02</div>
-        <div class="hiw4-iconwrap">
-          <div class="hiw4-node" aria-hidden="true">02</div>
-          <div class="hiw4-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5h10v9h-10z"/><path d="M12.5 9.5h4l3 3v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>
-          </div>
-        </div>
-        <span class="hiw4-chip">I Bring Everything</span>
-        <h3 class="hiw4-title">Relax. I've Got It From Here.</h3>
-        <p class="hiw4-desc">I roll up on time with all my own gear and every product. You get on with your day, whether that's work, errands, or back to bed. I text you the moment your car is finished.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Done the same day <span class="kill">Stay in your PJs</span></div>
-      </article>
-
-      <!-- STEP 3 -->
-      <article class="hiw4-card">
-        <div class="hiw4-bignum" aria-hidden="true">03</div>
-        <div class="hiw4-iconwrap">
-          <div class="hiw4-node" aria-hidden="true">03</div>
-          <div class="hiw4-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.8L18.7 9.7 13.9 11.6 12 16.4l-1.9-4.8L5.3 9.7l4.8-1.9z"/><path d="M18.5 14.5l.9 2.2 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg>
-          </div>
-        </div>
-        <span class="hiw4-chip">Pay Only If You Love It</span>
-        <h3 class="hiw4-title">Open the Door and Grin</h3>
-        <p class="hiw4-desc">That fresh, clean car smell hits. You run your hand down paint that feels like glass. We walk around it together, and you don't pay a dime until you're grinning ear to ear.</p>
-        <div class="hiw4-foot"><span class="dot"></span> Pay when happy <span class="kill">Love it or free</span></div>
-      </article>
-    </div>
-
-    <div class="hiw4-cta">
-      <div class="hiw4-cta-kicker">Ready for <b>step one?</b></div>
-      <div class="hg4-btnrow">
-        <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
-        <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
-      </div>
-      <p class="hg4-micro">Instant price &middot; <b>No deposit</b> &middot; No obligation &middot; You don't pay until you love it</p>
-    </div>
-  </section>
 
   <!-- ===================== GUARANTEE ===================== -->
   <section class="grt4" aria-labelledby="grt4-title">
@@ -4327,6 +4315,26 @@ header li a[href="#booking"],
 </style>
 
 <!-- EXPLORE MORE, compact internal links (SEO) -->
+<!-- ===================== FINAL CTA (relocated mid-page band) ===================== -->
+<section class="qcta" aria-label="Get your instant quote">
+  <div class="qcta-inner">
+    <span class="qcta-eyebrow"><span class="dot"></span> 5.0 Rated &middot; 300+ Cars Detailed</span>
+    <h2>Your Car Could Be Next.<br><em>See Your Price in 60 Seconds.</em></h2>
+    <p class="qcta-sub">No calls to make, no waiting on a quote. Pick your service, get your exact price, and grab a time, all from right here.</p>
+    <div class="qcta-feats">
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Instant online price</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No deposit to book</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pay only when you love it</span>
+      <span class="qcta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>I come to you</span>
+    </div>
+    <div class="hg4-btnrow">
+      <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
+      <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
+    </div>
+    <p class="hg4-micro" style="margin-top:16px;">Takes about a minute &middot; No obligation &middot; Snohomish County</p>
+  </div>
+</section>
+
 <section class="explore" aria-labelledby="explore-title">
   <div class="explore-inner">
     <h2 id="explore-title" class="explore-title">More Detailing Info</h2>
