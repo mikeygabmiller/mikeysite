@@ -749,30 +749,6 @@ header li a[href="#booking"],
     #0d0d0d;
   overflow:hidden;
 }
-/* HERO VIDEO BACKGROUND
-   Autoplaying, muted, looping background clip layered above the fallback photo.
-   The photo + gradient on .mh-hero above stays as the instant-paint fallback:
-   it shows before the video buffers, on reduced-motion, and on phones (video
-   is disabled under 640px to protect mobile data + LCP). */
-.mh-hero-media{
-  position:absolute; inset:0; z-index:0; overflow:hidden;
-  opacity:0; transition:opacity .8s ease;
-}
-.mh-hero-media.is-ready{ opacity:1; }
-.mh-hero-video{
-  position:absolute; top:50%; left:50%;
-  min-width:100%; min-height:100%; width:auto; height:auto;
-  transform:translate(-50%,-50%); object-fit:cover;
-}
-/* Same dark gradient as the photo overlay, so the headline stays legible over motion */
-.mh-hero-media::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.58) 42%, rgba(10,10,10,.88) 100%);
-}
-.mh{ position:relative; z-index:1; }
-/* Keep phones on the fast static photo; kill motion for reduced-motion users */
-@media (max-width:640px){ .mh-hero-media{ display:none; } }
-@media (prefers-reduced-motion:reduce){ .mh-hero-media{ display:none; } }
 /* HERO PHOTO is wired into the background above (external image host).
    To swap it later, just change the url('...') to a new image URL or a self-hosted
    /images/file.jpg. The dark linear-gradient overlay on top keeps the headline,
@@ -936,14 +912,6 @@ header li a[href="#booking"],
 </style>
 
 <section class="mh-hero" aria-labelledby="hero-h1">
-  <div class="mh-hero-media" aria-hidden="true">
-    <video class="mh-hero-video" autoplay muted loop playsinline preload="auto"
-           poster="/videos/hero-poster.jpg"
-           onloadeddata="this.closest('.mh-hero-media').classList.add('is-ready')">
-      <source src="/videos/hero.webm" type="video/webm">
-      <source src="/videos/hero.mp4" type="video/mp4">
-    </video>
-  </div>
   <div class="mh">
     <div class="mh-container">
       <div class="mh-content">
