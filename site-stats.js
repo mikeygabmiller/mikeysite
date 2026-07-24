@@ -88,3 +88,28 @@ window.MD_STATS = {
       encodeURIComponent(document.referrer) + '&t=' + Date.now();
   } catch (e) { /* never break the page over analytics */ }
 })();
+
+/* ============================================================
+   TAP-TO-CALL / TEXT CONVERSION TRACKING
+   Fires a GA4 `generate_lead` event whenever anyone taps a
+   tel: or sms: link, on ANY page (home or city landing pages).
+   Lets you see calls/texts as conversions, not just form fills.
+   ============================================================ */
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+    if (!a) return;
+    var method = a.getAttribute('href').indexOf('sms:') === 0 ? 'text' : 'call';
+    try {
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          method: method,
+          page_path: location.pathname
+        });
+      }
+    } catch (e) { /* ignore */ }
+    try {
+      if (typeof clarity === 'function') { clarity('event', 'lead_' + method); }
+    } catch (e) { /* ignore */ }
+  }, true);
+})();
