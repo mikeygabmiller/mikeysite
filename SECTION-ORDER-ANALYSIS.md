@@ -1,9 +1,115 @@
-# Homepage Section-Order Analysis v2 — mikeysdetailing.com
+# Homepage Section-Order Analysis v3 — mikeysdetailing.com
 
-**Prepared:** 2026-07-25 · **Supersedes:** v1 (2026-07-23)
-**Scope:** the ORDER of sections in `index.html`. No copy is rewritten — the question is sequence.
+**Prepared:** 2026-07-25 · **Supersedes:** v1 (2026-07-23), v2 (2026-07-25 morning)
+**Scope:** the ORDER of sections in `index.html`, plus the mobile height and headline
+line-breaking work that came out of it. No copy was rewritten.
 **Business:** Mikey's Mobile Detailing, Snohomish County WA — solo owner-operator, mobile,
 appointment-based, review-driven local trade.
+
+> **v3 status: the v2 recommendations are now implemented and re-measured.** Section
+> "RESULTS — measured before vs after" below is the verification. Everything else in this
+> document is the reasoning and sourcing behind those changes, kept for the record.
+
+---
+
+## RESULTS — measured before vs after
+
+All numbers from headless Chromium at 390×844 (phone), same method before and after.
+
+### Where the money sections landed
+
+| Asset | Before | After | Change |
+|---|---|---|---|
+| **Free Exterior Offer** (the countdown deal) | 8,407px · **54.1%** | 6,166px · **40.3%** | The whole offer now *ends* at 48% — countdown and CTA included — so it sits entirely above the ~55% median mobile scroll depth. Before, the median visitor saw only its headline. |
+| **Before & After** (strongest proof) | 7,099px · **45.7%** | 4,386px · **28.6%** | Moves from "half of mobile misses it" to seen by most. |
+| Services menu (3.1 screens tall) | 4,479px · 28.8% | 7,318px · 47.8% | Still comfortably above the median, but no longer blocking the two above it. |
+
+### The CTA dead zones
+
+| | Before | After |
+|---|---|---|
+| Worst CTA-free stretch | **3,690px / 4.4 screens** (spanned the entire Trust band) | **2,006px / 2.4 screens** — down 46% |
+| Second-worst | **2,615px / 3.1 screens** (spanned all of Before & After) | **1,543px / 1.8 screens** |
+| Stretches over 3 screens | 2 | **0** |
+
+### Page height and headlines
+
+| | Before | After |
+|---|---|---|
+| Mobile page height | 15,526px (18.4 screens) | **15,311px (18.1 screens)** — and that is *after* adding two new CTA bands, so the spacing work saved roughly 650px |
+| How It Works height | 2.1 screens | **1.9 screens** |
+| Guarantee height | 2.2 screens | **1.9 screens** |
+| Headlines ending in a single orphaned word (measured at 320/360/390/414/430px) | **27 instances** | **0** |
+| Headlines breaking mid-word at a hyphen | 1 ("One Jaw- / Dropping Car.") | **0** |
+| Horizontal overflow at any tested width | none | **none** |
+
+Desktop grew slightly (12,364px → 12,720px) from the two added CTA bands. That is the right
+trade: desktop scroll depth runs ~70% vs ~55% on mobile, and mobile is where this business
+gets booked.
+
+### What was changed, precisely
+
+1. **Moved `#beforeafter` above `#allservices`** — desire before catalog.
+2. **Moved `#free-exterior-offer` to directly follow it** — the countdown now rides the
+   transformation peak instead of sitting under a 3.1-screen menu.
+3. **Moved the photo strip up** to sit between Before & After and the offer as reinforcement,
+   instead of interrupting offer → guarantee.
+4. **Added a CTA band under the Trust band** — closes the 4.4-screen dead zone that sat on top
+   of the Google-review card. Review count is bound to `site-stats.js` via `data-md-reviews`,
+   so it stays in sync.
+5. **Added a CTA band under Before & After** — closes the 3.1-screen dead zone at peak desire.
+6. **Repointed the "pick your service" link** in How It Works from `#allservices` to
+   `#booking`, since service selection actually happens inside the Quick Quote Calculator.
+7. **Compressed How It Works and the Guarantee on mobile** — padding and margins only, no
+   content removed, desktop untouched.
+8. **Fixed every headline widow** — `text-wrap: balance` on headings, `text-wrap: pretty` on
+   body copy, `&nbsp;` binding the last two words of the five headlines that still orphaned,
+   a non-breaking hyphen in "Jaw‑Dropping", and mobile type trims so the bound pairs fit
+   without overflow.
+9. **Added scroll-depth and section-reach tracking** — see the next section.
+
+### Verified working after the move
+
+Checked in a real browser: the offer's live countdown still runs (read "2D 18H 38M 27S"), the
+Quick Quote Calculator keeps all 4 steps, the Before & After drag slider works, all 13 sections
+are tagged, and there are **no JavaScript errors**. (Some external image CDNs fail to load
+inside the test sandbox because outbound requests to them are blocked there — unrelated to
+these changes.)
+
+---
+
+## The scroll tracking, and how to actually look at it
+
+GA4's built-in scroll tracking fires **one** event, at 90% depth — it cannot tell you who
+reached 25%, 50% or 75%, and it cannot tell you which *section* people stopped at
+([Analytics Mania](https://www.analyticsmania.com/post/scroll-tracking-with-google-analytics-4-and-google-tag-manager/),
+[Root & Branch](https://www.rootandbranchgroup.com/ga4-scroll-tracking/)). The usual fix needs
+Google Tag Manager; this site loads `gtag` directly, so the tracking is written straight into
+`site-stats.js` instead — no GTM, no new dependency.
+
+**Three ways to see it, easiest first:**
+
+1. **On your phone, right now:** open **`mikeysdetailing.com/?scrollcheck`**. A panel sticks to
+   the bottom of the screen showing your live scroll %, the page height in screens, and every
+   section with the % of the page it starts at — ticking green as you reach it, and showing
+   red for any section past the 55% median line. This is the fastest way to sanity-check the
+   page yourself, with no waiting and no dashboard.
+2. **GA4 → Reports → Engagement → Events.** Look for `scroll_depth` (fires at 25/50/75/90/100)
+   and `section_view` (fires once per section, with the % of the page it sits at). *The one
+   number that matters:* how many people fire `section_view` for `7-OFFER` versus `1-hero` —
+   that ratio is the share of visitors who actually reach the countdown deal. A `scroll_summary`
+   event also fires on exit with each visitor's deepest point, since milestone events alone
+   get lost when someone closes the tab mid-scroll.
+3. **Clarity → Recordings → Filters → Custom tags.** Filter by `max_scroll` or
+   `deepest_section` to watch recordings of only the people who bailed early
+   ([Clarity custom tags docs](https://learn.microsoft.com/en-us/clarity/filters/custom-tags)).
+
+Tracking only fires on the live domain, so local previews don't pollute the numbers. The
+`?scrollcheck` overlay works anywhere. To track a new section, add `data-md-section="name"` to
+it — nothing else to wire up.
+
+**This replaces the industry-average scroll figures used in this analysis with your own
+traffic.** Give it two weeks, then re-check whether the offer's reach actually improved.
 
 ---
 
@@ -333,6 +439,21 @@ Every move above is reversible and none of them rewrites a sentence.
 **Speed-to-lead (why the calculator belongs high)**
 31. Harvard Business Review — *The Short Life of Online Sales Leads*. https://hbr.org/2011/03/the-short-life-of-online-sales-leads
 32. Lead Response Management Study (Dr. James Oldroyd, MIT Sloan / InsideSales.com). https://www.leadresponsemanagement.org/lrm_study
+
+**Headline line-breaking / widows (v3)**
+33. MDN — *`text-wrap` CSS property*. https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap
+34. MDN — *`text-wrap-style` CSS property* (`balance`, `pretty`, `stable`). https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap-style
+35. Can I Use — *CSS `text-wrap: balance` support table* (Chrome/Edge 114+, Firefox 121+, Safari 17.5+). https://caniuse.com/css-text-wrap-balance
+36. Chrome for Developers — *CSS `text-wrap: balance`*. https://developer.chrome.com/docs/css-ui/css-text-wrap-balance
+37. modern.css — *Balance Headlines in CSS with `text-wrap: balance`* (use `balance` on headings, `pretty` on body copy). https://modern-css.com/balanced-headlines-without-manual-line-breaks/
+38. Wikipedia — *Widows and orphans* (definition; a widow is a short dangling final line). https://en.wikipedia.org/wiki/Widows_and_orphans
+39. Davey & Krista — *Avoid Orphans and Widows in Typography* (widows interrupt the eye's skim and read as unfinished; matters most in marketing material). https://daveyandkrista.com/design-tip-avoid-orphans-typography/
+40. Montana State University — *University Publications Typography Guide* (avoid leaving a short word alone on a final line). https://www.montana.edu/creativeservices/upubstypography.html
+
+**Scroll-depth instrumentation (v3)**
+41. Analytics Mania — *Scroll Tracking with Google Analytics 4* (GA4 Enhanced Measurement fires a single scroll event at 90%). https://www.analyticsmania.com/post/scroll-tracking-with-google-analytics-4-and-google-tag-manager/
+42. Root & Branch — *GA4 Scroll Tracking: Track 25%, 50%, 75% and More*. https://www.rootandbranchgroup.com/ga4-scroll-tracking/
+43. Microsoft Learn — *Custom tags in Clarity* (`clarity("set", key, value)`; filter recordings and heatmaps by tag). https://learn.microsoft.com/en-us/clarity/filters/custom-tags
 
 ### Sourcing notes
 
