@@ -30,18 +30,15 @@
 <meta name="geo.placename" content="Snohomish">
 
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
-<!-- Hero image: speed up its load (it's the largest above-the-fold element) -->
-<link rel="preconnect" href="https://iili.io">
-<link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920" fetchpriority="high">
 
-<!-- Microsoft Clarity (moved below the LCP preload so charset/title/hero parse first) -->
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "xlwzu2qrko");
-</script>
+<!-- Hero image: the largest above-the-fold element, so it drives LCP.
+     Open the connection to its host before the CSS that needs it is parsed. -->
+<link rel="preconnect" href="https://lh3.googleusercontent.com">
+<link rel="dns-prefetch" href="https://iili.io">
+<!-- Two preloads, one media query each, so a phone never downloads the 1920px file.
+     These widths MUST stay in sync with --hero-img in the .mh-hero rule below. -->
+<link rel="preload" as="image" media="(max-width: 900px)" href="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1000" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 901px)" href="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920" fetchpriority="high">
 
 <!-- Schema: LocalBusiness / AutoDetailing -->
 <script type="application/ld+json">
@@ -188,18 +185,58 @@
 }
 </script>
 
-<!-- Fonts -->
+<!-- Fonts — loaded async so they never block the first paint.
+     media="print" makes the browser fetch the sheet at low priority without
+     applying it; onload flips it to "all". display=swap in the URL means text
+     paints immediately in the fallback font, then swaps to Outfit. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"></noscript>
 
-<!-- GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
+<!-- GA4 + Microsoft Clarity.
+     The gtag() stub queues into dataLayer immediately, so any gtag('event', ...)
+     fired by page code before the tag loads is replayed once it does — tracking is
+     delayed, not lost. Both tags load after the page is interactive (or on the
+     visitor's first interaction, whichever lands first) to keep ~50 KB of
+     third-party JS off the critical path and out of the LCP window. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G9WMXW2MF5');
+
+  (function(){
+    var loaded = false;
+    function loadTags(){
+      if (loaded) return;
+      loaded = true;
+
+      var ga = document.createElement('script');
+      ga.async = true;
+      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5';
+      document.head.appendChild(ga);
+
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "xlwzu2qrko");
+    }
+
+    // First real interaction should not wait on the idle timer.
+    ['pointerdown','keydown','touchstart','scroll'].forEach(function(evt){
+      window.addEventListener(evt, loadTags, {once:true, passive:true});
+    });
+
+    function schedule(){
+      if (window.requestIdleCallback) requestIdleCallback(loadTags, {timeout:3000});
+      else setTimeout(loadTags, 1500);
+    }
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, {once:true});
+  })();
 </script>
 
 <style>
@@ -736,6 +773,10 @@ header li a[href="#booking"],
 <!-- HERO -->
 <style>
 .mh-hero{
+  /* Phones get the 1000px file; the min-width rule below swaps in 1920px for
+     desktop. Keep these two URLs in sync with the <link rel="preload"> pair in
+     <head> — if they drift, the browser downloads the hero photo twice. */
+  --hero-img: url('https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1000');
   min-height:100vh;
   display:flex;
   align-items:center;
@@ -744,16 +785,21 @@ header li a[href="#booking"],
   position:relative;
   background:
     linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.58) 42%, rgba(10,10,10,.88) 100%),
-    url('https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920') center center / cover no-repeat,
+    var(--hero-img) center center / cover no-repeat,
     radial-gradient(1100px 520px at 50% -8%, rgba(200,16,46,.16), transparent 60%),
     radial-gradient(900px 480px at 50% 118%, rgba(201,162,75,.07), transparent 55%),
     #0d0d0d;
   overflow:hidden;
 }
-/* HERO PHOTO is wired into the background above (external image host).
-   To swap it later, just change the url('...') to a new image URL or a self-hosted
-   /images/file.jpg. The dark linear-gradient overlay on top keeps the headline,
-   subhead and CTAs legible over the photo; tune its alpha values if needed. */
+@media (min-width: 901px){
+  .mh-hero{ --hero-img: url('https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920'); }
+}
+/* HERO PHOTO is wired into --hero-img above (external image host).
+   To swap it later, change both --hero-img values and both preload hrefs in <head>.
+   Self-hosting it (/images/hero.webp) is the single biggest speed win available —
+   the Google Drive host is what drags LCP out. The dark linear-gradient overlay on
+   top keeps the headline, subhead and CTAs legible over the photo; tune its alpha
+   values if needed. */
 .mh{
   font-family:'Outfit',sans-serif;
   text-align:center;
