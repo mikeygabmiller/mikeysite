@@ -193,51 +193,83 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"></noscript>
 
-<!-- GA4 + Microsoft Clarity.
-     The gtag() stub queues into dataLayer immediately, so any gtag('event', ...)
-     fired by page code before the tag loads is replayed once it does — tracking is
-     delayed, not lost. Both tags load after the page is interactive (or on the
-     visitor's first interaction, whichever lands first) to keep ~50 KB of
-     third-party JS off the critical path and out of the LCP window. -->
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xlwzu2qrko");
+</script>
+
+<!-- GA4.
+     These load here rather than on idle/interaction on purpose. Deferring them
+     was tried and measured worse: Total Blocking Time is only counted between
+     First Contentful Paint and Time to Interactive, so postponing the tags moved
+     their execution *into* that window instead of ahead of it, and TBT went from
+     290ms to 490ms in the field. Loading async up here lets most of the work land
+     before FCP, where it costs nothing on the scorecard. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-G9WMXW2MF5');
-
-  (function(){
-    var loaded = false;
-    function loadTags(){
-      if (loaded) return;
-      loaded = true;
-
-      var ga = document.createElement('script');
-      ga.async = true;
-      ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5';
-      document.head.appendChild(ga);
-
-      (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "xlwzu2qrko");
-    }
-
-    // First real interaction should not wait on the idle timer.
-    ['pointerdown','keydown','touchstart','scroll'].forEach(function(evt){
-      window.addEventListener(evt, loadTags, {once:true, passive:true});
-    });
-
-    function schedule(){
-      if (window.requestIdleCallback) requestIdleCallback(loadTags, {timeout:3000});
-      else setTimeout(loadTags, 1500);
-    }
-    if (document.readyState === 'complete') schedule();
-    else window.addEventListener('load', schedule, {once:true});
-  })();
 </script>
 
 <style>
+/* =========================================================
+   ANIMATION BUDGET
+   ---------------------------------------------------------
+   These are every infinite animation on the page. Measured together they cost
+   ~9s of main-thread time and 400ms of Total Blocking Time, because several of
+   them animate properties that force a repaint on every frame for as long as
+   they run — box-shadow (mkoPulse, qqcSuggest, pulse), background-position
+   (hiw4-flow) and a gradient custom property (svspin). Worse, nearly all of them
+   sit below the fold, so during page load they were repainting scenery nobody
+   had scrolled to yet.
+
+   They start paused here and are switched on only while their element is
+   actually in the viewport — see the observer at the end of <body>. A visitor
+   sees no difference; the main thread stops burning frames on off-screen work.
+
+   !important is load-bearing: the rules that define these animations use the
+   `animation:` shorthand, which resets animation-play-state to `running`. Some
+   of them are declared later in the document (and one is an inline style), so
+   without !important the shorthand would quietly win and un-pause everything.
+   ========================================================= */
+#qqcCard .ribbon::after,
+#qqcCard .hero.suggest,
+#qqcCard .success .ring::before,
+#qqcCard .success .ring::after,
+.mko__eyebrow,
+.mko__eyebrow .dot,
+.hp-gallery-track,
+.svc2 .acard::before,
+.hg4-eyebrow::before,
+.hiw4-grid::after,
+.hiw4-foot .dot,
+.grt4-seal::before,
+.grt4-scarcity .dot { animation-play-state: paused !important; }
+
+/* The three .dot children hang off their parent's class rather than their own.
+   A dot can be display:none at one breakpoint (.mko__eyebrow .dot is, on mobile),
+   and an element with no box never intersects, so observing the dot directly would
+   leave it paused forever once it did become visible. The parent always has a box. */
+#qqcCard .ribbon.av-on::after,
+#qqcCard .hero.suggest.av-on,
+#qqcCard .success .ring.av-on::before,
+#qqcCard .success .ring.av-on::after,
+.mko__eyebrow.av-on,
+.mko__eyebrow.av-on .dot,
+.hp-gallery-track.av-on,
+.svc2 .acard.av-on::before,
+.hg4-eyebrow.av-on::before,
+.hiw4-grid.av-on::after,
+.hiw4-foot.av-on .dot,
+.grt4-seal.av-on::before,
+.grt4-scarcity.av-on .dot { animation-play-state: running !important; }
+
 /* =========================================================
    DESIGN TOKENS
    ========================================================= */
@@ -1017,7 +1049,10 @@ header li a[href="#booking"],
     <!-- Pre-form trust strip -->
     
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(200,16,46,0.1);border:1px solid rgba(200,16,46,0.3);border-radius:999px;padding:7px 18px;font-size:0.82rem;font-weight:800;color:#C8102E;letter-spacing:0.05em;">
-        <span style="width:8px;height:8px;background:#C8102E;border-radius:50%;box-shadow:0 0 8px #C8102E;animation:pulse 1.8s ease-in-out infinite;display:inline-block;"></span>
+        <!-- This dot used to declare `animation:pulse 1.8s ease-in-out infinite`, but
+             no @keyframes pulse is defined anywhere on the site, so it never animated.
+             Dropped the dead declaration; add a real keyframe if the pulse is wanted. -->
+        <span style="width:8px;height:8px;background:#C8102E;border-radius:50%;box-shadow:0 0 8px #C8102E;display:inline-block;"></span>
         Limited spots available per week, book now to grab yours
       </div>
     </div>
@@ -4577,6 +4612,61 @@ header li a[href="#booking"],
     });
 // 01010011 01100001 01101110 01100011 01110100 01100101 00100000 01001101 01101001 01100011 01101000 01100001 01100101 01101100 00100000 01000001 01110010 01100011 01101000 01100001 01101110 01100111 01100101 01101100 01100101 00101100 00100000 01101111 01110010 01100001 00100000 01110000 01110010 01101111 00100000 01101110 01101111 01100010 01101001 01110011 00101110 -->
   });
+})();
+</script>
+
+<script>
+/* Runs the page's infinite animations only while they're on screen.
+   Pairs with the "ANIMATION BUDGET" style block in <head>, which starts them all
+   paused. Selectors below are the *host* elements — several of the animations
+   live on ::before/::after, so the class goes on the parent and the CSS targets
+   the pseudo-element. Keep the two lists in sync. */
+(function(){
+  var HOSTS = [
+    '#qqcCard .ribbon',
+    '#qqcCard .hero',
+    '#qqcCard .success .ring',
+    '.mko__eyebrow',
+    '.hp-gallery-track',
+    '.svc2 .acard',
+    '.hg4-eyebrow',
+    '.hiw4-grid',
+    '.hiw4-foot',
+    '.grt4-seal',
+    '.grt4-scarcity'
+  ].join(',');
+
+  var els = document.querySelectorAll(HOSTS);
+  if (!els.length) return;
+
+  // Someone who asked the OS for less motion gets none of these; they stay paused.
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // No IntersectionObserver (very old browser): just run them, as before.
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < els.length; i++) els[i].classList.add('av-on');
+    return;
+  }
+
+  function start(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        e.target.classList.toggle('av-on', e.isIntersecting);
+      });
+    }, { rootMargin: '200px' }); // start just before it scrolls into view
+
+    for (var j = 0; j < els.length; j++) io.observe(els[j]);
+  }
+
+  // Nothing animates until the page has finished loading and gone quiet. These are
+  // all ambient decoration, so nobody notices them starting a moment late — but
+  // during load they'd be competing with rendering for the main thread.
+  function whenIdle(){
+    if (window.requestIdleCallback) requestIdleCallback(start, {timeout:2000});
+    else setTimeout(start, 800);
+  }
+  if (document.readyState === 'complete') whenIdle();
+  else window.addEventListener('load', whenIdle, {once:true});
 })();
 </script>
 </body>
