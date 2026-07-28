@@ -21,7 +21,7 @@
 > calendar."*
 
 You are **not** selling websites. You're selling **proof the phone rings** — installed
-once, tuned forever, on a recurring fee. Your own shop (5.0★, 39 reviews, 300+ cars) is
+once, tuned forever, on a recurring fee. Your own shop (5.0★, 40 reviews, 300+ cars) is
 the case study nobody else pitching a trade can match.
 
 ---
@@ -195,7 +195,7 @@ Mirror the machine you're selling — you should out-follow-up everyone.
    until they reply. That silence *is* the pitch. "Here's what a lead sees when they try to
    reach you — and here's the fix."
 3. **Demo on your own business.** Submit a quote on *your* site while they watch; the auto-
-   text fires in seconds; show the dashboard. "This has run 300+ cars and 39 five-star
+   text fires in seconds; show the dashboard. "This has run 300+ cars and 40 five-star
    reviews. It's the same thing I'll install for you."
 4. **Close with the Grand Slam.** "$0 until it brings you 15 booked leads. If it doesn't,
    you owe nothing." Qualify them against the checklist as you go.
@@ -268,7 +268,7 @@ are worth more than the $1,500 right now.
 - **The website template:** 30-page SEO site with LocalBusiness/FAQ/Service schema, city
   pages, sitemap. This is Pillar 2, done.
 - **The GBP playbook:** `SEO-ROADMAP.md` Tier-1. This is Pillar 1, documented from real use.
-- **The proof:** 5.0★, 39 reviews, 300+ cars, "you don't pay until you love it" brand voice.
+- **The proof:** 5.0★, 40 reviews, 300+ cars, "you don't pay until you love it" brand voice.
 - **The sales site:** `/systems/` (built alongside this plan).
 
 You've already *built and run* the thing you're selling. The only new work is packaging,

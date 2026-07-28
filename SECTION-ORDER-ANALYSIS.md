@@ -50,7 +50,7 @@ recommendation below is tagged with the source it comes from. The frameworks and
 |---|---|---|---|
 | 1 | **Hero** (`.mh-hero`) | H1 "Mobile Car Detailing in Snohomish County", 5.0★ · 38 reviews · 300+ cars, "I Come To You", "You don't pay until you love it", quote + call CTAs, price pills | **Attention** ✅ |
 | 2 | **Quick Quote Calculator** (`#booking`) | "Know your price before you book" — interactive instant-price form | **Action (for the ready)** ✅ |
-| 3 | **Trust band** (`.trust-section`) | Google review card (5.0/39), 100% guarantee seal, hero testimonial, recent-work photos | **Proof** ✅ |
+| 3 | **Trust band** (`.trust-section`) | Google review card (5.0/40), 100% guarantee seal, hero testimonial, recent-work photos | **Proof** ✅ |
 | 4 | **Mid CTA band** (`.qcta`) | "Your Car Could Be Next. See Your Price in 60 Seconds." | Action |
 | 5 | **Before & After** (`#beforeafter`) | "SEE THE DIFFERENCE" drag slider | **Desire** |
 | 6 | **Photo strip** (gallery) | "More Real Cars. Real Results." | Desire (dup) |
