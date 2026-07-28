@@ -31,14 +31,12 @@
 
 <link rel="icon" type="image/jpeg" href="https://iili.io/qKtjLcx.jpg">
 
-<!-- Hero image: the largest above-the-fold element, so it drives LCP.
-     Open the connection to its host before the CSS that needs it is parsed. -->
-<link rel="preconnect" href="https://lh3.googleusercontent.com">
+<!-- The hero is pure CSS gradient now — no photo, so nothing above the fold needs
+     preloading. The remaining lh3 images are all lazy-loaded below the fold, so a
+     preconnect would just hold an early connection open for nothing; dns-prefetch
+     covers the name lookup at no cost. -->
+<link rel="dns-prefetch" href="https://lh3.googleusercontent.com">
 <link rel="dns-prefetch" href="https://iili.io">
-<!-- Two preloads, one media query each, so a phone never downloads the 1920px file.
-     These widths MUST stay in sync with --hero-img in the .mh-hero rule below. -->
-<link rel="preload" as="image" media="(max-width: 900px)" href="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1000" fetchpriority="high">
-<link rel="preload" as="image" media="(min-width: 901px)" href="https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920" fetchpriority="high">
 
 <!-- Schema: LocalBusiness / AutoDetailing -->
 <script type="application/ld+json">
@@ -773,10 +771,6 @@ header li a[href="#booking"],
 <!-- HERO -->
 <style>
 .mh-hero{
-  /* Phones get the 1000px file; the min-width rule below swaps in 1920px for
-     desktop. Keep these two URLs in sync with the <link rel="preload"> pair in
-     <head> — if they drift, the browser downloads the hero photo twice. */
-  --hero-img: url('https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1000');
   min-height:100vh;
   display:flex;
   align-items:center;
@@ -785,21 +779,19 @@ header li a[href="#booking"],
   position:relative;
   background:
     linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.58) 42%, rgba(10,10,10,.88) 100%),
-    var(--hero-img) center center / cover no-repeat,
     radial-gradient(1100px 520px at 50% -8%, rgba(200,16,46,.16), transparent 60%),
     radial-gradient(900px 480px at 50% 118%, rgba(201,162,75,.07), transparent 55%),
     #0d0d0d;
   overflow:hidden;
 }
-@media (min-width: 901px){
-  .mh-hero{ --hero-img: url('https://lh3.googleusercontent.com/d/1Lax_oGzGQradeZzuK_wvs9P9MswleT8o=w1920'); }
-}
-/* HERO PHOTO is wired into --hero-img above (external image host).
-   To swap it later, change both --hero-img values and both preload hrefs in <head>.
-   Self-hosting it (/images/hero.webp) is the single biggest speed win available —
-   the Google Drive host is what drags LCP out. The dark linear-gradient overlay on
-   top keeps the headline, subhead and CTAs legible over the photo; tune its alpha
-   values if needed. */
+/* HERO is pure CSS now — no photo, so it costs zero network requests and paints
+   with the document. The headline is the LCP element.
+
+   The three layers, top to bottom: a vertical vignette that darkens the top and
+   bottom edges, a red glow bleeding down from above, a faint gold glow rising from
+   below, over near-black. The vignette started life as a scrim over the photo, so
+   its alphas are still what decide how much of the red glow reads — lower the
+   .82/.58/.88 values to let more brand colour through. */
 .mh{
   font-family:'Outfit',sans-serif;
   text-align:center;
