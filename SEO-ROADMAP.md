@@ -41,8 +41,18 @@ come from the Map Pack / Google Business Profile, not classic web search.
 ### 1. Google Business Profile (GBP)
 - Primary category: **Car Detailing Service**. Add every relevant secondary.
 - Add all services with descriptions + prices ($160–$379).
-- **Upload geotagged photos weekly** (before/afters, you working in each city).
+- **Upload photos weekly** (before/afters, you working in each city).
 - Post a GBP update **1×/week** (offer, recent job, seasonal tip).
+- ⚙️ **Both of the above are now automated** — see the Photo Engine in the SMS
+  dashboard (`twillowdashbored/docs/PHOTO-ENGINE.md`). Text your before/after
+  shots to your own business number from the driveway and the GBP post, the
+  Instagram caption, the review-request text and the city-page gallery entry all
+  get written for you. This was the highest-leverage manual task on the list and
+  the one least likely to survive 52 weeks in a row.
+- 🚫 **Don't bother geotagging.** This advice is everywhere, but there's no
+  evidence Google reads EXIF GPS from GBP photo uploads — and phone-to-phone
+  messaging usually strips EXIF anyway. What actually moves the Map Pack is
+  photo/post **velocity** and review flow, which is what the items above deliver.
 - Answer your own **Q&A** with your top FAQs.
 - Set service area to every city you cover (now incl. Bothell, Marysville).
 
@@ -50,6 +60,7 @@ come from the Map Pack / Google Business Profile, not classic web search.
 - Target **1–2 new reviews/week**. Text the `g.page/r/CRCuKQ982VIZEBE` link the
   moment you finish, while the customer is looking at the clean car.
 - Ask them to **mention city + service** ("interior detail in Lake Stevens").
+  The Photo Engine drafts this text for you per job, already asking for both.
 - Update the count in `site-stats.js` (one number → updates the whole site).
 
 ### 3. Citations / NAP consistency

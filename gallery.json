@@ -1,0 +1,5 @@
+{
+  "_comment": "Live before/after gallery, written by the Photo Engine in the SMS dashboard (see twillowdashbored/docs/PHOTO-ENGINE.md). Rendered by /gallery.js into any element tagged data-md-gallery. Items are appended to the curated pairs already in the page HTML, never replacing them. Newest first; `date` is a ms epoch. Safe to hand-edit.",
+  "updated": null,
+  "items": []
+}
