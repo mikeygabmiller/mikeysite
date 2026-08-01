@@ -7,6 +7,14 @@
    description, and the star-rating schema.
 
    When you get a new Google review, just bump reviewCount.
+
+   ⚠️ ALSO update the hard-coded numbers in the HTML when you do.
+   This file rewrites the visible counts and the JSON-LD *in the
+   browser*. Google runs JavaScript, but most AI crawlers (GPTBot,
+   PerplexityBot, ClaudeBot, …) do NOT — they only ever see the raw
+   HTML. So the values baked into each page are the ones AI assistants
+   quote. Keep them in sync, or ChatGPT will keep telling people you
+   have an out-of-date review count. See GROWTH-PLAN.md §1 (G6).
    ============================================================ */
 window.MD_STATS = {
   reviewCount: 40,    // ← number of Google reviews   (update this one!)

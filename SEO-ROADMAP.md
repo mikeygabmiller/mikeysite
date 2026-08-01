@@ -1,5 +1,14 @@
 # Mikey's Mobile Detailing — SEO Roadmap
 
+> **⚠️ Superseded by [`GROWTH-PLAN.md`](./GROWTH-PLAN.md) (2026-08-01).**
+> That's the live 12-month SEO + AIEO plan with SMART goals, a scoreboard, and a
+> weekly operating rhythm. This file is kept for reference — its Tier-1 GBP
+> playbook and city-data table were carried forward into the new plan.
+>
+> Since this was written: the booking app has been migrated on-domain (the
+> `github.io` leak in Tier 2 is closed), and `/bothell/` and `/marysville/`
+> shipped.
+
 Goal: dominate local search in Snohomish County + north King County and turn that
 into consistent, predictable leads. Updated 2026-05-30.
 
