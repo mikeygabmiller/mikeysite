@@ -1,20 +1,24 @@
 # Mikey's Mobile Detailing
 
 > Owner-operated mobile car detailing serving Snohomish County and north King
-> County, Washington. Mikey drives to the customer's home or workplace and
-> details the vehicle in their driveway — there is no shop to visit. Rated
-> 5.0 stars across 40 Google reviews, with 300+ cars detailed. Customers get an
-> exact price from an on-site instant quote calculator in about 60 seconds, and
-> pay only after they're satisfied with the work.
+> County, Washington. Owner Mikey Miller drives to the customer's home or
+> workplace and details the vehicle in their driveway — there is no shop to
+> visit. Detailing since 2021, rated 5.0 stars across 40 Google reviews, with
+> 300+ cars detailed. Customers get an exact price from an on-site instant quote
+> calculator in about 60 seconds, and pay only after they're satisfied with the
+> work.
 
 ## Key facts
 
 - **Business name:** Mikey's Mobile Detailing
+- **Owner / detailer:** Mikey Miller — detailing since 2021; he personally
+  details every vehicle, there is no crew
 - **Type:** Mobile auto detailing service (the detailer travels to the customer)
 - **Based in:** Snohomish, WA 98290
+- **Service radius:** roughly 25 miles from Snohomish, WA
 - **Phone:** (425) 600-7897
 - **Email:** book@mikeysdetailing.com
-- **Hours:** 8:00 AM – 8:00 PM, seven days a week
+- **Hours:** Open 24 hours, seven days a week
 - **Rating:** 5.0 out of 5 stars, 40 Google reviews
 - **Experience:** 300+ vehicles detailed
 - **Price range:** $160 – $379
@@ -45,6 +49,7 @@ communities.
 ## Pages
 
 - [Home](https://mikeysdetailing.com/): overview, instant quote calculator, pricing, FAQs.
+- [About Mikey Miller](https://mikeysdetailing.com/about/): who runs the business, experience, full pricing table, service area.
 - [Services](https://mikeysdetailing.com/services/): full service list and what each one includes.
 - [Interior detailing](https://mikeysdetailing.com/services/interior.html): what an interior detail covers.
 - [Exterior detailing](https://mikeysdetailing.com/services/exterior.html): what an exterior detail covers.

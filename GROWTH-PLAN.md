@@ -37,10 +37,10 @@ the quote calculator, it isn't in this plan.
 |---|---|---|---|
 | G1 | Brand images on **third-party free hosts** (`iili.io` OG image, `i.ibb.co` logo) | One host outage = every social preview and logo on 34 pages breaks. Also zero Google Images traffic. | Phase 1 |
 | G2 | Blog lives at **`blog.mikeysdetailing.com`** (43 references) | Subdomain splits your entity + link authority in half, and AI retrieval treats it as a separate site | Phase 1 |
-| G3 | **No `Organization` / `Person` entity schema** — no founder, no `@graph`, no `@id` anchoring | Machines can't resolve "Mikey" to a real person. This is the single biggest AIEO miss on the site. | Phase 1 |
-| G4 | `robots.txt` is 4 lines, no AI-crawler declarations, no blog sitemap | Nothing is blocked, but nothing is invited either | Phase 1 |
-| G5 | No `llms.txt` | Cheap lottery ticket, currently unbought | Phase 1 |
-| G6 | `site-stats.js` **rewrites JSON-LD client-side** | Most AI crawlers don't run JavaScript. The HTML fallbacks (currently `40`) are what they actually read — they must never go stale. | Phase 1 (guardrail) |
+| G3 | ~~**No `Organization` / `Person` entity schema**~~ | ~~Machines can't resolve "Mikey" to a real person.~~ | ✅ **Done** — one `@graph` per page, `#business` / `#mikey` / `#website` anchored |
+| G4 | ~~`robots.txt` is 4 lines, no AI-crawler declarations~~ | — | ✅ **Done** |
+| G5 | ~~No `llms.txt`~~ | — | ✅ **Done** |
+| G6 | `site-stats.js` **rewrites JSON-LD client-side** | Most AI crawlers don't run JavaScript. The HTML fallbacks (currently `40`) are what they actually read — they must never go stale. | ✅ Documented in the file + the weekly checklist |
 | G7 | Only **8 cities** in `areaServed`; 7 more mapped but unbuilt | Every unbuilt city is a Map Pack you're not in | Phase 4 |
 | G8 | **Zero off-site presence** (no Reddit, Nextdoor, or directory footprint in evidence) | Community platforms account for ~52% of AI citations — you're invisible in the biggest AI source pool | Phase 5 |
 | G9 | No AI-visibility measurement of any kind | You cannot improve what you don't score | Phase 0 |
@@ -164,15 +164,22 @@ Each phase lists **Do this** (concrete, checkable) and **Done when** (the exit t
 This is where I can do most of the work for you. It's the highest-leverage code you'll
 ever ship on this site, because it's what every later phase compounds on top of.
 
+> **Status: items 2–5 and 7 are shipped.** All 35 pages now carry one linked entity
+> graph. Remaining: **item 1 (self-host the images — needs you to download two files)**
+> and **item 6 (blog migration — needs the blog's content)**.
+
 **Do this:**
 
-1. **Self-host the brand images** (fixes G1)
-   Download the OG image and logo, commit them to `/images/` as `og-image.jpg` (1200×630)
-   and `logo.jpg`, then swap every `iili.io` and `i.ibb.co` URL sitewide. Also mirror the
-   `lh3.googleusercontent.com` job photos into `/images/` — Google-hosted URLs are outside
-   your control and earn you nothing in Google Images.
+1. ⬜ **Self-host the brand images** (fixes G1) — **needs you; I can't reach those hosts**
+   Save these two files and drop them in `/images/`, then tell me and I'll swap every
+   reference sitewide in one pass:
+   - `https://iili.io/qKtjLcx.jpg` → `/images/og-image.jpg` (resize to 1200×630)
+   - `https://i.ibb.co/Kxzv8C6d/logo.jpg` → `/images/logo.jpg`
 
-2. **Build the entity `@graph`** (fixes G3 — *biggest AIEO win in the plan*)
+   Also worth mirroring the `lh3.googleusercontent.com` job photos into `/images/` —
+   Google-hosted URLs are outside your control and earn you nothing in Google Images.
+
+2. ✅ **Build the entity `@graph`** (fixes G3 — *biggest AIEO win in the plan*)
    Replace the flat `LocalBusiness` block with a linked graph on every page:
    ```
    Organization  @id: https://mikeysdetailing.com/#business
@@ -186,25 +193,24 @@ ever ship on this site, because it's what every later phase compounds on top of.
    `hasCredential` if applicable. Every page's schema points back to the *same*
    `#business` `@id`. That's what turns 34 pages into one confident entity.
 
-3. **Add a real `Person` entity for you.** Name, role, years detailing, cars completed,
-   a photo, a 2-sentence bio. E-E-A-T for classic SEO, and the thing AI engines look for
-   when deciding whether a business is real. Put it on an `/about/` page and reference it
-   from the graph everywhere.
+3. ✅ **Add a real `Person` entity for you.** Live at [`/about/`](https://mikeysdetailing.com/about/)
+   — Mikey Miller, Owner & Detailer, detailing since 2021, with `knowsAbout`, `worksFor`
+   and `founder` wired both ways into the graph on all 35 pages. E-E-A-T for classic SEO,
+   and the entity AI engines look for when deciding whether a business is real.
 
-4. **Rewrite `robots.txt`** (fixes G4) — explicitly welcome the AI crawlers, add the blog
-   sitemap. *(Shipped with this plan — see the repo.)*
+4. ✅ **Rewrite `robots.txt`** (fixes G4) — AI crawlers explicitly welcomed, blog sitemap declared.
 
-5. **Add `llms.txt`** (fixes G5) — a plain-text map of who you are, what you charge, where
+5. ✅ **Add `llms.txt`** (fixes G5) — plain-text map of who you are, what you charge, where
    you work, and your best pages. Honest assessment: crawlers mostly ignore it today and
-   Google has said it won't support it. But it costs 30 minutes and the downside is zero.
-   *(Shipped with this plan — see the repo.)*
+   Google has said it won't support it. But it cost 30 minutes and the downside is zero.
 
-6. **Consolidate the blog to `/blog/`** (fixes G2) — move the posts into the repo, 301 the
-   subdomain, update all 43 references. Do this in one commit so the redirect map is clean.
+6. ⬜ **Consolidate the blog to `/blog/`** (fixes G2) — **needs the blog's content**; the
+   posts aren't in this repo. Export them from `blog.mikeysdetailing.com` and I'll move
+   them in, 301 the subdomain, and update all 43 references in one commit.
 
-7. **Guardrail for G6:** add a comment in `site-stats.js` and a line in your weekly
-   checklist — *when you bump `reviewCount`, the hardcoded HTML values must be bumped too*,
-   because JS-blind crawlers only ever see the HTML. (They're in sync at `40` today.)
+7. ✅ **Guardrail for G6:** documented in `site-stats.js` and in the weekly checklist —
+   *when you bump `reviewCount`, the hardcoded HTML values must be bumped too*, because
+   JS-blind crawlers only ever see the HTML. (They're in sync at `40` today.)
 
 **Done when:** zero third-party image hosts, `@graph` validates clean in the Rich Results
 Test on all 34 pages, blog serving from `/blog/` with 301s live, `robots.txt` + `llms.txt`
