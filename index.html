@@ -1744,6 +1744,14 @@ header li a[href="#booking"],
     #qqcCard .qq-book-btn{margin-top:14px;width:100%;min-height:54px;font-size:16px;}
     #qqcCard .qq-text-instead{display:block;width:100%;margin-top:12px;background:none;border:none;color:#9a9aa2;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:9px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-text-instead:hover{color:#e9e9ec;}
+    /* Booking picker switched off (BOOKING_ENABLED = false): hide the calendar UI. */
+    #qqcCard.booking-off #qqDayHint,
+    #qqcCard.booking-off #qqDays,
+    #qqcCard.booking-off #qqSlots,
+    #qqcCard.booking-off #qqDisclaimer,
+    #qqcCard.booking-off #qqBookConfirm,
+    #qqcCard.booking-off #qqBookBtn,
+    #qqcCard.booking-off #qqPickTimeCta{display:none !important;}
   </style>
   <div class="step" id="step4">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
@@ -1792,8 +1800,8 @@ header li a[href="#booking"],
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>Got it — quote sent!</h3>
-      <p>I'll text you shortly to confirm. Want to lock in your exact time right now? It takes about 60 seconds.</p>
-      <p style="margin:14px 0;"><a href="#" onclick="if(window.MikeyQQC&amp;&amp;MikeyQQC.pickTime){MikeyQQC.pickTime();}return false;" style="display:inline-flex;align-items:center;gap:8px;background:#C8102E;color:#fff;font-weight:900;text-decoration:none;padding:14px 26px;border-radius:12px;box-shadow:0 8px 22px rgba(200,16,46,.35);">📅 Pick my time →</a></p>
+      <p id="qqSuccessTime">I'll text you shortly to confirm. Want to lock in your exact time right now? It takes about 60 seconds.</p>
+      <p id="qqPickTimeCta" style="margin:14px 0;"><a href="#" onclick="if(window.MikeyQQC&amp;&amp;MikeyQQC.pickTime){MikeyQQC.pickTime();}return false;" style="display:inline-flex;align-items:center;gap:8px;background:#C8102E;color:#fff;font-weight:900;text-decoration:none;padding:14px 26px;border-radius:12px;box-shadow:0 8px 22px rgba(200,16,46,.35);">📅 Pick my time →</a></p>
       <p style="color:#9a9aa2;font-size:0.9rem;">No rush — I'll reach out either way. Talk soon!</p>
       <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
@@ -1804,6 +1812,13 @@ header li a[href="#booking"],
 
 <script>
 (function(){
+  // ===== Booking picker on/off switch =====
+  // false = the "pick a day & time" calendar in step 4 is hidden and nothing is
+  // booked online; customers still get a quote and Mikey texts back to schedule.
+  // Flip to true to turn instant booking back on — all of the picker code below
+  // stays in place and works as before.
+  var BOOKING_ENABLED = false;
+
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
   var PRICE = { 'Full Detail':299, 'Interior Detail':200, 'Exterior Detail':160 };
   var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'success' };
@@ -1847,7 +1862,7 @@ header li a[href="#booking"],
     setProgress(n);
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
     if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
-    if (n === 4){ try { bkOnStep4(); } catch(e){} }
+    if (n === 4 && BOOKING_ENABLED){ try { bkOnStep4(); } catch(e){} }
     var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -1962,8 +1977,12 @@ header li a[href="#booking"],
       }
     }, false);
 
-    var _bkBtn = $('qqBookBtn'); if (_bkBtn) _bkBtn.addEventListener('click', bkBook, false);
-    var _bkLoc = $('qqLocation'); if (_bkLoc) _bkLoc.addEventListener('input', bkDisclaimer, false);
+    if (BOOKING_ENABLED){
+      var _bkBtn = $('qqBookBtn'); if (_bkBtn) _bkBtn.addEventListener('click', bkBook, false);
+      var _bkLoc = $('qqLocation'); if (_bkLoc) _bkLoc.addEventListener('input', bkDisclaimer, false);
+    } else {
+      bkApplyDisabledUI();
+    }
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -1995,7 +2014,7 @@ header li a[href="#booking"],
         '\nServices: ' + S.items.join(', ') + (notes ? '\nNotes: ' + notes : '');
 
       function showSubmitError(){
-        if (btn){ btn.disabled = false; btn.textContent = 'Lock in my quote'; }
+        if (btn){ btn.disabled = false; btn.textContent = BOOKING_ENABLED ? 'Lock in my quote' : 'Text me my quote'; }
         if (errBox){
           var smsHref = 'sms:+14256007897?&body=' + encodeURIComponent("Hi Mikey! Here's my quote request:\n" + msgBody);
           errBox.innerHTML = "<p>That didn’t go through, but your quote isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
@@ -2089,8 +2108,25 @@ header li a[href="#booking"],
       calcQuote(); // computes total + shows step 4 (quote + name/phone form)
     },
     // Jump to the inline booking picker (same page) from the text-only success step.
-    pickTime: function () { goStep(4); var b = $('qqBook'); if (b) setTimeout(function () { b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300); }
+    pickTime: function () {
+      if (!BOOKING_ENABLED) return; // booking is off — the CTA that calls this is hidden too
+      goStep(4); var b = $('qqBook'); if (b) setTimeout(function () { b.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300);
+    }
   };
+
+  // Booking is switched off: hide the day/time picker and make "text me my quote"
+  // the primary action, so step 4 still closes the lead the same way.
+  function bkApplyDisabledUI(){
+    var card = $('qqcCard'); if (card) card.classList.add('booking-off');
+    var head = document.querySelector('#qqBook .qq-book-head');
+    if (head) head.textContent = '📱 Get your quote by text';
+    var sub = document.querySelector('#qqBook .qq-book-sub');
+    if (sub) sub.textContent = "Online booking is paused right now. Send your quote over and I'll text you back to lock in a time — usually within the hour.";
+    var sb = $('qqSubmitBtn');
+    if (sb){ sb.className = 'btn btn-primary qq-book-btn'; sb.textContent = 'Text me my quote'; }
+    var st = $('qqSuccessTime');
+    if (st) st.textContent = "I'll text you shortly to confirm your quote and get a time on the calendar.";
+  }
 
   // ===== Inline booking: pick a real time & book right here in the QQC =====
   var BK_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev';
