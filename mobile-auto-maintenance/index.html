@@ -1365,17 +1365,17 @@ header li a[href="#booking"],
 
     <!-- Hero review -->
     <figure class="trust-review">
-      <div class="trust-quote-mark">"</div>
+      <div class="trust-rtop">
+        <span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span>
+        <span class="trust-source">Google review</span>
+      </div>
       <blockquote class="trust-quote">
-        Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!
+        &ldquo;<b>Mikey has done my car 4 times now</b> and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!&rdquo;
       </blockquote>
       <figcaption class="trust-attribution">
-        <div class="trust-avatar">C</div>
-        <div class="trust-meta">
-          <div class="trust-name">C Wilson</div>
-          <div class="trust-location">Snohomish, WA</div>
-        </div>
-        <div class="trust-stars">★★★★★</div>
+        <span class="trust-avatar">C</span>
+        <span class="trust-name">C Wilson</span>
+        <span class="trust-location">Snohomish, WA</span>
       </figcaption>
     </figure>
 
@@ -1470,62 +1470,84 @@ header li a[href="#booking"],
     border: 2px solid #2a2a2a;
     border-left: 4px solid #C8102E;
     border-radius: 12px;
-    padding: 32px 28px;
-    margin: 0 0 32px 0;
+    padding: 22px 24px 18px;
+    margin: 0 0 28px 0;
     position: relative;
   }
 
-  .trust-quote-mark {
+  /* Rating + source sit above the quote so the 5 stars register first */
+  .trust-rtop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .trust-stars {
+    font-size: 15px;
+    color: #C9A24B;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .trust-source {
     font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-    font-size: 72px;
-    color: #C8102E;
-    line-height: 0.8;
-    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 999px;
+    padding: 3px 9px;
+    white-space: nowrap;
   }
 
   .trust-quote {
     font-family: 'Outfit', sans-serif;
     font-weight: 400;
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #e5e7eb;
-    margin: 0 0 24px 0;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #d7dae0;
+    margin: 0 0 16px 0;
+  }
+
+  /* Pull the repeat-customer proof out of the middle of the sentence */
+  .trust-quote b {
+    font-weight: 700;
+    color: #fff;
   }
 
   .trust-attribution {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    padding-top: 14px;
     border-top: 1px solid #2a2a2a;
   }
 
   .trust-avatar {
-    width: 44px;
-    height: 44px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: #C8102E;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-family: 'Outfit', sans-serif;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
     flex-shrink: 0;
-  }
-
-  .trust-meta {
-    flex: 1;
-    min-width: 0;
   }
 
   .trust-name {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     color: #fff;
   }
 
@@ -1534,13 +1556,12 @@ header li a[href="#booking"],
     font-weight: 400;
     font-size: 13px;
     color: #9ca3af;
-    margin-top: 2px;
   }
 
-  .trust-stars {
-    font-size: 14px;
-    color: #C9A24B;
-    letter-spacing: 2px;
+  .trust-location::before {
+    content: "\00b7";
+    margin-right: 8px;
+    color: #4b5563;
   }
 
   /* All reviews CTA */
@@ -1601,12 +1622,8 @@ header li a[href="#booking"],
       font-size: 16px;
     }
 
-    .trust-quote-mark {
-      font-size: 56px;
-    }
-
     .trust-review {
-      padding: 24px 20px;
+      padding: 18px 18px 16px;
     }
   }
 </style>
