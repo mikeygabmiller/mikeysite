@@ -77,6 +77,7 @@ communities.
 - [Best time of year to detail a car in Washington](https://mikeysdetailing.com/best-time-to-detail-car-washington/)
 - [Mobile detailing vs. a car wash](https://mikeysdetailing.com/mobile-detailing-vs-car-wash/)
 - [Mobile car detailing near me](https://mikeysdetailing.com/mobile-car-detailing-near-me/)
+- [The Polish Test - a browser skill test that simulates machine polishing a panel](https://mikeysdetailing.com/polish-test/)
 
 ## Optional
 
