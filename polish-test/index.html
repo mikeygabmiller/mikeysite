@@ -54,16 +54,17 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Outfit',sans-serif;background:#141414;color:#fff;line-height:1.6;}
 .container{max-width:900px;margin:0 auto;padding:0 20px;}
+.container.wide{max-width:1600px;}
 header{background:#141414;border-bottom:2px solid #C8102E;padding:20px 0;}
 header .container{display:flex;justify-content:space-between;align-items:center;}
 .logo{font-weight:900;font-size:1.4rem;text-transform:uppercase;letter-spacing:1px;color:#fff;text-decoration:none;}
 .logo span{color:#C8102E;}
 nav a{color:#fff;text-decoration:none;font-weight:700;margin-left:24px;text-transform:uppercase;font-size:0.9rem;letter-spacing:1px;}
 nav a:hover{color:#C8102E;}
-.hero{padding:56px 0 28px;text-align:center;}
-h1{font-weight:900;font-size:2.8rem;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:16px;}
+.hero{padding:26px 0 18px;text-align:center;}
+h1{font-weight:900;font-size:2.4rem;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:10px;}
 h1 span{color:#C8102E;}
-.lede{font-size:1.15rem;color:#ccc;max-width:660px;margin:0 auto;}
+.lede{font-size:1.05rem;color:#ccc;max-width:640px;margin:0 auto;}
 .lede b{color:#fff;}
 main{padding:0 0 40px;}
 h2{font-weight:900;font-size:1.8rem;text-transform:uppercase;letter-spacing:1px;margin:40px 0 20px;border-left:4px solid #C8102E;padding-left:16px;}
@@ -75,10 +76,14 @@ main a{color:#C8102E;}
 .btn:hover{background:#fff;color:#C8102E;}
 footer{background:#0a0a0a;padding:40px 0;text-align:center;color:#888;font-size:0.9rem;}
 footer a{color:#C8102E;text-decoration:none;}
-@media(max-width:640px){
-  h1{font-size:2rem;}h2{font-size:1.4rem;}.hero{padding:34px 0 20px;}
+@media(max-width:760px){
+  h1{font-size:1.8rem;}h2{font-size:1.4rem;}.hero{padding:16px 0 12px;}
+  /* the game goes edge to edge on a phone */
+  .container.wide{padding:0;}
+  .container.wide .hero{padding-left:16px;padding-right:16px;}
   nav a{margin-left:14px;font-size:0.8rem;}.logo{font-size:1.1rem;}
-  .lede{font-size:1rem;}
+  .lede{font-size:0.95rem;}
+  header{padding:12px 0;}
 }
 </style>
 
@@ -102,13 +107,23 @@ footer a{color:#C8102E;text-decoration:none;}
     /* body is a flex column; without this the stage gets shrunk vertically and
        silently crops the bottom of the panel on short screens */
     flex:0 0 auto;
-    position:relative; width:100%; max-width:1000px;
-    border-radius:16px; overflow:hidden;
+    /* fill the viewport as far as it can while keeping the whole panel on
+       screen -- --pt-ar is the canvas aspect, set from JS */
+    position:relative;
+    width:100%;
+    height:calc(100dvh - var(--pt-reserve,198px));
+    border-radius:14px; overflow:hidden;
     background:#08090b;
     box-shadow:0 30px 80px -30px #000, 0 0 0 1px var(--line);
     touch-action:none;
   }
-  canvas#cv{display:block; width:100%; height:auto; cursor:none; touch-action:none}
+  canvas#cv{display:block; width:100%; height:100%; cursor:none; touch-action:none}
+
+  /* real fullscreen: centre the canvas and let it take the whole screen */
+  #stage:fullscreen{
+    width:100vw; max-width:none; height:100vh; border-radius:0; background:#000;
+  }
+  #stage:fullscreen canvas#cv{ width:100%; height:100%; }
 
   /* ---------- hud ---------- */
   #hud{
@@ -220,6 +235,33 @@ footer a{color:#C8102E;text-decoration:none;}
   #resBtns{display:flex; gap:9px; flex-wrap:wrap; justify-content:center}
   #shareNote{font-size:11.5px; color:var(--dimmer); margin-top:11px; min-height:15px}
 
+  /* ---------- settings ---------- */
+  #settings{justify-content:flex-start; overflow-y:auto; text-align:left; align-items:stretch; padding:clamp(14px,2.2vw,26px)}
+  #settings h2,#settings p{text-align:center; align-self:center}
+  #setRows{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+    gap:9px 22px; width:100%; max-width:900px; margin:6px auto 14px;
+  }
+  .setRow{display:grid; grid-template-columns:1fr auto; gap:2px 10px; align-items:center}
+  .setRow label{font-size:12.5px; color:var(--ink); font-weight:700}
+  .setRow .val{font-size:12.5px; color:var(--accent); font-variant-numeric:tabular-nums; font-weight:700; white-space:nowrap}
+  .setRow .hint{grid-column:1/-1; font-size:11px; color:var(--dimmer); line-height:1.35; margin-top:-2px}
+  .setRow input[type=range]{grid-column:1/-1; width:100%; accent-color:var(--accent); margin:2px 0 0; height:20px}
+  .setActions{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:4px 0}
+  #setExport{width:100%; max-width:900px; margin:8px auto 0; border-top:1px solid var(--line); padding-top:10px}
+  #setExport summary{cursor:pointer; font-size:12.5px; color:var(--dim); font-weight:700; letter-spacing:.05em; text-transform:uppercase}
+  #setJson{
+    width:100%; background:#07080a; color:var(--dim); border:1px solid var(--line);
+    border-radius:8px; padding:9px; font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:11.5px; line-height:1.45; resize:vertical;
+  }
+  #setBtn .lbl,#fsBtn .lbl{}
+  @media (max-width:760px){
+    #setBtn .lbl,#fsBtn .lbl{display:none}
+    #setRows{grid-template-columns:1fr; gap:7px}
+    #settings p{font-size:12px}
+  }
+
   /* ---------- footer ---------- */
   footer a:hover{color:var(--ink)}
   .modeRow{display:flex; gap:6px; align-items:center; justify-content:center; flex-wrap:wrap}
@@ -229,6 +271,12 @@ footer a{color:#C8102E;text-decoration:none;}
     font-size:12px; letter-spacing:.05em; text-transform:uppercase;
   }
   .seg button.on{background:rgba(255,255,255,.10); color:var(--ink)}
+  #fsBtn{
+    white-space:nowrap;
+    background:rgba(8,9,11,.72); border:1px solid rgba(255,255,255,.09);
+    color:var(--dim); padding:7px 10px; font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  #fsBtn:hover{color:var(--ink)}
   #muteBtn{
     white-space:nowrap;
     background:rgba(8,9,11,.72); border:1px solid rgba(255,255,255,.09);
@@ -239,12 +287,13 @@ footer a{color:#C8102E;text-decoration:none;}
      these rules is to stop the chrome from eating it. */
   @media (max-width:760px){
     body{padding:10px 10px 26px; gap:10px}
+    #stage{height:calc(100dvh - var(--pt-reserve,132px))}
       
     #hud{padding:8px}
     .chip{padding:5px 8px; font-size:9.5px; letter-spacing:.05em; gap:6px; border-radius:8px}
     .chip b{font-size:12px}
     #heatBar,#speedBar{width:52px; height:5px}
-    #muteBtn{padding:5px 7px; font-size:9px}
+    #muteBtn,#fsBtn{padding:5px 7px; font-size:10px}
     #hintChip{font-size:9.5px; padding:5px 9px}
 
     .overlay{padding:14px 12px; gap:9px; overflow-y:auto; justify-content:center}
@@ -284,10 +333,10 @@ footer a{color:#C8102E;text-decoration:none;}
 </header>
 
 <main>
-  <div class="container">
+  <div class="container wide">
     <div class="hero">
       <h1>The Polish <span>Test</span></h1>
-      <p class="lede">Machine-polish the haze out of a black panel in 40 seconds. Move too slow and you burn through the clear coat. Move too fast and you leave holograms. <b>Most people score in the low 30s.</b></p>
+      <p class="lede">Machine-polish the swirls out of a black door in 40 seconds. Too slow and you burn through the clear coat. Too fast and you leave holograms. <b>Most people score in the low 30s.</b></p>
     </div>
 
     <div class="pt-wrap">
@@ -302,7 +351,7 @@ footer a{color:#C8102E;text-decoration:none;}
       </div>
       <div style="display:flex; gap:8px; align-items:flex-start">
         <div class="chip" id="speedWrap"><span>Speed</span><div id="speedBar"><div class="band"></div><div id="speedNeedle"></div></div></div>
-        <button id="muteBtn" title="Toggle sound">Sound: on</button>
+        <button id="fsBtn" title="Fullscreen" aria-label="Fullscreen" hidden>&#9974;<span class="lbl"> Full</span></button>
       </div>
     </div>
     <div class="hudRow" style="justify-content:center">
@@ -327,7 +376,34 @@ footer a{color:#C8102E;text-decoration:none;}
       </div>
     </div>
     <button class="ptbtn" id="startBtn">Start the polisher</button>
+    <div class="setActions">
+      <button class="ptbtn ghost sm" id="setBtn">&#9881; Settings</button>
+      <button class="ptbtn ghost sm" id="fsBtn2" hidden>&#9974; Fullscreen</button>
+    </div>
     <p style="font-size:11.5px; color:var(--dimmer)" id="seedNote"></p>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="overlay hide" id="settings">
+    <h2>Settings</h2>
+    <p style="max-width:520px">Everything that decides how this behaves. Sizes and speeds are in inches, scaled to the door width, so they mean the same thing on any screen.</p>
+    <div id="setRows"></div>
+    <div class="setActions">
+      <button class="ptbtn" id="setClose">Apply &amp; close</button>
+      <button class="ptbtn ghost sm" id="setReset">Reset to defaults</button>
+      <button class="ptbtn ghost sm" id="setSound">Sound: on</button>
+    </div>
+    <details id="setExport" open>
+      <summary>Save / load these settings</summary>
+      <p style="font-size:12px;margin:8px 0">Copy this and send it back to change the defaults for everyone. Pasting someone else&rsquo;s settings here and hitting Load will apply them.</p>
+      <textarea id="setJson" spellcheck="false" rows="7"></textarea>
+      <div class="setActions">
+        <button class="ptbtn ghost sm" id="setCopy">Copy</button>
+        <button class="ptbtn ghost sm" id="setDownload">Download</button>
+        <button class="ptbtn ghost sm" id="setLoad">Load pasted</button>
+      </div>
+      <div id="setNote" style="font-size:12px;color:var(--dimmer);min-height:16px;margin-top:6px"></div>
+    </details>
   </div>
 
   <!-- RESULTS -->
@@ -341,12 +417,15 @@ footer a{color:#C8102E;text-decoration:none;}
       <button class="ptbtn" id="againBtn">Polish again</button>
       <button class="ptbtn ghost" id="shareBtn">Save score card</button>
       <button class="ptbtn ghost sm" id="ghostBtn">Show the right way</button>
+      <button class="ptbtn ghost sm" id="setBtn2">&#9881; Settings</button>
     </div>
     <div id="shareNote"></div>
   </div>
 </div>
     </div>
+  </div>
 
+  <div class="container">
     <h2>Why it's harder than it looks</h2>
     <p>Polishing isn't scrubbing. The pad only cuts inside a narrow speed band &mdash; drag it too slowly and friction heats the clear coat until it lets go, push it too fast and the pad skips across the surface without finishing the cut, leaving curved buffer trails called holograms. Those trails are invisible indoors and painfully obvious in direct sun.</p>
     <p>The other half of the job is boring on purpose: every pass has to overlap the last one by about half the pad, edge to edge, for the whole panel. Miss that and you get stripes that only show up once the panel dries. This test scores exactly those four things &mdash; coverage, pass consistency, speed control, and heat.</p>
@@ -377,57 +456,119 @@ footer a{color:#C8102E;text-decoration:none;}
    Everything you see is drawn procedurally. No images, no network.
    ===================================================================== */
 
-/* ---------- tuning (all the numbers Mikey should argue with) ---------- */
-const TUNE = {
-  duration:      40,     // seconds on the clock
-  padRadius:     0,      // pad footprint, internal px (set below, per layout)
-  cutRate:       4.30,   // haze removed per second at pad centre, ideal speed
-  slowSpeed:     170,    // below this the pad is dwelling -> heat
-  bandLo:        300,    // ideal pass speed, low end (px/s)
-  bandHi:        760,    // ideal pass speed, high end
-  fastSpeed:     1050,   // above this the pad skips and slings holograms
-  heatRate:      2.10,   // heat gained per second dwelling at pad centre
-  heatCool:      0.85,   // heat lost per second
-  burnRate:      1.60,   // burn accrued per second once heat tops out
-  holoRate:      0.95,   // hologram severity per second of over-speed
+/* ---------- everything you can tinker with ----------
+   Speeds and pad size are stored relative to the panel, not in pixels, so a
+   setting means the same thing on a phone as on a laptop no matter what
+   resolution the canvas ends up at. */
+const COARSE = matchMedia("(pointer:coarse)").matches;
+const DEFAULTS = {
+  duration:  40,     // seconds on the clock
+  doorIn:    44,     // how wide the door is, inches -- sets the scale for
+                     // everything below, so the numbers mean something
+  padIn:     COARSE ? 6.0 : 4.0,   // pad diameter, inches
+  cutRate:   4.30,   // haze removed per second at pad centre, ideal speed
+  slowIps:   7.5,    // below this the pad is dwelling -> heat (inches/sec)
+  bandLoIps: 12.8,   // working speed, low end
+  bandHiIps: 33.0,   // working speed, high end
+  fastIps:   45.0,   // above this the pad skips and slings holograms
+  heatRate:  2.10,   // heat gained per second dwelling at pad centre
+  heatCool:  0.85,   // heat lost per second
+  burnRate:  1.60,   // burn accrued per second once heat tops out
+  holoRate:  0.95,   // hologram severity per second of over-speed
+  startHaze: 0.85,   // how beaten the paint starts out
 };
+let SET = Object.assign({}, DEFAULTS);
+try{ const j=localStorage.getItem("pt.settings");
+     if(j) SET=Object.assign({}, DEFAULTS, JSON.parse(j)); }catch(e){}
+
+const TUNE = {};   // the same numbers resolved into canvas pixels
+function deriveTune(){
+  const ppi = PANEL.w/Math.max(6, SET.doorIn);   // canvas pixels per real inch
+  TUNE.duration  = SET.duration;
+  TUNE.padRadius = Math.max(8, (SET.padIn/2)*ppi);
+  TUNE.cutRate   = SET.cutRate;
+  TUNE.slowSpeed = SET.slowIps*ppi;
+  TUNE.bandLo    = SET.bandLoIps*ppi;
+  TUNE.bandHi    = SET.bandHiIps*ppi;
+  TUNE.fastSpeed = SET.fastIps*ppi;
+  TUNE.heatRate  = SET.heatRate;
+  TUNE.heatCool  = SET.heatCool;
+  TUNE.burnRate  = SET.burnRate;
+  TUNE.holoRate  = SET.holoRate;
+}
 
 /* ---------- canvas sizing ----------
-   A landscape panel squeezed onto a phone leaves a 220px-tall play area with
-   the HUD sitting on top of the paint. Phones get their own portrait geometry
-   instead; everything downstream is expressed relative to PANEL, so the art,
-   the grid and the scoring all follow automatically. */
-const PORTRAIT = matchMedia("(max-width:760px)").matches ||
-                 (matchMedia("(orientation:portrait)").matches && matchMedia("(max-width:920px)").matches);
-const W = PORTRAIT ? 820 : 1152, H = PORTRAIT ? 1120 : 672;
-const PANEL = PORTRAIT ? { x:52, y:86, w:716, h:948 } : { x:66, y:74, w:1020, h:524 };
-const GW = Math.round(PANEL.w/10.2), GH = Math.round(PANEL.h/9.36);
-const CW = PANEL.w / GW, CH = PANEL.h / GH;    // cell size in px
-const LOWQ = matchMedia("(pointer:coarse)").matches || innerWidth < 720;
-const SS = LOWQ ? 0.45 : 0.62;                 // scratch-layer resolution scale
+   The canvas takes the aspect of whatever space it has been given, so it fills
+   the screen instead of sitting letterboxed in a box. Total pixel count is
+   capped, so a tall phone canvas costs the same as a wide desktop one. */
+const LOWQ = COARSE || innerWidth < 720;
+const SS   = LOWQ ? 0.45 : 0.62;      // scratch-layer resolution scale
+const TARGET_PX = LOWQ ? 780000 : 980000;
 
-// a thumb needs a bigger target than a mouse, and the portrait panel is taller
-TUNE.padRadius = PORTRAIT ? 60 : 46;
-
-const cv = document.getElementById("cv");
-cv.width = W; cv.height = H;
+const cv  = document.getElementById("cv");
 const ctx = cv.getContext("2d");
+function mk(w,h){ const c=document.createElement("canvas"); c.width=Math.max(1,w|0); c.height=Math.max(1,h|0); return c; }
 
-function mk(w,h){ const c=document.createElement("canvas"); c.width=w|0; c.height=h|0; return c; }
-const paintCv  = mk(W,H),        paintCtx = paintCv.getContext("2d");
-const reflCv   = mk(W,H),        reflCtx  = reflCv.getContext("2d");
-const reflBCv  = mk(W,H),        reflBCtx = reflBCv.getContext("2d");
-const swirlCv  = mk(W*SS,H*SS),  swirlCtx = swirlCv.getContext("2d");
-const holoCv   = mk(W*SS,H*SS),  holoCtx  = holoCv.getContext("2d");
-const scratchCv= mk(W*SS,H*SS),  scrCtx   = scratchCv.getContext("2d");
-const maskCv   = mk(GW,GH),      maskCtx  = maskCv.getContext("2d");
-const shopCv   = mk(W,H),        shopCtx  = shopCv.getContext("2d");
-const MIDW=Math.round(PANEL.w/2), MIDH=Math.round(PANEL.h/2);
-const midCv    = mk(MIDW,MIDH),  midCtx   = midCv.getContext("2d");
-const UPW=Math.max(2,Math.round(PANEL.w*SS)), UPH=Math.max(2,Math.round(PANEL.h*SS));
-const hazeUpCv = mk(UPW,UPH),    hazeUpCtx= hazeUpCv.getContext("2d");
-const cleanUpCv= mk(UPW,UPH),    cleanUpCtx=cleanUpCv.getContext("2d");
-const maskImg  = maskCtx.createImageData(GW,GH);
+let W=1152, H=672, AR=1.714;
+let PANEL={x:0,y:0,w:1,h:1}, GLASS=0.30, ROCKER=0.13;
+let beltY=0, rockY=0, frontX=0, rearX=0, pillarX=0;
+let GW=100, GH=56, CW=1, CH=1, N=1;
+let paintCv,paintCtx, reflCv,reflCtx, reflBCv,reflBCtx, swirlCv,swirlCtx,
+    holoCv,holoCtx, scratchCv,scrCtx, maskCv,maskCtx, shopCv,shopCtx,
+    panelCv,panelCtx, maskImg;
+let haze,heat,burn,holo,inPan,hazeS,burnS,holoS,heatS,grain;
+
+function availableBox(){
+  if(document.fullscreenElement) return {w:innerWidth, h:innerHeight};
+  const r=document.getElementById("stage").getBoundingClientRect();
+  return {w:Math.max(240, r.width||innerWidth), h:Math.max(240, r.height||innerHeight*0.7)};
+}
+
+function layout(){
+  const box=availableBox();
+  AR=Math.min(2.4, Math.max(0.46, box.w/box.h));
+  H=Math.round(Math.min(1700, Math.max(560, Math.sqrt(TARGET_PX/AR))));
+  W=Math.round(H*AR);
+  cv.width=W; cv.height=H;
+  document.getElementById("stage").style.setProperty("--pt-ar", AR.toFixed(4));
+
+  /* the scene is a door: glass on top, rocker along the bottom, and the
+     polishable skin in between */
+  GLASS  = AR>1.2 ? 0.32 : 0.24;
+  ROCKER = AR>1.2 ? 0.15 : 0.12;
+  beltY  = H*GLASS;              // where glass meets sheet metal
+  rockY  = H*(1-ROCKER);         // top of the rocker panel
+  frontX = W*0.115;              // front shut line
+  rearX  = W*0.905;              // rear shut line
+  pillarX= W*0.560;              // B-pillar, behind the door glass
+  const gap=Math.max(3,W*0.007);
+  PANEL={ x:frontX+gap, y:beltY+H*0.030,
+          w:(rearX-frontX)-gap*2, h:(rockY-H*0.010)-(beltY+H*0.030) };
+
+  GW=Math.max(40, Math.round(PANEL.w/10.2));
+  GH=Math.max(28, Math.round(PANEL.h/9.36));
+  CW=PANEL.w/GW; CH=PANEL.h/GH; N=GW*GH;
+
+  paintCv=mk(W,H);        paintCtx=paintCv.getContext("2d");
+  reflCv=mk(W,H);         reflCtx=reflCv.getContext("2d");
+  reflBCv=mk(W,H);        reflBCtx=reflBCv.getContext("2d");
+  swirlCv=mk(W*SS,H*SS);  swirlCtx=swirlCv.getContext("2d");
+  holoCv=mk(W*SS,H*SS);   holoCtx=holoCv.getContext("2d");
+  scratchCv=mk(W*SS,H*SS);scrCtx=scratchCv.getContext("2d");
+  maskCv=mk(GW,GH);       maskCtx=maskCv.getContext("2d");
+  shopCv=mk(W,H);         shopCtx=shopCv.getContext("2d");
+  panelCv=mk(W,H);        panelCtx=panelCv.getContext("2d");
+  maskImg=maskCtx.createImageData(GW,GH);
+
+  haze=new Float32Array(N); heat=new Float32Array(N);
+  burn=new Float32Array(N); holo=new Float32Array(N);
+  inPan=new Uint8Array(N);
+  hazeS=new Float32Array(N); burnS=new Float32Array(N);
+  holoS=new Float32Array(N); heatS=new Float32Array(N);
+  grain=new Float32Array(N);
+
+  deriveTune();
+}
 
 /* ---------- rng ---------- */
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
@@ -441,14 +582,32 @@ let rnd = mulberry32(1);
 const rr=(a,b)=>a+rnd()*(b-a);
 
 /* ---------- geometry ---------- */
+/* The polishable area is a door skin. The handle is a genuine hole in the
+   path -- you cannot polish it and it is not counted against your coverage,
+   which is exactly how it works with a real machine in your hand. */
 function panelPath(c){
-  const {x,y,w,h}=PANEL;
+  const {x,y,w,h}=PANEL, r=Math.min(w,h)*0.05;
   c.beginPath();
-  c.moveTo(x+44,y+26);
-  c.bezierCurveTo(x+w*0.30,y-2, x+w*0.66,y-12, x+w-26,y+4);
-  c.quadraticCurveTo(x+w+10,y+h*0.46, x+w-52,y+h-6);
-  c.bezierCurveTo(x+w*0.68,y+h+12, x+w*0.28,y+h+2, x+36,y+h-40);
-  c.quadraticCurveTo(x-12,y+h*0.52, x+44,y+26);
+  c.moveTo(x+r, y+h*0.016);
+  c.lineTo(x+w-r, y);                                   // top, along the belt line
+  c.quadraticCurveTo(x+w, y, x+w, y+r);
+  c.quadraticCurveTo(x+w+r*0.30, y+h*0.5, x+w, y+h-r);  // rear shut edge
+  c.quadraticCurveTo(x+w, y+h, x+w-r, y+h*0.994);
+  c.lineTo(x+r, y+h*0.955);                             // bottom, along the rocker
+  c.quadraticCurveTo(x, y+h*0.955, x, y+h*0.955-r);
+  c.quadraticCurveTo(x-r*0.30, y+h*0.5, x, y+r);        // front shut edge
+  c.quadraticCurveTo(x, y+h*0.016, x+r, y+h*0.016);
+  c.closePath();
+  handleHole(c);
+}
+function handleHole(c){
+  const {x,y,w,h}=PANEL;
+  const hw=w*0.150, hh=h*0.080, hx=x+w*0.600, hy=y+h*0.150, r=hh*0.5;
+  c.moveTo(hx+r,hy);
+  c.lineTo(hx+hw-r,hy); c.arcTo(hx+hw,hy, hx+hw,hy+r, r);
+  c.lineTo(hx+hw,hy+hh-r); c.arcTo(hx+hw,hy+hh, hx+hw-r,hy+hh, r);
+  c.lineTo(hx+r,hy+hh); c.arcTo(hx,hy+hh, hx,hy+hh-r, r);
+  c.lineTo(hx,hy+r); c.arcTo(hx,hy, hx+r,hy, r);
   c.closePath();
 }
 function creasePath(c,off){
@@ -505,7 +664,7 @@ function buildBody(){
   const c=paintCtx, {x,y,w,h}=PANEL;
   c.setTransform(1,0,0,1,0,0);
   c.clearRect(0,0,W,H);
-  c.save(); panelPath(c); c.clip();
+  c.save(); panelPath(c); c.clip("evenodd");
 
   let g=c.createLinearGradient(0,y,0,y+h);
   g.addColorStop(0.00, shade(palette.mid,0.70));
@@ -543,7 +702,7 @@ function buildReflection(){
   const c=reflCtx, {x,y,w,h}=PANEL;
   c.setTransform(1,0,0,1,0,0);
   c.clearRect(0,0,W,H);
-  c.save(); panelPath(c); c.clip();
+  c.save(); panelPath(c); c.clip("evenodd");
 
   const hz=y+h*0.455;   // the horizon: where reflected ceiling meets reflected floor
 
@@ -628,7 +787,7 @@ function shade(hex,m){
 function buildSwirls(){
   const c=swirlCtx; c.setTransform(SS,0,0,SS,0,0);
   c.clearRect(0,0,W,H);
-  c.save(); panelPath(c); c.clip();
+  c.save(); panelPath(c); c.clip("evenodd");
   c.lineCap="round";
 
   /* density blobs so the swirling looks washed-in, not uniform noise */
@@ -670,17 +829,18 @@ function buildHolo(){
      Only visible under raking light — which is exactly how we render them. */
   const c=holoCtx; c.setTransform(SS,0,0,SS,0,0);
   c.clearRect(0,0,W,H);
-  c.save(); panelPath(c); c.clip();
+  c.save(); panelPath(c); c.clip("evenodd");
   const cx=PANEL.x+PANEL.w*0.5, cy=PANEL.y-PANEL.h*1.6, R0=PANEL.h*2.05;
+  const step=PANEL.h*0.052, lw=Math.max(6,PANEL.h*0.026);
   for(let i=-30;i<=30;i++){
-    const R=R0+i*29;
+    const R=Math.max(4, R0+i*step);
     c.beginPath(); c.arc(cx,cy,R, 1.05, 2.10);
-    c.lineWidth=13; c.filter="blur(7px)";
+    c.lineWidth=lw; c.filter="blur("+Math.max(3,PANEL.h*0.014)+"px)";
     c.strokeStyle=`rgba(196,214,246,${(0.30+0.12*Math.sin(i*0.9)).toFixed(3)})`;
     c.stroke();
     c.filter="none";
-    c.beginPath(); c.arc(cx,cy,R+7, 1.05, 2.10);
-    c.lineWidth=2.5; c.strokeStyle="rgba(214,228,255,0.16)"; c.stroke();
+    c.beginPath(); c.arc(cx,cy,Math.max(4,R+lw*0.55), 1.05, 2.10);
+    c.lineWidth=Math.max(1.2,PANEL.h*0.005); c.strokeStyle="rgba(214,228,255,0.16)"; c.stroke();
   }
   c.restore();
 }
@@ -688,18 +848,8 @@ function buildHolo(){
 /* =====================================================================
    SIMULATION STATE
    ===================================================================== */
-const N = GW*GH;
-const haze  = new Float32Array(N);
-const heat  = new Float32Array(N);
-const burn  = new Float32Array(N);
-const holo  = new Float32Array(N);
-const inPan = new Uint8Array(N);
-const hazeS = new Float32Array(N);   // smoothed copies, rebuilt once per frame
-const burnS = new Float32Array(N);
-const holoS = new Float32Array(N);
-const heatS = new Float32Array(N);
+/* the grids themselves are allocated by layout() */
 const dirty = {heat:false, holo:false, burn:false};
-const grain = new Float32Array(N);          // static per-cell irregularity
 function buildGrain(){
   const raw=new Float32Array(N);
   for(let i=0;i<N;i++) raw[i]=rnd();
@@ -733,7 +883,7 @@ function computeInPanel(){
   const t=ctx; t.save(); panelPath(t);
   for(let gy=0;gy<GH;gy++) for(let gx=0;gx<GW;gx++){
     const wx=PANEL.x+(gx+0.5)*CW, wy=PANEL.y+(gy+0.5)*CH;
-    inPan[gy*GW+gx]= t.isPointInPath(wx,wy) ? 1 : 0;
+    inPan[gy*GW+gx]= t.isPointInPath(wx,wy,"evenodd") ? 1 : 0;
   }
   t.restore();
 }
@@ -749,11 +899,12 @@ function resetRound(){
     const gx=i%GW, gy=(i/GW)|0;
     let d=0.80;
     for(const b of bl){ const t2=Math.hypot(gx-b.x,gy-b.y)/b.r; if(t2<1) d+=(1-t2)*0.22; }
-    haze[i]=Math.min(1, d);
+    haze[i]=Math.min(1, d*(SET.startHaze/0.85));
     heat[i]=0; burn[i]=0; holo[i]=0;
   }
   tLeft=TUNE.duration; activeT=0; bandT=0;
   dirty.heat=dirty.holo=dirty.burn=false;
+  fullRepaint=true; hasDirty=false; prevLx=null;
   heatS.fill(0); holoS.fill(0); burnS.fill(0);
   trail.length=0; revealT=0; ghostT=-1; scoreObj=null; smoothSpeed=0;
 }
@@ -813,6 +964,9 @@ function stepSim(dt){
       const sx=ppx+dx*(s/steps), sy=ppy+dy*(s/steps);
       applyPad(sx,sy,sdt,eff,dwl,over);
     }
+    const R=TUNE.padRadius+6;
+    markDirty(Math.min(ppx,px)-R, Math.min(ppy,py)-R,
+              Math.max(ppx,px)+R, Math.max(ppy,py)+R);
     trail.push({x:px,y:py,t:0});
   }
   // trail ages out
@@ -872,105 +1026,141 @@ function light(){
   if(state==="revealing"||state==="done"){
     const p=Math.min(1, revealT/2.8);
     const e=p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
-    return { x:PANEL.x-260 + e*(PANEL.w+520), y:PANEL.y+PANEL.h*0.34,
-             rx:190, ry:PANEL.h*1.5, hard:1, amp:1.0 };
+    const pad=PANEL.w*0.24;
+    return { x:PANEL.x-pad + e*(PANEL.w+pad*2), y:PANEL.y+PANEL.h*0.34,
+             rx:PANEL.w*0.18, ry:PANEL.h*1.5, hard:1, amp:1.0 };
   }
   return { x:PANEL.x+PANEL.w*0.42, y:PANEL.y+PANEL.h*0.20,
            rx:PANEL.w*0.60, ry:PANEL.h*0.86, hard:0, amp:1.0 };
 }
 
-/* ---------- mask upload helpers ---------- */
-/* Heat and burn each used to cost several upscales. Build their full colour
-   ramp in the grid buffer instead, so each is a single mask draw. */
+/* =====================================================================
+   REGION-BASED COMPOSITING
+
+   The panel is expensive to build: several full-size blended passes plus a
+   handful of putImageData uploads. Doing that every frame stalls the GPU
+   pipeline badly enough to feel like input lag on a phone.
+
+   But almost nothing changes between frames -- only the paint under the pad.
+   So the composited panel lives in its own buffer and each frame we rebuild
+   only the dirty region, then blit the buffer to the screen in one flat
+   drawImage. Idle frames cost a single copy.
+   ===================================================================== */
+let fullRepaint = true, prevLx = null;
+let dX0=0,dY0=0,dX1=0,dY1=0, hasDirty=false;
+function markDirty(x0,y0,x1,y1){
+  if(!hasDirty){ dX0=x0; dY0=y0; dX1=x1; dY1=y1; hasDirty=true; }
+  else { if(x0<dX0)dX0=x0; if(y0<dY0)dY0=y0; if(x1>dX1)dX1=x1; if(y1>dY1)dY1=y1; }
+}
+
+/* The region being rebuilt. Two rects, deliberately:
+   - the DRAW rect is what we rewrite;
+   - the SAMPLE rect is two cells wider on every side.
+   Bilinear upscaling clamps at the edge of its source rect, so sampling a
+   sub-rect does NOT match sampling the same area of the whole mask -- it
+   leaves a seam at every region boundary. Giving the sampler real neighbours
+   and letting the clip discard the overdraw makes partial repaints pixel
+   identical to a full one. */
+let GX0=0,GY0=0,GX1=GW-1,GY1=GH-1;      // sample region, grid cells
+let RX=0,RY=0,RW=0,RH=0;                // draw region, canvas px
+let UX=0,UY=0,UW=0,UH=0;                // sample region, canvas px
+function setRegion(x0,y0,x1,y1){
+  let dx0=Math.max(0,    Math.floor((x0-PANEL.x)/CW)-2);
+  let dy0=Math.max(0,    Math.floor((y0-PANEL.y)/CH)-2);
+  let dx1=Math.min(GW-1, Math.ceil ((x1-PANEL.x)/CW)+2);
+  let dy1=Math.min(GH-1, Math.ceil ((y1-PANEL.y)/CH)+2);
+  if(dx1<dx0||dy1<dy0){ dx0=0; dy0=0; dx1=GW-1; dy1=GH-1; }
+  RX=Math.floor(PANEL.x+dx0*CW); RY=Math.floor(PANEL.y+dy0*CH);
+  RW=Math.ceil(PANEL.x+(dx1+1)*CW)-RX; RH=Math.ceil(PANEL.y+(dy1+1)*CH)-RY;
+
+  GX0=Math.max(0,dx0-2); GY0=Math.max(0,dy0-2);
+  GX1=Math.min(GW-1,dx1+2); GY1=Math.min(GH-1,dy1+2);
+  UX=PANEL.x+GX0*CW; UY=PANEL.y+GY0*CH;
+  UW=(GX1-GX0+1)*CW; UH=(GY1-GY0+1)*CH;
+}
+function smoothRegion(src,dst){
+  for(let gy=GY0;gy<=GY1;gy++){
+    const y0=gy>0?gy-1:0, y1=gy<GH-1?gy+1:GH-1;
+    for(let gx=GX0;gx<=GX1;gx++){
+      const x0=gx>0?gx-1:0, x1=gx<GW-1?gx+1:GW-1;
+      let sum=0,n=0;
+      for(let yy=y0;yy<=y1;yy++){ const row=yy*GW;
+        for(let xx=x0;xx<=x1;xx++){ sum+=src[row+xx]; n++; } }
+      dst[gy*GW+gx]=sum/n;
+    }
+  }
+}
+
+/* ---------- mask upload helpers (region-limited) ---------- */
+function putRegion(){
+  maskCtx.putImageData(maskImg, 0,0, GX0,GY0, GX1-GX0+1, GY1-GY0+1);
+}
 function uploadHeatColor(){
   const d=maskImg.data;
-  for(let i=0;i<N;i++){
-    const o=i*4;
-    let h=heatS[i]; if(!inPan[i]||h<=0.02){ d[o+3]=0; continue; }
+  for(let gy=GY0;gy<=GY1;gy++) for(let gx=GX0;gx<=GX1;gx++){
+    const i=gy*GW+gx, o=i*4;
+    const h=heatS[i];
+    if(!inPan[i]||h<=0.02){ d[o+3]=0; continue; }
     const warm=Math.pow(Math.min(1,h*0.80),2.6);
     const hot =Math.pow(Math.min(1,h*1.35),3.4);
-    const a=Math.min(1, warm*0.70 + hot*0.85);
-    if(a<=0.004){ d[o+3]=0; continue; }
+    const al=Math.min(1, warm*0.70 + hot*0.85);
+    if(al<=0.004){ d[o+3]=0; continue; }
     const k=hot/(hot+warm+1e-6);
-    d[o]=255; d[o+1]=(146-82*k)|0; d[o+2]=(52-26*k)|0; d[o+3]=(a*255)|0;
+    d[o]=255; d[o+1]=(146-82*k)|0; d[o+2]=(52-26*k)|0; d[o+3]=(al*255)|0;
   }
-  maskCtx.putImageData(maskImg,0,0);
+  putRegion();
 }
 function uploadBurnColor(){
-  /* four stacked layers -- scorch, brown ring, primer, chalky centre --
-     resolved here in one pass instead of four canvas composites */
+  /* scorch, brown ring, primer and chalky centre resolved in one pass
+     instead of four canvas composites */
   const d=maskImg.data;
   const L=[[3.0,14,9,7,0.42,0.95],[2.3,74,41,20,1.15,0.92],
            [2.1,141,132,120,1.55,1.0],[1.7,198,190,178,2.30,1.0]];
-  for(let i=0;i<N;i++){
-    const o=i*4;
+  for(let gy=GY0;gy<=GY1;gy++) for(let gx=GX0;gx<=GX1;gx++){
+    const i=gy*GW+gx, o=i*4;
     const bv=burnS[i]*grain[i];
     if(!inPan[i]||bv<=0.004){ d[o+3]=0; continue; }
-    let r=0,g=0,b=0,a=0;
+    let r=0,g=0,b2=0,al=0;
     for(let l=0;l<4;l++){
       const P=L[l];
       let v=bv*P[0]; if(v>1)v=1;
       const sa=Math.pow(v,P[4])*P[5];
       if(sa<=0.002) continue;
-      const na=sa+a*(1-sa);
-      r=(P[1]*sa+r*a*(1-sa))/na; g=(P[2]*sa+g*a*(1-sa))/na; b=(P[3]*sa+b*a*(1-sa))/na; a=na;
+      const na=sa+al*(1-sa);
+      r=(P[1]*sa+r*al*(1-sa))/na; g=(P[2]*sa+g*al*(1-sa))/na;
+      b2=(P[3]*sa+b2*al*(1-sa))/na; al=na;
     }
-    d[o]=r|0; d[o+1]=g|0; d[o+2]=b|0; d[o+3]=(a*255)|0;
+    d[o]=r|0; d[o+1]=g|0; d[o+2]=b2|0; d[o+3]=(al*255)|0;
   }
-  maskCtx.putImageData(maskImg,0,0);
+  putRegion();
 }
 function uploadMask(arr, mul, r,g,b, gamma, inv, L, floor){
   const d=maskImg.data;
   const lit = !!L, fl = floor||0;
-  for(let i=0;i<N;i++){
+  for(let gy=GY0;gy<=GY1;gy++) for(let gx=GX0;gx<=GX1;gx++){
+    const i=gy*GW+gx, o=i*4;
     let v=arr[i]*mul; if(v>1)v=1; else if(v<0)v=0;
     if(inv) v=1-v;
     if(!inPan[i] || burn[i]>0.30) v=0;
     if(gamma) v=Math.pow(v,gamma);
     if(lit && v>0){
-      // how strongly the source lights this cell -- defects are only visible
-      // where light actually falls, which is the whole point of a raking pass
-      const gx=i%GW, gy=(i/GW)|0;
+      // defects are only visible where light actually falls -- the whole
+      // point of a raking inspection pass
       const ux=(PANEL.x+(gx+0.5)*CW-L.x)/L.rx, uy=(PANEL.y+(gy+0.5)*CH-L.y)/L.ry;
       let t=1-Math.sqrt(ux*ux+uy*uy); if(t<0) t=0;
       v*= fl+(1-fl)*t*t*(3-2*t);
     }
-    const o=i*4; d[o]=r; d[o+1]=g; d[o+2]=b; d[o+3]=(v*255)|0;
+    d[o]=r; d[o+1]=g; d[o+2]=b; d[o+3]=(v*255)|0;
   }
-  maskCtx.putImageData(maskImg,0,0);
+  putRegion();
 }
-/* Upscaling a 100x56 mask straight to 1020x524 costs ~6ms per call at
-   "medium" quality, and we do it many times a frame. Going through a
-   half-size stepping stone at "low" is visually identical here and ~7x
-   cheaper, because neither hop is a big scale factor. */
-/* Bake the current mask (already in maskCv) into an SS-scale canvas we can
-   reuse. Masking a scratch layer then becomes a same-size drawImage, which
-   is on Skia's fast path, instead of another scaling composite. */
-function bakeUp(target){
-  midCtx.globalCompositeOperation="copy";
-  midCtx.imageSmoothingEnabled=true; midCtx.imageSmoothingQuality="low";
-  midCtx.drawImage(maskCv, 0,0,GW,GH, 0,0,MIDW,MIDH);
-  target.globalCompositeOperation="copy";
-  target.imageSmoothingEnabled=true; target.imageSmoothingQuality="low";
-  target.drawImage(midCv, 0,0,MIDW,MIDH, 0,0,UPW,UPH);
-}
-function maskScratchWith(upCv){
-  scrCtx.save();
-  scrCtx.setTransform(1,0,0,1,0,0);
-  scrCtx.globalCompositeOperation="destination-in";
-  scrCtx.globalAlpha=1;
-  scrCtx.drawImage(upCv, PANEL.x*SS, PANEL.y*SS);
-  scrCtx.restore();
-}
+
 function drawMask(c, sc, alpha, op){
-  midCtx.globalCompositeOperation="copy";
-  midCtx.imageSmoothingEnabled=true; midCtx.imageSmoothingQuality="low";
-  midCtx.drawImage(maskCv, 0,0,GW,GH, 0,0,MIDW,MIDH);
   c.save();
   c.setTransform(sc,0,0,sc,0,0);
   c.globalAlpha=alpha; c.globalCompositeOperation=op||"source-over";
   c.imageSmoothingEnabled=true; c.imageSmoothingQuality="low";
-  c.drawImage(midCv, 0,0,MIDW,MIDH, PANEL.x,PANEL.y,PANEL.w,PANEL.h);
+  c.drawImage(maskCv, GX0,GY0,GX1-GX0+1,GY1-GY0+1, UX,UY,UW,UH);
   c.restore();
 }
 function lightGradient(c, sc, L, inner, outer){
@@ -982,138 +1172,392 @@ function lightGradient(c, sc, L, inner, outer){
   g.addColorStop(0.55,`rgba(255,255,255,${(inner*0.45+outer*0.55).toFixed(3)})`);
   g.addColorStop(1,`rgba(255,255,255,${outer})`);
   c.fillStyle=g;
-  const k=L.ry/L.rx;                       // fill exactly the canvas, nothing more
-  c.fillRect(-L.x-4, (-L.y-4)/k, W+8, (H+8)/k);
+  const k=L.ry/L.rx;
+  c.fillRect(UX-L.x, (UY-L.y)/k, UW, UH/k);
+  c.restore();
+}
+
+/* ---------- scratch-layer plumbing, clipped to the live region ---------- */
+/* The scratch layer is SS-scaled, so it is driven through an SS transform and
+   every coordinate below is plain canvas space. Mixing the two spaces silently
+   misaligns each mask against the art it is supposed to be cutting. */
+function scrBegin(){
+  scrCtx.save();
+  scrCtx.setTransform(SS,0,0,SS,0,0);
+  scrCtx.beginPath(); scrCtx.rect(UX,UY,UW,UH); scrCtx.clip();
+  scrCtx.globalCompositeOperation="source-over"; scrCtx.globalAlpha=1;
+  scrCtx.clearRect(UX,UY,UW,UH);
+}
+function scrEnd(){ scrCtx.restore(); }
+function scrSource(src){ scrCtx.drawImage(src, UX,UY,UW,UH, UX,UY,UW,UH); }
+function blit(alpha, op){
+  panelCtx.save();
+  panelCtx.globalCompositeOperation=op; panelCtx.globalAlpha=alpha;
+  panelCtx.drawImage(scratchCv, UX*SS,UY*SS,UW*SS,UH*SS, UX,UY,UW,UH);
+  panelCtx.restore();
+}
+
+/* =====================================================================
+   BUILD THE PANEL BUFFER (only over the live region)
+   ===================================================================== */
+function paintPanel(L, reveal){
+  const c=panelCtx;
+  c.setTransform(1,0,0,1,0,0);
+  if(fullRepaint){ c.clearRect(0,0,W,H); c.drawImage(shopCv,0,0); }
+
+  c.save();
+  c.beginPath(); c.rect(RX,RY,RW,RH); c.clip();
+  /* Rebuild the region from the background up. Without this, the antialiased
+     panel edge is blended into rather than replaced, and border pixels drift
+     a little further every partial repaint. */
+  c.clearRect(RX,RY,RW,RH);
+  c.drawImage(shopCv, RX,RY,RW,RH, RX,RY,RW,RH);
+  panelPath(c); c.clip("evenodd");
+
+  c.drawImage(paintCv, RX,RY,RW,RH, RX,RY,RW,RH);
+
+  /* 1. hazed reflection -- blurred and dim, what dead paint looks like */
+  scrBegin(); scrSource(reflBCv);
+  uploadMask(hazeS, 1, 255,255,255, 1.35);
+  drawMask(scrCtx, SS, 1, "destination-in"); scrEnd();
+  blit(reveal?0.30:1.0, "lighter");
+
+  /* 1b. scatter veil -- haze lifts the blacks. Dull, not grey. */
+  uploadMask(hazeS, 1, 58,60,67, 1.05);
+  drawMask(c, 1, reveal?0.34:0.62, "lighten");
+
+  /* 2. polished reflection -- sharp, plus the live specular */
+  scrBegin(); scrSource(reflCv);
+  if(reveal||portrait){
+    scrCtx.globalCompositeOperation="source-atop";
+    scrCtx.globalAlpha=portrait?0.45:1;
+    scrCtx.fillStyle="rgba(0,0,0,0.66)";
+    scrCtx.fillRect(UX,UY,UW,UH);
+    scrCtx.globalAlpha=1;
+  }
+  scrCtx.globalCompositeOperation="lighter";
+  lightGradient(scrCtx, SS, L, portrait?0.075:(reveal?1.15:0.045), 0.0);
+  uploadMask(hazeS, 1, 255,255,255, 0.65, true);
+  drawMask(scrCtx, SS, 1, "destination-in"); scrEnd();
+  blit(1.0, "lighter");
+
+  /* 3. fine swirl marks, only where haze remains, lit by the source */
+  scrBegin(); scrSource(swirlCv);
+  uploadMask(hazeS, 1, 255,255,255, 0.7, false, L,
+             L.portrait?0.55:(L.hard?0.03:0.40));
+  drawMask(scrCtx, SS, 1, "destination-in"); scrEnd();
+  blit(1.0, "screen");
+
+  /* 4. holograms -- invisible head-on, brutal under raking light */
+  if((reveal||portrait) && holoPresent){
+    scrBegin(); scrSource(holoCv);
+    uploadMask(holoS, 1.25, 255,255,255, 0.8, false, L,
+               L.portrait?0.45:(L.hard?0.0:0.08));
+    drawMask(scrCtx, SS, 1, "destination-in"); scrEnd();
+    blit(L.hard?0.95:0.35, "screen");
+  }
+
+  /* 5. heat -- paint glows before it lets go */
+  if(heatPresent){ uploadHeatColor(); drawMask(c, 1, 1, "screen"); }
+
+  /* 6. burn-through -- the clear coat is gone. No reflection, ever again. */
+  if(burnPresent){ uploadBurnColor(); drawMask(c, 1, 1, "source-over"); }
+
   c.restore();
 }
 
 /* =====================================================================
-   RENDER
+   FRAME
    ===================================================================== */
+let holoPresent=false, heatPresent=false, burnPresent=false;
+
 function render(){
-  smooth(haze,hazeS);
-  if(dirty.heat) smooth(heat,heatS);
-  if(dirty.holo) smooth(holo,holoS);
-  if(dirty.burn) smooth(burn,burnS);
   const L=light();
   const reveal = (state==="revealing" || state==="done") && !portrait;
-  ctx.setTransform(1,0,0,1,0,0);
-  ctx.clearRect(0,0,W,H);
-  drawShop();
 
-  ctx.save(); panelPath(ctx); ctx.clip();
+  /* how much of the panel actually needs rebuilding this frame */
+  let need=true;
+  if(fullRepaint || portrait){
+    setRegion(PANEL.x, PANEL.y, PANEL.x+PANEL.w, PANEL.y+PANEL.h);
+  } else if(reveal){
+    // only the band the inspection light is sweeping through has changed
+    const lo=Math.min(prevLx===null?L.x:prevLx, L.x)-L.rx-8;
+    const hi=Math.max(prevLx===null?L.x:prevLx, L.x)+L.rx+8;
+    setRegion(lo, PANEL.y, hi, PANEL.y+PANEL.h);
+  } else {
+    if(dirty.heat){          // heat decays, so anything warm redraws
+      let hx0=1e9,hy0=1e9,hx1=-1e9,hy1=-1e9,any=false;
+      for(let i=0;i<N;i++){
+        if(heat[i]<=0.004) continue;
+        const gx=i%GW, gy=(i/GW)|0; any=true;
+        const wx=PANEL.x+gx*CW, wy=PANEL.y+gy*CH;
+        if(wx<hx0)hx0=wx; if(wy<hy0)hy0=wy;
+        if(wx>hx1)hx1=wx; if(wy>hy1)hy1=wy;
+      }
+      if(any) markDirty(hx0-CW,hy0-CH,hx1+CW,hy1+CH); else dirty.heat=false;
+    }
+    if(!hasDirty) need=false; else setRegion(dX0,dY0,dX1,dY1);
+  }
+  prevLx=L.x;
 
-  /* --- 0. the dark body underneath everything --- */
-  ctx.drawImage(paintCv,0,0);
-
-  /* masks the layers below all share, upscaled once */
-  uploadMask(hazeS, 1, 255,255,255, 1.35);  bakeUp(hazeUpCtx);
-  uploadMask(hazeS, 1, 255,255,255, 0.65, true); bakeUp(cleanUpCtx);
-
-  /* --- 1. HAZED reflection: blurred, dim. This is what dead paint looks like. --- */
-  scrClear();
-  scrCtx.drawImage(reflBCv, BB.x,BB.y,BB.w,BB.h, BB.x,BB.y,BB.w,BB.h);
-  maskScratchWith(hazeUpCv);
-  blit(reveal?0.30:1.0, "lighter");
-
-  /* --- 1b. scatter veil: haze lifts the blacks. Dull, not grey. --- */
-  uploadMask(hazeS, 1, 58,60,67, 1.05);
-  drawMask(ctx, 1, reveal?0.34:0.62, "lighten");
-
-  /* --- 2. POLISHED reflection: sharp, bright, plus the live specular --- */
-  scrClear();
-  scrCtx.drawImage(reflCv, BB.x,BB.y,BB.w,BB.h, BB.x,BB.y,BB.w,BB.h);
-  if(reveal||portrait){ scrCtx.save(); scrCtx.globalCompositeOperation="source-atop";
-              scrCtx.globalAlpha=portrait?0.45:1;
-              scrCtx.fillStyle="rgba(0,0,0,0.66)";
-              scrCtx.setTransform(SS,0,0,SS,0,0); scrCtx.fillRect(BB.x,BB.y,BB.w,BB.h); scrCtx.restore(); }
-  scrCtx.save(); scrCtx.globalCompositeOperation="lighter";
-  lightGradient(scrCtx, SS, L, portrait?0.075:(reveal?1.15:0.045), 0.0);
-  scrCtx.restore();
-  maskScratchWith(cleanUpCv);
-  blit(1.0, "lighter");
-
-  /* --- 3. fine swirl marks, only where haze remains, lit by the source --- */
-  scrClear();
-  scrCtx.drawImage(swirlCv, BB.x,BB.y,BB.w,BB.h, BB.x,BB.y,BB.w,BB.h);
-  uploadMask(hazeS, 1, 255,255,255, 0.7, false, L, L.portrait?0.55:(L.hard?0.03:0.40));
-  drawMask(scrCtx, SS, 1, "destination-in");
-  blit(1.0, "screen");
-
-  /* --- 4. holograms: invisible head-on, brutal under raking light --- */
-  let holoMax=0; for(let i=0;i<N;i++) if(holo[i]>holoMax) holoMax=holo[i];
-  if(holoMax>0.02 && (reveal||portrait)){
-    scrClear();
-    scrCtx.drawImage(holoCv, BB.x,BB.y,BB.w,BB.h, BB.x,BB.y,BB.w,BB.h);
-    uploadMask(holoS, 1.25, 255,255,255, 0.8, false, L, L.portrait?0.45:(L.hard?0.0:0.08));
-    drawMask(scrCtx, SS, 1, "destination-in");
-    blit(L.hard?0.95:0.35, "screen");
+  if(need){
+    smoothRegion(haze,hazeS);
+    if(dirty.heat) smoothRegion(heat,heatS);
+    if(dirty.holo) smoothRegion(holo,holoS);
+    if(dirty.burn) smoothRegion(burn,burnS);
+    holoPresent=false; heatPresent=false; burnPresent=false;
+    for(let i=0;i<N;i++){
+      if(!holoPresent && holo[i]>0.02) holoPresent=true;
+      if(!heatPresent && heat[i]>0.10) heatPresent=true;
+      if(!burnPresent && burn[i]>0.01) burnPresent=true;
+    }
+    paintPanel(L, reveal);
+    fullRepaint=false; hasDirty=false;
   }
 
-  /* --- 5. wet compound smear behind the pad --- */
-  if(trail.length>1){
-    ctx.save(); ctx.globalCompositeOperation="screen"; ctx.lineCap="round"; ctx.lineJoin="round";
-    for(let i=1;i<trail.length;i++){
-      const p1=trail[i], p0=trail[i-1], life=1-p1.t/0.85;
-      ctx.strokeStyle=`rgba(214,228,250,${(0.05*life).toFixed(3)})`;
-      ctx.lineWidth=TUNE.padRadius*1.7*life;
-      ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.lineTo(p1.x,p1.y); ctx.stroke();
+  /* --- present: one flat copy, then the things that move every frame --- */
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.drawImage(panelCv,0,0);
+
+  if(trail.length>1 || ghostT>=0){
+    ctx.save(); panelPath(ctx); ctx.clip("evenodd");
+    if(trail.length>1){
+      ctx.globalCompositeOperation="screen"; ctx.lineCap="round"; ctx.lineJoin="round";
+      for(let i=1;i<trail.length;i++){
+        const p1=trail[i], p0=trail[i-1], life=1-p1.t/0.85;
+        ctx.strokeStyle=`rgba(214,228,250,${(0.05*life).toFixed(3)})`;
+        ctx.lineWidth=TUNE.padRadius*1.7*life;
+        ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.lineTo(p1.x,p1.y); ctx.stroke();
+      }
+      ctx.globalCompositeOperation="source-over";
     }
+    if(ghostT>=0) drawGhost();
     ctx.restore();
   }
-
-  /* --- 6. heat: paint glows before it lets go --- */
-  let hMax=0; for(let i=0;i<N;i++) if(heat[i]>hMax) hMax=heat[i];
-  if(hMax>0.10){
-    uploadHeatColor();
-    drawMask(ctx, 1, 1, "screen");
-  }
-
-  /* --- 7. burn-through: the clear coat is gone. No reflection, ever again. --- */
-  let bMax=0; for(let i=0;i<N;i++) if(bMax<burn[i]) bMax=burn[i];
-  if(bMax>0.01){
-    uploadBurnColor();
-    drawMask(ctx, 1, 1, "source-over");
-  }
-
-  /* --- 8. the ideal-pass ghost, on request --- */
-  if(ghostT>=0) drawGhost();
-
-  ctx.restore();
 
   drawPanelEdge();
   if(state==="playing") drawPad();
   if(reveal) drawLightBar(L);
 }
 
-function scrClear(){
-  scrCtx.setTransform(1,0,0,1,0,0);
-  scrCtx.globalCompositeOperation="source-over"; scrCtx.globalAlpha=1;
-  scrCtx.clearRect(BB.x*SS,BB.y*SS,BB.w*SS,BB.h*SS);
-}
-const BB={x:PANEL.x-14, y:PANEL.y-14, w:PANEL.w+28, h:PANEL.h+28};
-function blit(alpha, op){
-  ctx.save();
-  ctx.globalCompositeOperation=op; ctx.globalAlpha=alpha;
-  ctx.drawImage(scratchCv, BB.x*SS,BB.y*SS,BB.w*SS,BB.h*SS, BB.x,BB.y,BB.w,BB.h);
-  ctx.restore();
-}
+/* =====================================================================
+   THE REST OF THE CAR
 
-/* the world around the panel: a dim shop bay.
-   Static, so it gets baked once — a blurred path fill per frame is not free. */
+   Everything outside the door skin: glass, belt line, shut lines, the handle
+   recess and the rocker below. Static, so it is baked once into shopCv and
+   the per-frame cost is nil. The polishable skin is drawn on top of this.
+   ===================================================================== */
 function buildShop(){
-  const c=shopCtx; c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,W,H);
-  const g=c.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,"#101317"); g.addColorStop(0.55,"#0a0c0f"); g.addColorStop(1,"#050607");
+  const c=shopCtx, {x,y,w,h}=PANEL;
+  c.setTransform(1,0,0,1,0,0); c.clearRect(0,0,W,H);
+  const px=(f)=>Math.max(1, W*f);
+
+  /* ---------- the bay behind the car ---------- */
+  let g=c.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,"#0d1015"); g.addColorStop(0.45,"#080a0d"); g.addColorStop(1,"#040506");
   c.fillStyle=g; c.fillRect(0,0,W,H);
-  const lx=PANEL.x+PANEL.w*0.42, ly=PANEL.y+PANEL.h*0.16-40, R=620;
-  const rg=c.createRadialGradient(lx,ly,20, lx,ly,R);
-  rg.addColorStop(0,"rgba(120,140,170,0.10)"); rg.addColorStop(1,"rgba(0,0,0,0)");
-  c.fillStyle=rg; c.fillRect(0,0,W,H);
-  c.save(); c.translate(0,16); c.filter="blur(22px)";
-  c.fillStyle="rgba(0,0,0,0.85)"; panelPath(c); c.fill(); c.restore();
+
+  /* ---------- roof line and greenhouse aperture ---------- */
+  const roofY=H*0.045;
+  const glassPath=()=>{
+    c.beginPath();
+    c.moveTo(frontX-W*0.035, beltY);
+    c.bezierCurveTo(W*0.14, roofY+H*0.10, W*0.26, roofY, W*0.44, roofY);   // A-pillar up
+    c.lineTo(W*0.80, roofY+H*0.012);                                        // roof
+    c.bezierCurveTo(W*0.90, roofY+H*0.03, rearX+W*0.03, beltY-H*0.09, rearX+W*0.045, beltY);
+    c.closePath();
+  };
+  c.save(); glassPath(); c.clip();
+  g=c.createLinearGradient(0,roofY,0,beltY);
+  g.addColorStop(0,"#0a0d12"); g.addColorStop(0.5,"#070910"); g.addColorStop(1,"#0e131a");
+  c.fillStyle=g; c.fillRect(0,0,W,beltY);
+  // raked sky reflection across the glass
+  c.save(); c.transform(1,0,-0.62,1,0,0);
+  const sg=c.createLinearGradient(0,roofY,0,beltY);
+  sg.addColorStop(0,"rgba(150,178,214,0.00)");
+  sg.addColorStop(0.40,"rgba(158,188,226,0.17)");
+  sg.addColorStop(0.60,"rgba(196,220,252,0.22)");
+  sg.addColorStop(0.78,"rgba(120,146,182,0.04)");
+  sg.addColorStop(1,"rgba(90,110,140,0.00)");
+  c.fillStyle=sg; c.fillRect(W*0.34,0,W*0.26,beltY);
+  c.fillStyle="rgba(190,214,248,0.055)"; c.fillRect(W*0.72,0,W*0.09,beltY);
+  c.restore();
+  // headliner / interior darkness low in the glass
+  g=c.createLinearGradient(0,beltY-(beltY-roofY)*0.55,0,beltY);
+  g.addColorStop(0,"rgba(0,0,0,0)"); g.addColorStop(1,"rgba(0,0,0,0.8)");
+  c.fillStyle=g; c.fillRect(0,0,W,beltY);
+  // B-pillar: a black post splitting front glass from rear
+  c.save();
+  c.transform(1,0,-0.055,1,0,0);
+  g=c.createLinearGradient(pillarX,0,pillarX+px(0.030),0);
+  g.addColorStop(0,"rgba(4,5,7,0.35)"); g.addColorStop(0.35,"#050608");
+  g.addColorStop(0.75,"#0b0d11"); g.addColorStop(1,"rgba(4,5,7,0.35)");
+  c.fillStyle=g; c.fillRect(pillarX, roofY-H*0.02, px(0.030), beltY-roofY+H*0.05);
+  c.restore();
+  c.restore();
+  // bright trim around the glass opening
+  c.save(); glassPath();
+  c.strokeStyle="rgba(196,220,255,0.34)"; c.lineWidth=Math.max(1.4,H*0.0028); c.stroke();
+  c.strokeStyle="rgba(150,180,220,0.13)"; c.lineWidth=Math.max(3,H*0.007); c.filter="blur(3px)";
+  c.stroke(); c.filter="none"; c.restore();
+
+  /* ---------- front fender and rear quarter, either side of the door ---------- */
+  const bodyFill=(x0,x1)=>{
+    const bg=c.createLinearGradient(0,beltY,0,rockY);
+    bg.addColorStop(0,"#0d1116"); bg.addColorStop(0.34,"#090c10");
+    bg.addColorStop(0.62,"#050609"); bg.addColorStop(1,"#020304");
+    c.fillStyle=bg; c.fillRect(x0,beltY,x1-x0,rockY-beltY+H*0.02);
+  };
+  bodyFill(0, frontX+px(0.004));
+  bodyFill(rearX-px(0.004), W);
+  // the fixture reflection carries across the neighbouring panels too
+  for(const [x0,x1] of [[0,frontX],[rearX,W]]){
+    const lg=c.createLinearGradient(0,beltY+H*0.02,0,beltY+H*0.10);
+    lg.addColorStop(0,"rgba(214,232,255,0)"); lg.addColorStop(0.5,"rgba(214,232,255,0.16)");
+    lg.addColorStop(1,"rgba(214,232,255,0)");
+    c.fillStyle=lg; c.fillRect(x0,beltY,x1-x0,H*0.12);
+  }
+
+  /* ---------- front wheel arch ---------- */
+  c.save();
+  const arcX=-W*0.055, arcY=rockY+H*0.055, arcR=Math.min(W*0.155, H*0.30);
+  c.beginPath();
+  c.moveTo(arcX-arcR, H);
+  c.arc(arcX, arcY, arcR, Math.PI, 0);
+  c.lineTo(arcX+arcR, H);
+  c.closePath();
+  c.fillStyle="#010102"; c.fill();
+  c.strokeStyle="rgba(150,176,212,0.30)"; c.lineWidth=Math.max(1.6,H*0.0032);
+  c.beginPath(); c.arc(arcX, arcY, arcR, Math.PI, 0); c.stroke();
+  c.strokeStyle="rgba(0,0,0,0.9)"; c.lineWidth=Math.max(4,H*0.010);
+  c.beginPath(); c.arc(arcX, arcY, arcR*0.93, Math.PI, 0); c.stroke();
+  c.restore();
+
+  /* ---------- shut lines: the gaps that make this ONE panel of several ---------- */
+  const shut=(sx,lean)=>{
+    c.save();
+    c.beginPath();
+    c.moveTo(sx, beltY+H*0.004);
+    c.bezierCurveTo(sx+lean*0.35, beltY+(rockY-beltY)*0.35,
+                    sx+lean*0.7,  beltY+(rockY-beltY)*0.72, sx+lean, rockY+H*0.006);
+    c.strokeStyle="#000"; c.lineWidth=Math.max(2.6,px(0.0042)); c.stroke();
+    c.restore();
+    c.save();                       // lit edge on the far side of the gap
+    c.beginPath();
+    c.moveTo(sx+px(0.0026), beltY+H*0.004);
+    c.bezierCurveTo(sx+lean*0.35+px(0.0026), beltY+(rockY-beltY)*0.35,
+                    sx+lean*0.7+px(0.0026),  beltY+(rockY-beltY)*0.72, sx+lean+px(0.0026), rockY+H*0.006);
+    c.strokeStyle="rgba(186,210,246,0.42)"; c.lineWidth=Math.max(1,px(0.0013)); c.stroke();
+    c.restore();
+  };
+  shut(frontX, -W*0.008);
+  shut(rearX,   W*0.006);
+
+  /* ---------- rocker panel ---------- */
+  c.save();
+  c.beginPath();
+  c.moveTo(0, rockY+H*0.004);
+  c.bezierCurveTo(W*0.30, rockY-H*0.012, W*0.70, rockY-H*0.016, W, rockY-H*0.030);
+  c.lineTo(W,H); c.lineTo(0,H); c.closePath();
+  g=c.createLinearGradient(0,rockY-H*0.02,0,H);
+  g.addColorStop(0,"#090b0e"); g.addColorStop(0.30,"#050609"); g.addColorStop(1,"#010202");
+  c.fillStyle=g; c.fill();
+  c.strokeStyle="rgba(176,200,236,0.30)"; c.lineWidth=Math.max(1.3,H*0.0026);
+  c.beginPath();
+  c.moveTo(0, rockY+H*0.004);
+  c.bezierCurveTo(W*0.30, rockY-H*0.012, W*0.70, rockY-H*0.016, W, rockY-H*0.030);
+  c.stroke();
+  c.restore();
+
+  /* ---------- belt line: rubber seal under a hard chrome highlight ---------- */
+  const beltH=Math.max(4,H*0.014);
+  c.save();
+  const beltCurve=(off)=>{
+    c.beginPath();
+    c.moveTo(frontX-W*0.05, beltY+off+H*0.004);
+    c.bezierCurveTo(W*0.36, beltY+off-H*0.006, W*0.66, beltY+off-H*0.008, rearX+W*0.06, beltY+off-H*0.002);
+  };
+  c.strokeStyle="#050608"; c.lineWidth=beltH*2.1; beltCurve(0); c.stroke();
+  c.strokeStyle="rgba(216,234,255,0.70)"; c.lineWidth=Math.max(1.3,H*0.0026);
+  beltCurve(-beltH*0.55); c.stroke();
+  c.strokeStyle="rgba(160,190,230,0.22)"; c.lineWidth=Math.max(3,H*0.008); c.filter="blur(3px)";
+  beltCurve(-beltH*0.55); c.stroke(); c.filter="none";
+  c.restore();
+
+  /* ---------- door mirror, sitting on the belt line ---------- */
+  c.save();
+  const mw=W*0.075, mh=mw*0.66, mx=frontX-W*0.028, my=beltY-mh-H*0.012;
+  const mr=mh*0.30;
+  // stalk down onto the door
+  c.fillStyle="#050609";
+  c.beginPath();
+  c.moveTo(mx+mw*0.34, my+mh*0.55);
+  c.lineTo(mx+mw*0.74, my+mh*0.55);
+  c.lineTo(mx+mw*0.66, beltY+H*0.006);
+  c.lineTo(mx+mw*0.40, beltY+H*0.006);
+  c.closePath(); c.fill();
+  // housing: wider at the front, flat along the bottom
+  c.beginPath();
+  c.moveTo(mx+mr, my);
+  c.lineTo(mx+mw-mr*1.4, my+mh*0.06);
+  c.quadraticCurveTo(mx+mw, my+mh*0.10, mx+mw*0.985, my+mh*0.42);
+  c.quadraticCurveTo(mx+mw*0.96, my+mh*0.86, mx+mw*0.70, my+mh*0.90);
+  c.lineTo(mx+mr*0.7, my+mh*0.88);
+  c.quadraticCurveTo(mx, my+mh*0.84, mx, my+mh*0.42);
+  c.quadraticCurveTo(mx, my+mh*0.02, mx+mr, my);
+  c.closePath();
+  g=c.createLinearGradient(0,my,0,my+mh);
+  g.addColorStop(0,"#232931"); g.addColorStop(0.42,"#0d1116"); g.addColorStop(1,"#040507");
+  c.fillStyle=g; c.fill();
+  c.strokeStyle="rgba(196,218,250,0.40)"; c.lineWidth=Math.max(1,H*0.0018); c.stroke();
+  // top highlight, same light as everything else
+  c.fillStyle="rgba(214,232,255,0.30)";
+  c.beginPath();
+  c.moveTo(mx+mr*0.8, my+mh*0.10);
+  c.lineTo(mx+mw*0.88, my+mh*0.14);
+  c.lineTo(mx+mw*0.84, my+mh*0.25);
+  c.lineTo(mx+mr*0.7, my+mh*0.21);
+  c.closePath(); c.fill();
+  c.restore();
+
+  /* ---------- door handle in its recess ---------- */
+  const hw=w*0.150, hh=h*0.080, hx=x+w*0.600, hy=y+h*0.150;
+  c.save();
+  c.beginPath(); handleHole(c);
+  c.fillStyle="#050608"; c.fill(); c.clip();
+  g=c.createLinearGradient(0,hy,0,hy+hh);
+  g.addColorStop(0,"rgba(0,0,0,0.95)"); g.addColorStop(0.60,"rgba(24,27,32,0.9)");
+  g.addColorStop(1,"rgba(56,62,72,0.75)");
+  c.fillStyle=g; c.fillRect(hx,hy,hw,hh);
+  const bh=hh*0.40, by=hy+hh*0.30, br=bh*0.45;
+  g=c.createLinearGradient(0,by,0,by+bh);
+  g.addColorStop(0,"rgba(232,242,255,0.95)"); g.addColorStop(0.45,"rgba(152,168,190,0.85)");
+  g.addColorStop(1,"rgba(64,72,86,0.9)");
+  c.fillStyle=g;
+  c.beginPath();
+  c.moveTo(hx+hw*0.09+br, by);
+  c.lineTo(hx+hw*0.94-br, by); c.arcTo(hx+hw*0.94,by, hx+hw*0.94,by+br, br);
+  c.lineTo(hx+hw*0.94, by+bh-br); c.arcTo(hx+hw*0.94,by+bh, hx+hw*0.94-br,by+bh, br);
+  c.lineTo(hx+hw*0.09+br, by+bh); c.arcTo(hx+hw*0.09,by+bh, hx+hw*0.09,by+bh-br, br);
+  c.lineTo(hx+hw*0.09, by+br); c.arcTo(hx+hw*0.09,by, hx+hw*0.09+br,by, br);
+  c.closePath(); c.fill();
+  c.fillStyle="rgba(255,255,255,0.55)";
+  c.fillRect(hx+hw*0.11, by+bh*0.12, hw*0.82, bh*0.13);
+  c.restore();
+  c.save();
+  c.beginPath(); handleHole(c);
+  c.strokeStyle="rgba(0,0,0,0.85)"; c.lineWidth=Math.max(3,h*0.012); c.filter="blur(4px)";
+  c.stroke(); c.filter="none";
+  c.restore();
+
+  /* ---------- ambient occlusion tucked under the door edges ---------- */
+  c.save();
+  c.filter="blur("+Math.max(6,H*0.014)+"px)";
+  c.strokeStyle="rgba(0,0,0,0.75)"; c.lineWidth=Math.max(6,H*0.014);
+  panelPath(c); c.stroke();
+  c.filter="none";
+  c.restore();
 }
-function drawShop(){ ctx.drawImage(shopCv,0,0); }
 
 function drawPanelEdge(){
   ctx.save();
@@ -1181,13 +1625,14 @@ function heatUnderPad(){
 function drawLightBar(L){
   ctx.save();
   ctx.globalCompositeOperation="screen";
-  const g=ctx.createLinearGradient(L.x-170,0,L.x+170,0);
+  const bw=PANEL.w*0.16;
+  const g=ctx.createLinearGradient(L.x-bw,0,L.x+bw,0);
   g.addColorStop(0.00,"rgba(190,215,255,0)");
   g.addColorStop(0.42,"rgba(206,226,255,0.055)");
   g.addColorStop(0.50,"rgba(236,246,255,0.17)");
   g.addColorStop(0.58,"rgba(206,226,255,0.055)");
   g.addColorStop(1.00,"rgba(190,215,255,0)");
-  ctx.fillStyle=g; ctx.fillRect(L.x-170,0,340,H);
+  ctx.fillStyle=g; ctx.fillRect(L.x-bw,0,bw*2,H);
   ctx.restore();
 }
 
@@ -1375,7 +1820,8 @@ const audio = (()=>{
       nFilt.frequency.setTargetAtTime(900+Math.min(1,spd/1200)*2600 + ht*900, t, 0.08);
       mGain.gain.setTargetAtTime(down?0.13+ht*0.06:0.06, t, 0.1);
     },
-    toggle(){ on=!on; if(!on) this.stop(); return on; }
+    toggle(){ on=!on; if(!on) this.stop(); return on; },
+    isOn(){ return on; }
   };
 })();
 
@@ -1401,7 +1847,130 @@ function refreshSeedNote(){
 }
 $("#mDaily").onclick=()=>{ mode="daily"; seed=dailySeed(); $("#mDaily").classList.add("on"); $("#mFree").classList.remove("on"); refreshSeedNote(); };
 $("#mFree").onclick =()=>{ mode="free"; seed=(Math.random()*4294967295)>>>0; $("#mFree").classList.add("on"); $("#mDaily").classList.remove("on"); refreshSeedNote(); };
-$("#muteBtn").onclick=e=>{ e.stopPropagation(); const on=audio.toggle(); $("#muteBtn").textContent="Sound: "+(on?"on":"off"); };
+(function(){
+  const stage=$("#stage");
+  stage.style.setProperty("--pt-ar", (W/H).toFixed(4));
+  const btns=[$("#fsBtn"), $("#fsBtn2")];
+  // iOS Safari has no Element.requestFullscreen; hide rather than offer a dead button
+  if(stage.requestFullscreen){
+    for(const btn of btns){
+      btn.hidden=false;
+      btn.onclick=e=>{
+        e.stopPropagation();
+        if(document.fullscreenElement) document.exitFullscreen();
+        else stage.requestFullscreen().catch(()=>{});
+      };
+    }
+  }
+})();
+
+/* =====================================================================
+   SETTINGS
+
+   Every number that decides how this thing feels, in one place, in units a
+   detailer can argue with. Persisted locally, and exportable so a tuned set
+   can be sent back and become the defaults.
+   ===================================================================== */
+const SET_SCHEMA = [
+  ["duration",  "Round length",        10, 180, 5,    "s",    "How long you get on the clock."],
+  ["doorIn",    "Door width",          24, 72,  1,    "in",   "Sets the scale for everything below. A typical car door is around 44 inches."],
+  ["padIn",     "Pad size",            2,  9,   0.5,  "in",   "Diameter of the polishing pad. Bigger covers faster but is clumsier around edges."],
+  ["bandLoIps", "Working speed, min",  2,  40,  0.5,  "in/s", "Slower than this and the pad starts dwelling instead of cutting."],
+  ["bandHiIps", "Working speed, max",  6,  80,  0.5,  "in/s", "The top of the green band on the speed meter."],
+  ["slowIps",   "Dwell threshold",     1,  30,  0.5,  "in/s", "Below this, heat starts building under the pad."],
+  ["fastIps",   "Skip threshold",      10, 120, 1,    "in/s", "Above this the pad skips across the paint and slings holograms."],
+  ["cutRate",   "Cut rate",            0.5,12,  0.1,  "",     "How fast the pad removes haze at its centre. Raise it and one pass finishes the paint."],
+  ["heatRate",  "Heat build",          0.2,6,   0.1,  "",     "How quickly friction heats the clear coat when you stop moving."],
+  ["heatCool",  "Heat bleed-off",      0.1,4,   0.05, "",     "How quickly it cools once you move on."],
+  ["burnRate",  "Burn speed",          0.1,5,   0.1,  "",     "How fast you burn through once the paint is too hot."],
+  ["holoRate",  "Hologram severity",   0.05,4,  0.05, "",     "How badly over-speeding marks the paint."],
+  ["startHaze", "Starting swirls",     0.25,1,  0.05, "",     "How beaten the paint is when you start."],
+];
+const elSet=$("#settings");
+
+function fmtSet(k,v){
+  const row=SET_SCHEMA.find(r=>r[0]===k);
+  const unit=row[5] ? " "+row[5] : "";
+  return (Number.isInteger(v) ? v : +v.toFixed(2)) + unit;
+}
+function buildSettings(){
+  $("#setRows").innerHTML = SET_SCHEMA.map(([k,label,min,max,step,,hint])=>`
+    <div class="setRow">
+      <label for="set_${k}">${label}</label>
+      <span class="val" id="val_${k}">${fmtSet(k,SET[k])}</span>
+      <input type="range" id="set_${k}" min="${min}" max="${max}" step="${step}" value="${SET[k]}">
+      <div class="hint">${hint}</div>
+    </div>`).join("");
+  for(const [k] of SET_SCHEMA){
+    $("#set_"+k).addEventListener("input", e=>{
+      SET[k]=parseFloat(e.target.value);
+      $("#val_"+k).textContent=fmtSet(k,SET[k]);
+      deriveTune(); saveSettings(); refreshJson();
+    });
+  }
+  refreshJson();
+}
+function saveSettings(){ try{ localStorage.setItem("pt.settings", JSON.stringify(SET)); }catch(e){} }
+function refreshJson(){ $("#setJson").value = JSON.stringify(SET, null, 2); }
+
+let setReturn="start";
+function openSettings(e){
+  if(e) e.stopPropagation();
+  if(state==="playing") return;
+  setReturn = elRes.classList.contains("hide") ? "start" : "results";
+  buildSettings();
+  elStart.classList.add("hide"); elRes.classList.add("hide");
+  elSet.classList.remove("hide");
+  $("#setSound").textContent="Sound: "+(audio.isOn()?"on":"off");
+}
+$("#setBtn").onclick=openSettings;
+$("#setBtn2").onclick=openSettings;
+$("#setClose").onclick=()=>{
+  elSet.classList.add("hide");
+  deriveTune();
+  // pad size, swirl severity and door scale all change the panel itself
+  resetRound(); render();
+  refreshSeedNote();
+  if(setReturn==="results" && scoreObj) elRes.classList.remove("hide");
+  else elStart.classList.remove("hide");
+};
+$("#setReset").onclick=()=>{
+  SET=Object.assign({}, DEFAULTS);
+  deriveTune(); saveSettings(); buildSettings();
+  $("#setNote").textContent="Back to the defaults.";
+};
+$("#setSound").onclick=()=>{
+  const on=audio.toggle();
+  $("#setSound").textContent="Sound: "+(on?"on":"off");
+};
+$("#setCopy").onclick=async()=>{
+  try{ await navigator.clipboard.writeText($("#setJson").value);
+       $("#setNote").textContent="Copied. Paste it into a message to send it back."; }
+  catch(e){ $("#setJson").select(); $("#setNote").textContent="Select-all and copy from the box above."; }
+};
+$("#setDownload").onclick=()=>{
+  const blob=new Blob([$("#setJson").value],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="polish-test-settings.json"; a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+  $("#setNote").textContent="Saved to your downloads.";
+};
+$("#setLoad").onclick=()=>{
+  try{
+    const incoming=JSON.parse($("#setJson").value);
+    const next=Object.assign({}, DEFAULTS);
+    let used=0;
+    for(const [k,,min,max] of SET_SCHEMA){
+      if(typeof incoming[k]==="number" && isFinite(incoming[k])){
+        next[k]=Math.min(max, Math.max(min, incoming[k])); used++;
+      }
+    }
+    SET=next; deriveTune(); saveSettings(); buildSettings();
+    $("#setNote").textContent=`Loaded ${used} setting${used===1?"":"s"}.`;
+  }catch(err){ $("#setNote").textContent="That doesn't look like valid settings JSON."; }
+};
+
+
 
 function beginRound(){
   if(mode==="free") seed=(Math.random()*4294967295)>>>0;
@@ -1417,7 +1986,7 @@ $("#ghostBtn").onclick=()=>{ ghostT=0; elRes.classList.add("hide");
   setTimeout(()=>{ if(state==="done") elRes.classList.remove("hide"); }, 6400); };
 
 function endRound(){
-  state="revealing"; revealT=0; pointerDown=false; audio.stop();
+  state="revealing"; revealT=0; pointerDown=false; audio.stop(); fullRepaint=true;
   scoreObj=scoreRun();
   elHud.style.opacity="0";
   setTimeout(showResults, 3100);
@@ -1473,7 +2042,7 @@ function buildCard(){
 
   // panel thumbnail: re-render one frame under portrait light so the damage
   // is actually legible at postage-stamp size, then put the view back
-  portrait=true; render(); portrait=false;
+  portrait=true; fullRepaint=true; render(); portrait=false; fullRepaint=true;
   const boxW=500, boxH=470, ar=PANEL.w/PANEL.h;
   let tw=boxW, th=Math.round(boxW/ar);
   if(th>boxH){ th=boxH; tw=Math.round(boxH*ar); }
@@ -1482,7 +2051,7 @@ function buildCard(){
   roundRect(g, tx,ty,tw,th, 14); g.clip();
   g.drawImage(cv, PANEL.x,PANEL.y,PANEL.w,PANEL.h, tx,ty,tw,th);
   g.restore();
-  requestAnimationFrame(()=>render());   // restore the on-screen view
+  requestAnimationFrame(()=>{ fullRepaint=true; render(); });  // restore the view
   g.strokeStyle="rgba(255,255,255,0.13)"; g.lineWidth=1.5;
   roundRect(g, tx,ty,tw,th, 14); g.stroke();
 
@@ -1575,10 +2144,28 @@ function frame(ts){
 }
 
 /* ---------- boot ---------- */
+layout();
 refreshSeedNote();
 resetRound();
 elHud.style.opacity="0";
 requestAnimationFrame(ts=>{ lastTS=ts; frame(ts); });
+
+/* Rebuild the scene when the window changes shape, but never mid-round --
+   the canvas resolution is derived from the viewport, so a rotate or a
+   fullscreen toggle changes the geometry underneath the simulation. */
+let relayoutT=null;
+function scheduleRelayout(){
+  clearTimeout(relayoutT);
+  relayoutT=setTimeout(()=>{
+    if(state==="playing"||state==="revealing") return;
+    const before=W+"x"+H;
+    layout();
+    if(before!==W+"x"+H){ resetRound(); render(); }
+  }, 180);
+}
+addEventListener("resize", scheduleRelayout);
+addEventListener("orientationchange", scheduleRelayout);
+document.addEventListener("fullscreenchange", scheduleRelayout);
 </script>
 </body>
 </html>
