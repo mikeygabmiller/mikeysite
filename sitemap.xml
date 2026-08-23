@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Home -->
-  <url><loc>https://mikeysdetailing.com/</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://mikeysdetailing.com/</loc><lastmod>2026-08-23</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
 
   <!-- About / entity page -->
   <url><loc>https://mikeysdetailing.com/about/</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -43,7 +43,7 @@
   <url><loc>https://mikeysdetailing.com/mobile-detailing-vs-car-wash/</loc><lastmod>2026-08-01</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Interactive -->
-  <url><loc>https://mikeysdetailing.com/polish-test/</loc><lastmod>2026-08-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mikeysdetailing.com/polish-test/</loc><lastmod>2026-08-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Reviews -->
   <url><loc>https://mikeysdetailing.com/reviews/</loc><lastmod>2026-08-01</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
