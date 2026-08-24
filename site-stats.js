@@ -86,14 +86,37 @@ window.MD_STATS = {
    No cookies, no third party — the Worker hashes the IP for a
    same-day unique count and never stores it. Only fires on the
    live site so local previews don't pollute the numbers.
+
+   The ping also carries a VISITOR ID (`v`) so the dashboard can
+   replay one person's path through the site — "Google → pricing →
+   Monroe → quote form" — instead of only counting page views.
+   It's a random string in this browser's localStorage: no IP, no
+   name, nothing that identifies anyone until they choose to hand
+   over their number. When they do, the quote/booking form sends
+   the same id with the lead, and that is the ONLY moment an
+   anonymous path becomes "this is what Sarah did before she
+   texted." Clearing site data breaks the link, by design.
    ============================================================ */
 (function () {
+  // Read (or mint) the visitor id first, and hang it on window so the quote
+  // and booking forms can attach it to the lead they post to /submit.
+  var vid = '';
+  try {
+    vid = localStorage.getItem('md_vid') || '';
+    if (!vid) {
+      vid = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
+      localStorage.setItem('md_vid', vid);
+    }
+  } catch (e) { /* private mode / storage off — the site still works, no journey */ }
+  window.MD_VID = vid;
+
   try {
     if (!/(^|\.)mikeysdetailing\.com$/i.test(location.hostname)) return;
     var img = new Image();
     img.src = 'https://texting.mikeysdetailingsnohomish.workers.dev/px?p=' +
       encodeURIComponent(location.pathname) + '&r=' +
-      encodeURIComponent(document.referrer) + '&t=' + Date.now();
+      encodeURIComponent(document.referrer) +
+      (vid ? '&v=' + encodeURIComponent(vid) : '') + '&t=' + Date.now();
   } catch (e) { /* never break the page over analytics */ }
 })();
 

@@ -2048,7 +2048,11 @@ header li a[href="#booking"],
         name: name, phone: phoneE164, email: email || '', location: location || '',
         total: S.total, vehicle: veh, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
-        notes: notes || '', smsConsent: smsConsent
+        notes: notes || '', smsConsent: smsConsent,
+        // Ties this lead to the anonymous path they walked to get here (set in
+        // site-stats.js). It's what turns "a quote came in" into "they read the
+        // ceramic page twice, then quoted."
+        vid: window.MD_VID || ''
       };
       var LEAD_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
@@ -2251,7 +2255,7 @@ header li a[href="#booking"],
     var smsDigits=(phone||'').replace(/\D/g,'').slice(-10);
     var phoneE164=smsDigits.length===10?'+1'+smsDigits:(phone||'');
     var smsConsent=!!($('qqSmsConsent')&&$('qqSmsConsent').checked);
-    var smsPayload={ name:name, phone:phoneE164, email:email||'', location:location||'', total:S.total, vehicle:veh, condition:cond, services:Array.isArray(S.items)?S.items.join(', '):(S.items||''), notes:'Appointment: '+when+(notes?' | '+notes:''), appointment:when, date:BK.date, slot:BK.slot, smsConsent:smsConsent, type:'booking' };
+    var smsPayload={ name:name, phone:phoneE164, email:email||'', location:location||'', total:S.total, vehicle:veh, condition:cond, services:Array.isArray(S.items)?S.items.join(', '):(S.items||''), notes:'Appointment: '+when+(notes?' | '+notes:''), appointment:when, date:BK.date, slot:BK.slot, smsConsent:smsConsent, type:'booking', vid:window.MD_VID||'' };
 
     var fd=new FormData();
     fd.append('access_key','aa7076da-8d1c-427b-979f-03c238686a8e');
