@@ -1861,6 +1861,9 @@ header li a[href="#booking"],
     var t = $('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
+    // Same beat, second audience: the Journey timeline in the dashboard. This is
+    // what turns "a quote never came in" into "they got to step 3 and stopped."
+    if (typeof window.MDTrack === 'function') window.MDTrack('Quote form — step ' + n, stepNames[n] || ('step' + n));
     if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
     if (n === 4 && BOOKING_ENABLED){ try { bkOnStep4(); } catch(e){} }
     var card = $('qqcCard'); if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -2048,7 +2051,11 @@ header li a[href="#booking"],
         name: name, phone: phoneE164, email: email || '', location: location || '',
         total: S.total, vehicle: veh, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
-        notes: notes || '', smsConsent: smsConsent
+        notes: notes || '', smsConsent: smsConsent,
+        // Ties this lead to the anonymous path they walked to get here (set in
+        // site-stats.js). It's what turns "a quote came in" into "they read the
+        // ceramic page twice, then quoted."
+        vid: window.MD_VID || ''
       };
       var LEAD_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/submit';
       Promise.allSettled([
@@ -2251,7 +2258,7 @@ header li a[href="#booking"],
     var smsDigits=(phone||'').replace(/\D/g,'').slice(-10);
     var phoneE164=smsDigits.length===10?'+1'+smsDigits:(phone||'');
     var smsConsent=!!($('qqSmsConsent')&&$('qqSmsConsent').checked);
-    var smsPayload={ name:name, phone:phoneE164, email:email||'', location:location||'', total:S.total, vehicle:veh, condition:cond, services:Array.isArray(S.items)?S.items.join(', '):(S.items||''), notes:'Appointment: '+when+(notes?' | '+notes:''), appointment:when, date:BK.date, slot:BK.slot, smsConsent:smsConsent, type:'booking' };
+    var smsPayload={ name:name, phone:phoneE164, email:email||'', location:location||'', total:S.total, vehicle:veh, condition:cond, services:Array.isArray(S.items)?S.items.join(', '):(S.items||''), notes:'Appointment: '+when+(notes?' | '+notes:''), appointment:when, date:BK.date, slot:BK.slot, smsConsent:smsConsent, type:'booking', vid:window.MD_VID||'' };
 
     var fd=new FormData();
     fd.append('access_key','aa7076da-8d1c-427b-979f-03c238686a8e');
@@ -2278,6 +2285,7 @@ header li a[href="#booking"],
     var CK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
     if(suc){ suc.innerHTML='<div class="ring">'+CK+'</div><h3>You\'re booked!</h3><p>Your '+escapeHtml(svcName)+' is set for <b>'+escapeHtml(when)+'</b>. I\'ll text you to confirm — usually within the hour.</p>'+(bkOutOfArea()?'<p style="color:#f5cf94;font-size:.9rem;margin-top:8px;">Since you\'re outside my main Monroe/Snohomish area, that time is an estimate — I\'ll confirm it works for the drive.</p>':'')+'<p style="margin-top:12px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p><p class="sig">Mikey</p>'; }
     if(typeof gtag==='function') gtag('event','qqc_booked',{value:S.total,currency:'USD'});
+    if(typeof window.MDTrack==='function') window.MDTrack('BOOKED a slot', when+' · $'+S.total);
     goStep(5);
   }
 
