@@ -81,25 +81,39 @@ window.MD_STATS = {
 })();
 
 /* ============================================================
-   FIRST-PARTY VISIT BEACON → the SMS dashboard's built-in
-   analytics (Grow → Website tab). One image ping per page load.
-   No cookies, no third party — the Worker hashes the IP for a
-   same-day unique count and never stores it. Only fires on the
-   live site so local previews don't pollute the numbers.
+   FIRST-PARTY BEHAVIOUR TRACKING → the dashboard's Journey tab
+   ------------------------------------------------------------
+   Two things go out from here, and they do different jobs:
 
-   The ping also carries a VISITOR ID (`v`) so the dashboard can
-   replay one person's path through the site — "Google → pricing →
-   Monroe → quote form" — instead of only counting page views.
-   It's a random string in this browser's localStorage: no IP, no
-   name, nothing that identifies anyone until they choose to hand
-   over their number. When they do, the quote/booking form sends
-   the same id with the lead, and that is the ONLY moment an
-   anonymous path becomes "this is what Sarah did before she
-   texted." Clearing site data breaks the link, by design.
+   1. The 1×1 GIF ping (unchanged) — feeds the day counters that
+      Grow → Website has always drawn. How many people came.
+
+   2. A batched event POST — feeds Grow → Journey. What ONE person
+      actually did: which sections they scrolled to, which buttons
+      they pushed, how far down they got, how long they stayed.
+
+   Both carry a VISITOR ID that lives only in this browser's
+   localStorage. It identifies nobody. When the customer fills out
+   the quote or booking form, that same id rides along with the
+   lead, and THAT is the only moment an anonymous path becomes
+   "this is what Sarah did before she texted." Clearing site data
+   breaks the link, by design.
+
+   Everything here is auto-instrumented — sections are found by
+   their aria-label / id / heading, buttons by their own text — so
+   the 30-odd pages on this site are covered without touching one
+   of them. Mark anything by hand with data-track="Some name" when
+   the automatic label reads badly.
+
+   Nothing in this block may ever throw into the page. A detailing
+   site that won't load because analytics broke is a catastrophe;
+   missing analytics is a Tuesday.
    ============================================================ */
 (function () {
-  // Read (or mint) the visitor id first, and hang it on window so the quote
-  // and booking forms can attach it to the lead they post to /submit.
+  var BASE = 'https://texting.mikeysdetailingsnohomish.workers.dev';
+  var LIVE = /(^|\.)mikeysdetailing\.com$/i.test(location.hostname);
+
+  // ---- visitor id ----------------------------------------------------------
   var vid = '';
   try {
     vid = localStorage.getItem('md_vid') || '';
@@ -107,17 +121,159 @@ window.MD_STATS = {
       vid = Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
       localStorage.setItem('md_vid', vid);
     }
-  } catch (e) { /* private mode / storage off — the site still works, no journey */ }
+  } catch (e) { /* private mode — the site works, there's just no journey */ }
   window.MD_VID = vid;
 
+  // ---- the day counters, exactly as before ---------------------------------
   try {
-    if (!/(^|\.)mikeysdetailing\.com$/i.test(location.hostname)) return;
-    var img = new Image();
-    img.src = 'https://texting.mikeysdetailingsnohomish.workers.dev/px?p=' +
-      encodeURIComponent(location.pathname) + '&r=' +
-      encodeURIComponent(document.referrer) +
-      (vid ? '&v=' + encodeURIComponent(vid) : '') + '&t=' + Date.now();
+    if (LIVE) {
+      var img = new Image();
+      img.src = BASE + '/px?p=' + encodeURIComponent(location.pathname) +
+        '&r=' + encodeURIComponent(document.referrer) +
+        (vid ? '&v=' + encodeURIComponent(vid) : '') + '&t=' + Date.now();
+    }
   } catch (e) { /* never break the page over analytics */ }
+
+  if (!vid) return;                       // no id, no journey — nothing to send
+
+  // ---- the event queue -----------------------------------------------------
+  // Events batch and go out together. One request per flush, not per click:
+  // a person who taps six things costs one POST, not six.
+  var Q = [], t0 = Date.now(), depth = 0, sent = false, timer = null;
+  var PAGE = location.pathname;
+
+  function push(kind, label, detail) {
+    if (Q.length > 60) return;            // a rage-clicker can't flood the queue
+    Q.push({ t: Date.now(), k: kind,
+             l: String(label == null ? '' : label).replace(/\s+/g, ' ').trim().slice(0, 60),
+             d: String(detail == null ? '' : detail).replace(/\s+/g, ' ').trim().slice(0, 80) });
+    // Anything the customer DID goes out promptly — if they tap "Book" and the
+    // page navigates away, that tap is the whole story and must not be lost.
+    if (kind === 'c' || kind === 'f') schedule(1200);
+    else schedule(8000);
+  }
+  function schedule(ms) {
+    if (timer) return;
+    timer = setTimeout(function () { timer = null; flush(false); }, ms);
+  }
+  function flush(final) {
+    if (timer) { clearTimeout(timer); timer = null; }
+    if (final) {
+      if (sent) return;                   // pagehide + visibilitychange both fire
+      sent = true;
+      push('x', 'Left the page', Math.round((Date.now() - t0) / 1000) + 's · ' + depth + '% down');
+    }
+    if (!Q.length || !LIVE) { Q = []; return; }
+    var body = JSON.stringify({ v: vid, p: PAGE, e: Q });
+    Q = [];
+    try {
+      // text/plain keeps this a "simple" request — no CORS preflight, and
+      // sendBeacon survives the page being closed mid-flight.
+      var blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
+      if (navigator.sendBeacon && navigator.sendBeacon(BASE + '/px/e', blob)) return;
+    } catch (e) { /* fall through to fetch */ }
+    try {
+      fetch(BASE + '/px/e', { method: 'POST', body: body, keepalive: true,
+        headers: { 'Content-Type': 'text/plain' }, mode: 'no-cors' });
+    } catch (e) { /* dropped — analytics is never worth an error */ }
+  }
+
+  // ---- what a thing is called ---------------------------------------------
+  // In order of how much the label was meant for a human: an explicit
+  // data-track wins, then the accessible name, then the visible text.
+  function labelFor(el) {
+    if (!el) return '';
+    var d = el.getAttribute('data-track');
+    if (d) return d;
+    var al = el.getAttribute('aria-label');
+    if (al) return al;
+    var by = el.getAttribute('aria-labelledby');
+    if (by) {
+      var t = document.getElementById(by.split(/\s+/)[0]);
+      if (t && t.textContent.trim()) return t.textContent.trim();
+    }
+    var txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    if (txt) return txt.slice(0, 60);
+    var h = el.querySelector && el.querySelector('h1,h2,h3');
+    if (h && h.textContent.trim()) return h.textContent.trim().slice(0, 60);
+    return el.id || el.className || '';
+  }
+
+  // ---- clicks --------------------------------------------------------------
+  // Delegated and capturing, so it still records when the handler on the button
+  // stops propagation or navigates away.
+  var lastClick = '', lastClickAt = 0;
+  document.addEventListener('click', function (ev) {
+    try {
+      var el = ev.target && ev.target.closest &&
+        ev.target.closest('a,button,[role="button"],.btn,input[type="submit"],[data-track]');
+      if (!el) return;
+      var name = labelFor(el) || 'Button';
+      // A double-tap is one intent, not two.
+      if (name === lastClick && Date.now() - lastClickAt < 1000) return;
+      lastClick = name; lastClickAt = Date.now();
+      var href = el.getAttribute('href') || '';
+      var what = /^tel:/i.test(href) ? 'Tapped to CALL'
+               : /^sms:/i.test(href) ? 'Tapped to TEXT'
+               : /^mailto:/i.test(href) ? 'Tapped to email' : '';
+      push('c', what || name, what ? name : href);
+    } catch (e) { /* a click must never fail because of tracking */ }
+  }, true);
+
+  // ---- which parts of the page they actually reached -----------------------
+  // A section counts as "seen" once half of it has been on screen. Reported
+  // once each — the interesting fact is that they got there, not how many
+  // times it crossed the fold while they scrolled around.
+  try {
+    if (window.IntersectionObserver) {
+      var seen = {};
+      var io = new IntersectionObserver(function (rows) {
+        for (var i = 0; i < rows.length; i++) {
+          var r = rows[i];
+          if (!r.isIntersecting) continue;
+          var name = labelFor(r.target) || r.target.id;
+          if (!name || seen[name]) continue;
+          seen[name] = 1;
+          push('s', name);
+          io.unobserve(r.target);
+        }
+      }, { threshold: 0.5 });
+      var secs = document.querySelectorAll('section,[data-track-section],main > div[id]');
+      for (var i = 0; i < secs.length && i < 40; i++) io.observe(secs[i]);
+    }
+  } catch (e) { /* no section tracking, everything else still works */ }
+
+  // ---- how far down they got ----------------------------------------------
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      try {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h > 0) {
+          var pct = Math.round(((window.scrollY || window.pageYOffset) / h) * 100);
+          if (pct > depth) depth = Math.max(0, Math.min(100, pct));
+        }
+      } catch (e) { /* ignore */ }
+    });
+  }, { passive: true });
+
+  // ---- the page ending -----------------------------------------------------
+  // Both events, because iOS fires one and desktop the other, and `sent`
+  // guards against counting the exit twice.
+  window.addEventListener('pagehide', function () { flush(true); });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flush(true);
+  });
+
+  // ---- the public hook the forms use --------------------------------------
+  // window.MDTrack('Picked a service', 'Full Detail') from the quote flow, so
+  // form progress lands on the same timeline as everything else.
+  window.MDTrack = function (label, detail) { try { push('f', label, detail); } catch (e) {} };
+
+  push('v', 'Landed on the page', document.referrer || '');
 })();
 
 /* ============================================================
