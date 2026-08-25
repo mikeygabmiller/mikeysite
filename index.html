@@ -1911,6 +1911,16 @@ header li a[href="#booking"],
     $('qqBreakdown').innerHTML = html;
 
     if (typeof gtag === 'function') gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: Object.keys(S.services).join(', ') });
+    // The dashboard starts a two-minute clock on this one. Everybody who stops
+    // between seeing the number and typing their name is a lead that never
+    // existed anywhere — no thread, no phone, nothing. Send the money and the
+    // car along with it, because "someone left" is not worth an email and
+    // "$420, full-size truck, full detail" is.
+    if (typeof window.MDTrack === 'function'){
+      window.MDTrack('Saw their quote',
+        '$' + total + (S.vehicle && S.vehicle.label ? ' \u00b7 ' + S.vehicle.label : '') +
+        (items.length ? ' \u00b7 ' + items.join(', ') : ''));
+    }
     goStep(4);
     animateAmount(total);
   }
