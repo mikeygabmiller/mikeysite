@@ -2324,13 +2324,35 @@ header li a[href="#booking"],
 
     <!-- CTA -->
     <div class="mko__cta">
-      <a class="mko__btn mko__btn--primary"
-         href="sms:+14256007897?&body=Hi%20Mikey!%20I'd%20like%20to%20book%20a%20mobile%20oil%20change%20with%20the%20free%2030-point%20inspection%20this%20week.%20When's%20your%20next%20opening%3F">
-        Text Mikey to Lock It In &rarr;
+      <!-- Email by default so the button works on a computer. The script below
+           swaps it to a text message on phones, where texting is one tap. -->
+      <a class="mko__btn mko__btn--primary" id="mkoLockBtn"
+         href="mailto:book@mikeysdetailing.com?subject=Mobile%20Oil%20Change%20%2B%20Free%2030-Point%20Inspection&body=Hi%20Mikey!%20I'd%20like%20to%20book%20a%20mobile%20oil%20change%20with%20the%20free%2030-point%20inspection%20this%20week.%20When's%20your%20next%20opening%3F%0A%0AName%3A%0APhone%3A%0AVehicle%3A%0ACity%3A"
+         data-sms-href="sms:+14256007897?&body=Hi%20Mikey!%20I'd%20like%20to%20book%20a%20mobile%20oil%20change%20with%20the%20free%2030-point%20inspection%20this%20week.%20When's%20your%20next%20opening%3F"
+         data-sms-label="Text Mikey to Lock It In &rarr;">
+        Email Mikey to Lock It In &rarr;
       </a>
-      <span class="mko__finehint">Takes 20 seconds &middot; I'll text right back to confirm your spot</span>
+      <span class="mko__finehint" id="mkoLockHint"
+            data-sms-hint="Takes 20 seconds &middot; I'll text right back to confirm your spot">Takes 20 seconds &middot; I'll get right back to confirm your spot</span>
       <a class="mko__btn mko__btn--ghost" href="tel:+14256007897">&#128222;&nbsp; Or call (425) 600-7897</a>
     </div>
+
+    <script>
+      // Phones get the one-tap text; anything else (desktop, laptop) keeps the
+      // mailto in the markup, so the CTA never dead-ends on a computer.
+      (function () {
+        var btn = document.getElementById("mkoLockBtn");
+        if (!btn) return;
+        var ua = navigator.userAgent || "";
+        var isPhone = /Android|iPhone|iPod|Windows Phone|IEMobile|BlackBerry|Opera Mini/i.test(ua) ||
+          (/iPad|Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+        if (!isPhone) return;
+        btn.setAttribute("href", btn.getAttribute("data-sms-href"));
+        btn.innerHTML = btn.getAttribute("data-sms-label");
+        var hint = document.getElementById("mkoLockHint");
+        if (hint) hint.innerHTML = hint.getAttribute("data-sms-hint");
+      })();
+    </script>
 
     <!-- trust -->
     <div class="mko__trust">
