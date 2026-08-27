@@ -196,3 +196,61 @@ reversible. Nothing about the hero, the calculator, or the trust band changes.
 > finding. Both are cited above so the numbers trace to their real origin rather than the
 > common misattribution. NN/g's 57%/74% figures are from their eye-tracking research on
 > scrolling and attention.
+
+---
+
+## Update — 2026-08-27: Before & After moved up to position 4
+
+Measured the live page at a 390×844 mobile viewport. The recommended order above had been
+applied, but it left **Before & After starting 6,956px down — 8.2 screens** into an 18.8-screen
+page. The cause wasn't the ordering logic, it was the size of the two sections placed above it:
+How It Works is 1,811px tall and Services is 2,620px — **5.2 screens of scroll** stacked between
+the trust band and the strongest visual asset on the site. Per the NN/g figure already cited
+above (74% of viewing time falls in the first two screenfuls), almost nobody was reaching it.
+
+**Change:** `#beforeafter` moved to immediately after the trust band — a pure block move, no copy
+rewritten.
+
+| Section | Was | Now |
+|---|---|---|
+| Before & After | 8.2 screens | **3.0 screens** |
+| How It Works | 3.0 | 4.5 |
+| Services | 5.1 | 6.7 |
+| Free Exterior Offer | 9.8 | 9.8 (unchanged) |
+
+New arc: **Hero → Calculator → Trust → Wow → How → What → Offer → …** The transformation now
+raises the question ("how do I get that?") that How It Works answers on the very next screen,
+instead of arriving five screens after the reader has already been asked to book.
+
+### Known trade-off
+
+The offer no longer sits directly under Before & After, so it loses the "rides the desire peak"
+adjacency that move #3 above was designed to create. Its absolute depth did not get worse
+(9.8 screens either way).
+
+## Update — 2026-08-27: Services and How It Works trimmed
+
+Follow-on to the move above: the two oversized sections were trimmed on **vertical spacing only**,
+with the design left untouched. 26 CSS declarations changed, every one a `padding`, `margin`, or
+`gap` value — no copy removed, no type sizes, colors, borders, radii, or layouts altered.
+
+| | Was | Now | Saved |
+|---|---|---|---|
+| How It Works | 1,811px | 1,637px | −174px (−10%) |
+| Services | 2,620px | 2,393px | −227px (−9%) |
+| **Whole page** | 15,869px / 18.8 screens | **15,468px / 18.3 screens** | −401px |
+
+Everything below Services rose about half a screen; the Free Exterior Offer went from 9.8 to
+9.3 screens.
+
+### Where the remaining height actually is
+
+Spacing was the only fat available. What is left in those two sections is content, not air:
+
+- **Services (2,393px):** three service cards with their feature lists = 1,258px, the interactive
+  concierge quiz stage = 391px, section heading = 146px.
+- **How It Works (1,637px):** three step descriptions = 328px of body copy, the two stacked
+  full-width CTA buttons = 124px.
+
+Cutting materially deeper means removing content or shrinking type — which changes the look.
+That is a copy decision, not a CSS one, and was deliberately not attempted here.
