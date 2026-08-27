@@ -209,7 +209,7 @@ async function handleSubmit(request, env) {
   try { body = await request.json(); }
   catch { return cors(json({ ok: false, error: 'bad_json' }, 400)); }
 
-  const { name, phone, email, location, total, vehicle, condition, services, notes, smsConsent } = body;
+  const { name, phone, email, location, total, vehicle, condition, services, notes, smsConsent, consent } = body;
   if (!name || !phone) return cors(json({ ok: false, error: 'missing_fields' }, 422));
 
   const clientPhone = normalizePhone(phone);
@@ -218,7 +218,17 @@ async function handleSubmit(request, env) {
   const serviceList = Array.isArray(services) ? services.join(', ') : (services || '');
   const quoteLine   = total ? `$${total}` : 'TBD';
 
-  const clientMsg = `Hey ${name.split(' ')[0]}, it's Mikey. I got your quote submission on my site. Whenever you have a minute, feel free to send over the year, make, and model of the car you'd like detailed, and I'll confirm that price. Talk soon!`;
+  // Lead with the number. They just watched it appear on the site and then filled
+  // in a form; a text that doesn't repeat it gives them nothing to come back to.
+  const clientMsg = [
+    `Hey ${name.split(' ')[0]}, it's Mikey — here's your quote:`,
+    ``,
+    `${quoteLine}${serviceList ? ` — ${serviceList}` : ''}`,
+    vehicle ? `Vehicle: ${vehicle}` : null,
+    ``,
+    `That price is held for 30 days. No deposit, and you don't pay until you love it.`,
+    `Reply with a day that works and I'll get you on the calendar.`,
+  ].filter(s => s !== null).join('\n');
 
   const mikeyMsg = [
     `🔔 NEW QUOTE — ${name}`,
@@ -232,6 +242,22 @@ async function handleSubmit(request, env) {
     notes       ? `Notes: ${notes}` : null,
   ].filter(s => s !== null).join('\n');
 
+  // Opt-in evidence. Consent is captured by the tap on the quote button, with the
+  // disclosure rendered directly above it, so keep the exact wording that was on
+  // screen plus when it happened — that record is what gets produced if a carrier
+  // or Twilio audits the A2P campaign. Never infer consent that wasn't sent.
+  const consentRecord = smsConsent
+    ? {
+        granted: true,
+        at: (consent && consent.at) || new Date().toISOString(),
+        source: (consent && consent.source) || 'unknown',
+        page: (consent && consent.page) || '',
+        disclosure: (consent && consent.text) || '',
+        ip: request.headers.get('CF-Connecting-IP') || '',
+        userAgent: request.headers.get('User-Agent') || '',
+      }
+    : { granted: false };
+
   const ts = Date.now();
   const [r1, r2] = await Promise.allSettled([
     smsConsent
@@ -240,16 +266,21 @@ async function handleSubmit(request, env) {
     sendSms(env, env.MIKEY_PHONE, mikeyMsg),
   ]);
 
-  // Store outbound client message in dashboard
-  await storeMessage(env, clientPhone, {
-    id: genId(), ts, direction: 'out',
-    from: env.TWILIO_FROM, to: clientPhone,
-    body: clientMsg,
-    meta: { name, quote: quoteLine, vehicle, services: serviceList },
-  }).catch(() => {});
+  // Only record a message that was actually sent. This used to store clientMsg
+  // unconditionally, so a lead who never consented still showed an outbound text
+  // in the dashboard — it looked like they'd been contacted when nothing went out.
+  const clientSmsSent = smsConsent && r1.status === 'fulfilled';
+  if (clientSmsSent) {
+    await storeMessage(env, clientPhone, {
+      id: genId(), ts, direction: 'out',
+      from: env.TWILIO_FROM, to: clientPhone,
+      body: clientMsg,
+      meta: { name, quote: quoteLine, vehicle, services: serviceList, consent: consentRecord },
+    }).catch(() => {});
+  }
 
   const ok = r1.status === 'fulfilled' && r2.status === 'fulfilled';
-  return cors(json({ ok, clientSms: r1.status, mikeySms: r2.status }, ok ? 200 : 207));
+  return cors(json({ ok, clientSms: r1.status, mikeySms: r2.status, clientSmsSent }, ok ? 200 : 207));
 }
 
 async function handleInboundSms(request, env) {
