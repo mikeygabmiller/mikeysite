@@ -226,5 +226,31 @@ instead of arriving five screens after the reader has already been asked to book
 
 The offer no longer sits directly under Before & After, so it loses the "rides the desire peak"
 adjacency that move #3 above was designed to create. Its absolute depth did not get worse
-(9.8 screens either way). The real fix for the offer is **trimming Services and How It Works** —
-together they are 4,431px of a 15,869px page — not re-sequencing around them.
+(9.8 screens either way).
+
+## Update — 2026-08-27: Services and How It Works trimmed
+
+Follow-on to the move above: the two oversized sections were trimmed on **vertical spacing only**,
+with the design left untouched. 26 CSS declarations changed, every one a `padding`, `margin`, or
+`gap` value — no copy removed, no type sizes, colors, borders, radii, or layouts altered.
+
+| | Was | Now | Saved |
+|---|---|---|---|
+| How It Works | 1,811px | 1,637px | −174px (−10%) |
+| Services | 2,620px | 2,393px | −227px (−9%) |
+| **Whole page** | 15,869px / 18.8 screens | **15,468px / 18.3 screens** | −401px |
+
+Everything below Services rose about half a screen; the Free Exterior Offer went from 9.8 to
+9.3 screens.
+
+### Where the remaining height actually is
+
+Spacing was the only fat available. What is left in those two sections is content, not air:
+
+- **Services (2,393px):** three service cards with their feature lists = 1,258px, the interactive
+  concierge quiz stage = 391px, section heading = 146px.
+- **How It Works (1,637px):** three step descriptions = 328px of body copy, the two stacked
+  full-width CTA buttons = 124px.
+
+Cutting materially deeper means removing content or shrinking type — which changes the look.
+That is a copy decision, not a CSS one, and was deliberately not attempted here.
