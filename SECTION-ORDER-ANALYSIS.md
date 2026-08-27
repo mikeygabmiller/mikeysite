@@ -196,3 +196,35 @@ reversible. Nothing about the hero, the calculator, or the trust band changes.
 > finding. Both are cited above so the numbers trace to their real origin rather than the
 > common misattribution. NN/g's 57%/74% figures are from their eye-tracking research on
 > scrolling and attention.
+
+---
+
+## Update — 2026-08-27: Before & After moved up to position 4
+
+Measured the live page at a 390×844 mobile viewport. The recommended order above had been
+applied, but it left **Before & After starting 6,956px down — 8.2 screens** into an 18.8-screen
+page. The cause wasn't the ordering logic, it was the size of the two sections placed above it:
+How It Works is 1,811px tall and Services is 2,620px — **5.2 screens of scroll** stacked between
+the trust band and the strongest visual asset on the site. Per the NN/g figure already cited
+above (74% of viewing time falls in the first two screenfuls), almost nobody was reaching it.
+
+**Change:** `#beforeafter` moved to immediately after the trust band — a pure block move, no copy
+rewritten.
+
+| Section | Was | Now |
+|---|---|---|
+| Before & After | 8.2 screens | **3.0 screens** |
+| How It Works | 3.0 | 4.5 |
+| Services | 5.1 | 6.7 |
+| Free Exterior Offer | 9.8 | 9.8 (unchanged) |
+
+New arc: **Hero → Calculator → Trust → Wow → How → What → Offer → …** The transformation now
+raises the question ("how do I get that?") that How It Works answers on the very next screen,
+instead of arriving five screens after the reader has already been asked to book.
+
+### Known trade-off
+
+The offer no longer sits directly under Before & After, so it loses the "rides the desire peak"
+adjacency that move #3 above was designed to create. Its absolute depth did not get worse
+(9.8 screens either way). The real fix for the offer is **trimming Services and How It Works** —
+together they are 4,431px of a 15,869px page — not re-sequencing around them.

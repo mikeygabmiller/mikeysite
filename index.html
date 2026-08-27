@@ -2373,6 +2373,271 @@ header li a[href="#booking"],
   </div>
 </section>
 
+  <section id="beforeafter" aria-label="Before and after gallery">
+    <div class="section-inner">
+      <div id="ba-gallery">
+<style>
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  #ba-gallery { background: transparent; }
+  #ba-gallery {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    padding: 60px 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    line-height: 1;
+    color: #fff;
+  }
+  .section-title span { color: #C8102E; }
+  .section-sub {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 50px;
+    font-weight: 400;
+  }
+  .slider-grid { display: grid; gap: 40px; }
+
+  .slider-card {
+    background: #1a1a1a;
+    border: 2px solid #C8102E;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(200,16,46, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .slider-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 50px rgba(200,16,46, 0.5);
+  }
+
+  .slider-label {
+    background: #C8102E;
+    color: #fff;
+    text-align: center;
+    padding: 14px 20px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    cursor: ew-resize;
+    user-select: none;
+    touch-action: none;
+    background: #000;
+  }
+  .slider img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+  .slider .img-after {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .slider .img-before {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 50% 0 0);
+    will-change: clip-path;
+  }
+
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: #fff;
+    pointer-events: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  }
+  .slider-handle::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #C8102E;
+    box-shadow: 0 0 20px rgba(200,16,46, 0.5), 0 4px 16px rgba(0,0,0,0.4);
+    border: 3px solid #fff;
+  }
+  .slider-handle::after {
+    content: '\25C0  \25B6';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 900;
+    z-index: 2;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .tag {
+    position: absolute;
+    top: 16px;
+    padding: 6px 14px;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 3;
+  }
+  .tag-before {
+    left: 16px;
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    border: 2px solid #C8102E;
+  }
+  .tag-after {
+    right: 16px;
+    background: #C8102E;
+    color: #fff;
+  }
+
+  .hint {
+    text-align: center;
+    margin-top: 16px;
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding: 0 16px 4px;
+  }
+
+  @media (min-width: 900px) {
+    .slider-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+</style>
+
+<div class="container">
+  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
+  <p class="section-sub">Drag the slider, real cars, real results.</p>
+
+  <div class="slider-grid">
+
+    <div class="slider-card">
+      <div class="slider-label">Back Seats, Family SUV</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
+        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Cheerios, juice, road snacks, all gone.</p>
+    </div>
+
+    <!--
+    <div class="slider-card">
+      <div class="slider-label">Cargo Area, Acura MDX</div>
+      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
+        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
+        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Months of haul-everything mess. Reset.</p>
+    </div>
+    -->
+
+    <div class="slider-card">
+      <div class="slider-label">Exterior Wash &amp; Wax, Ford Focus</div>
+      <div class="slider" data-slider style="aspect-ratio: 4/3;">
+        <img class="img-after" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
+        <img class="img-before" src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
+        <div class="tag tag-before">Before</div>
+        <div class="tag tag-after">After</div>
+        <div class="slider-handle"></div>
+      </div>
+      <p class="hint">Pollen, road film &amp; water spots, washed off and waxed.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('[data-slider]').forEach(function(slider){
+    var beforeImg = slider.querySelector('.img-before');
+    var handle = slider.querySelector('.slider-handle');
+    var dragging = false;
+
+    function setPosition(percent){
+      percent = Math.max(0, Math.min(100, percent));
+      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
+      handle.style.left = percent + '%';
+    }
+    function getPercent(clientX){
+      var rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+    function onDown(e){
+      dragging = true;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onMove(e){
+      if(!dragging) return;
+      var x = e.touches ? e.touches[0].clientX : e.clientX;
+      setPosition(getPercent(x));
+      e.preventDefault();
+    }
+    function onUp(){ dragging = false; }
+
+    slider.addEventListener('mousedown', onDown);
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    slider.addEventListener('touchstart', onDown, {passive: false});
+    document.addEventListener('touchmove', onMove, {passive: false});
+    document.addEventListener('touchend', onUp);
+  });
+
+  // postMessage height for iframe parent (Carrd auto-resize)
+  function sendHeight() {
+    var h = document.documentElement.scrollHeight;
+    if (window.parent !== window) {
+      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
+    }
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+
+</div>
+    </div>
+  </section>
+
+
 <!-- ===== MID-PAGE CONVERSION BAND (reuses global .hg4-btn styles) ===== -->
 <style>
   .qcta{ background:radial-gradient(130% 150% at 50% 0%, #1c1c1e 0%, #0f0f0f 62%); padding:60px 20px; }
@@ -3288,269 +3553,6 @@ header li a[href="#booking"],
   </script>
 </section>
 
-  <section id="beforeafter" aria-label="Before and after gallery">
-    <div class="section-inner">
-      <div id="ba-gallery">
-<style>
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  #ba-gallery { background: transparent; }
-  #ba-gallery {
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    padding: 60px 20px;
-  }
-  .container { max-width: 1200px; margin: 0 auto; }
-  .section-title {
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-    line-height: 1;
-    color: #fff;
-  }
-  .section-title span { color: #C8102E; }
-  .section-sub {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #888;
-    margin-bottom: 50px;
-    font-weight: 400;
-  }
-  .slider-grid { display: grid; gap: 40px; }
-
-  .slider-card {
-    background: #1a1a1a;
-    border: 2px solid #C8102E;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 30px rgba(200,16,46, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .slider-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 50px rgba(200,16,46, 0.5);
-  }
-
-  .slider-label {
-    background: #C8102E;
-    color: #fff;
-    text-align: center;
-    padding: 14px 20px;
-    font-weight: 900;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    cursor: ew-resize;
-    user-select: none;
-    touch-action: none;
-    background: #000;
-  }
-  .slider img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-  }
-  .slider .img-after {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  .slider .img-before {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: inset(0 50% 0 0);
-    will-change: clip-path;
-  }
-
-  .slider-handle {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: #fff;
-    pointer-events: none;
-    box-shadow: 0 0 12px rgba(0,0,0,0.6);
-  }
-  .slider-handle::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: #C8102E;
-    box-shadow: 0 0 20px rgba(200,16,46, 0.5), 0 4px 16px rgba(0,0,0,0.4);
-    border: 3px solid #fff;
-  }
-  .slider-handle::after {
-    content: '\25C0  \25B6';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 900;
-    z-index: 2;
-    pointer-events: none;
-    white-space: nowrap;
-  }
-
-  .tag {
-    position: absolute;
-    top: 16px;
-    padding: 6px 14px;
-    font-weight: 900;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-radius: 4px;
-    pointer-events: none;
-    z-index: 3;
-  }
-  .tag-before {
-    left: 16px;
-    background: rgba(0,0,0,0.85);
-    color: #fff;
-    border: 2px solid #C8102E;
-  }
-  .tag-after {
-    right: 16px;
-    background: #C8102E;
-    color: #fff;
-  }
-
-  .hint {
-    text-align: center;
-    margin-top: 16px;
-    color: #888;
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding: 0 16px 4px;
-  }
-
-  @media (min-width: 900px) {
-    .slider-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-</style>
-
-<div class="container">
-  <h2 class="section-title">SEE THE <span>DIFFERENCE</span></h2>
-  <p class="section-sub">Drag the slider, real cars, real results.</p>
-
-  <div class="slider-grid">
-
-    <div class="slider-card">
-      <div class="slider-label">Back Seats, Family SUV</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/1710;">
-        <img class="img-after" src="/images/ba_1.jpg" alt="Clean back seats after detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_2.jpg" alt="Dirty back seats before detailing" width="900" height="1282" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Cheerios, juice, road snacks, all gone.</p>
-    </div>
-
-    <!--
-    <div class="slider-card">
-      <div class="slider-label">Cargo Area, Acura MDX</div>
-      <div class="slider" data-slider style="aspect-ratio: 1200/938;">
-        <img class="img-after" src="/images/ba_3.jpg" alt="Clean cargo area after detailing" width="900" height="703" loading="lazy" decoding="async">
-        <img class="img-before" src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" width="900" height="703" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Months of haul-everything mess. Reset.</p>
-    </div>
-    -->
-
-    <div class="slider-card">
-      <div class="slider-label">Exterior Wash &amp; Wax, Ford Focus</div>
-      <div class="slider" data-slider style="aspect-ratio: 4/3;">
-        <img class="img-after" src="https://lh3.googleusercontent.com/d/1368WTM7K9aiEUoc6N28RAZzUYV-EawQW=w1600" alt="Clean Ford Focus after exterior detailing" loading="lazy" decoding="async">
-        <img class="img-before" src="https://lh3.googleusercontent.com/d/1hYucp4Z37SA9gKg8PyE_NjG1x7vDAK8C=w1600" alt="Dirty Ford Focus before exterior detailing" loading="lazy" decoding="async">
-        <div class="tag tag-before">Before</div>
-        <div class="tag tag-after">After</div>
-        <div class="slider-handle"></div>
-      </div>
-      <p class="hint">Pollen, road film &amp; water spots, washed off and waxed.</p>
-    </div>
-
-  </div>
-</div>
-
-<script>
-(function(){
-  document.querySelectorAll('[data-slider]').forEach(function(slider){
-    var beforeImg = slider.querySelector('.img-before');
-    var handle = slider.querySelector('.slider-handle');
-    var dragging = false;
-
-    function setPosition(percent){
-      percent = Math.max(0, Math.min(100, percent));
-      beforeImg.style.clipPath = 'inset(0 ' + (100 - percent) + '% 0 0)';
-      handle.style.left = percent + '%';
-    }
-    function getPercent(clientX){
-      var rect = slider.getBoundingClientRect();
-      return ((clientX - rect.left) / rect.width) * 100;
-    }
-    function onDown(e){
-      dragging = true;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onMove(e){
-      if(!dragging) return;
-      var x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(getPercent(x));
-      e.preventDefault();
-    }
-    function onUp(){ dragging = false; }
-
-    slider.addEventListener('mousedown', onDown);
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-    slider.addEventListener('touchstart', onDown, {passive: false});
-    document.addEventListener('touchmove', onMove, {passive: false});
-    document.addEventListener('touchend', onUp);
-  });
-
-  // postMessage height for iframe parent (Carrd auto-resize)
-  function sendHeight() {
-    var h = document.documentElement.scrollHeight;
-    if (window.parent !== window) {
-      window.parent.postMessage({type: 'iframeHeight', height: h}, '*');
-    }
-  }
-  window.addEventListener('load', sendHeight);
-  window.addEventListener('resize', sendHeight);
-  setTimeout(sendHeight, 500);
-})();
-</script>
-
-</div>
-    </div>
-  </section>
 
 <!-- ===================== OFFER SECTION (copy from here) ===================== -->
 <section class="mko" id="free-exterior-offer" aria-label="Free exterior detail offer">
