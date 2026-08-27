@@ -1543,11 +1543,6 @@ header li a[href="#booking"],
 #qqcCard.compact { padding-top: 22px; }
 #qqcCard.compact .progress { margin-bottom: 20px; }
 
-/* Add-ons that can't apply to the chosen service. Kept visible (so the menu
-   doesn't reflow under a thumb) but plainly out of play. */
-#qqcCard .chip.locked { opacity: .32; cursor: not-allowed; }
-#qqcCard .chip.locked:hover { border-color: var(--border); }
-
 #qqcCard .save-tip { display: none; margin: 12px 2px 0; font-size: 13px; font-weight: 640; color: var(--accent); }
 
 /* Compact optional extras on step 3 */
@@ -1618,6 +1613,7 @@ header li a[href="#booking"],
       <div class="progress-seg" data-seg="2"><i></i></div>
       <div class="progress-seg" data-seg="3"><i></i></div>
       <div class="progress-seg" data-seg="4"><i></i></div>
+      <div class="progress-seg" data-seg="5"><i></i></div>
     </div>
     <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
   </div>
@@ -1681,25 +1677,6 @@ header li a[href="#booking"],
         </div>
       </div>
     </div>
-    <div class="group-label">Add-ons</div>
-    <div class="addon-grid">
-      <div class="chip" data-role="addon" data-name="Carpet Shampoo" data-value="20" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg class="ic"><use href="#sv-droplet"/></svg></span>
-        <span class="ctext"><span class="ct">Carpet Shampoo</span><span class="cp">+$20</span></span>
-      </div>
-      <div class="chip" data-role="addon" data-name="Ceramic Wax" data-value="20" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg class="ic"><use href="#sv-shield"/></svg></span>
-        <span class="ctext"><span class="ct">Ceramic Wax</span><span class="cp">+$20</span></span>
-      </div>
-      <div class="chip" data-role="addon" data-name="Exterior Polish" data-value="30" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg class="ic"><use href="#sv-sparkles"/></svg></span>
-        <span class="ctext"><span class="ct">Exterior Polish</span><span class="cp">+$30</span></span>
-      </div>
-      <div class="chip" data-role="addon" data-name="RainX Windows" data-value="10" tabindex="0" role="button" aria-pressed="false">
-        <span class="ic-mini"><svg class="ic"><use href="#sv-rain"/></svg></span>
-        <span class="ctext"><span class="ct">RainX Windows</span><span class="cp">+$10</span></span>
-      </div>
-    </div>
     <p class="save-tip" id="qqSaveTip"></p>
     <div class="nav">
       <button type="button" class="btn btn-ghost" data-role="go" data-step="1">&lsaquo; Back</button>
@@ -1743,11 +1720,38 @@ header li a[href="#booking"],
     </div>
     <div class="nav">
       <button type="button" class="btn btn-ghost" data-role="go" data-step="2">&lsaquo; Back</button>
-      <button type="button" class="btn btn-primary" id="qqNext3" data-role="calc" disabled>See my quote</button>
+      <button type="button" class="btn btn-primary" id="qqNext3" data-role="go" data-step="4" disabled>Continue</button>
     </div>
   </div>
 
-  <!-- STEP 4: QUOTE + CAPTURE
+
+  <!-- STEP 4: ADD-ONS
+       Deliberately after the service and the condition, not bundled into the
+       service screen. Two reasons: choosing the detail is the decision, and
+       burying four upsell chips under it made step 2 tall enough that Continue
+       fell off the phone; and an add-on reads as an add-on once there's
+       something to add it to. Only the ones that apply to the chosen service
+       are rendered — the rest aren't greyed out, they're not built. -->
+  <style>
+    #qqcCard .addon-empty { font-size: 14px; color: var(--text-2); margin: 0 0 4px; }
+    #qqcCard .chip { padding-right: 34px; }
+    #qqcCard .chip .rec { position: absolute; top: -8px; right: 10px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+    #qqcCard .chip.is-rec { border-color: rgba(216,178,92,.55); }
+    #qqcCard .chip.is-rec.sel { border-color: var(--accent); }
+    #qqcCard .addon-why { font-size: 12.5px; color: var(--text-3); margin: 12px 2px 0; line-height: 1.45; }
+  </style>
+  <div class="step" id="step4">
+    <h3 class="q-title">Want anything extra?</h3>
+    <p class="q-hint" id="qqAddonHint">Totally optional &mdash; skip straight to your price if not.</p>
+    <div class="addon-grid" id="qqAddons"></div>
+    <p class="addon-why" id="qqAddonWhy"></p>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="3">&lsaquo; Back</button>
+      <button type="button" class="btn btn-primary" id="qqNext4" data-role="calc">See my quote</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: QUOTE + CAPTURE
        Online booking is deliberately gone: the whole job of this slide is to show
        the number and take a phone number. Everything that isn't the price, the
        breakdown, the two fields, or the button was pulled out, so the amount and
@@ -1766,7 +1770,7 @@ header li a[href="#booking"],
     #qqcCard .qq-edit{display:block;width:100%;margin-top:14px;background:none;border:none;color:var(--text-3);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-edit:hover{color:var(--text);}
   </style>
-  <div class="step" id="step4">
+  <div class="step" id="step5">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
     <div class="amount" id="qqAmount">$0</div>
     <p class="amount-sub">No hidden fees. Pay when the job's done.</p>
@@ -1792,11 +1796,11 @@ header li a[href="#booking"],
       </div>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
-    <button type="button" class="qq-edit" data-role="go" data-step="3">&lsaquo; Edit my details</button>
+    <button type="button" class="qq-edit" data-role="go" data-step="4">&lsaquo; Edit my details</button>
   </div>
 
-  <!-- STEP 5: SUCCESS -->
-  <div class="step" id="step5">
+  <!-- STEP 6: SUCCESS -->
+  <div class="step" id="step6">
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>Locked in — check your phone!</h3>
@@ -1825,23 +1829,34 @@ header li a[href="#booking"],
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
   var PRICE = { 'Full Detail':299, 'Interior Detail':200, 'Exterior Detail':160 };
   var FULL_SAVING = PRICE['Interior Detail'] + PRICE['Exterior Detail'] - PRICE['Full Detail'];
-  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'quote', 5:'success' };
+  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'addons', 5:'quote', 6:'success' };
   var progLabels = {
-    1: 'Step 1 of 4 · Your vehicle',
-    2: 'Step 2 of 4 · Choose services',
-    3: 'Step 3 of 4 · Condition',
-    // Not "Step 4 of 4" — that reads as finished, and people stopped here thinking
-    // they were done when there was still a name, a number and a button to go.
-    4: 'Almost done · Your quote'
+    1: 'Step 1 of 5 · Your vehicle',
+    2: 'Step 2 of 5 · Choose your detail',
+    3: 'Step 3 of 5 · Condition',
+    4: 'Step 4 of 5 · Extras (optional)',
+    // Not "Step 5 of 5" — that reads as finished, and people stopped on the quote
+    // thinking they were done when there was still a name, a number and a button.
+    5: 'Almost done · Your quote'
   };
-  // Which add-ons make sense for which service. Ceramic wax on an interior-only
-  // detail was quotable before this, and produced prices Mikey had to walk back.
-  var ADDON_SCOPE = {
-    'Carpet Shampoo':  { 'Full Detail':1, 'Interior Detail':1 },
-    'Ceramic Wax':     { 'Full Detail':1, 'Exterior Detail':1 },
-    'Exterior Polish': { 'Full Detail':1, 'Exterior Detail':1 },
-    'RainX Windows':   { 'Full Detail':1, 'Exterior Detail':1 }
-  };
+  // The add-on menu. `fits` is which services an add-on can apply to at all —
+  // ceramic wax on an interior-only detail was quotable before this, and produced
+  // prices Mikey had to walk back. `rec` decides whether it gets the Recommended
+  // flag for this particular car, given the condition they just told us about.
+  var ADDONS = [
+    { name:'Carpet Shampoo',  price:20, icon:'sv-droplet',  fits:{ 'Full Detail':1, 'Interior Detail':1 },
+      rec:function(){ return condValue() >= 30; },
+      why:'carpets take the worst of it on a car that\u2019s overdue' },
+    { name:'Exterior Polish', price:30, icon:'sv-sparkles', fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+      rec:function(){ return condValue() >= 30; },
+      why:'polish is what brings paint back when it\u2019s been a while' },
+    { name:'Ceramic Wax',     price:20, icon:'sv-shield',   fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+      rec:function(){ return condValue() === 0; },
+      why:'the cheapest time to protect paint is while it still looks good' },
+    { name:'RainX Windows',   price:10, icon:'sv-rain',     fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+      rec:function(){ return false; }, why:'' }
+  ];
+  function condValue(){ return S.condition ? S.condition.value : -1; }
 
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -1874,7 +1889,10 @@ header li a[href="#booking"],
     var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[Math.min(n,4)] || progLabels[4];
   }
   function goStep(n){
-    for (var i=1;i<=5;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    for (var i=1;i<=6;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    // Built on entry, not on load: it depends on the service and the condition,
+    // both of which are chosen after this markup would otherwise have rendered.
+    if (n === 4) renderAddons();
     var t = $('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     // The masthead (logo, "Quick Quote", subhead, star row) is worth ~200px and is
@@ -1885,14 +1903,15 @@ header li a[href="#booking"],
     // The progress bar has nothing left to say once they've submitted, and
     // "Almost done" over a green tick reads like something is still pending.
     var prog = document.querySelector('#qqcCard .progress');
-    if (prog) prog.style.display = (n >= 5) ? 'none' : '';
+    if (prog) prog.style.display = (n >= 6) ? 'none' : '';
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
     // Same beat, second audience: the Journey timeline in the dashboard. This is
     // what turns "a quote never came in" into "they got to step 3 and stopped."
     if (typeof window.MDTrack === 'function') window.MDTrack('Quote form — step ' + n, stepNames[n] || ('step' + n));
-    // No ticker on step 4 — the estimate is already 64px tall on that screen, and
-    // printing the same number twice made both of them look like a mistake.
-    if(n >= 2 && n <= 3) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
+    // No ticker on the quote slide — the estimate is already 64px tall there, and
+    // printing the same number twice made both of them look like a mistake. It
+    // matters most on the add-on step, where each tap moves it.
+    if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
     if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -1916,20 +1935,50 @@ header li a[href="#booking"],
       tip.style.display = both ? 'block' : 'none';
     }
   }
-  // Grey out add-ons that can't apply to what's selected, and drop any that were
-  // already picked before the service changed.
-  function refreshAddons(){
-    var chips = document.querySelectorAll('#qqcCard .chip[data-role="addon"]');
+  function addonApplies(a){
     var chosen = Object.keys(S.services);
-    for (var i=0;i<chips.length;i++){
-      var chip = chips[i], nm = chip.getAttribute('data-name'), scope = ADDON_SCOPE[nm];
-      var ok = !scope || !chosen.length || chosen.some(function(sv){ return !!scope[sv]; });
-      chip.classList.toggle('locked', !ok);
-      chip.setAttribute('aria-disabled', ok ? 'false' : 'true');
-      if (!ok && S.addons[nm] !== undefined){
-        delete S.addons[nm];
-        chip.classList.remove('sel'); chip.setAttribute('aria-pressed','false');
-      }
+    if (!chosen.length) return false;
+    return chosen.some(function(sv){ return !!a.fits[sv]; });
+  }
+  // Build the add-on step from scratch each time it's shown, so it always matches
+  // the service and condition they just picked. Anything that no longer applies is
+  // dropped from the running total too — otherwise switching from Full Detail to
+  // Interior left a ceramic wax on the quote.
+  function renderAddons(){
+    var wrap = $('qqAddons'); if (!wrap) return;
+    var list = ADDONS.filter(addonApplies);
+
+    // Prune selections that no longer apply after a service change.
+    var live = {}; list.forEach(function(a){ live[a.name] = 1; });
+    Object.keys(S.addons).forEach(function(n){ if (!live[n]) delete S.addons[n]; });
+
+    var recs = [];
+    var html = '';
+    list.forEach(function(a){
+      var isRec = a.rec(), on = S.addons[a.name] !== undefined;
+      if (isRec && a.why) recs.push(a.why);
+      html += '<div class="chip' + (on?' sel':'') + (isRec?' is-rec':'') + '" data-role="addon" data-name="' + a.name +
+              '" data-value="' + a.price + '" tabindex="0" role="button" aria-pressed="' + (on?'true':'false') + '">' +
+              (isRec ? '<span class="rec">Recommended</span>' : '') +
+              '<span class="ic-mini"><svg class="ic"><use href="#' + a.icon + '"/></svg></span>' +
+              '<span class="ctext"><span class="ct">' + a.name + '</span><span class="cp">+$' + a.price + '</span></span>' +
+              '</div>';
+    });
+    wrap.innerHTML = html;
+
+    var hint = $('qqAddonHint');
+    if (hint){
+      var svc = Object.keys(S.services)[0] || 'your detail';
+      hint.textContent = list.length
+        ? ('These pair with the ' + svc + '. Totally optional — skip straight to your price if not.')
+        : 'Nothing to add here — straight to your price.';
+    }
+    var why = $('qqAddonWhy');
+    if (why){
+      why.textContent = recs.length
+        ? ('Flagged for you because ' + recs.join(', and ') + '.')
+        : '';
+      why.style.display = recs.length ? 'block' : 'none';
     }
   }
   function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
@@ -1983,7 +2032,7 @@ header li a[href="#booking"],
         '$' + total + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') +
         (items.length ? ' · ' + items.join(', ') : ''));
     }
-    goStep(4);
+    goStep(5);
     animateAmount(total);
   }
   function animateAmount(target){
@@ -2022,13 +2071,13 @@ header li a[href="#booking"],
         if (name === 'Full Detail'){ unselectService('Interior Detail'); unselectService('Exterior Detail'); S.services['Full Detail'] = PRICE['Full Detail']; }
         else { unselectService('Full Detail'); }
       } else { delete S.services[name]; }
-      refreshNudge(); refreshAddons(); refreshContinue(); refreshTicker();
+      refreshNudge(); refreshContinue(); refreshTicker();
     }
     else if (role === 'addon'){
-      if (el.classList.contains('locked')) return;
       var ao = el.classList.toggle('sel'); el.setAttribute('aria-pressed', ao?'true':'false');
       var an = el.getAttribute('data-name');
-      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an]; refreshTicker();
+      if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an];
+      refreshTicker();
     }
     else if (role === 'go'){
       if (el.disabled) return;
@@ -2052,13 +2101,12 @@ header li a[href="#booking"],
         }
       }
     }, false);
-    refreshAddons();
 
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
       // Honeypot: bots fill this hidden field - silently "succeed" without sending.
-      var hp = $('qqCompany'); if (hp && hp.value) { goStep(5); return; }
+      var hp = $('qqCompany'); if (hp && hp.value) { goStep(6); return; }
 
       var nW = $('qqfName'), nE = $('qqName');
       var pW = $('qqfPhone'), pE = $('qqPhone');
@@ -2163,7 +2211,7 @@ header li a[href="#booking"],
     }
     var ph = $('qqSuccessPhone');
     if (ph && phone) ph.textContent = phone;
-    goStep(5);
+    goStep(6);
   }
 
   // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
@@ -2203,9 +2251,9 @@ header li a[href="#booking"],
       // note (optional)
       if (o.note){ var nt = $('qqNotes'); if (nt) nt.value = o.note; }
 
-      refreshNudge(); refreshAddons(); refreshContinue(); refreshTicker();
+      refreshNudge(); refreshContinue(); refreshTicker();
       if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: 'services_section' });
-      calcQuote(); // computes total + shows step 4 (quote + name/phone)
+      calcQuote(); // computes total + shows step 5 (quote + name/phone)
     }
   };
 
