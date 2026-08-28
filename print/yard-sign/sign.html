@@ -57,9 +57,9 @@ body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 
 /* ---- website ---- */
 .site{
-  margin-top:.70in;
+  margin-top:.64in;
   font-family:Anton,sans-serif;color:var(--ink);
-  font-size:1.00in;line-height:1;letter-spacing:.045em;text-indent:.045em;
+  font-size:.80in;line-height:1;letter-spacing:.045em;text-indent:.045em;
 }
 </style></head>
 <body>
@@ -147,8 +147,15 @@ async function fit(){
   // measured text; leave room for that half on each side.
   const phone = document.getElementById('phone');
   const STROKE = .075 * DPI;
-  const PHONE_W = 21.0 * DPI;
-  phone.style.fontSize = sizeFor('425-600-7897','Anton', PHONE_W - STROKE) + 'px';
+  const PHONE_W = 22.0 * DPI;       // 1in clear of each edge — the trim limit
+  const PHONE_T = -0.012;           // em; buys glyph height back off the gaps
+  const ptxt = '425-600-7897';
+  // width(size) = size*(natural/400) + (n-1)*size*TRACK, so solve for size
+  const per = measure(ptxt,'Anton',400,0)/400 + (ptxt.length-1)*PHONE_T;
+  const psize = (PHONE_W - STROKE) / per;
+  phone.style.fontSize = psize + 'px';
+  phone.style.letterSpacing = (psize*PHONE_T) + 'px';
+  phone.style.marginRight = (-psize*PHONE_T) + 'px';
 
   document.documentElement.setAttribute('data-fitted','1');
 }
