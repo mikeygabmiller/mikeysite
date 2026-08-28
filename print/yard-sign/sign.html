@@ -9,7 +9,7 @@
 html,body{width:24in;height:18in;}
 body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 
-:root{ --red:#B01F24; --ink:#000; }
+:root{ --red:#B01F24; --ink:#000; --stroke:.20in; }
 
 .sign{
   width:24in;height:18in;background:#fff;overflow:hidden;
@@ -52,7 +52,7 @@ body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
 .phone{position:relative;font-family:Anton,sans-serif;line-height:.92;white-space:nowrap;width:fit-content;}
 .phone .lyr{display:block;width:fit-content;}
-.phone .stroke{color:#fff;-webkit-text-stroke:.075in var(--ink);}
+.phone .stroke{color:#fff;-webkit-text-stroke:var(--stroke) var(--ink);}
 .phone .fill{position:absolute;left:0;top:0;color:#fff;}
 
 /* ---- website ---- */
@@ -146,7 +146,7 @@ async function fit(){
   // The outline is centred on the glyph edge, so half of it sits outside the
   // measured text; leave room for that half on each side.
   const phone = document.getElementById('phone');
-  const STROKE = .075 * DPI;
+  const STROKE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stroke'))*DPI;
   const PHONE_W = 22.0 * DPI;       // 1in clear of each edge — the trim limit
   const PHONE_T = -0.012;           // em; buys glyph height back off the gaps
   const ptxt = '425-600-7897';
