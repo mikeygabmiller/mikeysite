@@ -1481,7 +1481,17 @@ header li a[href="#booking"],
 #qqcCard .svc-card .price { font-size: 18px; font-weight: 740; letter-spacing: -0.02em; }
 
 #qqcCard .group-label { font-size: 12px; font-weight: 640; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); margin: 22px 4px 10px; }
-#qqcCard .addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+/* Was `1fr 1fr`. A bare `1fr` is `minmax(auto, 1fr)`, so each track floors at the
+   chip's min-content (~153px) — on a phone, where the card is only 264px wide
+   inside, the two tracks plus the gap came to 316px and the card's overflow:hidden
+   sliced the whole right-hand column off mid-word. It read as a row of cards you
+   were meant to swipe, and no amount of swiping moved it. auto-fit + a min track
+   drops to one column whenever two won't genuinely fit, so nothing is ever half
+   shown; min() keeps the track itself from overflowing a very narrow card. */
+#qqcCard .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 10px; }
+/* Grid items default to min-width:auto, which is what let the chips push their
+   tracks wider than the grid in the first place. */
+#qqcCard .addon-grid .chip { min-width: 0; }
 #qqcCard .chip { position: relative; display: flex; align-items: center; gap: 11px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 11px 12px; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
 #qqcCard .chip:hover { border-color: var(--border-2); }
 #qqcCard .chip:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
@@ -1582,7 +1592,7 @@ header li a[href="#booking"],
   #qqcCard { padding: 26px 18px 22px; }
   #qqcCard h2.qq-h { font-size: 26px; }
   #qqcCard .amount { font-size: 54px; }
-  #qqcCard .duo, #qqcCard .addon-grid { grid-template-columns: 1fr; }
+  #qqcCard .duo { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   #qqcCard *, #qqcCard *::before, #qqcCard *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
@@ -1739,12 +1749,30 @@ header li a[href="#booking"],
     #qqcCard .chip.is-rec { border-color: rgba(216,178,92,.55); }
     #qqcCard .chip.is-rec.sel { border-color: var(--accent); }
     #qqcCard .addon-why { font-size: 12.5px; color: var(--text-3); margin: 12px 2px 0; line-height: 1.45; }
+    /* An odd number of extras used to strand the last chip in the left column with
+       a hole beside it, and a hole on the right edge of a row of cards reads as
+       "there's more, swipe" — people went looking for a carousel that was never
+       there. A lone trailing chip takes the whole row instead, so the list always
+       ends flush and visibly ends. */
+    #qqcCard .addon-grid .chip:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    /* Says out loud that the grid is the whole menu, and gives anything not on it
+       somewhere to go — this step is where people go looking for an extra, and the
+       notes box is a step behind them. */
+    #qqcCard .addon-more { margin: 16px 2px 0; }
+    #qqcCard .addon-more label { display: block; font-size: 13px; font-weight: 580; color: var(--text-2); margin-bottom: 7px; }
+    #qqcCard .addon-more label span { color: var(--text-3); font-weight: 400; }
   </style>
   <div class="step" id="step4">
     <h3 class="q-title">Want anything extra?</h3>
     <p class="q-hint" id="qqAddonHint">Totally optional &mdash; skip straight to your price if not.</p>
     <div class="addon-grid" id="qqAddons"></div>
     <p class="addon-why" id="qqAddonWhy"></p>
+    <div class="addon-more">
+      <label for="qqAddonNote">That&rsquo;s the whole menu. Want something that isn&rsquo;t on it? <span>(I&rsquo;ll price it when I call)</span></label>
+      <div class="field">
+        <input type="text" id="qqAddonNote" placeholder="Headliner, engine bay, ozone treatment&hellip;" autocomplete="off" />
+      </div>
+    </div>
     <div class="nav">
       <button type="button" class="btn btn-ghost" data-role="go" data-step="3">&lsaquo; Back</button>
       <button type="button" class="btn btn-primary" id="qqNext4" data-role="calc">See my quote</button>
@@ -1847,6 +1875,9 @@ header li a[href="#booking"],
     { name:'Carpet Shampoo',  price:20, icon:'sv-droplet',  fits:{ 'Full Detail':1, 'Interior Detail':1 },
       rec:function(){ return condValue() >= 30; },
       why:'carpets take the worst of it on a car that\u2019s overdue' },
+    { name:'Seatbelt Cleaning', price:15, icon:'sv-armchair', fits:{ 'Full Detail':1, 'Interior Detail':1 },
+      rec:function(){ return condValue() >= 60; },
+      why:'belts hold onto more than anything else in the car when it gets that far' },
     { name:'Exterior Polish', price:30, icon:'sv-sparkles', fits:{ 'Full Detail':1, 'Exterior Detail':1 },
       rec:function(){ return condValue() >= 30; },
       why:'polish is what brings paint back when it\u2019s been a while' },
@@ -1861,6 +1892,15 @@ header li a[href="#booking"],
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function val(id){ var el=$(id); return el ? (el.value||'').trim() : ''; }
+  // Two boxes, one note. Step 3 asks what's wrong with the car; step 4 catches the
+  // extra that isn't on the menu. Both have to land in the same place, because the
+  // email, the SMS payload and the breakdown all read one Notes line.
+  function collectNotes(){
+    var parts = [];
+    var n = val('qqNotes'); if (n) parts.push(n);
+    var a = val('qqAddonNote'); if (a) parts.push('Also wants: ' + a);
+    return parts.join(' \u2014 ');
+  }
 
   function liveTotal(){
     var t=0;
@@ -1989,7 +2029,7 @@ header li a[href="#booking"],
     var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j]); }
     if (S.vehicle) total += S.vehicle.value;
     if (S.condition) total += S.condition.value;
-    S.notes = val('qqNotes');
+    S.notes = collectNotes();
     S.total = total; S.items = items;
 
     // Vehicle size and condition are priced into the service line rather than
@@ -2120,7 +2160,7 @@ header li a[href="#booking"],
       var name = nE.value.trim();
       var ymm = val('qqYmm');
       var location = val('qqLocation');
-      var notes = val('qqNotes');
+      var notes = collectNotes();
       var cond = (S.condition && S.condition.label) ? S.condition.label : 'Pretty Clean';
       var veh = S.vehicle ? S.vehicle.label : 'vehicle';
       var vehicleLine = ymm ? (ymm + ' (' + veh + ')') : veh;
