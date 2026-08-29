@@ -1,0 +1,449 @@
+<title>Snohomish Detailing Launch</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<!-- Internal operations doc. Not linked from the site and excluded in robots.txt.
+     Note: GitHub Pages serves the repo root, so this URL is publicly reachable
+     to anyone who knows it. Delete this file if that is not acceptable. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#FBF9F8; --surface:#FFFFFF; --surface-2:#F3EFEE; --surface-3:#EDE6E5;
+  --ink:#1A1416; --ink-2:#5C5052; --ink-3:#8B7E80;
+  --rule:#E3DBDA; --rule-2:#D2C7C6;
+  --accent:#C8102E; --accent-soft:#FBE9EC; --accent-ink:#FFFFFF;
+  --ok:#1E6F45; --ok-soft:#E4F2EA;
+  --warn:#8A5600; --warn-soft:#FBEFDB;
+  --crit:#A8102A; --crit-soft:#FBE4E8;
+  --shadow:0 1px 2px rgba(26,20,22,.06),0 6px 18px rgba(26,20,22,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#141011; --surface:#1D1819; --surface-2:#262021; --surface-3:#2F2829;
+    --ink:#F5EFEE; --ink-2:#B3A7A8; --ink-3:#857A7B;
+    --rule:#332B2C; --rule-2:#413738;
+    --accent:#FF4459; --accent-soft:#33161B; --accent-ink:#1A0206;
+    --ok:#4FBF85; --ok-soft:#122A1E;
+    --warn:#E0A040; --warn-soft:#2E2314;
+    --crit:#FF5C6E; --crit-soft:#35151A;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#141011; --surface:#1D1819; --surface-2:#262021; --surface-3:#2F2829;
+  --ink:#F5EFEE; --ink-2:#B3A7A8; --ink-3:#857A7B;
+  --rule:#332B2C; --rule-2:#413738;
+  --accent:#FF4459; --accent-soft:#33161B; --accent-ink:#1A0206;
+  --ok:#4FBF85; --ok-soft:#122A1E;
+  --warn:#E0A040; --warn-soft:#2E2314;
+  --crit:#FF5C6E; --crit-soft:#35151A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 18px rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:Barlow,"Helvetica Neue",Arial,sans-serif;
+  font-size:16.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1000px; margin:0 auto; padding:0 24px 96px}
+.prose{max-width:68ch}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:2px solid var(--ink); padding:44px 0 20px; margin-bottom:36px}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 14px;
+}
+h1{
+  font-family:Chivo,Impact,sans-serif; font-weight:900; font-size:clamp(34px,6.2vw,58px);
+  line-height:1.02; letter-spacing:-.022em; margin:0 0 16px; text-wrap:balance;
+}
+.standfirst{font-size:18.5px; color:var(--ink-2); margin:0; max-width:60ch}
+.meta{
+  display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:24px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px; color:var(--ink-3);
+}
+.meta b{color:var(--ink); font-weight:600}
+
+/* ---------- status rail ---------- */
+.rail{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:10px; overflow:hidden; margin-bottom:44px}
+.rail div{background:var(--surface); padding:16px 18px}
+.rail .n{font-family:Chivo,sans-serif; font-weight:900; font-size:28px; line-height:1; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums}
+.rail .l{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:7px}
+.rail .built .n{color:var(--ok)} .rail .block .n{color:var(--crit)} .rail .watch .n{color:var(--warn)}
+
+/* ---------- sections ---------- */
+section{margin-bottom:56px; scroll-margin-top:20px}
+h2{
+  font-family:Chivo,sans-serif; font-weight:700; font-size:clamp(23px,3.2vw,30px);
+  letter-spacing:-.015em; line-height:1.14; margin:0 0 6px; text-wrap:balance;
+}
+.sub{color:var(--ink-3); font-size:14.5px; margin:0 0 26px; max-width:64ch}
+h3{font-family:Chivo,sans-serif; font-weight:700; font-size:17.5px; letter-spacing:-.008em; margin:34px 0 10px}
+p{margin:0 0 14px}
+a{color:var(--accent); text-decoration:underline; text-underline-offset:2px; text-decoration-thickness:1px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2.5px solid var(--accent); outline-offset:2px; border-radius:3px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.875em}
+code{background:var(--surface-2); padding:1.5px 5px; border-radius:4px; border:1px solid var(--rule)}
+
+/* ---------- critical callout ---------- */
+.alarm{
+  background:var(--crit-soft); border:1px solid var(--crit); border-left-width:5px;
+  border-radius:10px; padding:24px 26px; margin:0 0 26px;
+}
+.alarm h2{color:var(--crit); margin-bottom:12px}
+.alarm .tag{
+  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--accent-ink); background:var(--crit);
+  padding:3px 9px; border-radius:4px; margin-bottom:14px;
+}
+.alarm p:last-child{margin-bottom:0}
+
+/* ---------- evidence ---------- */
+.ev{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:20px 0}
+.ev div{background:var(--surface); border:1px solid var(--rule); border-radius:9px; padding:15px 17px}
+.ev .big{font-family:Chivo,sans-serif; font-weight:900; font-size:23px; line-height:1.1;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.ev .cap{font-size:13px; color:var(--ink-2); margin-top:6px; line-height:1.45}
+
+/* ---------- steps ---------- */
+ol.steps{list-style:none; counter-reset:s; padding:0; margin:0; display:flex; flex-direction:column; gap:14px}
+ol.steps>li{
+  counter-increment:s; position:relative; background:var(--surface); border:1px solid var(--rule);
+  border-radius:11px; padding:20px 22px 20px 66px; box-shadow:var(--shadow);
+}
+ol.steps>li::before{
+  content:counter(s,decimal-leading-zero); position:absolute; left:20px; top:19px;
+  font-family:"IBM Plex Mono",monospace; font-size:13px; font-weight:600; color:var(--accent-ink);
+  background:var(--accent); width:30px; height:30px; border-radius:7px;
+  display:grid; place-items:center; letter-spacing:-.03em;
+}
+ol.steps>li.done{opacity:.55}
+ol.steps>li.done .st{text-decoration:line-through}
+.st{font-family:Chivo,sans-serif; font-weight:700; font-size:17px; letter-spacing:-.008em;
+  display:block; margin-bottom:7px; line-height:1.3}
+.why{font-size:14.5px; color:var(--ink-2); margin:0}
+.why+.why{margin-top:9px}
+.tick{
+  position:absolute; right:16px; top:18px; width:22px; height:22px; cursor:pointer;
+  border:1.5px solid var(--rule-2); border-radius:5px; background:var(--surface-2);
+  display:grid; place-items:center; padding:0; color:transparent; font-size:13px; font-weight:700;
+}
+.tick[aria-pressed="true"]{background:var(--ok); border-color:var(--ok); color:#fff}
+.where{
+  display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; padding:2.5px 8px; border-radius:4px; margin-bottom:9px;
+}
+.w-ui{background:var(--warn-soft); color:var(--warn); border:1px solid var(--warn)}
+.w-you{background:var(--accent-soft); color:var(--accent); border:1px solid var(--accent)}
+.w-done{background:var(--ok-soft); color:var(--ok); border:1px solid var(--ok)}
+
+/* ---------- tables ---------- */
+.scroll{overflow-x:auto; border:1px solid var(--rule); border-radius:10px; background:var(--surface); margin:18px 0}
+table{border-collapse:collapse; width:100%; font-size:14.5px; min-width:520px}
+th,td{padding:11px 15px; text-align:left; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:600; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); background:var(--surface-2); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+tr.hit td{background:var(--ok-soft)}
+tr.miss td{background:var(--crit-soft)}
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10px; font-weight:600;
+  letter-spacing:.07em; text-transform:uppercase; padding:2px 7px; border-radius:4px; white-space:nowrap}
+.p-ok{background:var(--ok-soft); color:var(--ok)} .p-no{background:var(--crit-soft); color:var(--crit)}
+.p-wa{background:var(--warn-soft); color:var(--warn)}
+
+/* ---------- notes ---------- */
+.note{background:var(--surface-2); border-left:3px solid var(--rule-2); border-radius:0 8px 8px 0;
+  padding:15px 19px; margin:18px 0; font-size:14.5px; color:var(--ink-2)}
+.note b{color:var(--ink)}
+.note.flag{background:var(--warn-soft); border-left-color:var(--warn)}
+.note.flag b{color:var(--warn)}
+
+ul.tight{margin:0 0 14px; padding-left:20px} ul.tight li{margin-bottom:6px}
+footer{border-top:1px solid var(--rule); padding-top:22px; margin-top:60px;
+  font-size:13px; color:var(--ink-3)}
+footer a{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+@media(max-width:560px){
+  .wrap{padding:0 16px 64px}
+  ol.steps>li{padding:18px 18px 18px 18px}
+  ol.steps>li::before{position:static; margin-bottom:11px}
+  .tick{position:static; margin-top:12px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Google Ads · Account 862-091-0274</p>
+  <h1>Snohomish Detailing Launch</h1>
+  <p class="standfirst">The campaign is built and verified. Six things stand between it and live traffic, and two of them decide whether you record a single conversion.</p>
+  <div class="meta">
+    <span>Campaign <b class="mono">24190821998</b></span>
+    <span>Budget <b>$10/day</b></span>
+    <span>Bidding <b>Manual CPC</b></span>
+    <span>Status <b>Paused, everything</b></span>
+  </div>
+</header>
+
+<div class="rail">
+  <div class="built"><div class="n">18</div><div class="l">Keywords, all broad</div></div>
+  <div class="built"><div class="n">15</div><div class="l">Extensions live</div></div>
+  <div class="block"><div class="n">6</div><div class="l">Blockers to clear</div></div>
+  <div class="watch"><div class="n">3</div><div class="l">Flags to watch</div></div>
+</div>
+
+<!-- ============ BLOCKER 1 ============ -->
+<section>
+<div class="alarm">
+  <span class="tag">Resolved — but it changed the build</span>
+  <h2>The campaign was built on the wrong phone number</h2>
+  <p><b>425-600-7897 is the real number for everything.</b> That settles the discrepancy, and it matches what the repository said all along: <span class="mono">360-797-5831</span> has never appeared in your site's git history, while the 425 number appears 273 times across 47 files including the <span class="mono">schema.org</span> structured data Google reads.</p>
+  <p>Your website needs no changes at all. The campaign does. Two consequences, both of which are now steps 1 and 2 below:</p>
+  <div class="ev">
+    <div><div class="big" style="color:var(--crit)">2</div><div class="cap">Call extensions now on the campaign. I added one on 425-600-7897, but I <b>cannot delete</b> the old 360 one through the connector — there is no delete action. Until you remove it, your ads can show a dead number.</div></div>
+    <div><div class="big" style="color:var(--crit)">0</div><div class="cap">Conversion actions tracking the 425 number. The account has <span class="mono">conversions_call_3607975831_</span> and nothing else. As it stands, calls to your real number record as zero.</div></div>
+  </div>
+  <p>None of your ad text mentions a phone number — Google prohibits that, which is why it rejected five of the six ads on the first push. So the ads themselves need no rework. It's the extension and the conversion action that are wrong.</p>
+</div>
+</section>
+
+<!-- ============ GO LIVE ============ -->
+<section id="golive">
+<h2>Getting it live</h2>
+<p class="sub">In order. Steps 2 and 3 are the ones that protect your money — skipping them means paying for clicks from Florida.</p>
+
+<ol class="steps">
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Delete the old call extension on 360-797-5831</span>
+  <p class="why">Campaign → <b>Assets</b> → filter to <b>Calls</b>. You will see two. Remove the one showing <b>(360) 797-5831</b> and keep <b>(425) 600-7897</b>.</p>
+  <p class="why">This is the single most important step on the page. The connector has no delete-asset action, so I could only add the correct one — I could not take the wrong one away. If you enable the campaign with both attached, Google can serve either, and roughly half your call clicks go to a number that doesn't reach you.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Get calls to 425-600-7897 actually tracked</span>
+  <p class="why">Your account has exactly one phone conversion action and it is bound to the old number: <span class="mono">conversions_call_3607975831_</span>. Nothing tracks the real number yet, so as built this campaign would report zero conversions no matter how well it performs.</p>
+  <p class="why">Go to <b>Goals → Conversions → Summary</b>. Confirm a <b>Calls from ads</b> conversion action exists and is switched on; create it if it isn't there. Then check <b>Tools → Ad settings → Call reporting</b> is enabled, which is what lets Google attribute a call back to the click that caused it.</p>
+  <p class="why">Finally, in the campaign's <b>Settings → Conversions</b>, make sure that action is selected and marked <b>Primary</b>. A secondary action still reports but won't show in the Conversions column you'll be judging this by.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Set the geography</span>
+  <p class="why">Open the campaign → <b>Settings → Locations</b>. Remove <b>United States</b>. Add <b>Snohomish, Washington</b> with a <b>5 mile</b> radius.</p>
+  <p class="why">This cannot be done through the connector I'm using — there is no location write action, I checked all 32. Until you do this the campaign targets the entire country.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Change the location option to Presence</span>
+  <p class="why">Same screen → <b>Location options</b> → <b>Presence: people in your targeted locations</b>.</p>
+  <p class="why">The default is "presence or interest", which serves ads to anyone <em>searching about</em> Snohomish from anywhere on earth. That default is how out-of-area clicks get in even after you've set the radius.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Fix two sitelink URLs</span>
+  <p class="why">The handoff assumed a single-page site, so it wrote anchors that don't all exist. <code>#services</code> and <code>#booking</code> are real. Two are not:</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Sitelink</th><th>Points at</th><th>Change it to</th></tr></thead>
+    <tbody>
+      <tr><td>Common Questions</td><td class="num">/#faq</td><td class="num">/#qanda</td></tr>
+      <tr><td>My Guarantee</td><td class="num">/#guarantee</td><td class="num">/#about</td></tr>
+    </tbody>
+  </table></div>
+  <p class="why">Neither breaks the page — a missing anchor just dumps the visitor at the top — but you lose the jump you promised them. I already added three replacements pointing at real pages, so if it's easier, delete these two instead of editing them.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Enable, in this order</span>
+  <p class="why">Campaign first, then the six ad groups, then the six ads. Going the other way leaves children enabled under a paused parent, which is harmless but makes it hard to tell what's actually serving.</p>
+  <p class="why">Then check the campaign again in an hour. A brand-new campaign with a brand-new call asset goes through policy review, and "Eligible" is what you want to see.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+</ol>
+</section>
+
+<!-- ============ COPY AUDIT ============ -->
+<section>
+<h2>Is the ad copy any good</h2>
+<p class="sub">You asked me to double-check it. Short answer: the writing is strong, the structure is weak, and one thing in it was silently costing you money.</p>
+
+<h3>What's genuinely good</h3>
+<p class="prose">The descriptions are the best part of this build. They're specific where most detailing ads are vague — "I bring water and power", "you park in the driveway", "since I started at 12". That's the kind of detail a competitor can't copy because it isn't true for them. All 90 headlines and 24 descriptions came in under Google's limits, no banned words, no em dashes.</p>
+
+<h3>The structural problem</h3>
+<p class="prose">Twelve of fifteen headlines are <b>identical across all six ads</b>. You have six ad groups built around six different intents, and five of them are showing what is essentially the same generic ad.</p>
+
+<div class="scroll"><table>
+  <thead><tr><th>Ad group</th><th>Headlines matching its own keywords</th><th>Headlines copied from Core</th></tr></thead>
+  <tbody>
+    <tr class="miss"><td>Near&nbsp;Me</td><td class="num">3 / 15</td><td class="num">13 / 15</td></tr>
+    <tr class="miss"><td>Mobile Detailing</td><td class="num">3 / 15</td><td class="num">13 / 15</td></tr>
+    <tr class="miss"><td>Same Day</td><td class="num">3 / 15</td><td class="num">13 / 15</td></tr>
+    <tr><td>Core Detailing</td><td class="num">3 / 15</td><td class="num">—</td></tr>
+    <tr class="hit"><td>Interior</td><td class="num">5 / 15</td><td class="num">12 / 15</td></tr>
+    <tr class="hit"><td>Cost &amp; Pricing</td><td class="num">6 / 15</td><td class="num">12 / 15</td></tr>
+  </tbody>
+</table></div>
+
+<p class="prose">Google's Ad Strength is driven substantially by asset-keyword relevance — whether your headlines actually contain the words people searched. Someone searching <em>same day car detailing</em> gets an ad whose fifteen headlines mention "same day" twice. Worth knowing: Google itself says Ad Strength doesn't predict performance, so treat this as a completeness gap rather than an emergency. It's the top thing to fix after you're live, not a reason to delay.</p>
+
+<h3>Swaps I'd make, once you're running</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Ad group</th><th>Add these headlines</th><th>Drop</th></tr></thead>
+  <tbody>
+    <tr><td>Near Me</td><td>Car Detailing Near You<br>Detailer Near You In Snohomish</td><td>Two of the shared generics</td></tr>
+    <tr><td>Mobile Detailing</td><td>Mobile Detailing Near You<br>Mobile Car Detailing WA</td><td>Two of the shared generics</td></tr>
+    <tr><td>Same Day</td><td>Same Day Car Detailing<br>Same Day Auto Detailing</td><td>Two of the shared generics</td></tr>
+    <tr><td>Interior</td><td>Interior Car Detailing</td><td>One shared generic</td></tr>
+  </tbody>
+</table></div>
+<p class="prose">All under 30 characters, all in your voice, no new claims. Say the word and I'll build these as second ads in each group so you can run them against the originals rather than replacing anything blind.</p>
+
+<h3>The thing that was costing you money</h3>
+<p class="prose">Five of the six ads were rejected outright by Google on first push. Google prohibits phone numbers in headlines and descriptions — that's what call extensions are for. The one ad that had no number in its text was the only one accepted. We swapped two strings and all six went through. Worth remembering the next time you write ad copy anywhere.</p>
+
+<div class="note flag"><b>Small credibility gap:</b> the ads say "38+ Five-Star Reviews" and "38 five-star Google reviews". Your site's structured data says <b>40</b>, at a 5.0 rating. You're understating yourself in the ad — safe, but free to fix.</div>
+</section>
+
+<!-- ============ DATA ============ -->
+<section>
+<h2>What the old campaign actually proves</h2>
+<p class="sub">I pulled the real numbers from your account rather than taking the handoff's word for it. The headline figures check out exactly.</p>
+
+<div class="ev">
+  <div><div class="big">$2.52</div><div class="cap">Average CPC — matches the handoff exactly</div></div>
+  <div><div class="big">15.7%</div><div class="cap">Conversion rate, 58 conversions on 370 clicks</div></div>
+  <div><div class="big">$16.07</div><div class="cap">Blended CPA across everything, including the waste</div></div>
+  <div><div class="big" style="color:var(--crit)">$569</div><div class="cap">Spent on terms that converted zero, out of $932 total</div></div>
+</div>
+
+<h3>The eight keywords that carried it</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Keyword</th><th>Clicks</th><th>Spend</th><th>Conv</th><th>CPA</th><th>In the build?</th></tr></thead>
+  <tbody>
+    <tr class="hit"><td>car detail</td><td class="num">1</td><td class="num">$4.28</td><td class="num">4</td><td class="num">$1.07</td><td><span class="pill p-ok">I added it</span></td></tr>
+    <tr><td>how much does it cost to detail a car</td><td class="num">8</td><td class="num">$12.09</td><td class="num">3</td><td class="num">$4.03</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>car detailing</td><td class="num">22</td><td class="num">$69.49</td><td class="num">15</td><td class="num">$4.63</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>same day car detailing</td><td class="num">2</td><td class="num">$5.75</td><td class="num">1</td><td class="num">$5.75</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>automotive detailing</td><td class="num">5</td><td class="num">$17.89</td><td class="num">2</td><td class="num">$8.94</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>auto detailing near me</td><td class="num">15</td><td class="num">$32.75</td><td class="num">2</td><td class="num">$16.37</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>car detailing near me</td><td class="num">17</td><td class="num">$37.03</td><td class="num">2</td><td class="num">$18.51</td><td><span class="pill p-ok">Yes</span></td></tr>
+    <tr><td>mobile detailing near me</td><td class="num">20</td><td class="num">$66.72</td><td class="num">3</td><td class="num">$22.24</td><td><span class="pill p-ok">Yes</span></td></tr>
+  </tbody>
+</table></div>
+
+<p class="prose"><b>"car detail" was missing from the build and it's your best keyword in the account</b> — four conversions for $4.28. It's one click of data so don't over-trust the CPA, but leaving out the cheapest converter you've ever had made no sense. I've added it to Core Detailing on broad match.</p>
+
+<div class="note"><b>One number I couldn't reproduce.</b> The handoff quotes a $7.28 blended CPA for these eight. I get <b>$7.69</b> — $245.99 of spend against 32 conversions. Close enough that the argument holds, but the figure in the doc isn't the one the account returns.</div>
+
+<h3>How much of this build is actually proven</h3>
+<p class="prose">The handoff frames this as "restricting to proven winners". That's true of about half of it. Of the seventeen original keywords, seven have converted before and ten haven't — seven of those have never run on broad match at all.</p>
+<div class="scroll"><table>
+  <thead><tr><th>Proven, has converted</th><th>Unproven, never converted or never ran</th></tr></thead>
+  <tbody><tr>
+    <td>car detailing · automotive detailing · auto detailing near me · car detailing near me · mobile detailing near me · how much does it cost to detail a car · same day car detailing</td>
+    <td>detailing near me · best car detailing near me · mobile car detailing · mobile detailing · car detailing cost · car detailing prices near me · same day auto detailing · interior car detailing · interior car detailing near me · car interior cleaning</td>
+  </tr></tbody>
+</table></div>
+<p class="prose">This isn't wrong — they're sensible terms and you need some coverage to gather data. Just don't read early spend on the right-hand column as failure; it's the price of finding out.</p>
+</section>
+
+<!-- ============ FLAGS ============ -->
+<section>
+<h2>Three things to watch</h2>
+<p class="sub">None of these should delay launch. All three are worth a look in week one.</p>
+
+<h3>1. The negative on "car detailing" may be throttling your best keyword</h3>
+<p class="prose">The build adds negative-exact <code>car detailing</code> while bidding broad on the same words. The handoff calls this deliberate: the bare head term supposedly converted poorly. But the account doesn't show that. What it shows is that <b>phrase-match</b> "car detailing" converted zero on $54.53 — which is a different thing from the exact query. Meanwhile broad "car detailing" delivered 15 of your 32 keyword conversions at $4.63.</p>
+<p class="prose">In a five-mile radius with maybe 300–450 searches a month, the bare two-word query is likely a real share of what little volume exists. Since underspending is the predicted failure mode here, this negative is pointed the wrong way. <b>If you're under 20 clicks after week one, remove this negative before you touch anything else.</b> I can do it in one call.</p>
+
+<h3>2. Four wasteful terms are still un-negatived</h3>
+<p class="prose">The negative list catches the big ones — <span class="mono">mobile automobile detailing</span> alone burned $214.31 for nothing. But <span class="mono">car detail near me</span> ($17.20), <span class="mono">car detailers near me</span> ($10.13), <span class="mono">professional car detailing</span> ($8.59) and <span class="mono">affordable auto detailing near me</span> ($8.30) all converted zero and aren't blocked.</p>
+<p class="prose">I deliberately left them alone. That's $44 across three-to-six clicks each — too thin to act on, and this campaign's bigger risk is starving for volume, not overspending. Revisit only if they show up in your search terms report burning real money.</p>
+
+<h3>3. Expect it to underspend, and don't fix that with bids</h3>
+<p class="prose">At $10/day in a five-mile radius, expect $80–120 of the $300 monthly budget to actually deploy. That's the geography, not a broken build. A realistic month is 30–45 clicks and 5–7 conversions.</p>
+<div class="note"><b>The decision rule:</b> if two weeks pass with under 20 clicks total, widen the radius to 15 miles — that picks up Monroe, Lake Stevens and Everett. Do not raise bids. Bidding harder into inventory that doesn't exist just costs more per click for the same handful of clicks.</div>
+</section>
+
+<!-- ============ CHANGES ============ -->
+<section>
+<h2>What I changed today</h2>
+<p class="sub">Everything below is already live in the account, and everything is paused.</p>
+<div class="scroll"><table>
+  <thead><tr><th>Change</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>Added a call extension on <b>(425) 600-7897</b></td><td>The real number. The old one on (360) 797-5831 is still attached and only you can remove it — step 1</td></tr>
+    <tr><td>Added <span class="mono">car detail</span> to Core Detailing, broad</td><td>Your cheapest converting keyword ever ($1.07 CPA), missing from the build</td></tr>
+    <tr><td>Added 3 sitelinks: Read My Reviews, Questions And Answers, About Mikey</td><td>Takes you from 4 to 7. Google's ad strength improves at 6+, and these point at real pages rather than anchors that don't exist</td></tr>
+    <tr><td>Swapped the phone number out of 2 ad strings</td><td>Google prohibits phone numbers in ad text — it rejected 5 of 6 ads until this was fixed. Nothing in your ad copy names a number now, so the number change needed no copy rework</td></tr>
+    <tr><td>Left the website alone</td><td>425-600-7897 is already correct across all 273 occurrences. No site change needed</td></tr>
+  </tbody>
+</table></div>
+
+<h3>The full build, as it stands</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Object</th><th>Count</th><th>State</th></tr></thead>
+  <tbody>
+    <tr><td>Campaign — Snohomish Detailing - Search - 2026</td><td class="num">1</td><td><span class="pill p-wa">Paused</span></td></tr>
+    <tr><td>Ad groups</td><td class="num">6</td><td><span class="pill p-wa">Paused</span></td></tr>
+    <tr><td>Keywords, all broad</td><td class="num">18</td><td><span class="pill p-ok">Enabled under paused parents</span></td></tr>
+    <tr><td>Campaign negatives</td><td class="num">45</td><td><span class="pill p-ok">Active</span></td></tr>
+    <tr><td>Responsive search ads</td><td class="num">6</td><td><span class="pill p-wa">Paused</span></td></tr>
+    <tr><td>Extensions — 2 call, 5 callouts, 1 snippet, 7 sitelinks</td><td class="num">15</td><td><span class="pill p-wa">One call asset too many</span></td></tr>
+    <tr><td>Call extension on (425) 600-7897</td><td class="num">1</td><td><span class="pill p-ok">Correct</span></td></tr>
+    <tr><td>Call extension on (360) 797-5831</td><td class="num">1</td><td><span class="pill p-no">Delete it — you must fix</span></td></tr>
+    <tr><td>Conversion action tracking (425) 600-7897</td><td class="num">0</td><td><span class="pill p-no">None — you must fix</span></td></tr>
+    <tr><td>Geo targeting</td><td class="num">0</td><td><span class="pill p-no">Entire US — you must fix</span></td></tr>
+  </tbody>
+</table></div>
+<p class="prose">Your existing <span class="mono">LocalServicesCampaign</span> is untouched and still enabled. I checked it after every write.</p>
+</section>
+
+<footer>
+  <p>Built and verified against Google Ads account 862-091-0274 on 29 August 2026. Historical figures pulled from the paused "Real" campaign over a two-year window. Ad-strength guidance from <a href="https://support.google.com/google-ads/answer/9921843?hl=en">Google Ads Help: About Ad Strength</a> and <a href="https://support.google.com/google-ads/answer/7684791?hl=en">About responsive search ads</a>.</p>
+  <p>Nothing in this campaign will spend a cent until you complete step 6.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var KEY='snoh-runbook-v1', done={};
+  try{ done=JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ done={}; }
+  var items=document.querySelectorAll('ol.steps>li');
+  items.forEach(function(li,i){
+    var btn=li.querySelector('.tick');
+    if(!btn) return;
+    function paint(on){
+      btn.setAttribute('aria-pressed',on?'true':'false');
+      li.classList.toggle('done',!!on);
+    }
+    paint(done[i]);
+    btn.addEventListener('click',function(){
+      var on=btn.getAttribute('aria-pressed')!=='true';
+      paint(on); done[i]=on;
+      try{ localStorage.setItem(KEY,JSON.stringify(done)); }catch(e){}
+    });
+  });
+})();
+</script>
