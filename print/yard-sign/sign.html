@@ -1,0 +1,164 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:AlfaSlab;src:url(fonts/AlfaSlabOne-Regular.ttf) format('truetype');font-display:block;}
+@font-face{font-family:Anton;src:url(fonts/Anton-Regular.ttf) format('truetype');font-display:block;}
+
+@page{size:24in 18in;margin:0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:24in;height:18in;}
+body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+:root{ --red:#B01F24; --ink:#000; --stroke:.20in; }
+
+.sign{
+  width:24in;height:18in;background:#fff;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;
+  padding:1.05in 0.8in 1.00in;
+}
+
+/* ---- credibility eyebrow ---- */
+.eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:.24in;
+  font-family:Anton,sans-serif;color:var(--ink);
+  font-size:.90in;line-height:1;letter-spacing:.015em;white-space:nowrap;
+}
+.eyebrow .stars{display:flex;gap:.06in;margin-right:.05in;}
+.eyebrow .stars svg{width:.86in;height:.86in;display:block;}
+.eyebrow .dot{width:.20in;height:.20in;border-radius:50%;background:var(--red);}
+
+/* ---- headline: Alfa Slab One, each line fitted to the live width ---- */
+.head{margin-top:.42in;text-align:center;}
+.head .ln{
+  font-family:AlfaSlab,serif;color:var(--ink);
+  line-height:1.02;text-transform:uppercase;white-space:nowrap;
+  display:block;width:fit-content;margin-inline:auto;
+}
+.head .ln + .ln{margin-top:-.10in;}
+
+/* ---- response cue ---- */
+.cta{
+  font-family:Anton,sans-serif;color:var(--ink);
+  font-size:1.20in;line-height:1;letter-spacing:.10em;text-indent:.10em;
+  margin-top:.62in;
+}
+
+/* ---- phone: white knockout on the red band, thin black outline (as on the
+        current sign). Two stacked layers give a true outside-only stroke. ---- */
+.band{
+  width:24in;margin-inline:-.8in;background:var(--red);
+  margin-top:.22in;padding:.59in 0 .71in;
+  display:flex;justify-content:center;
+}
+.phone{position:relative;font-family:Anton,sans-serif;line-height:.92;white-space:nowrap;width:fit-content;}
+.phone .lyr{display:block;width:fit-content;}
+.phone .stroke{color:#fff;-webkit-text-stroke:var(--stroke) var(--ink);}
+.phone .fill{position:absolute;left:0;top:0;color:#fff;}
+
+/* ---- website ---- */
+.site{
+  margin-top:.64in;
+  font-family:Anton,sans-serif;color:var(--ink);
+  font-size:.80in;line-height:1;letter-spacing:.045em;text-indent:.045em;
+}
+</style></head>
+<body>
+<div class="sign">
+
+  <div class="eyebrow">
+    <span class="stars" id="stars"></span>
+    <span>40+ FIVE-STAR REVIEWS</span>
+    <span class="dot"></span>
+    <span>SNOHOMISH COUNTY</span>
+  </div>
+
+  <div class="head">
+    <span class="ln" id="h1">MOBILE CAR</span>
+    <span class="ln" id="h2">DETAILING</span>
+  </div>
+
+  <div class="cta">CALL OR TEXT</div>
+
+  <div class="band">
+    <div class="phone" id="phone">
+      <span class="lyr stroke">425-600-7897</span>
+      <span class="lyr fill" aria-hidden="true">425-600-7897</span>
+    </div>
+  </div>
+
+  <div class="site">MIKEYSDETAILING.COM</div>
+
+</div>
+
+<script>
+const STAR='<svg viewBox="0 0 24 24"><path fill="#B01F24" d="M12 .8l3.09 7.26 7.91.62-6.01 5.1 1.85 7.62L12 17.3 5.16 21.4l1.85-7.62L1 8.68l7.91-.62z"/></svg>';
+document.getElementById('stars').innerHTML = STAR.repeat(5);
+
+async function fit(){
+  // Measuring before the webfonts land would size everything against the
+  // fallback face, so wait for the real metrics first.
+  await Promise.all([
+    document.fonts.load('400px AlfaSlab'),
+    document.fonts.load('400px Anton')
+  ]);
+  await document.fonts.ready;
+
+  const DPI = 96;
+  const LIVE = 21.6 * DPI;        // headline width — keeps 1.2in clear of trim
+
+  // Off-layout measurer: width of `text` in the given font at the given size.
+  // Measuring here (rather than on the laid-out node) avoids the circular
+  // "block element reports its container's width" trap.
+  const gauge = document.createElement('span');
+  gauge.style.cssText = 'position:absolute;left:-9999px;top:0;white-space:nowrap;' +
+                        'display:inline-block;visibility:hidden;';
+  document.body.appendChild(gauge);
+  function measure(text, family, sizePx, trackPx){
+    gauge.style.fontFamily = family;
+    gauge.style.fontSize = sizePx + 'px';
+    gauge.style.letterSpacing = (trackPx || 0) + 'px';
+    gauge.textContent = text;
+    // letter-spacing adds a trailing gap after the last glyph; discount it
+    return gauge.getBoundingClientRect().width - (trackPx || 0);
+  }
+  // Font size at which `text` measures exactly `target` wide.
+  function sizeFor(text, family, target){
+    const w = measure(text, family, 400, 0);
+    return 400 * target / w;
+  }
+
+  // Headline: size to the wider line, then track the other out to match, so both
+  // lines sit flush left and right like a sign-shop lockup.
+  const h1 = document.getElementById('h1'), h2 = document.getElementById('h2');
+  const t1 = h1.textContent.trim(), t2 = h2.textContent.trim();
+  const headSize = Math.min(sizeFor(t1,'AlfaSlab',LIVE), sizeFor(t2,'AlfaSlab',LIVE));
+  h1.style.fontSize = h2.style.fontSize = headSize + 'px';
+  h1.style.letterSpacing = h2.style.letterSpacing = '0px';
+  const narrow = measure(t1,'AlfaSlab',headSize,0) >= measure(t2,'AlfaSlab',headSize,0) ? h2 : h1;
+  const nt = narrow.textContent.trim();
+  const track = (LIVE - measure(nt,'AlfaSlab',headSize,0)) / (nt.length - 1);
+  narrow.style.letterSpacing = track + 'px';
+  // letter-spacing also lands after the final glyph, which would pad the
+  // shrink-to-fit box and push the centred line off-axis — pull it back off.
+  narrow.style.marginRight = (-track) + 'px';
+
+  // Phone: the loudest element on the sign — fills the red band edge to edge.
+  // The outline is centred on the glyph edge, so half of it sits outside the
+  // measured text; leave room for that half on each side.
+  const phone = document.getElementById('phone');
+  const STROKE = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stroke'))*DPI;
+  const PHONE_W = 22.0 * DPI;       // 1in clear of each edge — the trim limit
+  const PHONE_T = -0.012;           // em; buys glyph height back off the gaps
+  const ptxt = '425-600-7897';
+  // width(size) = size*(natural/400) + (n-1)*size*TRACK, so solve for size
+  const per = measure(ptxt,'Anton',400,0)/400 + (ptxt.length-1)*PHONE_T;
+  const psize = (PHONE_W - STROKE) / per;
+  phone.style.fontSize = psize + 'px';
+  phone.style.letterSpacing = (psize*PHONE_T) + 'px';
+  phone.style.marginRight = (-psize*PHONE_T) + 'px';
+
+  document.documentElement.setAttribute('data-fitted','1');
+}
+fit();
+</script>
+</body></html>
