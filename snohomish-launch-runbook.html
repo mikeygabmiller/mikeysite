@@ -184,7 +184,7 @@ footer a{color:var(--ink-2)}
 <header class="mast">
   <p class="eyebrow">Google Ads · Account 862-091-0274</p>
   <h1>Snohomish Detailing Launch</h1>
-  <p class="standfirst">The campaign is built and verified. Six things stand between it and live traffic — one of them will decide whether you record a single conversion.</p>
+  <p class="standfirst">The campaign is built and verified. Six things stand between it and live traffic, and two of them decide whether you record a single conversion.</p>
   <div class="meta">
     <span>Campaign <b class="mono">24190821998</b></span>
     <span>Budget <b>$10/day</b></span>
@@ -194,24 +194,24 @@ footer a{color:var(--ink-2)}
 </header>
 
 <div class="rail">
-  <div class="built"><div class="n">31</div><div class="l">Objects built</div></div>
+  <div class="built"><div class="n">18</div><div class="l">Keywords, all broad</div></div>
+  <div class="built"><div class="n">15</div><div class="l">Extensions live</div></div>
   <div class="block"><div class="n">6</div><div class="l">Blockers to clear</div></div>
   <div class="watch"><div class="n">3</div><div class="l">Flags to watch</div></div>
-  <div class="built"><div class="n">18</div><div class="l">Keywords, all broad</div></div>
 </div>
 
 <!-- ============ BLOCKER 1 ============ -->
 <section>
 <div class="alarm">
-  <span class="tag">Settle this first</span>
-  <h2>Your website and your ads use different phone numbers</h2>
-  <p>You told me <b>360-797-5831</b> is your real number and the site is out of date. I need to show you what I found afterwards, because it points the other way and the stakes are one-sided.</p>
+  <span class="tag">Resolved — but it changed the build</span>
+  <h2>The campaign was built on the wrong phone number</h2>
+  <p><b>425-600-7897 is the real number for everything.</b> That settles the discrepancy, and it matches what the repository said all along: <span class="mono">360-797-5831</span> has never appeared in your site's git history, while the 425 number appears 273 times across 47 files including the <span class="mono">schema.org</span> structured data Google reads.</p>
+  <p>Your website needs no changes at all. The campaign does. Two consequences, both of which are now steps 1 and 2 below:</p>
   <div class="ev">
-    <div><div class="big" style="color:var(--crit)">0</div><div class="cap">Times <span class="mono">360-797-5831</span> appears in your site's entire git history. Not stale — never present.</div></div>
-    <div><div class="big">273</div><div class="cap">Occurrences of <span class="mono">425-600-7897</span> across 47 files, including <span class="mono">schema.org</span> structured data Google reads.</div></div>
+    <div><div class="big" style="color:var(--crit)">2</div><div class="cap">Call extensions now on the campaign. I added one on 425-600-7897, but I <b>cannot delete</b> the old 360 one through the connector — there is no delete action. Until you remove it, your ads can show a dead number.</div></div>
+    <div><div class="big" style="color:var(--crit)">0</div><div class="cap">Conversion actions tracking the 425 number. The account has <span class="mono">conversions_call_3607975831_</span> and nothing else. As it stands, calls to your real number record as zero.</div></div>
   </div>
-  <p>If 360-797-5831 does ring you, everything is fine as built and only the site needs a look. If it doesn't, your call extension dials a dead line and your conversion action — <span class="mono">all_conversions_call_3607975831_</span> — records zero forever while you pay for every click.</p>
-  <p><b>Ten-second test: pick up another phone and dial 360-797-5831 right now.</b> That settles it better than either of us reasoning about it. I did not touch the website — changing your live business number in 273 places on a contested answer isn't a call I should make for you.</p>
+  <p>None of your ad text mentions a phone number — Google prohibits that, which is why it rejected five of the six ads on the first push. So the ads themselves need no rework. It's the extension and the conversion action that are wrong.</p>
 </div>
 </section>
 
@@ -223,9 +223,19 @@ footer a{color:var(--ink-2)}
 <ol class="steps">
 
 <li>
-  <span class="where w-you">You, on the phone</span>
-  <span class="st">Dial 360-797-5831 and confirm it rings</span>
-  <p class="why">If it rings you, continue. If it doesn't, stop and tell me — the call extension and the conversion action both need rebuilding on 425-600-7897, and until that's done the campaign cannot record a conversion.</p>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Delete the old call extension on 360-797-5831</span>
+  <p class="why">Campaign → <b>Assets</b> → filter to <b>Calls</b>. You will see two. Remove the one showing <b>(360) 797-5831</b> and keep <b>(425) 600-7897</b>.</p>
+  <p class="why">This is the single most important step on the page. The connector has no delete-asset action, so I could only add the correct one — I could not take the wrong one away. If you enable the campaign with both attached, Google can serve either, and roughly half your call clicks go to a number that doesn't reach you.</p>
+  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
+</li>
+
+<li>
+  <span class="where w-ui">Google Ads UI</span>
+  <span class="st">Get calls to 425-600-7897 actually tracked</span>
+  <p class="why">Your account has exactly one phone conversion action and it is bound to the old number: <span class="mono">conversions_call_3607975831_</span>. Nothing tracks the real number yet, so as built this campaign would report zero conversions no matter how well it performs.</p>
+  <p class="why">Go to <b>Goals → Conversions → Summary</b>. Confirm a <b>Calls from ads</b> conversion action exists and is switched on; create it if it isn't there. Then check <b>Tools → Ad settings → Call reporting</b> is enabled, which is what lets Google attribute a call back to the click that caused it.</p>
+  <p class="why">Finally, in the campaign's <b>Settings → Conversions</b>, make sure that action is selected and marked <b>Primary</b>. A secondary action still reports but won't show in the Conversions column you'll be judging this by.</p>
   <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
 </li>
 
@@ -242,14 +252,6 @@ footer a{color:var(--ink-2)}
   <span class="st">Change the location option to Presence</span>
   <p class="why">Same screen → <b>Location options</b> → <b>Presence: people in your targeted locations</b>.</p>
   <p class="why">The default is "presence or interest", which serves ads to anyone <em>searching about</em> Snohomish from anywhere on earth. That default is how out-of-area clicks get in even after you've set the radius.</p>
-  <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
-</li>
-
-<li>
-  <span class="where w-ui">Google Ads UI</span>
-  <span class="st">Point the campaign at your call conversion</span>
-  <p class="why">Campaign → <b>Settings → Conversions</b>. Make sure the call conversion on 360-797-5831 is selected as a campaign conversion action, and that it is marked <b>Primary</b>.</p>
-  <p class="why">A secondary action still reports but won't drive optimization, and won't show in the Conversions column you'll be judging this by.</p>
   <button class="tick" aria-pressed="false" aria-label="Mark step complete">✓</button>
 </li>
 
@@ -390,9 +392,11 @@ footer a{color:var(--ink-2)}
 <div class="scroll"><table>
   <thead><tr><th>Change</th><th>Why</th></tr></thead>
   <tbody>
+    <tr><td>Added a call extension on <b>(425) 600-7897</b></td><td>The real number. The old one on (360) 797-5831 is still attached and only you can remove it — step 1</td></tr>
     <tr><td>Added <span class="mono">car detail</span> to Core Detailing, broad</td><td>Your cheapest converting keyword ever ($1.07 CPA), missing from the build</td></tr>
     <tr><td>Added 3 sitelinks: Read My Reviews, Questions And Answers, About Mikey</td><td>Takes you from 4 to 7. Google's ad strength improves at 6+, and these point at real pages rather than anchors that don't exist</td></tr>
-    <tr><td>Swapped the phone number out of 2 ad strings</td><td>Google prohibits phone numbers in ad text — it rejected 5 of 6 ads until this was fixed</td></tr>
+    <tr><td>Swapped the phone number out of 2 ad strings</td><td>Google prohibits phone numbers in ad text — it rejected 5 of 6 ads until this was fixed. Nothing in your ad copy names a number now, so the number change needed no copy rework</td></tr>
+    <tr><td>Left the website alone</td><td>425-600-7897 is already correct across all 273 occurrences. No site change needed</td></tr>
   </tbody>
 </table></div>
 
@@ -405,7 +409,10 @@ footer a{color:var(--ink-2)}
     <tr><td>Keywords, all broad</td><td class="num">18</td><td><span class="pill p-ok">Enabled under paused parents</span></td></tr>
     <tr><td>Campaign negatives</td><td class="num">45</td><td><span class="pill p-ok">Active</span></td></tr>
     <tr><td>Responsive search ads</td><td class="num">6</td><td><span class="pill p-wa">Paused</span></td></tr>
-    <tr><td>Extensions — 1 call, 5 callouts, 1 snippet, 7 sitelinks</td><td class="num">14</td><td><span class="pill p-ok">Active</span></td></tr>
+    <tr><td>Extensions — 2 call, 5 callouts, 1 snippet, 7 sitelinks</td><td class="num">15</td><td><span class="pill p-wa">One call asset too many</span></td></tr>
+    <tr><td>Call extension on (425) 600-7897</td><td class="num">1</td><td><span class="pill p-ok">Correct</span></td></tr>
+    <tr><td>Call extension on (360) 797-5831</td><td class="num">1</td><td><span class="pill p-no">Delete it — you must fix</span></td></tr>
+    <tr><td>Conversion action tracking (425) 600-7897</td><td class="num">0</td><td><span class="pill p-no">None — you must fix</span></td></tr>
     <tr><td>Geo targeting</td><td class="num">0</td><td><span class="pill p-no">Entire US — you must fix</span></td></tr>
   </tbody>
 </table></div>
