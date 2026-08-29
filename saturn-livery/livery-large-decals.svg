@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000" width="1400" height="1000" font-family="'Bahnschrift','DIN Alternate','Arial Narrow',system-ui,sans-serif">
+  <defs>
+    <linearGradient id="art" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1e23"/><stop offset="1" stop-color="#15181c"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#2a2e35" stroke-width="1"/>
+    </pattern>
+    <style>
+      .lbl{font-family:'SF Mono','Cascadia Code','Roboto Mono',ui-monospace,monospace;fill:#aab1bb;font-size:14px;letter-spacing:.06em;}
+      .lbl.s{font-size:11.5px;fill:#7c828d;}
+      .dim{stroke:#5a626d;stroke-width:1;} .dimt{fill:#8b93a0;font-family:'SF Mono',monospace;font-size:12px;}
+      .num{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;}
+      .white{fill:#f5f6f7;stroke:#cfd3d8;stroke-width:.75;}
+      .redv{fill:#dc2626;} .blackv{fill:#1b1b1b;stroke:#3a3f47;stroke-width:1;}
+      .keycard{fill:#20242b;stroke:#2a2e35;stroke-width:1;}
+      .head{font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+    </style>
+  </defs>
+
+  <rect width="1400" height="1000" fill="url(#art)"/>
+  <rect width="1400" height="1000" fill="url(#grid)" opacity="0.5"/>
+  <rect x="16" y="16" width="1368" height="968" fill="none" stroke="#3a3f47" stroke-width="1.5"/>
+
+  <!-- ===== TITLE BLOCK ===== -->
+  <g>
+    <rect x="16" y="16" width="1368" height="86" fill="#20242b" stroke="#3a3f47" stroke-width="1.5"/>
+    <rect x="16" y="16" width="8" height="86" fill="#dc2626"/>
+    <text x="44" y="52" class="head" fill="#f0f2f4" font-size="30">SATURN SL · RACE LIVERY</text>
+    <text x="44" y="80" class="lbl" fill="#9aa2ad" font-size="15">LARGE DECALS · SIGN-SHOP SHEET — anything over 12&quot;</text>
+    <text x="1360" y="46" class="lbl" text-anchor="end">SHEET 1 / 2 · REV A</text>
+    <text x="1360" y="68" class="lbl s" text-anchor="end">CUT VINYL — NOT PRINTED · convert text to outlines before cutting</text>
+    <text x="1360" y="88" class="lbl s" text-anchor="end">Scale reference only — set true size at the cutter</text>
+  </g>
+
+  <!-- ===== COLOR KEY ===== -->
+  <g transform="translate(44,120)">
+    <text x="0" y="0" class="lbl s">CUT LAYERS (each color cuts separately)</text>
+    <g transform="translate(0,12)">
+      <rect class="keycard" x="0" y="0" width="150" height="34" rx="6"/><rect x="12" y="9" width="16" height="16" rx="3" fill="#f5f6f7" stroke="#cfd3d8"/><text x="38" y="22" class="lbl">WHITE VINYL</text>
+      <rect class="keycard" x="164" y="0" width="140" height="34" rx="6"/><rect x="176" y="9" width="16" height="16" rx="3" fill="#dc2626"/><text x="202" y="22" class="lbl">RED VINYL</text>
+      <rect class="keycard" x="318" y="0" width="150" height="34" rx="6"/><rect x="330" y="9" width="16" height="16" rx="3" fill="#1b1b1b" stroke="#3a3f47"/><text x="356" y="22" class="lbl">BLACK VINYL</text>
+    </g>
+  </g>
+
+  <!-- ===== 1 · ROOF NUMBER ===== -->
+  <g transform="translate(60,200)">
+    <text x="0" y="-6" class="lbl">01 · ROOF NUMBER &#215;1</text>
+    <rect x="0" y="8" width="360" height="240" fill="#101216" stroke="#2a2e35" stroke-dasharray="4 4"/>
+    <text x="180" y="205" class="num white" font-size="220" text-anchor="middle" letter-spacing="-14">96</text>
+    <!-- width dim -->
+    <line class="dim" x1="0" y1="266" x2="360" y2="266"/>
+    <line class="dim" x1="0" y1="260" x2="0" y2="272"/><line class="dim" x1="360" y1="260" x2="360" y2="272"/>
+    <text x="180" y="286" class="dimt" text-anchor="middle">22&quot; wide · 20&quot; tall</text>
+    <text x="0" y="312" class="lbl s">White · reads from above, orient to passenger side</text>
+  </g>
+
+  <!-- ===== 2 · DOOR NUMBER PANEL ===== -->
+  <g transform="translate(500,200)">
+    <text x="0" y="-6" class="lbl">02 · FRONT-DOOR PANEL &#215;1 (2 layers + panel)</text>
+    <rect class="blackv" x="0" y="8" width="330" height="240" rx="30"/>
+    <text x="165" y="196" class="num" font-size="200" fill="#f5f6f7" stroke="#dc2626" stroke-width="6" paint-order="stroke" text-anchor="middle" letter-spacing="-12">96</text>
+    <line class="dim" x1="0" y1="266" x2="330" y2="266"/>
+    <line class="dim" x1="0" y1="260" x2="0" y2="272"/><line class="dim" x1="330" y1="260" x2="330" y2="272"/>
+    <text x="165" y="286" class="dimt" text-anchor="middle">panel 18&quot; &#215; 15&quot; · digits 12&quot;</text>
+    <line class="dim" x1="352" y1="8" x2="352" y2="248"/>
+    <line class="dim" x1="346" y1="8" x2="358" y2="8"/><line class="dim" x1="346" y1="248" x2="358" y2="248"/>
+    <text x="366" y="132" class="dimt">15&quot;</text>
+    <text x="0" y="312" class="lbl s">Rounded rect · white digit + red keyline on black · front door only</text>
+  </g>
+
+  <!-- ===== 3 · ROUNDEL ===== -->
+  <g transform="translate(80,560)">
+    <text x="0" y="-6" class="lbl">03 · ROUNDEL &#215;2 (optional)</text>
+    <g transform="translate(150,150)">
+      <circle r="145" fill="#dc2626"/>
+      <circle r="120" fill="#1b1b1b" stroke="#0d0d0d" stroke-width="2"/>
+      <circle r="145" fill="none" stroke="#0d0d0d" stroke-width="1.5"/>
+      <path id="ringTop" d="M -104 0 A 104 104 0 0 1 104 0" fill="none"/>
+      <path id="ringBot" d="M 108 0 A 108 108 0 0 1 -108 0" fill="none"/>
+      <text class="head" fill="#f5f6f7" font-size="27" letter-spacing="8"><textPath href="#ringTop" startOffset="50%" text-anchor="middle">SATURN SL</textPath></text>
+      <text y="40" class="num" font-size="122" fill="#f5f6f7" text-anchor="middle" letter-spacing="-8">96</text>
+      <text y="98" class="head" font-size="19" fill="#f5f6f7" text-anchor="middle" letter-spacing="6">· 1996 ·</text>
+    </g>
+    <line class="dim" x1="0" y1="316" x2="300" y2="316"/>
+    <line class="dim" x1="0" y1="310" x2="0" y2="322"/><line class="dim" x1="300" y1="310" x2="300" y2="322"/>
+    <text x="150" y="336" class="dimt" text-anchor="middle">&#216; 10–12&quot;</text>
+    <text x="0" y="360" class="lbl s">Red ring · black field · white text &amp; number (3 layers)</text>
+  </g>
+
+  <!-- ===== 4 · WORDMARK + REAR NUMBER ===== -->
+  <g transform="translate(500,560)">
+    <text x="0" y="-6" class="lbl">04 · ROCKER WORDMARK &#215;2</text>
+    <rect x="0" y="10" width="820" height="70" fill="#101216" stroke="#2a2e35" stroke-dasharray="4 4"/>
+    <text x="410" y="62" class="head white" font-size="46" text-anchor="middle" letter-spacing="14">SATURN&#160;&#160;SL</text>
+    <line class="dim" x1="0" y1="98" x2="820" y2="98"/>
+    <line class="dim" x1="0" y1="92" x2="0" y2="104"/><line class="dim" x1="820" y1="92" x2="820" y2="104"/>
+    <text x="410" y="118" class="dimt" text-anchor="middle">28&quot; wide · 2.5&quot; cap height</text>
+
+    <text x="0" y="176" class="lbl">05 · REAR NUMBER &#215;1</text>
+    <rect x="0" y="188" width="180" height="150" fill="#101216" stroke="#2a2e35" stroke-dasharray="4 4"/>
+    <text x="90" y="316" class="num white" font-size="150" text-anchor="middle" letter-spacing="-9">96</text>
+    <line class="dim" x1="0" y1="352" x2="180" y2="352"/>
+    <line class="dim" x1="0" y1="346" x2="0" y2="358"/><line class="dim" x1="180" y1="346" x2="180" y2="358"/>
+    <text x="90" y="372" class="dimt" text-anchor="middle">9&quot; · trunk face</text>
+
+    <g transform="translate(300,188)">
+      <text x="0" y="0" class="lbl">RED BANDS · sign-shop lengths</text>
+      <rect x="0" y="14" width="520" height="30" fill="#dc2626"/>
+      <text x="10" y="70" class="lbl s">Roof band ≈ 8&quot; &#215; roof width · hood &amp; trunk cut to ⅓-panel</text>
+      <text x="10" y="92" class="lbl s">Each band = chunky ⅓-height of its black panel · red on black only</text>
+      <rect x="0" y="110" width="360" height="24" fill="#dc2626"/>
+      <rect x="0" y="146" width="240" height="24" fill="#dc2626"/>
+    </g>
+  </g>
+
+  <text x="700" y="972" class="lbl s" text-anchor="middle">SATURN SL · RACE LIVERY · #6E7580 gray · #1B1B1B satin black · #DC2626 red · #F5F6F7 white</text>
+</svg>

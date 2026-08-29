@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saturn SL — Race Livery Render</title>
+<style>
+  :root{
+    --f-display:"Bahnschrift","DIN Alternate","Oswald","Arial Narrow Bold","Arial Narrow",system-ui,sans-serif;
+    --f-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --f-mono:"SF Mono","Cascadia Code","Roboto Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --bg:#131519; --bg2:#0f1114; --panel:#191c21; --panel2:#20242b;
+    --ink:#e9ebee; --ink2:#aab1bb; --muted:#7c828d; --line:#2a2e35;
+    --accent:#e0322f; --accent2:#dc2626;
+    --stage1:#252a31; --stage2:#14161a; --stage-glow:#3a414b;
+    --gray:#6e7580; --black:#1b1b1b; --red:#dc2626; --white:#f5f6f7;
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#e7eaee; --bg2:#dde1e6; --panel:#f6f7f9; --panel2:#eceff2;
+      --ink:#181b20; --ink2:#454b54; --muted:#6b727c; --line:#d2d7dd;
+      --accent:#cf2b28; --accent2:#c81f1f;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#131519; --bg2:#0f1114; --panel:#191c21; --panel2:#20242b;
+    --ink:#e9ebee; --ink2:#aab1bb; --muted:#7c828d; --line:#2a2e35;
+    --accent:#e0322f; --accent2:#dc2626;
+  }
+  :root[data-theme="light"]{
+    --bg:#e7eaee; --bg2:#dde1e6; --panel:#f6f7f9; --panel2:#eceff2;
+    --ink:#181b20; --ink2:#454b54; --muted:#6b727c; --line:#d2d7dd;
+    --accent:#cf2b28; --accent2:#c81f1f;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--f-body); line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:clamp(20px,4vw,54px) clamp(16px,4vw,40px) 72px;}
+
+  /* ---- masthead ---- */
+  .masthead{display:grid; grid-template-columns:1fr auto; gap:24px 32px; align-items:end;
+    padding-bottom:20px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--f-mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--accent); font-weight:600; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--accent);}
+  h1{font-family:var(--f-display); font-weight:700; text-transform:uppercase;
+    font-size:clamp(38px,7vw,74px); line-height:.92; letter-spacing:.005em; margin:.28em 0 .12em;
+    text-wrap:balance;}
+  h1 .thin{color:var(--ink2); font-weight:400;}
+  .dek{color:var(--ink2); font-size:clamp(15px,1.6vw,17px); max-width:52ch; margin:0;}
+  .dek b{color:var(--ink); font-weight:600;}
+  .meta{display:grid; gap:10px; font-family:var(--f-mono); font-size:12px; min-width:200px;}
+  .meta .row{display:flex; justify-content:space-between; gap:18px; border-bottom:1px dotted var(--line); padding-bottom:7px;}
+  .meta .k{color:var(--muted); letter-spacing:.06em; text-transform:uppercase; font-size:10.5px;}
+  .meta .v{color:var(--ink); text-align:right; font-variant-numeric:tabular-nums;}
+  .meta .v .accent{color:var(--accent);}
+
+  /* ---- section headers ---- */
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin:52px 0 14px;}
+  .sec-head .idx{font-family:var(--f-mono); font-size:12px; color:var(--accent); letter-spacing:.1em;}
+  .sec-head h2{font-family:var(--f-display); text-transform:uppercase; letter-spacing:.03em;
+    font-size:clamp(19px,2.5vw,25px); font-weight:700; margin:0;}
+  .sec-head .rule{flex:1; height:1px; background:var(--line);}
+  .sec-head .tag{font-family:var(--f-mono); font-size:11px; color:var(--muted); letter-spacing:.08em;}
+
+  /* ---- stage ---- */
+  .stage{position:relative; border-radius:var(--radius); overflow:hidden;
+    border:1px solid var(--line);
+    background:
+      radial-gradient(120% 90% at 50% 6%, var(--stage-glow) 0%, transparent 42%),
+      linear-gradient(#20242b 0%, #191d22 52%, #101216 100%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 22px 50px -30px rgba(0,0,0,.8);
+  }
+  .stage::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(150,160,175,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(150,160,175,.05) 1px,transparent 1px);
+    background-size:34px 34px; mask-image:radial-gradient(110% 80% at 50% 40%,#000 40%,transparent 80%);}
+  .stage svg{display:block; width:100%; height:auto; position:relative; z-index:1;}
+  .stage .corner{position:absolute; z-index:2; font-family:var(--f-mono); font-size:10.5px;
+    letter-spacing:.14em; color:#7f8792; text-transform:uppercase;}
+  .stage .corner.tl{top:14px; left:16px;}
+  .stage .corner.tr{top:14px; right:16px; color:#e0322f;}
+  .fade-up{opacity:0; transform:translateY(14px); animation:fade .9s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes fade{to{opacity:1; transform:none;}}
+
+  /* ---- view caption / legend ---- */
+  .legend{display:flex; flex-wrap:wrap; gap:8px 10px; margin:14px 0 4px;}
+  .chip{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink2);
+    background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:6px 12px 6px 9px;}
+  .chip .sw{width:12px; height:12px; border-radius:3px; flex:none; box-shadow:0 0 0 1px rgba(0,0,0,.25) inset;}
+  .chip b{color:var(--ink); font-weight:600;}
+
+  /* ---- specs grid ---- */
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:720px){ .grid2{grid-template-columns:1fr;} .masthead{grid-template-columns:1fr;} .meta{min-width:0;} }
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:20px 22px;}
+  .card h3{font-family:var(--f-display); text-transform:uppercase; letter-spacing:.04em; font-size:15px;
+    margin:0 0 14px; color:var(--ink); display:flex; align-items:center; gap:9px;}
+  .card h3::before{content:""; width:8px; height:8px; background:var(--accent); border-radius:2px; transform:rotate(45deg);}
+
+  /* palette rows */
+  .pal{display:grid; gap:11px;}
+  .pal .prow{display:grid; grid-template-columns:38px 1fr auto; align-items:center; gap:13px;}
+  .pal .psw{width:38px; height:38px; border-radius:9px; box-shadow:0 0 0 1px rgba(0,0,0,.28) inset, 0 2px 6px rgba(0,0,0,.25);}
+  .pal .pname{font-weight:600; font-size:14px;}
+  .pal .prole{font-size:12px; color:var(--muted);}
+  .pal .phex{font-family:var(--f-mono); font-size:12.5px; color:var(--ink2); letter-spacing:.03em;}
+
+  /* rules list */
+  ul.rules{list-style:none; margin:0; padding:0; display:grid; gap:12px;}
+  ul.rules li{display:grid; grid-template-columns:auto 1fr; gap:11px; font-size:13.5px; color:var(--ink2);}
+  ul.rules li b{color:var(--ink);}
+  ul.rules .mk{color:var(--accent); font-family:var(--f-mono); font-weight:700; line-height:1.5;}
+
+  .note{background:linear-gradient(180deg,var(--panel2),var(--panel)); border:1px solid var(--line);
+    border-left:3px solid var(--accent); border-radius:12px; padding:18px 22px; margin-top:20px;}
+  .note p{margin:0; font-size:14.5px; color:var(--ink2);} .note p b{color:var(--ink);}
+
+  /* decisions */
+  .dec{display:grid; gap:12px; margin-top:8px;}
+  .dec .drow{display:grid; grid-template-columns:auto 1fr; gap:13px; align-items:start;
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px;}
+  .dec .badge{font-family:var(--f-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+    color:#fff; background:var(--accent); padding:5px 9px; border-radius:6px; white-space:nowrap; margin-top:2px;}
+  .dec .badge.hold{background:transparent; color:var(--accent); border:1px solid var(--accent);}
+  .dec .dt{font-weight:600; font-size:14px; color:var(--ink);}
+  .dec .dd{font-size:13px; color:var(--ink2); margin-top:2px;}
+
+  footer{margin-top:44px; padding-top:18px; border-top:1px solid var(--line);
+    font-family:var(--f-mono); font-size:11.5px; color:var(--muted); letter-spacing:.05em;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+
+  @media (prefers-reduced-motion:reduce){ .fade-up{animation:none; opacity:1; transform:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Livery Spec · Rev&nbsp;A</div>
+      <h1>Saturn&nbsp;SL<br><span class="thin">Race Livery</span></h1>
+      <p class="dek">A NASCAR-sourced treatment for a <b>1996 Saturn SL</b>: slate&nbsp;gray body,
+        satin&nbsp;black on the steel panels that fail first — <b>roof, hood, trunk</b> — with red vinyl
+        accents and functional safety markings. The flaw fix and the design are the same job.</p>
+    </div>
+    <div class="meta">
+      <div class="row"><span class="k">Base</span><span class="v">'96 SL · Slate Gray</span></div>
+      <div class="row"><span class="k">Materials</span><span class="v"><span class="accent">≈ $242</span></span></div>
+      <div class="row"><span class="k">Red coverage</span><span class="v">10–15 %</span></div>
+      <div class="row"><span class="k">Method</span><span class="v">Paint big · Vinyl small</span></div>
+      <div class="row"><span class="k">Decals</span><span class="v">Cut vinyl, not print</span></div>
+    </div>
+  </header>
+
+  <!-- ============ SIDE ============ -->
+  <div class="sec-head">
+    <span class="idx">01</span>
+    <h2>Driver Side · Elevation</h2>
+    <span class="rule"></span>
+    <span class="tag">1:18 REF</span>
+  </div>
+
+  <div class="stage fade-up">
+    <span class="corner tl">Driver side / left</span>
+    <span class="corner tr">● 96</span>
+    <svg viewBox="0 0 1160 462" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Driver-side elevation of a 1996 Saturn SL in slate gray with satin-black roof and rockers, a black front-door number panel reading 96 with a red keyline, bedliner wheel arches, a red tow arrow, and a red battery cut-off triangle.">
+      <defs>
+        <linearGradient id="bodyGray" x1="0" y1="46" x2="0" y2="352" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#9ca2ac"/><stop offset="0.15" stop-color="#828892"/>
+          <stop offset="0.33" stop-color="#6e7580"/><stop offset="0.50" stop-color="#626873"/>
+          <stop offset="0.66" stop-color="#595f69"/><stop offset="0.80" stop-color="#666c76"/>
+          <stop offset="0.92" stop-color="#4a4f58"/><stop offset="1" stop-color="#3d424a"/>
+        </linearGradient>
+        <linearGradient id="satin" x1="0" y1="46" x2="0" y2="330" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#2b2b2e"/><stop offset="0.5" stop-color="#1c1c1d"/><stop offset="1" stop-color="#131314"/>
+        </linearGradient>
+        <linearGradient id="satinPanel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#242426"/><stop offset="0.5" stop-color="#1b1b1b"/><stop offset="1" stop-color="#141415"/>
+        </linearGradient>
+        <linearGradient id="glass" x1="0" y1="56" x2="0" y2="172" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#39414b"/><stop offset="0.5" stop-color="#232932"/><stop offset="1" stop-color="#191d23"/>
+        </linearGradient>
+        <radialGradient id="tire" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0.6" stop-color="#101012"/><stop offset="0.72" stop-color="#202024"/>
+          <stop offset="0.85" stop-color="#151517"/><stop offset="1" stop-color="#050506"/>
+        </radialGradient>
+        <radialGradient id="rim" cx="0.42" cy="0.4" r="0.62">
+          <stop offset="0" stop-color="#40434a"/><stop offset="0.5" stop-color="#26282d"/><stop offset="1" stop-color="#121214"/>
+        </radialGradient>
+        <radialGradient id="hub" cx="0.4" cy="0.38" r="0.6">
+          <stop offset="0" stop-color="#dadde1"/><stop offset="0.5" stop-color="#969ba3"/><stop offset="1" stop-color="#4d5157"/>
+        </radialGradient>
+        <radialGradient id="groundShadow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#000" stop-opacity="0.5"/><stop offset="0.68" stop-color="#000" stop-opacity="0.24"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="reflMask" x1="0" y1="360" x2="0" y2="452" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#fff" stop-opacity="0.26"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="reflM"><rect x="0" y="360" width="1160" height="102" fill="url(#reflMask)"/></mask>
+        <clipPath id="bodyClip"><use href="#bodyPath"/></clipPath>
+        <filter id="soft"><feGaussianBlur stdDeviation="2.4"/></filter>
+        <filter id="soft4"><feGaussianBlur stdDeviation="5"/></filter>
+      </defs>
+
+      <ellipse cx="575" cy="352" rx="452" ry="22" fill="url(#groundShadow)"/>
+
+      <g id="carbody">
+        <g id="wheelF">
+          <circle cx="240" cy="292" r="68" fill="url(#tire)"/>
+          <circle cx="240" cy="292" r="46" fill="url(#rim)" stroke="#0c0c0d" stroke-width="3"/>
+          <g stroke="#141416" stroke-width="7" fill="none" stroke-linecap="round">
+            <line x1="240" y1="292" x2="240" y2="254"/><line x1="240" y1="292" x2="276" y2="304"/>
+            <line x1="240" y1="292" x2="262" y2="325"/><line x1="240" y1="292" x2="218" y2="325"/>
+            <line x1="240" y1="292" x2="204" y2="304"/>
+          </g>
+          <circle cx="240" cy="292" r="14" fill="url(#hub)" stroke="#26282b" stroke-width="2"/>
+        </g>
+        <g id="wheelR">
+          <circle cx="800" cy="292" r="68" fill="url(#tire)"/>
+          <circle cx="800" cy="292" r="46" fill="url(#rim)" stroke="#0c0c0d" stroke-width="3"/>
+          <g stroke="#141416" stroke-width="7" fill="none" stroke-linecap="round">
+            <line x1="800" y1="292" x2="800" y2="254"/><line x1="800" y1="292" x2="836" y2="304"/>
+            <line x1="800" y1="292" x2="822" y2="325"/><line x1="800" y1="292" x2="778" y2="325"/>
+            <line x1="800" y1="292" x2="764" y2="304"/>
+          </g>
+          <circle cx="800" cy="292" r="14" fill="url(#hub)" stroke="#26282b" stroke-width="2"/>
+        </g>
+
+        <path id="bodyPath" fill="url(#bodyGray)" stroke="#2b3037" stroke-width="1.2" d="
+          M 112 330 C 92 323 82 310 83 295 C 84 267 92 249 110 237
+          C 168 219 300 201 384 196 C 408 149 460 91 524 61
+          C 604 59 690 60 762 65 C 806 103 852 153 872 169
+          C 908 171 938 174 954 178 C 978 186 990 210 992 240
+          C 993 270 990 298 982 312 C 976 322 968 328 958 330
+          L 882 330 C 879 286 851 250 800 250 C 749 250 721 286 718 330
+          L 322 330 C 319 286 291 250 240 250 C 189 250 161 286 158 330 Z"/>
+
+        <g clip-path="url(#bodyClip)">
+          <rect x="90" y="300" width="980" height="40" fill="#000" opacity="0.16"/>
+          <rect x="90" y="316" width="980" height="24" fill="#000" opacity="0.16"/>
+          <path d="M 160 198 C 410 176 760 176 1012 202 L 1012 230 C 760 206 410 206 160 226 Z" fill="#c9ced6" opacity="0.10" filter="url(#soft4)"/>
+        </g>
+        <g clip-path="url(#bodyClip)">
+          <path d="M 175 218 C 430 200 720 198 1010 212" fill="none" stroke="#eef2f6" stroke-width="2.4" opacity="0.55" filter="url(#soft)"/>
+          <path d="M 175 218 C 430 200 720 198 1010 212" fill="none" stroke="#f6f9fb" stroke-width="1" opacity="0.5"/>
+        </g>
+        <g stroke="#33383f" stroke-width="1.3" fill="none" opacity="0.6" clip-path="url(#bodyClip)">
+          <path d="M 332 200 L 342 316"/><path d="M 900 178 L 905 250"/><path d="M 872 169 L 878 200"/>
+        </g>
+
+        <path fill="url(#satin)" d="M 384 197 C 408 150 460 92 524 62 C 604 60 690 61 762 66 C 806 104 852 154 874 170
+          L 856 176 C 834 150 798 108 752 82 C 686 78 604 78 528 82 C 468 112 424 158 400 199 Z"/>
+        <path d="M 528 66 C 604 63 690 64 758 68" fill="none" stroke="#3a3a3c" stroke-width="2" opacity="0.9"/>
+        <path fill="url(#glass)" d="M 408 189 C 428 152 466 108 520 86 L 536 86 L 470 189 Z"/>
+        <path fill="url(#glass)" d="M 500 86 L 606 86 L 606 189 L 470 189 Z"/>
+        <path fill="url(#glass)" d="M 620 86 L 726 86 L 726 189 L 620 189 Z"/>
+        <path fill="url(#glass)" d="M 738 88 L 784 100 L 848 172 L 742 175 Z"/>
+        <path fill="#788390" opacity="0.22" d="M 552 90 L 584 90 L 520 186 L 490 186 Z"/>
+        <path fill="#788390" opacity="0.18" d="M 664 90 L 690 90 L 654 186 L 630 186 Z"/>
+        <path d="M 500 86 L 470 189 L 478 189 L 508 86 Z" fill="#161719"/>
+        <rect x="606" y="84" width="14" height="106" fill="#141517"/>
+        <path d="M 726 86 L 738 88 L 742 175 L 726 189 Z" fill="#141517"/>
+        <rect x="400" y="189" width="452" height="3" fill="#0e0f10" opacity="0.7"/>
+
+        <path fill="url(#satin)" d="M 322 316 L 718 316 L 718 330 L 322 330 Z"/>
+        <rect x="322" y="316" width="396" height="4" fill="#0c0c0c" opacity="0.5"/>
+
+        <path fill="none" stroke="#121212" stroke-width="15" stroke-linecap="round" d="M 882 328 C 879 286 851 250 800 250 C 749 250 721 286 718 328"/>
+        <path fill="none" stroke="#121212" stroke-width="15" stroke-linecap="round" d="M 322 328 C 319 286 291 250 240 250 C 189 250 161 286 158 328"/>
+        <g fill="#2a2a2a" opacity="0.5">
+          <circle cx="770" cy="262" r="1"/><circle cx="820" cy="258" r="1"/><circle cx="740" cy="290" r="1"/><circle cx="860" cy="292" r="1"/>
+          <circle cx="210" cy="262" r="1"/><circle cx="260" cy="258" r="1"/><circle cx="180" cy="290" r="1"/><circle cx="300" cy="292" r="1"/>
+        </g>
+
+        <g stroke="#31363d" stroke-width="1.3" fill="none" opacity="0.7">
+          <path d="M 388 198 L 400 316"/><path d="M 612 190 L 620 316"/><path d="M 726 190 L 740 306"/>
+        </g>
+        <rect x="558" y="214" width="34" height="8" rx="4" fill="#292d33"/>
+        <rect x="690" y="214" width="34" height="8" rx="4" fill="#292d33"/>
+        <path fill="#26292f" d="M 388 196 l -22 -5 l -3 15 l 22 5 z"/>
+
+        <path fill="#d3d9df" opacity="0.92" d="M 118 240 C 142 230 162 224 180 222 L 188 244 C 168 248 144 253 124 260 C 118 254 116 246 118 240 Z"/>
+        <path fill="#b3bcc4" opacity="0.55" d="M 134 238 L 176 230 L 182 240 L 140 250 Z"/>
+        <path d="M 96 272 C 130 262 180 254 236 250" stroke="#363b42" stroke-width="1.3" fill="none" opacity="0.55"/>
+        <rect x="100" y="286" width="46" height="7" rx="3" fill="#26292f" opacity="0.7"/>
+        <path fill="#c62828" d="M 966 202 C 980 208 989 224 990 244 L 989 262 L 958 262 L 956 204 Z"/>
+        <path fill="#e34b4b" opacity="0.5" d="M 968 210 L 984 224 L 984 240 L 966 240 Z"/>
+
+        <!-- LIVERY -->
+        <rect x="430" y="216" width="150" height="94" rx="15" fill="url(#satinPanel)" stroke="#000" stroke-width="1"/>
+        <text x="505" y="292" font-family="Impact, Haettenschweiler, 'Arial Narrow', sans-serif" font-size="90" fill="#f5f6f7" stroke="#dc2626" stroke-width="2.6" paint-order="stroke" text-anchor="middle" letter-spacing="-3">96</text>
+        <text x="520" y="327" font-family="'Arial Narrow', Impact, sans-serif" font-size="11" fill="#c4c8cd" text-anchor="middle" letter-spacing="4" font-weight="bold">SATURN&#160;&#160;SL</text>
+        <g transform="translate(196,236)">
+          <path fill="#dc2626" stroke="#fff" stroke-width="1" d="M -20 -5 L 5 -5 L 5 -11 L 19 0 L 5 11 L 5 5 L -20 5 Z"/>
+        </g>
+        <g transform="translate(922,300)">
+          <path fill="#dc2626" stroke="#fff" stroke-width="1.4" d="M 0 -12 L 12 9 L -12 9 Z"/>
+          <path fill="#fff" d="M -1 -5 L -5 3 L 0 3 L -3 8 L 6 -1 L 1 -1 L 4 -5 Z"/>
+        </g>
+      </g>
+
+      <!-- floor reflection -->
+      <use href="#carbody" transform="matrix(1,0,0,-1,0,720)" mask="url(#reflM)"/>
+    </svg>
+  </div>
+
+  <div class="legend">
+    <span class="chip"><span class="sw" style="background:#1b1b1b"></span><b>96 number panel</b> — front door, keyline</span>
+    <span class="chip"><span class="sw" style="background:#1b1b1b"></span><b>Satin-black rockers</b> — paint, not bedliner</span>
+    <span class="chip"><span class="sw" style="background:#121212"></span><b>Bedliner arches</b> + pinch weld</span>
+    <span class="chip"><span class="sw" style="background:#dc2626"></span><b>Tow arrow</b></span>
+    <span class="chip"><span class="sw" style="background:#dc2626"></span><b>Battery cut-off</b> ▲</span>
+    <span class="chip"><span class="sw" style="background:#6e7580"></span><b>Gray polymer</b> — doors &amp; fenders stay gray</span>
+  </div>
+
+  <!-- ============ TOP ============ -->
+  <div class="sec-head">
+    <span class="idx">02</span>
+    <h2>Plan · Roof / Hood / Trunk</h2>
+    <span class="rule"></span>
+    <span class="tag">WHERE THE RED LIVES</span>
+  </div>
+
+  <div class="stage fade-up" style="animation-delay:.1s">
+    <span class="corner tl">Plan view / from above</span>
+    <span class="corner tr">● 96</span>
+    <svg viewBox="0 0 1160 400" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Top-down plan view showing satin-black hood, roof and trunk panels, each carrying a chunky red band across roughly a third of the panel, a large white 96 on the roof, and gray bumpers, fenders and doors.">
+      <defs>
+        <linearGradient id="grayTop" x1="0" y1="46" x2="0" y2="354" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#565c66"/><stop offset="0.20" stop-color="#6b7580"/>
+          <stop offset="0.5" stop-color="#7c828d"/><stop offset="0.80" stop-color="#6b7580"/><stop offset="1" stop-color="#565c66"/>
+        </linearGradient>
+        <linearGradient id="satinTop" x1="0" y1="60" x2="0" y2="340" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#151516"/><stop offset="0.5" stop-color="#242426"/><stop offset="1" stop-color="#151516"/>
+        </linearGradient>
+        <linearGradient id="glassTop" x1="0" y1="80" x2="0" y2="320" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#1b2027"/><stop offset="0.5" stop-color="#2b323b"/><stop offset="1" stop-color="#1b2027"/>
+        </linearGradient>
+        <linearGradient id="redTop" x1="0" y1="60" x2="0" y2="340" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#b41d1d"/><stop offset="0.5" stop-color="#dc2626"/><stop offset="1" stop-color="#b41d1d"/>
+        </linearGradient>
+        <radialGradient id="topShadow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="0" stop-color="#000" stop-opacity="0.42"/><stop offset="0.7" stop-color="#000" stop-opacity="0.2"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="bodyTopClip"><use href="#bodyTop"/></clipPath>
+      </defs>
+      <ellipse cx="540" cy="330" rx="470" ry="120" fill="url(#topShadow)"/>
+      <rect x="196" y="40" width="88" height="18" rx="6" fill="#141416"/>
+      <rect x="196" y="342" width="88" height="18" rx="6" fill="#141416"/>
+      <rect x="756" y="40" width="88" height="18" rx="6" fill="#141416"/>
+      <rect x="756" y="342" width="88" height="18" rx="6" fill="#141416"/>
+      <path id="bodyTop" fill="url(#grayTop)" stroke="#2b3037" stroke-width="1.2" d="
+        M 82 200 C 84 150 108 92 150 74 C 210 54 340 48 520 48
+        C 700 48 820 52 892 66 C 948 92 978 140 986 200
+        C 978 260 948 308 892 334 C 820 348 700 352 520 352
+        C 340 352 210 346 150 326 C 108 308 84 250 82 200 Z"/>
+      <g clip-path="url(#bodyTopClip)">
+        <rect x="82" y="192" width="910" height="16" fill="#fff" opacity="0.05"/>
+        <path fill="url(#satinTop)" d="M 360 84 L 178 84 C 162 92 154 130 152 200 C 154 270 162 308 178 316 L 360 316 Z"/>
+        <rect x="236" y="84" width="66" height="232" fill="url(#redTop)"/>
+        <path fill="url(#glassTop)" d="M 372 56 L 470 96 L 470 304 L 372 344 Z"/>
+        <rect x="470" y="96" width="256" height="208" fill="url(#satinTop)"/>
+        <rect x="500" y="96" width="84" height="208" fill="url(#redTop)"/>
+        <text x="652" y="243" font-family="Impact, Haettenschweiler, 'Arial Narrow', sans-serif" font-size="118" fill="#f5f6f7" text-anchor="middle" letter-spacing="-5">96</text>
+        <path fill="url(#glassTop)" d="M 726 96 L 800 78 L 800 322 L 726 304 Z"/>
+        <path fill="url(#satinTop)" d="M 800 78 L 900 78 C 916 86 926 122 928 200 C 926 278 916 314 900 322 L 800 322 Z"/>
+        <rect x="840" y="78" width="46" height="244" fill="url(#redTop)"/>
+        <g stroke="#0c0c0d" stroke-width="1" opacity="0.55"><path d="M 360 84 L 360 316"/><path d="M 800 78 L 800 322"/></g>
+        <g stroke="#3a3f47" stroke-width="1.2" opacity="0.5">
+          <path d="M 470 48 L 470 96"/><path d="M 470 352 L 470 304"/>
+          <path d="M 600 48 L 600 62"/><path d="M 600 352 L 600 338"/>
+          <path d="M 726 48 L 726 96"/><path d="M 726 352 L 726 304"/>
+        </g>
+      </g>
+      <path fill="#5c626c" stroke="#2b3037" stroke-width="1" d="M 388 46 l 6 -16 l 20 2 l -2 16 z"/>
+      <path fill="#5c626c" stroke="#2b3037" stroke-width="1" d="M 388 354 l 6 16 l 20 -2 l -2 -16 z"/>
+      <path d="M 380 150 L 410 120 M 380 250 L 410 280" stroke="#20242a" stroke-width="2" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <div class="legend">
+    <span class="chip"><span class="sw" style="background:#dc2626"></span><b>3 red bands</b> — hood · roof · trunk, ~⅓ each</span>
+    <span class="chip"><span class="sw" style="background:#f5f6f7"></span><b>Roof 96</b> — matches the door, reads from above</span>
+    <span class="chip"><span class="sw" style="background:#1b1b1b"></span><b>Blackout = steel panels</b> where clear fails</span>
+    <span class="chip"><span class="sw" style="background:#6e7580"></span><b>Bumpers stay gray</b> — red never touches gray</span>
+  </div>
+
+  <!-- ============ PALETTE + RULES ============ -->
+  <div class="sec-head">
+    <span class="idx">03</span>
+    <h2>Palette &amp; Congruency Rules</h2>
+    <span class="rule"></span>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Four colors, fixed roles</h3>
+      <div class="pal">
+        <div class="prow"><span class="psw" style="background:#6e7580"></span>
+          <span><span class="pname">Slate gray</span><br><span class="prole">Body — doors &amp; fenders (polymer, stays gray)</span></span>
+          <span class="phex">#6E7580</span></div>
+        <div class="prow"><span class="psw" style="background:#1b1b1b"></span>
+          <span><span class="pname">Satin black</span><br><span class="prole">Roof · hood · trunk · rockers — paint</span></span>
+          <span class="phex">#1B1B1B</span></div>
+        <div class="prow"><span class="psw" style="background:#dc2626"></span>
+          <span><span class="pname">Race red</span><br><span class="prole">Accent bands + markings — vinyl, on black only</span></span>
+          <span class="phex">#DC2626</span></div>
+        <div class="prow"><span class="psw" style="background:#f5f6f7"></span>
+          <span><span class="pname">Number white</span><br><span class="prole">Door + roof numbers, keyline core</span></span>
+          <span class="phex">#F5F6F7</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>The rules that keep it clean</h3>
+      <ul class="rules">
+        <li><span class="mk">01</span><span><b>Red only on black.</b> Gray and red sit too close in luminance — on bare gray they go muddy. Every red touches a black carrier.</span></li>
+        <li><span class="mk">02</span><span><b>Paint the big shapes, vinyl the small stuff.</b> Vinyl over failing clearcoat peels; the roof/hood/trunk get painted satin black.</span></li>
+        <li><span class="mk">03</span><span><b>Chunky bands only.</b> Each red band ≈ ⅓ the height of the black shape carrying it. No pinstripes.</span></li>
+        <li><span class="mk">04</span><span><b>Rockers are painted, not lined.</b> Bedliner won't hold vinyl or a wordmark — save it for arches &amp; pinch weld.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>What actually makes it read as a race car</b> is the number and the safety markings — not the graphics.
+    Big door number, matching roof number, tow arrows, battery cut-off triangle. Those are <b>functional</b> markings,
+    which is why they land. The 12&Prime; door digits will feel too big — that's correct. The one real risk is
+    half-commitment: a small number and a few scattered decals looks worse than either a clean gray car or a full livery.</p>
+  </div>
+
+  <!-- ============ OPEN DECISIONS ============ -->
+  <div class="sec-head">
+    <span class="idx">04</span>
+    <h2>Still Open — My Calls</h2>
+    <span class="rule"></span>
+    <span class="tag">EASY TO FLIP</span>
+  </div>
+
+  <div class="dec">
+    <div class="drow"><span class="badge">Rec</span>
+      <div><span class="dt">Number-panel shape → rounded rectangle</span>
+        <div class="dd">Confirmed as drawn. A circle fights the B-pillar and the door swage line; the rounded rect sits square on the front-door sheet metal and gives the digits room.</div></div></div>
+    <div class="drow"><span class="badge">Rec</span>
+      <div><span class="dt">Keyline color → red</span>
+        <div class="dd">White digit, thin red keyline, on the satin-black panel. Red-on-black keeps the rule intact, and the white core reads at distance where a red digit wouldn't. Shown above. Flip to all-white if you'd rather stay monochrome.</div></div></div>
+    <div class="drow"><span class="badge">Done</span>
+      <div><span class="dt">SVGs rebuilt — rectangular front-door panel + widened red bands</span>
+        <div class="dd">Both hero views are drawn to the '96 SL's real proportions with the rectangular door panel and chunky ⅓-height bands. Decal sheets follow the same geometry.</div></div></div>
+    <div class="drow"><span class="badge hold">You</span>
+      <div><span class="dt">The number itself → 96</span>
+        <div class="dd">Placeholder is <b>96</b> for the model year — reads great and it's your car's story. Swap to a single digit if you want it even bolder; the door panel fits one or two.</div></div></div>
+  </div>
+
+  <footer>
+    <span>Saturn SL · Race Livery · Rev A</span>
+    <span>Slate #6E7580 · Satin #1B1B1B · Red #DC2626 · White #F5F6F7</span>
+  </footer>
+
+</div>
+</body>
+</html>
