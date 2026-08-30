@@ -324,3 +324,47 @@ one is what settles it.
    At 2–5 clicks/day, splitting traffic across two ads per group means neither
    ever reaches significance
 5. Consider leaving **Same Day** paused entirely — it has no volume to win
+
+---
+
+# LAUNCHED — 2026-08-30
+
+Enabled on the owner's explicit instruction, after the geo risk below was
+raised and declined twice. Verified live via the API:
+
+| Object | Status |
+|---|---|
+| Campaign `24190821998` | **ENABLED** |
+| All 6 ad groups | **ENABLED** |
+| 6 original ads | **ENABLED**, APPROVED — serving now |
+| 6 v2 ads | **ENABLED**, approval still UNKNOWN — will serve once reviewed |
+
+Budget and bidding untouched: $10/day, manual CPC.
+
+## Live and unresolved
+
+**No geographic targeting.** The campaign is serving nationwide. At planner CPCs
+of $2.04–$5.42 this spends the daily budget on searches outside any serviceable
+distance. This is the highest-cost open item by a wide margin and is fixable only
+in the UI:
+
+> Settings → Locations → Enter another location → `Snohomish, Washington`
+> → hover → Radius → `5` → Target. Then Location options → **Presence**.
+
+**No conversion tracking.** Calls to (425) 600-7897 will not be attributed. The
+campaign works; you just cannot tell which keyword produced a call.
+
+**Two call extensions.** (360) 797-5831 may serve alongside (425) 600-7897.
+
+**Two broken sitelinks.** `/#faq` and `/#guarantee` resolve to no anchor; the
+visitor lands at the top of the page. Not fatal, wastes a click.
+
+## Reversing
+
+Every enable above is reversible with `pause_campaign`, `pause_ad_group` and
+`pause_ad`. `pause_campaign` on `24190821998` stops all spend immediately.
+
+## Once the v2 ads are approved
+
+Pause the six originals so each ad group runs one ad. At 2–5 clicks/day, two ads
+per group means neither accumulates enough data to judge.
