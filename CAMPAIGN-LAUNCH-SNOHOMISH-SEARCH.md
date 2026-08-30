@@ -155,3 +155,172 @@ criterion set would spend the $10/day budget on nationwide traffic.
 - Confirm the call conversion action leaves "No recent conversions" once a real
   call lands
 - Watch that all six ads stay APPROVED after they start serving
+
+---
+
+# Keyword & copy work — 2026-08-30
+
+## Research source
+
+Google Keyword Planner via the connector, seeded with five detailing terms,
+geo `21175` (Washington state), language `1000` (English), Google Search network.
+4,749 keyword ideas returned.
+
+**Read the volumes as relative, not absolute.** They are statewide. A 5-mile
+radius around Snohomish will see a small fraction of them. They are useful for
+ranking terms against each other and for CPC estimates, not for forecasting.
+
+## The budget math nobody had done
+
+Planner CPCs for the terms in this campaign run **$2.04–$5.42**. At $10/day that
+is roughly **2–5 clicks per day**, spread across 6 ad groups. Most ad groups will
+not get one click a day.
+
+This is the real constraint on the account. Everything below follows from it.
+
+## Findings
+
+### The "Same Day" ad group is built on dead volume
+
+| Keyword | Statewide vol/mo |
+|---|---|
+| `same day auto detailing` | no planner data |
+| `same day car detailing` | no planner data |
+| `same day detailing near me` | 10 |
+| `same day car detailing near me` | 10 |
+
+Every "same day" variant in the dataset is at 10/month statewide. In a 5-mile
+radius that is effectively zero. This ad group will not spend and will not
+produce leads. Recommend leaving it paused at launch, or folding "same day"
+messaging into Core Detailing as a headline rather than a whole ad group.
+
+### `auto detailing` was missing and is the best-value term available
+
+| Keyword | Vol/mo | Competition | Avg CPC | In account before? |
+|---|---|---|---|---|
+| `auto detailing` | 1,000 | 23 (low) | **$2.04** | no |
+| `car detailing near me` | 5,400 | 68 (high) | $2.94 | yes |
+| `car detailing` | 2,400 | 39 | $3.14 | yes |
+| `car detailing services` | 1,900 | **6** | $5.42 | no |
+| `mobile car detailing` | 590 | 28 | $3.81 | yes |
+
+`auto detailing` has half the volume of the head term at two-thirds the cost and
+a third of the competition. `automotive detailing`, which *was* in the account,
+returns no planner data at all.
+
+### The Cost & Pricing ad group had one working keyword
+
+`car detailing cost` is 30/mo. `car detailing prices near me` and
+`how much does it cost to detail a car` return no planner data. The working
+variants are `car detailing prices` / `auto detailing cost` / `mobile detailing
+cost`, all 140/mo at competition 44 and **$2.32** — cheaper than the head terms.
+
+### No Snohomish-area geo keywords exist
+
+Zero results for snohomish, everett, monroe, lake stevens, mill creek or
+marysville. Do not build city-name keywords; the 5-mile radius does that job.
+
+## Keywords added (15, all PHRASE match)
+
+Phrase, not broad, deliberately: at 2–5 clicks/day, broad match on a new account
+spends the budget on junk before the search terms report has enough data to
+write negatives against.
+
+| Ad group | Added |
+|---|---|
+| Core Detailing | `auto detailing`, `car detailing services`, `auto detailing services` |
+| Mobile Detailing | `mobile auto detailing`, `mobile vehicle detailing`, `mobile car detailing near me` |
+| Cost & Pricing | `car detailing prices`, `auto detailing cost`, `mobile detailing cost`, `auto detailing prices` |
+| Interior | `auto interior cleaning`, `mobile interior car detailing`, `car detailing interior` |
+| Near Me | `vehicle detailing near me`, `mobile detailing near me` |
+| Same Day | none — dead volume |
+
+Reversible with `remove_keywords` using the criterion ids from the
+`ad_group_criterion` report.
+
+## Ad copy
+
+### What was wrong with the originals
+
+**12 of the 15 headlines were byte-identical across all six ad groups**, and 3 of
+4 descriptions. Only the last three headlines differed. Responsive search ads
+assemble from the whole pool, so the Cost & Pricing ad group was as likely to
+serve "Interior And Exterior" as anything about price. That suppresses Ad
+Relevance, which is a third of Quality Score.
+
+**The strongest offer on the site was in none of the ads.** `index.html` carries
+"Love it or you don't pay, guaranteed". No ad mentioned it.
+
+### New ads (v2) — created PAUSED alongside the originals
+
+| Ad group | New ad id | Shared headlines |
+|---|---|---|
+| Mobile Detailing | `199348858069~822788859041` | 5 of 15 |
+| Cost & Pricing | `199582444053~822713800255` | 5 of 15 |
+| Interior | `199582455973~822672152532` | 5 of 15 |
+| Core Detailing | `203278187681~822788888549` | 5 of 15 |
+| Same Day | `203534243950~822788896709` | 5 of 15 |
+| Near Me | `208123677308~822788918048` | 5 of 15 |
+
+Overlap cut from 12/15 to 5/15. The guarantee now appears in every ad, as both a
+headline ("Love It Or You Don't Pay") and a description line.
+
+The six original APPROVED ads were **not deleted or modified**. They remain
+paused as a fallback.
+
+### Claims and where they are substantiated
+
+| Claim in copy | Source |
+|---|---|
+| `300+ Cars Detailed` | `index.html` — "300+ cars detailed" |
+| `Love It Or You Don't Pay` | `index.html` — "Love it or you don't pay, guaranteed" |
+| `38+ Five-Star Reviews` | site schema says `reviewCount: 40`, `ratingValue: 5.0` |
+| `I Bring Water And Power` | carried over from the approved originals |
+
+**Two things to check yourself:**
+
+1. The site's structured data says **40** reviews; the ads say **38+**. Not a
+   contradiction, but stale. Bump it if 40 is current — a factual claim about
+   your own business is yours to make, not mine to change silently.
+2. "since I started at 12" appears in the *original* descriptions and is not
+   stated anywhere on the site. It is not in the v2 copy. If it is true and you
+   want it, it is a good line — just make sure it is substantiated somewhere.
+
+## Validation status — what is and is not confirmed
+
+**Mechanically verified before upload (all 6 ads pass):**
+
+- every headline ≤ 30 characters (longest: 27)
+- every description ≤ 90 characters (longest: 85)
+- 15 headlines and 4 descriptions per ad (Google's maximum)
+- no phone number in any headline or description — this is the PROHIBITED policy
+  trap; checked with a digit-sequence regex, not by eye
+- no exclamation marks in headlines, no all-caps words
+- no duplicate headlines or descriptions within an ad
+- display paths ≤ 15 characters
+
+**Not confirmed — pending Google:**
+
+All six v2 ads currently read `approval_status: UNKNOWN`,
+`review_status: REVIEW_IN_PROGRESS`. Policy review typically completes within one
+business day. **Do not enable these ads until they read APPROVED.** Re-check with
+the `ad_group_ad_policy_summary_approval_status` field.
+
+**Not knowable in advance:**
+
+Whether this copy outperforms the originals. There is no impression or CTR data
+on this campaign — it has never served. Ad Strength reads PENDING for every ad,
+original and new, for the same reason. The copy is better-targeted and better-
+substantiated on reasoning any experienced advertiser would recognise, but
+"better" here is an argument, not a measurement. The search terms report in week
+one is what settles it.
+
+## Revised enable order
+
+1. Confirm the five UI blockers above are done
+2. Confirm all six v2 ads read APPROVED
+3. Enable campaign → ad groups → ads
+4. **Enable only ONE ad per ad group** (the v2), leaving the original paused.
+   At 2–5 clicks/day, splitting traffic across two ads per group means neither
+   ever reaches significance
+5. Consider leaving **Same Day** paused entirely — it has no volume to win
