@@ -1467,6 +1467,28 @@ header li a[href="#booking"],
 #qqcCard .hero.suggest { border-color: var(--accent); animation: qqcSuggest 1.7s ease-in-out infinite; }
 @keyframes qqcSuggest { 0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0); } 50% { box-shadow: 0 0 0 6px rgba(var(--accent-rgb), .16); } }
 
+/* Tier-up card. Deliberately lighter and ~40% shorter than the hero: it's an
+   upgrade offer, not a second headline, and step 2 has to keep Continue above the
+   fold on a phone. */
+#qqcCard .tier-up { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; cursor: pointer; margin: 16px 0 0; border: 1.5px solid var(--border-2); border-radius: 18px; padding: 14px; background: var(--surface-2); transition: border-color .22s ease, background .25s ease, transform .18s ease, box-shadow .22s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .tier-up:hover { border-color: var(--gold); transform: translateY(-2px); }
+#qqcCard .tier-up:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .2); border-color: var(--accent); }
+#qqcCard .tier-up.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .09); box-shadow: 0 10px 26px -14px var(--accent); }
+#qqcCard .tier-up .tier-flag { position: absolute; top: -9px; left: 16px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+#qqcCard .tier-up .ic-tile { width: 44px; height: 44px; border-radius: 13px; flex-shrink: 0; }
+#qqcCard .tier-up .ic-tile svg { width: 25px; height: 25px; }
+#qqcCard .tier-info { flex: 1; min-width: 0; }
+#qqcCard .tier-info .t { display: block; font-weight: 680; font-size: 15.5px; letter-spacing: -0.015em; }
+#qqcCard .tier-info .d { display: block; font-size: 12px; line-height: 1.35; color: var(--text-2); margin-top: 3px; }
+#qqcCard .tier-info .save { display: inline-block; margin-top: 6px; font-size: 10.5px; font-weight: 700; color: var(--gold); background: rgba(216,178,92,.14); padding: 3px 8px; border-radius: 999px; }
+#qqcCard .tier-info .save:empty { display: none; }
+#qqcCard .tier-price { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+#qqcCard .tier-price .amt { font-weight: 780; font-size: 21px; letter-spacing: -0.03em; }
+#qqcCard .tier-up .badge { position: static; opacity: .3; transform: scale(1); width: 22px; height: 22px; background: transparent; border: 2px solid var(--border-2); color: var(--accent); }
+#qqcCard .tier-up .badge svg { width: 12px; height: 12px; opacity: 0; transition: opacity .2s; }
+#qqcCard .tier-up.sel .badge { opacity: 1; background: var(--accent); border-color: var(--accent); color: #fff; }
+#qqcCard .tier-up.sel .badge svg { opacity: 1; }
+
 #qqcCard .or-divider { display: flex; align-items: center; gap: 12px; margin: 18px 2px 14px; color: var(--text-3); font-size: 12px; font-weight: 560; }
 #qqcCard .or-divider::before, #qqcCard .or-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
@@ -1488,18 +1510,30 @@ header li a[href="#booking"],
    were meant to swipe, and no amount of swiping moved it. auto-fit + a min track
    drops to one column whenever two won't genuinely fit, so nothing is ever half
    shown; min() keeps the track itself from overflowing a very narrow card. */
-#qqcCard .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 10px; }
+#qqcCard .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 8px; }
 /* Grid items default to min-width:auto, which is what let the chips push their
    tracks wider than the grid in the first place. */
 #qqcCard .addon-grid .chip { min-width: 0; }
-#qqcCard .chip { position: relative; display: flex; align-items: center; gap: 11px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 11px 12px; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
+#qqcCard .chip { position: relative; display: flex; align-items: center; gap: 11px; background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 14px; padding: 9px 12px; cursor: pointer; transition: border-color .2s ease, background .2s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
 #qqcCard .chip:hover { border-color: var(--border-2); }
 #qqcCard .chip:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
 #qqcCard .chip .ic-mini { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--surface-3); color: var(--text-2); transition: background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1); }
 #qqcCard .chip .ic-mini svg { width: 21px; height: 21px; }
 #qqcCard .chip .ctext { flex: 1; min-width: 0; line-height: 1.2; }
-#qqcCard .chip .ct { display: block; font-size: 13.5px; font-weight: 580; }
-#qqcCard .chip .cp { display: block; font-size: 12px; color: var(--text-3); margin-top: 1px; }
+/* Name and price share a row so the line beneath belongs to the whole chip, not
+   to the price. A chip that is only a name and a number gives you nothing to
+   compare but cost, and the honest answer to "how much extra?" is always none. */
+#qqcCard .chip .crow { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+#qqcCard .chip .ct { font-size: 13.5px; font-weight: 580; min-width: 0; }
+#qqcCard .chip .cp { font-size: 12.5px; font-weight: 700; color: var(--text-2); flex: none; }
+#qqcCard .chip.sel .cp { color: var(--accent); }
+#qqcCard .chip .cb { display: block; font-size: 11.5px; line-height: 1.3; color: var(--text-3); margin-top: 2px; }
+/* Included-by-tier chips: shown, not chargeable, not tappable. They confirm what
+   the Protection tier already bought rather than offering to sell it twice. */
+#qqcCard .chip.inc { cursor: default; border-color: rgba(47,179,88,.4); background: rgba(47,179,88,.07); }
+#qqcCard .chip.inc:hover { border-color: rgba(47,179,88,.4); }
+#qqcCard .chip.inc .cp { color: var(--success); }
+#qqcCard .chip.inc .ic-mini { background: rgba(47,179,88,.16); color: var(--success); }
 #qqcCard .chip.sel { border-color: var(--accent); background: rgba(var(--accent-rgb), .09); }
 #qqcCard .chip.sel .ic-mini { background: linear-gradient(140deg, rgb(var(--accent-rgb)), var(--accent-press)); color: #fff; transform: scale(1.06); }
 
@@ -1673,6 +1707,26 @@ header li a[href="#booking"],
           </div>
         </div>
       </div>
+      <!-- Third tier. The hero used to be both the most-recommended option AND the
+           most expensive thing on the screen, which anchors downward: it teaches that
+           $299 is the top of the market and every add-on is you charging extra. With a
+           tier above it, $299 becomes the middle choice, which is where the volume
+           wants to sit. Priced so it lands on exactly the same number as taking Full
+           Detail and adding all four extras on step 4 ($299 + $50) — two routes to one
+           basket must never produce two prices. -->
+      <div class="tier-up" id="qqTierProtect" data-role="service" data-name="Full Detail + Protection" data-value="349" tabindex="0" role="button" aria-pressed="false">
+        <span class="tier-flag">Best value</span>
+        <span class="ic-tile"><svg class="ic"><use href="#sv-shield"/></svg></span>
+        <div class="tier-info">
+          <span class="t">Full Detail + Protection</span>
+          <span class="d">Adds polish, ceramic wax, carpet shampoo &amp; RainX</span>
+          <span class="save" id="qqTierSave"></span>
+        </div>
+        <div class="tier-price">
+          <span class="amt">$349</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        </div>
+      </div>
       <div class="or-divider">or build your own</div>
       <div class="duo">
         <div class="svc-card" data-role="service" data-name="Interior Detail" data-value="200" tabindex="0" role="button" aria-pressed="false">
@@ -1744,11 +1798,39 @@ header li a[href="#booking"],
        are rendered — the rest aren't greyed out, they're not built. -->
   <style>
     #qqcCard .addon-empty { font-size: 14px; color: var(--text-2); margin: 0 0 4px; }
-    #qqcCard .chip { padding-right: 34px; }
-    #qqcCard .chip .rec { position: absolute; top: -8px; right: 10px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+    /* The price now lives inline at the end of the name row, so the chip no longer
+       reserves a 34px gutter for it. The flag moves clear of that price instead:
+       it sits over the top border, and the recommended chip pads its first row
+       down so the two never share pixels. */
+    #qqcCard .chip .rec { position: absolute; top: -9px; right: 12px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
     #qqcCard .chip.is-rec { border-color: rgba(216,178,92,.55); }
     #qqcCard .chip.is-rec.sel { border-color: var(--accent); }
     #qqcCard .addon-why { font-size: 12.5px; color: var(--text-3); margin: 12px 2px 0; line-height: 1.45; }
+    /* One-tap bundle. It sits above the grid because it is the highest-value action
+       on the screen and the evidence favours a single frictionless bundle over an
+       à la carte list. It is a shortcut, not a separate product: the same discount
+       applies the moment every applicable extra is ticked individually, so there is
+       exactly one price for one basket however you arrive at it. */
+    #qqcCard .bundle { position: relative; display: flex; align-items: center; gap: 10px; background: linear-gradient(140deg, rgba(216,178,92,.12), var(--surface-2) 72%); border: 1.5px dashed rgba(216,178,92,.5); border-radius: 14px; padding: 10px 12px; margin: 0 0 10px; cursor: pointer; transition: border-color .2s ease, background .25s ease, transform .15s ease; -webkit-tap-highlight-color: transparent; }
+    #qqcCard .bundle:hover { border-color: var(--gold); }
+    #qqcCard .bundle:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .18); border-color: var(--accent); }
+    #qqcCard .bundle.sel { border-style: solid; border-color: var(--accent); background: rgba(var(--accent-rgb), .1); }
+    #qqcCard .bundle .bd-check { width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border-2); color: var(--accent); }
+    #qqcCard .bundle .bd-check svg { width: 13px; height: 13px; opacity: 0; transition: opacity .2s; }
+    #qqcCard .bundle.sel .bd-check { background: var(--accent); border-color: var(--accent); color: #fff; }
+    #qqcCard .bundle.sel .bd-check svg { opacity: 1; }
+    #qqcCard .bundle .bt { flex: 1; min-width: 0; }
+    #qqcCard .bundle .b1 { display: block; font-size: 13.5px; font-weight: 700; }
+    #qqcCard .bundle .b2 { display: block; font-size: 11.5px; color: var(--text-3); margin-top: 2px; line-height: 1.35; }
+    #qqcCard .bundle .b2 s { color: var(--text-3); margin-right: 5px; }
+    #qqcCard .bundle .b2 { font-weight: 620; color: var(--text-2); }
+    /* Breakdown rows for tier-included extras and the bundle saving. */
+    #qqcCard .inc-row.inc-sub { padding-left: 10px; font-size: 13.5px; font-weight: 480; }
+    #qqcCard .inc-row.inc-sub .inc-check { width: 17px; height: 17px; background: rgba(47,179,88,.18); color: var(--success); }
+    #qqcCard .inc-row.inc-sub .inc-check svg { width: 10px; height: 10px; }
+    #qqcCard .inc-row.inc-sub .inc-price { color: var(--success); font-size: 13px; }
+    #qqcCard .inc-row.inc-save .inc-check { background: rgba(216,178,92,.2); color: var(--gold); }
+    #qqcCard .inc-row.inc-save .inc-price { color: var(--gold); }
     /* An odd number of extras used to strand the last chip in the left column with
        a hole beside it, and a hole on the right edge of a row of cards reads as
        "there's more, swipe" — people went looking for a carousel that was never
@@ -1758,17 +1840,19 @@ header li a[href="#booking"],
     /* Says out loud that the grid is the whole menu, and gives anything not on it
        somewhere to go — this step is where people go looking for an extra, and the
        notes box is a step behind them. */
-    #qqcCard .addon-more { margin: 16px 2px 0; }
-    #qqcCard .addon-more label { display: block; font-size: 13px; font-weight: 580; color: var(--text-2); margin-bottom: 7px; }
+    #qqcCard .addon-more { margin: 12px 2px 0; }
+    #qqcCard #step4 .nav { margin-top: 16px; }
+    #qqcCard .addon-more label { display: block; font-size: 13px; font-weight: 580; color: var(--text-2); margin-bottom: 6px; }
     #qqcCard .addon-more label span { color: var(--text-3); font-weight: 400; }
   </style>
   <div class="step" id="step4">
     <h3 class="q-title">Want anything extra?</h3>
     <p class="q-hint" id="qqAddonHint">Totally optional &mdash; skip straight to your price if not.</p>
+    <div id="qqBundleWrap"></div>
     <div class="addon-grid" id="qqAddons"></div>
     <p class="addon-why" id="qqAddonWhy"></p>
     <div class="addon-more">
-      <label for="qqAddonNote">That&rsquo;s the whole menu. Want something that isn&rsquo;t on it? <span>(I&rsquo;ll price it when I call)</span></label>
+      <label for="qqAddonNote">Want something not on the list? <span>(I&rsquo;ll price it when I call)</span></label>
       <div class="field">
         <input type="text" id="qqAddonNote" placeholder="Headliner, engine bay, ozone treatment&hellip;" autocomplete="off" />
       </div>
@@ -1855,8 +1939,16 @@ header li a[href="#booking"],
   // to convert. Scheduling happens over text now.
 
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
-  var PRICE = { 'Full Detail':299, 'Interior Detail':200, 'Exterior Detail':160 };
+  var PRICE = { 'Full Detail':299, 'Full Detail + Protection':349, 'Interior Detail':200, 'Exterior Detail':160 };
+  // Packages are whole-car answers and are mutually exclusive with everything,
+  // including each other. Interior and Exterior are the only two that combine.
+  var PACKAGES = { 'Full Detail':1, 'Full Detail + Protection':1 };
+  var PROTECTION = 'Full Detail + Protection';
   var FULL_SAVING = PRICE['Interior Detail'] + PRICE['Exterior Detail'] - PRICE['Full Detail'];
+  // Bundling every applicable extra takes $10 off for each one past the first.
+  // With Full Detail's four ($80) that is $50, which is exactly the gap between
+  // Full Detail and the Protection tier — the two routes have to agree.
+  var BUNDLE_STEP = 10;
   var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'addons', 5:'quote', 6:'success' };
   var progLabels = {
     1: 'Step 1 of 5 · Your vehicle',
@@ -1871,19 +1963,40 @@ header li a[href="#booking"],
   // ceramic wax on an interior-only detail was quotable before this, and produced
   // prices Mikey had to walk back. `rec` decides whether it gets the Recommended
   // flag for this particular car, given the condition they just told us about.
+  // `blurb` and `mins` exist because a chip carrying only a name and a price gives
+  // you nothing to weigh but cost, and the rational answer to "how much extra?" is
+  // always zero. Say what it does to the car and what it costs in time. `recRank`
+  // breaks ties: only ONE chip is ever flagged Recommended, because two gold badges
+  // on one screen read as a sales sweep and one reads as advice.
   var ADDONS = [
-    { name:'Carpet Shampoo',  price:20, icon:'sv-droplet',  fits:{ 'Full Detail':1, 'Interior Detail':1 },
-      rec:function(){ return condValue() >= 30; },
-      why:'carpets take the worst of it on a car that\u2019s overdue' },
-    { name:'Exterior Polish', price:30, icon:'sv-sparkles', fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+    { name:'Exterior Polish', price:30, icon:'sv-sparkles', mins:45, recRank:1,
+      fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
+      blurb:'Cuts the haze and light swirls out of the paint',
       rec:function(){ return condValue() >= 30; },
       why:'polish is what brings paint back when it\u2019s been a while' },
-    { name:'Ceramic Wax',     price:20, icon:'sv-shield',   fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+    { name:'Carpet Shampoo',  price:20, icon:'sv-droplet',  mins:30, recRank:2,
+      fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Interior Detail':1 },
+      blurb:'Pulls set-in stains and the smell that came with them',
+      rec:function(){ return condValue() >= 30; },
+      why:'carpets take the worst of it on a car that\u2019s overdue' },
+    { name:'Ceramic Wax',     price:20, icon:'sv-shield',   mins:30, recRank:3,
+      fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
+      blurb:'Months of protection \u2014 water beads off instead of sitting',
       rec:function(){ return condValue() === 0; },
       why:'the cheapest time to protect paint is while it still looks good' },
-    { name:'RainX Windows',   price:10, icon:'sv-rain',     fits:{ 'Full Detail':1, 'Exterior Detail':1 },
+    { name:'RainX Windows',   price:10, icon:'sv-rain',     mins:15, recRank:4,
+      fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
+      blurb:'Rain sheets straight off the glass at speed',
       rec:function(){ return false; }, why:'' }
   ];
+  // What the Protection tier has already paid for. Derived from ADDONS rather than
+  // listed by hand, so adding an extra that fits the tier can't silently create a
+  // chip the tier claims to include but doesn't.
+  var PROTECTION_INCLUDES = ADDONS.filter(function(a){ return !!a.fits[PROTECTION]; });
+  var PROTECTION_SAVING = (function(){
+    var full = 0; PROTECTION_INCLUDES.forEach(function(a){ full += a.price; });
+    return full - (PRICE[PROTECTION] - PRICE['Full Detail']);
+  })();
   function condValue(){ return S.condition ? S.condition.value : -1; }
 
   function $(id){ return document.getElementById(id); }
@@ -1899,13 +2012,36 @@ header li a[href="#booking"],
     return parts.join(' \u2014 ');
   }
 
+  function protectionSelected(){ return !!S.services[PROTECTION]; }
+  function applicableAddons(){ return ADDONS.filter(addonApplies); }
+  // The discount is derived from what's ticked, never stored. That's deliberate:
+  // the bundle row is a shortcut for ticking everything, not a separate product, so
+  // ticking all four by hand has to cost the same as tapping the bundle. Storing a
+  // flag is how you end up quoting two prices for one basket.
+  function bundleDiscount(){
+    if (protectionSelected()) return 0;  // already priced into the tier
+    var list = applicableAddons();
+    if (list.length < 2) return 0;
+    for (var i=0;i<list.length;i++){ if (S.addons[list[i].name] === undefined) return 0; }
+    return (list.length - 1) * BUNDLE_STEP;
+  }
+  // Drops add-ons the current service can no longer carry. This has to run when the
+  // SERVICE changes, not when step 4 next paints: the ticker is live on step 2, and
+  // switching Full Detail + four extras over to the Protection tier briefly showed
+  // $429 — the tier plus the four extras it already includes — before step 4 cleaned
+  // it up. A price that flickers down is as bad as one that flickers up.
+  function pruneAddons(){
+    if (protectionSelected()){ S.addons = {}; return; }
+    var live = {}; applicableAddons().forEach(function(a){ live[a.name] = 1; });
+    Object.keys(S.addons).forEach(function(n){ if (!live[n]) delete S.addons[n]; });
+  }
   function liveTotal(){
     var t=0;
     var sk=Object.keys(S.services); for(var i=0;i<sk.length;i++) t+=PRICE[sk[i]];
     var ak=Object.keys(S.addons); for(var j=0;j<ak.length;j++) t+=S.addons[ak[j]];
     if(S.vehicle) t+=S.vehicle.value;
     if(S.condition) t+=S.condition.value;
-    return t;
+    return t - bundleDiscount();
   }
   function refreshTicker(){
     var tick=$('qqTicker'), amt=$('qqTickerAmt');
@@ -1949,6 +2085,13 @@ header li a[href="#booking"],
     // printing the same number twice made both of them look like a mistake. It
     // matters most on the add-on step, where each tap moves it.
     if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
+    // Pre-existing, and it bites hardest on the add-on step: the card reports ~70px
+    // of phantom scrollWidth, and moving off a step whose focused button is about to
+    // be display:none leaves it scrolled ~70px right — which slices the left edge off
+    // every label on a phone. Nothing actually overflows (force scrollLeft to 0 and
+    // no descendant exceeds the client box), so pinning it back on each step is the
+    // honest fix rather than papering over a real overflow.
+    if (card) card.scrollLeft = 0;
     if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
   }
 
@@ -1981,42 +2124,85 @@ header li a[href="#booking"],
   // the service and condition they just picked. Anything that no longer applies is
   // dropped from the running total too — otherwise switching from Full Detail to
   // Interior left a ceramic wax on the quote.
+  function syncChips(){
+    var nodes = document.querySelectorAll('#qqAddons .chip[data-role="addon"]');
+    for (var i=0;i<nodes.length;i++){
+      var on = S.addons[nodes[i].getAttribute('data-name')] !== undefined;
+      nodes[i].classList.toggle('sel', on);
+      nodes[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+  }
+  var BUNDLE_WORD = { 2:'both', 3:'all three', 4:'all four', 5:'all five' };
+  // Rendered separately from the chips so an individual tap can refresh the bundle
+  // row without rebuilding the grid underneath the finger that just tapped it.
+  function renderBundle(){
+    var bw = $('qqBundleWrap'); if (!bw) return;
+    var list = applicableAddons();
+    var saving = (protectionSelected() || list.length < 2) ? 0 : (list.length - 1) * BUNDLE_STEP;
+    if (!saving){ bw.innerHTML = ''; bw.style.display = 'none'; return; }
+    var full = 0; list.forEach(function(a){ full += a.price; });
+    var allOn = list.every(function(a){ return S.addons[a.name] !== undefined; });
+    var word = BUNDLE_WORD[list.length] || ('all ' + list.length);
+    bw.style.display = '';
+    bw.innerHTML = '<div class="bundle' + (allOn ? ' sel' : '') + '" data-role="bundle" tabindex="0" role="button" aria-pressed="' + (allOn ? 'true' : 'false') + '">' +
+      '<span class="bd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' +
+      '<span class="bt"><span class="b1">Add ' + word + ' \u2014 save $' + saving + '</span>' +
+      '<span class="b2"><s>$' + full + '</s>$' + (full - saving) +
+      (allOn ? ' \u00b7 applied, tap to undo' : ' \u00b7 one tap') + '</span></span></div>';
+  }
+  // Build the add-on step from scratch each time it's shown, so it always matches
+  // the service and condition they just picked. Anything that no longer applies is
+  // dropped from the running total too — otherwise switching from Full Detail to
+  // Interior left a ceramic wax on the quote.
   function renderAddons(){
     var wrap = $('qqAddons'); if (!wrap) return;
-    var list = ADDONS.filter(addonApplies);
+    var list = applicableAddons();
+    var included = protectionSelected();
 
-    // Prune selections that no longer apply after a service change.
-    var live = {}; list.forEach(function(a){ live[a.name] = 1; });
-    Object.keys(S.addons).forEach(function(n){ if (!live[n]) delete S.addons[n]; });
+    pruneAddons();
 
-    var recs = [];
+    // Exactly one Recommended flag. When a car is overdue both the polish and the
+    // shampoo qualify; flagging both reads as a sweep, so recRank picks the one that
+    // does most for the car and the other stands on its own copy.
+    var top = null;
+    if (!included){
+      list.forEach(function(a){ if (a.rec() && (!top || a.recRank < top.recRank)) top = a; });
+    }
+
     var html = '';
     list.forEach(function(a){
-      var isRec = a.rec(), on = S.addons[a.name] !== undefined;
-      if (isRec && a.why) recs.push(a.why);
-      html += '<div class="chip' + (on?' sel':'') + (isRec?' is-rec':'') + '" data-role="addon" data-name="' + a.name +
-              '" data-value="' + a.price + '" tabindex="0" role="button" aria-pressed="' + (on?'true':'false') + '">' +
+      var isRec = (a === top), on = S.addons[a.name] !== undefined;
+      // The flagged chip states why it's flagged for THIS car; the rest state what
+      // they do to any car. That reason used to live in a paragraph under the grid,
+      // which separated the justification from the thing it justified and cost a
+      // block of height on a step that has none to spare.
+      var line = (isRec && a.why) ? (a.why.charAt(0).toUpperCase() + a.why.slice(1)) : a.blurb;
+      html += '<div class="chip' + (on ? ' sel' : '') + (isRec ? ' is-rec' : '') + (included ? ' inc' : '') + '"' +
+              (included ? '' : ' data-role="addon" tabindex="0" role="button" aria-pressed="' + (on ? 'true' : 'false') + '"') +
+              ' data-name="' + a.name + '" data-value="' + a.price + '">' +
               (isRec ? '<span class="rec">Recommended</span>' : '') +
               '<span class="ic-mini"><svg class="ic"><use href="#' + a.icon + '"/></svg></span>' +
-              '<span class="ctext"><span class="ct">' + a.name + '</span><span class="cp">+$' + a.price + '</span></span>' +
-              '</div>';
+              '<span class="ctext">' +
+                '<span class="crow"><span class="ct">' + a.name + '</span>' +
+                '<span class="cp">' + (included ? 'Included' : '+$' + a.price) + '</span></span>' +
+                '<span class="cb">' + line + ' \u00b7 ' + a.mins + ' min</span>' +
+              '</span></div>';
     });
     wrap.innerHTML = html;
+    renderBundle();
 
     var hint = $('qqAddonHint');
     if (hint){
       var svc = Object.keys(S.services)[0] || 'your detail';
-      hint.textContent = list.length
-        ? ('These pair with the ' + svc + '. Totally optional — skip straight to your price if not.')
-        : 'Nothing to add here — straight to your price.';
+      hint.textContent = included
+        ? 'Your protection extras are already in the price.'
+        : (list.length ? 'All optional \u2014 skip if you\u2019re set.'
+                       : 'Nothing to add \u2014 straight to your price.');
     }
+    // Kept in the DOM but permanently empty: the reason now rides on the chip it
+    // belongs to. Left in place so nothing downstream trips over a missing node.
     var why = $('qqAddonWhy');
-    if (why){
-      why.textContent = recs.length
-        ? ('Flagged for you because ' + recs.join(', and ') + '.')
-        : '';
-      why.style.display = recs.length ? 'block' : 'none';
-    }
+    if (why){ why.textContent = ''; why.style.display = 'none'; }
   }
   function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
 
@@ -2026,6 +2212,10 @@ header li a[href="#booking"],
     var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j]); }
     if (S.vehicle) total += S.vehicle.value;
     if (S.condition) total += S.condition.value;
+    // Goes into items as well as the total so the saving shows up in the email and
+    // the SMS payload — Mikey needs to see why the number is $30 under the parts.
+    var discount = bundleDiscount();
+    if (discount){ total -= discount; items.push('Bundle saving -$' + discount); }
     S.notes = collectNotes();
     S.total = total; S.items = items;
 
@@ -2048,9 +2238,20 @@ header li a[href="#booking"],
               (k===0 && context.length ? '<span class="inc-ctxline">'+escapeHtml(context.join(' · '))+'</span>' : '') +
               '</span><span class="inc-price">$'+linePrice+'</span></div>';
     }
+    // The Protection tier's extras are itemised under the service line rather than
+    // left implicit. People are paying $50 over Full Detail; show them the four
+    // things that $50 bought, or the tier reads as an unexplained upcharge.
+    if (protectionSelected()){
+      PROTECTION_INCLUDES.forEach(function(a){
+        html += '<div class="inc-row inc-sub"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + a.name + '</span><span class="inc-price">Included</span></div>';
+      });
+    }
     var ak2=Object.keys(S.addons);
     for(var m=0;m<ak2.length;m++){
       html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] + '</span><span class="inc-price">+$'+S.addons[ak2[m]]+'</span></div>';
+    }
+    if (discount){
+      html += '<div class="inc-row inc-save"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">Bundle saving</span><span class="inc-price">&minus;$'+discount+'</span></div>';
     }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
@@ -2105,16 +2306,32 @@ header li a[href="#booking"],
       var name = el.getAttribute('data-name');
       if (on){
         S.services[name] = PRICE[name];
-        if (name === 'Full Detail'){ unselectService('Interior Detail'); unselectService('Exterior Detail'); S.services['Full Detail'] = PRICE['Full Detail']; }
-        else { unselectService('Full Detail'); }
+        // A package answers the whole car, so it clears everything else — including
+        // the other package. Interior and Exterior are the only pair that combine.
+        if (PACKAGES[name]){
+          Object.keys(S.services).forEach(function(n){ if (n !== name) unselectService(n); });
+          S.services[name] = PRICE[name];
+        } else {
+          Object.keys(PACKAGES).forEach(unselectService);
+        }
       } else { delete S.services[name]; }
+      pruneAddons();
       refreshNudge(); refreshContinue(); refreshTicker();
     }
     else if (role === 'addon'){
       var ao = el.classList.toggle('sel'); el.setAttribute('aria-pressed', ao?'true':'false');
       var an = el.getAttribute('data-name');
       if (ao) S.addons[an] = parseInt(el.getAttribute('data-value')); else delete S.addons[an];
-      refreshTicker();
+      // Ticking the last one by hand earns the same saving as tapping the bundle,
+      // so the bundle row has to restate itself after every individual tap.
+      renderBundle(); refreshTicker();
+    }
+    else if (role === 'bundle'){
+      var bl = applicableAddons();
+      var wasAll = bl.every(function(a){ return S.addons[a.name] !== undefined; });
+      bl.forEach(function(a){ if (wasAll) delete S.addons[a.name]; else S.addons[a.name] = a.price; });
+      syncChips(); renderBundle(); refreshTicker();
+      if (typeof gtag === 'function' && !wasAll) gtag('event', 'qqc_addon_bundle', { count: bl.length });
     }
     else if (role === 'go'){
       if (el.disabled) return;
@@ -2129,11 +2346,15 @@ header li a[href="#booking"],
   function attach(){
     var card = $('qqcCard');
     if (!card) return false;
+    // Written from the data, not typed into the markup, so re-pricing an extra can't
+    // leave the tier advertising a saving it no longer delivers.
+    var tsave = $('qqTierSave');
+    if (tsave) tsave.textContent = PROTECTION_SAVING > 0 ? ('Save $' + PROTECTION_SAVING + ' vs. adding later') : '';
     card.addEventListener('click', handle, false);
     card.addEventListener('keydown', function(e){
       if (e.key==='Enter' || e.key===' ' || e.key==='Spacebar'){
         var el = findRole(e.target, card);
-        if (el && (el.classList.contains('choice') || el.classList.contains('hero') || el.classList.contains('svc-card') || el.classList.contains('chip'))){
+        if (el && (el.classList.contains('choice') || el.classList.contains('hero') || el.classList.contains('svc-card') || el.classList.contains('tier-up') || el.classList.contains('bundle') || (el.classList.contains('chip') && !el.classList.contains('inc')))){
           e.preventDefault(); handle(e);
         }
       }
@@ -2256,13 +2477,13 @@ header li a[href="#booking"],
   window.MikeyQQC = {
     book: function (o) {
       o = o || {};
-      var svcMap = { full: 'Full Detail', interior: 'Interior Detail', exterior: 'Exterior Detail' };
+      var svcMap = { full: 'Full Detail', protection: PROTECTION, interior: 'Interior Detail', exterior: 'Exterior Detail' };
       var name = svcMap[o.service] || o.service;
       if (!PRICE[name]) return;
 
       // reset + select the service
-      deselect('services', '.hero'); deselect('services', '.svc-card');
-      S.services = {}; S.services[name] = PRICE[name];
+      deselect('services', '.hero'); deselect('services', '.tier-up'); deselect('services', '.svc-card');
+      S.services = {}; S.addons = {}; S.services[name] = PRICE[name];
       var svcNode = document.querySelector('#services [data-name="' + name + '"]');
       if (svcNode){ svcNode.classList.add('sel'); svcNode.setAttribute('aria-pressed', 'true'); }
 

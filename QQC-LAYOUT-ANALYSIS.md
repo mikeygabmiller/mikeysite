@@ -253,12 +253,60 @@ bundling them pushed Continue off the phone screen. That decision was right; lea
 |---|---|---|---|
 | 1 | Reconcile vehicle pricing across calculator, `/services`, `/car-detailing-cost…` | ~30 min | Live trust problem; $60/truck margin leak |
 | 2 | Fix the "Step 1 of 4" label | 2 min | First line a visitor reads |
-| 3 | Outcome + time copy on add-on chips; cap Recommended at one | ~1 hr | Highest-return cheap change on the screen |
-| 4 | One-tap "add all four" bundle row on step 4 | ~1 hr | Best-evidenced AOV move available |
-| 5 | Third tier at $349 on step 2 | half day | Biggest AOV lever; needs your pricing call first |
+| 3 | ~~Outcome + time copy on add-on chips; cap Recommended at one~~ **shipped** | ~1 hr | Highest-return cheap change on the screen |
+| 4 | ~~One-tap "add all four" bundle row on step 4~~ **shipped** | ~1 hr | Best-evidenced AOV move available |
+| 5 | ~~Third tier at $349 on step 2~~ **shipped** | half day | Biggest AOV lever; needs your pricing call first |
 | 6 | Paint-correction and Clean Club lines on the quote screen | ~30 min | Free capture of the two highest-LTV segments |
 | 7 | "Something else" as a chip | ~30 min | Routes the $120–$220 pet-hair job into the funnel |
 | 8 | A/B the step-4 ticker | 1 hr + wait | Genuinely unknown; don't guess |
 
 Items 1, 2, 3, 6 and 7 are all safe to ship without a decision from you. **Item 5 needs you
 to confirm the $349 number and what's in it** before anything gets built.
+
+
+---
+
+## Update — 2026-09-02: items 3, 4 and 5 shipped
+
+Built and verified against a real browser (28 assertions, 320–1280px). What changed:
+
+**Step 2 — third tier.** *Full Detail + Protection, $349*, carrying the four extras
+($80 à la carte). $299 keeps the Most Popular flag and becomes the middle choice.
+
+**Step 4 — chips carry outcomes.** Each chip is now name + price on one row, with what
+it does to the car and how long it adds beneath. The flagged chip states why it's flagged
+for *this* car; the aggregated "flagged for you because…" paragraph under the grid is
+gone, since it separated the justification from the thing it justified. Only ever one
+Recommended flag — `recRank` decides which extra earns it.
+
+**Step 4 — one-tap bundle.** *"Add all four — save $30."* $10 off per extra past the
+first, so it scales: three applicable extras save $20, two save $10, one shows no bundle.
+
+**The invariant that mattered most.** The tier and the bundle are two routes to one
+basket, so they must never produce two prices. `bundleDiscount()` is *derived from what's
+ticked*, never stored — ticking all four by hand costs exactly what tapping the bundle
+costs ($349 base, $399 on an SUV in Needs Work condition either way), and the Protection
+tier suppresses the discount because its price already contains it. Both routes are
+asserted equal in the test.
+
+### Two bugs found while building
+
+- **Stale add-ons briefly double-charged.** Add-ons were only pruned when step 4 next
+  painted, but the running total is live on step 2 — switching Full Detail + four extras
+  over to the Protection tier showed **$429** (the tier plus the extras it already
+  includes) until step 4 cleaned it up. Pruning now runs the moment the service changes.
+- **The card was rendering ~70px left-shifted on step 4** — slicing the left edge off
+  every label on a phone. Pre-existing, reproduced identically on `main`. Nothing actually
+  overflows (force `scrollLeft` to 0 and no descendant exceeds the client box), so
+  `goStep()` now pins `scrollLeft` on each step.
+
+### Still open
+
+Item 1, the vehicle-price mismatch, is **not** fixed and is now worse than the doc says:
+the Services-section ballpark estimator on the homepage uses a **fourth** set of numbers
+(`interior 160 / exterior 130 / full 260`). That's four price sets for one job. It needs
+your decision on the real numbers before anyone can reconcile them.
+
+Also unshipped: the step counter fix (item 2), the Clean Club / paint-correction lines on
+the quote screen (item 6), the "something else" chip (item 7), and the step-4 ticker A/B
+(item 8).
