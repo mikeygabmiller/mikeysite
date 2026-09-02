@@ -1659,7 +1659,7 @@ header li a[href="#booking"],
       <div class="progress-seg" data-seg="4"><i></i></div>
       <div class="progress-seg" data-seg="5"><i></i></div>
     </div>
-    <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
+    <div class="progress-label" id="qqProgLabel">Step 1 of 5: your vehicle</div>
   </div>
 
   <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
@@ -1698,7 +1698,7 @@ header li a[href="#booking"],
           <span class="ic-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span>
           <div class="hero-info">
             <span class="t">Full Detail</span>
-            <span class="d">Inside &amp; out, the complete works</span>
+            <span class="d">Inside and out, the complete works</span>
             <span class="save">Save $61 vs. buying separately</span>
           </div>
           <div class="hero-price">
@@ -1711,19 +1711,22 @@ header li a[href="#booking"],
            most expensive thing on the screen, which anchors downward: it teaches that
            $299 is the top of the market and every add-on is you charging extra. With a
            tier above it, $299 becomes the middle choice, which is where the volume
-           wants to sit. Priced so it lands on exactly the same number as taking Full
-           Detail and adding all four extras on step 4 ($299 + $50) — two routes to one
-           basket must never produce two prices. -->
-      <div class="tier-up" id="qqTierProtect" data-role="service" data-name="Full Detail + Protection" data-value="349" tabindex="0" role="button" aria-pressed="false">
+           wants to sit. It is a PRESET, not a separate product: its price is the
+           standard extras rule applied to its three surface treatments, so ticking
+           polish, wax and RainX by hand costs exactly what the tier costs. Carpet
+           shampoo is deliberately not in it; a package called Protection that
+           shampoos the carpets does not hold together, so it stays on sale
+           separately and a tier customer can still add it. -->
+      <div class="tier-up" id="qqTierProtect" data-role="service" data-name="Full Detail + Protection" tabindex="0" role="button" aria-pressed="false">
         <span class="tier-flag">Best value</span>
         <span class="ic-tile"><svg class="ic"><use href="#sv-shield"/></svg></span>
         <div class="tier-info">
           <span class="t">Full Detail + Protection</span>
-          <span class="d">Adds polish, ceramic wax, carpet shampoo &amp; RainX</span>
+          <span class="d">Adds polish, ceramic wax and RainX protection</span>
           <span class="save" id="qqTierSave"></span>
         </div>
         <div class="tier-price">
-          <span class="amt">$349</span>
+          <span class="amt" id="qqTierAmt">$339</span>
           <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
         </div>
       </div>
@@ -1852,7 +1855,7 @@ header li a[href="#booking"],
     <div class="addon-grid" id="qqAddons"></div>
     <p class="addon-why" id="qqAddonWhy"></p>
     <div class="addon-more">
-      <label for="qqAddonNote">Want something not on the list? <span>(I&rsquo;ll price it when I call)</span></label>
+      <label for="qqAddonNote">Want something not on the list? <span>(I&rsquo;ll price it when I get in touch)</span></label>
       <div class="field">
         <input type="text" id="qqAddonNote" placeholder="Headliner, engine bay, ozone treatment&hellip;" autocomplete="off" />
       </div>
@@ -1915,12 +1918,12 @@ header li a[href="#booking"],
   <div class="step" id="step6">
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <h3>Locked in — check your phone!</h3>
+      <h3>Locked in, check your phone!</h3>
       <!-- The price is repeated here on purpose. They just watched it appear, then
            it vanished behind a form; seeing it confirmed is what makes the text
            they're about to get feel expected rather than cold. -->
       <div class="qq-success-quote" id="qqSuccessQuote"></div>
-      <p id="qqSuccessTime">I just texted this quote to <b id="qqSuccessPhone">your phone</b>. Reply any time and I'll get you on the calendar — usually within the hour.</p>
+      <p id="qqSuccessTime">I just texted this quote to <b id="qqSuccessPhone">your phone</b>. Reply any time and I'll get you on the calendar, usually within the hour.</p>
       <p style="color:#9a9aa2;font-size:0.9rem;">No deposit, and you don't pay until you love it.</p>
       <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
@@ -1939,25 +1942,25 @@ header li a[href="#booking"],
   // to convert. Scheduling happens over text now.
 
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
-  var PRICE = { 'Full Detail':299, 'Full Detail + Protection':349, 'Interior Detail':200, 'Exterior Detail':160 };
+  var PRICE = { 'Full Detail':299, 'Interior Detail':200, 'Exterior Detail':160 };
   // Packages are whole-car answers and are mutually exclusive with everything,
   // including each other. Interior and Exterior are the only two that combine.
   var PACKAGES = { 'Full Detail':1, 'Full Detail + Protection':1 };
   var PROTECTION = 'Full Detail + Protection';
   var FULL_SAVING = PRICE['Interior Detail'] + PRICE['Exterior Detail'] - PRICE['Full Detail'];
-  // Bundling every applicable extra takes $10 off for each one past the first.
-  // With Full Detail's four ($80) that is $50, which is exactly the gap between
-  // Full Detail and the Protection tier — the two routes have to agree.
+  // Every extra past the first is $10 off. This one constant prices the bundle row,
+  // the Protection tier and any hand-picked combination, so no two routes to the
+  // same set of extras can ever quote different numbers.
   var BUNDLE_STEP = 10;
   var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'addons', 5:'quote', 6:'success' };
   var progLabels = {
-    1: 'Step 1 of 5 · Your vehicle',
-    2: 'Step 2 of 5 · Choose your detail',
-    3: 'Step 3 of 5 · Condition',
-    4: 'Step 4 of 5 · Extras (optional)',
+    1: 'Step 1 of 5: your vehicle',
+    2: 'Step 2 of 5: choose your detail',
+    3: 'Step 3 of 5: condition',
+    4: 'Step 4 of 5: extras (optional)',
     // Not "Step 5 of 5" — that reads as finished, and people stopped on the quote
     // thinking they were done when there was still a name, a number and a button.
-    5: 'Almost done · Your quote'
+    5: 'Almost done: your quote'
   };
   // The add-on menu. `fits` is which services an add-on can apply to at all —
   // ceramic wax on an interior-only detail was quotable before this, and produced
@@ -1968,8 +1971,12 @@ header li a[href="#booking"],
   // always zero. Say what it does to the car and what it costs in time. `recRank`
   // breaks ties: only ONE chip is ever flagged Recommended, because two gold badges
   // on one screen read as a sales sweep and one reads as advice.
+  // `protects` is what the Protection tier bundles. Carpet shampoo is deliberately
+  // NOT one of them: it's a cleaning extra, and a package called Protection that
+  // shampoos the carpets doesn't hold together. The tier is the three surface
+  // treatments; shampoo stays purchasable on its own, tier or no tier.
   var ADDONS = [
-    { name:'Exterior Polish', price:30, icon:'sv-sparkles', mins:45, recRank:1,
+    { name:'Exterior Polish', price:30, icon:'sv-sparkles', mins:45, recRank:1, protects:true,
       fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
       blurb:'Cuts the haze and light swirls out of the paint',
       rec:function(){ return condValue() >= 30; },
@@ -1979,23 +1986,31 @@ header li a[href="#booking"],
       blurb:'Pulls set-in stains and the smell that came with them',
       rec:function(){ return condValue() >= 30; },
       why:'carpets take the worst of it on a car that\u2019s overdue' },
-    { name:'Ceramic Wax',     price:20, icon:'sv-shield',   mins:30, recRank:3,
+    { name:'Ceramic Wax',     price:20, icon:'sv-shield',   mins:30, recRank:3, protects:true,
       fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
-      blurb:'Months of protection \u2014 water beads off instead of sitting',
+      blurb:'Months of protection, water beads off instead of sitting',
       rec:function(){ return condValue() === 0; },
       why:'the cheapest time to protect paint is while it still looks good' },
-    { name:'RainX Windows',   price:10, icon:'sv-rain',     mins:15, recRank:4,
+    { name:'RainX Windows',   price:10, icon:'sv-rain',     mins:15, recRank:4, protects:true,
       fits:{ 'Full Detail':1, 'Full Detail + Protection':1, 'Exterior Detail':1 },
       blurb:'Rain sheets straight off the glass at speed',
       rec:function(){ return false; }, why:'' }
   ];
-  // What the Protection tier has already paid for. Derived from ADDONS rather than
-  // listed by hand, so adding an extra that fits the tier can't silently create a
-  // chip the tier claims to include but doesn't.
-  var PROTECTION_INCLUDES = ADDONS.filter(function(a){ return !!a.fits[PROTECTION]; });
+  var PROTECTION_INCLUDES = ADDONS.filter(function(a){ return !!a.protects; });
+  // ONE rule prices every extra on the car: $10 off each one past the first. The
+  // Protection tier is a preset of three extras, not a separate product, so its
+  // price is that rule applied rather than a number typed into the markup. This is
+  // what stops the tier and the a-la-carte route from ever disagreeing: ticking
+  // polish, wax and RainX by hand costs exactly what the tier costs, and a tier
+  // customer who adds carpet shampoo pays exactly what four extras cost anyone.
+  function extrasPrice(list){
+    var sum = 0; list.forEach(function(a){ sum += a.price; });
+    return sum - (list.length >= 2 ? (list.length - 1) * BUNDLE_STEP : 0);
+  }
+  PRICE[PROTECTION] = PRICE['Full Detail'] + extrasPrice(PROTECTION_INCLUDES);
   var PROTECTION_SAVING = (function(){
     var full = 0; PROTECTION_INCLUDES.forEach(function(a){ full += a.price; });
-    return full - (PRICE[PROTECTION] - PRICE['Full Detail']);
+    return full - extrasPrice(PROTECTION_INCLUDES);
   })();
   function condValue(){ return S.condition ? S.condition.value : -1; }
 
@@ -2014,16 +2029,33 @@ header li a[href="#booking"],
 
   function protectionSelected(){ return !!S.services[PROTECTION]; }
   function applicableAddons(){ return ADDONS.filter(addonApplies); }
-  // The discount is derived from what's ticked, never stored. That's deliberate:
-  // the bundle row is a shortcut for ticking everything, not a separate product, so
-  // ticking all four by hand has to cost the same as tapping the bundle. Storing a
-  // flag is how you end up quoting two prices for one basket.
+  // What the customer can still buy: everything that fits the service, minus what
+  // the Protection tier already brought. Carpet shampoo survives a tier selection
+  // because the tier never included it.
+  function purchasableAddons(){
+    return applicableAddons().filter(function(a){ return !(protectionSelected() && a.protects); });
+  }
+  // Every extra on the car, whether the tier brought it or they ticked it. Nothing
+  // about the price depends on which route it arrived by, which is the whole point.
+  function effectiveExtras(){
+    var out = protectionSelected() ? PROTECTION_INCLUDES.slice() : [];
+    ADDONS.forEach(function(a){
+      if (S.addons[a.name] !== undefined && out.indexOf(a) < 0) out.push(a);
+    });
+    return out;
+  }
   function bundleDiscount(){
-    if (protectionSelected()) return 0;  // already priced into the tier
-    var list = applicableAddons();
-    if (list.length < 2) return 0;
-    for (var i=0;i<list.length;i++){ if (S.addons[list[i].name] === undefined) return 0; }
-    return (list.length - 1) * BUNDLE_STEP;
+    var ex = effectiveExtras();
+    return ex.length >= 2 ? (ex.length - 1) * BUNDLE_STEP : 0;
+  }
+  // The tier bills as a Full Detail; its three extras are itemised alongside every
+  // other extra so one rule prices them all.
+  function serviceBase(){
+    var t = 0;
+    Object.keys(S.services).forEach(function(n){
+      t += (n === PROTECTION ? PRICE['Full Detail'] : PRICE[n]);
+    });
+    return t;
   }
   // Drops add-ons the current service can no longer carry. This has to run when the
   // SERVICE changes, not when step 4 next paints: the ticker is live on step 2, and
@@ -2031,17 +2063,14 @@ header li a[href="#booking"],
   // $429 — the tier plus the four extras it already includes — before step 4 cleaned
   // it up. A price that flickers down is as bad as one that flickers up.
   function pruneAddons(){
-    if (protectionSelected()){ S.addons = {}; return; }
-    var live = {}; applicableAddons().forEach(function(a){ live[a.name] = 1; });
+    var live = {}; purchasableAddons().forEach(function(a){ live[a.name] = 1; });
     Object.keys(S.addons).forEach(function(n){ if (!live[n]) delete S.addons[n]; });
   }
   function liveTotal(){
-    var t=0;
-    var sk=Object.keys(S.services); for(var i=0;i<sk.length;i++) t+=PRICE[sk[i]];
-    var ak=Object.keys(S.addons); for(var j=0;j<ak.length;j++) t+=S.addons[ak[j]];
+    var t = serviceBase() + extrasPrice(effectiveExtras());
     if(S.vehicle) t+=S.vehicle.value;
     if(S.condition) t+=S.condition.value;
-    return t - bundleDiscount();
+    return t;
   }
   function refreshTicker(){
     var tick=$('qqTicker'), amt=$('qqTickerAmt');
@@ -2137,8 +2166,8 @@ header li a[href="#booking"],
   // row without rebuilding the grid underneath the finger that just tapped it.
   function renderBundle(){
     var bw = $('qqBundleWrap'); if (!bw) return;
-    var list = applicableAddons();
-    var saving = (protectionSelected() || list.length < 2) ? 0 : (list.length - 1) * BUNDLE_STEP;
+    var list = purchasableAddons();
+    var saving = list.length < 2 ? 0 : (list.length - 1) * BUNDLE_STEP;
     if (!saving){ bw.innerHTML = ''; bw.style.display = 'none'; return; }
     var full = 0; list.forEach(function(a){ full += a.price; });
     var allOn = list.every(function(a){ return S.addons[a.name] !== undefined; });
@@ -2146,9 +2175,8 @@ header li a[href="#booking"],
     bw.style.display = '';
     bw.innerHTML = '<div class="bundle' + (allOn ? ' sel' : '') + '" data-role="bundle" tabindex="0" role="button" aria-pressed="' + (allOn ? 'true' : 'false') + '">' +
       '<span class="bd-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>' +
-      '<span class="bt"><span class="b1">Add ' + word + ' \u2014 save $' + saving + '</span>' +
-      '<span class="b2"><s>$' + full + '</s>$' + (full - saving) +
-      (allOn ? ' \u00b7 applied, tap to undo' : ' \u00b7 one tap') + '</span></span></div>';
+      '<span class="bt"><span class="b1">Add ' + word + ' and save $' + saving + '</span>' +
+      '<span class="b2"><s>$' + full + '</s>$' + (full - saving) + (allOn ? ' added' : '') + '</span></span></div>';
   }
   // Build the add-on step from scratch each time it's shown, so it always matches
   // the service and condition they just picked. Anything that no longer applies is
@@ -2157,20 +2185,23 @@ header li a[href="#booking"],
   function renderAddons(){
     var wrap = $('qqAddons'); if (!wrap) return;
     var list = applicableAddons();
-    var included = protectionSelected();
 
     pruneAddons();
 
-    // Exactly one Recommended flag. When a car is overdue both the polish and the
-    // shampoo qualify; flagging both reads as a sweep, so recRank picks the one that
-    // does most for the car and the other stands on its own copy.
+    // Exactly one Recommended flag, and only ever on something they can actually
+    // buy. When a car is overdue both the polish and the shampoo qualify; flagging
+    // both reads as a sweep, so recRank picks the one that does most for the car
+    // and the other stands on its own copy.
     var top = null;
-    if (!included){
-      list.forEach(function(a){ if (a.rec() && (!top || a.recRank < top.recRank)) top = a; });
-    }
+    purchasableAddons().forEach(function(a){
+      if (a.rec() && (!top || a.recRank < top.recRank)) top = a;
+    });
 
     var html = '';
     list.forEach(function(a){
+      // Included is per-extra now, not per-step: the tier covers the three surface
+      // treatments, so carpet shampoo stays on sale next to them.
+      var included = protectionSelected() && !!a.protects;
       var isRec = (a === top), on = S.addons[a.name] !== undefined;
       // The flagged chip states why it's flagged for THIS car; the rest state what
       // they do to any car. That reason used to live in a paragraph under the grid,
@@ -2185,7 +2216,7 @@ header li a[href="#booking"],
               '<span class="ctext">' +
                 '<span class="crow"><span class="ct">' + a.name + '</span>' +
                 '<span class="cp">' + (included ? 'Included' : '+$' + a.price) + '</span></span>' +
-                '<span class="cb">' + line + ' \u00b7 ' + a.mins + ' min</span>' +
+                '<span class="cb">' + line + ' (' + a.mins + ' min)</span>' +
               '</span></div>';
     });
     wrap.innerHTML = html;
@@ -2194,10 +2225,11 @@ header li a[href="#booking"],
     var hint = $('qqAddonHint');
     if (hint){
       var svc = Object.keys(S.services)[0] || 'your detail';
-      hint.textContent = included
+      var buyable = purchasableAddons().length;
+      hint.textContent = protectionSelected()
         ? 'Your protection extras are already in the price.'
-        : (list.length ? 'All optional \u2014 skip if you\u2019re set.'
-                       : 'Nothing to add \u2014 straight to your price.');
+        : (buyable ? 'All optional, skip if you\u2019re set.'
+                   : 'Nothing to add, straight to your price.');
     }
     // Kept in the DOM but permanently empty: the reason now rides on the chip it
     // belongs to. Left in place so nothing downstream trips over a missing node.
@@ -2207,15 +2239,15 @@ header li a[href="#booking"],
   function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
 
   function calcQuote(){
-    var total = 0, items = [];
-    var sk = Object.keys(S.services); for (var i=0;i<sk.length;i++){ total += PRICE[sk[i]]; items.push(sk[i]); }
-    var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j]); }
-    if (S.vehicle) total += S.vehicle.value;
-    if (S.condition) total += S.condition.value;
-    // Goes into items as well as the total so the saving shows up in the email and
-    // the SMS payload — Mikey needs to see why the number is $30 under the parts.
+    var items = [];
+    Object.keys(S.services).forEach(function(n){ items.push(n); });
+    var extras = effectiveExtras();
+    extras.forEach(function(a){ items.push(a.name); });
+    var total = liveTotal();
+    // The saving reaches the email and the SMS payload through items. Mikey needs to
+    // see why the number is under the sum of the parts.
     var discount = bundleDiscount();
-    if (discount){ total -= discount; items.push('Bundle saving -$' + discount); }
+    if (discount) items.push('Bundle saving -$' + discount);
     S.notes = collectNotes();
     S.total = total; S.items = items;
 
@@ -2232,24 +2264,21 @@ header li a[href="#booking"],
     var html = '<div class="bd-head">What\'s included</div>';
     var sk2=Object.keys(S.services);
     for(var k=0;k<sk2.length;k++){
-      // The size/condition adjustment rides on the first service line.
-      var linePrice = PRICE[sk2[k]] + (k===0 ? svcAdjust : 0);
+      // The size/condition adjustment rides on the first service line. The tier bills
+      // at the Full Detail rate here because its three extras are itemised below it,
+      // which is the only way the rows add up to the number on screen.
+      var base = (sk2[k] === PROTECTION) ? PRICE['Full Detail'] : PRICE[sk2[k]];
+      var linePrice = base + (k===0 ? svcAdjust : 0);
       html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + sk2[k] +
-              (k===0 && context.length ? '<span class="inc-ctxline">'+escapeHtml(context.join(' · '))+'</span>' : '') +
+              (k===0 && context.length ? '<span class="inc-ctxline">'+escapeHtml(context.join(', '))+'</span>' : '') +
               '</span><span class="inc-price">$'+linePrice+'</span></div>';
     }
-    // The Protection tier's extras are itemised under the service line rather than
-    // left implicit. People are paying $50 over Full Detail; show them the four
-    // things that $50 bought, or the tier reads as an unexplained upcharge.
-    if (protectionSelected()){
-      PROTECTION_INCLUDES.forEach(function(a){
-        html += '<div class="inc-row inc-sub"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + a.name + '</span><span class="inc-price">Included</span></div>';
-      });
-    }
-    var ak2=Object.keys(S.addons);
-    for(var m=0;m<ak2.length;m++){
-      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] + '</span><span class="inc-price">+$'+S.addons[ak2[m]]+'</span></div>';
-    }
+    // Every extra on the car, itemised once at its own price, whether the tier
+    // brought it or they ticked it. A tier customer sees the three things their
+    // upgrade bought instead of an unexplained upcharge.
+    extras.forEach(function(a){
+      html += '<div class="inc-row inc-sub"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + a.name + '</span><span class="inc-price">+$'+a.price+'</span></div>';
+    });
     if (discount){
       html += '<div class="inc-row inc-save"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">Bundle saving</span><span class="inc-price">&minus;$'+discount+'</span></div>';
     }
@@ -2327,7 +2356,7 @@ header li a[href="#booking"],
       renderBundle(); refreshTicker();
     }
     else if (role === 'bundle'){
-      var bl = applicableAddons();
+      var bl = purchasableAddons();
       var wasAll = bl.every(function(a){ return S.addons[a.name] !== undefined; });
       bl.forEach(function(a){ if (wasAll) delete S.addons[a.name]; else S.addons[a.name] = a.price; });
       syncChips(); renderBundle(); refreshTicker();
@@ -2350,6 +2379,8 @@ header li a[href="#booking"],
     // leave the tier advertising a saving it no longer delivers.
     var tsave = $('qqTierSave');
     if (tsave) tsave.textContent = PROTECTION_SAVING > 0 ? ('Save $' + PROTECTION_SAVING + ' vs. adding later') : '';
+    var tamt = $('qqTierAmt');
+    if (tamt) tamt.textContent = '$' + PRICE[PROTECTION];
     card.addEventListener('click', handle, false);
     card.addEventListener('keydown', function(e){
       if (e.key==='Enter' || e.key===' ' || e.key==='Spacebar'){
@@ -2464,7 +2495,7 @@ header li a[href="#booking"],
       var svc = Object.keys(S.services)[0] || 'Your detail';
       var extras = Object.keys(S.addons);
       var line = [svc].concat(extras).join(' + ');
-      if (S.vehicle && S.vehicle.label) line += ' · ' + S.vehicle.label;
+      if (S.vehicle && S.vehicle.label) line += ', ' + S.vehicle.label;
       box.innerHTML = '<span class="sq-amt">$' + S.total + '</span><span class="sq-svc">' + escapeHtml(line) + '</span>';
     }
     var ph = $('qqSuccessPhone');

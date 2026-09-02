@@ -270,8 +270,11 @@ to confirm the $349 number and what's in it** before anything gets built.
 
 Built and verified against a real browser (28 assertions, 320–1280px). What changed:
 
-**Step 2 — third tier.** *Full Detail + Protection, $349*, carrying the four extras
-($80 à la carte). $299 keeps the Most Popular flag and becomes the middle choice.
+**Step 2 — third tier.** *Full Detail + Protection, $339*, carrying the three surface
+treatments (polish, ceramic wax, RainX). $299 keeps the Most Popular flag and becomes the
+middle choice. Carpet shampoo is deliberately **not** in the tier: it is a cleaning extra,
+and a package called Protection that shampoos the carpets does not hold together. It stays
+purchasable on its own, and a tier customer can still add it.
 
 **Step 4 — chips carry outcomes.** Each chip is now name + price on one row, with what
 it does to the car and how long it adds beneath. The flagged chip states why it's flagged
@@ -282,12 +285,19 @@ Recommended flag — `recRank` decides which extra earns it.
 **Step 4 — one-tap bundle.** *"Add all four — save $30."* $10 off per extra past the
 first, so it scales: three applicable extras save $20, two save $10, one shows no bundle.
 
-**The invariant that mattered most.** The tier and the bundle are two routes to one
-basket, so they must never produce two prices. `bundleDiscount()` is *derived from what's
-ticked*, never stored — ticking all four by hand costs exactly what tapping the bundle
-costs ($349 base, $399 on an SUV in Needs Work condition either way), and the Protection
-tier suppresses the discount because its price already contains it. Both routes are
-asserted equal in the test.
+**One pricing rule, so no two routes can disagree.** Every extra past the first is $10
+off, and that single constant prices the bundle row, the tier, and any hand-picked
+combination. The tier is a *preset*, not a separate product: its $339 is the rule applied
+to its three extras, not a number typed into the markup. So hand-picking polish, wax and
+RainX costs exactly $339; a tier customer who adds carpet shampoo pays exactly what four
+extras cost anybody ($349); and on an SUV in Needs Work condition both routes land on $389
+with identical breakdown rows. All of that is asserted in the test.
+
+**One consequence worth your call:** with the step at $10 and RainX at $10, RainX is
+effectively free whenever it isn't the first extra. Nothing ever prices negative (nothing
+costs under $10), and it makes the bundle very easy to say yes to, but you're giving away
+a $10 item to grow the basket. Say the word and I'll change the step or exclude RainX from
+the count.
 
 ### Two bugs found while building
 
