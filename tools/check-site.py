@@ -80,22 +80,71 @@ if len(person_fingerprints) != 1:
     fails.append(f"#mikey node differs across pages — {len(person_fingerprints)} variants")
 
 # --- internal link integrity ------------------------------------------------
-hrefs = set()
+# Note the fragment handling below. This check used to read hrefs with
+# `href="(/[^"#?]*)"`, which skips every link that carries a "#" — so /#contact,
+# /#faq and /#services all passed the gate for months while /#contact pointed at
+# an id the homepage has never had. Fragments are now resolved against the real
+# ids of the page they land on.
+
+def page_url(p):
+    """The site path a page file answers on.
+
+    index.html -> /  ·  everett/index.html -> /everett/
+    lake-stevens/interior-detail.html -> /lake-stevens/interior-detail.html
+
+    The non-index pages have to keep their own filename here. Folding them onto
+    the directory URL makes them collide with that directory's index.html, and
+    whichever loaded last silently replaces the other's ids — which reads as a
+    dead anchor on a link that is perfectly fine.
+    """
+    rel = p.relative_to(ROOT)
+    if rel.name != "index.html":
+        return "/" + str(rel)
+    return "/" if str(rel) == "index.html" else "/" + str(rel.parent) + "/"
+
+# id="..." for every page, keyed by the URL that serves it
+page_ids = {}
 for p in pages:
+    page_ids[page_url(p)] = set(re.findall(r'id="([^"]+)"', p.read_text(encoding="utf-8")))
+
+def resolve(path):
+    """Map a site path to the file that serves it, or None."""
+    if path.endswith((".js", ".xml", ".txt", ".html")):
+        return ROOT / path.lstrip("/")
+    if path == "/":
+        return ROOT / "index.html"
+    if path.endswith("/"):
+        return ROOT / path.strip("/") / "index.html"
+    return None
+
+for p in pages:
+    rel = str(p.relative_to(ROOT))
     html = p.read_text(encoding="utf-8")
-    for h in re.findall(r'href="(/[^"#?]*)"', html):
-        hrefs.add(h)
-for h in sorted(hrefs):
-    if h.endswith(".js") or h.endswith(".xml") or h.endswith(".txt"):
-        target = ROOT / h.lstrip("/")
-    elif h.endswith("/"):
-        target = ROOT / h.strip("/") / "index.html" if h != "/" else ROOT / "index.html"
-    elif h.endswith(".html"):
-        target = ROOT / h.lstrip("/")
-    else:
-        continue
-    if not target.exists():
-        fails.append(f"BROKEN internal link: {h} -> {target.relative_to(ROOT)}")
+    here = page_url(p)
+    seen = set()
+    for h in re.findall(r'href="([^"]*)"', html):
+        h = h.replace("https://mikeysdetailing.com", "")
+        # Skip off-site, protocol and script-built hrefs ("#' + a.icon + '").
+        if not h.startswith(("/", "#")) or h.startswith("//"):
+            continue
+        if any(c in h for c in "'\"+{"):
+            continue
+        path, _, frag = h.partition("#")
+        path = path.split("?")[0]
+        if path == "":
+            path = here            # same-page anchor
+        if (path, frag) in seen:
+            continue
+        seen.add((path, frag))
+
+        target = resolve(path)
+        if target is None:
+            continue
+        if not target.exists():
+            fails.append(f"{rel}: BROKEN internal link {h}")
+            continue
+        if frag and frag != "top" and path in page_ids and frag not in page_ids[path]:
+            fails.append(f"{rel}: DEAD ANCHOR {h} — {path} has no id=\"{frag}\"")
 
 # --- sitemap sync -----------------------------------------------------------
 sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
@@ -126,5 +175,5 @@ if warns:
     for w in warns: print("  !", w)
 print("=" * 72)
 print(f"{len(pages)} pages checked · {len(biz_fingerprints)} distinct #business node(s) · "
-      f"{len(hrefs)} internal link targets")
+      f"{sum(len(v) for v in page_ids.values())} anchor ids")
 sys.exit(1 if fails else 0)
