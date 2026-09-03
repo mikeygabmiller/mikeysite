@@ -124,11 +124,21 @@ window.MD_STATS = {
   } catch (e) { /* private mode — the site works, there's just no journey */ }
   window.MD_VID = vid;
 
-  // ---- the day counters, exactly as before ---------------------------------
+  // ---- the day counters, plus the one fact only the landing URL knows ------
+  // A paid Google click and a free Google search click arrive with the exact
+  // same referrer, so for as long as this sent the bare pathname the dashboard
+  // had no way to tell them apart and filed every ad click under "Found you on
+  // Google". The proof is the click id the ad platform staples onto its own
+  // landing URL — gclid, msclkid, fbclid — and that lives in the query string.
+  //
+  // It goes out on `q`, not glued onto `p`: the worker caps `p` at 120 chars,
+  // and a gclid is long enough to push a city page's path past that and get the
+  // id chopped in half. `q` is uncapped and the worker reads either one.
   try {
     if (LIVE) {
       var img = new Image();
       img.src = BASE + '/px?p=' + encodeURIComponent(location.pathname) +
+        (location.search ? '&q=' + encodeURIComponent(location.search) : '') +
         '&r=' + encodeURIComponent(document.referrer) +
         (vid ? '&v=' + encodeURIComponent(vid) : '') + '&t=' + Date.now();
     }
@@ -277,12 +287,73 @@ window.MD_STATS = {
 })();
 
 /* ============================================================
-   TAP-TO-CALL / TEXT CONVERSION TRACKING
-   Fires a GA4 `generate_lead` event whenever anyone taps a
-   tel: or sms: link, on ANY page (home or city landing pages).
-   Lets you see calls/texts as conversions, not just form fills.
+   TAP-TO-CALL / TEXT → GA4, AND EVERY CONVERSION → GOOGLE ADS
+   ------------------------------------------------------------
+   GA4 has always seen the phone taps. Google Ads never has, and
+   that is the expensive half. A Search campaign with no conversion
+   signal cannot bid toward anything except the click itself, so it
+   buys the cheapest click rather than the one that books a job —
+   and the "Conversions" column reads 0 forever, which looks like
+   the ads failing when it only means nothing was counted.
+
+   Two conversions get sent from here:
+     - a tapped call or text, on every page that loads this file
+     - a submitted quote, with its dollar total, on the pages that
+       carry the calculator
+
+   PASTE THE THREE VALUES BELOW AND IT STARTS WORKING. Leave them
+   blank and this block does nothing whatsoever — no config call,
+   no events, not one extra request — so the site is never worse
+   off for the code sitting here unset.
+
+   Where the values come from: Google Ads → Goals → Conversions →
+   the conversion action → "Tag setup" → "Use Google Tag Manager".
+   Google prints a Conversion ID (AW-…) and a Conversion label.
+   ADS_LEAD and ADS_QUOTE are those two joined with a slash, which
+   is the exact form the send_to field wants.
+
+   Count setting matters as much as the tag: in the Ads UI a lead
+   conversion should be set to count "One" per click. On "Every",
+   one indecisive person submitting three quotes reads to the bidder
+   as three booked jobs and it will go chase more of him.
+
+   Nothing here fires anywhere but the live domain. A conversion
+   logged from a local copy or a preview is a real number in a real
+   bidding algorithm, and it never washes back out.
    ============================================================ */
 (function () {
+  var ADS_ID    = '';   // 'AW-XXXXXXXXX'                — Conversion ID
+  var ADS_LEAD  = '';   // 'AW-XXXXXXXXX/AbC-D_efGhIjKl' — tapped call or text
+  var ADS_QUOTE = '';   // 'AW-XXXXXXXXX/MnO-P_qrStUvWx' — quote submitted
+
+  var LIVE = /(^|\.)mikeysdetailing\.com$/i.test(location.hostname);
+
+  // Captured before the wrapper further down is installed, so a conversion this
+  // file sends never travels back through the wrapper that sent it.
+  var baseGtag = typeof window.gtag === 'function' ? window.gtag : null;
+  function rawGtag() {
+    return baseGtag || (typeof window.gtag === 'function' ? window.gtag : null);
+  }
+
+  // The Ads destination rides the gtag.js the GA4 snippet already loaded — one
+  // tag file, two destinations, no second script to download.
+  try {
+    if (ADS_ID && LIVE && rawGtag()) rawGtag()('config', ADS_ID);
+  } catch (e) { /* ignore */ }
+
+  // send_to is the whole trick: it routes the event to the Ads account instead
+  // of leaving it as one more GA4 event nobody bids on.
+  function adsConvert(sendTo, value) {
+    if (!sendTo || !LIVE) return;
+    var g = rawGtag();
+    if (!g) return;
+    var params = { send_to: sendTo };
+    if (value > 0) { params.value = value; params.currency = 'USD'; }
+    try { g('event', 'conversion', params); } catch (e) { /* ignore */ }
+  }
+
+  // ---- tapped call or text -------------------------------------------------
+  // The GA4 and Clarity events are unchanged; the Ads conversion is new.
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"]');
     if (!a) return;
@@ -294,9 +365,35 @@ window.MD_STATS = {
           page_path: location.pathname
         });
       }
-    } catch (e) { /* ignore */ }
+    } catch (err) { /* ignore */ }
     try {
       if (typeof clarity === 'function') { clarity('event', 'lead_' + method); }
-    } catch (e) { /* ignore */ }
+    } catch (err) { /* ignore */ }
+    adsConvert(ADS_LEAD, 0);
   }, true);
+
+  // ---- a submitted quote ---------------------------------------------------
+  // The calculator already fires `qqc_submission` carrying the dollar total.
+  // Rather than edit the pages that have a form today — and remember to edit
+  // the next one that grows one — this listens to gtag itself and mirrors the
+  // single event that means money. Same bargain as the section and button
+  // tracking above: instrument once here, cover every page without touching it.
+  //
+  // GA4 is called first and its return value handed straight back, so the
+  // existing reporting behaves exactly as it did before this wrapper existed.
+  if (ADS_QUOTE) {
+    var prev = window.gtag;
+    if (typeof prev === 'function') {
+      window.gtag = function () {
+        var out = prev.apply(this, arguments);
+        try {
+          if (arguments[0] === 'event' && arguments[1] === 'qqc_submission') {
+            var d = arguments[2] || {};
+            adsConvert(ADS_QUOTE, Number(d.value) || 0);
+          }
+        } catch (e) { /* a mirrored conversion never breaks the real one */ }
+        return out;
+      };
+    }
+  }
 })();
