@@ -322,8 +322,8 @@ window.MD_STATS = {
    bidding algorithm, and it never washes back out.
    ============================================================ */
 (function () {
-  var ADS_ID    = '';   // 'AW-XXXXXXXXX'                — Conversion ID
-  var ADS_LEAD  = '';   // 'AW-XXXXXXXXX/AbC-D_efGhIjKl' — tapped call or text
+  var ADS_ID    = 'AW-16856115492';                          // Conversion ID
+  var ADS_LEAD  = 'AW-16856115492/pCPGCP69oO0cEKTSz-U-';     // tapped call or text
   var ADS_QUOTE = '';   // 'AW-XXXXXXXXX/MnO-P_qrStUvWx' — quote submitted
 
   var LIVE = /(^|\.)mikeysdetailing\.com$/i.test(location.hostname);
