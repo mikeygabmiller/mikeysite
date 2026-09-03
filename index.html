@@ -75,6 +75,58 @@
   gtag('config', 'G-G9WMXW2MF5');
 </script>
 
+<script>
+/* Legacy anchor aliases.
+   For a long time the topic pages linked to /#contact, /#faq and /#services —
+   names this page never had (#contact never existed at all, so those clicks just
+   landed at the top of the hero with the calculator four screens away). Those
+   links are fixed at the source now, but the same fragments are also sitting in
+   Google Business posts, old backlinks and anyone's bookmarks, and none of that
+   can be edited. Map the old names onto the real sections so an inbound visitor
+   still arrives where the link promised.
+
+   Anything not in the map is left completely alone, so this can never hijack a
+   fragment the page actually owns. */
+(function(){
+  var ALIAS = { contact:'booking', book:'booking', quote:'booking',
+                faq:'qanda', services:'allservices' };
+
+  function target(){
+    var f = (location.hash || '').slice(1);
+    return ALIAS.hasOwnProperty(f) ? ALIAS[f] : null;
+  }
+
+  function jump(id){
+    var t = document.getElementById(id);
+    if (t && t.scrollIntoView) t.scrollIntoView();
+  }
+
+  // On first load this script runs in <head>, so the section it needs does not
+  // exist yet. Correct the URL now — replaceState keeps the dead fragment out of
+  // the back button — but do the actual scroll once the document has parsed.
+  // Don't leave it to the browser's own fragment jump: whether that re-fires
+  // after a replaceState is not something every engine agrees on.
+  var first = target();
+  if (first){
+    if (history.replaceState) history.replaceState(null, '', '#' + first);
+    if (document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', function(){ jump(first); }, {once:true});
+    } else {
+      jump(first);
+    }
+  }
+
+  // Later clicks on a stale in-page link (a cached page, a shared URL) come
+  // through here instead; by then the DOM is up and the scroll is immediate.
+  window.addEventListener('hashchange', function(){
+    var id = target();
+    if (!id) return;
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    jump(id);
+  }, false);
+})();
+</script>
+
 <style>
 /* =========================================================
    ANIMATION BUDGET
@@ -1657,7 +1709,7 @@ header li a[href="#booking"],
   <div class="step" id="step2">
     <h3 class="q-title">Choose your detail</h3>
     <p class="q-hint">Grab the full package, or build your own.</p>
-    <div id="services">
+    <div id="qqServices">
       <div class="hero" id="qqHeroFull" data-role="service" data-name="Full Detail" data-value="299" tabindex="0" role="button" aria-pressed="false">
         <span class="ribbon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.4 1.4 6.4L12 17.8 5.9 20l1.5-6.4L2.5 9.2l6.6-.7z"/></svg> Most Popular</span>
         <div class="hero-main">
@@ -1957,7 +2009,7 @@ header li a[href="#booking"],
     for (var i=0;i<els.length;i++){ els[i].classList.remove('sel'); els[i].setAttribute('aria-pressed','false'); }
   }
   function unselectService(name){
-    var node = document.querySelector('#services [data-name="'+name+'"]');
+    var node = document.querySelector('#qqServices [data-name="'+name+'"]');
     if (node){ node.classList.remove('sel'); node.setAttribute('aria-pressed','false'); }
     delete S.services[name];
   }
@@ -2263,7 +2315,7 @@ header li a[href="#booking"],
       // reset + select the service
       deselect('services', '.hero'); deselect('services', '.svc-card');
       S.services = {}; S.services[name] = PRICE[name];
-      var svcNode = document.querySelector('#services [data-name="' + name + '"]');
+      var svcNode = document.querySelector('#qqServices [data-name="' + name + '"]');
       if (svcNode){ svcNode.classList.add('sel'); svcNode.setAttribute('aria-pressed', 'true'); }
 
       // vehicle (optional)
@@ -3778,31 +3830,31 @@ header li a[href="#booking"],
   </div>
   <div class="hp-gallery-strip" style="position:relative;">
     <div class="hp-gallery-track">
-      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy">
-      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
+      <img class="hp-gimg" src="/images/vehicle-after-mobile-detailing-snohomish-county.webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/glossy-paint-after-clay-bar-and-wax.webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy">
+      <img class="hp-gimg" src="/images/clean-wheels-after-detailing.webp" alt="Clean wheels after detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/car-dashboard-and-console-after-deep-clean.webp" alt="Car interior dashboard and console after deep clean" loading="lazy">
+      <img class="hp-gimg" src="/images/car-after-full-detail-service.webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/car-exterior-after-hand-wash-and-wax.webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy">
+      <img class="hp-gimg" src="/images/clean-upholstery-after-shampoo-and-steam.webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy">
+      <img class="hp-gimg" src="/images/exterior-and-trim-restored.webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy">
+      <img class="hp-gimg" src="/images/mobile-detailing-result-snohomish-county.webp" alt="Mobile detailing result in Snohomish County" loading="lazy">
+      <img class="hp-gimg" src="/images/showroom-finish-in-your-driveway.webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/glossy-exterior-after-full-detail.jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy">
+      <img class="hp-gimg" src="/images/clean-interior-after-steam-clean.jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy">
       <!-- duplicate set for seamless loop -->
-      <img class="hp-gimg" src="/images/unnamed (3).webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (4).webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (5).webp" alt="Clean wheels after detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (6).webp" alt="Car interior dashboard and console after deep clean" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (7).webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (8).webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (9).webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (10).webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (11).webp" alt="Mobile detailing result in Snohomish County" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (12).webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (2).jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy" aria-hidden="true">
-      <img class="hp-gimg" src="/images/unnamed (3).jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/vehicle-after-mobile-detailing-snohomish-county.webp" alt="Vehicle after mobile detailing in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/glossy-paint-after-clay-bar-and-wax.webp" alt="Glossy car paint after clay bar and wax treatment" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/clean-wheels-after-detailing.webp" alt="Clean wheels after detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/car-dashboard-and-console-after-deep-clean.webp" alt="Car interior dashboard and console after deep clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/car-after-full-detail-service.webp" alt="Car after full detail service by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/car-exterior-after-hand-wash-and-wax.webp" alt="Car exterior after hand wash and wax by Mikey's" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/clean-upholstery-after-shampoo-and-steam.webp" alt="Clean car upholstery after shampoo and steam clean" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/exterior-and-trim-restored.webp" alt="Car exterior and trim restored by Mikey's Mobile Detailing" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/mobile-detailing-result-snohomish-county.webp" alt="Mobile detailing result in Snohomish County" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/showroom-finish-in-your-driveway.webp" alt="Showroom finish in your driveway — Mikey's full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/glossy-exterior-after-full-detail.jpg" alt="Detailed car exterior with glossy finish after full detail" loading="lazy" aria-hidden="true">
+      <img class="hp-gimg" src="/images/clean-interior-after-steam-clean.jpg" alt="Clean car interior after deep vacuum and steam clean" loading="lazy" aria-hidden="true">
     </div>
   </div>
 </section>
@@ -4543,7 +4595,7 @@ header li a[href="#booking"],
 
 
   <!-- ===================== GUARANTEE ===================== -->
-  <section class="grt4" aria-labelledby="grt4-title">
+  <section id="guarantee" class="grt4" aria-labelledby="grt4-title">
     <div class="grt4-cert">
       <div class="grt4-inner">
         <div class="grt4-seal" aria-hidden="true">

@@ -35,42 +35,414 @@
 
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org",
-  "@type":"VideoGame",
-  "name":"The Polish Test",
-  "alternateName":"Can you see what a detailer sees?",
-  "url":"https://mikeysdetailing.com/polish-test/",
-  "description":"A free browser test of visual inspection skill. A car that looks flawless under ordinary light is hiding swirl marks, holograms, water spot etching, clear coat failure and deeper defects. Using a handheld inspection light, find them, then judge which can be polished out and which need a repaint.",
-  "genre":["Puzzle","Educational","Casual"],
-  "gamePlatform":"Web browser",
-  "applicationCategory":"Game",
-  "operatingSystem":"Any",
-  "playMode":"SinglePlayer",
-  "author":{"@type":"Person","name":"Mikey Miller"},
-  "publisher":{
-    "@type":"LocalBusiness",
-    "name":"Mikey's Mobile Detailing",
-    "telephone":"+1-425-600-7897",
-    "areaServed":"Snohomish County, WA",
-    "url":"https://mikeysdetailing.com/"
-  },
-  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-  "isAccessibleForFree":true
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"FAQPage",
-  "mainEntity":[
-    {"@type":"Question","name":"Why can't you see swirl marks in normal light?","acceptedAnswer":{"@type":"Answer","text":"A swirl mark is a scratch a few microns deep. It is only visible when light hits its walls at the angle that bounces back into your eye, which is why swirls appear as a halo around the reflection of a light source and vanish everywhere else. Under diffuse indoor light nothing bounces back and the paint looks perfect. Detailers hold an inspection light at roughly 5 to 15 degrees to the panel for exactly this reason."}},
-    {"@type":"Question","name":"What is the difference between swirl marks and holograms?","acceptedAnswer":{"@type":"Answer","text":"Swirl marks are fine circular scratches, usually from washing and drying, and they scatter light in every direction so they look like a hazy halo. Holograms are wavy directional bands left by a rotary polisher used badly. Because they run in one direction they only show when the light rakes across them, so you can sweep a light straight down a hologrammed panel and see nothing at all."}},
-    {"@type":"Question","name":"Which paint defects can be polished out?","acceptedAnswer":{"@type":"Answer","text":"Anything sitting inside the clear coat can usually be polished out: swirl marks, holograms, light water spot etching and light oxidation. Anything that has gone through the clear coat cannot: deep scratches you can catch a fingernail in, severe bird or bug etching, and clear coat failure, which needs a repaint. Orange peel is factory texture in the paint itself, and on most cars it is left alone rather than sanded out."}},
-    {"@type":"Question","name":"How many defects do most people find?","acceptedAnswer":{"@type":"Answer","text":"Fewer than half. The easy ones are the deep scratches, because they catch light from a long way off. The hard ones are holograms, which need you to sweep across them rather than along them, and orange peel, which only distorts the reflection itself and never shows up beside it."}},
-    {"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes. No sign-up, no download, and it works on a phone or a desktop browser."}}
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "AutoDetailing"
+      ],
+      "@id": "https://mikeysdetailing.com/#business",
+      "name": "Mikey's Mobile Detailing",
+      "legalName": "Mikey's Mobile Detailing",
+      "description": "Owner-operated mobile car detailing serving Snohomish County and north King County, Washington. Mikey drives to your home or workplace and details the vehicle in your driveway — there is no shop to visit. Interior, exterior, full detail, paint correction and ceramic coating. You don't pay until you love it.",
+      "slogan": "You don't pay until you love it.",
+      "url": "https://mikeysdetailing.com/",
+      "logo": "https://i.ibb.co/Kxzv8C6d/logo.jpg",
+      "image": "https://iili.io/qKtjLcx.jpg",
+      "telephone": "+1-425-600-7897",
+      "email": "book@mikeysdetailing.com",
+      "priceRange": "$160-$379",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "foundingDate": "2021",
+      "founder": {
+        "@id": "https://mikeysdetailing.com/#mikey"
+      },
+      "employee": {
+        "@id": "https://mikeysdetailing.com/#mikey"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Snohomish",
+        "addressRegion": "WA",
+        "postalCode": "98290",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.9129,
+        "longitude": -122.0982
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Snohomish",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Everett",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Lake Stevens",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Mill Creek",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Monroe",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Bothell",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Duvall",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Marysville",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 47.9129,
+            "longitude": -122.0982
+          },
+          "geoRadius": "40000"
+        }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "40",
+        "bestRating": "5"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Detailing Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Interior Detail",
+              "serviceType": "Interior Car Detailing",
+              "description": "Deep vacuum, steam clean, upholstery shampoo, leather cleaning and conditioning, plastics dressed, interior glass, deodorised."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "200",
+              "maxPrice": "280",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Exterior Detail",
+              "serviceType": "Exterior Car Detailing",
+              "description": "Hand wash, decontamination, clay bar, wheels and tires, exterior glass, wax or sealant applied to the paint."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "160",
+              "maxPrice": "240",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full Detail",
+              "serviceType": "Full Car Detailing",
+              "description": "Interior and exterior combined — the complete service, inside and out."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "299",
+              "maxPrice": "379",
+              "priceCurrency": "USD"
+            }
+          }
+        ]
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Interior Detail",
+            "serviceType": "Interior Car Detailing"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "200",
+            "maxPrice": "280",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Exterior Detail",
+            "serviceType": "Exterior Car Detailing"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "160",
+            "maxPrice": "240",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Full Detail",
+            "serviceType": "Full Car Detailing"
+          },
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "minPrice": "299",
+            "maxPrice": "379",
+            "priceCurrency": "USD"
+          }
+        }
+      ],
+      "sameAs": [
+        "https://g.page/r/CRCuKQ982VIZEBE",
+        "https://blog.mikeysdetailing.com"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mikeysdetailing.com/#mikey",
+      "name": "Mikey Miller",
+      "givenName": "Mikey",
+      "familyName": "Miller",
+      "jobTitle": "Owner & Detailer",
+      "description": "Mikey Miller has been detailing cars since 2021 and runs Mikey's Mobile Detailing single-handed — every car on the books is detailed by him, not by a crew. Over 300 vehicles detailed across Snohomish County at a 5.0-star average.",
+      "image": "https://iili.io/qKtjLcx.jpg",
+      "telephone": "+1-425-600-7897",
+      "email": "book@mikeysdetailing.com",
+      "worksFor": {
+        "@id": "https://mikeysdetailing.com/#business"
+      },
+      "owns": {
+        "@id": "https://mikeysdetailing.com/#business"
+      },
+      "url": "https://mikeysdetailing.com/about/",
+      "knowsAbout": [
+        "Mobile car detailing",
+        "Interior car detailing",
+        "Exterior car detailing",
+        "Paint correction",
+        "Ceramic coating",
+        "Automotive paint protection",
+        "Pet hair removal",
+        "Truck and SUV detailing",
+        "Pacific Northwest vehicle care"
+      ],
+      "knowsLanguage": "en-US",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Snohomish County, WA"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mikeysdetailing.com/#website",
+      "url": "https://mikeysdetailing.com/",
+      "name": "Mikey's Mobile Detailing",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://mikeysdetailing.com/#business"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mikeysdetailing.com/polish-test/#webpage",
+      "url": "https://mikeysdetailing.com/polish-test/",
+      "name": "The Polish Test &mdash; can you see what a detailer sees?",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/#website"
+      },
+      "about": {
+        "@id": "https://mikeysdetailing.com/#business"
+      },
+      "primaryImageOfPage": "https://iili.io/qKtjLcx.jpg",
+      "inLanguage": "en-US",
+      "description": "This car looks flawless. It isn't. Take the inspection light, find the damage hiding in the paint, then decide what can be polished out and what needs a repaint. A free test of your eye, built by a detailer in Snohomish, WA.",
+      "mainEntity": {
+        "@id": "https://mikeysdetailing.com/polish-test/#game"
+      },
+      "breadcrumb": {
+        "@id": "https://mikeysdetailing.com/polish-test/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mikeysdetailing.com/polish-test/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://mikeysdetailing.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Polish Test",
+          "item": "https://mikeysdetailing.com/polish-test/"
+        }
+      ]
+    },
+    {
+      "@type": "VideoGame",
+      "name": "The Polish Test",
+      "alternateName": "Can you see what a detailer sees?",
+      "url": "https://mikeysdetailing.com/polish-test/",
+      "description": "A free browser test of visual inspection skill. A car that looks flawless under ordinary light is hiding swirl marks, holograms, water spot etching, clear coat failure and deeper defects. Using a handheld inspection light, find them, then judge which can be polished out and which need a repaint.",
+      "genre": [
+        "Puzzle",
+        "Educational",
+        "Casual"
+      ],
+      "gamePlatform": "Web browser",
+      "applicationCategory": "Game",
+      "operatingSystem": "Any",
+      "playMode": "SinglePlayer",
+      "author": {
+        "@id": "https://mikeysdetailing.com/#mikey"
+      },
+      "publisher": {
+        "@id": "https://mikeysdetailing.com/#business"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "isAccessibleForFree": true,
+      "@id": "https://mikeysdetailing.com/polish-test/#game",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/polish-test/#webpage"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why can't you see swirl marks in normal light?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A swirl mark is a scratch a few microns deep. It is only visible when light hits its walls at the angle that bounces back into your eye, which is why swirls appear as a halo around the reflection of a light source and vanish everywhere else. Under diffuse indoor light nothing bounces back and the paint looks perfect. Detailers hold an inspection light at roughly 5 to 15 degrees to the panel for exactly this reason."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between swirl marks and holograms?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Swirl marks are fine circular scratches, usually from washing and drying, and they scatter light in every direction so they look like a hazy halo. Holograms are wavy directional bands left by a rotary polisher used badly. Because they run in one direction they only show when the light rakes across them, so you can sweep a light straight down a hologrammed panel and see nothing at all."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which paint defects can be polished out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anything sitting inside the clear coat can usually be polished out: swirl marks, holograms, light water spot etching and light oxidation. Anything that has gone through the clear coat cannot: deep scratches you can catch a fingernail in, severe bird or bug etching, and clear coat failure, which needs a repaint. Orange peel is factory texture in the paint itself, and on most cars it is left alone rather than sanded out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many defects do most people find?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Fewer than half. The easy ones are the deep scratches, because they catch light from a long way off. The hard ones are holograms, which need you to sweep across them rather than along them, and orange peel, which only distorts the reflection itself and never shows up beside it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. No sign-up, no download, and it works on a phone or a desktop browser."
+          }
+        }
+      ],
+      "@id": "https://mikeysdetailing.com/polish-test/#faq",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/polish-test/#webpage"
+      },
+      "about": {
+        "@id": "https://mikeysdetailing.com/#business"
+      }
+    }
   ]
 }
 </script>
+
 
 <style>
 :root{
@@ -286,7 +658,7 @@ body.touch #coach{bottom:76px;}
       <a href="/">Home</a>
       <a href="/services/">Services</a>
       <a href="/reviews/">Reviews</a>
-      <a href="/#contact">Book</a>
+      <a href="/#booking">Book</a>
     </nav>
   </div>
 </header>
@@ -413,7 +785,7 @@ body.touch #coach{bottom:76px;}
     <div class="container">
       <h2>Want to know what's actually on your paint?</h2>
       <p>Mobile detailing and paint correction across Snohomish County &mdash; Snohomish, Monroe, Lake Stevens, Everett, Marysville, Mill Creek, Bothell and Duvall. I'll put a real light on it and tell you straight what polishes out and what doesn't.</p>
-      <a href="/#contact" class="btn">Book an inspection</a>
+      <a href="/#booking" class="btn">Book an inspection</a>
     </div>
   </div>
 </main>
