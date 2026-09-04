@@ -1539,10 +1539,11 @@ header li a[href="#booking"],
 #qqcCard .field input.err { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(var(--accent-rgb), .16); }
 #qqcCard .field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
 #qqcCard .field.bad .msg { display: block; }
-/* Required-field highlight: only Name + Phone need filling, so make that obvious */
-#qqcCard #qqfName input, #qqcCard #qqfPhone input { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); }
-#qqcCard #qqfName input:focus, #qqcCard #qqfPhone input:focus { background: var(--surface-2); }
-#qqcCard #qqfName::after, #qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
+/* Required-field highlight: the phone number is the only thing left to fill in,
+   so it carries the whole highlight on its own. */
+#qqcCard #qqfPhone input { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); }
+#qqcCard #qqfPhone input:focus { background: var(--surface-2); }
+#qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
 #qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
 /* Masthead collapse: from step 2 on, the brand/title/subhead/star row stop
    earning their ~200px and start pushing each step's button off the screen. */
@@ -1631,7 +1632,26 @@ header li a[href="#booking"],
   <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
 
   <!-- STEP 1: VEHICLE -->
+  <style>
+    /* Coming back and starting over is the same as not coming back. Two people
+       last week lost a half-built quote to a page reload and neither rebuilt it;
+       three more came back days later and never reopened the calculator at all.
+       So the form remembers, and says so — one line, above the first question,
+       only when there is genuinely something to pick back up. */
+    #qqcCard .qq-resume { display: none; align-items: center; gap: 10px; flex-wrap: wrap; margin: 0 0 15px; padding: 11px 13px; border: 1.5px solid var(--accent); border-radius: 14px; background: rgba(var(--accent-rgb), .07); }
+    #qqcCard .qq-resume.show { display: flex; }
+    #qqcCard .qq-resume-txt { flex: 1 1 150px; min-width: 0; font-size: 13px; font-weight: 600; line-height: 1.4; }
+    #qqcCard .qq-resume-txt span { display: block; font-size: 11.5px; font-weight: 400; color: var(--text-3); margin-top: 2px; }
+    #qqcCard .qq-resume-go { flex: none; padding: 9px 15px; border: none; border-radius: 999px; background: var(--accent); color: #fff; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    #qqcCard .qq-resume-x { flex: none; padding: 9px 4px; border: none; background: none; color: var(--text-3); font-family: inherit; font-size: 12.5px; font-weight: 600; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+    #qqcCard .qq-resume-x:hover { color: var(--text); }
+  </style>
   <div class="step show" id="step1">
+    <div class="qq-resume" id="qqResume">
+      <div class="qq-resume-txt">Pick up where you left off<span id="qqResumeSub"></span></div>
+      <button type="button" class="qq-resume-go" id="qqResumeGo">Continue</button>
+      <button type="button" class="qq-resume-x" id="qqResumeX">Start over</button>
+    </div>
     <h3 class="q-title">What are we detailing?</h3>
     <p class="q-hint">Pick your vehicle size.</p>
     <div class="grid">
@@ -1694,24 +1714,36 @@ header li a[href="#booking"],
     </div>
   </div>
 
-  <!-- STEP 3: CONDITION + NOTES -->
+  <!-- STEP 3: CONDITION + NOTES
+       The one screen where people visibly stall. In three days of journeys this
+       step ate 55, 82 and 87 second pauses before Continue, and two people
+       toggled their answer back and forth (Needs Work ↔ Pretty Clean, War Zone ↔
+       Needs Work) before moving on. Nobody knows how to grade their own car
+       against three words — but everybody can point at the picture that looks
+       like theirs. Real before/after shots from the gallery, so the scale is his
+       actual work and not stock photography. -->
+  <style>
+    #step3 .choice { padding: 9px 7px 12px; }
+    #step3 .choice .cond-shot { display: block; margin: 0 0 9px; border-radius: 11px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--surface-3, #1c1c20); }
+    #step3 .choice .cond-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  </style>
   <div class="step" id="step3">
     <h3 class="q-title">What condition is it in?</h3>
-    <p class="q-hint">Overall, inside &amp; out. Just helps me prep the right way.</p>
+    <p class="q-hint">Closest match is fine &mdash; I confirm it when I see the car. Just helps me prep the right way.</p>
     <div class="grid">
       <div class="choice" data-role="condition" data-value="0" data-label="Pretty Clean" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg class="ic"><use href="#sv-clean"/></svg></span>
+        <span class="cond-shot"><img src="/images/ba_1.jpg" alt="A well-kept back seat, tidy and lightly used" width="900" height="1282" loading="lazy" decoding="async"></span>
         <span class="nm">Pretty Clean</span><span class="ds">Well kept</span>
       </div>
       <div class="choice" data-role="condition" data-value="30" data-label="Needs Work" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg class="ic"><use href="#sv-work"/></svg></span>
+        <span class="cond-shot"><img src="/images/ba_4.jpg" alt="A cluttered cargo area with crumbs and loose items" width="900" height="703" loading="lazy" decoding="async"></span>
         <span class="nm">Needs Work</span><span class="ds">Overdue</span>
       </div>
       <div class="choice" data-role="condition" data-value="60" data-label="War Zone" tabindex="0" role="button" aria-pressed="false">
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-        <span class="ic-tile"><svg class="ic"><use href="#sv-rough"/></svg></span>
+        <span class="cond-shot"><img src="/images/ba_2.jpg" alt="Back seats with food ground into the leather and debris on the floor" width="900" height="1282" loading="lazy" decoding="async"></span>
         <span class="nm">War Zone</span><span class="ds">Really rough</span>
       </div>
     </div>
@@ -1782,8 +1814,14 @@ header li a[href="#booking"],
   <!-- STEP 5: QUOTE + CAPTURE
        Online booking is deliberately gone: the whole job of this slide is to show
        the number and take a phone number. Everything that isn't the price, the
-       breakdown, the two fields, or the button was pulled out, so the amount and
-       the button land on one screen together — that's where the motivation is. -->
+       breakdown, the proof, or the button was pulled out, so the amount and the
+       button land on one screen together — that's where the motivation is.
+
+       This is also the ONLY place the funnel leaks. Three days of journeys: 9
+       people opened the calculator, 7 reached a price, 2 left a number. Steps 1
+       through 4 lose almost nobody. Two things came out of reading the ones who
+       walked — both of them are on this screen now, and neither is a redesign.
+       See .qq-proof, and the name field that used to sit above the phone. -->
   <style>
     #qqcCard .qq-send{margin-top:6px;text-align:left;min-width:0;}
     /* Consent lives in the button, not a checkbox. Tapping it IS the opt-in, so the
@@ -1797,17 +1835,34 @@ header li a[href="#booking"],
     #qqcCard .qq-reassure svg{width:13px;height:13px;color:var(--success);}
     #qqcCard .qq-edit{display:block;width:100%;margin-top:14px;background:none;border:none;color:var(--text-3);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-edit:hover{color:var(--text);}
+    /* The proof, on the screen where the decision is actually made. Both people
+       who converted last week saw the price, went and read reviews and the
+       gallery further down the page for four minutes, then came back up and
+       pushed the button. Four of the five who didn't convert were gone within
+       fifteen seconds of the number appearing, with nothing between the price
+       and the exit. The proof was always on the page — it just wasn't here. */
+    #qqcCard .qq-proof{margin:14px 0 2px;padding:12px 14px;border:1px solid var(--border);border-radius:14px;background:var(--surface-2);}
+    #qqcCard .qq-proof-head{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;font-size:12.5px;color:var(--text-2);margin:8px 2px 14px;}
+    #qqcCard .qq-proof-stars{color:var(--gold);letter-spacing:1.5px;font-size:12.5px;}
+    #qqcCard .qq-proof q{display:block;font-size:12.5px;line-height:1.5;color:var(--text-2);quotes:'\201C' '\201D';}
+    #qqcCard .qq-proof cite{display:block;font-size:11px;font-style:normal;font-weight:700;color:var(--text-3);margin:2px 0 9px;}
+    #qqcCard .qq-proof cite:last-child{margin-bottom:0;}
   </style>
   <div class="step" id="step5">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
     <div class="amount" id="qqAmount">$0</div>
     <p class="amount-sub">No hidden fees. Pay when the job's done.</p>
     <div class="breakdown" id="qqBreakdown"></div>
+    <div class="qq-proof-head">
+      <span class="qq-proof-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <span><strong data-md-rating>5.0</strong> from <span data-md-reviews="{n}">41</span> Google reviews &middot; <span data-md-cars>300</span>+ cars detailed</span>
+    </div>
     <form class="form" id="qqForm" novalidate>
-      <div class="field" id="qqfName">
-        <input type="text" id="qqName" placeholder="Your name" autocomplete="name" aria-required="true" />
-        <span class="msg">Please enter your name.</span>
-      </div>
+      <!-- One field, not two. Three of every four people who reach this screen
+           leave without finishing it, and the name is the half of the ask he
+           gets for free in the first text back — so it is not worth a second
+           box between a decided customer and the button. The worker takes a
+           nameless lead and the first auto-text asks for the name by name. -->
       <div class="field" id="qqfPhone">
         <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
         <span class="msg">Enter a valid phone number so I can text you.</span>
@@ -1824,6 +1879,20 @@ header li a[href="#booking"],
       </div>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
+    <!-- Under the button on purpose, not above it. The price and the button have
+         to land on one screen together — that constraint is why online booking
+         came off this slide in the first place, and 220px of reviews above the
+         phone field put the button under the fold on a small phone, which trades
+         one leak for a worse one. So: the number-proof rides in the one line
+         above, and the words sit directly under the thumb. The people who
+         converted last week read reviews AFTER seeing the price and then came
+         back up to the button — this is that same path, forty pixels long
+         instead of a whole page. -->
+    <div class="qq-proof">
+      <q>Great work, fair price, on time every time.</q><cite>Pat Job</cite>
+      <q>Mikey has done my car 4 times now and each time was amazing, quick, thorough.</q><cite>C Wilson</cite>
+      <q>My car hasn&rsquo;t felt this clean since I got it!</q><cite>Kailey Blight</cite>
+    </div>
     <button type="button" class="qq-edit" data-role="go" data-step="4">&lsaquo; Edit my details</button>
   </div>
 
@@ -1885,6 +1954,36 @@ header li a[href="#booking"],
       rec:function(){ return false; }, why:'' }
   ];
   function condValue(){ return S.condition ? S.condition.value : -1; }
+
+  // ---- The form remembers ----------------------------------------------------
+  // A reload used to wipe a half-built quote, and nobody who lost one rebuilt it.
+  // Everything the state needs to come back rides in one localStorage key, and
+  // it is written on every tap rather than on some "save" moment, because the
+  // tap that loses the quote is by definition the one nobody saw coming.
+  // A quote older than a week is thrown away instead of restored: prices move,
+  // and showing someone a stale number is worse than asking them again.
+  var SAVE_KEY = 'mdQqc', SAVE_TTL = 7 * 24 * 3600 * 1000;
+  var curStep = 1, restoring = false;
+  function saveState(){
+    if (restoring) return;
+    try {
+      // Nothing to remember until they've actually chosen something.
+      if (!S.vehicle && !Object.keys(S.services).length) return;
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        at: Date.now(), step: curStep, vehicle: S.vehicle, condition: S.condition,
+        services: S.services, addons: S.addons, ymm: val('qqYmm'),
+        location: val('qqLocation'), notes: val('qqNotes'), addonNote: val('qqAddonNote')
+      }));
+    } catch (e) { /* private mode, quota, disabled storage — never break the form over this */ }
+  }
+  function clearState(){ try { localStorage.removeItem(SAVE_KEY); } catch (e) {} }
+  function loadState(){
+    try {
+      var d = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+      if (!d || !d.at || Date.now() - d.at > SAVE_TTL) { clearState(); return null; }
+      return d;
+    } catch (e) { return null; }
+  }
 
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
@@ -1950,6 +2049,11 @@ header li a[href="#booking"],
     // matters most on the add-on step, where each tap moves it.
     if(n >= 2 && n <= 4) refreshTicker(); else { var tk=$('qqTicker'); if(tk) tk.style.display='none'; }
     if (card) card.scrollIntoView({ behavior:'smooth', block:'start' });
+    // Remember where they are, and forget the moment it's submitted — a saved
+    // quote after a successful send would greet the next visit with a resume bar
+    // for something already sitting in Mikey's inbox.
+    curStep = n;
+    if (n >= 6) clearState(); else saveState();
   }
 
   function deselect(scope, sel){
@@ -2124,6 +2228,9 @@ header li a[href="#booking"],
       if (el.disabled) return;
       calcQuote();
     }
+    // Every tap, not just the ones that change step — an add-on toggled on step 4
+    // is exactly the kind of progress a reload used to eat.
+    saveState();
   }
 
   function attach(){
@@ -2139,22 +2246,23 @@ header li a[href="#booking"],
       }
     }, false);
 
+    // The year/make/model and the notes are typed, not tapped, so they need the
+    // one event a click listener never sees.
+    card.addEventListener('input', function(){ saveState(); }, false);
+    wireResume();
+
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
       e.preventDefault();
       // Honeypot: bots fill this hidden field - silently "succeed" without sending.
       var hp = $('qqCompany'); if (hp && hp.value) { goStep(6); return; }
 
-      var nW = $('qqfName'), nE = $('qqName');
       var pW = $('qqfPhone'), pE = $('qqPhone');
-      var ok = true;
-      if (!nE.value.trim()){ nW.classList.add('bad'); nE.classList.add('err'); ok=false; } else { nW.classList.remove('bad'); nE.classList.remove('err'); }
       var phone = (pE.value || '').trim();
       var digits = phone.replace(/\D/g,'');
-      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
-      if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
+      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); pE.focus(); return; }
+      pW.classList.remove('bad'); pE.classList.remove('err');
 
-      var name = nE.value.trim();
       var ymm = val('qqYmm');
       var location = val('qqLocation');
       var notes = collectNotes();
@@ -2165,7 +2273,7 @@ header li a[href="#booking"],
       var errBox = $('qqError'); if (errBox) errBox.style.display = 'none';
       var btn = $('qqSubmitBtn'); if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
 
-      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone +
+      var msgBody = 'New Quote from QQC\n---\nPhone: ' + phone +
         (location ? '\nLocation: ' + location : '') +
         '\nQuote: $' + S.total + '\nVehicle: ' + vehicleLine + '\nCondition: ' + cond +
         '\nServices: ' + S.items.join(', ') + (notes ? '\nNotes: ' + notes : '');
@@ -2183,9 +2291,10 @@ header li a[href="#booking"],
 
       var fd = new FormData();
       fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
-      fd.append('subject', 'New Quote: $' + S.total + ', ' + name);
+      // The subject line is how these read in his inbox at a glance, so the
+      // number takes the slot the name used to have rather than leaving it blank.
+      fd.append('subject', 'New Quote: $' + S.total + ', ' + phone);
       fd.append('from_name', 'Mikeys QQC');
-      fd.append('name', name);
       fd.append('phone', phone);
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
@@ -2205,7 +2314,7 @@ header li a[href="#booking"],
       // evidenced if a carrier or Twilio ever audits the campaign.
       var consentEl = $('qqConsentText');
       var smsPayload = {
-        name: name, phone: phoneE164, email: '', location: location || '',
+        phone: phoneE164, email: '', location: location || '',
         total: S.total, vehicle: vehicleLine, condition: cond,
         services: Array.isArray(S.items) ? S.items.join(', ') : (S.items || ''),
         notes: notes || '',
@@ -2230,14 +2339,14 @@ header li a[href="#booking"],
         var smsOk   = results[1].status==='fulfilled';
         if (emailOk || smsOk){
           if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
-          showSuccess(name, phone);
+          showSuccess(phone);
         } else { showSubmitError(); }
       }).catch(function(){ showSubmitError(); });
     }, false);
     return true;
   }
 
-  function showSuccess(name, phone){
+  function showSuccess(phone){
     var box = $('qqSuccessQuote');
     if (box){
       var svc = Object.keys(S.services)[0] || 'Your detail';
@@ -2249,6 +2358,66 @@ header li a[href="#booking"],
     var ph = $('qqSuccessPhone');
     if (ph && phone) ph.textContent = phone;
     goStep(6);
+  }
+
+  // Put a saved quote back on the screen. Deliberately NOT automatic: landing
+  // someone straight on step 4 of a form they don't remember starting is its own
+  // kind of broken. They get one line offering it, and they choose.
+  function restoreState(d){
+    restoring = true;
+    try {
+      if (d.vehicle){
+        S.vehicle = d.vehicle;
+        deselect('step1','.choice');
+        var vn = document.querySelector('#step1 .choice[data-value="' + d.vehicle.value + '"]');
+        if (vn){ vn.classList.add('sel'); vn.setAttribute('aria-pressed','true'); }
+      }
+      if (d.condition){
+        S.condition = d.condition;
+        deselect('step3','.choice');
+        var cn = document.querySelector('#step3 .choice[data-value="' + d.condition.value + '"]');
+        if (cn){ cn.classList.add('sel'); cn.setAttribute('aria-pressed','true'); }
+        var n3 = $('qqNext3'); if (n3) n3.disabled = false;
+      }
+      S.services = {}; deselect('services','.hero'); deselect('services','.svc-card');
+      Object.keys(d.services || {}).forEach(function(name){
+        if (!PRICE[name]) return;                 // a renamed service should not resurrect a dead price
+        S.services[name] = PRICE[name];
+        var sn = document.querySelector('#services [data-name="' + name + '"]');
+        if (sn){ sn.classList.add('sel'); sn.setAttribute('aria-pressed','true'); }
+      });
+      S.addons = {};
+      Object.keys(d.addons || {}).forEach(function(name){
+        var a = ADDONS.filter(function(x){ return x.name === name; })[0];
+        if (a) S.addons[name] = a.price;          // re-price from the menu, never from storage
+      });
+      [['qqYmm', d.ymm], ['qqLocation', d.location], ['qqNotes', d.notes], ['qqAddonNote', d.addonNote]]
+        .forEach(function(p){ var el = $(p[0]); if (el && p[1]) el.value = p[1]; });
+      refreshNudge(); refreshContinue();
+    } finally { restoring = false; }
+    // Someone who already got to a price gets the price back, not the form.
+    if (Object.keys(S.services).length && d.step >= 5) calcQuote();
+    else goStep(Math.min(Math.max(d.step || 1, 1), 4));
+  }
+
+  function wireResume(){
+    var bar = $('qqResume'); if (!bar) return;
+    var d = loadState();
+    if (!d || !Object.keys(d.services || {}).length) return;
+    var sub = $('qqResumeSub');
+    if (sub){
+      var saved = 0;
+      Object.keys(d.services).forEach(function(n){ if (PRICE[n]) saved += PRICE[n]; });
+      Object.keys(d.addons || {}).forEach(function(n){
+        var a = ADDONS.filter(function(x){ return x.name === n; })[0]; if (a) saved += a.price;
+      });
+      if (d.vehicle) saved += d.vehicle.value;
+      if (d.condition) saved += d.condition.value;
+      sub.textContent = Object.keys(d.services).join(' + ') + (saved ? ' · $' + saved : '');
+    }
+    bar.classList.add('show');
+    $('qqResumeGo').addEventListener('click', function(){ bar.classList.remove('show'); restoreState(d); }, false);
+    $('qqResumeX').addEventListener('click', function(){ bar.classList.remove('show'); clearState(); }, false);
   }
 
   // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
