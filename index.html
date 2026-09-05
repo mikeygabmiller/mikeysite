@@ -332,6 +332,11 @@ header li a[href="#booking"],
 #mobileMenu a:hover::before { width: 3px; }
 #mobileMenu a:focus-visible { outline: 1px solid var(--brand-red); outline-offset: -2px; }
 
+/* Seven items need a little less air before the hamburger takes over at 768px. */
+@media (max-width: 940px) {
+  #desktopMenu a { padding: 10px 9px; font-size: 0.76rem; letter-spacing: 0.05em; }
+}
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
   body { padding-top: 70px; }
@@ -713,6 +718,38 @@ header li a[href="#booking"],
           }
         },
         {
+          "@type": "City",
+          "name": "Mukilteo",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Granite Falls",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Arlington",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Snohomish County, WA"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Woodinville",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "King County, WA"
+          }
+        },
+        {
           "@type": "GeoCircle",
           "geoMidpoint": {
             "@type": "GeoCoordinates",
@@ -967,6 +1004,14 @@ header li a[href="#booking"],
         },
         {
           "@type": "Question",
+          "name": "Do you come to my town?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington every week, and there's no travel charge anywhere I go."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do I need to provide water or power?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -1059,6 +1104,7 @@ header li a[href="#booking"],
     <ul id="desktopMenu">
       <li><a href="#allservices">Services</a></li>
       <li><a href="#beforeafter">Before/After</a></li>
+      <li><a href="#service-area">Areas Served</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#qanda">FAQ</a></li>
@@ -1070,6 +1116,7 @@ header li a[href="#booking"],
     <ul id="mobileMenu">
       <li><a href="#allservices">Services</a></li>
       <li><a href="#beforeafter">Before/After</a></li>
+      <li><a href="#service-area">Areas Served</a></li>
       <li><a href="/reviews/">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#qanda">FAQ</a></li>
@@ -1175,6 +1222,19 @@ header li a[href="#booking"],
 .mh-cta-primary:hover{ background:#A00C24; border-color:#A00C24; transform:translateY(-2px); }
 .mh-cta-secondary{ background:transparent; color:#fff; border-color:#fff; }
 .mh-cta-secondary:hover{ background:#fff; color:#141414; transform:translateY(-2px); }
+
+/* Straight to the service-area check. Some people land here for one reason only:
+   to find out whether I cover them. This saves them the whole scroll. */
+.mh-arearow{ width:100%; text-align:center; margin:0 0 20px; }
+.mh-area{
+  display:inline-flex; align-items:center; gap:7px;
+  color:#d7d7d7; font-size:.9rem; font-weight:600; text-decoration:none;
+  border-bottom:1px solid rgba(201,162,75,.45); padding-bottom:2px;
+  transition:color .18s ease, border-color .18s ease;
+  opacity:0; animation:mhFadeUp .8s ease-out .55s forwards;
+}
+.mh-area:hover{ color:#fff; border-color:var(--brand-gold); }
+.mh-area svg{ color:var(--brand-gold); flex:none; }
 
 /* Pricing pills */
 .mh-prices{
@@ -1292,6 +1352,13 @@ header li a[href="#booking"],
         <p class="subhead">
           Professional interior &amp; exterior detailing at your home or office, anywhere in Snohomish County. Book online in 60 seconds.
         </p>
+
+        <div class="mh-arearow">
+          <a class="mh-area" href="#service-area">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            See if I come to your town
+          </a>
+        </div>
 
         <div class="mh-guarantee">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
@@ -3314,6 +3381,828 @@ header li a[href="#booking"],
   </section>
 </div>
 
+<style>
+  /* ---------- Service area section. Tokens match the rest of the page:
+       red #C8102E, gold #C9A24B, Outfit, #141414/#1a1a1a surfaces on #2a2a2a lines. ---------- */
+  .svcarea{
+    font-family:'Outfit',system-ui,sans-serif; color:#fff; padding:56px 20px;
+    border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a;
+    background:
+      radial-gradient(900px 500px at 78% -10%, rgba(200,16,46,.10), transparent 62%),
+      radial-gradient(800px 460px at 4% 110%, rgba(201,162,75,.06), transparent 58%),
+      #101010;
+  }
+  .sa-wrap{ max-width:1140px; margin:0 auto; }
+
+  /* ---------- heading ---------- */
+  .sa-head{ text-align:center; margin-bottom:34px; }
+  .sa-eyebrow{ display:inline-block; background:#C8102E; color:#fff; padding:4px 12px;
+    font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:.75rem; margin-bottom:14px; }
+  .svcarea h2{ font-weight:900; font-size:clamp(1.7rem,4.4vw,2.2rem); text-transform:uppercase;
+    letter-spacing:1px; line-height:1.1; margin:0 0 12px; }
+  .svcarea h2 em{ font-style:normal; color:#C8102E; }
+  .sa-sub{ color:#bdc3ca; font-size:1rem; line-height:1.6; max-width:620px; margin:0 auto; }
+
+  /* ---------- two-column shell ---------- */
+  .sa-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.28fr); gap:26px; align-items:start; }
+
+  /* ---------- the checker card ---------- */
+  .sa-check{ background:linear-gradient(180deg,#1a1a1a,#151515); border:1px solid #2a2a2a;
+    border-radius:16px; padding:22px; position:sticky; top:92px; min-width:0; }
+  .sa-live{ display:inline-flex; align-items:center; gap:7px; font-size:.7rem; font-weight:900;
+    letter-spacing:1.4px; text-transform:uppercase; color:#C8102E; }
+  .sa-live-dot{ width:7px; height:7px; border-radius:50%; background:#C8102E; box-shadow:0 0 0 3px rgba(200,16,46,.2); }
+  .sa-promises{ list-style:none; margin:18px 0 0; padding:16px 0 0; border-top:1px solid #262626;
+    display:grid; gap:9px; }
+  .sa-promises li{ display:flex; align-items:center; gap:9px; color:#d0d0d0; font-size:.88rem; font-weight:700; }
+  .sa-promises svg{ width:16px; height:16px; flex:none; fill:none; stroke:#41c96b; stroke-width:3;
+    stroke-linecap:round; stroke-linejoin:round; }
+
+  .sa-check-head h3{ font-size:1.45rem; font-weight:900; margin:9px 0 16px; letter-spacing:.3px; }
+
+  .sa-inputrow{ display:flex; align-items:center; gap:8px; background:#0e0e0e; border:1.5px solid #333;
+    border-radius:11px; padding:0 8px 0 12px; transition:border-color .16s ease, box-shadow .16s ease; }
+  .sa-inputrow:focus-within{ border-color:#C8102E; box-shadow:0 0 0 3px rgba(200,16,46,.16); }
+  .sa-inputicon{ display:flex; color:#7a7a7a; flex:none; }
+  .sa-inputicon svg{ width:19px; height:19px; }
+  #saInput{ flex:1 1 0; min-width:0; background:none; border:0; outline:0; color:#fff;
+    font-family:inherit; font-size:1.02rem; font-weight:600; padding:14px 0; }
+  #saInput::placeholder{ color:#6f6f6f; font-weight:500; }
+  .sa-geo{ flex:none; background:none; border:0; padding:8px; border-radius:8px; color:#8a8a8a;
+    cursor:pointer; display:flex; transition:color .15s ease, background .15s ease; }
+  .sa-geo svg{ width:19px; height:19px; }
+  .sa-geo:hover,.sa-geo:focus-visible{ color:#fff; background:#242424; }
+  .sa-geo.is-busy{ color:#C8102E; animation:saSpin 1s linear infinite; }
+  @keyframes saSpin{ to{ transform:rotate(360deg); } }
+
+  /* suggestions */
+  .sa-sugg{ list-style:none; margin:8px 0 0; padding:0; display:none; background:#141414;
+    border:1px solid #2f2f2f; border-radius:11px; overflow:hidden; max-height:232px; overflow-y:auto; }
+  .sa-sugg.is-open{ display:block; }
+  .sa-sugg li{ padding:11px 14px; font-size:.94rem; font-weight:600; color:#ddd; cursor:pointer;
+    display:flex; justify-content:space-between; gap:12px; align-items:center; }
+  .sa-sugg li+li{ border-top:1px solid #232323; }
+  .sa-sugg li b{ font-weight:800; color:#fff; }
+  .sa-sugg li small{ color:#8a8a8a; font-size:.78rem; font-weight:600; white-space:nowrap; }
+  .sa-sugg li:hover,.sa-sugg li[aria-selected="true"]{ background:#1f1f1f; }
+
+  .sa-submit{ width:100%; margin-top:12px; background:#C8102E; color:#fff; border:0; border-radius:10px;
+    padding:15px 18px; font-family:inherit; font-weight:900; font-size:.95rem; letter-spacing:.8px;
+    text-transform:uppercase; cursor:pointer; transition:background .15s ease, transform .15s ease;
+    box-shadow:0 0 20px rgba(200,16,46,.28); }
+  .sa-submit:hover{ background:#A00C24; transform:translateY(-1px); }
+
+  /* quick picks: the four or five towns most people are actually typing */
+  .sa-quick{ margin-top:18px; padding-top:16px; border-top:1px solid #262626; }
+  .sa-quick-h{ display:block; font-size:.7rem; font-weight:800; letter-spacing:1.4px;
+    text-transform:uppercase; color:#7f7f7f; margin-bottom:10px; }
+  .sa-quick-row{ display:flex; flex-wrap:wrap; gap:7px; }
+  .sa-quick-row button{ background:#202020; border:1px solid #2f2f2f; border-radius:999px;
+    color:#cfcfcf; font-family:inherit; font-size:.82rem; font-weight:700; padding:7px 13px;
+    cursor:pointer; transition:border-color .15s ease, color .15s ease, background .15s ease; }
+  .sa-quick-row button:hover,.sa-quick-row button:focus-visible{ border-color:#C8102E; color:#fff; background:#221616; }
+
+  .sa-check-foot{ margin:14px 0 0; font-size:.84rem; color:#8f8f8f; text-align:center; }
+  .sa-check-foot a{ color:#C9A24B; font-weight:700; text-decoration:none; }
+  .sa-check-foot a:hover{ text-decoration:underline; }
+
+  /* ---------- result card ---------- */
+  .sa-result:empty{ display:none; }
+  .sa-res{ margin-top:14px; border-radius:12px; padding:16px; border:1px solid;
+    animation:saPop .28s cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes saPop{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+  .sa-res--yes{ background:rgba(47,179,88,.08); border-color:rgba(47,179,88,.42); }
+  .sa-res--ask{ background:rgba(201,162,75,.09); border-color:rgba(201,162,75,.45); }
+  .sa-res--no { background:rgba(255,255,255,.03); border-color:#333; }
+  .sa-res-top{ display:flex; gap:11px; align-items:flex-start; }
+  .sa-res-ic{ flex:none; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; }
+  .sa-res-ic svg{ width:17px; height:17px; stroke-width:2.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .sa-res--yes .sa-res-ic{ background:rgba(47,179,88,.18); color:#41c96b; }
+  .sa-res--ask .sa-res-ic{ background:rgba(201,162,75,.18); color:#C9A24B; }
+  .sa-res--no  .sa-res-ic{ background:rgba(255,255,255,.07); color:#9a9a9a; }
+  .sa-res-h{ margin:0; font-size:1.08rem; font-weight:900; line-height:1.3; color:#fff; }
+  .sa-res-h b{ color:inherit; }
+  .sa-res--yes .sa-res-h b{ color:#41c96b; }
+  .sa-res--ask .sa-res-h b{ color:#C9A24B; }
+  .sa-res-p{ margin:7px 0 0; font-size:.9rem; line-height:1.55; color:#c2c2c2; }
+  .sa-res-meta{ display:flex; flex-wrap:wrap; gap:6px; margin:11px 0 0; }
+  .sa-res-meta span{ font-size:.73rem; font-weight:800; letter-spacing:.4px; text-transform:uppercase;
+    color:#cfcfcf; background:rgba(255,255,255,.06); border:1px solid #333; border-radius:999px; padding:5px 10px; }
+  .sa-res-cta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .sa-btn{ flex:1 1 auto; text-align:center; border:2px solid transparent; border-radius:9px;
+    padding:12px 14px; font-family:inherit; font-weight:900; font-size:.86rem; letter-spacing:.5px;
+    text-transform:uppercase; text-decoration:none; cursor:pointer; transition:background .15s ease, transform .15s ease, border-color .15s ease; }
+  .sa-btn--primary{ background:#C8102E; color:#fff; border-color:#C8102E; }
+  .sa-btn--primary:hover{ background:#A00C24; border-color:#A00C24; transform:translateY(-1px); }
+  .sa-btn--ghost{ background:transparent; color:#fff; border-color:#4a4a4a; }
+  .sa-btn--ghost:hover{ border-color:#fff; transform:translateY(-1px); }
+  .sa-res-link{ display:inline-block; margin-top:11px; font-size:.85rem; font-weight:800;
+    color:#C9A24B; text-decoration:none; }
+  .sa-res-link:hover{ text-decoration:underline; }
+
+  /* waitlist form inside the "not yet" result */
+  .sa-wait{ display:grid; gap:8px; margin-top:13px; }
+  .sa-wait input{ background:#0e0e0e; border:1.5px solid #333; border-radius:9px; color:#fff;
+    font-family:inherit; font-size:.94rem; font-weight:600; padding:12px 13px; outline:0; }
+  .sa-wait input:focus{ border-color:#C8102E; }
+  .sa-wait input::placeholder{ color:#6f6f6f; font-weight:500; }
+  .sa-wait-msg{ margin:9px 0 0; font-size:.84rem; font-weight:700; }
+  .sa-wait-msg.err{ color:#ff8a99; }
+  .sa-wait-msg.ok{ color:#41c96b; }
+
+  /* ---------- the map ---------- */
+  .sa-mapwrap{ margin:0; min-width:0; }
+  .sa-mapinner{ position:relative; background:#0f0f10; border:1px solid #2a2a2a; border-radius:16px;
+    overflow:hidden; line-height:0; }
+  .sa-map{ display:block; width:100%; height:auto; font-family:'Outfit',system-ui,sans-serif; }
+
+  .sa-water-lbl{ fill:#2c4d5e; font-size:13px; font-weight:800; letter-spacing:3.4px; text-anchor:middle; }
+  .sa-rd{ fill:none; stroke:#262626; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .sa-rd--major{ stroke:#303030; stroke-width:3; }
+  .sa-rd-lbl{ fill:#4a4a4a; font-size:11px; font-weight:800; letter-spacing:.6px; }
+
+  .sa-zone-outer{ fill:url(#saZone); stroke:#C8102E; stroke-width:2; stroke-opacity:.55;
+    stroke-dasharray:9 7; }
+  .sa-zone-core{ fill:rgba(200,16,46,.16); stroke:rgba(200,16,46,.46); stroke-width:1.5; }
+
+  .sa-nearby circle{ fill:#3d3d3d; }
+  .sa-nearby text{ fill:#6b6b6b; font-size:12px; font-weight:700; }
+
+  .sa-pin{ cursor:pointer; }
+  .sa-pin .sa-hit{ fill:transparent; }
+  .sa-pin .sa-ring{ fill:none; stroke:#C8102E; stroke-width:2; opacity:0; transform-origin:center;
+    transform-box:fill-box; }
+  .sa-pin .sa-dot{ fill:#C8102E; stroke:#101010; stroke-width:2.5; transition:transform .18s ease;
+    transform-origin:center; transform-box:fill-box; }
+  .sa-pin .sa-lbl{ fill:#e8e8e8; font-size:13.5px; font-weight:800; letter-spacing:.2px;
+    paint-order:stroke; stroke:#101010; stroke-width:3.5px; stroke-linejoin:round; }
+  .sa-pin--home .sa-dot{ fill:#fff; stroke:#C8102E; stroke-width:4; }
+  .sa-pin--home .sa-lbl{ fill:#fff; font-size:15px; font-weight:900; }
+  .sa-sublbl{ fill:#C8102E; font-size:9.5px; font-weight:900; letter-spacing:1.5px;
+    paint-order:stroke; stroke:#101010; stroke-width:3px; stroke-linejoin:round; }
+  .sa-pin:hover .sa-dot,.sa-pin:focus-visible .sa-dot,.sa-pin.is-on .sa-dot{ transform:scale(1.35); }
+  .sa-pin:hover .sa-ring,.sa-pin:focus-visible .sa-ring,.sa-pin.is-on .sa-ring{ opacity:1; }
+  .sa-pin.is-on .sa-ring{ animation:saPulse 1.6s ease-out infinite; }
+  @keyframes saPulse{ 0%{ transform:scale(.7); opacity:.9; } 100%{ transform:scale(1.5); opacity:0; } }
+  .sa-pin:focus{ outline:none; }
+  .sa-pin:focus-visible .sa-lbl{ fill:#fff; }
+
+  .sa-scale line{ stroke:#4a4a4a; stroke-width:1.5; }
+  .sa-scale text{ fill:#6b6b6b; font-size:11px; font-weight:700; }
+
+  /* reveal the coverage zone as it scrolls in */
+  .svcarea.sa-anim .sa-zone-outer,.svcarea.sa-anim .sa-zone-core{ opacity:0; }
+  .svcarea.sa-anim.in .sa-zone-outer{ opacity:1; transition:opacity .7s ease .1s; }
+  .svcarea.sa-anim.in .sa-zone-core{ opacity:1; transition:opacity .7s ease .35s; }
+
+  .sa-legend{ display:flex; flex-wrap:wrap; gap:8px 18px; justify-content:center; margin-top:12px; }
+  .sa-key{ display:inline-flex; align-items:center; gap:7px; font-size:.78rem; font-weight:700; color:#9a9a9a; }
+  .sa-key i{ width:13px; height:13px; border-radius:4px; flex:none; }
+  .sa-key--core i{ background:rgba(200,16,46,.28); border:1px solid rgba(200,16,46,.6); }
+  .sa-key--zone i{ background:rgba(201,162,75,.2); border:1px dashed rgba(200,16,46,.75); }
+  .sa-key--ask i{ background:#3d3d3d; border:1px solid #4d4d4d; }
+
+  /* ---------- town chips ---------- */
+  .sa-towns{ margin-top:34px; text-align:center; }
+  .sa-towns-h{ font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:1.6px;
+    color:#9a9a9a; margin:0 0 14px; }
+  .sa-chips{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px 10px; justify-content:center; }
+  .sa-chips a,.sa-chips span{ display:inline-block; padding:9px 16px; background:#1a1a1a;
+    border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:.88rem; font-weight:700;
+    text-decoration:none; transition:border-color .15s ease, color .15s ease, background .15s ease; }
+  .sa-chips a:hover,.sa-chips a:focus-visible{ border-color:#C8102E; color:#fff; background:#1f1414; }
+  .sa-chips span{ color:#9a9a9a; }
+  .sa-chips li.is-on a,.sa-chips li.is-on span{ border-color:#C8102E; color:#fff; background:#1f1414; }
+  .sa-towns-more{ color:#8f8f8f; font-size:.9rem; line-height:1.6; max-width:660px; margin:16px auto 0; }
+
+  /* ---------- footer strip ---------- */
+  .sa-foot{ margin-top:32px; padding-top:26px; border-top:1px solid #232323; text-align:center; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .sa-grid{ grid-template-columns:1fr; gap:22px; }
+    .sa-check{ position:static; }
+  }
+  @media (max-width:560px){
+    .svcarea{ padding:42px 16px; }
+    .sa-check{ padding:18px; }
+    /* the SVG scales down with the column, so the type has to scale up to stay readable */
+    .sa-map .sa-lbl{ font-size:19px; }
+    .sa-map .sa-pin--home .sa-lbl{ font-size:21px; }
+    .sa-map .sa-sublbl{ font-size:12px; }
+    .sa-map .sa-nearby text{ font-size:17px; }
+    .sa-map .sa-rd-lbl,.sa-map .sa-scale text{ font-size:15px; }
+    .sa-map .sa-water-lbl{ font-size:16px; }
+    .sa-promises li{ font-size:.85rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .sa-res{ animation:none; }
+    .sa-pin.is-on .sa-ring{ animation:none; opacity:1; }
+    .sa-geo.is-busy{ animation:none; }
+  }
+</style>
+
+<!-- ===================== SERVICE AREA ("Do I come to you?") =====================
+     Self-contained, scoped to .svcarea. Three moving parts:
+       1. The map SVG below is GENERATED by tools/service-area-map.py. Pin positions,
+          the coverage outline and the mileage rings are all projected from real
+          lat/lon, so don't nudge coordinates by hand — change the city list in that
+          script, re-run it, and paste the output back over the <svg> below.
+       2. SA.towns is the single source of truth for the checker. A town's tier is
+          'yes' (I'm there regularly), 'ask' (I get out there sometimes, text me) or
+          absent entirely (waitlist capture). Add a ZIP here and the checker, the
+          suggestions and the accessible list all pick it up.
+       3. Out-of-area visitors are not dead traffic — they hit the same Web3Forms
+          endpoint the quote calculator uses, tagged as a waitlist lead.
+     ============================================================================= -->
+<section id="service-area" class="svcarea" aria-labelledby="svcarea-title">
+  <div class="sa-wrap">
+
+    <div class="sa-head">
+      <span class="sa-eyebrow">Areas I Serve</span>
+      <h2 id="svcarea-title">Chances Are, I'm Already In <em>Your Town.</em></h2>
+      <p class="sa-sub">I work out of Snohomish and cover most of the county &mdash; Arlington down to Bothell, Mukilteo out to Granite Falls. Put in your ZIP and you'll know in about two seconds.</p>
+    </div>
+
+    <div class="sa-grid">
+
+      <!-- ---------- the checker ---------- -->
+      <div class="sa-check">
+        <div class="sa-check-head">
+          <span class="sa-live"><span class="sa-live-dot"></span> Instant answer</span>
+          <h3>Do I come out to you?</h3>
+        </div>
+
+        <form class="sa-form" id="saForm" autocomplete="off" novalidate>
+          <div class="sa-inputrow">
+            <span class="sa-inputicon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <label class="visually-hidden" for="saInput">Your ZIP code or town</label>
+            <input id="saInput" type="text" placeholder="ZIP code or town" inputmode="text"
+                   autocomplete="postal-code" role="combobox" aria-expanded="false"
+                   aria-controls="saSugg" aria-autocomplete="list" spellcheck="false">
+            <button type="button" class="sa-geo" id="saGeo" aria-label="Use my current location" title="Use my current location">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M22 12h-3M5 12H2"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/></svg>
+            </button>
+          </div>
+          <ul class="sa-sugg" id="saSugg" role="listbox" aria-label="Matching towns"></ul>
+          <button class="sa-submit" type="submit">Check My Area</button>
+        </form>
+
+        <div class="sa-result" id="saResult" aria-live="polite"></div>
+
+        <div class="sa-quick">
+          <span class="sa-quick-h">Or pick your town</span>
+          <div class="sa-quick-row">
+            <button type="button" data-sa-town="Snohomish">Snohomish</button>
+            <button type="button" data-sa-town="Everett">Everett</button>
+            <button type="button" data-sa-town="Lake Stevens">Lake Stevens</button>
+            <button type="button" data-sa-town="Marysville">Marysville</button>
+            <button type="button" data-sa-town="Monroe">Monroe</button>
+            <button type="button" data-sa-town="Bothell">Bothell</button>
+          </div>
+        </div>
+
+        <ul class="sa-promises">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> No travel fee, anywhere I go</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Same price in every town</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> All I need is a spigot and an outlet</li>
+        </ul>
+
+        <p class="sa-check-foot">Not sure? <a href="tel:+14256007897">Call or text (425) 600-7897</a> and I'll just tell you.</p>
+      </div>
+
+      <!-- ---------- the map ---------- -->
+      <figure class="sa-mapwrap">
+        <div class="sa-mapinner" id="saMapInner">
+          <svg class="sa-map" viewBox="0 0 620 623" role="img" aria-labelledby="sa-map-t sa-map-d" preserveAspectRatio="xMidYMid meet">
+            <title id="sa-map-t">Mikey's Mobile Detailing service area map</title>
+            <desc id="sa-map-d">A map of Snohomish County showing the towns Mikey drives to. The full list is written out below the map.</desc>
+            <defs>
+              <radialGradient id="saGlow" cx="50%" cy="50%"><stop offset="0%" stop-color="#C8102E" stop-opacity=".16"/><stop offset="60%" stop-color="#C8102E" stop-opacity=".05"/><stop offset="100%" stop-color="#C8102E" stop-opacity="0"/></radialGradient>
+              <linearGradient id="saWater" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#101a20"/><stop offset="100%" stop-color="#0c1418"/></linearGradient>
+              <linearGradient id="saZone" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C8102E" stop-opacity=".13"/><stop offset="100%" stop-color="#C9A24B" stop-opacity=".09"/></linearGradient>
+              <filter id="saSoft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+            </defs>
+            <rect width="620" height="623" fill="#0f0f10"/>
+            <g class="sa-water">
+              <polygon points="158.4,-20.1 168.5,30.1 178.6,70.3 202.2,140.7 219.0,211.0 252.7,261.3 268.2,286.4 237.2,306.5 209.6,316.5 189.4,361.7 175.2,412.0 158.4,452.2 148.9,502.4 145.6,562.7 136.1,643.1 0,623 0,0" fill="url(#saWater)"/>
+              <polyline points="158.4,-20.1 168.5,30.1 178.6,70.3 202.2,140.7 219.0,211.0 252.7,261.3 268.2,286.4 237.2,306.5 209.6,316.5 189.4,361.7 175.2,412.0 158.4,452.2 148.9,502.4 145.6,562.7 136.1,643.1" fill="none" stroke="#1b2c36" stroke-width="1.5"/>
+              <text class="sa-water-lbl" x="58" y="386" transform="rotate(-72 58 386)">PUGET SOUND</text>
+            </g>
+            <g class="sa-zone">
+              <circle cx="351.6" cy="348.8" r="291.0" fill="url(#saGlow)" filter="url(#saSoft)"/>
+              <path class="sa-zone-outer" d="M 331.4 27.7 C 346.9 25.0 443.0 111.0 455.3 147.5 C 467.6 184.0 466.9 388.6 465.6 425.6 C 464.3 462.6 456.6 540.7 441.3 551.3 C 426.0 561.9 314.7 542.6 298.5 540.9 C 282.3 539.2 269.1 544.0 264.9 533.1 C 260.7 522.2 260.6 442.5 252.8 422.0 C 245.0 401.5 176.4 331.8 179.5 309.4 C 182.6 287.0 272.5 203.2 286.4 177.4 C 300.3 151.6 315.9 30.4 331.4 27.7 Z"/>
+              <circle class="sa-zone-core" cx="351.6" cy="348.8" r="145.5"/>
+            </g>
+            <g class="sa-roads">
+              <polyline points="289.8,-20.1 291.1,110.5 295.8,211.0 281.7,271.3 261.5,341.6 240.6,401.9 222.4,442.1 206.9,512.5 198.8,582.8 195.4,643.1" class="sa-rd sa-rd--major"/>
+              <polyline points="270.9,283.4 308.0,316.5 349.1,340.6 403.7,387.9 437.4,406.0 505.4,401.9 541.8,399.9 620.0,406.0 700.9,410.0" class="sa-rd sa-rd--major"/>
+              <polyline points="320.1,-20.1 333.6,61.3 351.8,180.9 356.5,249.2 355.2,340.6 351.1,399.9 342.3,462.2 328.9,505.4" class="sa-rd"/>
+              <polyline points="432.7,406.0 377.4,450.2 320.1,505.4 279.7,506.4 222.4,527.5" class="sa-rd"/>
+              <polyline points="278.3,505.4 275.0,442.1 277.7,401.9 274.3,336.6 275.0,286.4" class="sa-rd"/>
+              <polyline points="375.4,248.2 414.5,206.0 439.4,177.9" class="sa-rd"/>
+              <polyline points="437.4,406.0 432.0,462.2 427.3,520.5 451.5,602.9" class="sa-rd"/>
+              <text class="sa-rd-lbl" x="213.9" y="504.5">I-5</text>
+              <text class="sa-rd-lbl" x="573.1" y="401.0">US-2</text>
+              <text class="sa-rd-lbl" x="349.3" y="456.2">SR-9</text>
+            </g>
+            <g class="sa-nearby">
+              <circle cx="212.2" cy="434.2" r="3.5"/><text x="201.2" y="438.2" text-anchor="end">Lynnwood</text>
+              <circle cx="163.5" cy="451.5" r="3.5"/><text x="152.5" y="455.5" text-anchor="end">Edmonds</text>
+              <circle cx="541.7" cy="399.6" r="3.5"/><text x="530.7" y="403.6" text-anchor="end">Sultan</text>
+              <circle cx="335.9" cy="588.8" r="3.5"/><text x="346.9" y="592.8" text-anchor="start">Redmond</text>
+            </g>
+            <g class="sa-pins">
+              <g class="sa-pin" data-city="Arlington" tabindex="0" role="button" aria-label="Arlington, ~30 min from home base. Show details." transform="translate(333.5 61.6)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="13" y="4" text-anchor="start">Arlington</text>
+              </g>
+              <g class="sa-pin" data-city="Marysville" tabindex="0" role="button" aria-label="Marysville, ~20 min from home base. Show details." transform="translate(298.5 209.2)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="-13" y="4" text-anchor="end">Marysville</text>
+              </g>
+              <g class="sa-pin" data-city="Granite Falls" tabindex="0" role="button" aria-label="Granite Falls, ~22 min from home base. Show details." transform="translate(439.7 177.7)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="13" y="4" text-anchor="start">Granite Falls</text>
+              </g>
+              <g class="sa-pin" data-city="Lake Stevens" tabindex="0" role="button" aria-label="Lake Stevens, ~12 min from home base. Show details." transform="translate(374.9 246.1)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="13" y="-2" text-anchor="start">Lake Stevens</text>
+              </g>
+              <g class="sa-pin" data-city="Everett" tabindex="0" role="button" aria-label="Everett, ~15 min from home base. Show details." transform="translate(281.6 282.4)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="-13" y="0" text-anchor="end">Everett</text>
+              </g>
+              <g class="sa-pin" data-city="Mukilteo" tabindex="0" role="button" aria-label="Mukilteo, ~22 min from home base. Show details." transform="translate(212.6 317.0)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="-13" y="4" text-anchor="end">Mukilteo</text>
+              </g>
+              <g class="sa-pin sa-pin--home" data-city="Snohomish" tabindex="0" role="button" aria-label="Snohomish, home base from home base. Show details." transform="translate(351.6 348.8)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="7.5"/>
+                <text class="sa-lbl" x="15" y="5" text-anchor="start">Snohomish</text>
+                <text class="sa-sublbl" x="15" y="21" text-anchor="start">HOME BASE</text>
+              </g>
+              <g class="sa-pin" data-city="Mill Creek" tabindex="0" role="button" aria-label="Mill Creek, ~15 min from home base. Show details." transform="translate(280.1 401.8)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="-13" y="4" text-anchor="end">Mill Creek</text>
+              </g>
+              <g class="sa-pin" data-city="Monroe" tabindex="0" role="button" aria-label="Monroe, ~15 min from home base. Show details." transform="translate(437.4 406.6)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="13" y="4" text-anchor="start">Monroe</text>
+              </g>
+              <g class="sa-pin" data-city="Bothell" tabindex="0" role="button" aria-label="Bothell, ~20 min from home base. Show details." transform="translate(279.4 502.3)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="-13" y="4" text-anchor="end">Bothell</text>
+              </g>
+              <g class="sa-pin" data-city="Woodinville" tabindex="0" role="button" aria-label="Woodinville, ~20 min from home base. Show details." transform="translate(307.6 508.1)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="0" y="26" text-anchor="middle">Woodinville</text>
+              </g>
+              <g class="sa-pin" data-city="Duvall" tabindex="0" role="button" aria-label="Duvall, ~25 min from home base. Show details." transform="translate(427.5 520.2)">
+                <circle class="sa-hit" r="24"/>
+                <circle class="sa-ring" r="13"/>
+                <circle class="sa-dot" r="5.5"/>
+                <text class="sa-lbl" x="13" y="4" text-anchor="start">Duvall</text>
+              </g>
+            </g>
+            <g class="sa-scale"><line x1="30" y1="597" x2="102.8" y2="597"/><line x1="30" y1="593" x2="30" y2="601"/><line x1="102.8" y1="593" x2="102.8" y2="601"/><text x="110.8" y="601">5 miles</text></g>
+          </svg>
+        </div>
+        <figcaption class="sa-legend">
+          <span class="sa-key sa-key--core"><i></i> Ten miles or less</span>
+          <span class="sa-key sa-key--zone"><i></i> Where I am every week</span>
+          <span class="sa-key sa-key--ask"><i></i> Ask me &mdash; I often say yes</span>
+        </figcaption>
+      </figure>
+
+    </div>
+
+    <!-- ---------- the towns, spelled out (also the accessible version of the map) ---------- -->
+    <div class="sa-towns">
+      <h3 class="sa-towns-h">Towns I'm in every week</h3>
+      <ul class="sa-chips">
+        <li><a href="/snohomish/">Snohomish</a></li>
+        <li><a href="/lake-stevens/">Lake Stevens</a></li>
+        <li><a href="/everett/">Everett</a></li>
+        <li><a href="/monroe/">Monroe</a></li>
+        <li><a href="/mill-creek/">Mill Creek</a></li>
+        <li><a href="/marysville/">Marysville</a></li>
+        <li><a href="/bothell/">Bothell</a></li>
+        <li><a href="/duvall/">Duvall</a></li>
+        <li><span>Mukilteo</span></li>
+        <li><span>Woodinville</span></li>
+        <li><span>Granite Falls</span></li>
+        <li><span>Arlington</span></li>
+      </ul>
+      <p class="sa-towns-more">And everywhere in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
+    </div>
+
+    <div class="sa-foot">
+      <div class="hg4-btnrow">
+        <a class="hg4-btn hg4-btn--primary" href="#booking">Get My Instant Quote &rarr;</a>
+        <a class="hg4-btn hg4-btn--ghost" href="tel:+14256007897">&#128222;&nbsp;(425) 600-7897</a>
+      </div>
+      <p class="hg4-micro">300+ driveways across the county &middot; <b>You don't pay until you love it</b></p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+/* ===== Service area checker =========================================================
+   Answers one question fast: "do you come to my town?" Three outcomes, and none of
+   them is a dead end — 'yes' hands off to the quote calculator with the location
+   already filled in, 'ask' pushes to a text, 'no' captures the lead for later.
+
+   TOWNS is the whole config. Each entry: name, tier, zips, drive time, optional page.
+     tier 'yes' — I'm there regularly. Pinned on the map.
+     tier 'ask' — near enough that I often say yes, but not a promise.
+   A ZIP that isn't listed here is treated as out of area, so keep the 'ask' list
+   generous: it's the difference between "text me" and "sorry".
+   ================================================================================== */
+(function () {
+  'use strict';
+
+  var PHONE = '+14256007897', PHONE_H = '(425) 600-7897';
+
+  var TOWNS = [
+    /* --- I'm there regularly (these are the pins on the map) --- */
+    { n:'Snohomish',     t:'yes', d:'home base',  p:'/snohomish/',    z:['98290','98291','98296'] },
+    { n:'Lake Stevens',  t:'yes', d:'~12 min',    p:'/lake-stevens/', z:['98258'] },
+    { n:'Everett',       t:'yes', d:'~15 min',    p:'/everett/',      z:['98201','98203','98204','98205','98206','98207','98208','98213'] },
+    { n:'Monroe',        t:'yes', d:'~15 min',    p:'/monroe/',       z:['98272'] },
+    { n:'Mill Creek',    t:'yes', d:'~15 min',    p:'/mill-creek/',   z:['98012','98082'] },
+    { n:'Marysville',    t:'yes', d:'~20 min',    p:'/marysville/',   z:['98270','98271'] },
+    { n:'Bothell',       t:'yes', d:'~20 min',    p:'/bothell/',      z:['98011','98021','98041'] },
+    { n:'Woodinville',   t:'yes', d:'~20 min',    p:null,             z:['98072','98077'] },
+    { n:'Mukilteo',      t:'yes', d:'~22 min',    p:null,             z:['98275'] },
+    { n:'Granite Falls', t:'yes', d:'~22 min',    p:null,             z:['98252'] },
+    { n:'Duvall',        t:'yes', d:'~25 min',    p:'/duvall/',       z:['98019'] },
+    { n:'Arlington',     t:'yes', d:'~30 min',    p:null,             z:['98223'] },
+
+    /* --- close enough that it's worth asking --- */
+    { n:'Lynnwood',           t:'ask', z:['98036','98037','98046','98087'] },
+    { n:'Edmonds',            t:'ask', z:['98020','98026'] },
+    { n:'Mountlake Terrace',  t:'ask', z:['98043'] },
+    { n:'Brier',              t:'ask', z:[] },
+    { n:'Sultan',             t:'ask', z:['98294'] },
+    { n:'Startup',            t:'ask', z:['98293'] },
+    { n:'Gold Bar',           t:'ask', z:['98251'] },
+    { n:'Index',              t:'ask', z:['98256'] },
+    { n:'Stanwood',           t:'ask', z:['98292'] },
+    { n:'Silvana',            t:'ask', z:['98287'] },
+    { n:'Camano Island',      t:'ask', z:['98282'] },
+    { n:'Darrington',         t:'ask', z:['98241'] },
+    { n:'Kenmore',            t:'ask', z:['98028'] },
+    { n:'Lake Forest Park',   t:'ask', z:[] },
+    { n:'Shoreline',          t:'ask', z:['98133','98155','98177'] },
+    { n:'Kirkland',           t:'ask', z:['98033','98034','98083'] },
+    { n:'Redmond',            t:'ask', z:['98052','98053','98073'] },
+    { n:'Carnation',          t:'ask', z:['98014'] },
+    { n:'Snoqualmie',         t:'ask', z:['98065'] },
+    { n:'North Bend',         t:'ask', z:['98045'] },
+    { n:'Bellevue',           t:'ask', z:['98004','98005','98006','98007','98008'] },
+    { n:'North Seattle',      t:'ask', z:['98103','98105','98107','98115','98117','98125'] }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var input = $('saInput'), sugg = $('saSugg'), result = $('saResult'),
+      form = $('saForm'), geo = $('saGeo'), section = document.getElementById('service-area');
+  if (!input || !form || !result) return;
+
+  /* zip -> town, and a normalised name index for typo-tolerant matching */
+  var BY_ZIP = {}, i, j;
+  for (i = 0; i < TOWNS.length; i++) {
+    for (j = 0; j < TOWNS[i].z.length; j++) BY_ZIP[TOWNS[i].z[j]] = TOWNS[i];
+  }
+  function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+  function track(name, params) {
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
+    });
+  }
+
+  /* ---------- matching ---------- */
+  function lookup(raw) {
+    var q = (raw || '').trim();
+    if (!q) return null;
+    var zip = q.match(/\b(\d{5})\b/);
+    if (zip) return { town: BY_ZIP[zip[1]] || null, zip: zip[1], typed: q };
+    var n = norm(q);
+    if (!n) return null;
+    var exact = null, starts = null, contains = null;
+    for (var k = 0; k < TOWNS.length; k++) {
+      var tn = norm(TOWNS[k].n);
+      if (tn === n) { exact = TOWNS[k]; break; }
+      if (!starts && tn.indexOf(n) === 0) starts = TOWNS[k];
+      if (!contains && n.length >= 4 && tn.indexOf(n) > -1) contains = TOWNS[k];
+    }
+    return { town: exact || starts || contains, zip: '', typed: q };
+  }
+
+  /* ---------- suggestions ---------- */
+  var active = -1, items = [];
+  function closeSugg() { sugg.className = 'sa-sugg'; sugg.innerHTML = ''; items = []; active = -1;
+    input.setAttribute('aria-expanded', 'false'); }
+  function openSugg(list) {
+    if (!list.length) return closeSugg();
+    items = list; active = -1;
+    sugg.innerHTML = list.map(function (t, idx) {
+      var tag = t.t === 'yes' ? (t.d === 'home base' ? 'Home base' : t.d + ' away') : 'Ask me';
+      return '<li role="option" id="sa-op' + idx + '" aria-selected="false" data-i="' + idx + '">' +
+             '<b>' + esc(t.n) + '</b><small>' + esc(tag) + '</small></li>';
+    }).join('');
+    sugg.className = 'sa-sugg is-open';
+    input.setAttribute('aria-expanded', 'true');
+  }
+  function suggest(raw) {
+    var n = norm(raw);
+    if (n.length < 2 || /^\d/.test(raw.trim())) return closeSugg();
+    var out = [];
+    for (var k = 0; k < TOWNS.length && out.length < 6; k++) {
+      if (norm(TOWNS[k].n).indexOf(n) === 0) out.push(TOWNS[k]);
+    }
+    if (n.length >= 4) {
+      for (k = 0; k < TOWNS.length && out.length < 6; k++) {
+        if (norm(TOWNS[k].n).indexOf(n) > 0 && out.indexOf(TOWNS[k]) < 0) out.push(TOWNS[k]);
+      }
+    }
+    openSugg(out);
+  }
+  function highlight(idx) {
+    var nodes = sugg.querySelectorAll('li');
+    for (var k = 0; k < nodes.length; k++) nodes[k].setAttribute('aria-selected', k === idx ? 'true' : 'false');
+    active = idx;
+    input.setAttribute('aria-activedescendant', idx > -1 ? 'sa-op' + idx : '');
+  }
+
+  input.addEventListener('input', function () {
+    suggest(input.value);
+    if (result.innerHTML) { result.innerHTML = ''; markMap(null); }
+  });
+  input.addEventListener('keydown', function (e) {
+    if (!items.length) return;
+    if (e.key === 'ArrowDown') { e.preventDefault(); highlight((active + 1) % items.length); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); highlight((active - 1 + items.length) % items.length); }
+    else if (e.key === 'Enter' && active > -1) { e.preventDefault(); choose(items[active]); }
+    else if (e.key === 'Escape') closeSugg();
+  });
+  sugg.addEventListener('click', function (e) {
+    var li = e.target.closest('li'); if (li) choose(items[+li.getAttribute('data-i')]);
+  });
+  document.addEventListener('click', function (e) {
+    if (!form.contains(e.target)) closeSugg();
+  });
+  function choose(t) { if (!t) return; input.value = t.n; closeSugg(); show(t, '', 'suggestion'); }
+
+  /* ---------- the answer ---------- */
+  var ICON = {
+    yes: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="m4 12.5 5 5L20 6.5"/></svg>',
+    ask: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 17h.01M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.5-2.8 4"/><circle cx="12" cy="12" r="9.5"/></svg>',
+    no:  '<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9.5"/><path d="M8 12h8"/></svg>'
+  };
+
+  function smsHref(body) { return 'sms:' + PHONE + '?&body=' + encodeURIComponent(body); }
+
+  function show(town, zip, source) {
+    var where = town ? town.n : (zip || input.value.trim());
+    var tier = town ? town.t : 'no';
+    var html;
+
+    if (tier === 'yes') {
+      var home = town.d === 'home base';
+      html =
+        '<div class="sa-res sa-res--yes">' +
+          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.yes + '</span><div>' +
+            '<p class="sa-res-h">Yes &mdash; I\'m in <b>' + esc(town.n) + '</b>' + (home ? ' every day. It\'s my own town.' : ' most weeks.') + '</p>' +
+            '<p class="sa-res-p">' + (home
+                ? 'You\'re about as close as I get. Most weeks I can be there in a day or two.'
+                : 'That\'s ' + esc(town.d) + ' up the road for me. No travel charge, and you pay the same as the guy on my own block.') +
+            '</p>' +
+          '</div></div>' +
+          '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') + '</span><span>No travel fee</span><span>You don\'t pay until you love it</span></div>' +
+          '<div class="sa-res-cta">' +
+            '<button type="button" class="sa-btn sa-btn--primary" data-sa-quote="' + esc(town.n) + '">See My Price &rarr;</button>' +
+            '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">Call Or Text</a>' +
+          '</div>' +
+          (town.p ? '<a class="sa-res-link" href="' + town.p + '">See my ' + esc(town.n) + ' page &rarr;</a>' : '') +
+        '</div>';
+    } else if (tier === 'ask') {
+      html =
+        '<div class="sa-res sa-res--ask">' +
+          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
+            '<p class="sa-res-h"><b>' + esc(town.n) + '</b> sits right on the edge of where I go.</p>' +
+            '<p class="sa-res-p">I do get out there, it just depends what else is booked that week. Text me your address and I\'ll give you a straight yes or no, usually inside the hour.</p>' +
+          '</div></div>' +
+          '<div class="sa-res-cta">' +
+            '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me And Find Out</a>' +
+            '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">' + PHONE_H + '</a>' +
+          '</div>' +
+        '</div>';
+    } else {
+      html =
+        '<div class="sa-res sa-res--no">' +
+          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.no + '</span><div>' +
+            '<p class="sa-res-h">I don\'t get out to <b>' + esc(where) + '</b> yet.</p>' +
+            '<p class="sa-res-p">I keep close to Snohomish on purpose. It\'s the only way I can promise a time and actually hold it. Leave your number and you\'ll be first to know if that changes.</p>' +
+          '</div></div>' +
+          '<form class="sa-wait" id="saWait" novalidate>' +
+            '<input type="text" id="saWaitName" placeholder="Your name" autocomplete="name">' +
+            '<input type="tel" id="saWaitPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel">' +
+            '<button type="submit" class="sa-btn sa-btn--primary" style="flex:none;">Let Me Know When You Do</button>' +
+          '</form>' +
+          '<p class="sa-wait-msg" id="saWaitMsg" role="status"></p>' +
+        '</div>';
+    }
+
+    result.innerHTML = html;
+    track('service_area_check', { result: tier, area: where, zip: zip || '', source: source || 'form' });
+    markMap(tier === 'yes' ? town.n : null);
+    if (tier === 'no') wireWaitlist(where, zip);
+  }
+
+  /* ---------- out-of-area capture, same endpoint the quote calculator uses ---------- */
+  function wireWaitlist(where, zip) {
+    var wf = $('saWait'), msg = $('saWaitMsg');
+    if (!wf) return;
+    wf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = ($('saWaitName').value || '').trim();
+      var phone = ($('saWaitPhone').value || '').trim();
+      if (phone.replace(/\D/g, '').length < 10) {
+        msg.className = 'sa-wait-msg err';
+        msg.textContent = 'I need a full phone number to reach you on.';
+        return;
+      }
+      var btn = wf.querySelector('button');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var fd = new FormData();
+      fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
+      fd.append('subject', 'Service area waitlist: ' + where);
+      fd.append('from_name', 'Mikeys Service Area Checker');
+      fd.append('name', name || '(not given)');
+      fd.append('phone', phone);
+      fd.append('location', where + (zip ? ' (' + zip + ')' : ''));
+      fd.append('message', 'Out-of-area request\n---\nName: ' + (name || '(not given)') +
+        '\nPhone: ' + phone + '\nLooking for service in: ' + where + (zip ? ' (' + zip + ')' : '') +
+        '\nSource: service area checker');
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !d.success) throw new Error('rejected');
+          wf.style.display = 'none';
+          msg.className = 'sa-wait-msg ok';
+          msg.textContent = 'Got it. If I start covering ' + where + ', you get the first text.';
+          track('service_area_waitlist', { area: where, zip: zip || '' });
+        })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = 'Let Me Know When You Do';
+          msg.className = 'sa-wait-msg err';
+          msg.innerHTML = 'That didn’t send. <a href="' + smsHref('Hi Mikey, do you cover ' + where + '?') +
+            '" style="color:#C9A24B;font-weight:800;">Text me instead &rarr;</a>';
+        });
+    });
+  }
+
+  /* ---------- highlight the matching pin + chip ---------- */
+  function markMap(name) {
+    var pins = document.querySelectorAll('.sa-pin');
+    for (var k = 0; k < pins.length; k++) {
+      pins[k].classList.toggle('is-on', !!name && pins[k].getAttribute('data-city') === name);
+    }
+    var chips = document.querySelectorAll('.sa-chips li');
+    for (k = 0; k < chips.length; k++) {
+      chips[k].classList.toggle('is-on', !!name && chips[k].textContent.trim() === name);
+    }
+  }
+
+  /* ---------- hand off to the quote calculator with the town already filled in ---------- */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sa-quote]');
+    if (!b) return;
+    var town = b.getAttribute('data-sa-quote');
+    var loc = document.getElementById('qqLocation');
+    if (loc && !loc.value) loc.value = town;
+    track('service_area_to_quote', { area: town });
+    var booking = document.getElementById('booking');
+    if (booking) booking.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  /* ---------- pins are checkers too ---------- */
+  document.addEventListener('click', function (e) {
+    var pin = e.target.closest('.sa-pin');
+    if (!pin) return;
+    var name = pin.getAttribute('data-city');
+    for (var k = 0; k < TOWNS.length; k++) {
+      if (TOWNS[k].n === name) { input.value = name; closeSugg(); show(TOWNS[k], '', 'map_pin'); break; }
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var pin = document.activeElement && document.activeElement.closest ?
+              document.activeElement.closest('.sa-pin') : null;
+    if (!pin) return;
+    e.preventDefault(); pin.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  });
+
+  /* ---------- quick picks ---------- */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-sa-town]');
+    if (!b) return;
+    var name = b.getAttribute('data-sa-town');
+    for (var k = 0; k < TOWNS.length; k++) {
+      if (TOWNS[k].n === name) { input.value = name; closeSugg(); show(TOWNS[k], '', 'quick_pick'); break; }
+    }
+  });
+
+  /* ---------- submit + geolocation ---------- */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    closeSugg();
+    var m = lookup(input.value);
+    if (!m) { input.focus(); return; }
+    show(m.town, m.zip, 'form');
+  });
+
+  if (geo && navigator.geolocation) {
+    geo.addEventListener('click', function () {
+      geo.classList.add('is-busy');
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        geo.classList.remove('is-busy');
+        var best = null, bestD = 1e9;
+        var LAT = { 'Snohomish':[47.9129,-122.0982], 'Lake Stevens':[48.0151,-122.0637],
+          'Everett':[47.9790,-122.2021], 'Monroe':[47.8554,-121.9710], 'Mill Creek':[47.8601,-122.2043],
+          'Marysville':[48.0518,-122.1771], 'Bothell':[47.7601,-122.2054], 'Woodinville':[47.7543,-122.1635],
+          'Mukilteo':[47.9445,-122.3046], 'Granite Falls':[48.0832,-121.9676], 'Duvall':[47.7423,-121.9857],
+          'Arlington':[48.1987,-122.1251], 'Lynnwood':[47.8279,-122.3051], 'Edmonds':[47.8107,-122.3774],
+          'Mountlake Terrace':[47.7887,-122.3087], 'Kenmore':[47.7573,-122.2440], 'Shoreline':[47.7557,-122.3415],
+          'Kirkland':[47.6815,-122.2087], 'Redmond':[47.6740,-122.1215], 'Sultan':[47.8623,-121.8162],
+          'Stanwood':[48.2415,-122.3496], 'Bellevue':[47.6101,-122.2015], 'North Seattle':[47.6900,-122.3200] };
+        for (var k = 0; k < TOWNS.length; k++) {
+          var c = LAT[TOWNS[k].n]; if (!c) continue;
+          var dy = (c[0] - pos.coords.latitude) * 69.05;
+          var dx = (c[1] - pos.coords.longitude) * 69.05 * 0.67;
+          var d = Math.sqrt(dy * dy + dx * dx);
+          if (d < bestD) { bestD = d; best = TOWNS[k]; }
+        }
+        /* More than ~12 miles from anything I know means they're simply not near me. */
+        if (best && bestD < 12) { input.value = best.n; show(best, '', 'geolocation'); }
+        else { input.value = ''; show(null, '', 'geolocation'); }
+      }, function () {
+        geo.classList.remove('is-busy');
+        input.focus();
+      }, { timeout: 8000, maximumAge: 600000 });
+    });
+  } else if (geo) {
+    geo.style.display = 'none';
+  }
+
+  /* ---------- scroll reveal for the coverage zone ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (section && !reduce && 'IntersectionObserver' in window) {
+    section.classList.add('sa-anim');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.18 });
+    io.observe(section);
+  }
+
+  /* ---------- deep link: /#service-area?zip=98258 style, and the header link ---------- */
+  var pre = (location.hash.match(/zip=(\d{5})/) || [])[1];
+  if (pre) { input.value = pre; var m2 = lookup(pre); if (m2) show(m2.town, m2.zip, 'deeplink'); }
+})();
+</script>
+
 <section id="allservices" class="svc2">
   <div class="svc2-wrap">
 
@@ -4687,6 +5576,10 @@ header li a[href="#booking"],
       <p>Yep, that's the whole idea. I pull up to your home or work in Snohomish County with everything I need. You hand me the keys and get on with your day.</p>
     </details>
     <details class="faq2-item">
+      <summary>Do you come to my town?</summary>
+      <p>If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington every week, and there's no travel charge anywhere I go. <a href="#service-area">Check your ZIP here</a> and you'll know in two seconds.</p>
+    </details>
+    <details class="faq2-item">
       <summary>Do I need to provide water or power?</summary>
       <p>Yes. I'll need access to an outdoor water spigot and a power outlet. As long as those are reachable, I can detail even if you're not home, just point me to them when you book.</p>
     </details>
@@ -4842,6 +5735,7 @@ header li a[href="#booking"],
         <li><a href="#about">About</a></li>
         <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
         <li><a href="/polish-test/">The Polish Test</a></li>
+        <li><a href="#service-area">Areas Served</a></li>
         <li><a href="/snohomish/">Snohomish</a></li>
         <li><a href="/everett/">Everett</a></li>
         <li><a href="/monroe/">Monroe</a></li>
