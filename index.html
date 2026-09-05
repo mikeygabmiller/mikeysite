@@ -3220,6 +3220,11 @@ header li a[href="#booking"],
   .mko__trust .stars { color: var(--gold); letter-spacing: 1px; }
   .mko__trust .sep { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.28); }
   .mko__trust .hot { color: var(--red-bright); font-weight: 700; }
+  /* The dots are their own flex items, so once the row wraps one gets stranded at
+     the end of a line pointing at nothing. CSS can't see where a line breaks, so
+     below the width where the row still fits on one line the dots come out and the
+     claims just stack. */
+  @media (max-width: 700px) { .mko__trust .sep { display: none; } }
 
   /* ---------- responsive ---------- */
   @media (max-width: 600px) {
@@ -3765,7 +3770,7 @@ header li a[href="#booking"],
   </style>
   <div style="text-align:center;margin-bottom:28px;">
     <div style="font-size:12px;font-weight:700;color:#C8102E;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;">The Work</div>
-    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
+    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">Cars I detailed <span style="color:#C8102E;">this month.</span></h2>
   </div>
   <div class="hp-gallery-strip" style="position:relative;">
     <div class="hp-gallery-track">
@@ -3911,6 +3916,13 @@ header li a[href="#booking"],
   .svc2 .browse-div::before, .svc2 .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
   .svc2 .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:14px; align-items:stretch }
   .svc2 .cards .acard{ padding:28px 22px 20px; display:flex; flex-direction:column }
+  /* The badge is absolutely placed, so the card has to reserve room for it itself.
+     It's centred while the title is left-aligned, so they collide whenever the card
+     is narrow enough for the pill to reach across to the text: the 3-up desktop grid
+     (~392px cards) and phones (~380px) both do, and only the single-column tablet
+     range is wide enough to clear. Pad the badged card rather than nudge the badge,
+     so the title sits in the same place at every width. */
+  .svc2 .cards .acard.feature{ padding-top:52px }
   .svc2 .svc-badge{ position:absolute; top:15px; left:50%; transform:translateX(-50%); z-index:3 }
   .svc2 .svc-top{ display:flex; align-items:center; gap:13px }
   .svc2 .svc-tile{ width:50px; height:50px; border-radius:14px; flex:none; display:grid; place-items:center; color:var(--gold2);
@@ -4750,45 +4762,6 @@ header li a[href="#booking"],
   </div>
 </section>
 
-<!-- THE POLISH TEST -->
-<section class="ptp" aria-labelledby="ptp-title">
-  <a class="ptp-card" href="/polish-test/">
-    <div class="ptp-shot">
-      <img src="/polish-test/og.jpg" width="1200" height="630" loading="lazy" decoding="async"
-           alt="The same black car under normal light and under an inspection light: flawless on one side, covered in swirl marks on the other.">
-    </div>
-    <div class="ptp-copy">
-      <span class="ptp-kicker">Free &middot; 90 seconds</span>
-      <h2 id="ptp-title">Can you see what a detailer sees?</h2>
-      <p>This car looks flawless. It has eleven defects in the paint, and you cannot see a single one of them until you put a light on it at the right angle. Take the inspection light and find out how much your eye actually catches &mdash; then say what needs a repaint.</p>
-      <span class="ptp-btn">Take The Polish Test &rarr;</span>
-    </div>
-  </a>
-</section>
-<style>
-  .ptp{ background:#0e0e0e; padding:44px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
-  .ptp-card{ display:flex; gap:28px; align-items:center; max-width:1100px; margin:0 auto;
-    background:#151515; border:1px solid #2a2a2a; border-radius:16px; padding:18px;
-    text-decoration:none; color:#fff; transition:border-color .18s ease, transform .18s ease; }
-  .ptp-card:hover{ border-color:#C8102E; transform:translateY(-2px); }
-  .ptp-shot{ flex:0 0 46%; border-radius:11px; overflow:hidden; line-height:0; background:#0a0a0a; }
-  .ptp-shot img{ width:100%; height:auto; display:block; }
-  .ptp-copy{ flex:1 1 auto; }
-  .ptp-kicker{ display:inline-block; font-size:0.68rem; font-weight:800; letter-spacing:2px;
-    text-transform:uppercase; color:#C8102E; margin-bottom:8px; }
-  .ptp-copy h2{ font-size:clamp(1.3rem,2.6vw,1.9rem); font-weight:900; text-transform:uppercase;
-    letter-spacing:0.5px; margin:0 0 10px; line-height:1.08; }
-  .ptp-copy p{ color:#bdc3ca; font-size:0.95rem; line-height:1.55; margin:0 0 16px; }
-  .ptp-btn{ display:inline-block; background:#C8102E; color:#fff; font-weight:900; font-size:0.86rem;
-    letter-spacing:1px; text-transform:uppercase; padding:13px 24px; border-radius:9px; }
-  .ptp-card:hover .ptp-btn{ background:#e11836; }
-  @media(max-width:820px){
-    .ptp{ padding:30px 16px; }
-    .ptp-card{ flex-direction:column; gap:16px; padding:14px; }
-    .ptp-shot{ flex:none; width:100%; }
-    .ptp-copy{ text-align:center; }
-  }
-</style>
 
 <section class="explore" aria-labelledby="explore-title">
   <div class="explore-inner">
@@ -4800,7 +4773,6 @@ header li a[href="#booking"],
       <a href="/how-long-does-car-detailing-take/">How Long It Takes</a>
       <a href="/mobile-detailing-vs-car-wash/">Detailing vs Car Wash</a>
       <a href="/best-time-to-detail-car-washington/">Best Time To Detail</a>
-      <a href="/polish-test/">The Polish Test</a>
     </div>
   </div>
 </section>
@@ -4832,7 +4804,6 @@ header li a[href="#booking"],
         <li><a href="/reviews/">Reviews</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="https://blog.mikeysdetailing.com">Blog</a></li>
-        <li><a href="/polish-test/">The Polish Test</a></li>
         <li><a href="/snohomish/">Snohomish</a></li>
         <li><a href="/everett/">Everett</a></li>
         <li><a href="/monroe/">Monroe</a></li>
