@@ -3620,8 +3620,8 @@ header li a[href="#booking"],
 
     <div class="sa-head">
       <span class="sa-eyebrow">Areas I Serve</span>
-      <h2 id="svcarea-title">You Don't Drive Anywhere. <em>I Do.</em></h2>
-      <p class="sa-sub">I'm based in Snohomish and I bring the whole setup &mdash; water, power, everything &mdash; to your driveway or your office parking spot. Type your ZIP and you'll know in about two seconds.</p>
+      <h2 id="svcarea-title">Chances Are, I'm Already In <em>Your Town.</em></h2>
+      <p class="sa-sub">I work out of Snohomish and cover most of the county &mdash; Arlington down to Bothell, Mukilteo out to Granite Falls. Put in your ZIP and you'll know in about two seconds.</p>
     </div>
 
     <div class="sa-grid">
@@ -3630,7 +3630,7 @@ header li a[href="#booking"],
       <div class="sa-check">
         <div class="sa-check-head">
           <span class="sa-live"><span class="sa-live-dot"></span> Instant answer</span>
-          <h3>Do I come to you?</h3>
+          <h3>Do I come out to you?</h3>
         </div>
 
         <form class="sa-form" id="saForm" autocomplete="off" novalidate>
@@ -3653,7 +3653,7 @@ header li a[href="#booking"],
         <div class="sa-result" id="saResult" aria-live="polite"></div>
 
         <div class="sa-quick">
-          <span class="sa-quick-h">Or tap a town</span>
+          <span class="sa-quick-h">Or pick your town</span>
           <div class="sa-quick-row">
             <button type="button" data-sa-town="Snohomish">Snohomish</button>
             <button type="button" data-sa-town="Everett">Everett</button>
@@ -3665,9 +3665,9 @@ header li a[href="#booking"],
         </div>
 
         <ul class="sa-promises">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> No travel fee, ever</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> No travel fee, anywhere I go</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Same price in every town</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> I bring my own water &amp; power</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> All I need is a spigot and an outlet</li>
         </ul>
 
         <p class="sa-check-foot">Not sure? <a href="tel:+14256007897">Call or text (425) 600-7897</a> and I'll just tell you.</p>
@@ -3793,9 +3793,9 @@ header li a[href="#booking"],
           </svg>
         </div>
         <figcaption class="sa-legend">
-          <span class="sa-key sa-key--core"><i></i> 10 miles or less</span>
-          <span class="sa-key sa-key--zone"><i></i> My regular route</span>
-          <span class="sa-key sa-key--ask"><i></i> Just ask &mdash; I often say yes</span>
+          <span class="sa-key sa-key--core"><i></i> Ten miles or less</span>
+          <span class="sa-key sa-key--zone"><i></i> Where I am every week</span>
+          <span class="sa-key sa-key--ask"><i></i> Ask me &mdash; I often say yes</span>
         </figcaption>
       </figure>
 
@@ -3803,7 +3803,7 @@ header li a[href="#booking"],
 
     <!-- ---------- the towns, spelled out (also the accessible version of the map) ---------- -->
     <div class="sa-towns">
-      <h3 class="sa-towns-h">Towns I detail in every week</h3>
+      <h3 class="sa-towns-h">Towns I'm in every week</h3>
       <ul class="sa-chips">
         <li><a href="/snohomish/">Snohomish</a></li>
         <li><a href="/lake-stevens/">Lake Stevens</a></li>
@@ -3818,7 +3818,7 @@ header li a[href="#booking"],
         <li><span>Granite Falls</span></li>
         <li><span>Arlington</span></li>
       </ul>
-      <p class="sa-towns-more">Plus everything in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip and the rest of the county. If you're a little outside that, ask me anyway; I get out there more often than not.</p>
+      <p class="sa-towns-more">And everywhere in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
     </div>
 
     <div class="sa-foot">
@@ -4002,28 +4002,28 @@ header li a[href="#booking"],
       html =
         '<div class="sa-res sa-res--yes">' +
           '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.yes + '</span><div>' +
-            '<p class="sa-res-h">Yes &mdash; I detail in <b>' + esc(town.n) + '</b>' + (home ? '. That’s my own town.' : ' every week.') + '</p>' +
+            '<p class="sa-res-h">Yes &mdash; I\'m in <b>' + esc(town.n) + '</b>' + (home ? ' every day. It\'s my own town.' : ' most weeks.') + '</p>' +
             '<p class="sa-res-p">' + (home
-                ? 'You’re about as close as it gets. I can usually get to you within a day or two.'
-                : 'It’s ' + esc(town.d) + ' from my driveway, and it costs you nothing extra to get me there — same price as my own street.') +
+                ? 'You\'re about as close as I get. Most weeks I can be there in a day or two.'
+                : 'That\'s ' + esc(town.d) + ' up the road for me. No travel charge, and you pay the same as the guy on my own block.') +
             '</p>' +
           '</div></div>' +
-          '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') + '</span><span>No travel fee</span><span>You don’t pay until you love it</span></div>' +
+          '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') + '</span><span>No travel fee</span><span>You don\'t pay until you love it</span></div>' +
           '<div class="sa-res-cta">' +
             '<button type="button" class="sa-btn sa-btn--primary" data-sa-quote="' + esc(town.n) + '">See My Price &rarr;</button>' +
             '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">Call Or Text</a>' +
           '</div>' +
-          (town.p ? '<a class="sa-res-link" href="' + town.p + '">Detailing in ' + esc(town.n) + ' &rarr;</a>' : '') +
+          (town.p ? '<a class="sa-res-link" href="' + town.p + '">See my ' + esc(town.n) + ' page &rarr;</a>' : '') +
         '</div>';
     } else if (tier === 'ask') {
       html =
         '<div class="sa-res sa-res--ask">' +
           '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
-            '<p class="sa-res-h"><b>' + esc(town.n) + '</b> is right on the edge of my loop.</p>' +
-            '<p class="sa-res-p">I still get out there plenty &mdash; it depends what else is on the calendar that week. Send me a text with your address and I’ll give you a straight yes or no, usually within the hour.</p>' +
+            '<p class="sa-res-h"><b>' + esc(town.n) + '</b> sits right on the edge of where I go.</p>' +
+            '<p class="sa-res-p">I do get out there, it just depends what else is booked that week. Text me your address and I\'ll give you a straight yes or no, usually inside the hour.</p>' +
           '</div></div>' +
           '<div class="sa-res-cta">' +
-            '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me &mdash; Can You Come?</a>' +
+            '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me And Find Out</a>' +
             '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">' + PHONE_H + '</a>' +
           '</div>' +
         '</div>';
@@ -4031,13 +4031,13 @@ header li a[href="#booking"],
       html =
         '<div class="sa-res sa-res--no">' +
           '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.no + '</span><div>' +
-            '<p class="sa-res-h">I don’t make it out to <b>' + esc(where) + '</b> yet.</p>' +
-            '<p class="sa-res-p">I stay close to Snohomish on purpose &mdash; it’s how I show up when I say I will. Leave your number and you’ll be the first to hear if that changes.</p>' +
+            '<p class="sa-res-h">I don\'t get out to <b>' + esc(where) + '</b> yet.</p>' +
+            '<p class="sa-res-p">I keep close to Snohomish on purpose. It\'s the only way I can promise a time and actually hold it. Leave your number and you\'ll be first to know if that changes.</p>' +
           '</div></div>' +
           '<form class="sa-wait" id="saWait" novalidate>' +
             '<input type="text" id="saWaitName" placeholder="Your name" autocomplete="name">' +
             '<input type="tel" id="saWaitPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel">' +
-            '<button type="submit" class="sa-btn sa-btn--primary" style="flex:none;">Tell Me When You Expand</button>' +
+            '<button type="submit" class="sa-btn sa-btn--primary" style="flex:none;">Let Me Know When You Do</button>' +
           '</form>' +
           '<p class="sa-wait-msg" id="saWaitMsg" role="status"></p>' +
         '</div>';
@@ -4084,7 +4084,7 @@ header li a[href="#booking"],
           track('service_area_waitlist', { area: where, zip: zip || '' });
         })
         .catch(function () {
-          btn.disabled = false; btn.textContent = 'Tell Me When You Expand';
+          btn.disabled = false; btn.textContent = 'Let Me Know When You Do';
           msg.className = 'sa-wait-msg err';
           msg.innerHTML = 'That didn’t send. <a href="' + smsHref('Hi Mikey, do you cover ' + where + '?') +
             '" style="color:#C9A24B;font-weight:800;">Text me instead &rarr;</a>';
