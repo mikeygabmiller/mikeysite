@@ -3513,6 +3513,8 @@ header li a[href="#booking"],
     text-transform:uppercase; color:#8f8f8f; }
   .sa-opt{ display:flex; gap:11px; align-items:flex-start; padding:14px;
     background:rgba(255,255,255,.035); border:1px solid #2e2e2e; border-radius:11px; }
+  .sa-opt--wait{ background:rgba(200,16,46,.05); border-color:rgba(200,16,46,.3); }
+  .sa-opt--wait .sa-opt-ic{ background:rgba(200,16,46,.16); color:#e8657a; }
   .sa-opt + .sa-opt{ margin-top:9px; }
   .sa-opt > div{ min-width:0; flex:1; }
   .sa-opt-ic{ flex:none; width:28px; height:28px; border-radius:8px; display:grid; place-items:center;
@@ -3527,6 +3529,21 @@ header li a[href="#booking"],
     font-size:.8rem; letter-spacing:.5px; text-transform:uppercase; text-decoration:none;
     cursor:pointer; transition:border-color .15s ease, transform .15s ease; }
   .sa-opt-btn:hover{ border-color:#C9A24B; transform:translateY(-1px); }
+
+  /* phones: the option cards carry a lot of words, so give them room and stop
+     the icon column eating a fifth of the line */
+  @media (max-width:560px){
+    .sa-res{ padding:14px 13px; }
+    .sa-opt{ padding:13px 12px; gap:9px; }
+    .sa-opt-ic{ width:24px; height:24px; border-radius:7px; }
+    .sa-opt-ic svg{ width:14px; height:14px; }
+    .sa-opt-h{ font-size:.94rem; }
+    .sa-opt-p{ font-size:.86rem; }
+    .sa-opt-btn{ display:block; width:100%; text-align:center; padding:13px 12px; }
+    .sa-res-cta .sa-btn{ flex:1 1 100%; }
+    .sa-picks{ gap:6px; }
+    .sa-pick{ padding:12px 12px; }
+  }
 
   /* "showing Everett — you typed everet", the way search does it */
   .sa-fix{ margin:12px 0 0; font-size:.83rem; font-weight:600; color:#9a9a9a; }
@@ -3545,10 +3562,25 @@ header li a[href="#booking"],
   .sa-pick small{ font-size:.75rem; font-weight:700; color:#8a8a8a; white-space:nowrap; }
 
   .sa-wait-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-  .sa-wait-check{ display:flex; gap:9px; align-items:flex-start; font-size:.83rem; line-height:1.45;
-    color:#bdbdbd; cursor:pointer; }
-  .sa-wait-check input{ flex:none; width:17px; height:17px; margin-top:1px; accent-color:#C8102E; padding:0; }
-  @media (max-width:520px){ .sa-wait-row{ grid-template-columns:1fr; } }
+  .sa-wait-lbl{ display:block; font-size:.76rem; font-weight:900; letter-spacing:.7px;
+    text-transform:uppercase; color:#8f8f8f; }
+  .sa-chips-row{ display:flex; flex-wrap:wrap; gap:7px; }
+  .sa-chip{ flex:0 1 auto; background:#141414; border:1.5px solid #333; border-radius:999px;
+    color:#cfcfcf; font-family:inherit; font-size:.84rem; font-weight:700; line-height:1.2;
+    padding:9px 14px; min-height:40px; cursor:pointer;
+    transition:border-color .15s ease, background .15s ease, color .15s ease; }
+  .sa-chip:hover{ border-color:#5a5a5a; color:#fff; }
+  .sa-chip[aria-pressed="true"]{ background:rgba(200,16,46,.16); border-color:#C8102E; color:#fff; }
+  .sa-wait-note{ width:100%; box-sizing:border-box; background:#0e0e0e; border:1.5px solid #333;
+    border-radius:9px; color:#fff; font-family:inherit; font-size:.94rem; font-weight:600;
+    line-height:1.5; padding:12px 13px; outline:0; resize:vertical; min-height:76px; }
+  .sa-wait-note:focus{ border-color:#C8102E; }
+  .sa-wait-note::placeholder{ color:#6f6f6f; font-weight:500; }
+  .sa-wait-fine{ display:block; font-size:.78rem; line-height:1.45; color:#8f8f8f; }
+  @media (max-width:560px){
+    .sa-wait-row{ grid-template-columns:1fr; }
+    .sa-chip{ padding:9px 12px; font-size:.82rem; }
+  }
 
   /* ---------- the map ---------- */
   .sa-mapwrap{ margin:0; min-width:0; }
@@ -3677,7 +3709,7 @@ header li a[href="#booking"],
     <div class="sa-head">
       <span class="sa-eyebrow">Areas I Serve</span>
       <h2 id="svcarea-title">Chances Are, I'm Already In <em>Your Town.</em></h2>
-      <p class="sa-sub">I work out of Snohomish and cover most of the county &mdash; Arlington down to Bothell, Mukilteo out to Granite Falls. Type your ZIP, your town or your whole address and you'll know in about two seconds. Spelling doesn't matter, and if you're outside the line you still get a real answer instead of a shrug.</p>
+      <p class="sa-sub">I work out of Snohomish and cover most of the county, Arlington down to Bothell, Mukilteo out to Granite Falls. Put in your ZIP, your town, or paste your whole address. You'll know in about two seconds. Spelling doesn't matter, and if you land outside the line you still get a real answer instead of a shrug.</p>
     </div>
 
     <div class="sa-grid">
@@ -3687,7 +3719,7 @@ header li a[href="#booking"],
         <div class="sa-check-head">
           <span class="sa-live"><span class="sa-live-dot"></span> Instant answer</span>
           <h3>Do I come out to you?</h3>
-          <p class="sa-check-note">Spell it however. It reads through typos, nicknames and full street addresses.</p>
+          <p class="sa-check-note">Spell it however you like. It reads through typos, nicknames and full street addresses.</p>
         </div>
 
         <form class="sa-form" id="saForm" autocomplete="off" novalidate>
@@ -3725,7 +3757,7 @@ header li a[href="#booking"],
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> No travel fee, anywhere I go</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Same price in every town</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> All I need is a spigot and an outlet</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Any driveway in my area &mdash; home, work, a parent's</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Any driveway in my area: home, work, a parent's</li>
         </ul>
 
         <p class="sa-check-foot">Not sure? <a href="tel:+14256007897">Call or text (425) 600-7897</a> and I'll just tell you.</p>
@@ -3904,7 +3936,7 @@ header li a[href="#booking"],
         <figcaption class="sa-legend">
           <span class="sa-key sa-key--core"><i></i> Ten miles or less</span>
           <span class="sa-key sa-key--zone"><i></i> Where I am every week</span>
-          <span class="sa-key sa-key--ask"><i></i> Ask me &mdash; I often say yes</span>
+          <span class="sa-key sa-key--ask"><i></i> Ask me. I often say yes</span>
           <span class="sa-key sa-key--you"><i></i> Where you asked about</span>
         </figcaption>
       </figure>
@@ -3928,7 +3960,7 @@ header li a[href="#booking"],
         <li><span>Granite Falls</span></li>
         <li><span>Arlington</span></li>
       </ul>
-      <p class="sa-towns-more">And everywhere in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. Type any of those into the box above and it knows where you mean. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
+      <p class="sa-towns-more">And everywhere in between: Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. Type any of those into the box above and it knows where you mean. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
     </div>
 
     <div class="sa-foot">
@@ -4357,7 +4389,7 @@ header li a[href="#booking"],
   /* Was the answer worth correcting the spelling for? Say so, the way search does. */
   function fixNote(res) {
     if (!res.corrected) return '';
-    return '<p class="sa-fix">Showing <b>' + esc(res.corrected) + '</b> &mdash; you typed &ldquo;' +
+    return '<p class="sa-fix">Showing <b>' + esc(res.corrected) + '</b>. You typed &ldquo;' +
            esc(res.typed) + '&rdquo;.</p>';
   }
 
@@ -4392,10 +4424,10 @@ header li a[href="#booking"],
     var home = town.d === 'home base';
     return '<div class="sa-res sa-res--yes">' +
         '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.yes + '</span><div>' +
-          '<p class="sa-res-h">Yes &mdash; I\'m in <b>' + esc(town.n) + '</b>' +
+          '<p class="sa-res-h">Yes. I\'m in <b>' + esc(town.n) + '</b>' +
             (home ? ' every day. It\'s my own town.' : ' most weeks.') + '</p>' +
           '<p class="sa-res-p">' + (home
-            ? 'You\'re about as close as I get. Same detailer every time &mdash; it\'s only ever me in your driveway.'
+            ? 'About as close as I get. Same detailer every time, because it\'s only ever me in your driveway.'
             : 'That\'s ' + esc(town.d) + ' up the road for me. No travel charge, and you pay the same as the guy on my own block.') +
           '</p></div></div>' +
         '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') +
@@ -4412,7 +4444,7 @@ header li a[href="#booking"],
     return '<div class="sa-res sa-res--ask">' +
         '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
           '<p class="sa-res-h"><b>' + esc(town.n) + '</b> sits right on the edge of where I go.</p>' +
-          '<p class="sa-res-p">You\'re about ' + mi(d) + ' miles out from me. I do get out there &mdash; it depends what else is booked that week. Text me the address and you\'ll have a straight yes or no, usually inside the hour.</p>' +
+          '<p class="sa-res-p">You\'re about ' + mi(d) + ' miles out from me. I do get out there. It just depends what else is already booked that week. Text me the address and you\'ll have a straight yes or no, usually inside the hour.</p>' +
         '</div></div>' +
         '<div class="sa-res-cta">' +
           '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me And Find Out</a>' +
@@ -4431,19 +4463,19 @@ header li a[href="#booking"],
     if (!near || near.dist < 1) return '';
     var close = near.dist <= 30, body;
     if (close) {
-      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. If it sits anywhere ' +
-             'in my area during the day &mdash; your work lot, a parent\'s driveway, a friend\'s &mdash; ' +
-             'that\'s an ordinary job for me.';
+      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. If the car sits anywhere ' +
+             'in my area during the day, that\'s an ordinary job for me. Your work lot, a parent\'s ' +
+             'driveway, a friend\'s place, all the same to me.';
     } else {
       body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. That\'s a haul from you, ' +
-             'but if the car is ever up this way for a day &mdash; work, family, a trip north &mdash; ' +
-             'I can do it there.';
+             'no getting around it. But if the car is ever up this way for a day, for work or family or ' +
+             'a trip north, I can do it while it\'s here.';
     }
     return '<div class="sa-opt">' +
         '<span class="sa-opt-ic">' + ICON.park + '</span>' +
         '<div><p class="sa-opt-h">The car doesn\'t have to be at your house</p>' +
         '<p class="sa-opt-p">' + body + ' All I need is an outdoor spigot and a power outlet, ' +
-        'and it\'s the same price as any other driveway.</p>' +
+        'and it costs the same as any other driveway.</p>' +
         '<button type="button" class="sa-opt-btn" data-sa-quote="' + esc(near.town.n) + '">Price it for ' + esc(near.town.n) + ' &rarr;</button>' +
         '</div></div>';
   }
@@ -4452,14 +4484,14 @@ header li a[href="#booking"],
     var place = res.place, lat = place ? place.lat : null, lon = place ? place.lon : null;
     var head, body;
     if (tier === 'edge') {
-      head = 'You\'re about <b>' + mi(d) + ' miles</b> out &mdash; that\'s inside the range I work.';
+      head = 'You\'re about <b>' + mi(d) + ' miles</b> out, which is inside the range I work.';
       body = 'I just don\'t have ' + esc(where) + ' on my regular list, so I can\'t promise you a day the way I can in Snohomish or Everett. Text me the address and I\'ll tell you straight.';
     } else if (tier === 'reach') {
       head = '<b>' + esc(where) + '</b> is about ' + mi(d) + ' miles out. That\'s past my usual line.';
-      body = 'I stay close to Snohomish on purpose &mdash; it\'s the only way the time I give you is the time I show up. Past about 25 miles that stops being true. It\'s not a never, though.';
+      body = 'I stay close to Snohomish on purpose. It\'s the only way the time I give you is the time I actually show up. Past about 25 miles that stops being true. It\'s not a never, though. Read on.';
     } else {
       head = '<b>' + esc(where) + '</b> is about ' + mi(d) + ' miles out. I don\'t get down there.';
-      body = 'I work a tight circle around Snohomish so I can promise a time and actually hold it. An hour each way is how that promise breaks.';
+      body = 'I work a tight circle around Snohomish so I can promise a time and hold it. An hour each way is how that promise breaks. It\'s still worth reading on.';
     }
 
     var hint = res.hint
@@ -4471,7 +4503,7 @@ header li a[href="#booking"],
         '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.far + '</span><div>' +
           '<p class="sa-res-h">' + head + '</p><p class="sa-res-p">' + body + '</p>' +
         '</div></div>' + hint +
-        '<p class="sa-opts-h">Here\'s what actually works, in order:</p>' +
+        '<p class="sa-opts-h">Here\'s what does work</p>' +
         parkOption(lat, lon) +
         (d <= 45 ? askAnywayOption(where) : '') +
         waitlistOption(where) +
@@ -4481,29 +4513,53 @@ header li a[href="#booking"],
   function askAnywayOption(where) {
     return '<div class="sa-opt">' +
         '<span class="sa-opt-ic">' + ICON.text + '</span>' +
-        '<div><p class="sa-opt-h">Ask me anyway</p>' +
-        '<p class="sa-opt-p">I answer my own phone &mdash; there\'s no office. Tell me where and when and you get a yes or a no, not a callback queue.</p>' +
-        '<a class="sa-opt-btn" href="' + smsHref('Hi Mikey, I\'m in ' + where + '. Any chance you\'d come out here?') + '">Text me &mdash; it\'s already typed &rarr;</a>' +
+        '<div><p class="sa-opt-h">Just ask me</p>' +
+        '<p class="sa-opt-p">I answer my own phone. No office, no callback queue. Tell me where you are and roughly when, and you get a yes or a no from the guy who\'d be doing the work.</p>' +
+        '<a class="sa-opt-btn" href="' + smsHref('Hi Mikey, I\'m in ' + where + '. Any chance you\'d come out here?') + '">Text me, it\'s already typed &rarr;</a>' +
         '</div></div>';
   }
 
+  /* The one that actually gets Mikey on the road. One car that far out is a long
+     drive for one car; three in the same spot is a different question entirely.
+     The chips are one tap and the note box is deliberately wide open, because the
+     point is to start a conversation, not to fill in a database row. */
+  var LOAD = ['Just mine', 'Two of mine', 'Me and a neighbor', 'A few of us'];
+
   function waitlistOption(where) {
+    var chips = LOAD.map(function (t) {
+      return '<button type="button" class="sa-chip" data-sa-load="' + esc(t) +
+             '" aria-pressed="false">' + esc(t) + '</button>';
+    }).join('');
+
     return '<div class="sa-opt sa-opt--wait">' +
         '<span class="sa-opt-ic">' + ICON.bell + '</span>' +
-        '<div><p class="sa-opt-h">Tell me when it\'s worth the drive</p>' +
-        '<p class="sa-opt-p">Two or three cars in one spot is a different math problem than one. Leave a number, and if I start running out to ' + esc(where) + ' you get a text from me &mdash; that\'s the whole thing, no list, no newsletter.</p>' +
+        '<div><p class="sa-opt-h">More than one car changes the answer</p>' +
+        '<p class="sa-opt-p">One car in ' + esc(where) + ' is a long drive for one car. Two or three in the same spot is a different question entirely. Could be your neighbor\'s. Could be all three of yours in the same driveway. Could be you and the guy across the street. Tell me what you\'ve got and I\'ll take a real look at it.</p>' +
         '<form class="sa-wait" id="saWait" novalidate>' +
+          '<span class="sa-wait-lbl" id="saLoadLbl">How many cars are we talking?</span>' +
+          '<div class="sa-chips-row" role="group" aria-labelledby="saLoadLbl">' + chips + '</div>' +
+          '<textarea id="saWaitNote" class="sa-wait-note" rows="2" ' +
+            'placeholder="Whose cars, roughly when, anything else."></textarea>' +
           '<div class="sa-wait-row">' +
             '<input type="text" id="saWaitName" placeholder="Your name (optional)" autocomplete="name">' +
             '<input type="tel" id="saWaitPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" required>' +
           '</div>' +
-          '<label class="sa-wait-check"><input type="checkbox" id="saWaitGroup">' +
-            '<span>I could probably get a neighbor or two to book the same day</span></label>' +
-          '<button type="submit" class="sa-btn sa-btn--primary">Let Me Know &rarr;</button>' +
+          '<button type="submit" class="sa-btn sa-btn--primary">Send It Over &rarr;</button>' +
+          '<span class="sa-wait-fine">Goes straight to my phone. I read every one of these myself.</span>' +
         '</form>' +
         '<p class="sa-wait-msg" id="saWaitMsg" role="status"></p>' +
         '</div></div>';
   }
+
+  /* chips are a single choice, and tapping the live one clears it */
+  document.addEventListener('click', function (e) {
+    var c = e.target.closest && e.target.closest('[data-sa-load]');
+    if (!c) return;
+    var on = c.getAttribute('aria-pressed') === 'true',
+        all = document.querySelectorAll('[data-sa-load]'), k;
+    for (k = 0; k < all.length; k++) all[k].setAttribute('aria-pressed', 'false');
+    c.setAttribute('aria-pressed', on ? 'false' : 'true');
+  });
 
   /* Ambiguous input: never guess, just show the choices. */
   function showPick(res, source) {
@@ -4537,7 +4593,7 @@ header li a[href="#booking"],
       '<div class="sa-res sa-res--out">' +
         '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.far + '</span><div>' +
           '<p class="sa-res-h">I can\'t place &ldquo;' + esc(res.typed) + '&rdquo;.</p>' +
-          '<p class="sa-res-p">Spelling doesn\'t matter to this box &mdash; it reads through typos &mdash; so it\'s probably somewhere I\'ve never been asked about. Try the ZIP, or just ask me.</p>' +
+          '<p class="sa-res-p">Spelling isn\'t the problem. This box reads through typos. So it\'s probably somewhere nobody has asked me about yet. Try the ZIP code, or just ask me directly.</p>' +
         '</div></div>' +
         '<div class="sa-res-cta">' +
           '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ') + '">Text Me Where You Are</a>' +
@@ -4583,7 +4639,10 @@ header li a[href="#booking"],
       e.preventDefault();
       var name = ($('saWaitName').value || '').trim(),
           phone = ($('saWaitPhone').value || '').trim(),
-          group = $('saWaitGroup') && $('saWaitGroup').checked;
+          note = (($('saWaitNote') && $('saWaitNote').value) || '').trim(),
+          picked = document.querySelector('[data-sa-load][aria-pressed="true"]'),
+          load = picked ? picked.getAttribute('data-sa-load') : '',
+          group = !!load && load !== LOAD[0];
       if (phone.replace(/\D/g, '').length < 10) {
         msg.className = 'sa-wait-msg err';
         msg.textContent = 'I need a full phone number to reach you on.';
@@ -4593,14 +4652,16 @@ header li a[href="#booking"],
       btn.disabled = true; btn.textContent = 'Sending…';
       var fd = new FormData();
       fd.append('access_key', W3F_KEY);
-      fd.append('subject', (group ? 'Service area waitlist (would bring neighbors): ' : 'Service area waitlist: ') + where);
+      fd.append('subject', (group ? 'MULTI-CAR out of area: ' : 'Out of area: ') + where +
+        (load ? ' (' + load + ')' : ''));
       fd.append('from_name', 'Mikeys Service Area Checker');
       fd.append('name', name || '(not given)');
       fd.append('phone', phone);
       fd.append('location', where + (zip ? ' (' + zip + ')' : ''));
       fd.append('message', 'Out-of-area request\n---\nName: ' + (name || '(not given)') +
         '\nPhone: ' + phone + '\nLooking for service in: ' + where + (zip ? ' (' + zip + ')' : '') +
-        '\nCould bring neighbors: ' + (group ? 'YES' : 'no') +
+        '\nHow many cars: ' + (load || '(not said)') +
+        (note ? '\nWhat they wrote: ' + note : '') +
         '\nSource: service area checker');
       fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
         .then(function (r) { return r.json(); })
@@ -4609,12 +4670,12 @@ header li a[href="#booking"],
           wf.style.display = 'none';
           msg.className = 'sa-wait-msg ok';
           msg.textContent = group
-            ? 'Got it — and noted that you could round up a couple more. That\'s the kind of thing that gets me on the road.'
-            : 'Got it. If I start covering ' + where + ', you get the first text.';
+            ? 'Got it, and I noted the extra cars. That is exactly the kind of thing that gets me in the truck. Expect a text from me.'
+            : 'Got it. I\'ll read this myself and text you back either way.';
           track('service_area_waitlist', { area: where, zip: zip || '', group: group ? 1 : 0 });
         })
         .catch(function () {
-          btn.disabled = false; btn.textContent = 'Let Me Know →';
+          btn.disabled = false; btn.innerHTML = 'Send It Over &rarr;';
           msg.className = 'sa-wait-msg err';
           msg.innerHTML = 'That didn’t send. <a href="' + smsHref('Hi Mikey, do you cover ' + where + '?') +
             '" style="color:#C9A24B;font-weight:800;">Text me instead &rarr;</a>';
