@@ -91,6 +91,26 @@ Same discipline for scarcity: **one** claim, **12 cars a week**. Not "limited
 spots" plus "a few a week" plus "two or three a day" (which is 14–21 and
 contradicts the others).
 
+## The service area
+
+Base is **Snohomish, WA 98290** (`47.9129, -122.0982`). Mikey is in these twelve
+towns most weeks — they're the pins on the homepage map and the `tier: 'yes'`
+entries in the `TOWNS` list inside the `#service-area` section:
+
+> Snohomish · Lake Stevens · Everett · Monroe · Mill Creek · Marysville ·
+> Bothell · Duvall · Mukilteo · Woodinville · Granite Falls · Arlington
+
+- **Lynnwood and Edmonds are NOT served.** They sit in the "ask me" tier on
+  purpose. Don't add them to the served list, to `areaServed`, or to any "towns
+  I serve" copy without Mikey saying so — he was asked directly and said no.
+- "Ask me" towns are ones he sometimes reaches. Never promise them.
+- **No travel fee anywhere in the area**, and the price is the same in every town.
+
+Three places have to agree when the area changes: the `TOWNS` list, the
+`areaServed` array in the homepage JSON-LD, and the map SVG. The map is
+generated — run `python3 tools/service-area-map.py` and paste the result over
+the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
+
 ## Offers and countdowns
 
 The free-exterior offer really does open Friday and close Monday, and the timer
