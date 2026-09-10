@@ -143,11 +143,30 @@ shortest page on the site.
 - FAQ answers exist **twice** on most pages: once visible, once inside a
   JSON-LD `FAQPage` block. Edit both or the schema starts lying.
 
-## Deploying
+## Shipping
 
-There's a `CNAME` (`mikeysdetailing.com`) and no CI workflow, Netlify or Vercel
-config in the repo, so this is served straight from the branch — confirm which
-one with Mikey before assuming a merge publishes.
+**Mikey wants work merged and live in the same session, not left sitting in a
+draft PR.** Unless he says otherwise, finish the job: open the PR, mark it ready,
+merge it, and confirm the change is actually serving on mikeysdetailing.com
+before reporting done. Don't stop at "pushed" and wait to be asked.
+
+That only works if the checks below are genuinely run first — merging fast and
+verifying nothing is how a wrong price or a town he doesn't serve ends up in
+front of a customer. Fast is the default; careless isn't.
+
+**Deploying is automatic.** GitHub Pages serves `main` (confirmed 2026-09-10:
+a merge to `main` was live at `mikeysdetailing.com` within a couple of minutes,
+no workflow file involved). `CNAME` holds the domain. To verify a deploy, poll
+the live URL for something the change added rather than trusting the merge:
+
+```sh
+until curl -s https://mikeysdetailing.com/ | grep -q 'id="service-area"'; do sleep 15; done
+```
+
+If `main` has moved while you were working, merge it into your branch rather than
+rebasing, and read what landed — copy edits on this site are often deliberate
+(the guarantee-frequency rule below came from one), so resolve in favour of
+keeping both intentions rather than taking your own side wholesale.
 
 `sitemap.xml`, `robots.txt` and `llms.txt` are maintained by hand. A new page
 means adding it to all three, and `llms.txt` restates the prices and durations,
