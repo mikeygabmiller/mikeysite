@@ -154,6 +154,15 @@ That only works if the checks below are genuinely run first — merging fast and
 verifying nothing is how a wrong price or a town he doesn't serve ends up in
 front of a customer. Fast is the default; careless isn't.
 
+**Run `python3 tools/check-site.py` before you merge.** It's the gate: it parses
+every JSON-LD block, checks that the `#business` node is identical on every page,
+and follows every internal link. It's what catches the drift this repo is prone
+to — one edit that landed on the page you were looking at and nowhere else. On
+2026-09-10 it caught Duvall and Woodinville filed under the wrong county in
+schema on 35 pages, which no amount of reading the visible copy would have
+surfaced. It currently reports 2 pre-existing failures, both in `polish-test/`;
+anything beyond those two is yours.
+
 **Deploying is automatic.** GitHub Pages serves `main` (confirmed 2026-09-10:
 a merge to `main` was live at `mikeysdetailing.com` within a couple of minutes,
 no workflow file involved). `CNAME` holds the domain. To verify a deploy, poll
