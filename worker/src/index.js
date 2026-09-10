@@ -8,6 +8,11 @@
  *   POST /voicemail     — missed call → record voicemail
  *   POST /voicemail-done — recording done → text Mikey the link
  *
+ * Public:
+ *   POST /geo           — last-resort place parser for the site's service-area
+ *                         checker. Optional: without GEMINI_API_KEY it returns
+ *                         501 and the site carries on with its own matching.
+ *
  * Dashboard API (password-protected):
  *   GET  /              — serve the dashboard HTML
  *   GET  /api/threads   — list all conversations
@@ -21,6 +26,9 @@
  *   TWILIO_FROM        — Twilio number e.g. +12065551234
  *   MIKEY_PHONE        — personal cell e.g. +14256007897
  *   DASHBOARD_PASSWORD — password to access the dashboard
+ *
+ * Optional Worker Secret:
+ *   GEMINI_API_KEY     — turns on POST /geo (see SETUP.md)
  *
  * Required KV Namespace binding (wrangler.toml):
  *   MESSAGES
@@ -41,6 +49,9 @@ export default {
     if (request.method === 'POST' && url.pathname === '/voicemail')     return handleVoicemail(request, env);
     if (request.method === 'POST' && url.pathname === '/voicemail-done') return handleVoicemailDone(request, env);
 
+    // --- public: place-name fallback for the service-area checker ---
+    if (request.method === 'POST' && url.pathname === '/geo')           return cors(await handleGeo(request, env));
+
     // --- Dashboard (password-protected) ---
     if (url.pathname === '/' || url.pathname === '')                    return serveDashboard(request, env);
     if (url.pathname.startsWith('/api/'))                               return handleApi(request, env, url);
@@ -48,6 +59,69 @@ export default {
     return new Response('Not found', { status: 404 });
   },
 };
+
+// ============================================================
+// Place-name fallback for the service-area checker
+//
+// The site resolves misspelled towns, neighborhood names and pasted street
+// addresses on its own, in the browser, with no network call — that handles
+// essentially everything and it is faster and cheaper than asking a model.
+// This endpoint only sees what the local matcher could not read at all:
+// "the town by the ferry dock", "im by the outlet mall off 172nd", a place
+// typed in another language.
+//
+// It answers with one Washington place name and nothing else. The site then
+// looks that name up in its own tables, so this can never invent a town Mikey
+// serves, quote a price, or change an answer — the worst it can do is name a
+// place the site then measures honestly.
+//
+// Without GEMINI_API_KEY set it returns 501 and the site never asks again.
+// ============================================================
+const GEO_MODEL = 'gemini-2.0-flash-lite';
+
+async function handleGeo(request, env) {
+  if (!env.GEMINI_API_KEY) return json({ error: 'not configured' }, 501);
+
+  let q = '';
+  try { q = String(((await request.json()) || {}).q || '').slice(0, 120).trim(); } catch { /* ignore */ }
+  if (q.length < 3) return json({ place: null });
+
+  const prompt =
+    'A visitor to a mobile car detailing website in Snohomish County, Washington typed ' +
+    'the text below where the site asked for their town or ZIP code.\n\n' +
+    'Reply with the single city, town or CDP name in Washington State that they most ' +
+    'likely mean. Neighborhoods, landmarks, malls, highways, school districts and ' +
+    'workplaces should be answered with the town they sit in. Reply with the bare ' +
+    'place name and nothing else — no state, no punctuation, no explanation. ' +
+    'If it is not a place in Washington, or you cannot tell, reply with exactly: NONE\n\n' +
+    'Text: ' + q;
+
+  try {
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEO_MODEL}:generateContent`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0, maxOutputTokens: 16, candidateCount: 1 },
+        }),
+      }
+    );
+    if (!res.ok) return json({ place: null });
+
+    const data = await res.json();
+    const raw = (data?.candidates?.[0]?.content?.parts?.[0]?.text || '').trim();
+
+    // Whatever comes back is treated as an untrusted string: letters, spaces,
+    // hyphens and apostrophes only, and short enough to be a town name.
+    const place = raw.replace(/[^A-Za-z '\-]/g, '').trim();
+    if (!place || place.length > 40 || /^none$/i.test(place)) return json({ place: null });
+    return json({ place });
+  } catch {
+    return json({ place: null });
+  }
+}
 
 // ============================================================
 // Dashboard auth

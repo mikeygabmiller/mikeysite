@@ -56,7 +56,32 @@ var WORKER_URL = 'https://mikeys-detailing-sms.YOUR_SUBDOMAIN.workers.dev/submit
 ```
 Replace `YOUR_SUBDOMAIN` with your actual workers.dev subdomain.
 
-### 7. Wire Twilio webhooks
+### 7. (Optional) Turn on the service-area place parser
+
+The ZIP/town checker on the homepage already reads through misspellings,
+neighborhood names and pasted street addresses **in the browser**, with no
+network call. That covers essentially everything people type, and it is faster
+and cheaper than asking a model.
+
+This step adds a fallback for the handful it can't read at all — "the town by
+the ferry dock", "im by the outlet mall off 172nd", a place typed in another
+language. The site only calls it after its own matching has failed.
+
+```bash
+wrangler secret put GEMINI_API_KEY     # from aistudio.google.com/apikey
+wrangler deploy
+```
+
+The key lives here as a Worker secret and never reaches the browser. Until it's
+set, `/geo` returns 501, the site tries once per page load, gets nothing, and
+stops asking — no errors, nothing visibly different.
+
+The endpoint replies with a bare Washington place name and nothing else. The
+site then looks that name up in its own tables, so it can't invent a town Mikey
+serves or quote a price. Cost is roughly a hundredth of a cent per call, and
+only failed lookups make one.
+
+### 8. Wire Twilio webhooks
 In Twilio Console → Phone Numbers → your number:
 
 **Messaging:**

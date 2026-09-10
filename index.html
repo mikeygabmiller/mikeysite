@@ -706,7 +706,7 @@ header li a[href="#booking"],
           "name": "Duvall",
           "containedInPlace": {
             "@type": "AdministrativeArea",
-            "name": "Snohomish County, WA"
+            "name": "King County, WA"
           }
         },
         {
@@ -3453,6 +3453,7 @@ header li a[href="#booking"],
     cursor:pointer; transition:border-color .15s ease, color .15s ease, background .15s ease; }
   .sa-quick-row button:hover,.sa-quick-row button:focus-visible{ border-color:#C8102E; color:#fff; background:#221616; }
 
+  .sa-check-note{ margin:7px 0 0; font-size:.83rem; line-height:1.5; color:#8f8f8f; }
   .sa-check-foot{ margin:14px 0 0; font-size:.84rem; color:#8f8f8f; text-align:center; }
   .sa-check-foot a{ color:#C9A24B; font-weight:700; text-decoration:none; }
   .sa-check-foot a:hover{ text-decoration:underline; }
@@ -3500,6 +3501,54 @@ header li a[href="#booking"],
   .sa-wait-msg{ margin:9px 0 0; font-size:.84rem; font-weight:700; }
   .sa-wait-msg.err{ color:#ff8a99; }
   .sa-wait-msg.ok{ color:#41c96b; }
+
+  /* ---------- out-of-area result: three real options, not one sad form ---------- */
+  .sa-res--out { background:rgba(255,255,255,.03); border-color:#333; }
+  .sa-res--out .sa-res-ic{ background:rgba(255,255,255,.07); color:#9a9a9a; }
+  .sa-res--out .sa-res-h b{ color:#fff; }
+  .sa-res--pick{ background:rgba(255,255,255,.03); border-color:#3a3a3a; }
+  .sa-res--pick .sa-res-ic{ background:rgba(201,162,75,.18); color:#C9A24B; }
+
+  .sa-opts-h{ margin:16px 0 10px; font-size:.74rem; font-weight:900; letter-spacing:.9px;
+    text-transform:uppercase; color:#8f8f8f; }
+  .sa-opt{ display:flex; gap:11px; align-items:flex-start; padding:14px;
+    background:rgba(255,255,255,.035); border:1px solid #2e2e2e; border-radius:11px; }
+  .sa-opt + .sa-opt{ margin-top:9px; }
+  .sa-opt > div{ min-width:0; flex:1; }
+  .sa-opt-ic{ flex:none; width:28px; height:28px; border-radius:8px; display:grid; place-items:center;
+    background:rgba(201,162,75,.14); color:#C9A24B; }
+  .sa-opt-ic svg{ width:16px; height:16px; stroke-width:2.2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .sa-opt--wait .sa-opt-ic{ background:rgba(255,255,255,.07); color:#9a9a9a; }
+  .sa-opt-h{ margin:0; font-size:.97rem; font-weight:900; color:#fff; line-height:1.35; }
+  .sa-opt-p{ margin:6px 0 0; font-size:.87rem; line-height:1.55; color:#bdbdbd; }
+  .sa-opt-p b{ color:#fff; }
+  .sa-opt-btn{ display:inline-block; margin-top:11px; background:transparent; border:2px solid #4a4a4a;
+    border-radius:9px; padding:10px 14px; color:#fff; font-family:inherit; font-weight:900;
+    font-size:.8rem; letter-spacing:.5px; text-transform:uppercase; text-decoration:none;
+    cursor:pointer; transition:border-color .15s ease, transform .15s ease; }
+  .sa-opt-btn:hover{ border-color:#C9A24B; transform:translateY(-1px); }
+
+  /* "showing Everett — you typed everet", the way search does it */
+  .sa-fix{ margin:12px 0 0; font-size:.83rem; font-weight:600; color:#9a9a9a; }
+  .sa-fix b{ color:#fff; font-weight:800; }
+  .sa-fix--zip{ margin-top:12px; }
+  .sa-link{ background:none; border:0; padding:0; font:inherit; font-weight:800; color:#C9A24B;
+    cursor:pointer; text-decoration:underline; }
+
+  /* ambiguous input — show the choices instead of guessing */
+  .sa-picks{ display:grid; gap:7px; margin-top:13px; }
+  .sa-pick{ display:flex; justify-content:space-between; align-items:center; gap:10px; width:100%;
+    background:#141414; border:1px solid #2e2e2e; border-radius:9px; padding:11px 13px;
+    font-family:inherit; text-align:left; cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+  .sa-pick:hover{ background:#1c1c1c; border-color:#C9A24B; }
+  .sa-pick b{ font-size:.92rem; font-weight:800; color:#fff; }
+  .sa-pick small{ font-size:.75rem; font-weight:700; color:#8a8a8a; white-space:nowrap; }
+
+  .sa-wait-row{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .sa-wait-check{ display:flex; gap:9px; align-items:flex-start; font-size:.83rem; line-height:1.45;
+    color:#bdbdbd; cursor:pointer; }
+  .sa-wait-check input{ flex:none; width:17px; height:17px; margin-top:1px; accent-color:#C8102E; padding:0; }
+  @media (max-width:520px){ .sa-wait-row{ grid-template-columns:1fr; } }
 
   /* ---------- the map ---------- */
   .sa-mapwrap{ margin:0; min-width:0; }
@@ -3612,7 +3661,7 @@ header li a[href="#booking"],
     <div class="sa-head">
       <span class="sa-eyebrow">Areas I Serve</span>
       <h2 id="svcarea-title">Chances Are, I'm Already In <em>Your Town.</em></h2>
-      <p class="sa-sub">I work out of Snohomish and cover most of the county &mdash; Arlington down to Bothell, Mukilteo out to Granite Falls. Put in your ZIP and you'll know in about two seconds.</p>
+      <p class="sa-sub">I work out of Snohomish and cover most of the county &mdash; Arlington down to Bothell, Mukilteo out to Granite Falls. Type your ZIP, your town or your whole address and you'll know in about two seconds. Spelling doesn't matter, and if you're outside the line you still get a real answer instead of a shrug.</p>
     </div>
 
     <div class="sa-grid">
@@ -3622,6 +3671,7 @@ header li a[href="#booking"],
         <div class="sa-check-head">
           <span class="sa-live"><span class="sa-live-dot"></span> Instant answer</span>
           <h3>Do I come out to you?</h3>
+          <p class="sa-check-note">Spell it however. It reads through typos, nicknames and full street addresses.</p>
         </div>
 
         <form class="sa-form" id="saForm" autocomplete="off" novalidate>
@@ -3630,7 +3680,7 @@ header li a[href="#booking"],
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
             <label class="visually-hidden" for="saInput">Your ZIP code or town</label>
-            <input id="saInput" type="text" placeholder="ZIP code or town" inputmode="text"
+            <input id="saInput" type="text" placeholder="ZIP, town, or paste your address" inputmode="text"
                    autocomplete="postal-code" role="combobox" aria-expanded="false"
                    aria-controls="saSugg" aria-autocomplete="list" spellcheck="false">
             <button type="button" class="sa-geo" id="saGeo" aria-label="Use my current location" title="Use my current location">
@@ -3659,6 +3709,7 @@ header li a[href="#booking"],
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> No travel fee, anywhere I go</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Same price in every town</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> All I need is a spigot and an outlet</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg> Any driveway in my area &mdash; home, work, a parent's</li>
         </ul>
 
         <p class="sa-check-foot">Not sure? <a href="tel:+14256007897">Call or text (425) 600-7897</a> and I'll just tell you.</p>
@@ -3809,7 +3860,7 @@ header li a[href="#booking"],
         <li><span>Granite Falls</span></li>
         <li><span>Arlington</span></li>
       </ul>
-      <p class="sa-towns-more">And everywhere in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
+      <p class="sa-towns-more">And everywhere in between &mdash; Clearview, Maltby, Machias, Cathcart, Three Lakes, Silver Firs, Tulalip, the back roads off Highway 9. Type any of those into the box above and it knows where you mean. If you're just outside the line, ask anyway. I get out there more often than I don't.</p>
     </div>
 
     <div class="sa-foot">
@@ -3825,109 +3876,386 @@ header li a[href="#booking"],
 
 <script>
 /* ===== Service area checker =========================================================
-   Answers one question fast: "do you come to my town?" Three outcomes, and none of
-   them is a dead end — 'yes' hands off to the quote calculator with the location
-   already filled in, 'ask' pushes to a text, 'no' captures the lead for later.
+   One question, answered fast and honestly: "do you come to my town?"
 
-   TOWNS is the whole config. Each entry: name, tier, zips, drive time, optional page.
-     tier 'yes' — I'm there regularly. Pinned on the map.
-     tier 'ask' — near enough that I often say yes, but not a promise.
-   A ZIP that isn't listed here is treated as out of area, so keep the 'ask' list
-   generous: it's the difference between "text me" and "sorry".
+   Three things make this better than a ZIP box that either lights up green or shrugs:
+
+   1. It forgives spelling. Nobody who has only ever heard "Mukilteo" out loud spells
+      it right the first time, and a checker that says "sorry" to "Muckilteo" loses a
+      customer who lives twelve minutes away. Names go through exact match, then the
+      neighborhood aliases, then Damerau-Levenshtein (catches transposed and dropped
+      letters), then a sound-alike key. Pasted street addresses get parsed too.
+   2. It knows where everywhere is, not just where Mikey goes. geo-data.js carries
+      every Washington ZIP within 130 miles, so someone in Puyallup gets a real number
+      and a real next step instead of a dead end.
+   3. Out of area is not a dead end. The car doesn't have to be at their house — if it
+      is ever parked somewhere Mikey already works, that's an ordinary booking. That
+      option comes first, ahead of any "leave your number".
+
+   TOWNS is the source of truth for who gets a yes. It always beats the geo table:
+   98012 is "Bothell" to the post office and Mill Creek to everyone who lives there.
+     tier 'yes' — I'm there regularly. These are the pins on the map.
+     tier 'ask' — near enough that I often say yes, but never a promise.
+   Lynnwood and Edmonds stay 'ask' on purpose. Mikey was asked directly and said no.
    ================================================================================== */
 (function () {
   'use strict';
 
   var PHONE = '+14256007897', PHONE_H = '(425) 600-7897';
+  var BASE = [47.9129, -122.0982];          /* Snohomish 98290 — matches the JSON-LD */
+  var W3F_KEY = 'aa7076da-8d1c-427b-979f-03c238686a8e';
+  /* Optional last-resort parser for input nothing local can read ("the town by the
+     ferry dock"). Lives on the Worker so the API key never touches the browser. Until
+     it's deployed this 404s once per page and everything carries on without it. */
+  var AI_URL = 'https://texting.mikeysdetailingsnohomish.workers.dev/geo';
 
   var TOWNS = [
     /* --- I'm there regularly (these are the pins on the map) --- */
-    { n:'Snohomish',     t:'yes', d:'home base',  p:'/snohomish/',    z:['98290','98291','98296'] },
-    { n:'Lake Stevens',  t:'yes', d:'~12 min',    p:'/lake-stevens/', z:['98258'] },
-    { n:'Everett',       t:'yes', d:'~15 min',    p:'/everett/',      z:['98201','98203','98204','98205','98206','98207','98208','98213'] },
-    { n:'Monroe',        t:'yes', d:'~15 min',    p:'/monroe/',       z:['98272'] },
-    { n:'Mill Creek',    t:'yes', d:'~15 min',    p:'/mill-creek/',   z:['98012','98082'] },
-    { n:'Marysville',    t:'yes', d:'~20 min',    p:'/marysville/',   z:['98270','98271'] },
-    { n:'Bothell',       t:'yes', d:'~20 min',    p:'/bothell/',      z:['98011','98021','98041'] },
-    { n:'Woodinville',   t:'yes', d:'~20 min',    p:null,             z:['98072','98077'] },
-    { n:'Mukilteo',      t:'yes', d:'~22 min',    p:null,             z:['98275'] },
-    { n:'Granite Falls', t:'yes', d:'~22 min',    p:null,             z:['98252'] },
-    { n:'Duvall',        t:'yes', d:'~25 min',    p:'/duvall/',       z:['98019'] },
-    { n:'Arlington',     t:'yes', d:'~30 min',    p:null,             z:['98223'] },
+    { n:'Snohomish',     t:'yes', d:'home base', p:'/snohomish/',    c:[47.9129,-122.0982], z:['98290','98291','98296'] },
+    { n:'Lake Stevens',  t:'yes', d:'~12 min',   p:'/lake-stevens/', c:[48.0151,-122.0637], z:['98258'] },
+    { n:'Everett',       t:'yes', d:'~15 min',   p:'/everett/',      c:[47.9790,-122.2021], z:['98201','98203','98204','98205','98206','98207','98208','98213'] },
+    { n:'Monroe',        t:'yes', d:'~15 min',   p:'/monroe/',       c:[47.8554,-121.9710], z:['98272'] },
+    { n:'Mill Creek',    t:'yes', d:'~15 min',   p:'/mill-creek/',   c:[47.8601,-122.2043], z:['98012','98082'] },
+    { n:'Marysville',    t:'yes', d:'~20 min',   p:'/marysville/',   c:[48.0518,-122.1771], z:['98270','98271'] },
+    { n:'Bothell',       t:'yes', d:'~20 min',   p:'/bothell/',      c:[47.7601,-122.2054], z:['98011','98021','98041'] },
+    { n:'Woodinville',   t:'yes', d:'~20 min',   p:null,             c:[47.7543,-122.1635], z:['98072','98077'] },
+    { n:'Mukilteo',      t:'yes', d:'~22 min',   p:null,             c:[47.9445,-122.3046], z:['98275'] },
+    { n:'Granite Falls', t:'yes', d:'~22 min',   p:null,             c:[48.0832,-121.9676], z:['98252'] },
+    { n:'Duvall',        t:'yes', d:'~25 min',   p:'/duvall/',       c:[47.7423,-121.9857], z:['98019'] },
+    { n:'Arlington',     t:'yes', d:'~30 min',   p:null,             c:[48.1987,-122.1251], z:['98223'] },
 
     /* --- close enough that it's worth asking --- */
-    { n:'Lynnwood',           t:'ask', z:['98036','98037','98046','98087'] },
-    { n:'Edmonds',            t:'ask', z:['98020','98026'] },
-    { n:'Mountlake Terrace',  t:'ask', z:['98043'] },
-    { n:'Brier',              t:'ask', z:[] },
-    { n:'Sultan',             t:'ask', z:['98294'] },
-    { n:'Startup',            t:'ask', z:['98293'] },
-    { n:'Gold Bar',           t:'ask', z:['98251'] },
-    { n:'Index',              t:'ask', z:['98256'] },
-    { n:'Stanwood',           t:'ask', z:['98292'] },
-    { n:'Silvana',            t:'ask', z:['98287'] },
-    { n:'Camano Island',      t:'ask', z:['98282'] },
-    { n:'Darrington',         t:'ask', z:['98241'] },
-    { n:'Kenmore',            t:'ask', z:['98028'] },
-    { n:'Lake Forest Park',   t:'ask', z:[] },
-    { n:'Shoreline',          t:'ask', z:['98133','98155','98177'] },
-    { n:'Kirkland',           t:'ask', z:['98033','98034','98083'] },
-    { n:'Redmond',            t:'ask', z:['98052','98053','98073'] },
-    { n:'Carnation',          t:'ask', z:['98014'] },
-    { n:'Snoqualmie',         t:'ask', z:['98065'] },
-    { n:'North Bend',         t:'ask', z:['98045'] },
-    { n:'Bellevue',           t:'ask', z:['98004','98005','98006','98007','98008'] },
-    { n:'North Seattle',      t:'ask', z:['98103','98105','98107','98115','98117','98125'] }
+    { n:'Lynnwood',          t:'ask', c:[47.8279,-122.3051], z:['98036','98037','98046','98087'] },
+    { n:'Edmonds',           t:'ask', c:[47.8107,-122.3774], z:['98020','98026'] },
+    { n:'Mountlake Terrace', t:'ask', c:[47.7887,-122.3087], z:['98043'] },
+    { n:'Brier',             t:'ask', c:[47.7929,-122.2743], z:[] },
+    { n:'Sultan',            t:'ask', c:[47.8623,-121.8162], z:['98294'] },
+    { n:'Startup',           t:'ask', c:[47.8657,-121.7418], z:['98293'] },
+    { n:'Gold Bar',          t:'ask', c:[47.8562,-121.6968], z:['98251'] },
+    { n:'Index',             t:'ask', c:[47.8201,-121.5551], z:['98256'] },
+    { n:'Stanwood',          t:'ask', c:[48.2415,-122.3496], z:['98292'] },
+    { n:'Silvana',           t:'ask', c:[48.2004,-122.2679], z:['98287'] },
+    { n:'Camano Island',     t:'ask', c:[48.1885,-122.4715], z:['98282'] },
+    { n:'Darrington',        t:'ask', c:[48.2554,-121.6021], z:['98241'] },
+    { n:'Kenmore',           t:'ask', c:[47.7573,-122.2440], z:['98028'] },
+    { n:'Lake Forest Park',  t:'ask', c:[47.7570,-122.2807], z:[] },
+    { n:'Shoreline',         t:'ask', c:[47.7557,-122.3415], z:['98133','98155','98177'] },
+    { n:'Kirkland',          t:'ask', c:[47.6815,-122.2087], z:['98033','98034','98083'] },
+    { n:'Redmond',           t:'ask', c:[47.6740,-122.1215], z:['98052','98053','98073'] },
+    { n:'Carnation',         t:'ask', c:[47.6476,-121.9143], z:['98014'] },
+    { n:'Snoqualmie',        t:'ask', c:[47.5287,-121.8254], z:['98065'] },
+    { n:'North Bend',        t:'ask', c:[47.4954,-121.7867], z:['98045'] },
+    { n:'Bellevue',          t:'ask', c:[47.6101,-122.2015], z:['98004','98005','98006','98007','98008'] },
+    { n:'North Seattle',     t:'ask', c:[47.6900,-122.3200], z:['98103','98105','98107','98115','98117','98125'] }
   ];
+
+  /* What people actually type. Neighborhoods, developments, the landmark instead of
+     the town. Every one of these resolves to a town in the list above. */
+  var ALIAS = {
+    clearview:'Snohomish', maltby:'Snohomish', machias:'Snohomish', cathcart:'Snohomish',
+    threelakes:'Snohomish', fobeshill:'Snohomish', lakeroesiger:'Snohomish',
+    snoho:'Snohomish', sno:'Snohomish', snocounty:'Snohomish', snohomishcounty:'Snohomish',
+    silverfirs:'Everett', silverlake:'Everett', lowell:'Everett', boeing:'Everett',
+    painefield:'Everett', evergreenway:'Everett', portgardner:'Everett', everettmall:'Everett',
+    harbourpointe:'Mukilteo', harborpointe:'Mukilteo',
+    smokeypoint:'Arlington', smokypoint:'Arlington',
+    tulalip:'Marysville', getchell:'Marysville', sunnyside:'Marysville',
+    seattlepremiumoutlets:'Marysville', quilceda:'Marysville', quilcedavillage:'Marysville',
+    lkstevens:'Lake Stevens', frontiervillage:'Lake Stevens', hartford:'Lake Stevens',
+    canyonpark:'Bothell', thrasherscorner:'Bothell', northcreek:'Bothell',
+    millcrk:'Mill Creek', seattlehill:'Mill Creek', murphyscorner:'Mill Creek',
+    cottagelake:'Woodinville', hollywoodhill:'Woodinville',
+    woodscreek:'Monroe', tualco:'Monroe', skyvalley:'Monroe',
+    cherryvalley:'Duvall',
+    robe:'Granite Falls', verlot:'Granite Falls', mountainloop:'Granite Falls',
+    alderwood:'Lynnwood', alderwoodmall:'Lynnwood', martharlake:'Lynnwood',
+    ballinger:'Mountlake Terrace', mlt:'Mountlake Terrace'
+  };
 
   var $ = function (id) { return document.getElementById(id); };
   var input = $('saInput'), sugg = $('saSugg'), result = $('saResult'),
-      form = $('saForm'), geo = $('saGeo'), section = document.getElementById('service-area');
+      form = $('saForm'), geo = $('saGeo'), section = $('service-area');
   if (!input || !form || !result) return;
 
-  /* zip -> town, and a normalised name index for typo-tolerant matching */
-  var BY_ZIP = {}, i, j;
-  for (i = 0; i < TOWNS.length; i++) {
-    for (j = 0; j < TOWNS[i].z.length; j++) BY_ZIP[TOWNS[i].z[j]] = TOWNS[i];
-  }
-  function norm(s) { return (s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
-
-  function track(name, params) {
-    if (typeof gtag === 'function') gtag('event', name, params || {});
-  }
+  function norm(s) { return String(s || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c];
     });
   }
+  function track(name, params) { if (typeof gtag === 'function') gtag('event', name, params || {}); }
+  function smsHref(body) { return 'sms:' + PHONE + '?&body=' + encodeURIComponent(body); }
+  function miles(lat, lon, fromLat, fromLon) {
+    var a = fromLat === undefined ? BASE[0] : fromLat,
+        b = fromLon === undefined ? BASE[1] : fromLon,
+        dy = (lat - a) * 69.05,
+        dx = (lon - b) * 69.05 * Math.cos(a * Math.PI / 180);
+    return Math.sqrt(dy * dy + dx * dx);
+  }
+  function mi(n) { return n < 10 ? Math.round(n * 10) / 10 : Math.round(n); }
 
-  /* ---------- matching ---------- */
-  function lookup(raw) {
-    var q = (raw || '').trim();
-    if (!q) return null;
-    var zip = q.match(/\b(\d{5})\b/);
-    if (zip) return { town: BY_ZIP[zip[1]] || null, zip: zip[1], typed: q };
-    var n = norm(q);
-    if (!n) return null;
-    var exact = null, starts = null, contains = null;
-    for (var k = 0; k < TOWNS.length; k++) {
-      var tn = norm(TOWNS[k].n);
-      if (tn === n) { exact = TOWNS[k]; break; }
-      if (!starts && tn.indexOf(n) === 0) starts = TOWNS[k];
-      if (!contains && n.length >= 4 && tn.indexOf(n) > -1) contains = TOWNS[k];
+  /* ================= the geo table, loaded the first time it's needed ================= */
+  var B36 = '0123456789abcdefghijklmnopqrstuvwxyz';
+  function d36(s) { var n = 0; for (var i = 0; i < s.length; i++) n = n * 36 + B36.indexOf(s.charAt(i)); return n; }
+
+  var GEO_ZIP = {}, GEO_LIST = [], geoState = 0, geoQueue = [];   /* 0 idle 1 loading 2 done */
+
+  function absorbGeo(G) {
+    if (!G || !G.zips) return;
+    var names = G.names.split('|');
+    for (var i = 0; i + 13 <= G.zips.length; i += 13) {
+      var r = G.zips.substr(i, 13),
+          p = { n: names[d36(r.substr(11, 2))], zip: r.substr(0, 5),
+                lat: G.base[0] + (d36(r.substr(5, 3)) - G.offset) / G.grid,
+                lon: G.base[1] + (d36(r.substr(8, 3)) - G.offset) / G.grid };
+      GEO_ZIP[p.zip] = p;
+      if (!seenName[norm(p.n)]) { seenName[norm(p.n)] = 1; GEO_LIST.push(p); }
     }
-    return { town: exact || starts || contains, zip: '', typed: q };
+    POOL = null;
+  }
+  var seenName = {};
+
+  function withGeo(cb) {
+    if (geoState === 2) return cb();
+    if (cb) geoQueue.push(cb);
+    if (geoState === 1) return;
+    geoState = 1;
+    var s = document.createElement('script');
+    s.src = '/geo-data.js';
+    s.async = true;
+    s.onload = s.onerror = function () {
+      absorbGeo(window.MIKEY_GEO);
+      geoState = 2;
+      while (geoQueue.length) geoQueue.shift()();
+    };
+    document.head.appendChild(s);
   }
 
-  /* ---------- suggestions ---------- */
+  /* ================= matching ================= */
+
+  /* A trimmed metaphone. Enough to collapse the ways people spell a town they have
+     only ever heard out loud — "muckilteo", "snowhomish", "merrysville". */
+  function sound(s) {
+    var w = String(s || '').toLowerCase().replace(/[^a-z]/g, '');
+    if (!w) return '';
+    w = w.replace(/([a-z])\1+/g, '$1')
+         .replace(/ough|augh/g, 'f').replace(/ph/g, 'f').replace(/gh/g, '')
+         .replace(/ck|cq|q/g, 'k').replace(/x/g, 'ks').replace(/sch/g, 'sk')
+         .replace(/c(?=[eiy])/g, 's').replace(/c/g, 'k')
+         .replace(/z/g, 's').replace(/(?!^)wr|wh/g, 'w')
+         .replace(/dg(?=[eiy])/g, 'j').replace(/g(?=[eiy])/g, 'j')
+         .replace(/tch/g, 'ch');
+    return w.charAt(0) + w.slice(1).replace(/[aeiouyhw]/g, '');
+  }
+
+  /* Damerau-Levenshtein, capped so a long wrong word bails out early. */
+  function dist(a, b, cap) {
+    var la = a.length, lb = b.length, i, j;
+    if (Math.abs(la - lb) > cap) return cap + 1;
+    if (!la) return lb;
+    if (!lb) return la;
+    var prev2 = [], prev = [], cur = [];
+    for (j = 0; j <= lb; j++) prev[j] = j;
+    for (i = 1; i <= la; i++) {
+      cur = [i];
+      var best = i;
+      for (j = 1; j <= lb; j++) {
+        var cost = a.charAt(i - 1) === b.charAt(j - 1) ? 0 : 1,
+            v = Math.min(cur[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+        if (i > 1 && j > 1 && a.charAt(i - 1) === b.charAt(j - 2) && a.charAt(i - 2) === b.charAt(j - 1)) {
+          v = Math.min(v, prev2[j - 2] + 1);
+        }
+        cur[j] = v;
+        if (v < best) best = v;
+      }
+      if (best > cap) return cap + 1;
+      prev2 = prev; prev = cur;
+    }
+    return prev[lb];
+  }
+  function tolerance(n) { return n.length <= 4 ? 1 : n.length <= 7 ? 2 : 3; }
+
+  var TOWN_BY_NAME = {}, BY_ZIP = {}, POOL = null;
+  (function () {
+    for (var t = 0; t < TOWNS.length; t++) {
+      TOWN_BY_NAME[norm(TOWNS[t].n)] = TOWNS[t];
+      seenName[norm(TOWNS[t].n)] = 1;
+      for (var z = 0; z < TOWNS[t].z.length; z++) BY_ZIP[TOWNS[t].z[z]] = TOWNS[t];
+    }
+  })();
+
+  function candidates() {
+    if (POOL) return POOL;
+    POOL = [];
+    for (var k = 0; k < TOWNS.length; k++) POOL.push({ town: TOWNS[k], n: TOWNS[k].n, rank: 0 });
+    for (k = 0; k < GEO_LIST.length; k++) POOL.push({ place: GEO_LIST[k], n: GEO_LIST[k].n, rank: 1 });
+    return POOL;
+  }
+
+  function score(q, qs, cand) {
+    var cn = norm(cand.n);
+    if (!cn) return 0;
+    if (cn === q) return 100;
+    if (cn.indexOf(q) === 0 && q.length >= 3) return 88 - (cn.length - q.length) * 0.3;
+    if (q.indexOf(cn) === 0 && cn.length >= 4) return 84;
+    var words = String(cand.n).toLowerCase().split(/[^a-z0-9]+/);
+    for (var w = 0; w < words.length; w++) {
+      if (words[w] && words[w].length >= 4 && (words[w] === q || words[w].indexOf(q) === 0)) return 80;
+    }
+    var d = dist(q, cn, tolerance(q));
+    if (d <= tolerance(q)) return 78 - d * 9 - Math.abs(cn.length - q.length) * 0.5;
+    if (qs && qs === sound(cand.n)) return 68;
+    if (qs && qs.length >= 4 && dist(qs, sound(cand.n), 1) <= 1) return 60;
+    if (q.length >= 5 && cn.indexOf(q) > 0) return 55;
+    return 0;
+  }
+
+  function rank(raw, limit) {
+    var q = norm(raw);
+    if (q.length < 2) return [];
+    var qs = sound(raw), list = candidates(), out = [], k, al = ALIAS[q];
+    for (k = 0; k < list.length; k++) {
+      var s = score(q, qs, list[k]);
+      if (al && norm(list[k].n) === norm(al)) s = Math.max(s, 96);
+      if (s > 0) out.push({ c: list[k], s: s - list[k].rank * 6 });
+    }
+    out.sort(function (a, b) { return b.s - a.s; });
+    var seen = {}, res = [];
+    for (k = 0; k < out.length && res.length < (limit || 6); k++) {
+      var key = norm(out[k].c.n);
+      if (seen[key]) continue;
+      seen[key] = 1;
+      res.push({ town: out[k].c.town || null, place: out[k].c.place || null, n: out[k].c.n, s: out[k].s });
+    }
+    return res;
+  }
+
+  function grabZip(s) {
+    var m = String(s).match(/\b(\d{5})(?:-\d{4})?\b/g);
+    return m ? m[m.length - 1].slice(0, 5) : null;
+  }
+
+  function nearZips(z, limit) {
+    var all = [], seen = {}, k;
+    for (k in GEO_ZIP) if (!seen[k]) { seen[k] = 1; all.push(k); }
+    for (k in BY_ZIP) if (!seen[k]) { seen[k] = 1; all.push(k); }
+    var out = [];
+    for (k = 0; k < all.length; k++) {
+      var ok = z.length === 5 ? dist(z, all[k], 1) <= 1 : all[k].indexOf(z) === 0;
+      if (!ok) continue;
+      var town = BY_ZIP[all[k]] || null, place = GEO_ZIP[all[k]] || null;
+      out.push({ zip: all[k], town: town, place: place, n: town ? town.n : (place ? place.n : ''),
+                 home: town ? miles(town.c[0], town.c[1]) : (place ? miles(place.lat, place.lon) : 999) });
+    }
+    out.sort(function (a, b) { return a.home - b.home; });
+    return out.slice(0, limit || 4);
+  }
+
+  /* A valid ZIP can still be a typo: 98920 really is Brownstown, 125 miles out, but
+     it is one keystroke from 98290. Offer the local one instead of assuming either. */
+  function localTypo(z) {
+    var near = nearZips(z, 4), k;
+    for (k = 0; k < near.length; k++) {
+      if (near[k].zip !== z && near[k].town) return near[k];
+    }
+    return null;
+  }
+
+  var NOISE = /\b(wa|washington|usa|us|united states|apt|apartment|unit|ste|suite)\b/gi;
+  var STREET = /^(st|street|ave|avenue|rd|road|dr|drive|ln|lane|way|blvd|boulevard|ct|court|pl|place|cir|circle|hwy|highway|pkwy|parkway|ter|terrace|loop|trail|trl|se|sw|ne|nw|n|s|e|w)$/i;
+
+  /* People paste whole addresses. Pull the town out of one. */
+  function nameCandidates(raw) {
+    var s = String(raw).replace(/\b\d{5}(?:-\d{4})?\b/g, ' ').replace(NOISE, ' ').replace(/#\s*\d+/g, ' ');
+    var out = [], k, n;
+    var parts = s.split(',');
+    for (k = parts.length - 1; k >= 0 && out.length < 4; k--) {
+      if (norm(parts[k])) out.push(parts[k].trim());
+    }
+    var words = s.replace(/^\s*\d+\s+/, '').split(/\s+/).filter(function (w) { return norm(w); });
+    var tail = words.slice(-3).filter(function (w) { return !STREET.test(w); });
+    if (!tail.length) tail = words.slice(-2);
+    for (n = 1; n <= Math.min(3, tail.length); n++) out.push(tail.slice(tail.length - n).join(' '));
+    return out;
+  }
+
+  /* --------------- the one entry point --------------- */
+  function resolve(raw) {
+    var typed = String(raw || '').trim();
+    if (!typed) return null;
+    var zip = grabZip(typed), digitsOnly = /^\s*\d{1,5}\s*$/.test(typed);
+
+    if (zip) {
+      if (BY_ZIP[zip]) return { kind:'town', town:BY_ZIP[zip], zip:zip, typed:typed, exact:true };
+      if (GEO_ZIP[zip]) {
+        var g = GEO_ZIP[zip], hit = TOWN_BY_NAME[norm(g.n)];
+        if (hit) return { kind:'town', town:hit, zip:zip, typed:typed, exact:true };
+        var far = miles(g.lat, g.lon);
+        return { kind:'place', place:g, zip:zip, typed:typed, exact:true, dist:far,
+                 hint: far > 45 ? localTypo(zip) : null };
+      }
+      if (digitsOnly) {
+        var near = nearZips(zip, 4);
+        return near.length ? { kind:'didyoumean', zips:near, typed:typed, zip:zip }
+                           : { kind:'unknown', zip:zip, typed:typed };
+      }
+    }
+    if (digitsOnly && typed.replace(/\D/g, '').length === 4) {
+      var pz = nearZips(typed.replace(/\D/g, ''), 5);
+      if (pz.length) return { kind:'didyoumean', zips:pz, typed:typed, zip:'' };
+    }
+
+    var tries = nameCandidates(typed), best = null, frag = '';
+    for (var k = 0; k < tries.length; k++) {
+      var r = rank(tries[k], 3);
+      if (r.length && (!best || r[0].s > best.s)) { best = r[0]; frag = tries[k]; }
+    }
+    if (best && best.s >= 55) {
+      var exact = norm(frag) === norm(best.n) || best.s >= 96;
+      if (best.town) {
+        return { kind:'town', town:best.town, zip:zip || '', typed:typed,
+                 exact:exact, corrected: exact ? '' : best.n };
+      }
+      return { kind:'place', place:best.place, zip:zip || best.place.zip, typed:typed,
+               exact:exact, corrected: exact ? '' : best.n,
+               dist: miles(best.place.lat, best.place.lon) };
+    }
+    if (best) {
+      var alt = rank(frag, 4).filter(function (a) { return a.s >= 60; });
+      if (alt.length) return { kind:'didyoumean', names:alt, typed:typed };
+    }
+    return { kind:'unknown', zip: zip || '', typed:typed };
+  }
+
+  /* Closest town Mikey is in every week. Measured straight-line from the customer,
+     and only ever used to decide whether the "park it there" option is worth
+     showing — the mileage is never printed, because a straight line across Puget
+     Sound is a ferry ride and telling someone in Clinton that Mukilteo is four
+     miles away would be a lie by arithmetic. */
+  function nearestServed(lat, lon) {
+    var best = null, bd = 1e9;
+    for (var k = 0; k < TOWNS.length; k++) {
+      if (TOWNS[k].t !== 'yes' || !TOWNS[k].c) continue;
+      var d = miles(TOWNS[k].c[0], TOWNS[k].c[1], lat, lon);
+      if (d < bd) { bd = d; best = TOWNS[k]; }
+    }
+    return best ? { town: best, dist: bd } : null;
+  }
+
+  /* ================= suggestions ================= */
   var active = -1, items = [];
-  function closeSugg() { sugg.className = 'sa-sugg'; sugg.innerHTML = ''; items = []; active = -1;
-    input.setAttribute('aria-expanded', 'false'); }
+  function closeSugg() {
+    sugg.className = 'sa-sugg'; sugg.innerHTML = ''; items = []; active = -1;
+    input.setAttribute('aria-expanded', 'false');
+    input.setAttribute('aria-activedescendant', '');
+  }
   function openSugg(list) {
     if (!list.length) return closeSugg();
     items = list; active = -1;
     sugg.innerHTML = list.map(function (t, idx) {
-      var tag = t.t === 'yes' ? (t.d === 'home base' ? 'Home base' : t.d + ' away') : 'Ask me';
+      var tag;
+      if (t.town) tag = t.town.t === 'yes' ? (t.town.d === 'home base' ? 'Home base' : t.town.d + ' away') : 'Ask me';
+      else tag = mi(miles(t.place.lat, t.place.lon)) + ' mi out';
       return '<li role="option" id="sa-op' + idx + '" aria-selected="false" data-i="' + idx + '">' +
              '<b>' + esc(t.n) + '</b><small>' + esc(tag) + '</small></li>';
     }).join('');
@@ -3935,18 +4263,11 @@ header li a[href="#booking"],
     input.setAttribute('aria-expanded', 'true');
   }
   function suggest(raw) {
-    var n = norm(raw);
-    if (n.length < 2 || /^\d/.test(raw.trim())) return closeSugg();
-    var out = [];
-    for (var k = 0; k < TOWNS.length && out.length < 6; k++) {
-      if (norm(TOWNS[k].n).indexOf(n) === 0) out.push(TOWNS[k]);
-    }
-    if (n.length >= 4) {
-      for (k = 0; k < TOWNS.length && out.length < 6; k++) {
-        if (norm(TOWNS[k].n).indexOf(n) > 0 && out.indexOf(TOWNS[k]) < 0) out.push(TOWNS[k]);
-      }
-    }
-    openSugg(out);
+    if (norm(raw).length < 2 || /^\d/.test(raw.trim())) return closeSugg();
+    withGeo(function () {
+      if (input.value !== raw) return;
+      openSugg(rank(raw, 6).filter(function (r) { return r.s >= 55; }));
+    });
   }
   function highlight(idx) {
     var nodes = sugg.querySelectorAll('li');
@@ -3955,6 +4276,300 @@ header li a[href="#booking"],
     input.setAttribute('aria-activedescendant', idx > -1 ? 'sa-op' + idx : '');
   }
 
+  /* ================= the answer ================= */
+  var ICON = {
+    yes:  '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="m4 12.5 5 5L20 6.5"/></svg>',
+    ask:  '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 17h.01M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.5-2.8 4"/><circle cx="12" cy="12" r="9.5"/></svg>',
+    far:  '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+    park: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M5 17h14M6.5 17V9.5l1.8-3.2A2 2 0 0 1 10 5.2h4a2 2 0 0 1 1.7 1.1l1.8 3.2V17"/><circle cx="8.5" cy="13.5" r="1.1"/><circle cx="15.5" cy="13.5" r="1.1"/></svg>',
+    text: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M20 12a7.5 7.5 0 0 1-10.9 6.7L4 20l1.4-4.6A7.5 7.5 0 1 1 20 12Z"/></svg>',
+    bell: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7M13.7 20a2 2 0 0 1-3.4 0"/></svg>'
+  };
+
+  /* Was the answer worth correcting the spelling for? Say so, the way search does. */
+  function fixNote(res) {
+    if (!res.corrected) return '';
+    return '<p class="sa-fix">Showing <b>' + esc(res.corrected) + '</b> &mdash; you typed &ldquo;' +
+           esc(res.typed) + '&rdquo;.</p>';
+  }
+
+  function show(res, source) {
+    if (!res) return;
+    if (res.kind === 'didyoumean') return showPick(res, source);
+    if (res.kind === 'unknown')    return showUnknown(res, source);
+
+    var town = res.town || null,
+        place = res.place || null,
+        where = town ? town.n : (place ? place.n : res.typed),
+        d = town && town.c ? miles(town.c[0], town.c[1]) : (res.dist || 0),
+        tier = town ? town.t : (d <= 25 ? 'edge' : d <= 45 ? 'reach' : 'far');
+
+    if (tier === 'yes')      result.innerHTML = fixNote(res) + yesPanel(town);
+    else if (tier === 'ask') result.innerHTML = fixNote(res) + askPanel(town, d);
+    else                     result.innerHTML = fixNote(res) + outPanel(res, where, d, tier);
+
+    track('service_area_check', { result: tier, area: where, zip: res.zip || '',
+                                  source: source || 'form', corrected: res.corrected || '' });
+    markMap(tier === 'yes' ? town.n : null);
+    if (tier !== 'yes' && tier !== 'ask') wireWaitlist(where, res.zip || '');
+  }
+
+  function yesPanel(town) {
+    var home = town.d === 'home base';
+    return '<div class="sa-res sa-res--yes">' +
+        '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.yes + '</span><div>' +
+          '<p class="sa-res-h">Yes &mdash; I\'m in <b>' + esc(town.n) + '</b>' +
+            (home ? ' every day. It\'s my own town.' : ' most weeks.') + '</p>' +
+          '<p class="sa-res-p">' + (home
+            ? 'You\'re about as close as I get. Same detailer every time &mdash; it\'s only ever me in your driveway.'
+            : 'That\'s ' + esc(town.d) + ' up the road for me. No travel charge, and you pay the same as the guy on my own block.') +
+          '</p></div></div>' +
+        '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') +
+          '</span><span>No travel fee</span><span>No deposit</span></div>' +
+        '<div class="sa-res-cta">' +
+          '<button type="button" class="sa-btn sa-btn--primary" data-sa-quote="' + esc(town.n) + '">See My Price &rarr;</button>' +
+          '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">Call Or Text</a>' +
+        '</div>' +
+        (town.p ? '<a class="sa-res-link" href="' + town.p + '">See my ' + esc(town.n) + ' page &rarr;</a>' : '') +
+      '</div>';
+  }
+
+  function askPanel(town, d) {
+    return '<div class="sa-res sa-res--ask">' +
+        '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
+          '<p class="sa-res-h"><b>' + esc(town.n) + '</b> sits right on the edge of where I go.</p>' +
+          '<p class="sa-res-p">You\'re about ' + mi(d) + ' miles out from me. I do get out there &mdash; it depends what else is booked that week. Text me the address and you\'ll have a straight yes or no, usually inside the hour.</p>' +
+        '</div></div>' +
+        '<div class="sa-res-cta">' +
+          '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me And Find Out</a>' +
+          '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">' + PHONE_H + '</a>' +
+        '</div>' +
+        parkOption(town.c ? town.c[0] : null, town.c ? town.c[1] : null) +
+      '</div>';
+  }
+
+  /* The option that turns most "no" answers into a real booking: the car doesn't
+     have to be at their house. If it's ever parked somewhere Mikey already works,
+     that's an ordinary job at the ordinary price. */
+  function parkOption(lat, lon) {
+    if (lat === null || lat === undefined) return '';
+    var near = nearestServed(lat, lon);
+    if (!near || near.dist < 1) return '';
+    var close = near.dist <= 30, body;
+    if (close) {
+      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. If it sits anywhere ' +
+             'in my area during the day &mdash; your work lot, a parent\'s driveway, a friend\'s &mdash; ' +
+             'that\'s an ordinary job for me.';
+    } else {
+      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. That\'s a haul from you, ' +
+             'but if the car is ever up this way for a day &mdash; work, family, a trip north &mdash; ' +
+             'I can do it there.';
+    }
+    return '<div class="sa-opt">' +
+        '<span class="sa-opt-ic">' + ICON.park + '</span>' +
+        '<div><p class="sa-opt-h">The car doesn\'t have to be at your house</p>' +
+        '<p class="sa-opt-p">' + body + ' All I need is an outdoor spigot and a power outlet, ' +
+        'and it\'s the same price as any other driveway.</p>' +
+        '<button type="button" class="sa-opt-btn" data-sa-quote="' + esc(near.town.n) + '">Price it for ' + esc(near.town.n) + ' &rarr;</button>' +
+        '</div></div>';
+  }
+
+  function outPanel(res, where, d, tier) {
+    var place = res.place, lat = place ? place.lat : null, lon = place ? place.lon : null;
+    var head, body;
+    if (tier === 'edge') {
+      head = 'You\'re about <b>' + mi(d) + ' miles</b> out &mdash; that\'s inside the range I work.';
+      body = 'I just don\'t have ' + esc(where) + ' on my regular list, so I can\'t promise you a day the way I can in Snohomish or Everett. Text me the address and I\'ll tell you straight.';
+    } else if (tier === 'reach') {
+      head = '<b>' + esc(where) + '</b> is about ' + mi(d) + ' miles out. That\'s past my usual line.';
+      body = 'I stay close to Snohomish on purpose &mdash; it\'s the only way the time I give you is the time I show up. Past about 25 miles that stops being true. It\'s not a never, though.';
+    } else {
+      head = '<b>' + esc(where) + '</b> is about ' + mi(d) + ' miles out. I don\'t get down there.';
+      body = 'I work a tight circle around Snohomish so I can promise a time and actually hold it. An hour each way is how that promise breaks.';
+    }
+
+    var hint = res.hint
+      ? '<p class="sa-fix sa-fix--zip">Meant to type <b>' + esc(res.hint.zip) + '</b> (' + esc(res.hint.n) +
+        ')? <button type="button" class="sa-link" data-sa-retry="' + esc(res.hint.zip) + '">Check that one</button></p>'
+      : '';
+
+    return '<div class="sa-res sa-res--out">' +
+        '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.far + '</span><div>' +
+          '<p class="sa-res-h">' + head + '</p><p class="sa-res-p">' + body + '</p>' +
+        '</div></div>' + hint +
+        '<p class="sa-opts-h">Here\'s what actually works, in order:</p>' +
+        parkOption(lat, lon) +
+        (d <= 45 ? askAnywayOption(where) : '') +
+        waitlistOption(where) +
+      '</div>';
+  }
+
+  function askAnywayOption(where) {
+    return '<div class="sa-opt">' +
+        '<span class="sa-opt-ic">' + ICON.text + '</span>' +
+        '<div><p class="sa-opt-h">Ask me anyway</p>' +
+        '<p class="sa-opt-p">I answer my own phone &mdash; there\'s no office. Tell me where and when and you get a yes or a no, not a callback queue.</p>' +
+        '<a class="sa-opt-btn" href="' + smsHref('Hi Mikey, I\'m in ' + where + '. Any chance you\'d come out here?') + '">Text me &mdash; it\'s already typed &rarr;</a>' +
+        '</div></div>';
+  }
+
+  function waitlistOption(where) {
+    return '<div class="sa-opt sa-opt--wait">' +
+        '<span class="sa-opt-ic">' + ICON.bell + '</span>' +
+        '<div><p class="sa-opt-h">Tell me when it\'s worth the drive</p>' +
+        '<p class="sa-opt-p">Two or three cars in one spot is a different math problem than one. Leave a number, and if I start running out to ' + esc(where) + ' you get a text from me &mdash; that\'s the whole thing, no list, no newsletter.</p>' +
+        '<form class="sa-wait" id="saWait" novalidate>' +
+          '<div class="sa-wait-row">' +
+            '<input type="text" id="saWaitName" placeholder="Your name (optional)" autocomplete="name">' +
+            '<input type="tel" id="saWaitPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" required>' +
+          '</div>' +
+          '<label class="sa-wait-check"><input type="checkbox" id="saWaitGroup">' +
+            '<span>I could probably get a neighbor or two to book the same day</span></label>' +
+          '<button type="submit" class="sa-btn sa-btn--primary">Let Me Know &rarr;</button>' +
+        '</form>' +
+        '<p class="sa-wait-msg" id="saWaitMsg" role="status"></p>' +
+        '</div></div>';
+  }
+
+  /* Ambiguous input: never guess, just show the choices. */
+  function showPick(res, source) {
+    var rows = (res.zips || res.names || []).map(function (o) {
+      var label, tag;
+      if (o.zip) {
+        label = o.zip + (o.n ? ' &middot; ' + esc(o.n) : '');
+        tag = o.town ? (o.town.t === 'yes' ? 'I\'m there' : 'Ask me') : mi(o.home) + ' mi out';
+      } else {
+        label = esc(o.n);
+        tag = o.town ? (o.town.t === 'yes' ? 'I\'m there' : 'Ask me')
+                     : mi(miles(o.place.lat, o.place.lon)) + ' mi out';
+      }
+      return '<button type="button" class="sa-pick" data-sa-retry="' + esc(o.zip || o.n) + '">' +
+             '<b>' + label + '</b><small>' + tag + '</small></button>';
+    }).join('');
+    result.innerHTML =
+      '<div class="sa-res sa-res--pick">' +
+        '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
+          '<p class="sa-res-h">Which one did you mean?</p>' +
+          '<p class="sa-res-p">&ldquo;' + esc(res.typed) + '&rdquo; is close to a few. Pick one and I\'ll answer straight away.</p>' +
+        '</div></div>' +
+        '<div class="sa-picks">' + rows + '</div>' +
+      '</div>';
+    track('service_area_check', { result: 'didyoumean', area: res.typed, source: source || 'form' });
+    markMap(null);
+  }
+
+  function showUnknown(res, source) {
+    result.innerHTML =
+      '<div class="sa-res sa-res--out">' +
+        '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.far + '</span><div>' +
+          '<p class="sa-res-h">I can\'t place &ldquo;' + esc(res.typed) + '&rdquo;.</p>' +
+          '<p class="sa-res-p">Spelling doesn\'t matter to this box &mdash; it reads through typos &mdash; so it\'s probably somewhere I\'ve never been asked about. Try the ZIP, or just ask me.</p>' +
+        '</div></div>' +
+        '<div class="sa-res-cta">' +
+          '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ') + '">Text Me Where You Are</a>' +
+          '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">' + PHONE_H + '</a>' +
+        '</div>' +
+      '</div>';
+    track('service_area_check', { result: 'unknown', area: res.typed, source: source || 'form' });
+    markMap(null);
+    askAI(res.typed);
+  }
+
+  /* Last resort for input nothing local could read. Off until the Worker endpoint
+     exists; one failed request per page load and then it stops trying. */
+  var aiDead = false, aiBusy = false;
+  function askAI(typed) {
+    if (aiDead || aiBusy || !AI_URL || typed.length < 3) return;
+    aiBusy = true;
+    var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+    if (ctrl) setTimeout(function () { ctrl.abort(); }, 4000);
+    fetch(AI_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ q: typed }), signal: ctrl ? ctrl.signal : undefined
+    }).then(function (r) {
+      if (!r.ok) throw new Error('off');
+      return r.json();
+    }).then(function (d) {
+      if (!d || !d.place || input.value.trim() !== typed) return;
+      var again = resolve(d.place);
+      if (again && again.kind !== 'unknown') {
+        again.corrected = d.place;
+        again.typed = typed;
+        show(again, 'ai');
+      }
+    }).catch(function () { aiDead = true; })
+      .then(function () { aiBusy = false; });
+  }
+
+  /* ---------- out-of-area capture, same endpoint the quote calculator uses ---------- */
+  function wireWaitlist(where, zip) {
+    var wf = $('saWait'), msg = $('saWaitMsg');
+    if (!wf) return;
+    wf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = ($('saWaitName').value || '').trim(),
+          phone = ($('saWaitPhone').value || '').trim(),
+          group = $('saWaitGroup') && $('saWaitGroup').checked;
+      if (phone.replace(/\D/g, '').length < 10) {
+        msg.className = 'sa-wait-msg err';
+        msg.textContent = 'I need a full phone number to reach you on.';
+        return;
+      }
+      var btn = wf.querySelector('button[type="submit"]');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var fd = new FormData();
+      fd.append('access_key', W3F_KEY);
+      fd.append('subject', (group ? 'Service area waitlist (would bring neighbors): ' : 'Service area waitlist: ') + where);
+      fd.append('from_name', 'Mikeys Service Area Checker');
+      fd.append('name', name || '(not given)');
+      fd.append('phone', phone);
+      fd.append('location', where + (zip ? ' (' + zip + ')' : ''));
+      fd.append('message', 'Out-of-area request\n---\nName: ' + (name || '(not given)') +
+        '\nPhone: ' + phone + '\nLooking for service in: ' + where + (zip ? ' (' + zip + ')' : '') +
+        '\nCould bring neighbors: ' + (group ? 'YES' : 'no') +
+        '\nSource: service area checker');
+      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !d.success) throw new Error('rejected');
+          wf.style.display = 'none';
+          msg.className = 'sa-wait-msg ok';
+          msg.textContent = group
+            ? 'Got it — and noted that you could round up a couple more. That\'s the kind of thing that gets me on the road.'
+            : 'Got it. If I start covering ' + where + ', you get the first text.';
+          track('service_area_waitlist', { area: where, zip: zip || '', group: group ? 1 : 0 });
+        })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = 'Let Me Know →';
+          msg.className = 'sa-wait-msg err';
+          msg.innerHTML = 'That didn’t send. <a href="' + smsHref('Hi Mikey, do you cover ' + where + '?') +
+            '" style="color:#C9A24B;font-weight:800;">Text me instead &rarr;</a>';
+        });
+    });
+  }
+
+  /* ---------- highlight the matching pin + chip ---------- */
+  function markMap(name) {
+    var pins = document.querySelectorAll('.sa-pin'), k;
+    for (k = 0; k < pins.length; k++) {
+      pins[k].classList.toggle('is-on', !!name && pins[k].getAttribute('data-city') === name);
+    }
+    var chips = document.querySelectorAll('.sa-chips li');
+    for (k = 0; k < chips.length; k++) {
+      chips[k].classList.toggle('is-on', !!name && chips[k].textContent.trim() === name);
+    }
+  }
+
+  /* ================= wiring ================= */
+  function check(raw, source) {
+    withGeo(function () {
+      var r = resolve(raw);
+      if (!r) { input.focus(); return; }
+      show(r, source);
+    });
+  }
+
+  input.addEventListener('focus', function () { withGeo(function () {}); });
   input.addEventListener('input', function () {
     suggest(input.value);
     if (result.innerHTML) { result.innerHTML = ''; markMap(null); }
@@ -3967,206 +4582,110 @@ header li a[href="#booking"],
     else if (e.key === 'Escape') closeSugg();
   });
   sugg.addEventListener('click', function (e) {
-    var li = e.target.closest('li'); if (li) choose(items[+li.getAttribute('data-i')]);
+    var li = e.target.closest('li');
+    if (li) choose(items[+li.getAttribute('data-i')]);
   });
   document.addEventListener('click', function (e) {
     if (!form.contains(e.target)) closeSugg();
   });
-  function choose(t) { if (!t) return; input.value = t.n; closeSugg(); show(t, '', 'suggestion'); }
-
-  /* ---------- the answer ---------- */
-  var ICON = {
-    yes: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="m4 12.5 5 5L20 6.5"/></svg>',
-    ask: '<svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 17h.01M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.5-2.8 4"/><circle cx="12" cy="12" r="9.5"/></svg>',
-    no:  '<svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="9.5"/><path d="M8 12h8"/></svg>'
-  };
-
-  function smsHref(body) { return 'sms:' + PHONE + '?&body=' + encodeURIComponent(body); }
-
-  function show(town, zip, source) {
-    var where = town ? town.n : (zip || input.value.trim());
-    var tier = town ? town.t : 'no';
-    var html;
-
-    if (tier === 'yes') {
-      var home = town.d === 'home base';
-      html =
-        '<div class="sa-res sa-res--yes">' +
-          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.yes + '</span><div>' +
-            '<p class="sa-res-h">Yes &mdash; I\'m in <b>' + esc(town.n) + '</b>' + (home ? ' every day. It\'s my own town.' : ' most weeks.') + '</p>' +
-            '<p class="sa-res-p">' + (home
-                ? 'You\'re about as close as I get. Most weeks I can be there in a day or two.'
-                : 'That\'s ' + esc(town.d) + ' up the road for me. No travel charge, and you pay the same as the guy on my own block.') +
-            '</p>' +
-          '</div></div>' +
-          '<div class="sa-res-meta"><span>' + (home ? 'Home base' : esc(town.d) + ' away') + '</span><span>No travel fee</span><span>No deposit</span></div>' +
-          '<div class="sa-res-cta">' +
-            '<button type="button" class="sa-btn sa-btn--primary" data-sa-quote="' + esc(town.n) + '">See My Price &rarr;</button>' +
-            '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">Call Or Text</a>' +
-          '</div>' +
-          (town.p ? '<a class="sa-res-link" href="' + town.p + '">See my ' + esc(town.n) + ' page &rarr;</a>' : '') +
-        '</div>';
-    } else if (tier === 'ask') {
-      html =
-        '<div class="sa-res sa-res--ask">' +
-          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.ask + '</span><div>' +
-            '<p class="sa-res-h"><b>' + esc(town.n) + '</b> sits right on the edge of where I go.</p>' +
-            '<p class="sa-res-p">I do get out there, it just depends what else is booked that week. Text me your address and I\'ll give you a straight yes or no, usually inside the hour.</p>' +
-          '</div></div>' +
-          '<div class="sa-res-cta">' +
-            '<a class="sa-btn sa-btn--primary" href="' + smsHref('Hi Mikey, do you come out to ' + town.n + '? ') + '">Text Me And Find Out</a>' +
-            '<a class="sa-btn sa-btn--ghost" href="tel:' + PHONE + '">' + PHONE_H + '</a>' +
-          '</div>' +
-        '</div>';
-    } else {
-      html =
-        '<div class="sa-res sa-res--no">' +
-          '<div class="sa-res-top"><span class="sa-res-ic">' + ICON.no + '</span><div>' +
-            '<p class="sa-res-h">I don\'t get out to <b>' + esc(where) + '</b> yet.</p>' +
-            '<p class="sa-res-p">I keep close to Snohomish on purpose. It\'s the only way I can promise a time and actually hold it. Leave your number and you\'ll be first to know if that changes.</p>' +
-          '</div></div>' +
-          '<form class="sa-wait" id="saWait" novalidate>' +
-            '<input type="text" id="saWaitName" placeholder="Your name" autocomplete="name">' +
-            '<input type="tel" id="saWaitPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel">' +
-            '<button type="submit" class="sa-btn sa-btn--primary" style="flex:none;">Let Me Know When You Do</button>' +
-          '</form>' +
-          '<p class="sa-wait-msg" id="saWaitMsg" role="status"></p>' +
-        '</div>';
-    }
-
-    result.innerHTML = html;
-    track('service_area_check', { result: tier, area: where, zip: zip || '', source: source || 'form' });
-    markMap(tier === 'yes' ? town.n : null);
-    if (tier === 'no') wireWaitlist(where, zip);
+  function choose(t) {
+    if (!t) return;
+    input.value = t.n;
+    closeSugg();
+    show(t.town ? { kind:'town', town:t.town, zip:'', typed:t.n, exact:true }
+                : { kind:'place', place:t.place, zip:t.place.zip, typed:t.n, exact:true,
+                    dist: miles(t.place.lat, t.place.lon) }, 'suggestion');
   }
 
-  /* ---------- out-of-area capture, same endpoint the quote calculator uses ---------- */
-  function wireWaitlist(where, zip) {
-    var wf = $('saWait'), msg = $('saWaitMsg');
-    if (!wf) return;
-    wf.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var name = ($('saWaitName').value || '').trim();
-      var phone = ($('saWaitPhone').value || '').trim();
-      if (phone.replace(/\D/g, '').length < 10) {
-        msg.className = 'sa-wait-msg err';
-        msg.textContent = 'I need a full phone number to reach you on.';
-        return;
-      }
-      var btn = wf.querySelector('button');
-      btn.disabled = true; btn.textContent = 'Sending…';
-      var fd = new FormData();
-      fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
-      fd.append('subject', 'Service area waitlist: ' + where);
-      fd.append('from_name', 'Mikeys Service Area Checker');
-      fd.append('name', name || '(not given)');
-      fd.append('phone', phone);
-      fd.append('location', where + (zip ? ' (' + zip + ')' : ''));
-      fd.append('message', 'Out-of-area request\n---\nName: ' + (name || '(not given)') +
-        '\nPhone: ' + phone + '\nLooking for service in: ' + where + (zip ? ' (' + zip + ')' : '') +
-        '\nSource: service area checker');
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd })
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          if (!d || !d.success) throw new Error('rejected');
-          wf.style.display = 'none';
-          msg.className = 'sa-wait-msg ok';
-          msg.textContent = 'Got it. If I start covering ' + where + ', you get the first text.';
-          track('service_area_waitlist', { area: where, zip: zip || '' });
-        })
-        .catch(function () {
-          btn.disabled = false; btn.textContent = 'Let Me Know When You Do';
-          msg.className = 'sa-wait-msg err';
-          msg.innerHTML = 'That didn’t send. <a href="' + smsHref('Hi Mikey, do you cover ' + where + '?') +
-            '" style="color:#C9A24B;font-weight:800;">Text me instead &rarr;</a>';
-        });
-    });
-  }
-
-  /* ---------- highlight the matching pin + chip ---------- */
-  function markMap(name) {
-    var pins = document.querySelectorAll('.sa-pin');
-    for (var k = 0; k < pins.length; k++) {
-      pins[k].classList.toggle('is-on', !!name && pins[k].getAttribute('data-city') === name);
-    }
-    var chips = document.querySelectorAll('.sa-chips li');
-    for (k = 0; k < chips.length; k++) {
-      chips[k].classList.toggle('is-on', !!name && chips[k].textContent.trim() === name);
-    }
-  }
-
-  /* ---------- hand off to the quote calculator with the town already filled in ---------- */
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-sa-quote]');
-    if (!b) return;
-    var town = b.getAttribute('data-sa-quote');
-    var loc = document.getElementById('qqLocation');
-    if (loc && !loc.value) loc.value = town;
-    track('service_area_to_quote', { area: town });
-    var booking = document.getElementById('booking');
-    if (booking) booking.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  /* ---------- pins are checkers too ---------- */
-  document.addEventListener('click', function (e) {
-    var pin = e.target.closest('.sa-pin');
-    if (!pin) return;
-    var name = pin.getAttribute('data-city');
-    for (var k = 0; k < TOWNS.length; k++) {
-      if (TOWNS[k].n === name) { input.value = name; closeSugg(); show(TOWNS[k], '', 'map_pin'); break; }
-    }
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var pin = document.activeElement && document.activeElement.closest ?
-              document.activeElement.closest('.sa-pin') : null;
-    if (!pin) return;
-    e.preventDefault(); pin.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-  });
-
-  /* ---------- quick picks ---------- */
-  document.addEventListener('click', function (e) {
-    var b = e.target.closest && e.target.closest('[data-sa-town]');
-    if (!b) return;
-    var name = b.getAttribute('data-sa-town');
-    for (var k = 0; k < TOWNS.length; k++) {
-      if (TOWNS[k].n === name) { input.value = name; closeSugg(); show(TOWNS[k], '', 'quick_pick'); break; }
-    }
-  });
-
-  /* ---------- submit + geolocation ---------- */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     closeSugg();
-    var m = lookup(input.value);
-    if (!m) { input.focus(); return; }
-    show(m.town, m.zip, 'form');
+    check(input.value, 'form');
   });
 
+  /* "did you mean" picks and ZIP nudges re-run the checker */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-sa-retry]');
+    if (!b) return;
+    var v = b.getAttribute('data-sa-retry');
+    input.value = v;
+    closeSugg();
+    check(v, 'didyoumean');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  /* hand off to the quote calculator with the town already filled in */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('[data-sa-quote]');
+    if (!b) return;
+    var town = b.getAttribute('data-sa-quote'),
+        loc = $('qqLocation');
+    if (loc && !loc.value) loc.value = town;
+    track('service_area_to_quote', { area: town });
+    var booking = $('booking');
+    if (booking) booking.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  /* pins and quick picks are checkers too */
+  function byName(name) {
+    for (var k = 0; k < TOWNS.length; k++) if (TOWNS[k].n === name) return TOWNS[k];
+    return null;
+  }
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && (e.target.closest('.sa-pin') || e.target.closest('[data-sa-town]'));
+    if (!el) return;
+    var name = el.getAttribute('data-city') || el.getAttribute('data-sa-town'),
+        t = byName(name);
+    if (!t) return;
+    input.value = name;
+    closeSugg();
+    show({ kind:'town', town:t, zip:'', typed:name, exact:true },
+         el.classList.contains('sa-pin') ? 'map_pin' : 'quick_pick');
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var pin = document.activeElement && document.activeElement.closest
+            ? document.activeElement.closest('.sa-pin') : null;
+    if (!pin) return;
+    e.preventDefault();
+    pin.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  });
+
+  /* ---------- geolocation: answer from coordinates, not from a name ---------- */
   if (geo && navigator.geolocation) {
     geo.addEventListener('click', function () {
       geo.classList.add('is-busy');
       navigator.geolocation.getCurrentPosition(function (pos) {
-        geo.classList.remove('is-busy');
-        var best = null, bestD = 1e9;
-        var LAT = { 'Snohomish':[47.9129,-122.0982], 'Lake Stevens':[48.0151,-122.0637],
-          'Everett':[47.9790,-122.2021], 'Monroe':[47.8554,-121.9710], 'Mill Creek':[47.8601,-122.2043],
-          'Marysville':[48.0518,-122.1771], 'Bothell':[47.7601,-122.2054], 'Woodinville':[47.7543,-122.1635],
-          'Mukilteo':[47.9445,-122.3046], 'Granite Falls':[48.0832,-121.9676], 'Duvall':[47.7423,-121.9857],
-          'Arlington':[48.1987,-122.1251], 'Lynnwood':[47.8279,-122.3051], 'Edmonds':[47.8107,-122.3774],
-          'Mountlake Terrace':[47.7887,-122.3087], 'Kenmore':[47.7573,-122.2440], 'Shoreline':[47.7557,-122.3415],
-          'Kirkland':[47.6815,-122.2087], 'Redmond':[47.6740,-122.1215], 'Sultan':[47.8623,-121.8162],
-          'Stanwood':[48.2415,-122.3496], 'Bellevue':[47.6101,-122.2015], 'North Seattle':[47.6900,-122.3200] };
-        for (var k = 0; k < TOWNS.length; k++) {
-          var c = LAT[TOWNS[k].n]; if (!c) continue;
-          var dy = (c[0] - pos.coords.latitude) * 69.05;
-          var dx = (c[1] - pos.coords.longitude) * 69.05 * 0.67;
-          var d = Math.sqrt(dy * dy + dx * dx);
-          if (d < bestD) { bestD = d; best = TOWNS[k]; }
-        }
-        /* More than ~12 miles from anything I know means they're simply not near me. */
-        if (best && bestD < 12) { input.value = best.n; show(best, '', 'geolocation'); }
-        else { input.value = ''; show(null, '', 'geolocation'); }
+        withGeo(function () {
+          geo.classList.remove('is-busy');
+          var la = pos.coords.latitude, lo = pos.coords.longitude, k;
+          /* a town Mikey names wins if they're basically in it */
+          var best = null, bd = 1e9;
+          for (k = 0; k < TOWNS.length; k++) {
+            if (!TOWNS[k].c) continue;
+            var d = miles(TOWNS[k].c[0], TOWNS[k].c[1], la, lo);
+            if (d < bd) { bd = d; best = TOWNS[k]; }
+          }
+          if (best && bd <= 4.5) {
+            input.value = best.n;
+            return show({ kind:'town', town:best, zip:'', typed:best.n, exact:true }, 'geolocation');
+          }
+          /* otherwise the nearest ZIP centroid gives a real place and a real distance */
+          var bp = null, bpd = 1e9;
+          for (k = 0; k < GEO_LIST.length; k++) {
+            var pd = miles(GEO_LIST[k].lat, GEO_LIST[k].lon, la, lo);
+            if (pd < bpd) { bpd = pd; bp = GEO_LIST[k]; }
+          }
+          if (bp && bpd <= 25) {
+            var hit = TOWN_BY_NAME[norm(bp.n)];
+            input.value = bp.n;
+            return show(hit ? { kind:'town', town:hit, zip:bp.zip, typed:bp.n, exact:true }
+                            : { kind:'place', place:bp, zip:bp.zip, typed:bp.n, exact:true,
+                                dist: miles(bp.lat, bp.lon) }, 'geolocation');
+          }
+          input.value = '';
+          show({ kind:'unknown', typed:'where you are', zip:'' }, 'geolocation');
+        });
       }, function () {
         geo.classList.remove('is-busy');
         input.focus();
@@ -4176,21 +4695,27 @@ header li a[href="#booking"],
     geo.style.display = 'none';
   }
 
-  /* ---------- scroll reveal for the coverage zone ---------- */
+  /* ---------- scroll reveal, and warm the geo table while they read ---------- */
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (section && !reduce && 'IntersectionObserver' in window) {
-    section.classList.add('sa-anim');
+  if (section && 'IntersectionObserver' in window) {
+    if (!reduce) section.classList.add('sa-anim');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        if (!en.isIntersecting) return;
+        if (!reduce) en.target.classList.add('in');
+        withGeo(function () {});
+        io.unobserve(en.target);
       });
     }, { threshold: 0.18 });
     io.observe(section);
+  } else {
+    withGeo(function () {});
   }
 
-  /* ---------- deep link: /#service-area?zip=98258 style, and the header link ---------- */
-  var pre = (location.hash.match(/zip=(\d{5})/) || [])[1];
-  if (pre) { input.value = pre; var m2 = lookup(pre); if (m2) show(m2.town, m2.zip, 'deeplink'); }
+  /* ---------- deep link: /#service-area?zip=98258, or ?town=lake+stevens ---------- */
+  var pre = (location.hash.match(/zip=(\d{5})/) || [])[1] ||
+            (location.hash.match(/town=([^&]+)/) || []).slice(1).map(decodeURIComponent)[0];
+  if (pre) { input.value = pre.replace(/\+/g, ' '); check(input.value, 'deeplink'); }
 })();
 </script>
 
