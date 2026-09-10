@@ -45,8 +45,20 @@ CITY = [
  ("Woodinville",   47.7543,-122.1635, None,            "~20 min", "middle",  0,  26),
  ("Duvall",        47.7423,-121.9857, "/duvall/",      "~25 min", "start",  13,   4),
 ]
-NEARBY = [("Lynnwood",47.8279,-122.3051,"end",-11),("Edmonds",47.8107,-122.3774,"end",-11),
-          ("Sultan",47.8623,-121.8162,"end",-11),("Redmond",47.6740,-122.1215,"start",11)]
+# "Ask me" towns — Mikey gets out to these sometimes but never promises them.
+# This is the same list as tier 'ask' in the TOWNS array in index.html; the ones
+# that fall inside the frame get a grey dot so the legend key means something.
+# Lynnwood and Edmonds live here on purpose. He was asked directly and said no.
+NEARBY = [
+ ("Stanwood",         48.2415,-122.3496), ("Silvana",     48.2004,-122.2679),
+ ("Camano Island",    48.1885,-122.4715), ("Sultan",      47.8623,-121.8162),
+ ("Startup",          47.8657,-121.7418), ("Lynnwood",    47.8279,-122.3051),
+ ("Edmonds",          47.8107,-122.3774), ("Brier",       47.7929,-122.2743),
+ ("Mountlake Terrace",47.7887,-122.3087), ("Kenmore",     47.7573,-122.2440),
+ ("Lake Forest Park", 47.7570,-122.2807), ("Shoreline",   47.7557,-122.3415),
+ ("North Seattle",    47.6900,-122.3200), ("Kirkland",    47.6815,-122.2087),
+ ("Redmond",          47.6740,-122.1215), ("Carnation",   47.6476,-121.9143),
+]
 
 # coverage zone: convex walk of the served cities, pushed out ~2.5 mi, then smoothed
 HULL = ["Arlington","Granite Falls","Monroe","Duvall","Woodinville","Bothell","Mill Creek","Mukilteo","Marysville"]
@@ -70,6 +82,46 @@ def catmull(p, t=0.55):
     return " ".join(out) + " Z"
 
 def line(ll): return " ".join("%s,%s" % px(a,b) for a,b in ll)
+
+# --- label placement -------------------------------------------------------
+# Labels used to be hand-nudged, which held until a town moved and two names sat
+# on top of each other on a phone. These metrics are measured off the rendered
+# SVG at 430px, where the CSS bumps the type up — place for the worst case and
+# the desktop size is clean for free.
+CH   = {"pin": 11.81, "home": 14.68, "ask": 11.93, "road": 9.63}
+LINE = {"pin": 22.1,  "home": 23.5,  "ask": 20.4,  "road": 17.2}
+PAD  = 1.5
+
+def box(text, kind, x, y, anchor):
+    """Screen box for a label drawn at (x, y) with the given anchor. y is a baseline."""
+    w = len(text) * CH[kind]
+    h = LINE[kind]
+    left = x if anchor == "start" else x - w if anchor == "end" else x - w / 2
+    return (left - PAD, y - h * 0.78 - PAD, left + w + PAD, y + h * 0.22 + PAD)
+
+def hits(b, placed):
+    if b[0] < 2 or b[1] < 2 or b[2] > W - 2 or b[3] > H - 2:
+        return True
+    return any(b[0] < o[2] and o[0] < b[2] and b[1] < o[3] and o[1] < b[3] for o in placed)
+
+# In preference order. The first entry of each list is where the label sat before
+# this became automatic, so a layout that already works does not get reshuffled.
+def offsets(kind, first=None):
+    base = [(13, 4, "start"), (-13, 4, "end"), (13, -3, "start"), (-13, -3, "end"),
+            (13, 12, "start"), (-13, 12, "end"), (0, -14, "middle"), (0, 25, "middle")]
+    if first:
+        base = [first] + [o for o in base if o != first]
+    return base
+
+def place(text, kind, x, y, placed, first=None):
+    """Return (dx, dy, anchor) for a label near (x, y), or None if nothing fits."""
+    for dx, dy, anc in offsets(kind, first):
+        b = box(text, kind, x + dx, y + dy, anc)
+        if not hits(b, placed):
+            placed.append(b)
+            return dx, dy, anc
+    return None
+
 
 COAST = [(48.28,-122.385),(48.23,-122.37),(48.19,-122.355),(48.12,-122.32),(48.05,-122.295),
  (48.00,-122.245),(47.975,-122.222),(47.955,-122.268),(47.945,-122.309),(47.90,-122.339),
@@ -110,21 +162,35 @@ A('    <circle cx="%s" cy="%s" r="%s" fill="url(#saGlow)" filter="url(#saSoft)"/
 A('    <path class="sa-zone-outer" d="%s"/>' % catmull(pts))
 A('    <circle class="sa-zone-core" cx="%s" cy="%s" r="%s"/>' % (BASE[0], BASE[1], round(10*PPM, 1)))
 A('  </g>')
+PLACED = []
+PLACED.append((0, round(H*.62) - 75, 78, round(H*.62) + 75))          # PUGET SOUND, rotated
+PLACED.append((22, H - 48, 30 + 5*PPM + 8 + 7*CH["road"], H - 12))     # the scale bar
+
 A('  <g class="sa-roads">')
 for nm, major, ll in ROADS:
     A('    <polyline points="%s" class="%s"/>' % (line(ll), "sa-rd sa-rd--major" if major else "sa-rd"))
 for nm, la, lo in (("I-5", 47.752, -122.313), ("US-2", 47.855, -121.780), ("SR-9", 47.800, -122.112)):
     x, y = px(la, lo)
-    A('    <text class="sa-rd-lbl" x="%s" y="%s">%s</text>' % (round(x+7,1), round(y-6,1), nm))
-A('  </g>')
-A('  <g class="sa-nearby">')
-for n, la, lo, anc, dx in NEARBY:
-    x, y = px(la, lo)
-    A('    <circle cx="%s" cy="%s" r="3.5"/><text x="%s" y="%s" text-anchor="%s">%s</text>' % (x, y, round(x+dx,1), y+4, anc, n))
+    lx, ly = round(x + 7, 1), round(y - 6, 1)
+    PLACED.append(box(nm, "road", lx, ly, "start"))
+    A('    <text class="sa-rd-lbl" x="%s" y="%s">%s</text>' % (lx, ly, nm))
 A('  </g>')
 A('  <g class="sa-pins">')
+CITY_LABEL = {}
 for n, la, lo, page, drive, anc, dx, dy in CITY:
     x, y = px(la, lo)
+    kind = "home" if n == "Snohomish" else "pin"
+    spot = place(n, kind, x, y, PLACED, first=(dx, dy, anc))
+    if spot is None:                      # never silently drop a town Mikey serves
+        spot = (dx, dy, anc)
+        PLACED.append(box(n, kind, x + dx, y + dy, anc))
+    CITY_LABEL[n] = spot
+    if n == "Snohomish":                  # HOME BASE sits on its own line underneath
+        PLACED.append(box("HOME BASE", "pin", x + spot[0], y + spot[1] + 16, spot[2]))
+
+for n, la, lo, page, drive, anc0, dx0, dy0 in CITY:
+    x, y = px(la, lo)
+    dx, dy, anc = CITY_LABEL[n]
     home = " sa-pin--home" if n == "Snohomish" else ""
     slug = n.lower().replace(" ", "-")
     A('    <g class="sa-pin%s" data-city="%s" tabindex="0" role="button" aria-label="%s, %s from home base. Show details." transform="translate(%s %s)">' % (home, n, n, ("home base" if drive=="home" else drive), x, y))
@@ -136,9 +202,34 @@ for n, la, lo, page, drive, anc, dx, dy in CITY:
         A('      <text class="sa-sublbl" x="%s" y="%s" text-anchor="%s">HOME BASE</text>' % (dx, dy + 16, anc))
     A('    </g>')
 A('  </g>')
+
+# "Ask me" towns last: they get whatever room is left, and a dot with no label
+# beats two names printed on top of each other.
+A('  <g class="sa-nearby">')
+DROPPED = []
+for n, la, lo in NEARBY:
+    x, y = px(la, lo)
+    if not (8 < x < W - 8 and 8 < y < H - 8):     # same inset the checker uses
+        DROPPED.append((n, "outside the frame"))
+        continue
+    A('    <g class="sa-near" data-city="%s">' % n)
+    A('      <circle cx="%s" cy="%s" r="3.5"/>' % (x, y))
+    spot = place(n, "ask", x, y, PLACED)
+    if spot:
+        A('      <text x="%s" y="%s" text-anchor="%s">%s</text>'
+          % (round(x + spot[0], 1), round(y + spot[1], 1), spot[2], n))
+    else:
+        DROPPED.append((n, "dot only, no room for the label"))
+    A('    </g>')
+A('  </g>')
+
 sx, sy = 30, H - 26
 A('  <g class="sa-scale"><line x1="%s" y1="%s" x2="%s" y2="%s"/><line x1="%s" y1="%s" x2="%s" y2="%s"/><line x1="%s" y1="%s" x2="%s" y2="%s"/><text x="%s" y="%s">5 miles</text></g>'
   % (sx, sy, round(sx+5*PPM,1), sy, sx, sy-4, sx, sy+4, round(sx+5*PPM,1), sy-4, round(sx+5*PPM,1), sy+4, round(sx+5*PPM+8,1), sy+4))
+# Filled in by the checker script in index.html: when someone asks about a place
+# that isn't a pin, this is where their marker goes — at its real spot if it's on
+# the map, or clamped to the edge with an arrow pointing off it if it isn't.
+A('  <g class="sa-you" aria-hidden="true"></g>')
 A('</svg>')
 
 import os
@@ -148,4 +239,9 @@ print("wrote", DEST, "- paste it over the <svg class=\"sa-map\"> block in index.
 print("viewBox %d x %d  |  px/mi %.2f  |  base %s" % (W, H, PPM, BASE))
 print("rings: 10mi=%.1f  20mi=%.1f" % (10*PPM, 20*PPM))
 for n, la, lo, pg, dr, a, dx, dy in CITY:
-    print("  %-14s %5.1f mi  %s" % (n, miles(la, lo), px(la, lo)))
+    moved = "" if CITY_LABEL[n] == (dx, dy, a) else "  <- label moved to avoid a collision"
+    print("  %-14s %5.1f mi  %s%s" % (n, miles(la, lo), px(la, lo), moved))
+if DROPPED:
+    print("ask-me towns not fully drawn:")
+    for n, why in DROPPED:
+        print("  %-18s %s" % (n, why))

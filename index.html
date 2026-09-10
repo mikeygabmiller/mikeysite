@@ -3565,8 +3565,21 @@ header li a[href="#booking"],
     stroke-dasharray:9 7; }
   .sa-zone-core{ fill:rgba(200,16,46,.16); stroke:rgba(200,16,46,.46); stroke-width:1.5; }
 
-  .sa-nearby circle{ fill:#3d3d3d; }
-  .sa-nearby text{ fill:#6b6b6b; font-size:12px; font-weight:700; }
+  .sa-nearby circle{ fill:#3d3d3d; transition:fill .2s ease; }
+  .sa-nearby text{ fill:#6b6b6b; font-size:12px; font-weight:700; transition:fill .2s ease; }
+  .sa-near.is-on circle{ fill:#C9A24B; }
+  .sa-near.is-on text{ fill:#e5c87f; }
+
+  /* the marker for a place that isn't a pin — drawn by the checker */
+  .sa-you circle.you-dot{ fill:#C9A24B; }
+  .sa-you circle.you-ring{ fill:none; stroke:#C9A24B; stroke-width:2; opacity:.55;
+    animation:saYou 2s ease-out infinite; transform-box:fill-box; transform-origin:center; }
+  @keyframes saYou{ 0%{ transform:scale(.6); opacity:.75; } 100%{ transform:scale(1.6); opacity:0; } }
+  .sa-you path.you-arrow{ fill:#C9A24B; }
+  .sa-you rect.you-plate{ fill:rgba(12,12,12,.88); stroke:rgba(201,162,75,.4); stroke-width:1; }
+  .sa-you text{ fill:#e5c87f; font-size:13px; font-weight:800; }
+  .sa-you text.you-sub{ fill:#8f8f8f; font-size:11px; font-weight:700; }
+  @media (prefers-reduced-motion:reduce){ .sa-you circle.you-ring{ animation:none; opacity:.55; } }
 
   .sa-pin{ cursor:pointer; }
   .sa-pin .sa-hit{ fill:transparent; }
@@ -3601,6 +3614,7 @@ header li a[href="#booking"],
   .sa-key--core i{ background:rgba(200,16,46,.28); border:1px solid rgba(200,16,46,.6); }
   .sa-key--zone i{ background:rgba(201,162,75,.2); border:1px dashed rgba(200,16,46,.75); }
   .sa-key--ask i{ background:#3d3d3d; border:1px solid #4d4d4d; }
+  .sa-key--you i{ background:#C9A24B; border:1px solid #C9A24B; }
 
   /* ---------- town chips ---------- */
   .sa-towns{ margin-top:34px; text-align:center; }
@@ -3631,6 +3645,8 @@ header li a[href="#booking"],
     .sa-map .sa-pin--home .sa-lbl{ font-size:21px; }
     .sa-map .sa-sublbl{ font-size:12px; }
     .sa-map .sa-nearby text{ font-size:17px; }
+    .sa-map .sa-you text{ font-size:18px; }
+    .sa-map .sa-you text.you-sub{ font-size:15px; }
     .sa-map .sa-rd-lbl,.sa-map .sa-scale text{ font-size:15px; }
     .sa-map .sa-water-lbl{ font-size:16px; }
     .sa-promises li{ font-size:.85rem; }
@@ -3750,12 +3766,6 @@ header li a[href="#booking"],
               <text class="sa-rd-lbl" x="573.1" y="401.0">US-2</text>
               <text class="sa-rd-lbl" x="349.3" y="456.2">SR-9</text>
             </g>
-            <g class="sa-nearby">
-              <circle cx="212.2" cy="434.2" r="3.5"/><text x="201.2" y="438.2" text-anchor="end">Lynnwood</text>
-              <circle cx="163.5" cy="451.5" r="3.5"/><text x="152.5" y="455.5" text-anchor="end">Edmonds</text>
-              <circle cx="541.7" cy="399.6" r="3.5"/><text x="530.7" y="403.6" text-anchor="end">Sultan</text>
-              <circle cx="335.9" cy="588.8" r="3.5"/><text x="346.9" y="592.8" text-anchor="start">Redmond</text>
-            </g>
             <g class="sa-pins">
               <g class="sa-pin" data-city="Arlington" tabindex="0" role="button" aria-label="Arlington, ~30 min from home base. Show details." transform="translate(333.5 61.6)">
                 <circle class="sa-hit" r="24"/>
@@ -3816,7 +3826,7 @@ header li a[href="#booking"],
                 <circle class="sa-hit" r="24"/>
                 <circle class="sa-ring" r="13"/>
                 <circle class="sa-dot" r="5.5"/>
-                <text class="sa-lbl" x="-13" y="4" text-anchor="end">Bothell</text>
+                <text class="sa-lbl" x="13" y="4" text-anchor="start">Bothell</text>
               </g>
               <g class="sa-pin" data-city="Woodinville" tabindex="0" role="button" aria-label="Woodinville, ~20 min from home base. Show details." transform="translate(307.6 508.1)">
                 <circle class="sa-hit" r="24"/>
@@ -3831,13 +3841,71 @@ header li a[href="#booking"],
                 <text class="sa-lbl" x="13" y="4" text-anchor="start">Duvall</text>
               </g>
             </g>
+            <g class="sa-nearby">
+              <g class="sa-near" data-city="Stanwood">
+                <circle cx="182.2" cy="18.6" r="3.5"/>
+                <text x="195.2" y="22.6" text-anchor="start">Stanwood</text>
+              </g>
+              <g class="sa-near" data-city="Silvana">
+                <circle cx="237.3" cy="59.9" r="3.5"/>
+                <text x="250.3" y="63.9" text-anchor="start">Silvana</text>
+              </g>
+              <g class="sa-near" data-city="Camano Island">
+                <circle cx="100.1" cy="71.8" r="3.5"/>
+                <text x="100.1" y="57.8" text-anchor="middle">Camano Island</text>
+              </g>
+              <g class="sa-near" data-city="Sultan">
+                <circle cx="541.7" cy="399.6" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Startup">
+                <circle cx="591.8" cy="396.2" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Lynnwood">
+                <circle cx="212.2" cy="434.2" r="3.5"/>
+                <text x="225.2" y="438.2" text-anchor="start">Lynnwood</text>
+              </g>
+              <g class="sa-near" data-city="Edmonds">
+                <circle cx="163.5" cy="451.5" r="3.5"/>
+                <text x="176.5" y="463.5" text-anchor="start">Edmonds</text>
+              </g>
+              <g class="sa-near" data-city="Brier">
+                <circle cx="233.0" cy="469.4" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Mountlake Terrace">
+                <circle cx="209.8" cy="473.6" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Kenmore">
+                <circle cx="253.4" cy="505.1" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Lake Forest Park">
+                <circle cx="228.7" cy="505.4" r="3.5"/>
+              </g>
+              <g class="sa-near" data-city="Shoreline">
+                <circle cx="187.7" cy="506.7" r="3.5"/>
+                <text x="174.7" y="510.7" text-anchor="end">Shoreline</text>
+              </g>
+              <g class="sa-near" data-city="North Seattle">
+                <circle cx="202.2" cy="572.8" r="3.5"/>
+                <text x="215.2" y="576.8" text-anchor="start">North Seattle</text>
+              </g>
+              <g class="sa-near" data-city="Kirkland">
+                <circle cx="277.2" cy="581.3" r="3.5"/>
+                <text x="277.2" y="606.3" text-anchor="middle">Kirkland</text>
+              </g>
+              <g class="sa-near" data-city="Redmond">
+                <circle cx="335.9" cy="588.8" r="3.5"/>
+                <text x="348.9" y="600.8" text-anchor="start">Redmond</text>
+              </g>
+            </g>
             <g class="sa-scale"><line x1="30" y1="597" x2="102.8" y2="597"/><line x1="30" y1="593" x2="30" y2="601"/><line x1="102.8" y1="593" x2="102.8" y2="601"/><text x="110.8" y="601">5 miles</text></g>
+            <g class="sa-you" aria-hidden="true"></g>
           </svg>
         </div>
         <figcaption class="sa-legend">
           <span class="sa-key sa-key--core"><i></i> Ten miles or less</span>
           <span class="sa-key sa-key--zone"><i></i> Where I am every week</span>
           <span class="sa-key sa-key--ask"><i></i> Ask me &mdash; I often say yes</span>
+          <span class="sa-key sa-key--you"><i></i> Where you asked about</span>
         </figcaption>
       </figure>
 
@@ -4310,7 +4378,13 @@ header li a[href="#booking"],
 
     track('service_area_check', { result: tier, area: where, zip: res.zip || '',
                                   source: source || 'form', corrected: res.corrected || '' });
-    markMap(tier === 'yes' ? town.n : null);
+    if (tier === 'yes') {
+      markMap(town.n, null, null);
+    } else if (tier === 'ask') {
+      markMap(null, town.n, town.c ? { label: town.n, lat: town.c[0], lon: town.c[1], dist: d } : null);
+    } else {
+      markMap(null, null, place ? { label: place.n, lat: place.lat, lon: place.lon, dist: d } : null);
+    }
     if (tier !== 'yes' && tier !== 'ask') wireWaitlist(where, res.zip || '');
   }
 
@@ -4455,7 +4529,7 @@ header li a[href="#booking"],
         '<div class="sa-picks">' + rows + '</div>' +
       '</div>';
     track('service_area_check', { result: 'didyoumean', area: res.typed, source: source || 'form' });
-    markMap(null);
+    markMap(null, null, null);
   }
 
   function showUnknown(res, source) {
@@ -4471,7 +4545,7 @@ header li a[href="#booking"],
         '</div>' +
       '</div>';
     track('service_area_check', { result: 'unknown', area: res.typed, source: source || 'form' });
-    markMap(null);
+    markMap(null, null, null);
     askAI(res.typed);
   }
 
@@ -4548,16 +4622,131 @@ header li a[href="#booking"],
     });
   }
 
-  /* ---------- highlight the matching pin + chip ---------- */
-  function markMap(name) {
-    var pins = document.querySelectorAll('.sa-pin'), k;
+  /* ---------- put the answer on the map ----------
+     The map used to react only to the twelve towns with pins, which meant the
+     people who most need orienting — the ones outside the line — got a picture
+     that didn't include them. Now every answer lands somewhere: a pin lights up,
+     an "ask me" dot lights up, or a marker is drawn where they actually are. If
+     that's off the edge of the frame, it's pinned to the edge as an arrow with
+     the distance on it, so at least they can see which way they are and how far.
+
+     Projection constants are the ones tools/service-area-map.py draws with. If
+     the frame in that script changes, change them here too. */
+  var MAP = { latT: 48.26, latB: 47.64, lonL: -122.62, lonR: -121.70, w: 620, h: 623 };
+
+  function project(lat, lon) {
+    return [(lon - MAP.lonL) / (MAP.lonR - MAP.lonL) * MAP.w,
+            (MAP.latT - lat) / (MAP.latT - MAP.latB) * MAP.h];
+  }
+
+  /* Walk from the middle of the map toward the point and stop at the frame. */
+  function clampToEdge(x, y, inset) {
+    var cx = MAP.w / 2, cy = MAP.h / 2, dx = x - cx, dy = y - cy;
+    if (!dx && !dy) return [cx, cy, 0];
+    var t = 1e9;
+    if (dx > 0) t = Math.min(t, (MAP.w - inset - cx) / dx);
+    if (dx < 0) t = Math.min(t, (inset - cx) / dx);
+    if (dy > 0) t = Math.min(t, (MAP.h - inset - cy) / dy);
+    if (dy < 0) t = Math.min(t, (inset - cy) / dy);
+    return [cx + dx * t, cy + dy * t, Math.atan2(dy, dx) * 180 / Math.PI];
+  }
+
+  function svgEl(name, attrs) {
+    var e = document.createElementNS('http://www.w3.org/2000/svg', name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  /* Slide a plate in behind whatever text we just added, sized to it. */
+  function plate(g, from) {
+    var texts = [], k, kids = g.childNodes;
+    for (k = 0; k < kids.length; k++) if (kids[k].tagName === 'text') texts.push(kids[k]);
+    if (!texts.length) return;
+    var x1 = 1e9, y1 = 1e9, x2 = -1e9, y2 = -1e9;
+    for (k = 0; k < texts.length; k++) {
+      var b;
+      try { b = texts[k].getBBox(); } catch (e) { return; }
+      if (!b || !b.width) return;
+      x1 = Math.min(x1, b.x); y1 = Math.min(y1, b.y);
+      x2 = Math.max(x2, b.x + b.width); y2 = Math.max(y2, b.y + b.height);
+    }
+    var r = svgEl('rect', { 'class': 'you-plate', x: (x1 - 7).toFixed(1), y: (y1 - 5).toFixed(1),
+                            width: (x2 - x1 + 14).toFixed(1), height: (y2 - y1 + 10).toFixed(1),
+                            rx: 6 });
+    g.insertBefore(r, from || texts[0]);
+  }
+
+  function drawYou(label, lat, lon, distance, labelOnly) {
+    var g = document.querySelector('.sa-you');
+    if (!g) return;
+    while (g.firstChild) g.removeChild(g.firstChild);
+    if (lat === null || lat === undefined) return;
+
+    var pt = project(lat, lon),
+        x = pt[0], y = pt[1],
+        onMap = x > 8 && x < MAP.w - 8 && y > 8 && y < MAP.h - 8,
+        sub = distance ? mi(distance) + ' miles out' : '';
+
+    /* A town that already has a dot on the map doesn't need a second marker on
+       top of it — it's lit up gold. Just hang the distance off it. */
+    if (labelOnly) {
+      if (!onMap) return;
+      /* Above the dot: town names sit beside their dots, so up is the empty
+         direction more often than not. Below only if we'd clip the top edge. */
+      var only = svgEl('text', { 'class': 'you-sub', 'text-anchor': 'middle',
+        x: x.toFixed(1), y: (y < 44 ? y + 26 : y - 14).toFixed(1) });
+      only.textContent = sub;
+      if (sub) { g.appendChild(only); plate(g, only); }
+      return;
+    }
+
+    if (!onMap) {
+      var e = clampToEdge(x, y, 26);
+      x = e[0]; y = e[1];
+      var arrow = svgEl('path', {
+        'class': 'you-arrow',
+        d: 'M 0 -7 L 13 0 L 0 7 Z',
+        transform: 'translate(' + x.toFixed(1) + ' ' + y.toFixed(1) + ') rotate(' + e[2].toFixed(1) + ')'
+      });
+      g.appendChild(arrow);
+    } else {
+      g.appendChild(svgEl('circle', { 'class': 'you-ring', cx: x.toFixed(1), cy: y.toFixed(1), r: 11 }));
+      g.appendChild(svgEl('circle', { 'class': 'you-dot', cx: x.toFixed(1), cy: y.toFixed(1), r: 5 }));
+    }
+
+    /* keep the text inside the frame whichever edge we ended up on */
+    var right = x < MAP.w * 0.55,
+        tx = right ? x + 17 : x - 17,
+        anchor = right ? 'start' : 'end',
+        ty = y < 30 ? y + 22 : y + 5;
+
+    var t = svgEl('text', { x: tx.toFixed(1), y: ty.toFixed(1), 'text-anchor': anchor });
+    t.textContent = label;
+    g.appendChild(t);
+    if (sub) {
+      var t2 = svgEl('text', { 'class': 'you-sub', x: tx.toFixed(1), y: (ty + 16).toFixed(1), 'text-anchor': anchor });
+      t2.textContent = sub;
+      g.appendChild(t2);
+    }
+    plate(g, t);
+  }
+
+  function markMap(name, askName, elsewhere) {
+    var k, pins = document.querySelectorAll('.sa-pin');
     for (k = 0; k < pins.length; k++) {
       pins[k].classList.toggle('is-on', !!name && pins[k].getAttribute('data-city') === name);
+    }
+    var near = document.querySelectorAll('.sa-near');
+    for (k = 0; k < near.length; k++) {
+      near[k].classList.toggle('is-on', !!askName && near[k].getAttribute('data-city') === askName);
     }
     var chips = document.querySelectorAll('.sa-chips li');
     for (k = 0; k < chips.length; k++) {
       chips[k].classList.toggle('is-on', !!name && chips[k].textContent.trim() === name);
     }
+    var hasDot = !!(askName && document.querySelector('.sa-near.is-on'));
+    if (elsewhere) drawYou(elsewhere.label, elsewhere.lat, elsewhere.lon, elsewhere.dist, hasDot);
+    else drawYou(null, null, null, 0, false);
   }
 
   /* ================= wiring ================= */
@@ -4572,7 +4761,7 @@ header li a[href="#booking"],
   input.addEventListener('focus', function () { withGeo(function () {}); });
   input.addEventListener('input', function () {
     suggest(input.value);
-    if (result.innerHTML) { result.innerHTML = ''; markMap(null); }
+    if (result.innerHTML) { result.innerHTML = ''; markMap(null, null, null); }
   });
   input.addEventListener('keydown', function (e) {
     if (!items.length) return;
