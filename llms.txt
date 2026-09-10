@@ -42,9 +42,17 @@
 
 ## Cities served
 
-Snohomish, Monroe, Lake Stevens, Everett, Mill Creek, Bothell, Marysville, and
-Duvall, Washington — plus surrounding Snohomish County and north King County
-communities.
+Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell,
+Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, Washington — plus
+the communities in between, such as Clearview, Maltby, Machias, Cathcart,
+Silver Firs and Tulalip. Base is Snohomish, WA 98290; the working radius is
+about 25 miles. No travel fee anywhere in that area, and the price is the same
+in every town.
+
+Towns outside that list — Lynnwood and Edmonds among them — are not served on a
+regular basis. The homepage has a ZIP and town checker (`/#service-area`) that
+gives an honest answer for anywhere in western Washington, including how far
+out a place is and which served town is closest to it.
 
 ## Pages
 
