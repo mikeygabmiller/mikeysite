@@ -1,4 +1,4 @@
-# Mikey's Mobile Detailing — https://mikeysdetailing.com
+# Mikey's Mobile Detailing | https://mikeysdetailing.com
 # Everything on this site is public and intended to be indexed, quoted,
 # and cited. Nothing is disallowed.
 
@@ -9,15 +9,15 @@ User-agent: *
 Allow: /
 
 # ---------------------------------------------------------------
-# AI assistants & answer engines — explicitly invited.
+# AI assistants & answer engines. Explicitly invited.
 #
 # The wildcard rule above already permits these, but naming them is a
 # clear, unambiguous signal (and guards against a future edit to the
 # wildcard group accidentally shutting them out). If any of these ever
-# needs to be restricted, change it here — one place.
+# needs to be restricted, change it here in one place.
 # ---------------------------------------------------------------
 
-# OpenAI — GPTBot trains/indexes, OAI-SearchBot powers ChatGPT search,
+# OpenAI: GPTBot trains/indexes, OAI-SearchBot powers ChatGPT search,
 # ChatGPT-User fetches a page when a user asks about it directly.
 User-agent: GPTBot
 Allow: /
@@ -45,7 +45,7 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
-# Google — Googlebot handles both classic Search and AI Overviews.
+# Google: Googlebot handles both classic Search and AI Overviews.
 # Google-Extended is the separate control for Gemini grounding and
 # model training; allowing it keeps us eligible there too.
 User-agent: Googlebot
@@ -54,11 +54,11 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Microsoft / Bing — also the retrieval layer behind Copilot.
+# Microsoft / Bing: also the retrieval layer behind Copilot.
 User-agent: Bingbot
 Allow: /
 
-# Apple — Applebot serves Siri and Spotlight; Applebot-Extended is the
+# Apple: Applebot serves Siri and Spotlight; Applebot-Extended is the
 # Apple Intelligence training control.
 User-agent: Applebot
 Allow: /
