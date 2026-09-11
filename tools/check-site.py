@@ -114,6 +114,29 @@ stale = sm_urls - canon
 if stale:
     fails.append(f"sitemap lists URLs with no matching page: {sorted(stale)}")
 
+# --- no em dashes anywhere a customer or a crawler can read -------------------
+# Mikey's call, 2026-09-11: a dash used as punctuation is the single clearest
+# tell that copy was written by a machine, and this site is one guy talking.
+# Full stop, comma, colon or brackets, whichever the sentence actually wants.
+# This runs over the served files including comments and JS strings, because a
+# rule with no exceptions is the only kind that survives the next edit.
+EM = re.compile(r"&mdash;|&#8212;|&#x2014;|\u2014")
+served = [q for q in sorted(ROOT.rglob("*.html")) if q.relative_to(ROOT).parts[0] not in SKIP]
+served += [ROOT / "llms.txt", ROOT / "robots.txt"]
+dashed = []
+for q in served:
+    if not q.exists():
+        continue
+    for lineno, line in enumerate(q.read_text(encoding="utf-8").splitlines(), 1):
+        if EM.search(line):
+            dashed.append(f"{q.relative_to(ROOT)}:{lineno}: {line.strip()[:90]}")
+if dashed:
+    fails.append(f"em dash in served copy ({len(dashed)}), use a full stop, comma or colon:")
+    for d in dashed[:12]:
+        fails.append(f"    {d}")
+    if len(dashed) > 12:
+        fails.append(f"    ...and {len(dashed) - 12} more")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:

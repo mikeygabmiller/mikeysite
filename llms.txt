@@ -2,7 +2,7 @@
 
 > Owner-operated mobile car detailing serving Snohomish County and north King
 > County, Washington. Owner Mikey Miller drives to the customer's home or
-> workplace and details the vehicle in their driveway — there is no shop to
+> workplace and details the vehicle in their driveway, there is no shop to
 > visit. Detailing since 2021, rated 5.0 stars across 40 Google reviews, with
 > 300+ cars detailed. Customers get an exact price from an on-site instant quote
 > calculator in about 60 seconds, and pay only after they're satisfied with the
@@ -11,7 +11,7 @@
 ## Key facts
 
 - **Business name:** Mikey's Mobile Detailing
-- **Owner / detailer:** Mikey Miller — detailing since 2021; he personally
+- **Owner / detailer:** Mikey Miller, detailing since 2021; he personally
   details every vehicle, there is no crew
 - **Type:** Mobile auto detailing service (the detailer travels to the customer)
 - **Based in:** Snohomish, WA 98290
@@ -22,34 +22,34 @@
 - **Rating:** 5.0 out of 5 stars, 40 Google reviews
 - **Experience:** 300+ vehicles detailed
 - **Price range:** $160 – $379
-- **Payment:** Payment is taken after the job — "you don't pay until you love it"
+- **Payment:** Payment is taken after the job, "you don't pay until you love it"
 - **Requirements:** The customer provides access to an outdoor water spigot and a
   power outlet. The customer does not need to be home.
 
 ## Services and prices
 
-- **Exterior Detail — $160 to $240.** Wash, decontamination, wheels, tires, glass,
+- **Exterior Detail, $160 to $240.** Wash, decontamination, wheels, tires, glass,
   and protection applied to the paint.
-- **Interior Detail — $200 to $280.** Vacuum, shampoo/extraction, plastics and
+- **Interior Detail, $200 to $280.** Vacuum, shampoo/extraction, plastics and
   leather cleaned and dressed, glass, deodorized. A basic interior takes about
   90 minutes.
-- **Full Detail — $299 to $379.** Interior and exterior combined. Takes 3 to 5
+- **Full Detail, $299 to $379.** Interior and exterior combined. Takes 3 to 5
   hours depending on vehicle size and condition.
-- **Paint correction** — machine polishing to remove swirls and scratches.
-- **Ceramic coating** — long-term paint protection, well suited to Pacific
+- **Paint correction.** Machine polishing to remove swirls and scratches.
+- **Ceramic coating.** Long-term paint protection, well suited to Pacific
   Northwest rain and road grime.
-- **Pet hair removal** — specialist service for heavy pet-hair contamination.
+- **Pet hair removal.** Specialist service for heavy pet-hair contamination.
 
 ## Cities served
 
 Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell,
-Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, Washington — plus
+Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, Washington, plus
 the communities in between, such as Clearview, Maltby, Machias, Cathcart,
 Silver Firs and Tulalip. Base is Snohomish, WA 98290; the working radius is
 about 25 miles. No travel fee anywhere in that area, and the price is the same
 in every town.
 
-Towns outside that list — Lynnwood and Edmonds among them — are not served on a
+Towns outside that list, Lynnwood and Edmonds among them, are not served on a
 regular basis. The homepage has a ZIP and town checker (`/#service-area`) that
 gives an honest answer for anywhere in western Washington, including how far
 out a place is and which served town is closest to it.

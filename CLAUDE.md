@@ -72,6 +72,24 @@ Rules that follow from that:
   winter" is worth more than "showroom shine."
 - **No agency words:** seamless, elevate, unlock, transform, jaw-dropping,
   bumper-to-bumper-perfection. No "it's not just X, it's Y."
+- **Never an em dash.** Not `&mdash;`, not the character, not in visible copy,
+  meta tags, alt text, JSON-LD, code comments or JS strings. Mikey's call: a
+  dash used as punctuation is the clearest tell that a machine wrote the
+  sentence, and this site is one guy talking. Use what the sentence actually
+  wants:
+
+  | The dash was doing | Use instead |
+  |---|---|
+  | joining two whole sentences | a full stop. "Yes. I'm in Everett most weeks." |
+  | an aside inside one sentence | a comma. "Bigger vehicles take more time, so I want your estimate accurate." |
+  | introducing a list | a colon. "I bring everything: water, power, extraction." |
+  | a true parenthetical | brackets. "I run a real trade (300+ cars, 5.0 stars) on this system." |
+  | separating a title | the pipe. "Mobile Car Detailing Snohomish, WA \| See Your Price Now" |
+
+  `tools/check-site.py` fails the build on any em dash in a served file, so a
+  new one cannot reach the site without someone deliberately deleting a check.
+  En dashes in number ranges are fine and are left alone: `$299–$379`,
+  `3–5 hours`. Those read as ranges, not as punctuation.
 
 ## Say the guarantee four times, not thirteen
 
@@ -160,8 +178,9 @@ and follows every internal link. It's what catches the drift this repo is prone
 to — one edit that landed on the page you were looking at and nowhere else. On
 2026-09-10 it caught Duvall and Woodinville filed under the wrong county in
 schema on 35 pages, which no amount of reading the visible copy would have
-surfaced. It currently reports 2 pre-existing failures, both in `polish-test/`;
-anything beyond those two is yours.
+surfaced. It also fails on any em dash in a served file, per the Voice section.
+It currently reports 2 pre-existing failures, both in `polish-test/`; anything
+beyond those two is yours.
 
 **Deploying is automatic.** GitHub Pages serves `main` (confirmed 2026-09-10:
 a merge to `main` was live at `mikeysdetailing.com` within a couple of minutes,
