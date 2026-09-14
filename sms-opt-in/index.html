@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SMS Opt-In &amp; Consent | Mikey's Mobile Detailing</title>
-<meta name="description" content="How customers opt in to text messages from Mikey's Mobile Detailing: the consent checkbox, message frequency, and how to opt out.">
+<meta name="description" content="How customers opt in to text messages from Mikey's Mobile Detailing: the consent disclosure on our quote form, message frequency, and how to opt out.">
 <link rel="canonical" href="https://mikeysdetailing.com/sms-opt-in/">
 <meta name="robots" content="index,follow">
 
@@ -269,22 +269,26 @@ a:hover { text-decoration: underline; }
   font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase;
   color: var(--brand-red); display: block; margin-bottom: 5px;
 }
-/* the actual consent checkbox, replicated 1:1 from the live form */
-.sms-consent-wrap {
-  display: flex; align-items: flex-start; gap: 11px;
-  margin: 14px 0 16px; padding: 14px;
+/* The consent disclosure, replicated 1:1 from the live form. There is no
+   checkbox: the customer reads this and then taps the button, and the tap is
+   the opt-in. The box and border are this page's doing, so a carrier reviewer
+   can find the wording at a glance. On the live form it is plain grey text
+   sitting immediately above the button. */
+.sms-consent-note {
+  margin: 14px 0 12px; padding: 14px;
   background: rgba(200,16,46,0.06);
   border: 1px solid rgba(200,16,46,0.25);
   border-radius: 10px;
 }
-.sms-consent-wrap input[type="checkbox"] {
-  margin-top: 2px; width: 18px; height: 18px; flex-shrink: 0;
-  accent-color: var(--brand-red);
-}
-.sms-consent-wrap label {
+.sms-consent-note p {
+  margin: 0;
   font-size: 12.5px; line-height: 1.55; color: var(--text-gray);
 }
-.sms-consent-wrap label em { color: var(--text-muted); font-style: italic; }
+/* Rendered as spans, not anchors: the whole reproduction is role="img", so a
+   real link in here would be focusable but invisible to a screen reader. */
+.sms-consent-note .demo-link {
+  color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px;
+}
 .demo-submit {
   width: 100%;
   background: var(--brand-red);
@@ -687,7 +691,7 @@ a:hover { text-decoration: underline; }
       },
       "primaryImageOfPage": "https://iili.io/qKtjLcx.jpg",
       "inLanguage": "en-US",
-      "description": "How customers opt in to SMS text messages from Mikey's Mobile Detailing, the consent checkbox on our quote form, program details, message frequency, and opt-out instructions."
+      "description": "How customers opt in to SMS text messages from Mikey's Mobile Detailing, the consent disclosure above the submit button on our quote form, program details, message frequency, and opt-out instructions."
     }
   ]
 }
@@ -735,13 +739,14 @@ a:hover { text-decoration: underline; }
 
     <div class="policy-section">
       <h2>How Customers Opt In</h2>
-      <p>Customers opt in to SMS messages on our public website at <a href="https://mikeysdetailing.com">mikeysdetailing.com</a>. On the <strong>"Get a Quote" / Quick Quote</strong> form, after entering their name and phone number, the customer can check an <strong>optional SMS consent checkbox</strong> that sits directly above the "Lock in my quote" submit button.</p>
-      <p>The checkbox is <strong>unchecked by default</strong>, and consent is <strong>not required</strong> to receive a quote or any service, the form submits either way. Below is an exact reproduction of what the customer sees:</p>
+      <p>Customers opt in to SMS messages on our public website at <a href="https://mikeysdetailing.com">mikeysdetailing.com</a>. On the <strong>"Get a Quote" / Quick Quote</strong> form, the final step asks for their name and phone number. Directly above the <strong>"Lock in my price"</strong> submit button, where they cannot miss it and before anything is sent, they read the full disclosure: who the texts are from, what the texts are about, that message and data rates may apply, that frequency varies, and how to stop.</p>
+      <p><strong>Tapping that button is the opt-in.</strong> There is no checkbox to tick and nothing is pre-checked. Submitting the form after reading the disclosure directly above it is the customer's affirmative act of consent, and it is the only way a number enters our system. We store the exact wording the customer agreed to, with a timestamp, alongside the lead.</p>
+      <p>Nobody has to opt in to do business with us. A customer who would rather not get texts can call <a href="tel:+14256007897">(425) 600-7897</a> or email <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a> and get the same quote and the same service without ever submitting the form. Below is an exact reproduction of what the customer sees:</p>
 
       <!-- VISUAL REPRODUCTION OF THE LIVE QUOTE-FORM STEP -->
-      <div class="optin-demo" role="img" aria-label="Reproduction of the SMS consent checkbox on the Mikey's Mobile Detailing quote form">
+      <div class="optin-demo" role="img" aria-label="Reproduction of the SMS consent disclosure and submit button on the Mikey's Mobile Detailing quote form">
         <span class="demo-label">As seen on our quote form</span>
-        <div class="demo-step">Step 4 of 4 · Your quote</div>
+        <div class="demo-step">Almost done · Your quote</div>
         <div class="demo-field req">
           <span class="req-tag">Required</span>
           <input type="text" value="Your name" disabled aria-hidden="true">
@@ -750,20 +755,16 @@ a:hover { text-decoration: underline; }
           <span class="req-tag">Required</span>
           <input type="text" value="Phone number" disabled aria-hidden="true">
         </div>
-        <div class="demo-field">
-          <input type="text" value="Email (optional)" disabled aria-hidden="true">
+
+        <div class="sms-consent-note">
+          <p>By tapping below you agree to receive text messages about your quote and appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <span class="demo-link">SMS Terms</span> · <span class="demo-link">Privacy Policy</span></p>
         </div>
 
-        <div class="sms-consent-wrap">
-          <input type="checkbox" disabled aria-hidden="true">
-          <label>Yes, text me my quote &amp; appointment updates from Mikey's Mobile Detailing. <em>Optional</em>, msg &amp; data rates may apply, reply STOP anytime to opt out.</label>
-        </div>
-
-        <button class="demo-submit" type="button" disabled aria-hidden="true">Lock in my quote</button>
-        <p class="demo-caption">↑ The consent checkbox is optional and unchecked by default. Customers receive their quote whether or not they check it.</p>
+        <button class="demo-submit" type="button" disabled aria-hidden="true">Lock in my price →</button>
+        <p class="demo-caption">↑ The disclosure sits directly above the button, so tapping it is the opt-in. Every number we text has been through this screen.</p>
       </div>
 
-      <p>Next to the checkbox, customers can read our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms/">Terms &amp; Conditions</a> before opting in.</p>
+      <p>Inside that disclosure, "SMS Terms" links to this page and "Privacy Policy" links to our <a href="/privacy-policy/">Privacy Policy</a>. Our <a href="/terms/">Terms &amp; Conditions</a> are linked from the footer of every page, so all three are readable before the customer submits.</p>
     </div>
 
     <hr class="policy-divider">
@@ -777,7 +778,7 @@ a:hover { text-decoration: underline; }
         </tr>
         <tr>
           <td>Program Description</td>
-          <td>Transactional, service-related text messages, quote confirmations, appointment scheduling, reminders, and follow-ups, sent only to customers who opt in via the checkbox on our quote form. We do not send marketing blasts.</td>
+          <td>Transactional, service-related text messages, quote confirmations, appointment scheduling, reminders, and follow-ups, sent only to customers who submitted our quote form and agreed to the consent disclosure shown directly above its submit button. We do not send marketing blasts.</td>
         </tr>
         <tr>
           <td>Message Frequency</td>
