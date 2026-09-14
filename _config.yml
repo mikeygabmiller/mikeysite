@@ -1,0 +1,45 @@
+# GitHub Pages build config.
+#
+# Why this file exists: Pages serves the WHOLE repo, so every working file at
+# the repo root was being published on mikeysdetailing.com. On 2026-09-14
+# BUSINESS-PLAN.md, GROWTH-PLAN.md, SEO-ROADMAP.md and CLAUDE.md all returned
+# 200 at the live domain. That put the pricing model, the margins and the
+# client-acquisition strategy in front of anyone who guessed the filename.
+#
+# robots.txt makes it worse on purpose: it explicitly invites GPTBot,
+# ClaudeBot, PerplexityBot and Google-Extended to crawl everything. That
+# invitation is right for the customer-facing pages and wrong for the plans.
+#
+# So the rule is: if a file is not something a customer or a crawler should
+# read, list it here. It stays in the repo, it just stops being published.
+#
+# Anything NOT listed here still ships. polish-test/ is deliberately absent:
+# it is a real page, linked from the homepage and listed in sitemap.xml.
+
+exclude:
+  # Strategy and planning. The reason this file exists.
+  - BUSINESS-PLAN.md
+  - GROWTH-PLAN.md
+  - SEO-ROADMAP.md
+  - SECTION-ORDER-ANALYSIS.md
+
+  # Instructions and notes for whoever works on the site, Claude included.
+  - CLAUDE.md
+  - README.md
+  - skills-lock.json
+
+  # Source and tooling. Nothing here renders, and worker/SETUP.md walks
+  # through the Twilio and Cloudflare wiring, which is nobody's business.
+  - tools/
+  - worker/
+
+  # Design experiments kept for reference. Unlinked, unfinished, not for
+  # customers to stumble into.
+  - mockups/
+
+  # Jekyll's own defaults, restated because setting this key replaces them.
+  - Gemfile
+  - Gemfile.lock
+  - gemfiles/
+  - node_modules/
+  - vendor/
