@@ -1,34 +1,34 @@
 /**
- * Mikey's Mobile Detailing — Cloudflare Worker
+ * Mikey's Mobile Detailing | Cloudflare Worker
  *
  * Webhooks (called by Twilio):
- *   POST /submit        — quote form → auto-texts client + Mikey
- *   POST /sms           — inbound SMS → stores in KV, relays to Mikey's cell
- *   POST /call          — inbound call → rings Mikey's cell
- *   POST /voicemail     — missed call → record voicemail
- *   POST /voicemail-done — recording done → text Mikey the link
+ *   POST /submit        : quote form → auto-texts client + Mikey
+ *   POST /sms           : inbound SMS → stores in KV, relays to Mikey's cell
+ *   POST /call          : inbound call → rings Mikey's cell
+ *   POST /voicemail     : missed call → record voicemail
+ *   POST /voicemail-done : recording done → text Mikey the link
  *
  * Public:
- *   POST /geo           — last-resort place parser for the site's service-area
+ *   POST /geo           : last-resort place parser for the site's service-area
  *                         checker. Optional: without GEMINI_API_KEY it returns
  *                         501 and the site carries on with its own matching.
  *
  * Dashboard API (password-protected):
- *   GET  /              — serve the dashboard HTML
- *   GET  /api/threads   — list all conversations
- *   GET  /api/thread?phone=+1xxx — messages for one conversation
- *   POST /api/send      — send an outbound SMS { to, body }
- *   POST /api/name      — save a display name for a number { phone, name }
+ *   GET  /              : serve the dashboard HTML
+ *   GET  /api/threads   : list all conversations
+ *   GET  /api/thread?phone=+1xxx : messages for one conversation
+ *   POST /api/send      : send an outbound SMS { to, body }
+ *   POST /api/name      : save a display name for a number { phone, name }
  *
  * Required Worker Secrets:
  *   TWILIO_ACCOUNT_SID
  *   TWILIO_AUTH_TOKEN
- *   TWILIO_FROM        — Twilio number e.g. +12065551234
- *   MIKEY_PHONE        — personal cell e.g. +14256007897
- *   DASHBOARD_PASSWORD — password to access the dashboard
+ *   TWILIO_FROM        : Twilio number e.g. +12065551234
+ *   MIKEY_PHONE        : personal cell e.g. +14256007897
+ *   DASHBOARD_PASSWORD : password to access the dashboard
  *
  * Optional Worker Secret:
- *   GEMINI_API_KEY     — turns on POST /geo (see SETUP.md)
+ *   GEMINI_API_KEY     : turns on POST /geo (see SETUP.md)
  *
  * Required KV Namespace binding (wrangler.toml):
  *   MESSAGES
@@ -42,7 +42,7 @@ export default {
       return cors(new Response(null, { status: 204 }));
     }
 
-    // --- Twilio webhooks (no auth needed — Twilio calls these) ---
+    // --- Twilio webhooks (no auth needed, Twilio calls these) ---
     if (request.method === 'POST' && url.pathname === '/submit')        return handleSubmit(request, env);
     if (request.method === 'POST' && url.pathname === '/sms')           return handleInboundSms(request, env);
     if (request.method === 'POST' && url.pathname === '/call')          return handleInboundCall(request, env);
@@ -64,7 +64,7 @@ export default {
 // Place-name fallback for the service-area checker
 //
 // The site resolves misspelled towns, neighborhood names and pasted street
-// addresses on its own, in the browser, with no network call — that handles
+// addresses on its own, in the browser, with no network call. That handles
 // essentially everything and it is faster and cheaper than asking a model.
 // This endpoint only sees what the local matcher could not read at all:
 // "the town by the ferry dock", "im by the outlet mall off 172nd", a place
@@ -72,7 +72,7 @@ export default {
 //
 // It answers with one Washington place name and nothing else. The site then
 // looks that name up in its own tables, so this can never invent a town Mikey
-// serves, quote a price, or change an answer — the worst it can do is name a
+// serves, quote a price, or change an answer. The worst it can do is name a
 // place the site then measures honestly.
 //
 // Without GEMINI_API_KEY set it returns 501 and the site never asks again.
@@ -92,7 +92,7 @@ async function handleGeo(request, env) {
     'Reply with the single city, town or CDP name in Washington State that they most ' +
     'likely mean. Neighborhoods, landmarks, malls, highways, school districts and ' +
     'workplaces should be answered with the town they sit in. Reply with the bare ' +
-    'place name and nothing else — no state, no punctuation, no explanation. ' +
+    'place name and nothing else: no state, no punctuation, no explanation. ' +
     'If it is not a place in Washington, or you cannot tell, reply with exactly: NONE\n\n' +
     'Text: ' + q;
 
@@ -162,7 +162,7 @@ async function handleLogin(request, env) {
 
 function loginPage(error = '') {
   const html = `<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Mikey's Detailing — Login</title>
+<title>Mikey's Detailing | Login</title>
 <style>*{box-sizing:border-box;margin:0;padding:0}body{background:#111;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh}
 .box{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:40px;width:100%;max-width:360px;text-align:center}
 h1{color:#fff;font-size:1.3rem;margin-bottom:8px}p{color:#888;font-size:.9rem;margin-bottom:24px}
@@ -294,18 +294,21 @@ async function handleSubmit(request, env) {
 
   // Lead with the number. They just watched it appear on the site and then filled
   // in a form; a text that doesn't repeat it gives them nothing to come back to.
+  // This one says it is automatic on purpose. It used to open "it's Mikey", so the
+  // text he types himself a few minutes later read as the same robot repeating
+  // itself, and the site's confirmation promises a real one from him.
   const clientMsg = [
-    `Hey ${name.split(' ')[0]}, it's Mikey — here's your quote:`,
+    `Hey ${name.split(' ')[0]}, this is the automatic copy of your quote from Mikey's site:`,
     ``,
-    `${quoteLine}${serviceList ? ` — ${serviceList}` : ''}`,
+    `${quoteLine}${serviceList ? ` for ${serviceList}` : ''}`,
     vehicle ? `Vehicle: ${vehicle}` : null,
     ``,
     `That price is held for 30 days. No deposit, and you don't pay until you love it.`,
-    `Reply with a day that works and I'll get you on the calendar.`,
+    `Mikey will text you himself shortly with the details to move forward. Reply any time with a day that works.`,
   ].filter(s => s !== null).join('\n');
 
   const mikeyMsg = [
-    `🔔 NEW QUOTE — ${name}`,
+    `🔔 NEW QUOTE: ${name}`,
     `Phone: ${clientPhone}`,
     email       ? `Email: ${email}` : null,
     location    ? `City: ${location}` : null,
@@ -318,7 +321,7 @@ async function handleSubmit(request, env) {
 
   // Opt-in evidence. Consent is captured by the tap on the quote button, with the
   // disclosure rendered directly above it, so keep the exact wording that was on
-  // screen plus when it happened — that record is what gets produced if a carrier
+  // screen plus when it happened. That record is what gets produced if a carrier
   // or Twilio audits the A2P campaign. Never infer consent that wasn't sent.
   const consentRecord = smsConsent
     ? {
@@ -342,7 +345,7 @@ async function handleSubmit(request, env) {
 
   // Only record a message that was actually sent. This used to store clientMsg
   // unconditionally, so a lead who never consented still showed an outbound text
-  // in the dashboard — it looked like they'd been contacted when nothing went out.
+  // in the dashboard. It looked like they'd been contacted when nothing went out.
   const clientSmsSent = smsConsent && r1.status === 'fulfilled';
   if (clientSmsSent) {
     await storeMessage(env, clientPhone, {
@@ -375,7 +378,7 @@ async function handleInboundSms(request, env) {
 
   if (fromNorm === mikeyPhone) return twimlResponse('');
 
-  const mediaNote = numMedia > 0 ? `\n📎 ${numMedia} attachment(s) — check dashboard.` : '';
+  const mediaNote = numMedia > 0 ? `\n📎 ${numMedia} attachment(s), check dashboard.` : '';
   await sendSms(env, env.MIKEY_PHONE,
     `📱 New text from ${from}:\n"${body}"${mediaNote}`
   );
@@ -409,7 +412,7 @@ async function handleVoicemail(request, env) {
     return new Response('<?xml version="1.0" encoding="UTF-8"?><Response></Response>', { headers: { 'Content-Type': 'text/xml' } });
   }
 
-  sendSms(env, mikeyPhone, `📵 Missed call from ${from} — recording voicemail now.`).catch(() => {});
+  sendSms(env, mikeyPhone, `📵 Missed call from ${from}. Recording voicemail now.`).catch(() => {});
 
   return new Response(`<?xml version="1.0" encoding="UTF-8"?>
 <Response>
@@ -496,7 +499,7 @@ const DASHBOARD_HTML = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mikey's Detailing — SMS Dashboard</title>
+<title>Mikey's Detailing | SMS Dashboard</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -737,7 +740,7 @@ async function sendMessage() {
     if (!res.ok) throw new Error('send failed');
     await loadMessages();
   } catch(e) {
-    toast('Failed to send — try again');
+    toast('Failed to send, try again');
     input.value = body;
   }
   btn.disabled = false;
