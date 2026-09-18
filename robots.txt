@@ -8,6 +8,15 @@
 User-agent: *
 Allow: /
 
+# Content Signals Policy (contentsignals.org), the machine-readable version of
+# the sentence at the top of this file. Cloudflare's default template sets
+# ai-train=no; ours is deliberately the opposite on all three, because a
+# stranger asking an assistant "who details cars in Snohomish" is exactly the
+# customer we want, and that only works if the answer engines may train on,
+# index, and quote this site. "search" is a classic index, "ai-input" is
+# real-time retrieval behind a generated answer, "ai-train" is model training.
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
 # ---------------------------------------------------------------
 # AI assistants & answer engines. Explicitly invited.
 #
@@ -43,6 +52,23 @@ User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
+Allow: /
+
+# xAI / Grok. Worth knowing before you trust these three lines: xAI publishes
+# no crawler documentation at all, unlike every other vendor named in this
+# file, so these tokens come from third-party crawler directories rather than
+# from xAI. Grok's live browsing is also widely reported to arrive with an
+# ordinary Safari or Chrome user-agent, which no robots.txt rule can match.
+# They are listed anyway because this file allows everyone, so a token that
+# never shows up costs nothing, and the day xAI does start identifying itself
+# the permission is already here.
+User-agent: GrokBot
+Allow: /
+
+User-agent: xAI-Grok
+Allow: /
+
+User-agent: Grok-DeepSearch
 Allow: /
 
 # Google: Googlebot handles both classic Search and AI Overviews.
