@@ -33,6 +33,11 @@ exclude:
   - tools/
   - worker/
 
+  # Code taken off the site but kept whole so it can go back up unchanged.
+  # Jekyll already ignores underscore-prefixed directories; it is listed anyway
+  # so the reason is written down next to everything else that does not ship.
+  - _disabled/
+
   # Design experiments kept for reference. Unlinked, unfinished, not for
   # customers to stumble into.
   - mockups/
