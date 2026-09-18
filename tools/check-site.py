@@ -5,7 +5,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 ROOT = Path("/home/user/mikeysite")
-SKIP = {"mockups", "systems"}
+SKIP = {"mockups", "systems", "_disabled"}  # _disabled/ is parked code, not served
 JSONLD = re.compile(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
                     re.DOTALL | re.IGNORECASE)
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta',
