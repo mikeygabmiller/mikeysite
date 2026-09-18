@@ -1898,12 +1898,12 @@ header li a[href="#booking"],
   <div class="step" id="step6">
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <h3>Quote received</h3>
+      <h3>Quote locked in!</h3>
       <!-- The price is repeated here on purpose. They just watched it appear, then
            it vanished behind a form; seeing it confirmed is what makes the text
            they're about to get feel expected rather than cold. -->
       <div class="qq-success-quote" id="qqSuccessQuote"></div>
-      <p id="qqSuccessTime">I've got it. I'll text you at <b id="qqSuccessPhone">your phone</b> as soon as I can to line up a day and get your detail on the books.</p>
+      <p id="qqSuccessTime">Mikey will text you ASAP to confirm the price and help get you on his schedule.</p>
       <p style="color:#9a9aa2;font-size:0.9rem;">No deposit, and you don't pay until you love it.</p>
       <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
@@ -2312,8 +2312,6 @@ header li a[href="#booking"],
       if (S.vehicle && S.vehicle.label) line += ' · ' + S.vehicle.label;
       box.innerHTML = '<span class="sq-amt">$' + S.total + '</span><span class="sq-svc">' + escapeHtml(line) + '</span>';
     }
-    var ph = $('qqSuccessPhone');
-    if (ph && phone) ph.textContent = phone;
     goStep(6);
   }
 
