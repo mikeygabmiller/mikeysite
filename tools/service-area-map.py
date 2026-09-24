@@ -37,7 +37,7 @@ CITY = [
  ("Granite Falls", 48.0832,-121.9676, None,            "~22 min", "start",  13,   4),
  ("Lake Stevens",  48.0151,-122.0637, "/lake-stevens/","~12 min", "start",  13,  -2),
  ("Everett",       47.9790,-122.2021, "/everett/",     "~15 min", "end",   -13,   0),
- ("Mukilteo",      47.9445,-122.3046, None,            "~22 min", "end",   -13,   4),
+ ("Mukilteo",      47.9445,-122.3046, "/mukilteo/",    "~22 min", "end",   -13,   4),
  ("Snohomish",     47.9129,-122.0982, "/snohomish/",   "home",    "start",  15,   5),
  ("Mill Creek",    47.8601,-122.2043, "/mill-creek/",  "~15 min", "end",   -13,   4),
  ("Monroe",        47.8554,-121.9710, "/monroe/",      "~15 min", "start",  13,   4),
