@@ -77,13 +77,14 @@ PAGE_SERVICE = {
     "mill-creek/interior-detail.html": ("Mill Creek",  "Interior Detail",      "Interior Car Detailing", 200, 320),
     "mill-creek/paint-correction-in-mill-creek.html": ("Mill Creek","Paint Correction","Paint Correction",300,700),
     "monroe/index.html":               ("Monroe",      "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "monroe/ceramic-coating.html":     ("Monroe",      "Ceramic Coating",      "Ceramic Coating",      600, 1800),
+    "monroe/ceramic-coating.html":     ("Monroe",      "Ceramic Coating",      "Ceramic Coating",      500, None),
+    "mill-creek/ceramic-coating.html": ("Mill Creek", "Ceramic Coating", "Ceramic Coating", 500, None),
     "bothell/index.html":              ("Bothell",     "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
     "duvall/index.html":               ("Duvall",      "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
     "marysville/index.html":           ("Marysville",  "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
     "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
     "paint-correction-snohomish-county/index.html": (None,"Paint Correction",  "Paint Correction",     400, 1200),
-    "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      600, 1800),
+    "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      500, None),
     "pet-hair-removal-car-detailing/index.html":   (None,"Pet Hair Removal",   "Pet Hair Removal",      80, 220),
     "mobile-auto-maintenance/index.html":          (None,"Mobile Auto Maintenance","Auto Maintenance",  25, 199),
     "services/index.html":             (None, "Full Detail",     "Full Car Detailing",     299, 379),
@@ -95,8 +96,10 @@ SKIP_DIRS = {"mockups", "systems"}
 
 
 def price_spec(lo, hi):
-    return {"@type": "PriceSpecification", "minPrice": str(lo),
-            "maxPrice": str(hi), "priceCurrency": "USD"}
+    spec = {"@type": "PriceSpecification", "minPrice": str(lo), "priceCurrency": "USD"}
+    if hi is not None:
+        spec["maxPrice"] = str(hi)
+    return spec
 
 
 def area_served():
@@ -254,6 +257,8 @@ def service_node(page_url, spec):
                    "availability": "https://schema.org/InStock",
                    "url": page_url},
     }
+    if hi is None:
+        node["offers"].pop("price", None)
     return node
 
 

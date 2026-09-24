@@ -7,6 +7,7 @@
 # ---------------------------------------------------------------
 User-agent: *
 Allow: /
+Allow: /mill-creek/ceramic-coating.html
 
 # Content Signals Policy (contentsignals.org), the machine-readable version of
 # the sentence at the top of this file. Cloudflare's default template sets
