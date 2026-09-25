@@ -13,301 +13,354 @@ Post order and the weekly rhythm are in `PLAYBOOK.md`.
 ### P01 · Meet Mikey · 📌 pin
 
 **Image:** `posts/P01.jpg`  
-**Type:** Trust
+**Type:** Story
 
 **Instagram**
 
 ```
-Hi, I'm Mikey. I detail cars in driveways around Snohomish County, and it's just me.
+Hi, I'm Mikey. I've detailed 300+ cars in driveways around Snohomish County since 2021, every one of them myself.
 
-I started in 2021 and I've done 300+ cars since. Every one of them was me, start to finish. No crew, no subcontractors, no new guy showing up at your house.
+I'm not going to fill this page with ads. I'm going to post what I've actually learned doing this: how to wash your car without scratching it, how to get dog hair out of carpet, why the inside of your windshield keeps fogging up, and which car care "rules" are myths.
 
-That also means I'm the one who answers when something isn't right. That's kind of the whole point.
+Most of it you can do yourself, in your own driveway, with stuff you probably already have.
 
-This is where I'll post my before and afters, what I do to a car and why, and where I'm working. Ask me anything in the comments.
+Got a question about your car? Ask in the comments. I answer every one.
 
-Exact price for your car in 60 seconds, link in bio.
-
-#snohomish #snohomishcounty #mobiledetailing #cardetailing #lakestevens
+#cardetailingtips #carcaretips #snohomishcounty #mobiledetailing #pnw
 ```
 
 **Facebook**
 
 ```
-Hi, I'm Mikey. I detail cars in driveways around Snohomish County, and it's just me.
+Hi, I'm Mikey. I've detailed 300+ cars in driveways around Snohomish County since 2021, every one of them myself.
 
-I started in 2021 and I've done 300+ cars since. Every one of them was me, start to finish. No crew, no subcontractors, no new guy showing up at your house.
+I'm not going to fill this page with ads. I'm going to post what I've actually learned doing this: how to wash your car without scratching it, how to get dog hair out of carpet, why the inside of your windshield keeps fogging up, and which car care "rules" are myths.
 
-That also means I'm the one who answers when something isn't right. That's kind of the whole point.
+Most of it you can do yourself, in your own driveway, with stuff you probably already have.
 
-This is where I'll post my before and afters, what I do to a car and why, and where I'm working. Ask me anything in the comments.
-
-Exact price for your car in 60 seconds: mikeysdetailing.com
+Got a question about your car? Ask in the comments. I answer every one.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Text post on black: Hi, I'm Mikey. One guy. No crew. Your driveway. 300+ cars around Snohomish County since 2021, every one done by Mikey himself.
+> Text post on black: Hi, I'm Mikey. 300+ cars in, here's what I've learned. Detailing in driveways around Snohomish County since 2021.
 
-### P02 · Back seat before/after · 📌 pin
+### P02 · Wash without scratching · 📌 pin
 
-**Images (carousel, in this order):** `posts/P02-1.jpg`, `posts/P02-2.jpg`, `posts/P02-3.jpg`  
-**Type:** Proof
+**Images (carousel, in this order):** `posts/P02-1.jpg`, `posts/P02-2.jpg`, `posts/P02-3.jpg`, `posts/P02-4.jpg`, `posts/P02-5.jpg`, `posts/P02-6.jpg`, `posts/P02-7.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-Same back seat, before and after. Swipe for the full shots.
+How to wash your car at home without scratching it. Save this for your next wash day.
 
-Crumbs ground into every seam of the leather, snacks and toys all over the floor. Nothing about this car was unusual. It's what a back seat looks like when kids ride in it every day.
+A lot of the fine scratches and swirls you see on paint in the sun come from how the car gets washed. These five habits fix most of it:
 
-My interior detail covers it: deep vacuum into every crevice, steam clean, leather cleaned and conditioned, plastics dressed, interior glass.
+1. Rinse the whole car before you touch it.
+2. Two buckets: one soap, one plain water to rinse your mitt.
+3. Top down. Wheels and lower panels last, with their own mitt.
+4. No dish soap. It strips your wax and sealant.
+5. Dry it with a clean microfiber towel instead of letting it air dry.
 
-No judgment at all. I've seen everything.
+Bonus: wash in the shade. Soap drying on hot paint leaves spots.
 
-Exact price for your car in 60 seconds, link in bio.
+Questions? Ask below, I answer every one.
 
-#snohomishcounty #cardetailing #interiordetailing #mobiledetailing #everettwa
+#cardetailingtips #carcaretips #cardetailing #snohomishcounty #pnw
 ```
 
 **Facebook**
 
 ```
-Same back seat, before and after. Swipe for the full shots.
+How to wash your car at home without scratching it. Save this for your next wash day.
 
-Crumbs ground into every seam of the leather, snacks and toys all over the floor. Nothing about this car was unusual. It's what a back seat looks like when kids ride in it every day.
+A lot of the fine scratches and swirls you see on paint in the sun come from how the car gets washed. These five habits fix most of it:
 
-My interior detail covers it: deep vacuum into every crevice, steam clean, leather cleaned and conditioned, plastics dressed, interior glass.
+1. Rinse the whole car before you touch it.
+2. Two buckets: one soap, one plain water to rinse your mitt.
+3. Top down. Wheels and lower panels last, with their own mitt.
+4. No dish soap. It strips your wax and sealant.
+5. Dry it with a clean microfiber towel instead of letting it air dry.
 
-No judgment at all. I've seen everything.
+Bonus: wash in the shade. Soap drying on hot paint leaves spots.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+Questions? Ask below, I answer every one.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Before and after of the same leather back seat in an SUV. Before: crumbs ground into the seat seams, a book on the seat, toys, a sippy cup and snack wrappers on the floor. After: clean leather and a clean, empty floor.
+> Seven-slide tip carousel: how to wash your car without scratching it. Rinse first, use two buckets, go top down with wheels last, skip dish soap, and dry with a microfiber towel instead of letting it air dry.
 
-### P03 · Rain-Ready Full Detail offer · 📌 pin · ⚠️ offer
+### P03 · Back seat: the order I clean it · 📌 pin
 
-**Image:** `posts/P03.jpg`  
-**Type:** Offer
+**Images (carousel, in this order):** `posts/P03-1.jpg`, `posts/P03-2.jpg`, `posts/P03-3.jpg`, `posts/P03-4.jpg`, `posts/P03-5.jpg`, `posts/P03-6.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-The Rain-Ready Full Detail. Runs October through March.
+Same back seat, before and after. Swipe for the order I clean one like this, because it works the same in your car.
 
-Book a full detail and every extra on my menu comes free:
-Exterior polish ($30)
-Ceramic wax ($20)
-RainX on the windows ($10)
-Carpet shampoo ($20)
+1. Everything loose comes out first, car seats and mats included.
+2. Dry before wet. Vacuum everything before any cleaner touches it, or the crumbs turn to paste.
+3. Brush the seams, then vacuum again. Crumbs pack into the stitching.
+4. Clean leather before you condition it. Conditioner on dirty leather seals the dirt in.
 
-That's $80 of extras on me. You pay the normal full detail price, $299 to $379 depending on the vehicle, and you don't pay anything until we've walked around the car and you love it.
+If you've got kids, your back seat probably looks like the before. No judgment at all. I've seen everything.
 
-Why these four: polish brings back paint that's gone dull, ceramic wax makes the rain bead up and roll off, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
+(If you'd rather hand it off, the link's in my bio.)
 
-How to get it: get your quote on my site and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
-
-I take 12 cars a week, so book early if you want a specific day.
-
-#snohomishcounty #cardetailing #mobiledetailing #pnwrain #lakestevens
+#cardetailingtips #interiordetailing #carcleaning #snohomishcounty #carcleaninghacks
 ```
 
 **Facebook**
 
 ```
-The Rain-Ready Full Detail. Runs October through March.
+Same back seat, before and after. Swipe for the order I clean one like this, because it works the same in your car.
 
-Book a full detail and every extra on my menu comes free:
-Exterior polish ($30)
-Ceramic wax ($20)
-RainX on the windows ($10)
-Carpet shampoo ($20)
+1. Everything loose comes out first, car seats and mats included.
+2. Dry before wet. Vacuum everything before any cleaner touches it, or the crumbs turn to paste.
+3. Brush the seams, then vacuum again. Crumbs pack into the stitching.
+4. Clean leather before you condition it. Conditioner on dirty leather seals the dirt in.
 
-That's $80 of extras on me. You pay the normal full detail price, $299 to $379 depending on the vehicle, and you don't pay anything until we've walked around the car and you love it.
+If you've got kids, your back seat probably looks like the before. No judgment at all. I've seen everything.
 
-Why these four: polish brings back paint that's gone dull, ceramic wax makes the rain bead up and roll off, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
-
-How to get it: get your quote at mikeysdetailing.com and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
-
-I take 12 cars a week, so book early if you want a specific day.
+(If you'd rather hand it off: mikeysdetailing.com)
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $299, plus exterior polish ($30), ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don't pay until you love it.
+> Before and after of the same leather back seat, then the four steps Mikey uses: everything loose out first, vacuum before any cleaner, brush the seams then vacuum again, clean leather before conditioning it.
 
 
 ---
 
 ## Week 2
 
-### P04 · How booking works
+### P04 · Foggy windshield
 
-**Image:** `posts/P04.jpg`  
-**Type:** How I do it
+**Images (carousel, in this order):** `posts/P04-1.jpg`, `posts/P04-2.jpg`, `posts/P04-3.jpg`, `posts/P04-4.jpg`, `posts/P04-5.jpg`, `posts/P04-6.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-How booking with me works, start to finish:
+Why does the inside of your windshield fog up so fast when it rains? Part of it is the weather. Part of it is the glass.
 
-1. Get your exact price in 60 seconds on my site. No "starting at" prices. Your car, your number.
-2. I text you back, usually within a couple of minutes, and we pick a day.
-3. I show up with everything. All I need from you is an outdoor spigot and a power outlet.
-4. When I'm done we walk around the car together. You pay after, not before. Cash, card or the usual apps.
+A film builds up on the inside of the windshield from the dash, the vents and everyone breathing in the car. Moisture grabs onto that film, so dirty glass fogs faster and clears slower.
 
-No deposit, no phone tag.
+The fix:
+1. Two microfiber towels. One with glass cleaner, one dry right behind it.
+2. Spray the towel, not the glass, so the cleaner doesn't end up on your dash.
+3. Wipe side to side on the inside, up and down on the outside. If you see a streak, its direction tells you which side it's on.
+4. In the rain, run the AC with the defrost and switch off recirculate.
 
-Link in bio for the 60 second quote.
+Save this for the first rainy morning.
 
-#snohomishcounty #mobiledetailing #cardetailing #millcreekwa #monroewa
+#cardetailingtips #carcaretips #pnwrain #snohomishcounty #pnw
 ```
 
 **Facebook**
 
 ```
-How booking with me works, start to finish:
+Why does the inside of your windshield fog up so fast when it rains? Part of it is the weather. Part of it is the glass.
 
-1. Get your exact price in 60 seconds on my site. No "starting at" prices. Your car, your number.
-2. I text you back, usually within a couple of minutes, and we pick a day.
-3. I show up with everything. All I need from you is an outdoor spigot and a power outlet.
-4. When I'm done we walk around the car together. You pay after, not before. Cash, card or the usual apps.
+A film builds up on the inside of the windshield from the dash, the vents and everyone breathing in the car. Moisture grabs onto that film, so dirty glass fogs faster and clears slower.
 
-No deposit, no phone tag.
+The fix:
+1. Two microfiber towels. One with glass cleaner, one dry right behind it.
+2. Spray the towel, not the glass, so the cleaner doesn't end up on your dash.
+3. Wipe side to side on the inside, up and down on the outside. If you see a streak, its direction tells you which side it's on.
+4. In the rain, run the AC with the defrost and switch off recirculate.
 
-The 60 second quote is at mikeysdetailing.com
+Save this for the first rainy morning.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> How booking works, in four steps: get your exact price in 60 seconds, Mikey texts you back, he shows up with everything (you provide a spigot and an outlet), and you pay after.
+> Six-slide tip carousel: why the inside of your windshield fogs up. A film builds up on the glass; clean it with two microfiber towels, spray the towel not the glass, and run the AC with defrost on fresh air.
 
-### P05 · Review: on time, as quoted
+### P05 · 4 car care myths
 
-**Image:** `posts/P05.jpg`  
-**Type:** Trust
+**Images (carousel, in this order):** `posts/P05-1.jpg`, `posts/P05-2.jpg`, `posts/P05-3.jpg`, `posts/P05-4.jpg`, `posts/P05-5.jpg`, `posts/P05-6.jpg`  
+**Type:** Myths
 
 **Instagram**
 
 ```
-"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+Four car care myths I hear every single week:
 
-This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+"Dish soap is fine." It strips your wax and sealant and leaves the paint bare.
 
-5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+"Ceramic coating means I never have to wash it." A coating makes washing faster and easier. Dirt still lands on the car.
 
-Exact price for your car in 60 seconds, link in bio.
+"An air freshener fixes the smell." It covers it for a week. Something is causing it. Find that and it's gone for good.
 
-#snohomishcounty #mobiledetailing #cardetailing #snohomish #shoplocal
+"More tire shine looks better." The extra slings off onto your paint the first time you drive.
+
+Heard a different one? Drop it in the comments and I'll tell you straight whether it's true.
+
+#cardetailingtips #carcaretips #cardetailing #ceramiccoating #snohomishcounty
 ```
 
 **Facebook**
 
 ```
-"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+Four car care myths I hear every single week:
 
-This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+"Dish soap is fine." It strips your wax and sealant and leaves the paint bare.
 
-5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+"Ceramic coating means I never have to wash it." A coating makes washing faster and easier. Dirt still lands on the car.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+"An air freshener fixes the smell." It covers it for a week. Something is causing it. Find that and it's gone for good.
+
+"More tire shine looks better." The extra slings off onto your paint the first time you drive.
+
+Heard a different one? Drop it in the comments and I'll tell you straight whether it's true.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Five-star customer review: Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.
+> Six-slide carousel: four car care myths. Dish soap is not fine, ceramic coating does not mean you never wash, air fresheners only cover smells, and more tire shine slings onto paint.
 
-### P06 · Cargo area before/after
+### P06 · Winter prep
 
-**Images (carousel, in this order):** `posts/P06-1.jpg`, `posts/P06-2.jpg`, `posts/P06-3.jpg`  
-**Type:** Proof
+**Images (carousel, in this order):** `posts/P06-1.jpg`, `posts/P06-2.jpg`, `posts/P06-3.jpg`, `posts/P06-4.jpg`, `posts/P06-5.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-Same cargo area, before and after. Swipe for the full shots.
+Three things I'd do to your car now, before the roads get sanded and the rain settles in:
 
-Here's what it looked like when I opened the hatch, and what it looked like when I closed it.
+1. Protect the paint. Wax or sealant gives road film and water something to slide off, instead of sitting on the clear coat. Every wash all winter goes easier.
 
-Cargo areas take a beating: groceries, sports gear, dogs, wet boots. They get the same deep vacuum into every corner as the rest of the car.
+2. Rinse the lower half after sanded roads. Grit and de-icer collect on the lower panels, in the wheel wells and underneath. A quick rinse after a cold snap does a lot, even if you skip the full wash.
 
-Exact price for your car in 60 seconds, link in bio.
+3. Swap to rubber floor mats. Wet boots soak carpet mats, and a wet carpet in a closed-up car is how you get that musty smell by February.
 
-#snohomishcounty #cardetailing #interiordetailing #mobiledetailing #marysvillewa
+Save this and do it this weekend.
+
+#pnwwinter #cardetailingtips #carcaretips #snohomishcounty #pnw
 ```
 
 **Facebook**
 
 ```
-Same cargo area, before and after. Swipe for the full shots.
+Three things I'd do to your car now, before the roads get sanded and the rain settles in:
 
-Here's what it looked like when I opened the hatch, and what it looked like when I closed it.
+1. Protect the paint. Wax or sealant gives road film and water something to slide off, instead of sitting on the clear coat. Every wash all winter goes easier.
 
-Cargo areas take a beating: groceries, sports gear, dogs, wet boots. They get the same deep vacuum into every corner as the rest of the car.
+2. Rinse the lower half after sanded roads. Grit and de-icer collect on the lower panels, in the wheel wells and underneath. A quick rinse after a cold snap does a lot, even if you skip the full wash.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+3. Swap to rubber floor mats. Wet boots soak carpet mats, and a wet carpet in a closed-up car is how you get that musty smell by February.
+
+Save this and do it this weekend.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Before and after of the same SUV cargo area. Before: a board, a sunshade, snack bags, a box and loose items scattered on the mat. After: an empty, clean cargo area and mat.
+> Five-slide tip carousel: get your car ready for a Pacific Northwest winter. Protect the paint with wax or sealant, rinse the lower half after sanded roads, and swap to rubber floor mats.
 
 
 ---
 
 ## Week 3
 
-### P07 · Spigot and an outlet
+### P07 · Dog hair trick
 
-**Image:** `posts/P07.jpg`  
-**Type:** How I do it
+**Images (carousel, in this order):** `posts/P07-1.jpg`, `posts/P07-2.jpg`, `posts/P07-3.jpg`, `posts/P07-4.jpg`, `posts/P07-5.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-People ask what they need to have ready. Two things: an outdoor water spigot and a power outlet I can reach.
+The trick for dog hair in car carpet: a rubber glove.
 
-I bring everything else. You don't need to be home either. Plenty of people leave me the keys, go to work, and come back to a finished car.
+A vacuum can't pull dog hair out on its own, because the hair weaves itself into the carpet fibers. So:
 
-Just tell me where the spigot and outlet are when you book.
+1. Put on a regular rubber dish glove (or use a rubber pet brush).
+2. Drag it across the carpet in short strokes, one direction. The hair balls up on top.
+3. Then vacuum. It comes up in one pass.
 
-Exact price for your car in 60 seconds, link in bio.
+For heavy shedders, this is exactly why pet hair turns a 90 minute interior into a 2 to 4 hour job for me.
 
-#snohomishcounty #mobiledetailing #cardetailing #bothellwa #woodinvillewa
+Tag someone whose car is more dog than car.
+
+#dogsofinstagram #cardetailingtips #pethair #carcleaninghacks #snohomishcounty
 ```
 
 **Facebook**
 
 ```
-People ask what they need to have ready. Two things: an outdoor water spigot and a power outlet I can reach.
+The trick for dog hair in car carpet: a rubber glove.
 
-I bring everything else. You don't need to be home either. Plenty of people leave me the keys, go to work, and come back to a finished car.
+A vacuum can't pull dog hair out on its own, because the hair weaves itself into the carpet fibers. So:
 
-Just tell me where the spigot and outlet are when you book.
+1. Put on a regular rubber dish glove (or use a rubber pet brush).
+2. Drag it across the carpet in short strokes, one direction. The hair balls up on top.
+3. Then vacuum. It comes up in one pass.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+For heavy shedders, this is exactly why pet hair turns a 90 minute interior into a 2 to 4 hour job for me.
+
+Tag someone whose car is more dog than car.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> A blue Subaru in a driveway with all four doors and the hatch open, detailing gear and bags by the garage. Text: All I need from you: an outdoor spigot and a power outlet.
+> Five-slide tip carousel: getting dog hair out of car carpet. Use a rubber glove or rubber pet brush, pull in short strokes in one direction to ball the hair up, then vacuum.
 
-### P08 · R8 or Odyssey
+### P08 · Spilled on the seat
 
-**Image:** `posts/P08.jpg`  
-**Type:** Proof
+**Images (carousel, in this order):** `posts/P08-1.jpg`, `posts/P08-2.jpg`, `posts/P08-3.jpg`, `posts/P08-4.jpg`, `posts/P08-5.jpg`, `posts/P08-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Spilled coffee on the seat? What you do in the first few minutes decides whether it comes out.
+
+1. Blot, don't rub. Rubbing pushes it deeper and spreads it wider.
+2. A little cold water, then blot again. You're rinsing it out, not flooding it.
+3. Don't soak the seat. Water in the foam underneath takes days to dry and can start to smell.
+4. Leather? Wipe it right away with a damp microfiber, then dry it.
+
+Keep a microfiber towel in the glovebox. It's the cheapest car insurance there is.
+
+#cardetailingtips #carcleaninghacks #coffee #snohomishcounty #carcaretips
+```
+
+**Facebook**
+
+```
+Spilled coffee on the seat? What you do in the first few minutes decides whether it comes out.
+
+1. Blot, don't rub. Rubbing pushes it deeper and spreads it wider.
+2. A little cold water, then blot again. You're rinsing it out, not flooding it.
+3. Don't soak the seat. Water in the foam underneath takes days to dry and can start to smell.
+4. Leather? Wipe it right away with a damp microfiber, then dry it.
+
+Keep a microfiber towel in the glovebox. It's the cheapest car insurance there is.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: what to do when you spill coffee on a car seat. Blot, do not rub; use a little cold water and blot again; do not soak the seat; on leather, wipe it right away.
+
+### P09 · R8 or Odyssey
+
+**Image:** `posts/P09.jpg`  
+**Type:** Story
 
 **Instagram**
 
 ```
 An R8 and an Odyssey get the same detail from me. Same steps, same checklist, same guy.
 
-My price goes by the size of the vehicle and the shape it's in, not what it's worth. Honestly, the minivan hauling three kids to practice every day usually needs me more than the car that lives in a garage.
+What a car is worth doesn't change how I clean it. Honestly, the minivan hauling kids to practice every day usually needs me more than the car that lives in a garage.
 
-Exact price for your car in 60 seconds, link in bio.
+What's the worst thing that's ever happened in your car? Tell me below. I've probably cleaned it.
 
 #snohomishcounty #cardetailing #mobiledetailing #audir8 #hondaodyssey
 ```
@@ -317,125 +370,96 @@ Exact price for your car in 60 seconds, link in bio.
 ```
 An R8 and an Odyssey get the same detail from me. Same steps, same checklist, same guy.
 
-My price goes by the size of the vehicle and the shape it's in, not what it's worth. Honestly, the minivan hauling three kids to practice every day usually needs me more than the car that lives in a garage.
+What a car is worth doesn't change how I clean it. Honestly, the minivan hauling kids to practice every day usually needs me more than the car that lives in a garage.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+What's the worst thing that's ever happened in your car? Tell me below. I've probably cleaned it.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
 > Two photos side by side: a green Audi R8 with bronze wheels, and the clean dashboard of a Honda Odyssey. Text: R8 or Odyssey, it gets the same detail.
 
-### P09 · Where I work
-
-**Image:** `posts/P09.jpg`  
-**Type:** Local
-
-**Instagram**
-
-```
-Where I am most weeks: Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington.
-
-No travel fee anywhere on that list, and the price is the same in every town.
-
-Just outside it? Ask anyway. I'll tell you straight whether I can get there.
-
-Exact price for your car in 60 seconds, link in bio.
-
-#snohomishcounty #everettwa #lakestevens #monroewa #millcreekwa
-```
-
-**Facebook**
-
-```
-Where I am most weeks: Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington.
-
-No travel fee anywhere on that list, and the price is the same in every town.
-
-Just outside it? Ask anyway. I'll tell you straight whether I can get there.
-
-Exact price for your car in 60 seconds: mikeysdetailing.com
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Map of Snohomish County with pins on the twelve towns Mikey is in most weeks: Arlington, Marysville, Granite Falls, Lake Stevens, Everett, Mukilteo, Snohomish, Mill Creek, Monroe, Bothell, Woodinville and Duvall. No travel fee.
-
 
 ---
 
 ## Week 4
 
-### P10 · Rain season tip
+### P10 · Bird droppings and sap
 
-**Image:** `posts/P10.jpg`  
-**Type:** How I do it
+**Images (carousel, in this order):** `posts/P10-1.jpg`, `posts/P10-2.jpg`, `posts/P10-3.jpg`, `posts/P10-4.jpg`, `posts/P10-5.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-Rain season tip: get protection on the paint before the rain settles in for the winter.
+Bird droppings eat into paint. Here's how to get them off without making it worse.
 
-A coat of wax or sealant gives water and road film something to slide off, instead of sitting on the clear coat. The car stays cleaner longer, and every wash after that goes easier.
+1. Don't leave it. Droppings are acidic, and on warm paint they can etch into the clear coat and leave a mark that won't wash off.
+2. Soften it, don't scrub it. Lay a soaked microfiber over it for a minute or two, then lift it off. Scrubbing a dry one grinds the grit into the paint.
+3. Tree sap works the same way. Don't pick at it with a fingernail. Soften it and lift it, or use a bug and tar remover made for paint.
 
-Every exterior and full detail I do ends with wax or sealant. Through March, ceramic wax is free with any full detail: type RAIN READY in the notes when you get your quote.
+Parking under the trees this fall? Save this.
 
-Exact price for your car in 60 seconds, link in bio.
-
-#pnwrain #snohomishcounty #cardetailing #mobiledetailing #paintprotection
+#cardetailingtips #carcaretips #paintprotection #snohomishcounty #pnw
 ```
 
 **Facebook**
 
 ```
-Rain season tip: get protection on the paint before the rain settles in for the winter.
+Bird droppings eat into paint. Here's how to get them off without making it worse.
 
-A coat of wax or sealant gives water and road film something to slide off, instead of sitting on the clear coat. The car stays cleaner longer, and every wash after that goes easier.
+1. Don't leave it. Droppings are acidic, and on warm paint they can etch into the clear coat and leave a mark that won't wash off.
+2. Soften it, don't scrub it. Lay a soaked microfiber over it for a minute or two, then lift it off. Scrubbing a dry one grinds the grit into the paint.
+3. Tree sap works the same way. Don't pick at it with a fingernail. Soften it and lift it, or use a bug and tar remover made for paint.
 
-Every exterior and full detail I do ends with wax or sealant. Through March, ceramic wax is free with any full detail: type RAIN READY in the notes when you get your quote.
-
-Exact price for your car in 60 seconds: mikeysdetailing.com
+Parking under the trees this fall? Save this.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> A black Toyota Highlander with a deep gloss on the paint, parked on a driveway. Text: Rain season tip. Protect the paint before the rain settles in.
+> Five-slide tip carousel: bird droppings can etch car paint. Remove them within a few days, soften with a soaked microfiber and lift instead of scrubbing, and treat tree sap the same way.
 
-### P11 · Review: truck before selling
+### P11 · Find the smell
 
-**Image:** `posts/P11.jpg`  
-**Type:** Trust
+**Images (carousel, in this order):** `posts/P11-1.jpg`, `posts/P11-2.jpg`, `posts/P11-3.jpg`, `posts/P11-4.jpg`, `posts/P11-5.jpg`, `posts/P11-6.jpg`  
+**Type:** Teach
 
 **Instagram**
 
 ```
-"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+Car smells and you can't figure out why? Check these four places before you buy another air freshener:
 
-Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
+1. Under the seats. Slide each one all the way forward and back and look with a flashlight.
+2. Under the floor mats. Water gets tracked in all winter and soaks the carpet underneath, where it can't dry.
+3. Between the seats and the console. The gap everything falls into.
+4. The cabin air filter. If the smell gets worse with the fan on, check it. Your owner's manual says where it is.
 
-Exact price for your car in 60 seconds, link in bio.
+An air freshener covers a smell. Finding the source gets rid of it.
 
-#snohomishcounty #cardetailing #mobiledetailing #sellingmycar #lakestevens
+#cardetailingtips #carcleaninghacks #carcaretips #snohomishcounty #pnw
 ```
 
 **Facebook**
 
 ```
-"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+Car smells and you can't figure out why? Check these four places before you buy another air freshener:
 
-Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
+1. Under the seats. Slide each one all the way forward and back and look with a flashlight.
+2. Under the floor mats. Water gets tracked in all winter and soaks the carpet underneath, where it can't dry.
+3. Between the seats and the console. The gap everything falls into.
+4. The cabin air filter. If the smell gets worse with the fan on, check it. Your owner's manual says where it is.
 
-Exact price for your car in 60 seconds: mikeysdetailing.com
+An air freshener covers a smell. Finding the source gets rid of it.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Five-star customer review: We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles.
+> Six-slide tip carousel: car smells and you can't find why. Check under the seats, under the floor mats, between the seats and the console, and the cabin air filter.
 
 ### P12 · The guarantee
 
 **Image:** `posts/P12.jpg`  
-**Type:** Trust
+**Type:** Ask
 
 **Instagram**
 
@@ -657,4 +681,267 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
 > A clean Audi interior with cream leather seats and a spotless dashboard. Text: How often should you detail? Most cars: a full detail every 4 to 6 months.
+
+### B07 · Rain-Ready offer (not before week 5) · ⚠️ offer
+
+**Image:** `posts/B07.jpg`  
+**Type:** Offer
+
+**Instagram**
+
+```
+The Rain-Ready Full Detail. Runs October through March.
+
+Book a full detail and every extra on my menu comes free:
+Exterior polish ($30)
+Ceramic wax ($20)
+RainX on the windows ($10)
+Carpet shampoo ($20)
+
+That's $80 of extras on me. You pay the normal full detail price, $299 to $379 depending on the vehicle, and you don't pay anything until we've walked around the car and you love it.
+
+Why these four: polish brings back paint that's gone dull, ceramic wax makes the rain bead up and roll off, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
+
+How to get it: get your quote on my site and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
+
+I take 12 cars a week, so book early if you want a specific day.
+
+#snohomishcounty #cardetailing #mobiledetailing #pnwrain #lakestevens
+```
+
+**Facebook**
+
+```
+The Rain-Ready Full Detail. Runs October through March.
+
+Book a full detail and every extra on my menu comes free:
+Exterior polish ($30)
+Ceramic wax ($20)
+RainX on the windows ($10)
+Carpet shampoo ($20)
+
+That's $80 of extras on me. You pay the normal full detail price, $299 to $379 depending on the vehicle, and you don't pay anything until we've walked around the car and you love it.
+
+Why these four: polish brings back paint that's gone dull, ceramic wax makes the rain bead up and roll off, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
+
+How to get it: get your quote at mikeysdetailing.com and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
+
+I take 12 cars a week, so book early if you want a specific day.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $299, plus exterior polish ($30), ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don't pay until you love it.
+
+### B08 · Cargo area before/after
+
+**Images (carousel, in this order):** `posts/B08-1.jpg`, `posts/B08-2.jpg`, `posts/B08-3.jpg`  
+**Type:** Proof
+
+**Instagram**
+
+```
+Same cargo area, before and after. Swipe for the full shots.
+
+Here's what it looked like when I opened the hatch, and what it looked like when I closed it.
+
+Cargo areas take a beating: groceries, sports gear, dogs, wet boots. They get the same deep vacuum into every corner as the rest of the car.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #cardetailing #interiordetailing #mobiledetailing #marysvillewa
+```
+
+**Facebook**
+
+```
+Same cargo area, before and after. Swipe for the full shots.
+
+Here's what it looked like when I opened the hatch, and what it looked like when I closed it.
+
+Cargo areas take a beating: groceries, sports gear, dogs, wet boots. They get the same deep vacuum into every corner as the rest of the car.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Before and after of the same SUV cargo area. Before: a board, a sunshade, snack bags, a box and loose items scattered on the mat. After: an empty, clean cargo area and mat.
+
+### B09 · How booking works
+
+**Image:** `posts/B09.jpg`  
+**Type:** How I do it
+
+**Instagram**
+
+```
+How booking with me works, start to finish:
+
+1. Get your exact price in 60 seconds on my site. No "starting at" prices. Your car, your number.
+2. I text you back, usually within a couple of minutes, and we pick a day.
+3. I show up with everything. All I need from you is an outdoor spigot and a power outlet.
+4. When I'm done we walk around the car together. You pay after, not before. Cash, card or the usual apps.
+
+No deposit, no phone tag.
+
+Link in bio for the 60 second quote.
+
+#snohomishcounty #mobiledetailing #cardetailing #millcreekwa #monroewa
+```
+
+**Facebook**
+
+```
+How booking with me works, start to finish:
+
+1. Get your exact price in 60 seconds on my site. No "starting at" prices. Your car, your number.
+2. I text you back, usually within a couple of minutes, and we pick a day.
+3. I show up with everything. All I need from you is an outdoor spigot and a power outlet.
+4. When I'm done we walk around the car together. You pay after, not before. Cash, card or the usual apps.
+
+No deposit, no phone tag.
+
+The 60 second quote is at mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> How booking works, in four steps: get your exact price in 60 seconds, Mikey texts you back, he shows up with everything (you provide a spigot and an outlet), and you pay after.
+
+### B10 · Spigot and an outlet
+
+**Image:** `posts/B10.jpg`  
+**Type:** How I do it
+
+**Instagram**
+
+```
+People ask what they need to have ready. Two things: an outdoor water spigot and a power outlet I can reach.
+
+I bring everything else. You don't need to be home either. Plenty of people leave me the keys, go to work, and come back to a finished car.
+
+Just tell me where the spigot and outlet are when you book.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #mobiledetailing #cardetailing #bothellwa #woodinvillewa
+```
+
+**Facebook**
+
+```
+People ask what they need to have ready. Two things: an outdoor water spigot and a power outlet I can reach.
+
+I bring everything else. You don't need to be home either. Plenty of people leave me the keys, go to work, and come back to a finished car.
+
+Just tell me where the spigot and outlet are when you book.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> A blue Subaru in a driveway with all four doors and the hatch open, detailing gear and bags by the garage. Text: All I need from you: an outdoor spigot and a power outlet.
+
+### B11 · Where I work
+
+**Image:** `posts/B11.jpg`  
+**Type:** Local
+
+**Instagram**
+
+```
+Where I am most weeks: Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington.
+
+No travel fee anywhere on that list, and the price is the same in every town.
+
+Just outside it? Ask anyway. I'll tell you straight whether I can get there.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #everettwa #lakestevens #monroewa #millcreekwa
+```
+
+**Facebook**
+
+```
+Where I am most weeks: Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington.
+
+No travel fee anywhere on that list, and the price is the same in every town.
+
+Just outside it? Ask anyway. I'll tell you straight whether I can get there.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Map of Snohomish County with pins on the twelve towns Mikey is in most weeks: Arlington, Marysville, Granite Falls, Lake Stevens, Everett, Mukilteo, Snohomish, Mill Creek, Monroe, Bothell, Woodinville and Duvall. No travel fee.
+
+### B12 · Review: on time, as quoted
+
+**Image:** `posts/B12.jpg`  
+**Type:** Trust
+
+**Instagram**
+
+```
+"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+
+This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+
+5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #mobiledetailing #cardetailing #snohomish #shoplocal
+```
+
+**Facebook**
+
+```
+"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+
+This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+
+5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Five-star customer review: Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.
+
+### B13 · Review: truck before selling
+
+**Image:** `posts/B13.jpg`  
+**Type:** Trust
+
+**Instagram**
+
+```
+"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+
+Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #cardetailing #mobiledetailing #sellingmycar #lakestevens
+```
+
+**Facebook**
+
+```
+"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+
+Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Five-star customer review: We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles.
 

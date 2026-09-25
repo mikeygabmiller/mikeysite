@@ -101,15 +101,16 @@ bio", Facebook has the actual link and no hashtags).
 > ($10), carpet shampoo ($20). **$80 of extras.** To get it, type **RAIN READY**
 > in the notes box of the quote, or text it to (425) 600-7897.
 
-It's post **P03**, and it's mentioned in the caption of P10.
+It's bank post **B07**. It does **not** go up at launch: people who've never
+heard of you don't want an offer from you yet. Post it no earlier than week 5,
+after a month of tips, and never right after another ask.
 
-### ⚠️ Confirm this before P03 goes up
+### ⚠️ Confirm this before B07 goes up
 
 This is a real promise to real customers, so it's the one thing in here that
 needs your yes. What it costs you: nothing off the full detail price, roughly
 an extra hour of work per offer car (polish is most of that), and a little
-product. If that's not OK, don't post P03 and remove the offer paragraph from
-P10's caption. Nothing else depends on it.
+product. If that's not OK, just never post B07. Nothing else depends on it.
 
 ### Why this offer (the Hormozi logic)
 
@@ -156,59 +157,87 @@ highest-priced job.
 - If they also ticked some of the extras in the quote calculator, don't charge
   for those extras.
 - Busy weeks: don't quietly drop the polish. If the offer gets more popular
-  than your schedule can take, post that it's closed and stop posting P03.
+  than your schedule can take, post that it's closed and stop posting B07.
 - **After March 31, stop posting it.** For summer, the same four-extra bundle
   can come back as a "Road-Trip Ready Full Detail" (bugs, tree sap, summer
   dust) if you want it.
 
 ---
 
-## 4. What to post: four kinds, three a week
+## 4. What to post: give, give, give, then ask
 
-| Type | What it is | Why |
+Hormozi's rule for content, and yours: **give so much value for free that
+people feel like they owe you.** A stranger should get something useful out of
+every post even if they never book. The selling happens in your bio and when
+they come to you, not in the feed.
+
+| Type | What it is | Share of posts |
 |---|---|---|
-| **Proof** | Before and afters, recent driveways | The only thing that proves the work. The best performers. |
-| **How I do it** | Tips, how booking works, what you need from them | Answers the questions that stop people booking. |
-| **Trust** | Reviews, the guarantee, "it's just me" | A stranger in their driveway is the real objection. |
-| **Local** | Towns, the map, "I was in Monroe this week" | People book the guy who's clearly nearby. |
+| **Teach** | A tip or technique they can use in their own driveway: washing, pet hair, spills, smells, glass | Most of them |
+| **Myths** | "Everyone says X. Here's what actually happens." | About one in eight |
+| **Story** | Something that happened on a job, told the way you'd tell a friend. Before/afters go here, as the story of that car | One a week once you've answered the story questions |
+| **Ask** | The offer, the guarantee, how booking works, reviews, the map | **At most one in four**, never two in a row |
 
-**The weekly rhythm:** one Proof, one How I do it, and one Trust or Local each
-week. Pick three days you can actually keep, spaced out (for example Tuesday,
-Thursday, Sunday), and keep them. Evenings tend to be when people scroll.
+**Every value post ends with "save this" or a question, not a quote link.**
+Saves and comments are what Instagram uses to decide who else sees a post,
+and a question gets people talking to you, which is where bookings start.
 
-**The guarantee** ("you don't pay until you love it") is strong. Don't put it
-on every post, or it starts to sound like protesting too much. It's in the
-bio, the offer post, and its own post (P12). That's enough.
+**The weekly rhythm:** three posts a week, on three days you can keep (for
+example Tuesday, Thursday, Sunday). Evenings tend to be when people scroll.
+
+**Tip posts are carousels** (5 to 7 slides: a hook, one tip per slide, a
+sign-off). They're the most saved format on Instagram, and they don't need a
+photo, which is why the first month doesn't depend on new pictures.
+
+### Stories: the part only you can write
+
+I won't make up stories, and the good ones are yours anyway. Answer any of
+these in the **Story questions** doc in the Mikey Social Photos Drive folder.
+Talk-to-text on your phone is fine; a few rough sentences each is plenty. I
+turn each answer into a post.
+
+1. The worst car you've ever done. What was in it, and how long did it take?
+2. Why did you start detailing in 2021?
+3. Something you learned the hard way, a mistake you made early on.
+4. A customer who surprised you.
+5. The thing people apologize for most when you open their car.
+6. Your favorite tool, and why it beats the one everyone buys.
+7. A car that fought back: what took the longest to get out?
+8. What would you check on a used car before buying it?
+9. The rainiest job you've done. How did you make it work?
+10. What does a normal day look like, from the first car to the last?
 
 ---
 
 ## 5. The first four weeks
 
-Launch day: post **P01, P02 and P03 together** so the profile isn't empty
-when people land on it, then pin all three (on each post: ⋯ → Pin to your
-profile). Pinned posts stay at the top of your grid no matter what comes after.
+Launch day: post **P01, P02 and P03 together** so the profile isn't empty,
+then pin all three (on each post: ⋯ → Pin to your profile).
 
 | Week | Post | Type | What it is |
 |---|---|---|---|
-| 1 | P01 📌 | Trust | Meet Mikey: one guy, no crew |
-| 1 | P02 📌 | Proof | Back seat before/after (carousel: split, before, after) |
-| 1 | P03 📌 | Offer | Rain-Ready Full Detail ⚠️ confirm first |
-| 2 | P04 | How I do it | How booking works, four steps |
-| 2 | P05 | Trust | Review: on time, did what he said, charged what he quoted |
-| 2 | P06 | Proof | Cargo area before/after (carousel) |
-| 3 | P07 | How I do it | All I need from you: a spigot and an outlet |
-| 3 | P08 | Proof | R8 or Odyssey, same detail |
-| 3 | P09 | Local | Map of the 12 towns, no travel fee |
-| 4 | P10 | How I do it | Rain season tip: protect the paint |
-| 4 | P11 | Trust | Review: truck before selling, then 3 more cars |
-| 4 | P12 | Trust | The guarantee, explained |
+| 1 | P01 📌 | Story | Meet Mikey: 300+ cars in, here's what I've learned |
+| 1 | P02 📌 | Teach | How to wash your car without scratching it (7 slides) |
+| 1 | P03 📌 | Teach | Back seat before/after, and the order I clean it (6 slides) |
+| 2 | P04 | Teach | Why the inside of your windshield keeps fogging |
+| 2 | P05 | Myths | 4 car care myths I hear every week |
+| 2 | P06 | Teach | Get your car ready for a PNW winter |
+| 3 | P07 | Teach | The rubber glove trick for dog hair |
+| 3 | P08 | Teach | Spilled coffee on the seat? Do this first |
+| 3 | P09 | Story | R8 or Odyssey, same detail |
+| 4 | P10 | Teach | Bird droppings and tree sap |
+| 4 | P11 | Teach | Car smells? Check these 4 places |
+| 4 | P12 | **Ask** | You don't pay until you love it |
 
-**Bank** (finished, use any time a week needs filling): B01 recent driveways
-(4 photos), B02 to B05 four more reviews, B06 how often to detail (and the
-Clean Club).
+That's 11 posts that give and 1 that asks.
 
-That's about **six weeks of posts** ready now. After that, new photos from
-jobs are what keep it going (section 6).
+**Bank** (finished, for week 5 on; keep the one-ask-in-four rule): B01 recent
+driveways, B02 to B05 and B12, B13 reviews (no more than one every two weeks),
+B06 how often to detail, **B07 the Rain-Ready offer ⚠️ your yes first**, B08
+cargo before/after, B09 how booking works, B10 spigot and an outlet, B11 the
+map of your 12 towns.
+
+After week 4, story answers and new job photos keep it going (section 6).
 
 ### Posting checklist, every post
 
@@ -333,7 +362,8 @@ you work** and **whether you're licensed and insured.**
 
 ## 11. What's still open
 
-- [ ] Your yes (or no) on the Rain-Ready offer before P03 goes up.
+- [ ] Your yes (or no) on the Rain-Ready offer before B07 goes up.
+- [ ] Answers in the Story questions doc, whenever you have ten minutes.
 - [ ] Which days you work, and licensed/insured: both stay out until confirmed.
 - [ ] New photos into the Drive folder, whenever you can.
 - [ ] The Honda Pilot photo on the website (`images/unnamed (5).webp`) was left
