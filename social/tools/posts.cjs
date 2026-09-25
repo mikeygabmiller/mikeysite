@@ -394,18 +394,17 @@ ${Q}
   {
     id: 'B07', week: 'bank', pillar: 'Offer', title: 'Rain-Ready offer (not before week 5)', offer: true,
     slides: [{ t: 'offer' }],
-    alt: 'Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $299, plus exterior polish ($30), ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don\'t pay until you love it.',
+    alt: 'Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $299, plus ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don\'t pay until you love it.',
     ig: `The Rain-Ready Full Detail. Runs October through March.
 
-Book a full detail and every extra on my menu comes free:
-Exterior polish ($30)
+Book a full detail and three rain-season extras come free:
 Ceramic wax ($20)
 RainX on the windows ($10)
 Carpet shampoo ($20)
 
-That's $80 of extras on me. You pay the normal full detail price, $299 to $379 depending on the vehicle, and you don't pay anything until we've walked around the car and you love it.
+That's $50 of extras on me, on top of the normal full detail (from $299, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
 
-Why these four: polish brings back paint that's gone dull, ceramic wax makes the rain bead up and roll off, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
+Why these three: ceramic wax makes the rain bead up and roll off the paint, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
 
 How to get it: get your quote on my site and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
 
@@ -505,6 +504,21 @@ Selling a car? A detail before you list it is money well spent. A clean car phot
 ${Q}
 
 #snohomishcounty #cardetailing #mobiledetailing #sellingmycar #lakestevens`,
+  },
+  {
+    id: 'B14', week: 'bank', pillar: 'Story', title: 'Driveway or garage',
+    slides: [{ t: 'photocard', slim: 'dark', photo: 'pilot-garage.jpg', pos: '45% 55%',
+      eyebrow: 'A customer\'s garage',
+      h: 'Driveway or garage. I work where your car is.',
+      body: "This one's in the owner's garage, not a shop. All I need is an outdoor spigot and a power outlet within reach." }],
+    alt: "A grey Honda Pilot parked in a customer's garage, with another car in the next bay. Text: Driveway or garage. I work where your car is.",
+    ig: `No, that's not my shop. It's a customer's garage.
+
+I don't have a shop. I come to wherever your car lives: the driveway, the garage, wherever it's parked. All I need is an outdoor spigot and a power outlet within reach, and I bring the rest.
+
+Where does your car live? Tell me below.
+
+#mobiledetailing #snohomishcounty #cardetailing #garagelife #pnw`,
   },
 ];
 

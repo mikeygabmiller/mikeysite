@@ -275,14 +275,13 @@ const T = {
   offer: () => `<div class="main offer">
     <div class="eyebrow">October through March</div>
     <h1>The Rain-Ready<br><em>Full Detail</em></h1>
-    <div class="lede">Book a full detail and every extra<br>on my menu comes free.</div>
+    <div class="lede">Book a full detail and three<br>rain-season extras come free.</div>
     <div class="stack">
       <div class="row base"><span>Full detail, inside and out</span><span class="p">from $299</span></div>
-      <div class="row"><span>Exterior polish</span><span class="p"><s>$30</s><span class="free">FREE</span></span></div>
       <div class="row"><span>Ceramic wax</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
       <div class="row"><span>RainX on the windows</span><span class="p"><s>$10</s><span class="free">FREE</span></span></div>
       <div class="row"><span>Carpet shampoo</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
-      <div class="row tot"><span>Extras on me</span><span class="p">$80</span></div>
+      <div class="row tot"><span>Extras on me</span><span class="p">$50</span></div>
     </div>
     <div class="code">Type <b>RAIN READY</b> in the notes when you get your quote.</div>
     <div class="guar">You don't pay until you love it.</div></div>`,
