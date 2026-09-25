@@ -1,0 +1,13 @@
+{
+  "name": "mikeys-social-tools",
+  "private": true,
+  "description": "Renders the Instagram/Facebook post images. Not part of the website build.",
+  "scripts": {
+    "photos": "node prep-photos.cjs",
+    "render": "node render.cjs"
+  },
+  "dependencies": {
+    "playwright": "1.56.1",
+    "sharp": "^0.34.0"
+  }
+}

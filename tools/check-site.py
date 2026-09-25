@@ -5,7 +5,10 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 ROOT = Path("/home/user/mikeysite")
-SKIP = {"mockups", "systems", "_disabled"}  # _disabled/ is parked code, not served
+SKIP = {"mockups", "systems", "_disabled", "social"}  # _disabled/ is parked code, not served
+# social/ is the Instagram/Facebook kit, excluded in _config.yml. Its npm install
+# drops vendor HTML into social/tools/node_modules that is not ours to police;
+# the post copy gets its own em dash check in social/tools/render.cjs.
 JSONLD = re.compile(r'<script[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
                     re.DOTALL | re.IGNORECASE)
 VOID = {'area','base','br','col','embed','hr','img','input','link','meta',
