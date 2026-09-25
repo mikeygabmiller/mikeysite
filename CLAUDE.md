@@ -161,6 +161,24 @@ shortest page on the site.
 - FAQ answers exist **twice** on most pages: once visible, once inside a
   JSON-LD `FAQPage` block. Edit both or the schema starts lying.
 
+## Instagram and Facebook posts
+
+They live in `social/`, which is not served (`_config.yml` excludes it). Read
+`social/PLAYBOOK.md` before making or changing a post: it has the weekly
+rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
+
+- **Posts follow this file.** Same facts table, same voice, no em dashes. A
+  post is one more copy of the facts, so a fact change lands there too:
+  `social/tools/posts.cjs`, then re-render.
+- **Edit copy in `social/tools/posts.cjs`**, never in `social/CAPTIONS.md`,
+  which the renderer rewrites. `npm run render` in `social/tools`.
+- **No readable plates, house numbers, faces or names** in any photo. New
+  photos get blur boxes in `social/tools/prep-photos.cjs`; look at the output.
+- **Only the twelve served towns** on the map or in copy. The renderer strips
+  the "ask me" tier from the map for that reason.
+- **The Rain-Ready offer (P03) is a promise to customers.** Don't widen it,
+  extend its window, or add a new offer without Mikey saying so.
+
 ## Shipping
 
 **Mikey wants work merged and live in the same session, not left sitting in a

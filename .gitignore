@@ -1,2 +1,5 @@
 # cached source data for tools/build-geo-data.py — re-downloaded on demand
 tools/.geonames-us.zip
+
+# social post generator deps (social/tools/package.json)
+social/tools/node_modules/

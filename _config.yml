@@ -42,6 +42,10 @@ exclude:
   # customers to stumble into.
   - mockups/
 
+  # Instagram/Facebook post kit: the playbook (offer costs, strategy), the
+  # captions and the generator. The images go on Meta, not on this domain.
+  - social/
+
   # Jekyll's own defaults, restated because setting this key replaces them.
   - Gemfile
   - Gemfile.lock
