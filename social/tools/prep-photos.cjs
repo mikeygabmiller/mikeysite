@@ -10,9 +10,9 @@
 // original image's pixels), run `npm run photos`, then LOOK at the output.
 // Boxes are drawn by eye; a plate one pixel outside the box is still a plate.
 //
-// unnamed (5).webp (the Honda Pilot) is left out on purpose: it was shot in a
-// shop bay next to a Jeep with its hood up, which reads as a garage and fights
-// "I come to you".
+// unnamed (5).webp (the Honda Pilot) looks like a shop bay, but it's a
+// customer's garage (Mikey confirmed 2026-09-25). Captions using it should say
+// so, since a stranger will otherwise read it as "he has a shop".
 
 const sharp = require('sharp');
 const path = require('path');
@@ -41,6 +41,8 @@ const PHOTOS = [
   { src: 'unnamed (10).webp', out: 'mazda-woods.jpg', blur: [[352, 292, 30, 50]] },
   { src: 'unnamed (11).webp', out: 'r8.jpg' },
   { src: 'unnamed (12).webp', out: 'odyssey-interior.jpg' },
+  // Plate on the front bumper, angled toward the camera.
+  { src: 'unnamed (5).webp', out: 'pilot-garage.jpg', blur: [[566, 274, 60, 80]] },
 ];
 
 async function blurBox(img, meta, [x, y, w, h]) {

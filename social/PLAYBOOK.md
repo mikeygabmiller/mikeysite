@@ -96,10 +96,15 @@ bio", Facebook has the actual link and no hashtags).
 
 ## 3. The offer: the Rain-Ready Full Detail
 
-> **Book a full detail between October and March and every extra on my menu
-> comes free:** exterior polish ($30), ceramic wax ($20), RainX on the windows
-> ($10), carpet shampoo ($20). **$80 of extras.** To get it, type **RAIN READY**
-> in the notes box of the quote, or text it to (425) 600-7897.
+> **Book a full detail between October and March and three rain-season extras
+> come free:** ceramic wax ($20), RainX on the windows ($10), carpet shampoo
+> ($20). **$50 of extras.** Exterior polish stays paid. To get it, type **RAIN
+> READY** in the notes box of the quote, or text it to (425) 600-7897.
+
+Decided 2026-09-25: the $50 version, not the original $80 one with polish.
+Polish is the slow one, and a promise you can keep on a slammed Saturday beats
+a bigger one you start to resent. Polish can be added later if bookings are
+slow; taking it away later would look bad.
 
 It's bank post **B07**. It does **not** go up at launch: people who've never
 heard of you don't want an offer from you yet. Post it no earlier than week 5,
@@ -109,8 +114,7 @@ after a month of tips, and never right after another ask.
 
 This is a real promise to real customers, so it's the one thing in here that
 needs your yes. What it costs you: nothing off the full detail price, roughly
-an extra hour of work per offer car (polish is most of that), and a little
-product. If that's not OK, just never post B07. Nothing else depends on it.
+20 to 30 minutes of extra work per offer car, and a little product. If that's not OK, just never post B07. Nothing else depends on it.
 
 ### Why this offer (the Hormozi logic)
 
@@ -128,13 +132,12 @@ adding value, not cutting price.** His value equation:
 
 The rest of his checklist:
 
-- **Bonuses, not a discount.** Knocking $80 off tells people your price was
-  padded. Giving $80 of extras keeps the full detail price whole and makes it
+- **Bonuses, not a discount.** Knocking $50 off tells people your price was
+  padded. Giving $50 of extras keeps the full detail price whole and makes it
   look like more.
-- **Cheap for you to deliver, valuable to them.** All four are things you
-  already carry and already sell. Each one solves a rain-season problem: dull
-  paint, water sitting on the paint, a windshield you can't see through,
-  muddy carpets.
+- **Cheap for you to deliver, valuable to them.** All three are things you
+  already carry and already sell. Each one solves a rain-season problem: water sitting on the paint, a
+  windshield you can't see through, muddy carpets.
 - **Real scarcity:** 12 cars a week. It's the one scarcity claim the site
   makes, so it's the only one the posts make.
 - **Real urgency:** the rain season window. Named, not a fake countdown. The
@@ -147,7 +150,7 @@ The rest of his checklist:
   bookings came from social.
 
 It's also deliberately smaller than the old free exterior offer. That one gave
-away a whole $160 service. This one gives away $80 of extras on your
+away a whole $160 service. This one gives away $50 of extras on your
 highest-priced job.
 
 ### Honoring it
@@ -156,9 +159,9 @@ highest-priced job.
   wrote or texted **RAIN READY**.
 - If they also ticked some of the extras in the quote calculator, don't charge
   for those extras.
-- Busy weeks: don't quietly drop the polish. If the offer gets more popular
+- Busy weeks: don't quietly drop an extra. If the offer gets more popular
   than your schedule can take, post that it's closed and stop posting B07.
-- **After March 31, stop posting it.** For summer, the same four-extra bundle
+- **After March 31, stop posting it.** For summer, the same three-extra bundle
   can come back as a "Road-Trip Ready Full Detail" (bugs, tree sap, summer
   dust) if you want it.
 
@@ -182,8 +185,41 @@ they come to you, not in the feed.
 Saves and comments are what Instagram uses to decide who else sees a post,
 and a question gets people talking to you, which is where bookings start.
 
+**The goal, in order** (decided 2026-09-25): first, **proof** for people who
+already heard of you and look you up before booking. Later, reaching strangers.
+
 **The weekly rhythm:** three posts a week, on three days you can keep (for
 example Tuesday, Thursday, Sunday). Evenings tend to be when people scroll.
+Once job photos are coming in, each week is:
+
+1. **One before/after, told as a lesson**: what was wrong, what I did and in
+   what order. Proof and value in the same post.
+2. **One tip** (the built tip carousels cover about 8 weeks of these).
+3. **One flexible**: a story, a myth, a review, or the week's ask if it's due.
+
+Weeks 1 and 2 stay as built, since there are no new photos yet.
+
+### How a week gets made
+
+- **Every job:** before/after photos (section 6), into the Drive folder the
+  same night.
+- **Once a week** (e.g. Sunday night): tell Claude "new photos are in Drive".
+  Claude builds next week's 3 posts from the photos, your story answers and the
+  bank. You look them over in the Post Kit and schedule all 3 in Meta Business
+  Suite. About 20 minutes.
+- **Approval:** for the first month you approve every post. After that, only
+  posts that make a promise (offers, prices, anything about availability).
+- **Stories** (the 24-hour kind) are the exception: post them straight from
+  the driveway, unplanned.
+
+### Things posts never say
+
+- **Days or hours.** Your schedule changes week to week. Openings posts say
+  "I've got a couple of spots this week, message me", never a day.
+- **Licensed or insured.** Not yet true, so it appears nowhere until it is.
+- **That you bring water or power.** The customer provides both.
+- **Exact per-size prices.** Use "from $299, exact price in 60 seconds". See
+  the price note in section 11 before touching any price.
 
 **Tip posts are carousels** (5 to 7 slides: a hook, one tip per slide, a
 sign-off). They're the most saved format on Instagram, and they don't need a
@@ -235,7 +271,8 @@ That's 11 posts that give and 1 that asks.
 driveways, B02 to B05 and B12, B13 reviews (no more than one every two weeks),
 B06 how often to detail, **B07 the Rain-Ready offer ⚠️ your yes first**, B08
 cargo before/after, B09 how booking works, B10 spigot and an outlet, B11 the
-map of your 12 towns.
+map of your 12 towns, B14 driveway or garage (the Pilot, in a customer's
+garage).
 
 After week 4, story answers and new job photos keep it going (section 6).
 
@@ -364,11 +401,24 @@ you work** and **whether you're licensed and insured.**
 
 - [ ] Your yes (or no) on the Rain-Ready offer before B07 goes up.
 - [ ] Answers in the Story questions doc, whenever you have ten minutes.
+- [ ] **Get insured**: general liability plus garagekeepers ("care, custody
+      and control") coverage, from an agent who insures mobile detailers. Check
+      WA business licensing with the Department of Revenue. Then tell Claude,
+      and it becomes a trust line in the bio, a post and the site.
+- [ ] **Price mismatch, on hold by Mikey's call (2026-09-25). Don't fix
+      without asking him.** The quote calculator (the source of truth) charges
+      base + $20 SUV/truck or $40 van/XL + $30 Needs Work or $60 War Zone, so
+      full runs $299 to $399, interior $200 to $300, exterior $160 to $260. The
+      site advertises $299 to $379 ("$339 SUV / $379 truck"), $200 to $280 and
+      $160 to $240, and the homepage chooser shows a $260 / $160 / $130
+      ballpark. Posts avoid the problem by saying "from $299".
+- [ ] **Site says 7 days, 8am to 8pm** (schema and terms page). Mikey's
+      schedule changes week to week; should read "by appointment". On hold
+      until he says to change it.
 - [ ] Which days you work, and licensed/insured: both stay out until confirmed.
 - [ ] New photos into the Drive folder, whenever you can.
-- [ ] The Honda Pilot photo on the website (`images/unnamed (5).webp`) was left
-      out of social on purpose: it's in a shop bay next to a Jeep with its hood
-      up, which reads as a garage and works against "I come to you".
+- [x] The Honda Pilot photo is a customer's garage (confirmed). It stays on
+      the site and is bank post B14.
 
 ---
 

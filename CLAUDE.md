@@ -82,7 +82,7 @@ Rules that follow from that:
   |---|---|
   | joining two whole sentences | a full stop. "Yes. I'm in Everett most weeks." |
   | an aside inside one sentence | a comma. "Bigger vehicles take more time, so I want your estimate accurate." |
-  | introducing a list | a colon. "I bring everything: water, power, extraction." |
+  | introducing a list | a colon. "I bring the tools: extractor, polisher, product." (Never "water" or "power": the customer provides both.) |
   | a true parenthetical | brackets. "I run a real trade (300+ cars, 5.0 stars) on this system." |
   | separating a title | the pipe. "Mobile Car Detailing Snohomish, WA \| See Your Price Now" |
 
