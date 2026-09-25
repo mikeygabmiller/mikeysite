@@ -169,9 +169,41 @@ em{font-style:normal;color:var(--red)}
 .cover img{width:760px}
 .cover .tag{font-size:40px;font-weight:600;letter-spacing:.01em;color:rgba(255,255,255,.85)}
 .cover .tag span{color:var(--gold)}
+/* value posts: tips, myths, techniques. Paper, not the website's black bar,
+   so they read like a detailer's notes instead of an ad. */
+.paper{background:var(--cream);color:#151515}
+.paper .eyebrow{color:var(--red)}
+.sfoot{height:92px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 72px}
+.sfoot .h{display:flex;align-items:center;gap:14px;font-weight:700;font-size:28px}
+.sfoot img{height:42px}
+.sfoot .n{font-weight:700;font-size:26px;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.sfoot.paper{border-top:3px solid rgba(0,0,0,.08)}
+.sfoot.paper .n{color:#8a8580}
+.sfoot.dark{background:var(--ink);border-top:3px solid rgba(255,255,255,.08)}
+.sfoot.dark .n{color:rgba(255,255,255,.55)}
+.tcover{padding:96px 76px 60px}
+.tcover h1{font-weight:800;font-size:112px;line-height:.98;letter-spacing:-.035em;margin-top:34px}
+.tcover .sub{font-size:44px;line-height:1.3;margin-top:36px;color:#55504b;max-width:900px}
+.tcover:not(.paper) .sub{color:var(--muted)}
+.tcover .ph{height:520px;border-radius:26px;flex:none;margin-top:44px}
+.tcover.hasphoto h1{font-size:88px}
+.tcover.hasphoto .sub{font-size:38px;margin-top:24px}
+.tcover .swipe{margin-top:auto;font-family:'Caveat';font-weight:700;font-size:64px;color:var(--red)}
+.tstep{padding:80px 76px 70px;justify-content:center}
+.tstep .num{font-weight:800;font-size:250px;line-height:.8;color:var(--red);letter-spacing:-.04em}
+.tstep .kick{font-weight:800;font-size:34px;letter-spacing:.16em;text-transform:uppercase;color:var(--red)}
+.tstep h2{font-weight:800;font-size:96px;line-height:1.02;letter-spacing:-.03em;margin-top:40px}
+.tstep p{font-size:50px;line-height:1.38;color:#3a3632;margin-top:34px}
+.tstep .why{margin-top:56px;font-family:'Caveat';font-weight:700;font-size:58px;line-height:1.1;color:var(--red)}
+.tend{padding:80px 76px 70px;justify-content:center}
+.tend h2{font-weight:800;font-size:104px;line-height:1;letter-spacing:-.035em}
+.tend p{font-size:50px;line-height:1.38;color:#3a3632;margin-top:40px}
+.tend .sign{margin-top:70px;font-family:'Caveat';font-weight:700;font-size:104px;transform:rotate(-4deg);transform-origin:left bottom}
 `;
 
 const STAR = '<svg viewBox="0 0 24 24"><path d="M12 2.2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.1l-6.1 3.5 1.5-6.8L2.2 9.2l6.9-.7z"/></svg>';
+const VALUE = new Set(['tipcover', 'tipstep', 'tipend']);
+const slimFoot = (i, n, dark) => `<div class="sfoot ${dark ? 'dark' : 'paper'}"><div class="h"><img src="${ICON}" alt="">@mikeysdetailing</div><div class="n">${n > 1 ? i + ' / ' + n : ''}</div></div>`;
 const foot = `<div class="foot"><img src="${LOGO}" alt=""><div class="url">mikeysdetailing.com</div></div>`;
 const ph = (f, pos, extra = '') => `<div class="ph">${extra}<img src="${photo(f)}" style="object-position:${pos || '50% 50%'}"></div>`;
 
@@ -269,14 +301,26 @@ const T = {
     <div class="mapwrap">${mapSvg()}</div>
     <div class="nofee">No travel fee. <span>Same price in every town.</span></div></div>`,
 
+  tipcover: s => `<div class="main tcover ${s.dark ? '' : 'paper'} ${s.photo ? 'hasphoto' : ''}">
+    <div class="eyebrow">${s.eyebrow}</div><h1>${s.h}</h1>${s.sub ? `<div class="sub">${s.sub}</div>` : ''}
+    ${s.photo ? ph(s.photo, s.pos) : ''}<div class="swipe">${s.swipe || 'Swipe for how'} &rarr;</div></div>`,
+
+  tipstep: s => `<div class="main tstep paper">
+    ${s.kick ? `<div class="kick">${s.kick}</div>` : `<div class="num">${s.n}</div>`}
+    <h2>${s.h}</h2><p>${s.body}</p>${s.why ? `<div class="why">${s.why}</div>` : ''}</div>`,
+
+  tipend: s => `<div class="main tend paper"><h2>${s.h || 'Save this for next time.'}</h2>
+    <p>${s.body || "I'm Mikey. I detail cars in driveways around Snohomish County, and I post what actually works. Questions? Ask in the comments, I answer every one."}</p>
+    <div class="sign">Mikey</div></div>`,
+
   profile: () => `<div class="profile"><img src="${ICON}" alt=""></div>`,
   cover: () => `<div class="cover"><img src="${LOGO}" alt="">
     <div class="tag">Mobile detailing in your driveway <span>&middot;</span> Snohomish County</div></div>`,
 };
 
-const page = (inner, w, h, isPost) => `<!doctype html><html><head><meta charset="utf-8">
+const page = (inner, w, h, isPost, ft = foot) => `<!doctype html><html><head><meta charset="utf-8">
   <style>${CSS} html,body{width:${w}px;height:${h}px}</style></head>
-  <body>${isPost ? `<div class="post">${inner}${foot}</div>` : inner}</body></html>`;
+  <body>${isPost ? `<div class="post">${inner}${ft}</div>` : inner}</body></html>`;
 
 // The site's gate (tools/check-site.py) skips social/, so the no-em-dash rule
 // is enforced here instead, on every string that ends up on a post or caption.
@@ -310,7 +354,8 @@ if (dash) { console.error('em dash in posts.cjs, rewrite it:', dash[0]); process
     for (let i = 0; i < p.slides.length; i++) {
       const s = p.slides[i];
       const name = p.slides.length > 1 ? `${p.id}-${i + 1}` : p.id;
-      await shoot(name, page(T[s.t](s), 1080, 1350, true), 1080, 1350);
+      const ft = (VALUE.has(s.t) || s.slim) ? slimFoot(i + 1, p.slides.length, s.t === 'tipcover' ? s.dark : s.slim === 'dark') : foot;
+      await shoot(name, page(T[s.t](s), 1080, 1350, true, ft), 1080, 1350);
     }
   }
   for (const a of ACCOUNT) {

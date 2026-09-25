@@ -174,9 +174,12 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
   which the renderer rewrites. `npm run render` in `social/tools`.
 - **No readable plates, house numbers, faces or names** in any photo. New
   photos get blur boxes in `social/tools/prep-photos.cjs`; look at the output.
+- **Give before you ask.** Most posts are tips, techniques, myths or Mikey's
+  own stories, useful to someone who never books. At most one post in four
+  asks for anything. Never invent a story; stories come from his answers.
 - **Only the twelve served towns** on the map or in copy. The renderer strips
   the "ask me" tier from the map for that reason.
-- **The Rain-Ready offer (P03) is a promise to customers.** Don't widen it,
+- **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
   extend its window, or add a new offer without Mikey saying so.
 
 ## Shipping
