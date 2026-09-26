@@ -189,6 +189,23 @@ Cold emails to businesses with vans, lots and fleets live in
 fact change lands there too. Same voice, no em dashes, only the twelve towns,
 and nothing about being insured until Mikey confirms it.
 
+## Door hangers
+
+The print files live in `print/door-hanger/` (not served, `_config.yml`
+excludes `print/`). Read its `README.md` before changing anything: it has the
+ordering steps, the distribution rules and why each section is there.
+
+- **A hanger is one more copy of the facts table.** Prices, 60 seconds, 300+,
+  5.0 across 40, the phone, the twelve towns, spigot and outlet: a fact change
+  lands there too. Edit `print/tools/build-door-hanger.cjs`, then
+  `npm run hanger` (and `OFFER=0 npm run hanger`) in `print/tools`.
+- **It prints the Rain-Ready offer** (the playbook's B07) with a hard end date,
+  March 31, 2027. Same rule as the posts: don't widen it or extend it without
+  Mikey saying so, and there's a `-no-offer` version if he says no.
+- The generator exits with an error if copy spills out of the safe area,
+  picks up an em dash or a banned claim, or the QR code stops decoding. Look
+  at the previews anyway.
+
 ## Shipping
 
 **Mikey wants work merged and live in the same session, not left sitting in a

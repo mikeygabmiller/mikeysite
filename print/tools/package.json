@@ -1,0 +1,16 @@
+{
+  "name": "mikeys-print-tools",
+  "private": true,
+  "description": "Renders print pieces (door hangers). Not part of the website build.",
+  "scripts": {
+    "hanger": "node build-door-hanger.cjs"
+  },
+  "dependencies": {
+    "@fontsource/caveat": "^5.3.0",
+    "@fontsource/outfit": "^5.3.0",
+    "jsqr": "^1.4.0",
+    "playwright": "1.56.1",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.34.0"
+  }
+}

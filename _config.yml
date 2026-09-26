@@ -50,6 +50,10 @@ exclude:
   # outreach plan. For Mikey to send, not for customers to read.
   - outreach/
 
+  # Print pieces (door hangers): the print files, the generator and a README
+  # with the distribution and tracking plan. They go to a print shop, not here.
+  - print/
+
   # Jekyll's own defaults, restated because setting this key replaces them.
   - Gemfile
   - Gemfile.lock
