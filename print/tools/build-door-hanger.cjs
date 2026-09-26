@@ -179,7 +179,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .hi p{font-size:8.3pt;line-height:1.26;color:var(--sub);margin-top:2pt}
 .hi p b{color:var(--ink);font-weight:700}
 
-.sec{margin-top:.11in}
+.sec{margin-top:.09in}
 .sec h3{display:flex;align-items:center;gap:6pt;font-weight:800;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--red2)}
 .sec h3:after{content:'';flex:1;height:.8pt;background:var(--line)}
 
@@ -201,7 +201,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .step b{display:block;font-weight:800;font-size:9.6pt;line-height:1.15}
 .step span{display:block;font-size:8pt;line-height:1.28;color:var(--sub);margin-top:1pt}
 
-.grt{margin-top:.12in;background:var(--ink);color:#fff;border-radius:7pt;padding:.11in .13in .1in;position:relative;overflow:hidden}
+.grt{margin-top:.1in;background:var(--ink);color:#fff;border-radius:7pt;padding:.11in .13in .1in;position:relative;overflow:hidden}
 .grt:before{content:'';position:absolute;right:-.4in;top:-.5in;width:1.6in;height:1.6in;border-radius:50%;background:radial-gradient(rgba(227,25,36,.35),transparent 70%)}
 .grt h4{position:relative;font-weight:800;font-size:14pt;line-height:1.02;letter-spacing:-.015em}
 .grt h4 em{font-style:normal;color:var(--red)}
@@ -212,12 +212,15 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .grt .zero{position:relative;font-size:7.4pt;color:var(--muted);margin-top:4pt;padding-top:3pt;border-top:.6pt solid rgba(255,255,255,.14)}
 .grt .zero b{color:#fff}
 
-.rev{margin-top:.1in;display:flex;gap:7pt;align-items:flex-start}
+.rev{margin-top:.09in;display:flex;gap:7pt;align-items:flex-start}
 .rev .q{font-family:'Outfit';font-weight:800;font-size:30pt;line-height:.7;color:var(--red);flex:none;margin-top:3pt}
 .rev p{font-size:9pt;line-height:1.3;font-weight:500}
 .rev .by{display:flex;align-items:center;gap:4pt;font-size:7.4pt;color:var(--sub);margin-top:2pt}
 .rev .by .stars svg{width:7.5pt;height:7.5pt}
 
+.gets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2.5pt 10pt;margin-top:5pt}
+.gets li{position:relative;padding-left:11pt;font-size:8.4pt;line-height:1.25;font-weight:500}
+.gets li:before{content:'';position:absolute;left:0;top:2.6pt;width:6.5pt;height:3.6pt;border-left:1.6pt solid var(--red);border-bottom:1.6pt solid var(--red);transform:rotate(-45deg)}
 .towns{margin-top:.08in;font-size:7.3pt;line-height:1.35;color:var(--sub);text-align:center}
 .towns b{color:var(--ink);font-weight:700}
 
@@ -251,11 +254,11 @@ const frontHtml = (qr) => `
     </div>
     ${WITH_OFFER ? `
     <div class="offer">
-      <div class="when">October through March</div>
+      <div class="when">Book by November 30</div>
       <div class="name">The Rain-Ready<br><em>Full Detail</em></div>
       <div class="free"><b>$50</b><span>of extras free</span></div>
       <div class="what">Full detail <b>from $299</b>, plus <b>ceramic wax, RainX on the windows and carpet shampoo</b> on me.</div>
-      <div class="code">Type <kbd>RAIN READY</kbd> in the quote notes, or text it.</div>
+      <div class="code">Just mention this hanger when you book.</div>
     </div>` : `
     <div class="plain">
       <div><b>No deposit.</b><span>You pay after the walk-around, never before.</span></div>
@@ -289,8 +292,25 @@ const backHtml = (qr) => `
       ${logoSvg()}
       <div class="who">
         <h2>Hey, I'm Mikey.</h2>
-        <p>I've detailed <b>300+ cars</b> around Snohomish County since 2021. It's just me, so the guy who texts you back is the guy who does your car.</p>
+        <p><b>300+ cars</b> around Snohomish County since 2021. It's just me, so the guy who texts you back is the guy who does your car.</p>
       </div>
+    </div>
+
+    <div class="rev">
+      <div class="q">&ldquo;</div>
+      <div>
+        <p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p>
+        <div class="by">${stars(5)} Angela, Snohomish · Google review</div>
+      </div>
+    </div>
+
+    <div class="sec"><h3>What a full detail gets</h3>
+      <ul class="gets">
+        <li>Full vacuum, every crevice</li><li>Hand wash and dry</li>
+        <li>Seats and carpet steam cleaned</li><li>Tires and wheels deep cleaned</li>
+        <li>Leather cleaned</li><li>Spray sealant on the paint</li>
+        <li>Door jambs wiped down</li><li>Glass inside and out</li>
+      </ul>
     </div>
 
     <div class="sec"><h3>Prices</h3>
@@ -298,16 +318,15 @@ const backHtml = (qr) => `
         <div class="row"><span class="nm">Exterior detail</span><span class="fill"></span><span class="pr">from <b>$160</b></span></div>
         <div class="row"><span class="nm">Interior detail</span><span class="fill"></span><span class="pr">from <b>$200</b></span></div>
         <div class="row"><span class="nm">Full detail <small>inside + out</small></span> <span class="tag">Most popular</span><span class="fill"></span><span class="pr">from <b>$299</b></span></div>
-        <div class="row"><span class="nm">Ceramic coating</span><span class="fill"></span><span class="pr">from <b>$500</b></span></div>
       </div>
-      <div class="note">Price depends on size and condition. <b>The quote gives you the exact number</b>, and it's the same in every town I work.</div>
+      <div class="note">Size and condition set the price. <b>The quote gives you the exact number.</b></div>
     </div>
 
     <div class="sec"><h3>How it works</h3>
       <div class="steps">
-        <div class="step"><div class="n">1</div><div><b>Get your exact price.</b><span>Scan the code. About 60 seconds, then I text you to pick a time.</span></div></div>
-        <div class="step"><div class="n">2</div><div><b>I come to you, home or work.</b><span>I bring the gear and every product. You just need an outdoor spigot and an outlet I can reach. You don't have to be home.</span></div></div>
-        <div class="step"><div class="n">3</div><div><b>Look it over, then pay.</b><span>We walk around the car together and I fix anything you point at. No deposit, ever.</span></div></div>
+        <div class="step"><div class="n">1</div><div><b>Get your exact price.</b><span>Scan the code. About 60 seconds, then I text you a time.</span></div></div>
+        <div class="step"><div class="n">2</div><div><b>I come to you, home or work.</b><span>I bring every product. You just need an outdoor spigot and an outlet. You don't have to be home.</span></div></div>
+        <div class="step"><div class="n">3</div><div><b>Look it over, then pay.</b><span>We walk around it together and I fix anything you point at.</span></div></div>
       </div>
     </div>
 
@@ -321,17 +340,7 @@ const backHtml = (qr) => `
       <div class="zero"><b>300+ cars in, nobody has ever asked for a refund.</b></div>
     </div>
 
-    <div class="rev">
-      <div class="q">&ldquo;</div>
-      <div>
-        <p>He was so professional, well spoken, hard working and thorough. My car had never been detailed before. It looks amazing now.</p>
-        <div class="by">${stars(5)} Tara H., Google review</div>
-      </div>
-    </div>
-
-    <div class="towns"><b>In these towns every week:</b> ${TOWNS.join(' · ')}</div>
-
-    <div class="today"><span class="box"></span><span>I'm on your street today. Come say hi.</span></div>
+    <div class="today"><span class="box"></span><span>I just detailed a car on your street.</span></div>
 
     <div class="cta">
       <div class="qr">${qr}</div>
@@ -342,7 +351,7 @@ const backHtml = (qr) => `
         <div class="url">${SITE}</div>
       </div>
     </div>
-    ${WITH_OFFER ? `<div class="fine">Rain-Ready: a Full Detail booked Oct 1, 2026 to Mar 31, 2027 with RAIN READY in the quote notes or a text gets ceramic wax, RainX and carpet shampoo free. I take 12 cars a week.</div>` : ''}
+    ${WITH_OFFER ? `<div class="fine">Rain-Ready: book a Full Detail by November 30, 2026 and mention this hanger. Ceramic wax, RainX and carpet shampoo come free. I take 12 cars a week.</div>` : ''}
   </div></div>
 </section>`;
 

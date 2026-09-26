@@ -7,22 +7,21 @@ work, what if I don't like it.
 
 ![front and back](mockup-front-back.png)
 
-## ⚠️ Decide one thing before printing
+## The offer (decided 2026-09-26)
 
-**Does the Rain-Ready offer go on it?** It's the offer from
-`social/PLAYBOOK.md` section 3, same terms: a Full Detail booked Oct 1, 2026 to
-Mar 31, 2027 with RAIN READY in the notes or a text gets ceramic wax, RainX
-and carpet shampoo free ($50 of extras). The playbook still has it waiting on
-your yes, and printing it on a few thousand hangers is a bigger promise than
-one post.
+Mikey said yes to the Rain-Ready offer on the hanger, with a shorter window
+than the Instagram version: **book a Full Detail by November 30, 2026 and
+mention the hanger** (quote notes, a text or a call) and ceramic wax, RainX
+and carpet shampoo come free ($50 of extras). No code word: "mention this
+hanger" also tells you exactly which bookings came from hangers.
 
-| Your answer | Print these |
-|---|---|
-| **Yes** (recommended, see "Why an offer" below) | `front.pdf` + `back.pdf` |
-| **No** | `front-no-offer.pdf` + `back-no-offer.pdf` (the offer box becomes "No deposit / Same guy" plus a second review; see `mockup-front-back-no-offer.png`) |
+Print `front.pdf` + `back.pdf`. The `-no-offer` files stay for any reprint
+after November 30 (the offer box becomes "No deposit / Same guy" plus a
+second review; see `mockup-front-back-no-offer.png`).
 
-The offer version has the year on it. **A hanger with the offer is dead after
-March 31, 2027**, so order what you can actually hang by then.
+**A hanger with the offer is dead after November 30, 2026.** That's about
+nine weeks from October 1, so 2,500 hangers means roughly 275 a week. Hang
+what you can by then and switch to the no-offer version for anything after.
 
 ## Files
 
@@ -43,6 +42,11 @@ the hole where even a 1.75" hole misses them.
 
 ## Ordering it, step by step
 
+**Printer: Vistaprint** (Mikey's call was "pick for me"). The upload is
+simple, the 50-piece test batch is cheap, and reorders are one click. It's
+not always the cheapest at 2,500, so check GotPrint's price at checkout if
+you want; the 4.25" files are ready for them.
+
 **Vistaprint:** Marketing Materials → Door Hangers → **Large (4.5" x 11")** →
 Upload your design → front: `4.5x11-vistaprint/front.pdf`, back:
 `4.5x11-vistaprint/back.pdf`. In the preview, check that the hole lands inside
@@ -52,7 +56,7 @@ the red band and cuts nothing but red.
 and `back.pdf`. If their template shows a hole bigger than 1.75" or lower than
 2.2" from the top, stop and ask them.
 
-**Paper:** the thickest **matte** cardstock they have (14 or 16 pt). Matte
+**Paper:** the thickest **matte** cardstock they have (16 pt if offered, else 14). Matte
 because the back has a checkbox you tick with a pen, and ballpoint skips on
 gloss (a Sharpie works on either). Thin stock flops on the knob and looks
 cheap; heavier stock also stands up to damp porches better.
@@ -64,21 +68,21 @@ costs a few dollars; on 5,000 it costs the whole run.
 
 **How many:** start with about 2,500, hang 1,000 of them, give it three weeks,
 and see what came in before reordering. Per-piece price keeps dropping with
-quantity, but an untested run of 10,000 with a March 31 end date is the
+quantity, but an untested run of 10,000 with a November 30 end date is the
 expensive mistake here, not the printing.
 
 ## Hanging them
 
 1. **Around every job, first.** While a car is being worked on, hang 20 to 30
-   on the same street and the next one over, and tick "I'm on your street
-   today. Come say hi." The neighbor can walk over and see the car. Home
+   on the same street and the next one over, and tick "I just detailed a car
+   on your street." Home
    service businesses that do this report 3 to 5% of those hangers turning
    into jobs, against 1 to 2% for cold drops (sources below). The box is
    blank on purpose: only tick it when it's true.
 2. **Then neighborhoods that fit the job:** houses with driveways (you need
    their outdoor spigot and outlet, so apartments and most condos don't work),
    two or more cars out front, SUVs and minivans (families, kids, interior
-   work), and only the twelve towns printed on the back.
+   work), and only your twelve towns.
 3. **Doorknob or door handle only. Never the mailbox, the mailbox post or
    under the flag.** That's federal law (18 U.S.C. § 1725) and the fine is per
    mailbox.
@@ -107,8 +111,8 @@ expensive mistake here, not the printing.
   lands on the quote calculator. In Google Analytics: Reports → Acquisition →
   Traffic acquisition, look for **doorhanger / print**. Sent quotes from those
   visits show up under Reports → Engagement → Events → `qqc_submission`.
-- **RAIN READY in the notes** is shared with Instagram post B07 if that goes
-  up, so it counts both. Ask "where did you see me?" when you text back.
+- **"I saw your door hanger"** in the notes, a text or a call is a hanger
+  booking, by definition. Count them.
 - **The math to beat:** add up what the run cost (printing plus your hours
   hanging). One full detail is $299 or more. If the hangers bring in a handful
   of full details, they've paid for themselves several times over.
@@ -146,6 +150,11 @@ highest-value job, which matters when the week holds 12 cars.
 **"$50 of extras", not "17% off".** Jonah Berger's Rule of 100: above $100, a
 dollar amount reads as bigger than the same percentage.
 
+**Quality before prices.** Mikey's call: people should see the quality before
+they see a number. So the back goes intro, a review from a picky owner, what a
+full detail actually gets (from the site's own service list), and only then
+prices. Ceramic coating and the town list came off to make room.
+
 **Prices on the back.** "What will this cost me?" is the question that stops
 people calling. "From" prices plus "the quote gives you the exact number"
 answers it honestly without printing a number that could drift from the
@@ -160,8 +169,9 @@ when they pay (after).
 parts are the same as on the site. The refund line is what makes the promise
 believable.
 
-**The review.** Tara's ("my car had never been detailed before") speaks to the
-person holding the hanger, who probably hasn't had a detail either.
+**The review.** Angela's ("as someone who is very protective over their car")
+answers the owner of a nice, clean car who thinks the back-seat photo isn't
+for them. The front covers the messy cars; the back covers the babied ones.
 
 **Two ways to respond, not six.** A QR for people who'll do it now, a phone
 number for people who'd rather talk. The website is printed small, for people
@@ -177,10 +187,8 @@ doesn't come back as the exact link.
 
 ## Upgrades worth doing later
 
-- **A photo of you.** For "a stranger in my driveway", a face is the biggest
-  trust boost there is. A clear, friendly photo of you with your gear would
-  replace the small logo next to "Hey, I'm Mikey." Send one and it's a
-  five-minute change.
+- **A photo of you.** Mikey chose the logo for now (2026-09-26). If that
+  changes, a photo replaces the small logo next to "Hey, I'm Mikey."
 - **Licensed and insured**, once it's true (playbook section 11). It belongs
   on the back next to the guarantee.
 
