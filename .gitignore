@@ -3,3 +3,6 @@ tools/.geonames-us.zip
 
 # social post generator deps (social/tools/package.json)
 social/tools/node_modules/
+
+# print generator deps (print/tools/package.json)
+print/tools/node_modules/
