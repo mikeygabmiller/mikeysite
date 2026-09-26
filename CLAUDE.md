@@ -182,6 +182,13 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
 - **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
   extend its window, or add a new offer without Mikey saying so.
 
+## Fleet and dealership emails
+
+Cold emails to businesses with vans, lots and fleets live in
+`outreach/FLEET-EMAILS.md` (not served). They restate the facts table, so a
+fact change lands there too. Same voice, no em dashes, only the twelve towns,
+and nothing about being insured until Mikey confirms it.
+
 ## Shipping
 
 **Mikey wants work merged and live in the same session, not left sitting in a
