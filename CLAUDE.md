@@ -200,7 +200,7 @@ ordering steps, the distribution rules and why each section is there.
   lands there too. Edit `print/tools/build-door-hanger.cjs`, then
   `npm run hanger` (and `OFFER=0 npm run hanger`) in `print/tools`.
 - **It prints the Rain-Ready offer** with its own terms: book a Full Detail by
-  **November 30, 2026** and mention the hanger (no code word). Mikey set that
+  **December 31, 2026** and mention the hanger (no code word). Mikey set that
   window; don't widen it or extend it without him. Reprints after that date
   use the `-no-offer` version.
 - The generator exits with an error if copy spills out of the safe area,

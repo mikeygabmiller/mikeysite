@@ -10,17 +10,17 @@ work, what if I don't like it.
 ## The offer (decided 2026-09-26)
 
 Mikey said yes to the Rain-Ready offer on the hanger, with a shorter window
-than the Instagram version: **book a Full Detail by November 30, 2026 and
+than the Instagram version: **book a Full Detail by December 31, 2026 and
 mention the hanger** (quote notes, a text or a call) and ceramic wax, RainX
 and carpet shampoo come free ($50 of extras). No code word: "mention this
 hanger" also tells you exactly which bookings came from hangers.
 
 Print `front.pdf` + `back.pdf`. The `-no-offer` files stay for any reprint
-after November 30 (the offer box becomes "No deposit / Same guy" plus a
+after December 31 (the offer box becomes "No deposit / Same guy" plus a
 second review; see `mockup-front-back-no-offer.png`).
 
-**A hanger with the offer is dead after November 30, 2026.** That's about
-nine weeks from October 1, so 2,500 hangers means roughly 275 a week. Hang
+**A hanger with the offer is dead after December 31, 2026.** That's about
+13 weeks from October 1, so 2,500 hangers means roughly 190 a week. Hang
 what you can by then and switch to the no-offer version for anything after.
 
 ## Files
@@ -68,7 +68,7 @@ costs a few dollars; on 5,000 it costs the whole run.
 
 **How many:** start with about 2,500, hang 1,000 of them, give it three weeks,
 and see what came in before reordering. Per-piece price keeps dropping with
-quantity, but an untested run of 10,000 with a November 30 end date is the
+quantity, but an untested run of 10,000 with a December 31 end date is the
 expensive mistake here, not the printing.
 
 ## Hanging them

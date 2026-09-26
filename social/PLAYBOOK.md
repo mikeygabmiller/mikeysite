@@ -162,7 +162,7 @@ highest-priced job.
 - Busy weeks: don't quietly drop an extra. If the offer gets more popular
   than your schedule can take, post that it's closed and stop posting B07.
 - **The door hanger prints the same three extras on a shorter window**
-  (`print/door-hanger/`): a Full Detail booked by November 30, 2026 where the
+  (`print/door-hanger/`): a Full Detail booked by December 31, 2026 where the
   customer mentions the hanger. No code word needed for those. Honor them the
   same way.
 - **After March 31, stop posting it.** For summer, the same three-extra bundle
