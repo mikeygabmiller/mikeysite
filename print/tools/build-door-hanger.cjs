@@ -49,11 +49,13 @@ const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', '
 const WITH_OFFER = process.env.OFFER !== '0';
 
 const BLEED = 0.125;
-const TRIM_H = 11;
-const HOLE_ZONE = 2.2;   // inches from the top trim kept clear for the die cut
+// hole: inches from the top trim kept clear for the die cut.
+// compact: the 3.5 x 8.5 card (Bizay only offers that size), which gets its
+// own tighter type scale below rather than a shrunk copy of the big one.
 const SIZES = [
-  { key: '4.25x11', w: 4.25, label: 'standard' },
-  { key: '4.5x11', w: 4.5, label: 'vistaprint' },
+  { key: '4.25x11', w: 4.25, h: 11, hole: 2.2, dir: '4.25x11-standard' },
+  { key: '4.5x11', w: 4.5, h: 11, hole: 2.2, dir: '4.5x11-vistaprint' },
+  { key: '3.5x8.5', w: 3.5, h: 8.5, hole: 1.75, dir: '3.5x8.5-bizay', compact: true, holeDia: 1.25, holeCy: 0.95 },
 ];
 
 // Static weights from @fontsource, not the variable files in social/fonts/.
@@ -81,7 +83,50 @@ async function qrSvg() {
   });
 }
 
-const CSS = (trimW) => `
+const COMPACT_CSS = `
+.safe{left:.15in;right:.15in;top:${1.75 + 0.1}in;bottom:.13in}
+.band .side{top:${BLEED + 0.42}in;width:.82in}
+.band .side.l{left:${BLEED + 0.08}in}.band .side.r{right:${BLEED + 0.08}in}
+.band .side b{font-size:17pt}.band .side span{font-size:5.4pt;letter-spacing:.1em}
+.band .side .stars svg{width:6.5pt;height:6.5pt}
+.front .logo{width:2.05in}
+.eyebrow{font-size:6pt;margin-top:.08in;letter-spacing:.16em}
+.front h1{font-size:20pt;margin-top:.05in}
+.front .promise{font-size:16.5pt;margin-top:.05in}
+.ba{margin:.1in -${0.15 + BLEED}in 0;height:1.78in}
+.ba .ph.b .chip{left:${0.15 + BLEED}in}.ba .ph.a .chip{right:${0.15 + BLEED}in}
+.ba .chip{font-size:5.8pt;top:.07in}
+.ba .cap{font-size:11pt;padding:.22in ${0.15 + BLEED}in .05in}
+.offer{margin-top:.1in;padding:.07in .1in}
+.offer .when{font-size:5.8pt}.offer .name{font-size:12.5pt}
+.offer .free{right:.1in;top:.07in}.offer .free b{font-size:15pt}.offer .free span{font-size:5.4pt}
+.offer .what{font-size:7.2pt}.offer .code{font-size:7pt;margin-top:2pt}
+.plain{margin-top:.1in;padding:.07in .1in}.plain b{font-size:10pt}.plain span{font-size:6.8pt}
+.frev{margin-top:.08in}.frev p{font-size:8pt}.frev .by{font-size:6.4pt}
+.cta{gap:.1in}
+.qr{padding:.06in}.qr svg{width:1.2in;height:1.2in}
+.cta .scan{font-size:11pt}.cta .scan-sub{font-size:6.8pt}
+.cta .or{font-size:6pt;margin-top:4pt}.cta .phone{font-size:16pt}.cta .url{font-size:7pt;margin-top:2pt}
+.hi .logo{width:.9in}.hi h2{font-size:15pt}.hi p{font-size:7pt}
+.rev{margin-top:.06in}.rev .q{font-size:22pt}.rev p{font-size:7.4pt}.rev .by{font-size:6.2pt}
+.rev .by .stars svg{width:6pt;height:6pt}
+.sec{margin-top:.06in}.sec h3{font-size:6.2pt}
+.gets{gap:1.5pt 8pt;margin-top:3pt}.gets li{font-size:6.9pt;padding-left:9pt}
+.gets li:before{width:5.5pt;height:3pt;top:2.2pt}
+.prices{margin-top:2pt}.prices .row{padding:1.6pt 0}.prices .nm{font-size:8.4pt}.prices .nm small{font-size:6.4pt}
+.prices .tag{font-size:5pt}.prices .pr{font-size:6.8pt}.prices .pr b{font-size:10pt}
+.note{display:none}
+.steps{gap:2pt;margin-top:2pt}.step{gap:5pt}.step .n{width:12pt;height:12pt;font-size:7pt}
+.step b{font-size:8pt}.step span{font-size:6.6pt}
+.grt{margin-top:.07in;padding:.06in .1in}.grt h4{font-size:11.5pt}
+.grt .three{margin-top:3pt;gap:.06in}.grt .three b{font-size:6.6pt}.grt .three span{font-size:6.1pt}
+.grt .zero{display:none}
+.today{margin-top:.05in;font-size:10.5pt;padding:2pt 6pt}.today .box{width:9pt;height:9pt}
+.back .cta{padding-top:.06in}.back .qr svg{width:1.15in;height:1.15in}.back .qr{padding:.05in}
+.fine{font-size:5.6pt;margin-top:.04in}
+`;
+
+const CSS = ({ w: trimW, h: TRIM_H, hole: HOLE_ZONE, compact }) => `
 ${[400, 500, 600, 700, 800].map(w => fontFace('Outfit', 'outfit', w)).join('')}
 ${fontFace('Caveat', 'caveat', 700)}
 @page{size:${trimW + 2 * BLEED}in ${TRIM_H + 2 * BLEED}in;margin:0}
@@ -233,6 +278,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .back .qr{box-shadow:0 0 0 .6pt var(--line);padding:.06in}
 .back .qr svg{width:1.1in;height:1.1in}
 .fine{font-size:6.3pt;line-height:1.3;color:#7a746b;margin-top:.06in}
+${compact ? COMPACT_CSS : ''}
 `;
 
 const frontHtml = (qr) => `
@@ -385,8 +431,9 @@ async function checkQr(page, pngBuf, label) {
   const suffix = WITH_OFFER ? '' : '-no-offer';
 
   for (const size of SIZES) {
+    const TRIM_H = size.h;
     const pageW = size.w + 2 * BLEED, pageH = TRIM_H + 2 * BLEED;
-    const html = `<!doctype html><html><head><meta charset="utf-8"><style>${CSS(size.w)}</style></head>
+    const html = `<!doctype html><html><head><meta charset="utf-8"><style>${CSS(size)}</style></head>
       <body>${frontHtml(qr)}${backHtml(qr)}</body></html>`;
     const tmp = path.join(OUT, `.render-${size.key}.html`);
     fs.writeFileSync(tmp, html);
@@ -422,7 +469,7 @@ async function checkQr(page, pngBuf, label) {
 
     // One file per side: Vistaprint and GotPrint both ask for front and back
     // as separate uploads, and every printer takes it that way.
-    const dir = path.join(OUT, 'print-files', size.key === '4.25x11' ? '4.25x11-standard' : '4.5x11-vistaprint');
+    const dir = path.join(OUT, 'print-files', size.dir);
     fs.mkdirSync(dir, { recursive: true });
     for (const [range, side] of [['1', 'front'], ['2', 'back']]) {
       const pdf = path.join(dir, `${side}${suffix}.pdf`);
@@ -441,10 +488,10 @@ async function checkQr(page, pngBuf, label) {
     }
     // Hole check on the smallest usable width with the largest common die.
     // CHECK_DIR=/some/dir also writes the other size there, for eyeballing.
-    if (size.key === '4.25x11' || process.env.CHECK_DIR) {
-      const pdir = size.key === '4.25x11' ? OUT : process.env.CHECK_DIR;
+    if (size.key !== '4.5x11' || process.env.CHECK_DIR) {
+      const pdir = size.key === '4.5x11' ? process.env.CHECK_DIR : OUT;
       const tag = size.key === '4.25x11' ? suffix : `${suffix}-${size.key}`;
-      await page.evaluate((o) => document.querySelectorAll('.page').forEach(p => p.insertAdjacentHTML('beforeend', o)), holeOverlay(size.w));
+      await page.evaluate((o) => document.querySelectorAll('.page').forEach(p => p.insertAdjacentHTML('beforeend', o)), holeOverlay(size.w, size.holeDia, size.holeCy));
       for (const [i, name] of ['front', 'back'].entries()) {
         const el = (await page.$$('.page'))[i];
         const buf = await el.screenshot({ type: 'png' });
@@ -459,13 +506,15 @@ async function checkQr(page, pngBuf, label) {
   await browser.close();
 
   // Side-by-side mockup of front and back on a door-ish grey.
-  const f = await sharp(path.join(OUT, `preview-front${suffix}.png`)).resize({ height: 1500 }).toBuffer();
-  const bk = await sharp(path.join(OUT, `preview-back${suffix}.png`)).resize({ height: 1500 }).toBuffer();
-  const fm = await sharp(f).metadata();
-  const pad = 70, W = fm.width * 2 + pad * 3, H = 1500 + pad * 2;
-  await sharp({ create: { width: W, height: H, channels: 3, background: '#e9e7e3' } })
-    .composite([{ input: f, left: pad, top: pad }, { input: bk, left: fm.width + pad * 2, top: pad }])
-    .png().toFile(path.join(OUT, `mockup-front-back${suffix}.png`));
+  for (const tag of [suffix, `${suffix}-3.5x8.5`]) {
+    const f = await sharp(path.join(OUT, `preview-front${tag}.png`)).resize({ height: 1500 }).toBuffer();
+    const bk = await sharp(path.join(OUT, `preview-back${tag}.png`)).resize({ height: 1500 }).toBuffer();
+    const fm = await sharp(f).metadata();
+    const pad = 70, W = fm.width * 2 + pad * 3, H = 1500 + pad * 2;
+    await sharp({ create: { width: W, height: H, channels: 3, background: '#e9e7e3' } })
+      .composite([{ input: f, left: pad, top: pad }, { input: bk, left: fm.width + pad * 2, top: pad }])
+      .png().toFile(path.join(OUT, `mockup-front-back${tag}.png`));
+  }
   for (const n of ['front', 'back']) { try { fs.unlinkSync(path.join(OUT, `.${n}${suffix}-bleed.png`)); } catch {} }
   console.log('wrote previews + mockup');
 })().catch(e => { console.error(e); process.exit(1); });

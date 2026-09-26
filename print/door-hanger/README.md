@@ -29,6 +29,7 @@ what you can by then and switch to the no-offer version for anything after.
 |---|---|
 | `print-files/4.25x11-standard/` | For GotPrint, UPrinting, 4over, PsPrint, a local shop: 4.25" x 11" |
 | `print-files/4.5x11-vistaprint/` | For Vistaprint, whose large hanger is 4.5" x 11" |
+| `print-files/3.5x8.5-bizay/` | For Bizay, whose only door hanger is 3.5" x 8.5". Same design with a tighter type scale; the "size and condition" note and the refund line are left off to fit. Chosen 2026-09-26 (2,000 for $220 + $20 shipping) |
 | `preview-*.png` | 300 dpi, trimmed, with a 1.5" hole drawn in. For looking, not printing |
 | `mockup-*.png` | Front and back side by side |
 
