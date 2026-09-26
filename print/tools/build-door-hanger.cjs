@@ -254,7 +254,7 @@ const frontHtml = (qr) => `
     </div>
     ${WITH_OFFER ? `
     <div class="offer">
-      <div class="when">Book by November 30</div>
+      <div class="when">Book by December 31</div>
       <div class="name">The Rain-Ready<br><em>Full Detail</em></div>
       <div class="free"><b>$50</b><span>of extras free</span></div>
       <div class="what">Full detail <b>from $299</b>, plus <b>ceramic wax, RainX on the windows and carpet shampoo</b> on me.</div>
@@ -351,7 +351,7 @@ const backHtml = (qr) => `
         <div class="url">${SITE}</div>
       </div>
     </div>
-    ${WITH_OFFER ? `<div class="fine">Rain-Ready: book a Full Detail by November 30, 2026 and mention this hanger. Ceramic wax, RainX and carpet shampoo come free. I take 12 cars a week.</div>` : ''}
+    ${WITH_OFFER ? `<div class="fine">Rain-Ready: book a Full Detail by December 31, 2026 and mention this hanger. Ceramic wax, RainX and carpet shampoo come free. I take 12 cars a week.</div>` : ''}
   </div></div>
 </section>`;
 
