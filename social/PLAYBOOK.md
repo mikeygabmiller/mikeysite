@@ -126,7 +126,7 @@ adding value, not cutting price.** His value equation:
 | Lever | How this offer pulls it |
 |---|---|
 | The result they want | "My car is ready for six months of rain." A named, seasonal goal instead of "a detail." |
-| How sure they are | 5.0 across 40 Google reviews, 300+ cars, and the guarantee: walk-around at the end, fix it on the spot, come back free, full refund if still not happy. |
+| How sure they are | 5.0 across 41 Google reviews, 300+ cars, and the guarantee: walk-around at the end, fix it on the spot, come back free, full refund if still not happy. |
 | How long it takes | Exact price in 60 seconds, a text back in minutes, done in one visit. |
 | How much hassle | You come to them. They don't have to be home. |
 

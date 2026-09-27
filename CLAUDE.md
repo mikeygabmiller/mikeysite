@@ -18,12 +18,13 @@ pages disagreeing is a promise he can't keep on one of them.
 | Full detail | **$369–$449** | $369 / $409 / $449 |
 | Size step | **+$40 SUV or pickup, +$80 van or 3-row** | condition (+$30 / +$60) and add-ons ride on top, outside the ranges |
 | Ceramic coating | **from $500** | tiered, quoted |
-| Paint correction | **quoted** | one-step **6–8 hrs**, multi-stage **1–2 days** |
+| Clean Club | **$125 a visit** | members' price is locked in; kept at $125 on 2026-09-27 |
+| Paint correction | **from $400** | 1-Step $400+ / 2-Step $650+ / Multi-Stage $900+, quoted. One-step **6–8 hrs**, multi-stage **1–2 days** |
 | Quote calculator takes | **60 seconds** | never 30, never 90 |
 | Full detail takes | **3–5 hours** | never 3–4 |
 | Basic interior takes | **about 90 minutes** | 2–4 hrs with extraction or pet hair |
 | Cars detailed | **300+** | |
-| Google rating | **5.0 across 40 reviews** | |
+| Google rating | **5.0 across 41 reviews** | |
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
@@ -202,7 +203,7 @@ excludes `print/`). Read its `README.md` before changing anything: it has the
 ordering steps, the distribution rules and why each section is there.
 
 - **A hanger is one more copy of the facts table.** Prices, 60 seconds, 300+,
-  5.0 across 40, the phone, the twelve towns, spigot and outlet: a fact change
+  5.0 across 41, the phone, the twelve towns, spigot and outlet: a fact change
   lands there too. Edit `print/tools/build-door-hanger.cjs`, then
   `npm run hanger` (and `OFFER=0 npm run hanger`) in `print/tools`.
 - **It prints the Rain-Ready offer** with its own terms: book a Full Detail by

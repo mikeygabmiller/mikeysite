@@ -82,27 +82,29 @@ A customer holding something with an old price on it gets that price:
 - **Rain-Ready post (B07).** If it went up saying "from $299" before the
   re-render, honor $299 for anyone who books from it, through its window.
 
-## Not in the book (not changed on 2026-09-27)
+## The other price lists
 
-These were left alone on purpose. Each one is Mikey's call:
+Decided by Mikey on 2026-09-27 unless marked open:
 
-- **Ceramic coating, from $500.** Tiered and quoted per car. Probably low for
-  a 5.0-rated detailer; set it once the hours and product cost per tier are
-  written down.
-- **Paint correction.** Quoted. The pages disagree with each other already:
-  `paint-correction-snohomish-county/` says one-step starts at $400, the
-  Snohomish, Lake Stevens and Mill Creek pages say $300+, and the cost page
-  says $300–$700. Pick one before the ads point at it.
-- **Clean Club, $125 a visit.** It was 78% of an exterior detail and is now
-  63%. Recurring members fill slots at the lowest price on the site, which
-  works against "fewer cars, more per car". Worth a decision.
-- **Pet hair removal:** $50–$80 as an add-on, $120–$220 on its own.
-- **Interior packages on the Lake Stevens and Mill Creek interior pages**
-  (Refresh $249+, Standard $289+, Deep Clean $369+) and the **truck page**
-  (Exterior $239+, Interior $289+, Full $409+). These moved by the same dollars
-  as their base service. Deep Clean now lands on the same number as a Full
-  Detail, which may read oddly.
-- **Mobile auto maintenance** ($59–$149) is a separate price list.
+- **Paint correction: from $400.** 1-Step $400+, 2-Step $650+, Multi-Stage
+  $900+ (up to about $1,200), quoted per car. The Snohomish, Lake Stevens and
+  Mill Creek pages used to sell a "Polish" tier at $300+ with different
+  tiers; they now match `paint-correction-snohomish-county/`. Worth knowing: a
+  one-step takes 6–8 hours, so $400 earns $50–$67 an hour, less than a Full
+  Detail. That's the next number to look at.
+- **Clean Club: $125 a visit, kept.** Members were promised a locked price,
+  and recurring visits are guaranteed income. It is now 63% of an exterior
+  detail (was 78%), so it's the cheapest slot on the calendar; if the week is
+  still over-full after the raise, this is where to look.
+- **Interior packages** on the Lake Stevens and Mill Creek interior pages:
+  Refresh $249+, Standard $289+, **Deep Clean $399+** (set above a sedan Full
+  Detail on purpose: it's the heaviest interior job). The **truck page**:
+  Exterior $239+, Interior $289+, Full $409+ (the SUV / pickup tier).
+- **Open: ceramic coating, from $500.** Tiered and quoted per car. Probably
+  low for a 5.0-rated detailer; set it once the hours and product cost per
+  tier are written down.
+- **Pet hair removal:** $50–$80 as an add-on, $120–$220 on its own. Unchanged.
+- **Mobile auto maintenance** ($59–$149) is a separate price list. Unchanged.
 
 ## Outside the repo (Mikey does these)
 
@@ -139,3 +141,4 @@ disagree across sources:
 |---|---|---|---|---|---|
 | to 2026-09-27 | $160–$240 | $200–$280 | $299–$379 | pages +$40/+$80, calculator +$20/+$40 | launch prices |
 | 2026-09-27 | $199–$279 | $249–$329 | $369–$449 | +$40/+$80 everywhere | booked full, going all in on ads |
+| 2026-09-27 | same | same | same | same | paint correction unified at from $400; Deep Clean to $399+; Clean Club kept at $125 |

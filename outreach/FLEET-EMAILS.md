@@ -137,7 +137,7 @@ customers' driveways all day, so they're the first thing people see before
 your tech knocks. I can detail them right in your yard, so nobody loses
 work hours at a car wash. All I need is a spigot and an outlet.
 
-300+ cars since 2021, 5.0 on Google across 40 reviews. You pay after, and
+300+ cars since 2021, 5.0 on Google across 41 reviews. You pay after, and
 only if it's right.
 
 Worth trying on one truck?
@@ -157,7 +157,7 @@ rough, I can detail it on your lot so it's ready for photos without leaving.
 Stains, odors, pet hair: the stuff a buyer notices the second they open the
 door. All I need is a spigot and an outlet.
 
-300+ cars since 2021, 5.0 on Google across 40 reviews. If it's not
+300+ cars since 2021, 5.0 on Google across 41 reviews. If it's not
 front-line ready, you don't pay.
 
 Want to try me on the next one?
@@ -177,7 +177,7 @@ I'm Mikey, a mobile detailer based in Snohomish. I can come to your lot and
 take the overflow when you need it. Call me when you need me, no minimum.
 All I need is a spigot and an outlet.
 
-300+ cars since 2021, 5.0 on Google across 40 reviews.
+300+ cars since 2021, 5.0 on Google across 41 reviews.
 
 Worth keeping my number for the next backup?
 ```
@@ -198,7 +198,7 @@ parking lot on a workday and detail a few of your employees' cars while
 they're at their desks. They book and pay me directly, so it costs you
 nothing but a spigot, an outlet and a couple of parking spots.
 
-300+ cars since 2021, 5.0 on Google across 40 reviews.
+300+ cars since 2021, 5.0 on Google across 41 reviews.
 
 Would your team use that?
 ```

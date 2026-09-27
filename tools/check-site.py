@@ -213,6 +213,33 @@ if stale_prices:
     if len(stale_prices) > 12:
         fails.append(f"    ...and {len(stale_prices) - 12} more")
 
+# --- review count: the raw HTML has to match site-stats.js ---------------------
+# site-stats.js fixes the count in the browser, but AI crawlers read the raw
+# HTML, so every hard-coded count has to be bumped with it. It drifted once:
+# site-stats.js went to 41 and 35 pages stayed at 40.
+m = re.search(r"reviewCount:\s*(\d+)", (ROOT / "site-stats.js").read_text(encoding="utf-8"))
+if not m:
+    fails.append("site-stats.js: no reviewCount")
+else:
+    n = m.group(1)
+    REV = re.compile(r'"reviewCount": "(\d+)"|\b(\d{2,3})\+?(?:</strong>|</span>|</div>)?\s*(?:five-star\s+|Google\s+)*reviews?\b'
+                     r'|across (\d{2,3}) (?:Google )?reviews'
+                     r'|data-md-reviews="[^"]*">(\d+)|stat-num">(\d+)\+?</(?:div|span)>\s*<div class="stat-label">Reviews',
+                     re.I)
+    off = []
+    for q in price_files:
+        if not q.exists():
+            continue
+        for lineno, line in enumerate(q.read_text(encoding="utf-8").splitlines(), 1):
+            for hit in REV.finditer(line):
+                got = next(g for g in hit.groups() if g)
+                if got != n:
+                    off.append(f"{q.relative_to(ROOT)}:{lineno}: {got}  {line.strip()[:70]}")
+    if off:
+        fails.append(f"review count differs from site-stats.js ({n}) in {len(off)} place(s):")
+        for d in off[:12]:
+            fails.append(f"    {d}")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:

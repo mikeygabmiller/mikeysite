@@ -889,7 +889,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
 
-5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
 
 Exact price for your car in 60 seconds, link in bio.
 
@@ -903,7 +903,7 @@ Exact price for your car in 60 seconds, link in bio.
 
 This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
 
-5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
 
 Exact price for your car in 60 seconds: mikeysdetailing.com
 ```
