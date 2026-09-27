@@ -106,11 +106,11 @@ than once, and a single drop to strangers tells you almost nothing. The
 catch: 2,302 cards is a small test, and the result will be noisy. One booking
 more or less changes the picture.
 
-| Case | Bookings per 1,000 cards | Jobs | Revenue (~$330 each) | Return |
+| Case | Bookings per 1,000 cards | Jobs | Revenue (~$400 each) | Return |
 |---|---|---|---|---|
-| Weak | 1 | ~2 | ~$760 | loses ~$150 |
-| **Realistic** | **3** | **~7** | **~$2,280** | **~2.5x** |
-| Strong | 6 | ~14 | ~$4,560 | ~5x |
+| Weak | 1 | ~2 | ~$920 | about even |
+| **Realistic** | **3** | **~7** | **~$2,760** | **~3x** |
+| Strong | 6 | ~14 | ~$5,520 | ~6x |
 
 **Break-even is 3 full details.** Around Dec 1, count them. 7 or more: scale
 into the seven-route plan below. 3 to 6: it paid, so try the next two routes

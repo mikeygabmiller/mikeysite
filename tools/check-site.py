@@ -213,6 +213,30 @@ if stale_prices:
     if len(stale_prices) > 12:
         fails.append(f"    ...and {len(stale_prices) - 12} more")
 
+# --- FAQ prices: the schema answer can't quote a price the page doesn't -------
+# Most pages carry each FAQ answer twice, visible and in the FAQPage JSON-LD.
+# Every dollar amount in a schema answer has to appear in the page's visible
+# text (the questions are often worded differently, so this doesn't pair them
+# up), or Google is reading a price the customer never sees.
+import html as _html
+for p in pages:
+    rel = str(p.relative_to(ROOT))
+    src = p.read_text(encoding="utf-8")
+    blocks = JSONLD.findall(src)
+    try:
+        g = json.loads(blocks[0]).get("@graph", []) if blocks else []
+    except json.JSONDecodeError:
+        continue
+    text = re.sub(r"\s+", " ", _html.unescape(re.sub(r"<[^>]+>", " ", JSONLD.sub("", src))))
+    for node in g:
+        if node.get("@type") != "FAQPage":
+            continue
+        for q in node.get("mainEntity", []):
+            ans = q.get("acceptedAnswer", {}).get("text", "")
+            for amt in sorted(set(re.findall(r"\$\d[\d,]*\d|\$\d", ans))):
+                if not re.search(re.escape(amt) + r"(?![\d,]*\d)", text):
+                    fails.append(f"{rel}: FAQ schema says {amt} for \"{q.get('name','')[:50]}\" but the page never shows it")
+
 # --- review count: the raw HTML has to match site-stats.js ---------------------
 # site-stats.js fixes the count in the browser, but AI crawlers read the raw
 # HTML, so every hard-coded count has to be bumped with it. It drifted once:

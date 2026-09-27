@@ -85,7 +85,7 @@ PAGE_SERVICE = {
     "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "paint-correction-snohomish-county/index.html": (None,"Paint Correction",  "Paint Correction",     400, 1200),
     "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      500, None),
-    "pet-hair-removal-car-detailing/index.html":   (None,"Pet Hair Removal",   "Pet Hair Removal",      80, 220),
+    "pet-hair-removal-car-detailing/index.html":   (None,"Pet Hair Removal",   "Pet Hair Removal",      50, 220),
     "mobile-auto-maintenance/index.html":          (None,"Mobile Auto Maintenance","Auto Maintenance",  25, 199),
     "services/index.html":             (None, "Full Detail",     "Full Car Detailing",     369, 449),
     "services/interior.html":          (None, "Interior Detail", "Interior Car Detailing", 249, 329),
