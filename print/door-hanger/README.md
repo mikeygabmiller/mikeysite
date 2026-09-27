@@ -80,7 +80,10 @@ expensive mistake here, not the printing.
    service businesses that do this report 3 to 5% of those hangers turning
    into jobs, against 1 to 2% for cold drops (sources below). The box is
    blank on purpose: only tick it when it's true.
-2. **Then neighborhoods that fit the job:** houses with driveways (you need
+2. **Then the zones in [`ROUTES.md`](ROUTES.md).** It has the ranked
+   neighborhoods, the week-by-week schedule and which cities want a permit.
+   The dashboard's Insights → Hangers screen has the same zones on a map,
+   and it logs each drop and counts the leads. What makes a neighborhood fit: houses with driveways (you need
    their outdoor spigot and outlet, so apartments and most condos don't work),
    two or more cars out front, SUVs and minivans (families, kids, interior
    work), and only your twelve towns.
