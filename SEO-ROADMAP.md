@@ -49,7 +49,7 @@ come from the Map Pack / Google Business Profile, not classic web search.
 
 ### 1. Google Business Profile (GBP)
 - Primary category: **Car Detailing Service**. Add every relevant secondary.
-- Add all services with descriptions + prices ($160–$379).
+- Add all services with descriptions + prices ($199–$449).
 - **Upload geotagged photos weekly** (before/afters, you working in each city).
 - Post a GBP update **1×/week** (offer, recent job, seasonal tip).
 - Answer your own **Q&A** with your top FAQs.

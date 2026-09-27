@@ -277,7 +277,7 @@ const T = {
     <h1>The Rain-Ready<br><em>Full Detail</em></h1>
     <div class="lede">Book a full detail and three<br>rain-season extras come free.</div>
     <div class="stack">
-      <div class="row base"><span>Full detail, inside and out</span><span class="p">from $299</span></div>
+      <div class="row base"><span>Full detail, inside and out</span><span class="p">from $369</span></div>
       <div class="row"><span>Ceramic wax</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
       <div class="row"><span>RainX on the windows</span><span class="p"><s>$10</s><span class="free">FREE</span></span></div>
       <div class="row"><span>Carpet shampoo</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>

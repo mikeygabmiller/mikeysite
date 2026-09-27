@@ -143,6 +143,76 @@ if dashed:
     if len(dashed) > 12:
         fails.append(f"    ...and {len(dashed) - 12} more")
 
+# --- prices: one price book, and nothing left over from the last one ----------
+# The price book lives here and in the facts table in CLAUDE.md. Every range on
+# the site is base + the calculator's size step: sedan +0, SUV/pickup +40,
+# van/3-row +80. Condition (+30 / +60) and add-ons ride on top and are not in
+# the published ranges. See PRICING.md for why and for the history.
+PRICE_BOOK = {"Exterior Detail": 199, "Interior Detail": 249, "Full Detail": 369}
+SIZE_STEPS = [0, 40, 80]
+# Every price the site has retired. None of these may appear as "$NNN" in a
+# served file or in a generator that prints the facts. $200 was the old
+# interior base; the one legitimate "$200" left is a vacuum, not our price.
+RETIRED = {"160", "240", "280", "299", "339", "379", "319", "349"}
+RETIRED_OK = {"$200 cordless"}
+
+home = (ROOT / "index.html").read_text(encoding="utf-8")
+m = re.search(r"var PRICE = \{([^}]*)\}", home)
+calc = {k: int(v) for k, v in re.findall(r"'([^']+)':(\d+)", m.group(1))} if m else {}
+if calc != PRICE_BOOK:
+    fails.append(f"quote calculator PRICE {calc} != price book {PRICE_BOOK}")
+steps = [int(v) for v in re.findall(r'data-role="vehicle" data-value="(\d+)"', home)]
+if steps != SIZE_STEPS:
+    fails.append(f"quote calculator vehicle steps {steps} != {SIZE_STEPS}")
+for name, v in PRICE_BOOK.items():
+    if f'data-name="{name}" data-value="{v}"' not in home:
+        fails.append(f"quote calculator card for {name} does not carry data-value={v}")
+# The "#allservices" chooser is a second, separate estimator. It sat at
+# $130/$160/$260 with +20/+40 sizes until 2026-09-27, below even the old book.
+m = re.search(r'<section id="allservices".*?var SVC = \{(.*?)\};\s*var SIZE = \{(.*?)\};', home, re.S)
+if not m:
+    fails.append("#allservices chooser: could not find its SVC / SIZE tables")
+else:
+    bases = dict(re.findall(r"label: '([^']+)', base: (\d+)", m.group(1)))
+    want_b = {"Interior": str(PRICE_BOOK["Interior Detail"]),
+              "Exterior": str(PRICE_BOOK["Exterior Detail"]),
+              "Full Detail": str(PRICE_BOOK["Full Detail"])}
+    if bases != want_b:
+        fails.append(f"#allservices chooser bases {bases} != price book {want_b}")
+    adds = [int(a) for a in re.findall(r"add: (\d+)", m.group(2))]
+    if adds != SIZE_STEPS:
+        fails.append(f"#allservices chooser size steps {adds} != {SIZE_STEPS}")
+
+want = {n: (str(v), str(v + SIZE_STEPS[-1])) for n, v in PRICE_BOOK.items()}
+for fp in biz_fingerprints:
+    biz = json.loads(fp)
+    for offer in biz.get("hasOfferCatalog", {}).get("itemListElement", []) + biz.get("makesOffer", []):
+        nm = offer.get("itemOffered", {}).get("name")
+        ps = offer.get("priceSpecification", {})
+        if nm in want and (ps.get("minPrice"), ps.get("maxPrice")) != want[nm]:
+            fails.append(f"#business offer {nm}: {ps.get('minPrice')}-{ps.get('maxPrice')} != {'-'.join(want[nm])}")
+
+price_files = served + [ROOT / "social/tools/posts.cjs", ROOT / "social/tools/render.cjs",
+                        ROOT / "print/tools/build-door-hanger.cjs", ROOT / "print/tools/build-postcard.cjs",
+                        ROOT / "outreach/FLEET-EMAILS.md"]
+OLD = re.compile(r"\$(\d{3})\b(?: cordless)?")
+stale_prices = []
+for q in price_files:
+    if not q.exists():
+        continue
+    for lineno, line in enumerate(q.read_text(encoding="utf-8").splitlines(), 1):
+        for hit in OLD.finditer(line):
+            if hit.group(0) in RETIRED_OK:
+                continue
+            if hit.group(1) in RETIRED or hit.group(1) == "200":
+                stale_prices.append(f"{q.relative_to(ROOT)}:{lineno}: {hit.group(0)}  {line.strip()[:80]}")
+if stale_prices:
+    fails.append(f"retired price still on the site ({len(stale_prices)}), see PRICING.md:")
+    for d in stale_prices[:12]:
+        fails.append(f"    {d}")
+    if len(stale_prices) > 12:
+        fails.append(f"    ...and {len(stale_prices) - 12} more")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:

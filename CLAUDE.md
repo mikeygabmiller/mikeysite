@@ -13,9 +13,10 @@ pages disagreeing is a promise he can't keep on one of them.
 
 | Fact | The answer | Notes |
 |---|---|---|
-| Exterior detail | **$160–$240** | price scales with vehicle size |
-| Interior detail | **$200–$280** | |
-| Full detail | **$299–$379** | $299 sedan / $339 SUV / $379 truck-XL |
+| Exterior detail | **$199–$279** | $199 sedan / $239 SUV-pickup / $279 van-3-row |
+| Interior detail | **$249–$329** | $249 / $289 / $329 |
+| Full detail | **$369–$449** | $369 / $409 / $449 |
+| Size step | **+$40 SUV or pickup, +$80 van or 3-row** | condition (+$30 / +$60) and add-ons ride on top, outside the ranges |
 | Ceramic coating | **from $500** | tiered, quoted |
 | Paint correction | **quoted** | one-step **6–8 hrs**, multi-stage **1–2 days** |
 | Quote calculator takes | **60 seconds** | never 30, never 90 |
@@ -37,6 +38,11 @@ Two facts are **unconfirmed** — ask Mikey before writing either:
   pages used to claim Wednesday–Saturday. Copy currently avoids naming days.
 - **Licensed and insured.** It appears nowhere on the site. It's a strong trust
   signal for a stranger in a driveway, but don't assert it until he confirms.
+
+**Prices have their own file: `PRICING.md`.** It has the price book, what
+old quotes and printed pieces are honored at, and the checklist for the next
+change. `tools/check-site.py` holds the same book in `PRICE_BOOK` and fails on
+any retired price, so a price change starts there.
 
 **Changing one of these means changing it everywhere,** including the JSON-LD
 `"text"` fields in FAQPage blocks and `llms.txt`. Grep the whole repo, don't
@@ -88,7 +94,7 @@ Rules that follow from that:
 
   `tools/check-site.py` fails the build on any em dash in a served file, so a
   new one cannot reach the site without someone deliberately deleting a check.
-  En dashes in number ranges are fine and are left alone: `$299–$379`,
+  En dashes in number ranges are fine and are left alone: `$369–$449`,
   `3–5 hours`. Those read as ranges, not as punctuation.
 
 ## Say the guarantee four times, not thirteen

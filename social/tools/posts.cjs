@@ -394,7 +394,7 @@ ${Q}
   {
     id: 'B07', week: 'bank', pillar: 'Offer', title: 'Rain-Ready offer (not before week 5)', offer: true,
     slides: [{ t: 'offer' }],
-    alt: 'Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $299, plus ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don\'t pay until you love it.',
+    alt: 'Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $369, plus ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don\'t pay until you love it.',
     ig: `The Rain-Ready Full Detail. Runs October through March.
 
 Book a full detail and three rain-season extras come free:
@@ -402,7 +402,7 @@ Ceramic wax ($20)
 RainX on the windows ($10)
 Carpet shampoo ($20)
 
-That's $50 of extras on me, on top of the normal full detail (from $299, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
+That's $50 of extras on me, on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
 
 Why these three: ceramic wax makes the rain bead up and roll off the paint, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
 

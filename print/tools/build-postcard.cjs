@@ -225,7 +225,7 @@ const frontHtml = (qr) => `
       <div class="when">Book by December 31</div>
       <div class="name">The Rain-Ready<br><em>Full Detail</em></div>
       <div class="free"><b>$50</b><span>of extras free</span></div>
-      <div class="what">Full detail <b>from $299</b>, plus <b>ceramic wax, RainX on the windows and carpet shampoo</b> on me.</div>
+      <div class="what">Full detail <b>from $369</b>, plus <b>ceramic wax, RainX on the windows and carpet shampoo</b> on me.</div>
       <div class="code">Just mention this postcard when you book.</div>
     </div>
     <div class="cta">
@@ -272,9 +272,9 @@ const backHtml = (qr) => `
       </div>
       <div class="sec"><h3>Prices</h3>
         <div class="prices">
-          <div class="row"><span class="nm">Exterior</span><span class="fill"></span><span class="pr">from <b>$160</b></span></div>
-          <div class="row"><span class="nm">Interior</span><span class="fill"></span><span class="pr">from <b>$200</b></span></div>
-          <div class="row"><span class="nm">Full detail<small>inside + out, most popular</small></span><span class="fill"></span><span class="pr">from <b>$299</b></span></div>
+          <div class="row"><span class="nm">Exterior</span><span class="fill"></span><span class="pr">from <b>$199</b></span></div>
+          <div class="row"><span class="nm">Interior</span><span class="fill"></span><span class="pr">from <b>$249</b></span></div>
+          <div class="row"><span class="nm">Full detail<small>inside + out, most popular</small></span><span class="fill"></span><span class="pr">from <b>$369</b></span></div>
         </div>
         <div class="note">Size and condition set the price. <b>The quote gives you the exact number.</b> No travel fee.</div>
       </div>

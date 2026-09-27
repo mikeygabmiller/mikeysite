@@ -115,7 +115,7 @@ expensive mistake here, not the printing.
 - **"I saw your door hanger"** in the notes, a text or a call is a hanger
   booking, by definition. Count them.
 - **The math to beat:** add up what the run cost (printing plus your hours
-  hanging). One full detail is $299 or more. If the hangers bring in a handful
+  hanging). One full detail is $369 or more. If the hangers bring in a handful
   of full details, they've paid for themselves several times over.
 
 ## Why each part is there
@@ -143,12 +143,12 @@ is a relationship: give first, ask later. A door hanger gets one look and has
 to earn a response on its own. The old direct mail rule (40/40/20) says who
 you send it to and what you offer each matter twice as much as the design. This one adds value instead of cutting price.
 Research on promotions (Diamond and Campbell, 1989) found price cuts lower the
-price people expect to pay next time, while free extras don't, so $299 stays
-$299. It
+price people expect to pay next time, while free extras don't, so $369 stays
+$369. It
 also has a real deadline (the rain season ends), and it pushes toward your
 highest-value job, which matters when the week holds 12 cars.
 
-**"$50 of extras", not "17% off".** Jonah Berger's Rule of 100: above $100, a
+**"$50 of extras", not "14% off".** Jonah Berger's Rule of 100: above $100, a
 dollar amount reads as bigger than the same percentage.
 
 **Quality before prices.** Mikey's call: people should see the quality before
