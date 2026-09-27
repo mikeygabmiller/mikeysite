@@ -22,6 +22,7 @@ exclude:
   - GROWTH-PLAN.md
   - SEO-ROADMAP.md
   - SECTION-ORDER-ANALYSIS.md
+  - PRICING.md
 
   # Instructions and notes for whoever works on the site, Claude included.
   - CLAUDE.md

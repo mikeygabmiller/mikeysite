@@ -222,7 +222,7 @@ Weeks 1 and 2 stay as built, since there are no new photos yet.
   "I've got a couple of spots this week, message me", never a day.
 - **Licensed or insured.** Not yet true, so it appears nowhere until it is.
 - **That you bring water or power.** The customer provides both.
-- **Exact per-size prices.** Use "from $299, exact price in 60 seconds". See
+- **Exact per-size prices.** Use "from $369, exact price in 60 seconds". See
   the price note in section 11 before touching any price.
 
 **Tip posts are carousels** (5 to 7 slides: a hook, one tip per slide, a
@@ -409,13 +409,10 @@ you work** and **whether you're licensed and insured.**
       and control") coverage, from an agent who insures mobile detailers. Check
       WA business licensing with the Department of Revenue. Then tell Claude,
       and it becomes a trust line in the bio, a post and the site.
-- [ ] **Price mismatch, on hold by Mikey's call (2026-09-25). Don't fix
-      without asking him.** The quote calculator (the source of truth) charges
-      base + $20 SUV/truck or $40 van/XL + $30 Needs Work or $60 War Zone, so
-      full runs $299 to $399, interior $200 to $300, exterior $160 to $260. The
-      site advertises $299 to $379 ("$339 SUV / $379 truck"), $200 to $280 and
-      $160 to $240, and the homepage chooser shows a $260 / $160 / $130
-      ballpark. Posts avoid the problem by saying "from $299".
+- [x] **Price mismatch, fixed 2026-09-27 with the price raise.** The
+      calculator, the homepage chooser and every page now use one book:
+      $199 / $249 / $369, +$40 SUV or pickup, +$80 van or 3-row. See
+      `PRICING.md` at the repo root. Posts still say "from $369", not per-size.
 - [ ] **Site says 7 days, 8am to 8pm** (schema and terms page). Mikey's
       schedule changes week to week; should read "by appointment". On hold
       until he says to change it.

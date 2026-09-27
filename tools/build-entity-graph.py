@@ -51,45 +51,45 @@ CITIES = {
 # The homepage OfferCatalog and the visible copy on every page agree on these;
 # the stale numbers found only in services/* schema are corrected to match.
 CORE_SERVICES = [
-    ("Interior Detail", "Interior Car Detailing", 200, 280,
+    ("Interior Detail", "Interior Car Detailing", 249, 329,
      "Deep vacuum, steam clean, upholstery shampoo, leather cleaning and conditioning, "
      "plastics dressed, interior glass, deodorised."),
-    ("Exterior Detail", "Exterior Car Detailing", 160, 240,
+    ("Exterior Detail", "Exterior Car Detailing", 199, 279,
      "Hand wash, decontamination, clay bar, wheels and tires, exterior glass, "
      "wax or sealant applied to the paint."),
-    ("Full Detail", "Full Car Detailing", 299, 379,
+    ("Full Detail", "Full Car Detailing", 369, 449,
      "Interior and exterior combined — the complete service, inside and out."),
 ]
 
 # --- per-page Service definitions -----------------------------------------
 # (city or None for county-wide, service name, serviceType, minPrice, maxPrice)
 PAGE_SERVICE = {
-    "snohomish/index.html":            ("Snohomish",   "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
+    "snohomish/index.html":            ("Snohomish",   "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "snohomish/paint-correction.html": ("Snohomish",   "Paint Correction",     "Paint Correction",     300, 700),
-    "snohomish/truck-detailing.html":  ("Snohomish",   "Truck Detailing",      "Truck Detailing",      200, 340),
-    "everett/index.html":              ("Everett",     "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "everett/interior.html":           ("Everett",     "Interior Detail",      "Interior Car Detailing", 200, 280),
-    "everett/exterior.html":           ("Everett",     "Exterior Detail",      "Exterior Car Detailing", 160, 240),
-    "lake-stevens/index.html":         ("Lake Stevens","Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "lake-stevens/interior-detail.html": ("Lake Stevens","Interior Detail",    "Interior Car Detailing", 200, 320),
+    "snohomish/truck-detailing.html":  ("Snohomish",   "Truck Detailing",      "Truck Detailing",      239, 409),
+    "everett/index.html":              ("Everett",     "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "everett/interior.html":           ("Everett",     "Interior Detail",      "Interior Car Detailing", 249, 329),
+    "everett/exterior.html":           ("Everett",     "Exterior Detail",      "Exterior Car Detailing", 199, 279),
+    "lake-stevens/index.html":         ("Lake Stevens","Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "lake-stevens/interior-detail.html": ("Lake Stevens","Interior Detail",    "Interior Car Detailing", 249, 369),
     "lake-stevens/paint-correction-in-lake-stevens.html": ("Lake Stevens","Paint Correction","Paint Correction",300,700),
-    "mill-creek/index.html":           ("Mill Creek",  "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "mill-creek/interior-detail.html": ("Mill Creek",  "Interior Detail",      "Interior Car Detailing", 200, 320),
+    "mill-creek/index.html":           ("Mill Creek",  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "mill-creek/interior-detail.html": ("Mill Creek",  "Interior Detail",      "Interior Car Detailing", 249, 369),
     "mill-creek/paint-correction-in-mill-creek.html": ("Mill Creek","Paint Correction","Paint Correction",300,700),
-    "monroe/index.html":               ("Monroe",      "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
+    "monroe/index.html":               ("Monroe",      "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "monroe/ceramic-coating.html":     ("Monroe",      "Ceramic Coating",      "Ceramic Coating",      500, None),
     "mill-creek/ceramic-coating.html": ("Mill Creek", "Ceramic Coating", "Ceramic Coating", 500, None),
-    "bothell/index.html":              ("Bothell",     "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "duvall/index.html":               ("Duvall",      "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "marysville/index.html":           ("Marysville",  "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
-    "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 160, 379),
+    "bothell/index.html":              ("Bothell",     "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "duvall/index.html":               ("Duvall",      "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "marysville/index.html":           ("Marysville",  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "paint-correction-snohomish-county/index.html": (None,"Paint Correction",  "Paint Correction",     400, 1200),
     "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      500, None),
     "pet-hair-removal-car-detailing/index.html":   (None,"Pet Hair Removal",   "Pet Hair Removal",      80, 220),
     "mobile-auto-maintenance/index.html":          (None,"Mobile Auto Maintenance","Auto Maintenance",  25, 199),
-    "services/index.html":             (None, "Full Detail",     "Full Car Detailing",     299, 379),
-    "services/interior.html":          (None, "Interior Detail", "Interior Car Detailing", 200, 280),
-    "services/exterior.html":          (None, "Exterior Detail", "Exterior Car Detailing", 160, 240),
+    "services/index.html":             (None, "Full Detail",     "Full Car Detailing",     369, 449),
+    "services/interior.html":          (None, "Interior Detail", "Interior Car Detailing", 249, 329),
+    "services/exterior.html":          (None, "Exterior Detail", "Exterior Car Detailing", 199, 279),
 }
 
 SKIP_DIRS = {"mockups", "systems"}
@@ -139,7 +139,7 @@ def business_node(reviews, speakable):
         "image": OG_IMAGE,
         "telephone": "+1-425-600-7897",
         "email": "book@mikeysdetailing.com",
-        "priceRange": "$160-$379",
+        "priceRange": "$199-$449",
         "currenciesAccepted": "USD",
         "paymentAccepted": "Cash, Credit Card, Debit Card",
         "foundingDate": "2021",

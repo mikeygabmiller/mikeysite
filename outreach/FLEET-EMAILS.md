@@ -25,8 +25,8 @@ answer before the question comes, or the reply is where the deal dies.
       Never write "insured" in an email until it's true.
 - [ ] **Your fleet price.** Businesses expect a lower per-vehicle price than
       retail, in exchange for volume and no selling. Decide your floor before
-      anyone asks: your retail full detail pays about **$60 to $125 an hour**
-      ($299 over 5 hours up to $379 over 3). Pick the lowest hourly you'll
+      anyone asks: your retail full detail pays about **$74 to $150 an hour**
+      ($369 over 5 hours up to $449 over 3). Pick the lowest hourly you'll
       accept, times the hours a vehicle takes you. That's your number. Your
       existing Clean Club price ($125 a visit) is a ready-made maintenance
       price for vans after the first full detail.
@@ -254,7 +254,7 @@ a specific time books more than a vague one.
 
 ```
 Depends on size and condition, so I'd rather look than guess. A first full
-detail is from $299, exterior only from $160. After that, keeping it up is
+detail is from $369, exterior only from $199. After that, keeping it up is
 $125 a vehicle every 1 to 3 months. For [5] or more in one visit it's
 [YOUR FLEET PRICE] each. Can I come look at them [day]?
 ```

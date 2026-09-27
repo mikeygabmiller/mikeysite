@@ -14,7 +14,7 @@ and carpet shampoo come free ($50 of extras). Mikey said yes to putting it on
 the postcard on 2026-09-27.
 
 Why this offer and not a bigger one: it adds value instead of cutting price,
-so $299 stays $299 next time. It has a real end date (the rain season), and
+so $369 stays $369 next time. It has a real end date (the rain season), and
 it pulls people toward the highest-priced job, which matters when the week
 holds 12 cars. It's also the offer already on the hangers, so nobody gets two
 different deals for the same car. "Mention this postcard" is the tracking:
@@ -139,9 +139,9 @@ December 31.
 | **Total** | **~$3,600** (about 37¢ a delivered card) |
 | Your time | ~3 hours bundling per drop |
 
-**What a booking is worth:** a Full Detail is $299 to $379; call it $330.
+**What a booking is worth:** a Full Detail is $369 to $449; call it $400.
 The offer costs you about $10 of product and 25 minutes per car. **The test
-pays for itself at about 11 full details from 9,730 cards.**
+pays for itself at about 9 full details from 9,730 cards.**
 
 Nobody can promise a response rate, so here are three honest cases. Industry
 figures for cold saturation mail run from 0.1% to about 2%, and the higher
@@ -150,9 +150,9 @@ details**, not calls:
 
 | Case | Bookings per 1,000 cards | Jobs from the test | Revenue | Cost per job | Return |
 |---|---|---|---|---|---|
-| Weak | 1 | ~10 | ~$3,200 | ~$360 | about even |
-| **Realistic** | **3** | **~29** | **~$9,600** | **~$124** | **~2.7x** |
-| Strong | 6 | ~58 | ~$19,300 | ~$62 | ~5.4x |
+| Weak | 1 | ~10 | ~$4,000 | ~$360 | about even |
+| **Realistic** | **3** | **~29** | **~$11,600** | **~$124** | **~3.2x** |
+| Strong | 6 | ~58 | ~$23,200 | ~$62 | ~6.4x |
 
 What the table leaves out: repeat business (C. Wilson has booked four times),
 referrals, and the second car in the same driveway. Those are all upside. It
@@ -169,11 +169,11 @@ Three weeks after drop 2 lands (about Dec 1), count postcard bookings:
 mentions, plus `postcard / mail` in Google Analytics, plus quotes from those
 routes.
 
-- **Cost per booked job under $110** (roughly 33+ jobs): it works. Drop 3,
+- **Cost per booked job under $135** (roughly 27+ jobs): it works. Drop 3,
   then add the next seven routes, then Lake Stevens.
-- **$110 to $330** (11 to 32 jobs): it pays, barely. Keep the routes, try one
+- **$135 to $400** (10 to 26 jobs): it pays, barely. Keep the routes, try one
   change at a time (jumbo size, a different photo).
-- **Over $330** (10 or fewer): stop. Put the money into Google ads or more
+- **Over $400** (9 or fewer): stop. Put the money into Google ads or more
   door hangers around jobs.
 
 ## Doing the drop, step by step

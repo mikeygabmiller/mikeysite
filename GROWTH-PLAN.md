@@ -130,7 +130,7 @@ cutoff. You influence this only by accumulating genuine third-party mentions ove
 | Principle | What it means for your pages |
 |---|---|
 | **Answer-first** | Every page: an H2 phrased as the exact question, then a **40–60 word bolded answer** that stands alone with no context. Models lift these verbatim. |
-| **Fact density beats prose** | "An interior detail on a mid-size SUV in Snohomish County runs $200–$280 and takes 3–4 hours" gets cited. "We provide premium detailing services" never does. Numbers, ZIPs, durations, neighborhood names. |
+| **Fact density beats prose** | "An interior detail on a mid-size SUV in Snohomish County runs $249–$329 and takes 3–4 hours" gets cited. "We provide premium detailing services" never does. Numbers, ZIPs, durations, neighborhood names. |
 | **Entity clarity** | One `@graph` per page: `Organization` → `Person` (founder) → `Service` → `Place`, all `@id`-anchored. Machines must be able to resolve you to exactly one entity. |
 | **No JS-gated facts** | Most AI crawlers don't execute JavaScript. Anything `site-stats.js` injects is invisible to them — **the raw HTML values are the ones that count.** |
 | **Consistency across sources** | Price ranges, hours, phone, and service list must be byte-identical on the site, GBP, and every directory. Contradictions make models drop you. |
