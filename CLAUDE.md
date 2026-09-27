@@ -207,6 +207,18 @@ ordering steps, the distribution rules and why each section is there.
   picks up an em dash or a banned claim, or the QR code stops decoding. Look
   at the previews anyway.
 
+## EDDM postcard
+
+`print/postcard/` (not served) holds the 6.5" x 9" Every Door Direct Mail
+card, and its `README.md` has the printer, the routes, the drop dates and the
+ROI math. Same rules as the hanger: it's one more copy of the facts table,
+copy lives in `print/tools/build-postcard.cjs` (`npm run postcard`), and it
+prints the Rain-Ready offer with the hanger's terms (book a Full Detail by
+**December 31, 2026**, mention the postcard). Mikey approved the offer on the
+postcard on 2026-09-27; don't reprint it after that date with the offer on.
+The generator also fails if anything touches the white mail zone or the EDDM
+indicia leaves the corner USPS allows.
+
 ## Shipping
 
 **Mikey wants work merged and live in the same session, not left sitting in a
