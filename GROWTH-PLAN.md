@@ -28,7 +28,7 @@ the quote calculator, it isn't in this plan.
 | Schema | LocalBusiness, FAQPage, BreadcrumbList, Review, AggregateRating, OfferCatalog, Speakable |
 | Booking machine | Cloudflare Worker + Twilio: quote → instant auto-text → owner alert → dashboard |
 | Analytics | GA4 + Microsoft Clarity + first-party pixel + `generate_lead` on every tap-to-call/text |
-| Proof | 5.0★ · 40 reviews · 300+ cars |
+| Proof | 5.0★ · 41 reviews · 300+ cars |
 | Stats plumbing | `site-stats.js` — one number updates the whole site |
 
 **Gaps found in the code — these are the plan's raw material:**

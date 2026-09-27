@@ -270,7 +270,7 @@ const T = {
   review: s => `<div class="main review">
     <div class="stars">${STAR.repeat(5)}</div><div class="qm">&ldquo;</div>
     <div class="quote" style="font-size:${quoteSize(s.quote)}px">${s.quote}</div>
-    <div class="src"><span>Customer review</span><span><b>5.0</b> across 40 Google reviews</span></div></div>`,
+    <div class="src"><span>Customer review</span><span><b>5.0</b> across 41 Google reviews</span></div></div>`,
 
   offer: () => `<div class="main offer">
     <div class="eyebrow">October through March</div>
