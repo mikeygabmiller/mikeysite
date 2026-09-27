@@ -74,6 +74,48 @@ Ground shipping to your address. Upload `front.pdf` as the front and
 the file. **Approve the PDF proof only after checking**: the indicia box is top
 right on the white area, and nothing is cut off at the edges.
 
+## The $1,000 version (Mikey's budget, set 2026-09-27)
+
+This is the plan to run. The bigger plan below is what to scale into once
+this one proves itself.
+
+**Order 2,500 cards** at 55Printing (6.5x9, 14 pt gloss, both sides, regular
+turnaround): **$247 + ~$60 shipping**. 55Printing only lists 1,000, 2,500 and
+5,000 at this size, and 2,500 is the best fit.
+
+**Mail two routes twice**, three weeks apart:
+
+| Route | Homes | Median income | Avg household | Miles |
+|---|---|---|---|---|
+| 98290-R006 | 584 | $178k | 2.7 | 2.1 |
+| 98290-R028 | 567 | $178k | 2.7 | 3.1 |
+| **Total** | **1,151** | | | |
+
+| | |
+|---|---|
+| Printing + shipping | ~$307 |
+| Postage, 1,151 x 2 drops x $0.26 | $599 |
+| **Total** | **~$906** |
+| Spare cards | ~200: hand them to customers for neighbors. Never put one in a mailbox yourself (18 U.S.C. § 1725) |
+
+Same dates: order Sep 28, drop 1 on Mon Oct 12, drop 2 on Mon Nov 2, both at
+the Snohomish post office.
+
+**Why two routes twice, not four routes once:** people need to see you more
+than once, and a single drop to strangers tells you almost nothing. The
+catch: 2,302 cards is a small test, and the result will be noisy. One booking
+more or less changes the picture.
+
+| Case | Bookings per 1,000 cards | Jobs | Revenue (~$330 each) | Return |
+|---|---|---|---|---|
+| Weak | 1 | ~2 | ~$760 | loses ~$150 |
+| **Realistic** | **3** | **~7** | **~$2,280** | **~2.5x** |
+| Strong | 6 | ~14 | ~$4,560 | ~5x |
+
+**Break-even is 3 full details.** Around Dec 1, count them. 7 or more: scale
+into the seven-route plan below. 3 to 6: it paid, so try the next two routes
+before spending more. 0 to 2: stop and put the next $1,000 into Google ads.
+
 ## Where to mail: the first 4,865 homes
 
 Real USPS route data (pulled 2026-09-27 from the same source the EDDM tool
