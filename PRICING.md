@@ -32,6 +32,7 @@ and Exterior separately, and the calculator says so.
 |---|---|
 | `index.html`, `var PRICE` and the `data-role="vehicle"` buttons | the quote calculator, the thing that actually quotes |
 | `index.html`, `#allservices` `SVC` / `SIZE` | the "what do you need?" chooser's ballpark |
+| `index.html`, `#rain-ready` | the Rain-Ready value stack ($249 + $199 + $30 + $20 + $10 = $508, from $369), live until December 31, 2026 |
 | every page's JSON-LD | `priceRange`, the `#business` OfferCatalog, per-page `Service` offers |
 | every page's visible copy | pills, FAQ answers (and their JSON-LD twins), meta descriptions |
 | `llms.txt` | what AI assistants quote |

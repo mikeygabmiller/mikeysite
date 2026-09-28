@@ -1242,6 +1242,21 @@ header li a[href="#booking"],
 .mh-area:hover{ color:#fff; border-color:var(--brand-gold); }
 .mh-area svg{ color:var(--brand-gold); flex:none; }
 
+/* The Rain-Ready chip. Above the headline because a hanger or postcard QR
+   lands on this page, and the first thing they see should be the thing the
+   card promised them. Hidden in the markup; the Rain-Ready script shows it
+   until December 31 and never after. */
+.mh-rr{
+  display:inline-flex; align-items:center; gap:9px; flex-wrap:wrap; justify-content:center;
+  max-width:100%; margin:0 auto 14px; padding:7px 14px 7px 7px; border-radius:999px;
+  background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.45);
+  color:#f1f1f1; font-size:.86rem; font-weight:600; line-height:1.3; text-decoration:none; text-align:center;
+  opacity:0; animation:mhFadeUp .8s ease-out .2s forwards;
+}
+.mh-rr[hidden]{ display:none; }
+.mh-rr:hover{ border-color:var(--brand-gold); color:#fff; }
+.mh-rr-tag{ background:var(--brand-gold); color:#2a1e02; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px; }
+
 /* Pricing pills */
 .mh-prices{
   display:flex; justify-content:center; gap:12px; flex-wrap:wrap;
@@ -1350,6 +1365,8 @@ header li a[href="#booking"],
             <span class="mh-proof-val">300+</span>&nbsp;cars detailed
           </div>
         </div>
+
+        <a class="mh-rr" href="#rain-ready" data-rr hidden><span class="mh-rr-tag">Rain-Ready</span>Free polish, ceramic wax &amp; RainX with a Full Detail, until Dec 31 &rarr;</a>
 
         <div class="mh-headline">
           A Spotless Car, Inside &amp; Out.<br><span class="accent">I Come To You.</span>
@@ -1626,6 +1643,13 @@ header li a[href="#booking"],
 #qqcCard.compact { padding-top: 22px; }
 #qqcCard.compact .progress { margin-bottom: 20px; }
 
+#qqcCard .hero-info .rr-line { display: block; margin-top: 6px; font-size: 12px; font-weight: 640; color: var(--gold); }
+#qqcCard .hero-info .rr-line[hidden] { display: none; }
+#qqcCard .chip.is-free { cursor: default; border-color: rgba(216,178,92,.6); background: rgba(216,178,92,.08); }
+#qqcCard .chip.is-free .ic-mini { background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); }
+#qqcCard .chip.is-free .cp s, #qqcCard .inc-row.is-free .inc-price s { opacity: .6; margin-right: 3px; }
+#qqcCard .chip .free-tag { position: absolute; top: -8px; right: 10px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; }
+#qqcCard .inc-row.is-free .inc-price { color: var(--gold); }
 #qqcCard .save-tip { display: none; margin: 12px 2px 0; font-size: 13px; font-weight: 640; color: var(--accent); }
 
 /* Compact optional extras on step 3 */
@@ -1739,6 +1763,7 @@ header li a[href="#booking"],
             <span class="t">Full Detail</span>
             <span class="d">Inside &amp; out, the complete works</span>
             <span class="save">Save $79 vs. buying separately</span>
+            <span class="rr-line" data-rr hidden>+ polish, ceramic wax &amp; RainX free until Dec 31</span>
           </div>
           <div class="hero-price">
             <span class="amt">$369</span>
@@ -1958,6 +1983,32 @@ header li a[href="#booking"],
   ];
   function condValue(){ return S.condition ? S.condition.value : -1; }
 
+  // The Rain-Ready Full Detail: book a Full Detail by December 31, 2026 and the
+  // polish, ceramic wax and RainX come free. Same stack as the door hanger. The
+  // extras sit in S.addons at $0 rather than being left off, so the breakdown,
+  // the email and the text Mikey gets all say what he owes the customer, not
+  // just what they pay. The cutoff is midnight Pacific going into January 1
+  // (08:00 UTC, PST), and past it this whole thing goes quiet on its own: a
+  // January visitor never sees a deal that has already ended.
+  var RR_END = Date.UTC(2027, 0, 1, 8);
+  var RR_FREE = { 'Exterior Polish':1, 'Ceramic Wax':1, 'RainX Windows':1 };
+  function rrLive(){ return Date.now() < RR_END; }
+  function rrOn(){ return rrLive() && !!S.services['Full Detail']; }
+  // Called before anything reads S.addons. Switching from Full Detail to an
+  // Exterior has to take the free polish back off, because polish fits an
+  // Exterior too and would otherwise ride along at $0.
+  function syncRainReady(){
+    var on = rrOn();
+    for (var n in RR_FREE){
+      if (on) S.addons[n] = 0;
+      else if (S.addons[n] === 0) delete S.addons[n];
+    }
+  }
+  function addonPrice(name){
+    for (var i=0;i<ADDONS.length;i++) if (ADDONS[i].name === name) return ADDONS[i].price;
+    return 0;
+  }
+
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function val(id){ var el=$(id); return el ? (el.value||'').trim() : ''; }
@@ -2040,7 +2091,8 @@ header li a[href="#booking"],
     // table", so say it.
     var tip = $('qqSaveTip');
     if (tip){
-      tip.textContent = both ? ('Switch to Full Detail and save $' + FULL_SAVING + '.') : '';
+      tip.textContent = both ? ('Switch to Full Detail and save $' + FULL_SAVING +
+        (rrLive() ? ', and the Rain-Ready polish, ceramic wax and RainX come free.' : '.')) : '';
       tip.style.display = both ? 'block' : 'none';
     }
   }
@@ -2060,10 +2112,22 @@ header li a[href="#booking"],
     // Prune selections that no longer apply after a service change.
     var live = {}; list.forEach(function(a){ live[a.name] = 1; });
     Object.keys(S.addons).forEach(function(n){ if (!live[n]) delete S.addons[n]; });
+    syncRainReady();
+    var rr = rrOn();
 
     var recs = [];
     var html = '';
     list.forEach(function(a){
+      // A free extra is shown ticked and can't be tapped off. Nobody turns down
+      // free polish on purpose, and a tap that did it by accident would cost them.
+      if (rr && RR_FREE[a.name]){
+        html += '<div class="chip sel is-free" data-role="addon-free" data-name="' + a.name + '" aria-disabled="true">' +
+                '<span class="free-tag">Free</span>' +
+                '<span class="ic-mini"><svg class="ic"><use href="#' + a.icon + '"/></svg></span>' +
+                '<span class="ctext"><span class="ct">' + a.name + '</span><span class="cp"><s>$' + a.price + '</s> Rain-Ready</span></span>' +
+                '</div>';
+        return;
+      }
       var isRec = a.rec(), on = S.addons[a.name] !== undefined;
       if (isRec && a.why) recs.push(a.why);
       html += '<div class="chip' + (on?' sel':'') + (isRec?' is-rec':'') + '" data-role="addon" data-name="' + a.name +
@@ -2078,7 +2142,9 @@ header li a[href="#booking"],
     var hint = $('qqAddonHint');
     if (hint){
       var svc = Object.keys(S.services)[0] || 'your detail';
-      hint.textContent = list.length
+      hint.textContent = rr
+        ? 'Rain-Ready: polish, ceramic wax and RainX are on me until December 31. Anything else is optional.'
+        : list.length
         ? ('These pair with the ' + svc + '. Totally optional. Skip straight to your price if not.')
         : 'Nothing to add here. Straight to your price.';
     }
@@ -2093,9 +2159,14 @@ header li a[href="#booking"],
   function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
 
   function calcQuote(){
+    // book() lands here without passing the add-on step, so the free extras are
+    // settled here too, not only when that step renders.
+    syncRainReady();
     var total = 0, items = [];
     var sk = Object.keys(S.services); for (var i=0;i<sk.length;i++){ total += PRICE[sk[i]]; items.push(sk[i]); }
-    var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j]); }
+    // "(free, Rain-Ready)" is what tells Mikey, in the text and the email, that he
+    // owes this car the extras without charging for them.
+    var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j] + (S.addons[ak[j]] === 0 ? ' (free, Rain-Ready)' : '')); }
     if (S.vehicle) total += S.vehicle.value;
     if (S.condition) total += S.condition.value;
     S.notes = collectNotes();
@@ -2122,7 +2193,10 @@ header li a[href="#booking"],
     }
     var ak2=Object.keys(S.addons);
     for(var m=0;m<ak2.length;m++){
-      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] + '</span><span class="inc-price">+$'+S.addons[ak2[m]]+'</span></div>';
+      var free = S.addons[ak2[m]] === 0;
+      html += '<div class="inc-row' + (free ? ' is-free' : '') + '"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] +
+              (free ? '<span class="inc-ctxline">Rain-Ready, until Dec 31</span>' : '') + '</span>' +
+              '<span class="inc-price">' + (free ? '<s>$' + addonPrice(ak2[m]) + '</s> Free' : '+$' + S.addons[ak2[m]]) + '</span></div>';
     }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
@@ -2324,6 +2398,17 @@ header li a[href="#booking"],
   // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
   // window.MikeyQQC.book({ service:'full'|'interior'|'exterior', vehicle:'sedan'|'suv'|'van', condition:'clean'|'work'|'rough', note:'...' })
   window.MikeyQQC = {
+    // The Rain-Ready section's button. It picks Full Detail and opens the
+    // calculator at the car, not at the price: book() would skip the size
+    // question and quote a van at the sedan's $369.
+    startFull: function () {
+      deselect('services', '.hero'); deselect('services', '.svc-card');
+      S.services = { 'Full Detail': PRICE['Full Detail'] };
+      var hf = $('qqHeroFull'); if (hf){ hf.classList.add('sel'); hf.setAttribute('aria-pressed', 'true'); }
+      refreshNudge(); refreshContinue();
+      if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: 'Full Detail', source: 'rain_ready' });
+      goStep(S.vehicle ? 2 : 1);
+    },
     book: function (o) {
       o = o || {};
       var svcMap = { full: 'Full Detail', interior: 'Interior Detail', exterior: 'Exterior Detail' };
@@ -2986,6 +3071,104 @@ header li a[href="#booking"],
     }
   }
 </style>
+
+<!-- ===================== RAIN-READY OFFER =====================
+     The same offer as the door hanger, on purpose: a hanger or postcard QR lands
+     on this page, and the offer it promised has to be here when they arrive.
+     It sits straight after Before & After because that's where wanting it peaks
+     (SECTION-ORDER-ANALYSIS.md: the old offer at position 7 was seen by about a
+     quarter of visitors). The deadline is real and fixed, so it's named rather
+     than run as a ticking clock, and everything marked data-rr hides itself on
+     January 1 even if nobody takes this section down. -->
+<style>
+  .rr{ background:radial-gradient(110% 70% at 50% 0%, rgba(201,162,75,.16), transparent 60%), #111; border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:clamp(52px,7vw,96px) 16px; color:#fff; font-family:'Outfit',sans-serif }
+  .rr *{ box-sizing:border-box }
+  .rr-in{ max-width:980px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,56px); align-items:center }
+  .rr-when{ display:inline-flex; align-items:center; gap:8px; background:rgba(201,162,75,.14); border:1px solid rgba(201,162,75,.45); color:var(--brand-gold,#C9A24B); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; border-radius:999px }
+  .rr-when b{ color:#fff; font-weight:700; letter-spacing:.04em; text-transform:none }
+  .rr h2{ font-weight:900; font-size:clamp(34px,6vw,58px); line-height:.98; letter-spacing:-.01em; text-transform:uppercase; margin:18px 0 0 }
+  .rr h2 em{ font-style:normal; color:var(--brand-gold,#C9A24B) }
+  .rr-lead{ font-size:clamp(16px,1.9vw,19px); line-height:1.55; color:#d6d8da; margin:18px 0 0; max-width:520px }
+  .rr-why{ list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px; max-width:520px }
+  .rr-why li{ display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; line-height:1.5; color:#c9cccf }
+  .rr-why li b{ color:#fff; font-weight:700 }
+  .rr-why svg{ width:20px; height:20px; margin-top:2px; color:var(--brand-gold,#C9A24B) }
+  .rr-card{ background:linear-gradient(180deg,#1f1f1f,#171717); border:1px solid rgba(201,162,75,.4); border-radius:20px; padding:24px 22px 22px; box-shadow:0 26px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(201,162,75,.12) }
+  .rr-card h3{ margin:0 0 14px; font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#9aa0a6 }
+  .rr-stack{ list-style:none; margin:0; padding:0 }
+  .rr-stack li{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:16px }
+  .rr-stack li span:last-child{ font-weight:700; white-space:nowrap }
+  .rr-stack li.f span:last-child{ color:var(--brand-gold,#C9A24B) }
+  .rr-stack s{ color:#8a8f94; font-weight:500; margin-right:6px; text-decoration-color:var(--brand-red,#C8102E); text-decoration-thickness:2px }
+  .rr-sum{ display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-top:16px }
+  .rr-sum .worth{ font-size:15px; color:#9aa0a6 }
+  .rr-sum .worth s{ text-decoration-color:var(--brand-red,#C8102E); text-decoration-thickness:2px }
+  .rr-sum .yours{ text-align:right; line-height:1 }
+  .rr-sum .yours small{ display:block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9aa0a6; margin-bottom:6px }
+  .rr-sum .yours b{ font-size:clamp(34px,5vw,44px); font-weight:900; letter-spacing:-.02em }
+  .rr-btn{ display:flex; align-items:center; justify-content:center; width:100%; margin-top:20px; background:var(--brand-red,#C8102E); color:#fff; font-weight:800; font-size:18px; letter-spacing:.02em; text-decoration:none; padding:17px 22px; border-radius:999px; border:0; cursor:pointer; font-family:inherit; box-shadow:0 14px 34px rgba(200,16,46,.4); transition:transform .12s ease, background .2s ease }
+  .rr-btn:hover{ background:#E23744; transform:translateY(-2px) }
+  .rr-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px }
+  .rr-alt{ margin:12px 0 0; text-align:center; font-size:14px; color:#9aa0a6 }
+  .rr-alt a{ color:#fff; font-weight:600 }
+  .rr-fine{ margin:16px 0 0; font-size:12.5px; line-height:1.55; color:#8a8f94 }
+  @media (max-width:820px){ .rr-in{ grid-template-columns:1fr } .rr-card{ max-width:520px; width:100% } }
+</style>
+
+<section class="rr" id="rain-ready" aria-labelledby="rr-title" data-rr>
+  <div class="rr-in">
+    <div>
+      <span class="rr-when">Until December 31 <b id="rrDays"></b></span>
+      <h2 id="rr-title">The Rain-Ready <em>Full Detail</em></h2>
+      <p class="rr-lead">From October to March your car is wet more days than it's dry. So until December 31, every Full Detail gets the three things that help most in the rain, and I don't charge for them.</p>
+      <ul class="rr-why">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Polish first.</b> It takes the dull film and light swirls off, so the wax goes onto clean paint instead of sealing the haze in.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Ceramic wax on top.</b> Rain beads and rolls off, and road grime has a harder time sticking between washes.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>RainX on the glass.</b> Water sheets off the windshield at speed, which you'll notice the first dark night on I-5 or US-2.</span></li>
+      </ul>
+    </div>
+
+    <div class="rr-card">
+      <h3>What you get</h3>
+      <ul class="rr-stack">
+        <li><span>Interior Detail</span><span>$249</span></li>
+        <li><span>Exterior Detail</span><span>$199</span></li>
+        <li class="f"><span>Exterior polish</span><span><s>$30</s>Free</span></li>
+        <li class="f"><span>Ceramic wax</span><span><s>$20</s>Free</span></li>
+        <li class="f"><span>RainX on the glass</span><span><s>$10</s>Free</span></li>
+      </ul>
+      <div class="rr-sum">
+        <span class="worth">Worth <s>$508</s></span>
+        <span class="yours"><small>Your price</small><b>from $369</b></span>
+      </div>
+      <a class="rr-btn" href="#booking" id="rrStart">Get My Instant Quote &rarr;</a>
+      <p class="rr-alt">Pick Full Detail and the extras go on by themselves. Booking by text? <a href="sms:+14256007897?&amp;body=Hi%20Mikey!%20I%27d%20like%20the%20Rain-Ready%20Full%20Detail.">Text (425) 600-7897</a> and say Rain-Ready.</p>
+      <p class="rr-fine">$508 is a sedan's Interior and Exterior booked apart, plus the three extras. The $79 you save by booking them together as a Full Detail is there all year; the extras are what's free until December 31, 2026. SUV or pickup +$40, van or 3-row +$80. Got my postcard? It lists carpet shampoo instead of polish. Tell me which you'd rather have.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Midnight Pacific going into January 1 (08:00 UTC, PST). Must match RR_END in
+  // the quote calculator.
+  var END = Date.UTC(2027, 0, 1, 8);
+  var left = END - Date.now();
+  var tagged = document.querySelectorAll('[data-rr]');
+  for (var i=0;i<tagged.length;i++){
+    if (left > 0) tagged[i].removeAttribute('hidden'); else tagged[i].style.display = 'none';
+  }
+  if (left <= 0) return;
+  // Counted in whole days, not a ticking clock: the date is fixed, and seconds
+  // spinning on a deadline three months out would read as a gimmick.
+  var days = Math.ceil(left / 86400000), el = document.getElementById('rrDays');
+  if (el) el.textContent = days === 1 ? '· last day' : '· ' + days + ' days left';
+  var btn = document.getElementById('rrStart');
+  if (btn) btn.addEventListener('click', function(e){
+    if (window.MikeyQQC && window.MikeyQQC.startFull){ e.preventDefault(); window.MikeyQQC.startFull(); }
+  });
+})();
+</script>
 
 <div class="hg4">
   <!-- ===================== HOW IT WORKS ===================== -->
