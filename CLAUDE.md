@@ -138,11 +138,27 @@ the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
 
 ## Offers and countdowns
 
-The free-exterior offer really does open Friday and close Monday, and the timer
-in `index.html` really does track it, including an off-state Tue–Thu. Keep it
-honest: **don't write copy that implies a one-off deadline** for something that
-runs every week — the second visit makes a real deadline look fake. Name the
-window instead.
+**The live offer is the Rain-Ready Full Detail,** on the homepage since
+2026-09-28 at Mikey's request. It's the door hanger's version: book a Full
+Detail by **December 31, 2026** and exterior polish, ceramic wax and RainX come
+free (worth $508, from $369). It lives in three places in `index.html`, and
+all three switch off on their own at midnight Pacific going into January 1:
+
+1. the gold chip above the hero headline (`.mh-rr`)
+2. the `#rain-ready` section after Before & After, with its value stack
+3. the quote calculator: `RR_END` / `RR_FREE`, which put the three extras on
+   any Full Detail at $0 and label them "(free, Rain-Ready)" in the text and
+   email Mikey gets
+
+The section's script holds its own copy of the end date. Change one, change
+both. Don't widen it, extend the window or swap the extras without Mikey; it's
+the same promise the hangers and postcards make. After January 1 take the
+dormant code out rather than leaving it.
+
+The old free-exterior Fri-Mon offer is parked whole in
+`_disabled/free-exterior-offer.html`. Keep the rule it taught: **don't write
+copy that implies a one-off deadline** for something that runs every week, the
+second visit makes a real deadline look fake. Name the window instead.
 
 ## City pages
 
