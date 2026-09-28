@@ -103,10 +103,9 @@ homepage city list, and a sitemap entry.
 
 ## 🔧 Manual fixes Claude couldn't do from the sandbox
 
-- **Self-host the brand images.** OG image (`iili.io/qKtjLcx.jpg`) and logo
-  (`i.ibb.co/...`) live on free third-party hosts that can vanish and break every
-  page's social preview + logo. Download them, drop into `/images/`
-  (e.g. `og-image.jpg` at 1200×630, `logo.jpg`), then swap the URLs sitewide.
+- ~~**Self-host the brand images.**~~ Done 2026-09-28 with the new logo: header
+  `/images/logo-header.png`, schema logo `/images/logo-square.png`, link preview
+  `/images/og-image.jpg` (1200x630), tab icon `/favicon.ico` + `/images/favicon-32.png`.
 - **Add real, varied photos** to the bare pages (`/services/`, `/snohomish/`,
   `/everett/` have few/no images) — geotag alt text with the city + service.
 

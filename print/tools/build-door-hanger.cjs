@@ -69,7 +69,9 @@ const fontFace = (name, pkg, weight) =>
   `@font-face{font-family:'${name}';src:url(${fileUrl(path.join(FS, pkg, 'files', `${pkg}-latin-${weight}-normal.woff2`))}) format('woff2');font-weight:${weight}}`;
 
 const logoSvg = (variant) => {
-  let s = fs.readFileSync(path.join(SOCIAL, 'brand', 'logo.svg'), 'utf8');
+  // the backs are cream paper, where the dark-background logo's white
+  // MOBILE DETAILING would vanish, so they get the light version
+  let s = fs.readFileSync(path.join(SOCIAL, 'brand', variant === 'light' ? 'logo-light.svg' : 'logo.svg'), 'utf8');
   if (variant === 'white') s = s.replace('fill="#E31924"', 'fill="#fff"').replace('stroke="#fff"', 'stroke="none"');
   if (variant === 'thick') s = s.replace('stroke-width="15"', 'stroke-width="22"');
   return s.replace('<svg ', '<svg class="logo" ');
@@ -352,7 +354,7 @@ const backHtml = (qr) => `
   </div>
   <div class="trim"><div class="safe">
     <div class="hi">
-      ${logoSvg()}
+      ${logoSvg('light')}
       <div class="who">
         <h2>Hey, I'm Mikey.</h2>
         <p><b>300+ cars</b> around Snohomish County since 2021. It's just me, so the guy who texts you back is the guy who does your car.</p>

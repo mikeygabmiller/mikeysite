@@ -184,6 +184,18 @@ shortest page on the site.
 - FAQ answers exist **twice** on most pages: once visible, once inside a
   JSON-LD `FAQPage` block. Edit both or the schema starts lying.
 
+## The logo
+
+Picked by Mikey on 2026-09-28: a red 4x4 with MIKEY'S across the grille and
+soap foam at the tyres, over MIKEY'S (Racing Sans One, red, white outline) and
+MOBILE DETAILING (Barlow Condensed) between red rules. No curved type.
+Everything lives in `social/brand/logo-final/` with a README saying which file
+goes where. The generators read `social/brand/logo.svg` (dark backgrounds),
+`logo-light.svg` (cream or white, the hanger and postcard backs) and
+`logo-icon.svg`; the site serves its copies from `/images/`. The truck is
+built from a small preview, so it's soft past about 4 inches wide: don't put
+it on a shirt back until it's rebuilt from the full-size Canva image.
+
 ## Instagram and Facebook posts
 
 They live in `social/`, which is not served (`_config.yml` excludes it). Read

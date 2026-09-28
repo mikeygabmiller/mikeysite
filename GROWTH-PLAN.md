@@ -170,11 +170,9 @@ ever ship on this site, because it's what every later phase compounds on top of.
 
 **Do this:**
 
-1. ⬜ **Self-host the brand images** (fixes G1) — **needs you; I can't reach those hosts**
-   Save these two files and drop them in `/images/`, then tell me and I'll swap every
-   reference sitewide in one pass:
-   - `https://iili.io/qKtjLcx.jpg` → `/images/og-image.jpg` (resize to 1200×630)
-   - `https://i.ibb.co/Kxzv8C6d/logo.jpg` → `/images/logo.jpg`
+1. ✅ **Self-host the brand images** (fixes G1). Done 2026-09-28 with the new logo:
+   `/images/og-image.jpg` (1200x630), `/images/logo-header.png`, `/images/logo-square.png`,
+   `/favicon.ico`. No page loads a logo from iili.io or i.ibb.co any more.
 
    Also worth mirroring the `lh3.googleusercontent.com` job photos into `/images/` —
    Google-hosted URLs are outside your control and earn you nothing in Google Images.

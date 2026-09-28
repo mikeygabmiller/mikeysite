@@ -34,9 +34,17 @@ a folder with Playwright, opentype.js and the @fontsource fonts installed:
 
     node cutout.cjs icon.jpg ready/truck.png && node ready.cjs && node export.cjs <out dir>
 
+## Where it's in use (rolled out 2026-09-28)
+
+- Website: header `/images/logo-header.png`, schema logo `/images/logo-square.png`,
+  link preview `/images/og-image.jpg`, tab icon `/favicon.ico`.
+- `social/brand/logo.svg` (dark backgrounds), `logo-light.svg` (cream/white) and
+  `logo-icon.svg` (truck) are what the door hanger, postcard and post renderers
+  read. The old ones are kept in `social/brand/old-logo-2025/`.
+
 ## Not yet done
 
+- **Shirts** still carry the old logo. Their print files are 12 inches wide and
+  the truck is too soft at that size until it's rebuilt from the full-size image.
 - The grille is still very close to a real Ford Bronco grille. Before a large
   print run, have the truck redrawn with a different grille pattern.
-- Not yet swapped into the website, door hanger, postcard, shirts or social
-  templates. The old logo is still what's live.
