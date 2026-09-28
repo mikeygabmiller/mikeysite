@@ -1,6 +1,23 @@
 # Work shirts (black)
 
-## Final design (chosen)
+## Back: DIRTY CAR? (chosen 2026-09-28)
+
+| File | Print size | Where |
+|---|---|---|
+| `back-dirty-car-12in.png` | 12 in wide x 12.1 in tall, 300 dpi, transparent | full back |
+| `front-chest-4in.png` | 4 in wide | left chest |
+| `mockup-dirty-car-front-back.png`, `back-dirty-car-preview-on-black.png` | preview only | |
+
+Mikey's layout: DIRTY CAR? (Bebas Neue, white), "I'll clean it in your
+driveway." (Outfit, slanted), the phone in gold, the Google G with five gold
+stars and 5.0, then the logo. Generator: `source/build-dirty-car-shirt.cjs`.
+The background is left transparent on purpose: on a black shirt the dark panels
+are the shirt, and DTF would print them as a visible box. The G is in Google's
+four colours, so this is a full-colour DTF/DTG print, not a two-ink screen print.
+If the rating or the phone changes, this shirt is one more copy of the facts.
+
+## Alternate back: license plate
+
 
 | File | Print size | Where |
 |---|---|---|
