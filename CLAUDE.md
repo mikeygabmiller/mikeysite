@@ -193,8 +193,9 @@ Everything lives in `social/brand/logo-final/` with a README saying which file
 goes where. The generators read `social/brand/logo.svg` (dark backgrounds),
 `logo-light.svg` (cream or white, the hanger and postcard backs) and
 `logo-icon.svg`; the site serves its copies from `/images/`. The truck is
-built from a small preview, so it's soft past about 4 inches wide: don't put
-it on a shirt back until it's rebuilt from the full-size Canva image.
+built from the full-size Canva image in `logo-final/source/`: at 300 dpi the
+side-by-side logo is sharp to ~12 in wide, the stacked one to ~5 in. Its
+grille is still close to a real Bronco's: redraw it before a big print run.
 
 ## Instagram and Facebook posts
 

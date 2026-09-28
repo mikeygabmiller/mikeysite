@@ -21,18 +21,15 @@ Red is `#E31924`. No curved type.
 "dark" = for dark backgrounds (white MOBILE DETAILING). "light" = for white
 backgrounds (black MOBILE DETAILING).
 
-## Known limit: the truck is soft in big prints
+## The truck source
 
-The truck came from Canva's image generator, and only a 200px preview could be
-pulled into this build. The lettering is vector and prints sharp at any size;
-the truck is fine for web, social and anything under about 4 inches, soft on a
-12-inch shirt back.
+`source/truck-full.jpg` is the full-size (1264px) Canva image; `source/truck-cutout.png`
+is it with the black background removed. Everything here is built from that,
+so at 300 dpi it stays sharp up to about 12 inches wide for the side-by-side
+logo and about 5 inches for the stacked one (the truck itself is ~4 inches). To rebuild, from a folder with
+Playwright, opentype.js and the @fontsource fonts installed:
 
-To fix: open https://www.canva.com/M/MAHWgxjxLYI, download it as PNG, save it
-over `source/icon.jpg` (same name, PNG is fine if you update the path), then from
-a folder with Playwright, opentype.js and the @fontsource fonts installed:
-
-    node cutout.cjs icon.jpg ready/truck.png && node ready.cjs && node export.cjs <out dir>
+    node cutout.cjs truck-full.jpg ready/truck.png 1 && node ready.cjs && node export.cjs <out dir>
 
 ## Where it's in use (rolled out 2026-09-28)
 
@@ -42,9 +39,11 @@ a folder with Playwright, opentype.js and the @fontsource fonts installed:
   `logo-icon.svg` (truck) are what the door hanger, postcard and post renderers
   read. The old ones are kept in `social/brand/old-logo-2025/`.
 
+## Where else
+
+- Shirts carry it too (`shirts/`, back and chest print files and the Canva copies).
+
 ## Not yet done
 
-- **Shirts** still carry the old logo. Their print files are 12 inches wide and
-  the truck is too soft at that size until it's rebuilt from the full-size image.
 - The grille is still very close to a real Ford Bronco grille. Before a large
   print run, have the truck redrawn with a different grille pattern.

@@ -102,7 +102,7 @@ const outfit6 = F('outfit/files/outfit-latin-600-normal.woff');
 // Final logo set, no curved type. Same two fonts as the badge: Racing Sans One
 // for MIKEY'S, Barlow Condensed for MOBILE DETAILING between red rules.
 const truckB64 = 'data:image/png;base64,' + fs.readFileSync('ready/truck.png').toString('base64');
-const TRW = 797, TRH = 597;
+const _p = fs.readFileSync('ready/truck.png'), TRW = _p.readUInt32BE(16), TRH = _p.readUInt32BE(20);
 const OUT = 'ready/out';
 fs.mkdirSync(OUT, { recursive: true });
 
