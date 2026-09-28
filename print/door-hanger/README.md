@@ -51,7 +51,7 @@ what you can by then and switch to the no-offer version for anything after.
 |---|---|
 | `print-files/4.25x11-standard/` | For GotPrint, UPrinting, 4over, PsPrint, a local shop: 4.25" x 11" |
 | `print-files/4.5x11-vistaprint/` | For Vistaprint, whose large hanger is 4.5" x 11" |
-| `print-files/3.5x8.5-bizay/` | For Bizay, whose only door hanger is 3.5" x 8.5". Same design with a tighter type scale; the "size and condition" note and the refund line are left off to fit. Chosen 2026-09-26 (2,000 for $220 + $20 shipping) |
+| `print-files/3.5x8.5-bizay/` | For Bizay, whose only door hanger is 3.5" x 8.5". Same design with a tighter type scale; the "size and condition" note is left off to fit. Chosen 2026-09-26 (2,000 for $220 + $20 shipping) |
 | `preview-*.png` | 300 dpi, trimmed, with a 1.5" hole drawn in. For looking, not printing |
 | `mockup-*.png` | Front and back side by side |
 
@@ -80,8 +80,7 @@ and `back.pdf`. If their template shows a hole bigger than 1.75" or lower than
 2.2" from the top, stop and ask them.
 
 **Paper:** the thickest **matte** cardstock they have (16 pt if offered, else 14). Matte
-because the back has a checkbox you tick with a pen, and ballpoint skips on
-gloss (a Sharpie works on either). Thin stock flops on the knob and looks
+reads better in porch light and doesn't show fingerprints. Thin stock flops on the knob and looks
 cheap; heavier stock also stands up to damp porches better.
 
 **Order a small batch first** (Vistaprint's minimum is 50). When it arrives:
@@ -97,11 +96,11 @@ expensive mistake here, not the printing.
 ## Hanging them
 
 1. **Around every job, first.** While a car is being worked on, hang 20 to 30
-   on the same street and the next one over, and tick "I just detailed a car
-   on your street." Home
-   service businesses that do this report 3 to 5% of those hangers turning
-   into jobs, against 1 to 2% for cold drops (sources below). The box is
-   blank on purpose: only tick it when it's true.
+   on the same street and the next one over. Neighbors can see your setup in
+   the driveway, which does the work the old "I just detailed a car on your
+   street" checkbox used to (Mikey took it off on 2026-09-28). Home
+   service businesses that hang around each job report 3 to 5% of those
+   hangers turning into jobs, against 1 to 2% for cold drops (sources below).
 2. **Then the zones in [`ROUTES.md`](ROUTES.md).** It has the ranked
    neighborhoods, the week-by-week schedule and which cities want a permit.
    The dashboard's Insights → Hangers screen has the same zones on a map,

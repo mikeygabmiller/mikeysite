@@ -86,7 +86,7 @@ of this applies.
 3. Doorknob or handle only, **never the mailbox**, and skip every "No
    Soliciting" sign.
 4. Tap **Finish** and enter how many you hung. That's the log.
-5. Around each job, tick "I just detailed a car on your street", hang 20 to 30,
+5. Around each job, hang 20 to 30 on the same street and the next one over,
    and log it as an around-the-job drop.
 
 ## Knowing what worked
