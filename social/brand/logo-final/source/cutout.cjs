@@ -6,9 +6,9 @@ const fs = require('fs');
 (async () => {
   const b = await chromium.launch(); const p = await b.newPage();
   const src = 'data:image/jpeg;base64,' + fs.readFileSync(process.argv[2]).toString('base64');
-  const out = await p.evaluate(async (src) => {
+  const out = await p.evaluate(async ([src, S]) => {
     const img = new Image(); img.src = src; await img.decode();
-    const S = 4, W = img.width * S, H = img.height * S;
+    const W = img.width * S, H = img.height * S;
     const c = document.createElement('canvas'); c.width = W; c.height = H;
     const x = c.getContext('2d'); x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
     x.drawImage(img, 0, 0, W, H);
@@ -36,7 +36,7 @@ const fs = require('fs');
     const t = document.createElement('canvas'); t.width = x1 - x0 + 1; t.height = y1 - y0 + 1;
     t.getContext('2d').drawImage(c, -x0, -y0);
     return t.toDataURL('image/png');
-  }, src);
+  }, [src, +(process.argv[4] || 4)]);
   fs.writeFileSync(process.argv[3], Buffer.from(out.split(',')[1], 'base64'));
   await b.close();
 })();
