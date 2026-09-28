@@ -43,9 +43,11 @@ const QR_URL = 'https://mikeysdetailing.com/?utm_source=doorhanger&utm_medium=pr
 const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', 'Marysville',
   'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
 
-// The Rain-Ready offer is social/PLAYBOOK.md section 3, word for word in its
-// terms. It needs Mikey's yes before it is printed. OFFER=0 builds the
-// version without it.
+// The hanger's Rain-Ready offer is its own version (README, "The offer"):
+// polish, ceramic wax and RainX free, laid out as a stack against Interior +
+// Exterior booked apart. The postcard and B07 still give carpet shampoo
+// instead of polish. It needs Mikey's yes before it is printed. OFFER=0
+// builds the version without it.
 const WITH_OFFER = process.env.OFFER !== '0';
 
 const BLEED = 0.125;
@@ -99,8 +101,9 @@ const COMPACT_CSS = `
 .ba .cap{font-size:11pt;padding:.22in ${0.15 + BLEED}in .05in}
 .offer{margin-top:.1in;padding:.07in .1in}
 .offer .when{font-size:5.8pt}.offer .name{font-size:12.5pt}
-.offer .free{right:.1in;top:.07in}.offer .free b{font-size:15pt}.offer .free span{font-size:5.4pt}
-.offer .what{font-size:7.2pt}.offer .code{font-size:7pt;margin-top:2pt}
+.offer{column-gap:.1in}.offer .sum{margin-top:3pt}.offer .sum span{font-size:7.4pt}.offer .sum b{font-size:13pt}
+.offer .stack{gap:1.4pt}.offer .stack li{font-size:6.9pt;padding-bottom:1.1pt;gap:3pt}.offer .stack s{margin-right:2pt}
+.offer .code{font-size:6.6pt;margin-top:3pt}
 .plain{margin-top:.1in;padding:.07in .1in}.plain b{font-size:10pt}.plain span{font-size:6.8pt}
 .frev{margin-top:.08in}.frev p{font-size:8pt}.frev .by{font-size:6.4pt}
 .cta{gap:.1in}
@@ -187,13 +190,23 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .offer .when{font-weight:700;font-size:6.8pt;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 .offer .name{font-weight:800;font-size:15pt;line-height:1.05;letter-spacing:-.015em;margin-top:2pt}
 .offer .name em{font-style:normal;color:var(--red)}
-.offer .what{font-size:8.4pt;line-height:1.3;color:var(--muted);margin-top:3pt}
-.offer .what b{color:#fff;font-weight:700}
 .offer .code{display:flex;align-items:center;gap:4pt;margin-top:4pt;font-size:8.1pt;color:var(--muted)}
 .offer .code kbd{font-family:'Outfit';font-weight:800;font-size:8pt;letter-spacing:.1em;background:#fff;color:var(--ink);padding:1.6pt 5pt 1.2pt;border-radius:2.5pt}
-.offer .free{position:absolute;right:.12in;top:.1in;text-align:right;line-height:1}
-.offer .free b{display:block;font-weight:800;font-size:19pt;color:var(--gold);letter-spacing:-.02em}
-.offer .free span{display:block;font-weight:700;font-size:6.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:1.5pt}
+.offer{display:grid;grid-template-columns:auto 1fr;column-gap:.14in;align-items:start}
+.offer .lead{display:flex;flex-direction:column}
+.offer .sum{margin-top:5pt;line-height:1.05}
+.offer .sum span{display:block;font-weight:600;font-size:8.6pt;color:var(--muted)}
+.offer .sum s{color:#fff;font-weight:700;text-decoration-color:var(--red);text-decoration-thickness:1.4pt}
+.offer .sum b{display:block;font-weight:800;font-size:17pt;color:var(--gold);letter-spacing:-.02em}
+.offer .stack{list-style:none;margin:1pt 0 0;padding:0;display:flex;flex-direction:column;gap:2.2pt}
+.offer .stack li{display:flex;justify-content:space-between;align-items:baseline;gap:5pt;font-size:8.3pt;color:#fff;
+  border-bottom:.5pt dotted rgba(255,255,255,.22);padding-bottom:1.6pt}
+.offer .stack li:last-child{border-bottom:0}
+.offer .stack i{font-style:normal;font-weight:700;white-space:nowrap}
+.offer .stack li.f span{font-weight:700}
+.offer .stack li.f i{color:var(--gold);text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+.offer .stack s{color:var(--muted);font-weight:500;letter-spacing:0;margin-right:3pt;text-transform:none}
+.offer .code{grid-column:1 / -1}
 
 .plain{margin-top:.16in;border:1.1pt solid rgba(255,255,255,.18);border-radius:7pt;padding:.1in .13in;display:flex;gap:.12in}
 .plain div{flex:1}
@@ -300,11 +313,19 @@ const frontHtml = (qr) => `
     </div>
     ${WITH_OFFER ? `
     <div class="offer">
-      <div class="when">Book by December 31</div>
-      <div class="name">The Rain-Ready<br><em>Full Detail</em></div>
-      <div class="free"><b>$50</b><span>of extras free</span></div>
-      <div class="what">Full detail <b>from $369</b>, plus <b>ceramic wax, RainX on the windows and carpet shampoo</b> on me.</div>
-      <div class="code">Just mention this hanger when you book.</div>
+      <div class="lead">
+        <div class="when">Until December 31</div>
+        <div class="name">The Rain-Ready<br><em>Full Detail</em></div>
+        <div class="sum"><span>Worth <s>$508</s></span><b>from $369</b></div>
+      </div>
+      <ul class="stack">
+        <li><span>Interior detail</span><i>$249</i></li>
+        <li><span>Exterior detail</span><i>$199</i></li>
+        <li class="f"><span>Exterior polish</span><i><s>$30</s>Free</i></li>
+        <li class="f"><span>Ceramic wax</span><i><s>$20</s>Free</i></li>
+        <li class="f"><span>RainX on the glass</span><i><s>$10</s>Free</i></li>
+      </ul>
+      <div class="code">Mention this hanger when you book. I take 12 cars a week.</div>
     </div>` : `
     <div class="plain">
       <div><b>No deposit.</b><span>You pay after the walk-around, never before.</span></div>
@@ -397,7 +418,7 @@ const backHtml = (qr) => `
         <div class="url">${SITE}</div>
       </div>
     </div>
-    ${WITH_OFFER ? `<div class="fine">Rain-Ready: book a Full Detail by December 31, 2026 and mention this hanger. Ceramic wax, RainX and carpet shampoo come free. I take 12 cars a week.</div>` : ''}
+    ${WITH_OFFER ? `<div class="fine">Rain-Ready: book a Full Detail by December 31, 2026 and mention this hanger. $508 is a sedan's Interior and Exterior booked apart, plus the extras.</div>` : ''}
   </div></div>
 </section>`;
 

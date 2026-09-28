@@ -161,10 +161,12 @@ highest-priced job.
   for those extras.
 - Busy weeks: don't quietly drop an extra. If the offer gets more popular
   than your schedule can take, post that it's closed and stop posting B07.
-- **The door hanger prints the same three extras on a shorter window**
+- **The door hanger prints its own version on a shorter window**
   (`print/door-hanger/`): a Full Detail booked by December 31, 2026 where the
-  customer mentions the hanger. No code word needed for those. Honor them the
-  same way.
+  customer mentions the hanger gets **exterior polish, ceramic wax and RainX**
+  free (no carpet shampoo; Mikey's change on 2026-09-28). No code word needed.
+  The postcard gives the three extras above. Honor whichever piece they
+  mention.
 - **After March 31, stop posting it.** For summer, the same three-extra bundle
   can come back as a "Road-Trip Ready Full Detail" (bugs, tree sap, summer
   dust) if you want it.

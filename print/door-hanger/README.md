@@ -7,13 +7,35 @@ work, what if I don't like it.
 
 ![front and back](mockup-front-back.png)
 
-## The offer (decided 2026-09-26)
+## The offer (decided 2026-09-26, reworked 2026-09-28)
 
 Mikey said yes to the Rain-Ready offer on the hanger, with a shorter window
 than the Instagram version: **book a Full Detail by December 31, 2026 and
-mention the hanger** (quote notes, a text or a call) and ceramic wax, RainX
-and carpet shampoo come free ($50 of extras). No code word: "mention this
-hanger" also tells you exactly which bookings came from hangers.
+mention the hanger** (quote notes, a text or a call). No code word: "mention
+this hanger" also tells you exactly which bookings came from hangers.
+
+On 2026-09-28 Mikey asked for more bonuses, no carpet shampoo, and the offer
+framed as the interior and exterior detail with the extras free. So the
+hanger's version is its own, laid out as a value stack:
+
+| | |
+|---|---|
+| Interior detail | $249 |
+| Exterior detail | $199 |
+| Exterior polish | ~~$30~~ free |
+| Ceramic wax | ~~$20~~ free |
+| RainX on the glass | ~~$10~~ free |
+| **Worth $508, from $369** | |
+
+Every number is the real price book (sedan base, `PRICING.md`), and the fine
+print on the back says so. Only the three extras are called free: the $79
+Full Detail saves over booking the two apart is there every day of the year,
+so the offer doesn't claim it as limited-time.
+
+**It differs from the postcard and Instagram B07,** which still give carpet
+shampoo instead of polish ($50 of extras). Honor whichever piece the
+customer mentions. Polish is the slow one (the reason it was left out on
+2026-09-25), so it's roughly 30 more minutes per hanger car.
 
 Print `front.pdf` + `back.pdf`. The `-no-offer` files stay for any reprint
 after December 31 (the offer box becomes "No deposit / Same guy" plus a
@@ -151,8 +173,10 @@ $369. It
 also has a real deadline (the rain season ends), and it pushes toward your
 highest-value job, which matters when the week holds 12 cars.
 
-**"$50 of extras", not "14% off".** Jonah Berger's Rule of 100: above $100, a
-dollar amount reads as bigger than the same percentage.
+**A stack with prices, not "16% off".** Jonah Berger's Rule of 100: above $100, a
+dollar amount reads as bigger than the same percentage. Pricing each piece
+(Hormozi's value stack) shows what "free" is worth instead of asking the
+reader to take it on trust.
 
 **Quality before prices.** Mikey's call: people should see the quality before
 they see a number. So the back goes intro, a review from a picky owner, what a
