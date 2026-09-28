@@ -123,8 +123,7 @@ const COMPACT_CSS = `
 .step b{font-size:8pt}.step span{font-size:6.6pt}
 .grt{margin-top:.07in;padding:.06in .1in}.grt h4{font-size:11.5pt}
 .grt .three{margin-top:3pt;gap:.06in}.grt .three b{font-size:6.6pt}.grt .three span{font-size:6.1pt}
-.grt .zero{display:none}
-.today{margin-top:.05in;font-size:10.5pt;padding:2pt 6pt}.today .box{width:9pt;height:9pt}
+.grt .zero{font-size:6.6pt;margin-top:3pt;padding-top:3pt}
 .back .cta{padding-top:.06in}.back .qr svg{width:1.15in;height:1.15in}.back .qr{padding:.05in}
 .fine{font-size:5.6pt;margin-top:.04in}
 `;
@@ -282,9 +281,6 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .towns{margin-top:.08in;font-size:7.3pt;line-height:1.35;color:var(--sub);text-align:center}
 .towns b{color:var(--ink);font-weight:700}
 
-.today{display:flex;align-items:center;gap:7pt;margin-top:.08in;border:1pt dashed #bdb3a2;border-radius:6pt;padding:4pt 8pt;
-  font-family:'Caveat';font-weight:700;font-size:13.5pt;line-height:1;color:var(--ink)}
-.today .box{flex:none;width:11pt;height:11pt;border:1.3pt solid var(--ink);border-radius:2pt;background:#fff}
 .back .cta{margin-top:auto;padding-top:.08in;border-top:1pt solid var(--line)}
 .back .cta .scan-sub,.back .cta .url{color:var(--sub)}
 .back .cta .or{color:var(--gold-d)}
@@ -406,8 +402,6 @@ const backHtml = (qr) => `
       </div>
       <div class="zero"><b>300+ cars in, nobody has ever asked for a refund.</b></div>
     </div>
-
-    <div class="today"><span class="box"></span><span>I just detailed a car on your street.</span></div>
 
     <div class="cta">
       <div class="qr">${qr}</div>
