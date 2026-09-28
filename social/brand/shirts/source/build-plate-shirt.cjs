@@ -96,4 +96,27 @@ const G2=`<div id="a">
  p=await b.newPage({viewport:{width:3000,height:1500}});
  await p.setContent(`<style>${css}</style><div style="display:flex">${frontTee}${tee(FINAL)}</div>`);await p.evaluate(()=>document.fonts.ready);
  await p.screenshot({path:'mockup-FINAL-front-back.png'});await p.close();
+ // Canva copies: PDFs at true print size, so Canva imports the three lines under
+ // the plate as editable text. The plate goes in flattened (300dpi) because
+ // Canva's PDF import scrambles its SVG text and merges MIKEYS into the lines
+ // below it. Black page only so white text shows while editing; the printer
+ // gets the transparent PNGs above, never an export of these.
+ p=await b.newPage({viewport:{width:1100,height:700},deviceScaleFactor:3});
+ await p.setContent(`<style>${css}</style><div id="p" style="width:1100px">${framed()}</div>`);await p.evaluate(()=>document.fonts.ready);
+ const plateImg=(await (await p.$('#p')).screenshot({omitBackground:true})).toString('base64');await p.close();
+ const CANVA=`<div id="a" style="height:auto;padding-bottom:12px">
+ ${svgFile('logo.svg','width:700px;margin-top:10px;overflow:visible',22)}
+ <img src="data:image/png;base64,${plateImg}" style="width:1100px;margin-top:44px;display:block">
+ <p style="margin:0;font-family:Anton;font-size:112px;letter-spacing:3px;margin-top:50px;line-height:1">I COME TO YOU.</p>
+ <p style="margin:0;font-family:Marker;font-size:74px;color:${R};margin-top:22px;line-height:1.2">You don't pay until you love it.</p>
+ <p style="margin:0;font-family:Anton;font-size:108px;letter-spacing:4px;margin-top:40px;line-height:1">(425) 600-7897</p>
+</div>`;
+ p=await b.newPage({viewport:{width:1200,height:1400}});
+ await p.setContent(`<style>${css}html,body{background:#000}</style>${CANVA}`);await p.evaluate(()=>document.fonts.ready);
+ let bb=await (await p.$('#a')).boundingBox();
+ await p.pdf({path:'canva-back-12in.pdf',width:'12in',height:(Math.ceil(bb.height)/100)+'in',scale:0.96,printBackground:true,pageRanges:'1',margin:{top:0,bottom:0,left:0,right:0}});await p.close();
+ p=await b.newPage({viewport:{width:400,height:200}});
+ await p.setContent(`<style>${css}html,body{background:#000}</style><div id="c" style="width:400px;display:inline-block">${svgFile('logo.svg','width:400px;display:block;overflow:visible',40)}</div>`);await p.evaluate(()=>document.fonts.ready);
+ bb=await (await p.$('#c')).boundingBox();
+ await p.pdf({path:'canva-chest-4in.pdf',width:'4in',height:(Math.ceil(bb.height)/100)+'in',scale:0.96,printBackground:true,pageRanges:'1',margin:{top:0,bottom:0,left:0,right:0}});await p.close();
  await b.close();})();
