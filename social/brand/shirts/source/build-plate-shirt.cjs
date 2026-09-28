@@ -96,4 +96,15 @@ const G2=`<div id="a">
  p=await b.newPage({viewport:{width:3000,height:1500}});
  await p.setContent(`<style>${css}</style><div style="display:flex">${frontTee}${tee(FINAL)}</div>`);await p.evaluate(()=>document.fonts.ready);
  await p.screenshot({path:'mockup-FINAL-front-back.png'});await p.close();
+ // Canva copies: vector PDFs at true print size, so Canva imports the words as
+ // editable text. Black page only so white text shows while editing; the printer
+ // gets the transparent PNGs above, never an export of these.
+ p=await b.newPage({viewport:{width:1200,height:1400}});
+ await p.setContent(`<style>${css}html,body{background:#000}</style>${FINAL}`);await p.evaluate(()=>document.fonts.ready);
+ let bb=await (await p.$('#a')).boundingBox();
+ await p.pdf({path:'canva-back-12in.pdf',width:'12in',height:(Math.ceil(bb.height)/100)+'in',scale:0.96,printBackground:true,pageRanges:'1',margin:{top:0,bottom:0,left:0,right:0}});await p.close();
+ p=await b.newPage({viewport:{width:400,height:200}});
+ await p.setContent(`<style>${css}html,body{background:#000}</style><div id="c" style="width:400px;display:inline-block">${svgFile('logo.svg','width:400px;display:block;overflow:visible',40)}</div>`);await p.evaluate(()=>document.fonts.ready);
+ bb=await (await p.$('#c')).boundingBox();
+ await p.pdf({path:'canva-chest-4in.pdf',width:'4in',height:(Math.ceil(bb.height)/100)+'in',scale:0.96,printBackground:true,pageRanges:'1',margin:{top:0,bottom:0,left:0,right:0}});await p.close();
  await b.close();})();
