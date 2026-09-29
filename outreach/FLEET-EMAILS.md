@@ -30,10 +30,11 @@ answer before the question comes, or the reply is where the deal dies.
       accept, times the hours a vehicle takes you. That's your number. Your
       existing Clean Club price ($125 a visit) is a ready-made maintenance
       price for vans after the first full detail.
-- [ ] **How many fleet slots you'll give up.** You book 12 cars a week. Fleet
-      work pays less per car but saves driving (six vans in one lot, one
-      setup). Decide how many of the 12 can go to it before a dealer asks for
-      20 a week. Don't mention capacity in the emails.
+- [ ] **How many fleet slots you'll give up.** Your week holds about 7 jobs
+      right now (one weekday afternoon slot, two on Saturday). Fleet work pays
+      less per car but saves driving (six vans in one lot, one setup). Decide
+      how many can go to it before a dealer asks for 20 a week. Don't mention
+      capacity in the emails.
 - [ ] **Water and power.** Same rule as a driveway: they provide a spigot and
       an outlet. Business lots almost always have both. The emails say so up
       front so nobody is surprised.

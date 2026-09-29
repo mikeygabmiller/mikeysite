@@ -397,3 +397,31 @@ window.MD_STATS = {
     }
   }
 })();
+
+/* --- "Next opening", live from Mikey's booking calendar. ---
+   Any element with data-next-opening="Next opening: {when}" gets {when}
+   replaced with his next real open time ("Thu, Oct 1 at 1:00 PM"), from the
+   same calendar the quote calculator books into. It asks for a Full Detail's
+   worth of time on purpose: that is the job the Rain-Ready offer sells, and a
+   date that fits a Full Detail fits anything, so the line never promises a
+   time the calculator would then not show. If the calendar can't be reached
+   the element keeps whatever the HTML says, so write that text to stand on
+   its own (or leave it empty). */
+(function () {
+  function run() {
+    var els = document.querySelectorAll('[data-next-opening]');
+    if (!els.length || !window.fetch) return;
+    fetch('https://texting.mikeysdetailingsnohomish.workers.dev/api/next-openings?service=full&size=suv&n=1')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        var o = j && j.ok && j.openings && j.openings[0];
+        if (!o) return;
+        Array.prototype.forEach.call(els, function (el) {
+          el.textContent = el.getAttribute('data-next-opening').replace('{when}', o.label + ' at ' + o.time);
+        });
+      })
+      .catch(function () {});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();

@@ -703,7 +703,7 @@ Why these three: ceramic wax makes the rain bead up and roll off the paint, Rain
 
 How to get it: get your quote on my site and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
 
-I take 12 cars a week, so book early if you want a specific day.
+The quote on my site shows my real open times, so you can grab a day without texting back and forth.
 
 #snohomishcounty #cardetailing #mobiledetailing #pnwrain #lakestevens
 ```
@@ -724,7 +724,7 @@ Why these three: ceramic wax makes the rain bead up and roll off the paint, Rain
 
 How to get it: get your quote at mikeysdetailing.com and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
 
-I take 12 cars a week, so book early if you want a specific day.
+The quote on my site shows my real open times, so you can grab a day without texting back and forth.
 ```
 
 **Alt text** (Instagram: Advanced settings → Accessibility)

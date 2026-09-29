@@ -1423,7 +1423,7 @@ header li a[href="#booking"],
              no @keyframes pulse is defined anywhere on the site, so it never animated.
              Dropped the dead declaration; add a real keyframe if the pulse is wanted. -->
         <span style="width:8px;height:8px;background:#C8102E;border-radius:50%;box-shadow:0 0 8px #C8102E;display:inline-block;flex:none;"></span>
-        I book 12 cars a week. When it's full, it's full.
+        <span data-next-opening="Next opening: {when}">Pick your time right in the quote. No phone tag.</span>
       </div>
     </div>
 
@@ -1878,10 +1878,11 @@ header li a[href="#booking"],
   </div>
 
   <!-- STEP 5: QUOTE + CAPTURE
-       Online booking is deliberately gone: the whole job of this slide is to show
-       the number and take a phone number. Everything that isn't the price, the
-       breakdown, the two fields, or the button was pulled out, so the amount and
-       the button land on one screen together, that's where the motivation is. -->
+       The whole job of this slide is the number and ONE big button under it.
+       With the calendar reachable that button is "Pick my time" (steps 7 and 8);
+       without it, the phone form below is the button, exactly as before.
+       Nothing else goes between the amount and the button, so they land on one
+       screen together, that's where the motivation is. -->
   <style>
     #qqcCard .qq-send{margin-top:6px;text-align:left;min-width:0;}
     /* Consent lives in the button, not a checkbox. Tapping it IS the opt-in, so the
@@ -1895,12 +1896,46 @@ header li a[href="#booking"],
     #qqcCard .qq-reassure svg{width:13px;height:13px;color:var(--success);}
     #qqcCard .qq-edit{display:block;width:100%;margin-top:14px;background:none;border:none;color:var(--text-3);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-edit:hover{color:var(--text);}
+    /* Online booking, the second road off the price. The phone form is still
+       here and is what shows if the calendar can't be reached; when it can,
+       "Pick my time" takes the form's place and the form is one tap away. */
+    #qqcCard .qq-bookcta{display:none;margin-top:6px;}
+    #qqcCard #step5.has-booking .qq-bookcta{display:block;}
+    #qqcCard #step5.has-booking #qqForm{display:none;}
+    #qqcCard #step5.has-booking.show-form #qqForm{display:grid;}
+    #qqcCard #step5.has-booking.show-form .qq-bookcta{display:none;}
+    #qqcCard .qq-next{font-size:13.5px;color:var(--text-3);text-align:center;margin:10px 0 0;}
+    #qqcCard .qq-next b{color:var(--text);font-weight:640;}
+    #qqcCard .qq-textlink{display:block;width:100%;margin-top:8px;background:none;border:none;color:var(--text-3);font:inherit;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:9px;-webkit-tap-highlight-color:transparent;}
+    #qqcCard .qq-textlink:hover{color:var(--text);}
+    #qqcCard .qq-opens{display:grid;gap:10px;margin-top:4px;}
+    #qqcCard .qq-open{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:60px;padding:13px 16px;border:1.5px solid var(--border);border-radius:14px;background:var(--surface-2);color:var(--text);font:inherit;text-align:left;cursor:pointer;transition:border-color .18s,background .18s,transform .12s;-webkit-tap-highlight-color:transparent;}
+    #qqcCard .qq-open:hover,#qqcCard .qq-open:focus-visible{border-color:var(--accent);outline:none;}
+    #qqcCard .qq-open:active{transform:scale(.985);}
+    #qqcCard .qq-open .od{font-size:16.5px;font-weight:680;}
+    #qqcCard .qq-open .op{display:block;font-size:12.5px;color:var(--text-3);font-weight:500;margin-top:2px;}
+    #qqcCard .qq-open .ot{font-size:16.5px;font-weight:700;color:var(--accent);white-space:nowrap;}
+    #qqcCard .qq-opens-more{display:none;margin-top:10px;}
+    #qqcCard .qq-opens-more.on{display:grid;}
+    #qqcCard .qq-opens-msg{font-size:13.5px;color:var(--text-2);background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:12px;}
+    #qqcCard .qq-booksum{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;padding:13px 16px;margin:2px 0 14px;}
+    #qqcCard .qq-booksum .bw{font-size:17px;font-weight:700;}
+    #qqcCard .qq-booksum .bs{font-size:13.5px;color:var(--text-3);margin-top:3px;}
+    #qqcCard .field select{width:100%;font:inherit;font-size:16px;background:var(--surface-2);color:var(--text);border:1.5px solid var(--border);border-radius:13px;padding:12px 16px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;}
+    #qqcCard .field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),.16);}
+    #qqcCard .field select.err{border-color:var(--accent);}
+    #qqcCard .qq-street-hint{font-size:12.5px;color:var(--text-3);margin:-3px 4px 2px;line-height:1.45;}
   </style>
   <div class="step" id="step5">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
     <div class="amount" id="qqAmount">$0</div>
     <p class="amount-sub">No hidden fees. Pay when the job's done.</p>
     <div class="breakdown" id="qqBreakdown"></div>
+    <div class="qq-bookcta" id="qqBookCta">
+      <button type="button" class="btn btn-primary qq-send-btn" id="qqPickTime">Pick my time &rarr;</button>
+      <p class="qq-next" id="qqNextLine"></p>
+      <button type="button" class="qq-textlink" data-role="text-instead">Not ready? Text me this quote instead</button>
+    </div>
     <form class="form" id="qqForm" novalidate>
       <div class="field" id="qqfName">
         <input type="text" id="qqName" placeholder="Your name" autocomplete="name" aria-required="true" />
@@ -1925,11 +1960,80 @@ header li a[href="#booking"],
     <button type="button" class="qq-edit" data-role="go" data-step="4">&lsaquo; Edit my details</button>
   </div>
 
+  <!-- STEP 7: PICK A TIME
+       Real openings from his calendar (the dashboard worker's /api/next-openings):
+       his weekday 1:00 and Saturday 7:00 / 1:00, minus anything booked, anything
+       on his Google Calendar, and any slot where this job wouldn't finish before
+       dark. Three to start, because three get tapped and a wall of days gets
+       thought about. -->
+  <div class="step" id="step7">
+    <h3 class="q-title">Pick a time</h3>
+    <p class="q-hint" id="qqTimeHint">I come to you. Tap one and it&rsquo;s yours.</p>
+    <div class="qq-opens-msg" id="qqOpensMsg" style="display:none;"></div>
+    <div class="qq-opens" id="qqOpens"></div>
+    <div class="qq-opens qq-opens-more" id="qqOpensMore"></div>
+    <button type="button" class="qq-textlink" id="qqMoreTimes">See more days</button>
+    <button type="button" class="qq-textlink" data-role="text-instead">None of these work? Text me this quote instead</button>
+    <div class="nav">
+      <button type="button" class="btn btn-ghost" data-role="go" data-step="5">&lsaquo; Back to my price</button>
+    </div>
+  </div>
+
+  <!-- STEP 8: LOCK IT IN
+       Name, number, where. The street can be just the street: people who don't
+       want to hand a stranger their house number yet still get to book, and
+       Mikey's alert tells him to ask for it. -->
+  <div class="step" id="step8">
+    <h3 class="q-title">Lock it in</h3>
+    <div class="qq-booksum" id="qqBookSum"></div>
+    <form class="form" id="qqBookForm" novalidate>
+      <div class="field" id="qqbfName">
+        <input type="text" id="qqBName" placeholder="Your name" autocomplete="name" aria-required="true" />
+        <span class="msg">Please enter your name.</span>
+      </div>
+      <div class="field" id="qqbfPhone">
+        <input type="tel" id="qqBPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
+        <span class="msg">Enter a valid phone number so I can text you the confirmation.</span>
+      </div>
+      <div class="field" id="qqbfTown">
+        <select id="qqBTown" aria-required="true" aria-label="Town">
+          <option value="">Which town?</option>
+          <option>Snohomish</option><option>Lake Stevens</option><option>Everett</option><option>Monroe</option>
+          <option>Mill Creek</option><option>Marysville</option><option>Bothell</option><option>Duvall</option>
+          <option>Mukilteo</option><option>Woodinville</option><option>Granite Falls</option><option>Arlington</option>
+          <option value="other">Somewhere else</option>
+        </select>
+        <span class="msg">Pick your town so I know where I&rsquo;m headed.</span>
+      </div>
+      <div class="field" id="qqbfOther" style="display:none;">
+        <input type="text" id="qqBOther" placeholder="Which town?" autocomplete="address-level2" />
+        <span class="msg">Tell me the town.</span>
+      </div>
+      <div class="field" id="qqbfStreet">
+        <input type="text" id="qqBStreet" placeholder="Street address" autocomplete="street-address" aria-required="true" />
+        <span class="msg">Your street is enough if you&rsquo;d rather not give the number yet.</span>
+      </div>
+      <p class="qq-street-hint">Rather not give the house number yet? Just the street or the nearest cross street is fine. I&rsquo;ll get the rest by text.</p>
+      <input type="text" id="qqBCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
+      <div class="qq-send">
+        <p class="qq-consent" id="qqBConsentText">By tapping below you agree to receive text messages about your appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
+        <button class="btn btn-primary qq-send-btn" type="submit" id="qqBookBtn">Book it &rarr;</button>
+        <div class="qq-reassure">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Price held 30 days</span>
+        </div>
+      </div>
+    </form>
+    <div class="qq-error" id="qqBookError" role="alert" aria-live="assertive"></div>
+    <button type="button" class="qq-edit" data-role="go" data-step="7">&lsaquo; Pick a different time</button>
+  </div>
+
   <!-- STEP 6: SUCCESS -->
   <div class="step" id="step6">
     <div class="success">
       <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-      <h3>Quote locked in!</h3>
+      <h3 id="qqSuccessHead">Quote locked in!</h3>
       <!-- The price is repeated here on purpose. They just watched it appear, then
            it vanished behind a form; seeing it confirmed is what makes the text
            they're about to get feel expected rather than cold. -->
@@ -1946,16 +2050,18 @@ header li a[href="#booking"],
 <script>
 (function(){
   // ===== Mikey's Quick Quote Calculator =====
-  // One job: show a real price, then take a phone number. Online booking used to
-  // live on step 4 behind a BOOKING_ENABLED flag that was permanently false, the
-  // whole calendar has been removed rather than left dormant, because every row of
-  // it pushed the submit button further below the fold on the one screen that has
-  // to convert. Scheduling happens over text now.
+  // Show a real price, then two roads off it: "Pick my time" (book online, no
+  // talking to anyone) or "Text me this quote" (the phone form). The first
+  // calendar died because it sat between the price and the button and pushed the
+  // button off a phone screen. This one lives on its own screens (7 and 8), so
+  // the price screen is still the price, the breakdown and one big button. If
+  // the calendar can't be reached, the price screen is exactly the phone form it
+  // was before, so booking can add bookings but never cost a lead.
 
   var S = { vehicle:null, condition:null, services:{}, addons:{}, notes:'', total:0, items:[] };
   var PRICE = { 'Full Detail':369, 'Interior Detail':249, 'Exterior Detail':199 };
   var FULL_SAVING = PRICE['Interior Detail'] + PRICE['Exterior Detail'] - PRICE['Full Detail'];
-  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'addons', 5:'quote', 6:'success' };
+  var stepNames = { 1:'vehicle', 2:'services', 3:'condition', 4:'addons', 5:'quote', 6:'success', 7:'pick_time', 8:'book_details' };
   var progLabels = {
     1: 'Step 1 of 5 · Your vehicle',
     2: 'Step 2 of 5 · Choose your detail',
@@ -1963,7 +2069,9 @@ header li a[href="#booking"],
     4: 'Step 4 of 5 · Extras (optional)',
     // Not "Step 5 of 5", that reads as finished, and people stopped on the quote
     // thinking they were done when there was still a name, a number and a button.
-    5: 'Almost done · Your quote'
+    5: 'Almost done · Your quote',
+    7: 'Last step · Pick your time',
+    8: 'Last step · Lock it in'
   };
   // The add-on menu. `fits` is which services an add-on can apply to at all, // ceramic wax on an interior-only detail was quotable before this, and produced
   // prices Mikey had to walk back. `rec` decides whether it gets the Recommended
@@ -2046,10 +2154,14 @@ header li a[href="#booking"],
       segs[i].classList.toggle('done', idx < to);
       segs[i].classList.toggle('active', idx === to);
     }
-    var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[Math.min(n,4)] || progLabels[4];
+    var lbl = $('qqProgLabel'); if (lbl) lbl.textContent = progLabels[n] || progLabels[4];
   }
   function goStep(n){
-    for (var i=1;i<=6;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    for (var i=1;i<=8;i++){ var s=$('step'+i); if(s) s.classList.remove('show'); }
+    // The car and the service are known from step 3 on, so the openings are
+    // fetched while they're still answering questions and are usually there
+    // before the price is.
+    if (n === 3 || n === 4) bkFetch();
     // Built on entry, not on load: it depends on the service and the condition,
     // both of which are chosen after this markup would otherwise have rendered.
     if (n === 4) renderAddons();
@@ -2063,7 +2175,7 @@ header li a[href="#booking"],
     // The progress bar has nothing left to say once they've submitted, and
     // "Almost done" over a green tick reads like something is still pending.
     var prog = document.querySelector('#qqcCard .progress');
-    if (prog) prog.style.display = (n >= 6) ? 'none' : '';
+    if (prog) prog.style.display = (n === 6) ? 'none' : '';
     if (typeof gtag === 'function') gtag('event', 'qqc_step', { step: n, step_name: stepNames[n] || ('step'+n) });
     // Same beat, second audience: the Journey timeline in the dashboard. This is
     // what turns "a quote never came in" into "they got to step 3 and stopped."
@@ -2215,8 +2327,173 @@ header li a[href="#booking"],
         '$' + total + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') +
         (items.length ? ' · ' + items.join(', ') : ''));
     }
+    bkPrepare();
     goStep(5);
     animateAmount(total);
+  }
+
+  // ===== Online booking =====
+  // Openings come from the dashboard worker, the same engine his own Bookings
+  // screen and his texts use, so the site can't offer a time he doesn't have.
+  var BK_API = 'https://texting.mikeysdetailingsnohomish.workers.dev';
+  var BK = { key:'', opens:null, pending:null, pick:null };
+  function bkService(){
+    // Interior + Exterior picked separately is a Full Detail's worth of time.
+    if (S.services['Full Detail'] || (S.services['Interior Detail'] && S.services['Exterior Detail'])) return 'full';
+    if (S.services['Interior Detail']) return 'interior';
+    if (S.services['Exterior Detail']) return 'exterior';
+    return '';
+  }
+  function bkSize(){ var v = S.vehicle ? S.vehicle.value : 40; return v >= 80 ? 'truck' : (v >= 40 ? 'suv' : 'sedan'); }
+  function bkKey(){ return bkService() + '|' + bkSize(); }
+  // Fetch once per service and size. A slow or dead worker just means no
+  // booking button; it never holds anything up.
+  function bkFetch(){
+    var key = bkKey();
+    if (!bkService() || key === BK.key) return BK.pending;
+    BK.key = key; BK.opens = null;
+    var mine = BK.pending = new Promise(function(resolve){
+      var done = false, t = setTimeout(function(){ if(!done){ done = true; resolve(null); } }, 4500);
+      try {
+        fetch(BK_API + '/api/next-openings?n=12&service=' + bkService() + '&size=' + bkSize())
+          .then(function(r){ return r.ok ? r.json() : null; })
+          .then(function(j){ if (done) return; done = true; clearTimeout(t);
+            if (BK.key === key) BK.opens = (j && j.ok && j.openings) ? j.openings : [];
+            resolve(BK.opens); })
+          .catch(function(){ if(!done){ done = true; clearTimeout(t); resolve(null); } });
+      } catch (e) { done = true; clearTimeout(t); resolve(null); }
+    });
+    return mine;
+  }
+  function bkPrepare(){
+    var st = $('step5'); if (!st) return;
+    st.classList.remove('has-booking', 'show-form');
+    var apply = function(){
+      if (!BK.opens || !BK.opens.length) return;
+      // Late answer: never yank the form out from under someone already typing.
+      var typing = val('qqName') || val('qqPhone') ||
+        (document.activeElement && /^(qqName|qqPhone)$/.test(document.activeElement.id || ''));
+      if (st.classList.contains('show') && typing) return;
+      var o = BK.opens[0];
+      $('qqNextLine').innerHTML = 'Next opening: <b>' + escapeHtml(o.label + ' at ' + o.time) + '</b>';
+      st.classList.add('has-booking');
+    };
+    if (BK.opens && BK.key === bkKey()) apply();
+    else { var p = bkFetch(); if (p) p.then(apply); }
+  }
+  function bkPart(hm){ return (+String(hm).split(':')[0]) < 12 ? 'Morning' : 'Afternoon'; }
+  function bkOpenBtn(o, i){
+    return '<button type="button" class="qq-open" data-bk="' + i + '"><span><span class="od">' + escapeHtml(o.label) +
+      '</span><span class="op">' + bkPart(o.slot) + '</span></span><span class="ot">' + escapeHtml(o.time) + '</span></button>';
+  }
+  function bkShowTimes(msg){
+    var list = BK.opens || [];
+    var first = '', more = '';
+    for (var i=0;i<list.length;i++){ if (i < 3) first += bkOpenBtn(list[i], i); else more += bkOpenBtn(list[i], i); }
+    $('qqOpens').innerHTML = first || '<div class="qq-opens-msg">Nothing open online right now. Text me and I&rsquo;ll find you a time.</div>';
+    var mo = $('qqOpensMore'); mo.innerHTML = more; mo.classList.remove('on');
+    $('qqMoreTimes').style.display = more ? 'block' : 'none';
+    var m = $('qqOpensMsg'); m.textContent = msg || ''; m.style.display = msg ? 'block' : 'none';
+    goStep(7);
+    if (typeof window.MDTrack === 'function') window.MDTrack('Opened the booking times', (list[0] ? 'first: ' + list[0].label + ' ' + list[0].time : 'none open') + ' · $' + S.total);
+  }
+  function bkPickTime(i){
+    var o = (BK.opens || [])[+i]; if (!o) return;
+    BK.pick = o;
+    var svc = Object.keys(S.services).join(' + ') || 'Your detail';
+    $('qqBookSum').innerHTML = '<div class="bw">' + escapeHtml(o.label + ' at ' + o.time) + '</div>' +
+      '<div class="bs">' + escapeHtml(svc + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') + ' · $' + S.total) + '</div>';
+    // No arrow: "Book Thu, Oct 1 at 1:00 PM" already fills a phone-width button.
+    $('qqBookBtn').textContent = 'Book ' + o.label + ' at ' + o.time;
+    // Carry over anything they already typed, and the town from step 3.
+    if (!val('qqBName') && val('qqName')) $('qqBName').value = val('qqName');
+    if (!val('qqBPhone') && val('qqPhone')) $('qqBPhone').value = val('qqPhone');
+    var town = $('qqBTown');
+    if (town && !town.value){
+      var loc = val('qqLocation').toLowerCase();
+      for (var k=0;k<town.options.length;k++){
+        var t = town.options[k].text.toLowerCase();
+        if (town.options[k].value !== '' && town.options[k].value !== 'other' && loc && loc.indexOf(t) >= 0){ town.value = town.options[k].text; break; }
+      }
+    }
+    goStep(8);
+    if (typeof window.MDTrack === 'function') window.MDTrack('Picked a time', o.label + ' ' + o.time + ' · $' + S.total);
+  }
+  function bkTown(){ var t = $('qqBTown').value; return t === 'other' ? val('qqBOther') : t; }
+  function bkSubmit(e){
+    e.preventDefault();
+    var hp = $('qqBCompany'); if (hp && hp.value){ bkBooked('pending'); return; }
+    var bad = function(w, i, on){ $(w).classList.toggle('bad', on); $(i).classList.toggle('err', on); return on; };
+    var digits = val('qqBPhone').replace(/\D/g, '');
+    var firstBad = null;
+    if (bad('qqbfName', 'qqBName', !val('qqBName'))) firstBad = firstBad || 'qqBName';
+    if (bad('qqbfPhone', 'qqBPhone', digits.length < 10)) firstBad = firstBad || 'qqBPhone';
+    if (bad('qqbfTown', 'qqBTown', !$('qqBTown').value)) firstBad = firstBad || 'qqBTown';
+    if ($('qqBTown').value === 'other' && bad('qqbfOther', 'qqBOther', !val('qqBOther'))) firstBad = firstBad || 'qqBOther';
+    if (bad('qqbfStreet', 'qqBStreet', val('qqBStreet').length < 3)) firstBad = firstBad || 'qqBStreet';
+    if (firstBad){ $(firstBad).focus(); return; }
+
+    var o = BK.pick; if (!o){ bkShowTimes(); return; }
+    var name = val('qqBName'), phoneE164 = '+1' + digits.slice(-10);
+    var ymm = val('qqYmm'), city = bkTown(), street = val('qqBStreet');
+    var cond = (S.condition && S.condition.label) ? S.condition.label : '';
+    var btn = $('qqBookBtn'); btn.disabled = true; btn.textContent = 'Booking…';
+    var errBox = $('qqBookError'); errBox.style.display = 'none';
+    var consentEl = $('qqBConsentText');
+    var extras = Object.keys(S.addons).map(function(n){ return n + (S.addons[n] === 0 ? ' (free, Rain-Ready)' : ''); });
+    if (S.services['Interior Detail'] && S.services['Exterior Detail']) extras.unshift('Booked as Interior + Exterior');
+    var payload = {
+      service: bkService(), size: bkSize(), sizeLabel: S.vehicle ? S.vehicle.label : '', vehicle: ymm, condition: cond,
+      date: o.date, slot: o.slot, dateLabel: o.label, name: name, phone: phoneE164,
+      address: street, city: city, estimate: S.total, addons: extras, notes: collectNotes(),
+      smsConsent: true, website: '',
+      consent: { text: consentEl ? (consentEl.textContent || '').replace(/\s+/g, ' ').trim() : '', at: new Date().toISOString(),
+        source: 'qqc_booking_button', page: window.location ? window.location.href : '' },
+      vid: window.MD_VID || ''
+    };
+    var when = o.label + ' at ' + o.time;
+    function fail(){
+      btn.disabled = false; btn.textContent = 'Book ' + when;
+      var body = "Hi Mikey! I'd like to book " + when + ".\nName: " + name + "\nWhere: " + street + ', ' + city +
+        '\nQuote: $' + S.total + ' (' + Object.keys(S.services).join(' + ') + (S.vehicle ? ', ' + S.vehicle.label : '') + ')';
+      errBox.innerHTML = "<p>That didn’t go through, but your time isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
+        '<a href="sms:+14256007897?&body=' + encodeURIComponent(body) + '">💬 Text My Booking to Mikey</a>';
+      errBox.style.display = 'block';
+      if (typeof gtag === 'function') gtag('event', 'qqc_booking_error', {});
+    }
+    fetch(BK_API + '/api/book', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) })
+      .then(function(r){ return r.json().then(function(j){ return { status: r.status, j: j }; }); })
+      .then(function(res){
+        if (res.j && res.j.ok){
+          if (typeof gtag === 'function'){
+            gtag('event', 'qqc_submission', { source: 'qqc_booking', value: S.total, currency: 'USD' });
+            gtag('event', 'qqc_booking', { value: S.total, currency: 'USD', status: res.j.status || '' });
+          }
+          if (typeof window.MDTrack === 'function') window.MDTrack('BOOKED online', when + ' · $' + S.total + ' · ' + city);
+          bkBooked(res.j.status, when, city);
+        } else if (res.status === 409){
+          // Someone got there first. Show what's left rather than an error.
+          btn.disabled = false; BK.key = '';
+          var p = bkFetch();
+          (p || Promise.resolve(null)).then(function(){ bkShowTimes('Someone just grabbed that one. Here’s what’s still open.'); });
+        } else { fail(); }
+      })
+      .catch(fail);
+  }
+  function bkBooked(status, when, city){
+    var instant = status === 'confirmed';
+    var box = $('qqSuccessQuote');
+    if (box){
+      var line = Object.keys(S.services).join(' + ') + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '');
+      box.innerHTML = '<span class="sq-amt">$' + S.total + '</span><span class="sq-svc">' + escapeHtml((when ? when + ' · ' : '') + line) + '</span>';
+    }
+    var h = $('qqSuccessHead'); if (h) h.textContent = instant ? 'You’re booked!' : 'Request sent!';
+    var p = $('qqSuccessTime');
+    if (p) p.textContent = instant
+      ? 'It’s on my schedule. I just texted you the confirmation, and I’ll send a reminder the day before. All I need there is an outdoor spigot and an outlet I can reach.'
+      : (city ? city + ' is a little outside my usual towns, so I’ll check the drive and text you to confirm, usually the same day.'
+              : 'I’ll text you to confirm, usually the same day.');
+    goStep(6);
   }
   function animateAmount(target){
     var el = $('qqAmount'); el.classList.remove('lit');
@@ -2270,6 +2547,13 @@ header li a[href="#booking"],
       if (el.disabled) return;
       calcQuote();
     }
+    else if (role === 'text-instead'){
+      // Back to the price with the phone form open: the old road, one tap away.
+      var st5 = $('step5'); if (st5) st5.classList.add('show-form');
+      goStep(5);
+      if (typeof window.MDTrack === 'function') window.MDTrack('Chose text instead of booking', '$' + S.total);
+      setTimeout(function(){ var n = $('qqName'); if (n) n.focus(); }, 350);
+    }
   }
 
   function attach(){
@@ -2284,6 +2568,24 @@ header li a[href="#booking"],
         }
       }
     }, false);
+
+    var pick = $('qqPickTime');
+    if (pick) pick.addEventListener('click', function(){ bkShowTimes(); }, false);
+    var more = $('qqMoreTimes');
+    if (more) more.addEventListener('click', function(){ $('qqOpensMore').classList.add('on'); more.style.display = 'none'; }, false);
+    card.addEventListener('click', function(e){
+      var b = e.target.closest ? e.target.closest('[data-bk]') : null;
+      if (b) bkPickTime(b.getAttribute('data-bk'));
+    }, false);
+    var town = $('qqBTown');
+    if (town) town.addEventListener('change', function(){ $('qqbfOther').style.display = town.value === 'other' ? '' : 'none'; }, false);
+    var bform = $('qqBookForm');
+    if (bform){
+      bform.addEventListener('submit', bkSubmit, false);
+      // Clear a field's complaint as soon as they fix it, not on the next tap.
+      var clear = function(e){ var f = e.target.closest && e.target.closest('.field'); if (f){ f.classList.remove('bad'); e.target.classList.remove('err'); } };
+      bform.addEventListener('input', clear, false); bform.addEventListener('change', clear, false);
+    }
 
     var form = $('qqForm');
     form.addEventListener('submit', function(e){
@@ -3197,7 +3499,7 @@ header li a[href="#booking"],
         </div>
         <span class="hiw4-chip">Instant Price &middot; No Deposit</span>
         <h3 class="hiw4-title">Tell Me About Your Car</h3>
-        <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then I text you back to lock in a time that works for you.</p>
+        <p class="hiw4-desc">Tap the button, pick your <a href="#allservices">service</a>, and drop your address. You'll see an instant price right on the screen. No phone tag, no pressure. Then pick an open time right there, or have me text you to find one.</p>
         <div class="hiw4-foot"><span class="dot"></span> Exact price, not a range</div>
       </article>
 
@@ -5963,7 +6265,7 @@ header li a[href="#booking"],
     </div>
 
     <div class="grt4-scarcity">
-      <span class="dot"></span><strong>I book 12 cars a week</strong> so every one gets the hours it needs. When the week fills up, it's full.
+      <span class="dot"></span><strong>One car at a time, and I'm the one doing it</strong>, so every car gets the hours it needs. <span data-next-opening="Next opening is {when}."></span>
     </div>
   </section>
 

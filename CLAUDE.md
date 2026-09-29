@@ -28,15 +28,19 @@ pages disagreeing is a promise he can't keep on one of them.
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
-| Booking capacity | **12 cars a week** | one number, everywhere |
+| When he works | **Mon–Fri one job at 1:00 PM; Sat 7:00 AM and 1:00 PM; never Sunday** | Mikey, 2026-09-29, while he's in school until noon. Copy says "weekday afternoons and Saturdays", not exact times, because it'll change. The real times live in the dashboard (Bookings → Settings → My start times) |
+| Longest job times | **Exterior 2 hrs, Interior 3 hrs, Full Detail 4.5 hrs** | the booking calendar plans on these; not customer copy (customers get the ranges above) |
+| Capacity | **no weekly number** | "12 cars a week" was retired 2026-09-29 (his real week holds about 7). Scarcity is the live "Next opening" line instead |
 | Payment | after the work, never a deposit | |
 | **Customer must provide** | **outdoor water spigot + power outlet** | no tank, no generator — do not write that he can bring his own |
 
-Two facts are **unconfirmed** — ask Mikey before writing either:
+Still **unconfirmed**, ask Mikey before writing it:
 
-- **Which days he works.** The schema on every page says 7 days, the terms page
-  says 7 days 8am–8pm, and the Fri–Mon offer needs Sunday and Monday. Twelve
-  pages used to claim Wednesday–Saturday. Copy currently avoids naming days.
+- **The schema's hours.** `openingHoursSpecification` on every page says open
+  24 hours, 7 days. That's true for quotes and texts, not appointments, and it
+  should match whatever his Google Business Profile says. Left alone on
+  2026-09-29 until he checks his GBP hours; the terms page and `llms.txt` now
+  say weekday afternoons and Saturdays.
 - **Licensed and insured.** It appears nowhere on the site. It's a strong trust
   signal for a stranger in a driveway, but don't assert it until he confirms.
 
@@ -112,9 +116,34 @@ exactly four places, where a customer actually hesitates:
 Anywhere else, use the slot for a fact that appears nowhere else — same detailer
 every time, exact price not a range, door jambs and glass included.
 
-Same discipline for scarcity: **one** claim, **12 cars a week**. Not "limited
-spots" plus "a few a week" plus "two or three a day" (which is 14–21 and
-contradicts the others).
+Same discipline for scarcity: **one** claim, and it's the live **"Next opening:
+Thu, Oct 1 at 1:00 PM"** line (`data-next-opening`, filled by `site-stats.js`
+from his real calendar). No fixed weekly number: "12 cars a week" was retired
+on 2026-09-29 because his real week holds about 7, and 7 reads as part-time.
+Not "limited spots" or "a few a week" either. Write the element's fallback text
+so it stands on its own when the calendar can't be reached.
+
+## Online booking
+
+Back on 2026-09-29, rebuilt so it can't cost a lead. The quote calculator shows
+the price, then **"Pick my time"** (steps 7 and 8: three next openings, then
+name, phone, town, street) or **"Text me this quote instead"** (the old phone
+form). If the calendar doesn't answer, the price screen is just the phone form,
+exactly as before.
+
+- **The calendar lives in the dashboard repo** (`twillowdashbored`,
+  `bkSlotAvailability` in `src/index.js`), not here. The site asks
+  `/api/next-openings` and books through `/api/book`, the same engine his
+  Bookings screen, his texts and his Google Calendar feed into.
+- **A time is only offered if the job finishes before dark** at his longest
+  time (sunset is computed, so it follows the season). Weekday Full Details
+  drop out after the clocks go back on Nov 1 until his work lights are ready;
+  that's a checkbox in Bookings → Settings.
+- **Never same day.** Tomorrow's times close at 9 PM tonight.
+- **Instant confirm only in the twelve towns.** They get his confirm text and
+  both reminders at once. Anywhere else is a request he confirms himself.
+- **A street without a house number is allowed.** His alert tells him to ask.
+- Anything on his Google Calendar blocks a time. That's his off switch.
 
 ## The service area
 
@@ -141,7 +170,10 @@ the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
 **The live offer is the Rain-Ready Full Detail,** on the homepage since
 2026-09-28 at Mikey's request. It's the door hanger's version: book a Full
 Detail by **December 31, 2026** and exterior polish, ceramic wax and RainX come
-free (worth $508, from $369). It lives in three places in `index.html`, and
+free (worth $508, from $369). It's the **booking** date that counts: a job
+booked by Dec 31 can be done as late as **January 31, 2027** (Mikey,
+2026-09-29), because weekday Full Details don't fit before dark in November and
+December and there aren't enough Saturdays to go round. It lives in three places in `index.html`, and
 all three switch off on their own at midnight Pacific going into January 1:
 
 1. the gold chip above the hero headline (`.mh-rr`)
