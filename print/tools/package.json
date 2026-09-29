@@ -4,7 +4,8 @@
   "description": "Renders print pieces (door hangers, EDDM postcard). Not part of the website build.",
   "scripts": {
     "hanger": "node build-door-hanger.cjs",
-    "postcard": "node build-postcard.cjs"
+    "postcard": "node build-postcard.cjs",
+    "shared": "node build-shared-postcard.cjs"
   },
   "dependencies": {
     "@fontsource/caveat": "^5.3.0",
