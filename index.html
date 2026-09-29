@@ -2353,15 +2353,22 @@ header li a[href="#booking"],
     if (!bkService() || key === BK.key) return BK.pending;
     BK.key = key; BK.opens = null;
     var mine = BK.pending = new Promise(function(resolve){
-      var done = false, t = setTimeout(function(){ if(!done){ done = true; resolve(null); } }, 4500);
+      // A failure forgets the key, so the next step (or the price screen) asks
+      // again. Without that, one dropped request on a patchy phone signal meant
+      // no booking button for the rest of the visit.
+      var done = false;
+      var giveUp = function(){ if (done) return; done = true; clearTimeout(t); if (BK.key === key) BK.key = ''; resolve(null); };
+      var t = setTimeout(giveUp, 4500);
       try {
         fetch(BK_API + '/api/next-openings?n=12&service=' + bkService() + '&size=' + bkSize())
           .then(function(r){ return r.ok ? r.json() : null; })
-          .then(function(j){ if (done) return; done = true; clearTimeout(t);
-            if (BK.key === key) BK.opens = (j && j.ok && j.openings) ? j.openings : [];
-            resolve(BK.opens); })
-          .catch(function(){ if(!done){ done = true; clearTimeout(t); resolve(null); } });
-      } catch (e) { done = true; clearTimeout(t); resolve(null); }
+          .then(function(j){ if (done) return;
+            if (!(j && j.ok && j.openings)) { giveUp(); return; }
+            done = true; clearTimeout(t);
+            if (BK.key === key) BK.opens = j.openings;
+            resolve(j.openings); })
+          .catch(giveUp);
+      } catch (e) { giveUp(); }
     });
     return mine;
   }
