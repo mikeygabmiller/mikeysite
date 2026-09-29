@@ -222,6 +222,19 @@ how long a sign survives there (state highway 60%, shopping-centre frontage
 85%, MCCA left out); and distance from Snohomish. Score 100 is the best spot in
 the area.
 
+A corner where cars drive past without stopping only makes the list on a
+counted road with 10,000+ cars a day. Below that the driver gets a second at
+speed, and those spots were 70% of the first list and buried the lights and
+stop signs. The list is about 3,400 spots at about 2,000 corners, which is
+still three times what 1,000 signs can fill.
+
+**What it can't see:** grass, ditches, fences, trees in the sight line, or which
+side of a driveway the pin lands on (it's worked out from the road's centre
+line, good to 10 to 20 m). The map's **Satellite** button and each spot's
+**Street View** button are the check before driving there; the crew's skip
+reasons do the rest. The weights are judgment until real signs are out: after
+the first two weekends, compare survival and sign leads by town and adjust.
+
 After running it, **copy `spots.json` to the dashboard repo as
 `public/sign-spots.json`** so the app matches. The app also learns on top of the
 list: fast removals, "HOA" and "no good spot" skips push a spot down or out.

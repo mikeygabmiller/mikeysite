@@ -139,6 +139,11 @@ MATCH_M = 22              # a count segment this close, and parallel, is the sam
 AUD_M = 1600              # "within a mile" for the neighbours who pass every day
 MAX_PER_JUNCTION = 2
 MIN_RAW = 1100            # below this many good looks a day it isn't worth a sign
+# Cars that drive past without stopping give a sign a second at speed. On a
+# country road that was 70% of the map (Three Lakes Road, 4,500 cars, score
+# 28) and it buried the lights and stop signs. A passing-traffic spot has to
+# be on a counted road this busy to make the list.
+THRU_MIN_AADT = 10000
 
 
 # ---------------------------------------------------------------------------
@@ -802,7 +807,9 @@ out tags geom;""", "osm-context.json")["elements"]
     keep = []
     for cl, xs in by_cl.items():
         xs.sort(key=lambda x: -x["raw"])
-        keep += [x for x in xs[:MAX_PER_JUNCTION] if x["raw"] >= MIN_RAW]
+        xs = [x for x in xs if x["raw"] >= MIN_RAW and
+              (x["ctrl"] != "thru" or (x["aadt"] >= THRU_MIN_AADT and "e" not in x["flags"]))]
+        keep += xs[:MAX_PER_JUNCTION]
     keep.sort(key=lambda x: -x["raw"])
     # junction numbers in rank order, so jx 0 is the best corner in the area
     jmap = {}
