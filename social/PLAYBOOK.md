@@ -138,8 +138,10 @@ The rest of his checklist:
 - **Cheap for you to deliver, valuable to them.** All three are things you
   already carry and already sell. Each one solves a rain-season problem: water sitting on the paint, a
   windshield you can't see through, muddy carpets.
-- **Real scarcity:** 12 cars a week. It's the one scarcity claim the site
-  makes, so it's the only one the posts make.
+- **Real scarcity:** none by number. "12 cars a week" was retired on
+  2026-09-29. The site's scarcity is the live "Next opening" line, which a
+  post can't carry, so posts point at the quote instead: "the quote on my
+  site shows my real open times".
 - **Real urgency:** the rain season window. Named, not a fake countdown. The
   window really ends, so the second visit to the page doesn't make it look
   fake.
@@ -366,7 +368,7 @@ Same voice as the website, because it's the same guy:
   got, describe what the service covers, not what was done to that car.
 - **The shape:** a first line that makes sense on its own (Instagram cuts the
   rest behind "more"), two to four short lines of what happened, one fact
-  (price range, pay after, 60 second quote, 12 cars a week), then the call to
+  (price range, pay after, 60 second quote, book your time right in the quote), then the call to
   action. Instagram: "link in bio". Facebook: the actual link.
 - **Hashtags:** 3 to 5 on Instagram, mostly local (#snohomishcounty,
   #lakestevens, #everettwa, #monroewa, #millcreekwa, #bothellwa,
