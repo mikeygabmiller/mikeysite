@@ -380,7 +380,7 @@ async function checkQr(el, want, label) {
   // Mikey's halves follow CLAUDE.md. Trinity's claims (insured) are Trinity's own.
   const all = await page.evaluate(() => document.body.innerText);
   const mk = await page.evaluate(() => [...document.querySelectorAll('.mk')].map(e => e.innerText).join('\n'));
-  if (/—|&mdash;/.test(all)) problems.push('copy contains an em dash');
+  if (/\u2014|&mdash;/.test(all)) problems.push('copy contains an em dash');
   const banned = [[/insur|licens/i, 'licensed/insured on Mikey\'s half (unconfirmed)'], [/lynnwood|edmonds/i, 'a town Mikey does not serve'],
     [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b/i, 'business "we"'],
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day'], [/\$(160|200|240|280|299|339|379)\b/, 'a retired price']];
