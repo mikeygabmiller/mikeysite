@@ -1,0 +1,254 @@
+# Yard signs: the plan and the source of truth
+
+Everything about putting out yard signs for Mikey's Mobile Detailing lives here:
+what to print, where the signs go, who puts them out, how every sign gets
+tracked, and what it should cost and bring in. Not served (`_config.yml`
+excludes `print/`).
+
+Three pieces work together:
+
+| Piece | Where | What it does |
+|---|---|---|
+| **The spot list** | `spots.json` + `SPOTS.md` here, made by `print/tools/sign-spots.py` | Every intersection approach in the twelve towns worth a sign, ranked by real traffic counts |
+| **The Sign Crew app** | dashboard repo, `public/signs.html` (link below) | What a helper opens: suggests where to go, builds the route, logs each sign with GPS and a photo |
+| **Yard signs in the dashboard** | dashboard → Insights → Yard signs (opens the same app as Mikey) | Crew links, who put out what, what's still up, pay owed, leads from signs |
+
+A sign is one more copy of the facts table in the repo's `CLAUDE.md`. The phone
+number, "I come to you" and the twelve towns on it have to match everywhere else.
+
+---
+
+## 1. The honest math first
+
+Signs are cheap to print and expensive to lose. Budget them like this:
+
+| Line | Per sign | 1,000 signs |
+|---|---|---|
+| 18 x 24 in coroplast, printed both sides, with an H-stake | about $2 to $4 at quantity (100 full colour with stakes lists at $395 from one printer, so under $4 even at 100) | $2,000 to $4,000 |
+| Paying a helper to place it (optional) | $1 to $2 (placement services charge around $2.15) | $1,000 to $2,000 |
+| **All in** | **$3 to $6** | **$3,000 to $6,000** |
+
+The average job is roughly $300. So **1,000 signs pay for themselves at about 10
+to 20 booked jobs**, which is 1 to 2 jobs per 100 signs. Real-estate investors
+(a more urgent product) report 1 to 8 calls per 100 bandit signs. A detail is a
+lower-urgency buy, so plan on the low end and let the app's numbers tell you
+the truth after the first two weekends.
+
+What that means in practice:
+
+- **Don't order 1,000 on day one.** Order 100 to 200, run two weekends, read
+  the numbers in Insights → Yard signs (leads per 100 signs, how long signs
+  survive, which towns answer), then order the big batch.
+- **Signs are consumable.** Roadside signs get pulled. The app measures how
+  long yours last. If the average is 10 days, 1,000 signs is about 10 to 12
+  weeks of keeping 250 up at a time.
+- **The part that lasts is the brand.** People who see "Mikey's" at the light
+  every day are the ones who later search the name. Watch branded searches in
+  Insights → Website, not only direct sign calls.
+
+## 2. Push back: where the best signs actually go
+
+Roadside corners get the traffic. Yards with permission get the time. Do both:
+
+1. **Permission yards (lasts weeks to months).** Friends and family who live on
+   a busy road, and customers right after a detail ("Mind if I leave a sign up
+   for two weeks?"). Contractors trade $100 off for six months of sign; for a
+   detail, a free add-on is plenty. A sign in a neighbour's yard is also an
+   endorsement no roadside sign can buy. In the app these are **Yard, with
+   permission** and get re-checked monthly, not weekly.
+2. **Roadside corners (lasts days to weeks).** Lights and stop signs on busy
+   roads, which the spot list ranks. This is where volume comes from.
+
+The only places the app keeps signs out of on purpose:
+
+- **HOA neighbourhoods known to pull them.** The Mill Creek Community
+  Association's divisions are excluded (their outlines are in OpenStreetMap and
+  match MCCA's own division list). Any spot the crew marks "HOA took it" or
+  "told to remove it" twice drops out on its own, and Mikey can draw no-go
+  circles in the app.
+- **State highway frontage is allowed but scored down to 60%.** WSDOT
+  maintenance crews pull every non-traffic sign on state highway right of way
+  (SR 9, SR 204, SR 527, SR 524, SR 96, US 2 and the rest), so those signs die
+  fastest. The cross street at the same light usually does better.
+- **Nothing on a road posted 50 mph or faster, no ramps, no medians.** Nobody
+  can read it at that speed, and nobody should be standing on that shoulder.
+- **Private roads and gated streets.**
+
+Everything else is fair game, as the plan asks. The app is deliberately
+generous about *where* a sign may go and strict about *whether enough people
+will see it*.
+
+One more honest note: a sign carries the phone number, so every sign is
+traceable to the business. Some neighbours treat roadside signs as litter and
+say so in local Facebook groups. Keep them straight, clean, one per corner, and
+pull any a homeowner asks about. That is the difference between "that detailing
+guy is everywhere" and "that detailing guy is trashing our street".
+
+## 3. The sign itself
+
+Research on roadside reading (billboard and bandit-sign guidance): drivers get
+3 to 5 seconds, read about 3 words a second, and **7 words or fewer** is the
+limit. Letter height: about 1 inch per 30 feet of reading distance at best,
+so a phone number you want read from 100 feet needs 3 to 4 inch characters.
+
+**Spec**
+
+- 18 x 24 in, landscape, 4 mm corrugated plastic (coroplast), **flutes
+  vertical** so the H-stake slides in, **printed both sides** (the back faces
+  cars leaving the intersection).
+- H-stakes, 10 x 30 in or similar heavy wire. Push the sign down so its bottom
+  sits about a foot off the grass.
+- Colour: the brand's red, black and white. High contrast is what matters;
+  never mid-tones or photos.
+
+**Copy (7 words and a number)**
+
+```
+[truck logo]  MIKEY'S  MOBILE DETAILING
+         I COME TO YOU            (white on a red band, 2.5 in letters)
+        (425) 600-7897            (2.6 in digits)
+mikeysdetailing.com  Scan for your exact price in 60 seconds  [QR]
+```
+
+**The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
+plus 0.125 in bleed; order it "same design both sides"). `preview.png` and
+`mockup.png` are for looking at. Rebuild with `npm run sign` in `print/tools`:
+the generator fails if the phone number drops under 2.3 in, if the big copy
+passes 7 words, if a price, an offer, "we", an em dash or an unserved town gets
+in, or if the QR stops decoding.
+
+- First person, per the voice rules. "I come to you" is the whole pitch.
+- **No price and no offer on the sign.** Prices change and 1,000 printed
+  signs can't. The Rain-Ready offer ends Dec 31, 2026 and stays on the hangers
+  and postcards only (CLAUDE.md, "Offers and countdowns").
+- The QR is for people on foot and at permission yards. It encodes
+  `https://mikeysdetailing.com/?utm_source=yardsign#booking`. The dashboard
+  already reads `utm_source` off every visit, so anyone who scans it and then
+  sends a quote or books a time is tagged **sign** and credited to yard signs
+  automatically. Print it at least 5 in square: a QR scans from about 10 times
+  its own width.
+
+## 4. Where exactly a sign goes
+
+The app shows this at every stop. The rules behind it:
+
+- **Right side of the road, as cars come up to the light or stop sign**, on the
+  grass strip. At a light, about 100 ft before it, where the line of cars
+  stops. At a stop sign, right next to it, where the car waits.
+- **Facing the oncoming cars**, turned a little toward them.
+- **One sign per corner, two per intersection at most**, on the two busiest
+  approaches. Four of the same sign on one corner reads as litter.
+- **Spread out.** Not every light on the same road: every second or third one.
+  The route builder spaces stops at least 500 m apart for this reason.
+- **Never** where it blocks a driver's view of cross traffic or a crosswalk,
+  never on a median, never stapled to a pole (the PUD pulls them and staples
+  hurt linemen), never on someone's mowed front lawn without asking.
+- **Safety beats the spot.** Park legally with hazards on, never cross a busy
+  road on foot to reach a corner, skip it ("Not safe to stop") and move on.
+
+## 5. The crew: from Mikey alone to 1,000 signs
+
+**The link.** Dashboard → Insights → Yard signs → *Crew link*. It looks like
+`https://texting.mikeysdetailingsnohomish.workers.dev/signs.html#k=…`. Text it
+to anyone willing to help. They type their first name once and they're in. They
+see the map, the spots and the other helpers' signs, and nothing else: no texts,
+no customers, no money. Mikey can turn a link off (everyone on it stops) or
+turn one person off, from the same screen.
+
+**What a helper does, start to finish:**
+
+1. Opens the link, says how many signs they have with them.
+2. Picks **Best near me**, **a town**, **the area on the map**, or taps the
+   app's **Suggestion** (the best uncovered area right now, scored by spot
+   quality, how long since anyone covered it, and how far away it is).
+3. Gets a route: the best open spots in driving order, spaced out, with the
+   drive time. Starting it reserves those spots for three hours so two helpers
+   never double up.
+4. Drives. **Navigate** opens Google or Apple Maps to the stop. When they pull
+   up within about 60 m, the phone buzzes and shows the big **Sign placed**
+   button.
+5. Taps it. The GPS point is saved on the spot, the camera opens for one photo
+   (step back about 20 ft so the sign and the corner are both in it), and the
+   next stop comes up. Can't place it? **Skip** with a reason, which teaches the
+   list.
+6. Everything is saved on the phone first and uploads in batches, so a dead
+   zone loses nothing.
+
+**Checking and pickup.** The *My signs* and *Check* views route a helper past
+signs nobody has looked at in a week: **Still up**, **Gone**, **Knocked over
+(fixed it)** or **Picked up**. That is how the app learns which corners keep a
+sign and which lose it in a day.
+
+**Pay.** If Mikey sets a per-sign rate in the app's settings, each helper sees
+what they've earned and Mikey sees what he owes. A sign counts once it has a
+photo (if photo proof is on) and Mikey hasn't rejected it. Common rates for
+placement services are around $1 to $2 per sign; for friends and family,
+whatever Mikey decides. Mark people paid in the same screen.
+
+**Scaling in phases:**
+
+| Phase | Signs | Who | Goal |
+|---|---|---|---|
+| 1. Test | 100 to 200 | Mikey + 1 helper, 2 weekends | Real survival and lead numbers for 3 to 4 towns |
+| 2. Cover the twelve towns | 300 to 500 | 3 to 5 helpers | ~25 signs per town at the best lights; permission yards on every busy-road friend |
+| 3. Keep it up | 1,000 ordered | anyone with the link | Keep about 250 up at once; each weekend, re-check and refill what's gone |
+
+Timing: put roadside signs out **Friday afternoon or evening** so they catch the
+whole weekend, when people are home, errands are slow and detailing gets
+booked. Recheck Monday.
+
+## 6. Tracking: how leads get credited
+
+| How | Automatic? | Counts as |
+|---|---|---|
+| Scanned the QR, then sent a quote or booked a time | Yes (`utm_source=yardsign` on the visit, tagged at `/submit` and `/api/book`) | QR |
+| A conversation tagged **sign** | Yes, once tagged | tagged |
+| "Saw your sign" by text or call | One tap: **+ Add one** in the app's Results | said so |
+
+Ask "where did you see me?" on every call that mentions a sign and note the
+corner. A dedicated tracking phone number printed on the signs would make every
+call automatic; it costs about $1 to $2 a month on Twilio plus usage, and needs
+replies routed from that number too, so it is a later decision, not built yet.
+
+## 7. How the spot list is made
+
+`python3 print/tools/sign-spots.py` (needs `pip install shapely`). Plain words
+are in the script's header. In short: every intersection in the twelve towns
+from OpenStreetMap; cars per day from the 2023 federal HPMS counts that WSDOT
+files for every arterial and collector; how long drivers have to read (stopped
+at a light counts fully, rolling through at 45 mph barely); the homes within a
+mile that fit the customer (income, owners, two-car households, from the Census);
+how long a sign survives there (state highway 60%, shopping-centre frontage
+85%, MCCA left out); and distance from Snohomish. Score 100 is the best spot in
+the area.
+
+After running it, **copy `spots.json` to the dashboard repo as
+`public/sign-spots.json`** so the app matches. The app also learns on top of the
+list: fast removals, "HOA" and "no good spot" skips push a spot down or out.
+
+## 8. Ordering checklist
+
+- [ ] Print file: 18 x 24, landscape, both sides, 4 mm coroplast, vertical flutes.
+- [ ] Order 100 to 200 first, H-stakes included.
+- [ ] Scan the QR on the printed proof from 5 ft before approving the run.
+- [ ] Dashboard → Insights → Yard signs → set sign cost, pay per sign (if any), photo proof.
+- [ ] Make the crew link, text it to the first helper, do the first route together.
+- [ ] After two weekends: read leads per 100 signs and median days up, then decide on the 1,000.
+
+## Sources
+
+- Placement and design practice: [FortuneBuilders](https://www.fortunebuilders.com/p/tips-to-make-your-next-bandit-sign-campaign-a-huge-success/),
+  [Property M.O.B.](https://propertymob.com/blog/how-to-create-a-high-converting-bandit-sign/),
+  [SimpleCrew on directing placers](https://www.simplecrew.com/how-to-give-directions-to-bandit-sign-placers/),
+  [SimpleCrew app](https://www.simplecrew.com/sp-get-app/)
+- Placer pay and results: [BiggerPockets, placer hiring](https://www.biggerpockets.com/forums/93/topics/478176-bandit-sign-placers-hiring-question),
+  [window cleaning bandit signs](https://community.windowcleaner.com/t/bandit-signs/3046)
+- Contractor yard signs and permission discounts: [Pipeline](https://pipelineon.com/blog/yard-sign-strategy/),
+  [FieldPulse](https://www.fieldpulse.com/resources/blog/yard-sign-marketing-guide)
+- Reading at speed: [FHWA conspicuity summary](https://www.fhwa.dot.gov/publications/research/safety/13044/006.cfm),
+  [seven-word rule](https://trailheadmedia.com/how-many-words-should-a-billboard-have/);
+  QR sizing: [QR code minimum size](https://www.qr-code-generator.com/blog/minimum-qr-code-size/)
+- Pricing anchor: [Dirt Cheap Signs, 100 18x24 with stakes $395](https://www.dirtcheapsigns.com/Custom-395-full-color-yard-signs.php)
+- WSDOT removes non-traffic signs from highway right of way: [WSDOT](https://wsdot.wa.gov/business-wsdot/highway-signs/political-signs-highways)
+- Traffic counts: [FHWA HPMS](https://www.fhwa.dot.gov/policyinformation/hpms.cfm) (geo.dot.gov `HPMS_FULL_WA_2023`)
+- MCCA divisions: [mcca.info](https://mcca.info/?page_id=14)

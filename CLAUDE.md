@@ -279,6 +279,30 @@ ordering steps, the distribution rules and why each section is there.
   picks up an em dash or a banned claim, or the QR code stops decoding. Look
   at the previews anyway.
 
+## Yard signs
+
+`print/yard-signs/` (not served) is the plan and the source of truth: read its
+`README.md` before changing anything about signs. It covers what to print, the
+honest cost math, where signs go, the crew link, pay, and lead tracking.
+
+- **The spot list** is `print/yard-signs/spots.json`, made by
+  `python3 print/tools/sign-spots.py` (FHWA HPMS traffic counts, OpenStreetMap
+  lights and stop signs, Census households). Copy it to the dashboard repo as
+  `public/sign-spots.json` after every run, same as the hanger zones.
+- **The crew app** lives in the dashboard repo (`public/signs.html`, routes
+  `/api/crew/*` and `/api/signs` in `src/index.js`). Helpers join from a link
+  Mikey makes in Insights → Yard signs.
+- **A sign is one more copy of the facts table:** the phone number, "I come to
+  you", first person. No prices and no offer on a sign: 1,000 printed signs
+  can't follow a price change, and the Rain-Ready offer stays on the hangers and
+  postcards.
+- **The QR** is `https://mikeysdetailing.com/?utm_source=yardsign#booking`. The
+  dashboard tags a quote or booking from that visit **sign** and credits it.
+  Don't change the `utm_source` without changing the dashboard.
+- **Only the twelve towns.** The Mill Creek Community Association's divisions
+  are excluded as an HOA that pulls signs; don't add other HOAs to the script
+  without Mikey or the crew's removal data saying so.
+
 ## EDDM postcard
 
 `print/postcard/` (not served) holds the 6.5" x 9" Every Door Direct Mail
