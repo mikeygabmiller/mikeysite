@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """Ranks every spot in the twelve towns where a yard sign earns its keep.
 
-    pip install shapely          # once
+    pip install shapely rasterio numpy pillow     # once
     python3 print/tools/sign-spots.py
+    python3 print/tools/sign-spot-check.py        # then look at the pins
 
 Writes print/yard-signs/spots.json (every spot, ranked) and print/yard-signs/SPOTS.md
 (the best spots per town, in plain words). Copy spots.json to the dashboard repo
@@ -43,6 +44,32 @@ How a spot is scored, in plain words:
 
 Score 100 = the best spot in the area. The score is a square root of the raw
 number, so 50 means a quarter of the best spot's reach, not half.
+
+Where the pin goes, in plain words: on grass, on the right-hand verge, as
+close to the road as the grass allows. The first version put every pin a
+fixed distance back and a guessed distance sideways and never looked at the
+ground, which put a top Snohomish spot on the deck of the Avenue D bridge.
+Now every pin is checked against the 2023 NAIP aerial photos (USDA, 60 cm,
+with infrared): healthy plants reflect infrared and pavement, roofs and water
+don't, so the photo says grass or not grass for every half metre. The script
+tries points from just past the curb out to 10 m, and back along the road over
+the stretch where the cars in question are looking, and keeps the one closest
+to the ideal spot that is:
+
+  - growing (grass or planting, 3 m across, so a stake has ground to go in);
+  - under 1 m tall (Meta's canopy-height map), so it's grass and not woods,
+    with nothing over 1 m on the patch itself and no more than a third of the
+    ground within 5 m under trees, so it's not a gap in the woods (a strip
+    between street trees is fine), and under a third of it within 20 m, so
+    it isn't a road through the woods;
+  - off every mapped road, 6 m clear of any railway, 12 m clear of any
+    bridge, overpass or deck, with nothing mapped between it and its road;
+  - on a road that isn't itself a bridge where the cars wait.
+
+An approach with no such point is dropped, not guessed. What the photo can't
+say: a ditch, a fence, a hedge that blocks the view, or a lawn someone will
+defend. Street View in the app, the crew's skips and Mikey's "hide this
+corner" cover those.
 
 Downloads are cached in print/tools/.cache (git-ignored). Delete it to refetch.
 """
@@ -144,6 +171,45 @@ MIN_RAW = 1100            # below this many good looks a day it isn't worth a si
 # 28) and it buried the lights and stop signs. A passing-traffic spot has to
 # be on a counted road this busy to make the list.
 THRU_MIN_AADT = 10000
+
+# Where along the road, per kind of spot: (closest to the corner, ideal,
+# farthest), in metres back from the junction. A light's queue stacks up, so
+# its range is long; at a stop sign the car that reads it is the one waiting.
+PLACE_RANGE = {"sig": (12, 35, 90), "all": (4, 12, 35), "stop": (4, 12, 35), "minor": (4, 12, 35),
+               "rab": (12, 25, 60), "thru": (15, 45, 100)}
+LAT_MAX = 10.0            # at most this far past the curb, or drivers stop reading it as "on this road"
+NDVI_GRASS = 0.25         # NAIP NDVI above this is growing (Oct 2023 grass reads 0.3 to 0.5;
+                          # at 0.2 a parking-lot planter and thin grass under trees got through)
+GRASS_SHARE = 0.85        # of the 3 m patch around the pin
+OPEN_R = 5.0              # and within this many metres, no more than WOODS_SHARE of it under trees
+WOODS_SHARE = 0.35        # taller than TREE_M: a gap in the woods is shade and brush (the first
+TREE_M = 2                # check sheets had pins there), a strip between street trees is fine
+# The canopy map is soft at a few metres (it missed whole crowns over some
+# pins) but honest at twenty: a road through the woods reads a third or more
+# trees within 20 m, a town verge rarely does. Measured on pins labelled by
+# eye on the check sheets, then checked on fresh samples.
+WOODS_R = 17.7            # half-side of a square the area of a 20 m circle
+WOODS_R_SHARE = 0.33
+# Lidar settles it. Washington DNR publishes every survey as two hillshades:
+# bare earth and first surface. Ground is smooth in both; a tree, hedge, shrub,
+# car or wall is rough in the surface one only. Lidar is also true to the
+# ground where the photo isn't: an aerial photo leans tall trees several metres
+# off their trunks, so a pin can look like it's under a tree and not be, or
+# the other way round. Surveys from 2016 on, newest drawn on top.
+LIDAR = "https://lidarportal.dnr.wa.gov/arcgis/rest/services/lidar/wadnr_hillshade/MapServer"
+LIDAR_ROUGH = 12          # surface texture minus ground texture, 0-255 hillshade units
+LIDAR_PATCH = 0.15        # at most this share of the pin's 3 m patch has something standing on it
+LIDAR_WOODS = 0.50        # and at most this share within 5 m
+BRIDGE_CLEAR = 12.0
+NAIP_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
+NAIP_SAS = "https://planetarycomputer.microsoft.com/api/sas/v1/token/naipeuwest/naip"
+CHIP_HALF = 118.0         # metres either side of the junction: covers the farthest point tried
+# Infrared says "growing", which is grass and trees alike, and the first run
+# put pins in the woods. Meta's 1 m canopy-height map (public, from the same
+# kind of aerial photo plus lidar) says how tall it is: under 1 m is grass,
+# planting or low shrubs a stake goes into and a driver sees past.
+CHM = "https://dataforgood-fb-data.s3.amazonaws.com/forests/v1/alsgedi_global_v6_float/chm/{}.tif"
+MAX_GROWTH_M = 1
 
 
 # ---------------------------------------------------------------------------
@@ -381,6 +447,30 @@ way(bn.an)[highway~"^(residential|living_street)$"]->.r;
                 if el.get("type") == "way" and el.get("geometry"):
                     ways[el["id"]] = el
             print(f"  tile {ts},{tw}: {len(got)} ways ({len(ways)} total)")
+
+    print("Railways (OpenStreetMap)...")
+    rails = []
+    for el in overpass(f"""[out:json][timeout:240];
+way[railway~"^(rail|light_rail|tram|narrow_gauge|disused|abandoned)$"]({s},{w},{n},{e});
+out geom;""", "osm-rail.json")["elements"]:
+        g = el.get("geometry") or []
+        if len(g) >= 2:
+            rails.append(LineString([xy(q["lat"], q["lon"]) for q in g]))
+    print(f"  {len(rails)} railway lines")
+
+    print("Cemeteries (OpenStreetMap)...")
+    graves = []
+    for el in overpass(f"""[out:json][timeout:240];
+(way[landuse=cemetery]({s},{w},{n},{e}); way[amenity=grave_yard]({s},{w},{n},{e}););
+out geom;""", "osm-cemetery.json")["elements"]:
+        g = el.get("geometry") or []
+        if len(g) >= 4:
+            try:
+                graves.append(Polygon([xy(q["lat"], q["lon"]) for q in g]).buffer(3))
+            except Exception:
+                pass
+    grave = unary_union(graves) if graves else None
+    print(f"  {len(graves)} cemeteries")
 
     print("Shops, HOA neighbourhoods (OpenStreetMap)...")
     ctx = overpass(f"""[out:json][timeout:240];
@@ -783,6 +873,9 @@ out tags geom;""", "osm-context.json")["elements"]
                 "head": heading, "road": a["name"] or t.get("highway", "road").replace("_", " "),
                 "cross": cross, "town": town, "flags": flags, "dkm": dkm, "out": a["brg"],
                 "year": cnt["year"] if cnt else "",
+                "leg": lg["pts"], "legway": lg["way"], "half": lanes * 3.4 / 2,
+                "legbridge": str(t.get("bridge", "no")).lower() not in ("no", "") or
+                             str(t.get("tunnel", "no")).lower() not in ("no", ""),
             })
 
     print(f"  {len(spots)} placeable approaches before scoring; skipped: {dict(skipped)}")
@@ -800,6 +893,23 @@ out tags geom;""", "osm-context.json")["elements"]
     top = raws[int(len(raws) * 0.998)] if raws else 1
     for x in spots:
         x["score"] = max(1, min(100, round(100 * math.sqrt(x["raw"] / top))))
+    # --- on the ground ------------------------------------------------------
+    worth = [x for x in spots if x["raw"] >= MIN_RAW and
+             (x["ctrl"] != "thru" or (x["aadt"] >= THRU_MIN_AADT and "e" not in x["flags"]))]
+    placed = ground_place(worth, ways, rails)
+    kept = []
+    for x in placed:
+        P = Point(x["xy"])
+        town = town_at(P)
+        if not town or (mcca is not None and mcca.contains(P)):
+            continue
+        # A cemetery lawn is grass by the road, and the worst place for an ad.
+        if grave is not None and grave.contains(P):
+            continue
+        x["town"] = town
+        kept.append(x)
+    spots = kept
+
     # best two approaches per junction, and only the ones worth a sign
     by_cl = defaultdict(list)
     for x in spots:
@@ -807,8 +917,6 @@ out tags geom;""", "osm-context.json")["elements"]
     keep = []
     for cl, xs in by_cl.items():
         xs.sort(key=lambda x: -x["raw"])
-        xs = [x for x in xs if x["raw"] >= MIN_RAW and
-              (x["ctrl"] != "thru" or (x["aadt"] >= THRU_MIN_AADT and "e" not in x["flags"]))]
         keep += xs[:MAX_PER_JUNCTION]
     keep.sort(key=lambda x: -x["raw"])
     # junction numbers in rank order, so jx 0 is the best corner in the area
@@ -832,13 +940,409 @@ out tags geom;""", "osm-context.json")["elements"]
     write_md(keep)
 
 
+# ---------------------------------------------------------------------------
+# the ground: NAIP 2023 infrared, read a window at a time from the public
+# cloud copy (Microsoft Planetary Computer). About a second a junction, cached.
+# ---------------------------------------------------------------------------
+def naip_items():
+    s, w, n, e = BBOX
+    path = os.path.join(CACHE, "naip-items.json")
+    if os.path.exists(path):
+        return json.load(open(path))
+    out, url, body = [], NAIP_STAC, {"collections": ["naip"], "bbox": [w, s, e, n],
+                                     "datetime": "2023-01-01T00:00:00Z/2023-12-31T23:59:59Z", "limit": 200}
+    req = urllib.request.Request(url, data=json.dumps(body).encode(), headers=dict(UA, **{"Content-Type": "application/json"}))
+    d = json.load(urllib.request.urlopen(req, timeout=120))
+    for f in d["features"]:
+        pr = f["properties"]
+        out.append({"href": f["assets"]["image"]["href"], "bbox": pr.get("proj:bbox"), "epsg": pr.get("proj:epsg"),
+                    "date": pr.get("datetime", "")[:10]})
+    if not out or any(not x["bbox"] or not x["epsg"] for x in out):
+        sys.exit("NAIP search came back without footprints; can't check the ground")
+    os.makedirs(CACHE, exist_ok=True)
+    json.dump(out, open(path, "w"))
+    return out
+
+
+class Ground:
+    """NDVI around one junction, in UTM metres, with a summed-area table so a
+    patch's grass share is four lookups."""
+    def __init__(self, nd, chm, x0, y0, res, obj=None):
+        import numpy as np
+        self.np, self.x0, self.y0, self.res = np, x0, y0, res
+        self.h, self.w = nd.shape
+        self.lidar = obj is not None
+        if self.lidar:
+            # with lidar, "something standing here" replaces the soft canopy map
+            # at the pin; the canopy map still speaks for the 20 m woods test
+            self.so_ = np.pad(obj.astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+            chm_pin = np.zeros_like(chm)
+        else:
+            chm_pin = chm
+        g = ((nd >= NDVI_GRASS) & (chm_pin <= MAX_GROWTH_M)).astype(np.int32)
+        self.sl = np.pad((chm_pin <= MAX_GROWTH_M).astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+        tall = (chm > TREE_M).astype(np.int32)
+        self.st = np.pad(tall.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+        ok = (nd > -1.5).astype(np.int32)                  # -2 marks "no picture here"
+        self.sg = np.pad(g.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+        self.so = np.pad(ok.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+
+    def grass(self, ux, uy, r=1.0):
+        c = int((ux - self.x0) / self.res)
+        rr = int((self.y0 - uy) / self.res)
+        k = max(1, int(round(r / self.res)))
+        a, b, c0, c1 = rr - k, rr + k + 1, c - k, c + k + 1
+        if a < 0 or c0 < 0 or b > self.h or c1 > self.w:
+            return 0.0
+        n = (b - a) * (c1 - c0)
+        ok = self.so[b, c1] - self.so[a, c1] - self.so[b, c0] + self.so[a, c0]
+        if ok < n:
+            return 0.0
+        k2 = max(1, int(round(OPEN_R / self.res)))
+        a2, b2, d0, d1 = max(0, rr - k2), min(self.h, rr + k2 + 1), max(0, c - k2), min(self.w, c + k2 + 1)
+        n2 = (b2 - a2) * (d1 - d0)
+        if self.lidar:
+            so = self.so_
+            if so[b, c1] - so[a, c1] - so[b, c0] + so[a, c0] > LIDAR_PATCH * n:
+                return 0.0
+            if so[b2, d1] - so[a2, d1] - so[b2, d0] + so[a2, d0] > LIDAR_WOODS * n2:
+                return 0.0
+        else:
+            # nothing taller than knee height where the stake goes
+            if self.sl[b, c1] - self.sl[a, c1] - self.sl[b, c0] + self.sl[a, c0] < n:
+                return 0.0
+            if self.st[b2, d1] - self.st[a2, d1] - self.st[b2, d0] + self.st[a2, d0] > WOODS_SHARE * n2:
+                return 0.0
+        k3 = int(round(WOODS_R / self.res))
+        a3, b3, e0, e1 = max(0, rr - k3), min(self.h, rr + k3 + 1), max(0, c - k3), min(self.w, c + k3 + 1)
+        n3 = (b3 - a3) * (e1 - e0)
+        if self.st[b3, e1] - self.st[a3, e1] - self.st[b3, e0] + self.st[a3, e0] >= WOODS_R_SHARE * n3:
+            return 0.0
+        return (self.sg[b, c1] - self.sg[a, c1] - self.sg[b, c0] + self.sg[a, c0]) / n
+
+
+def ground_chips(centres, lidar_keys=None):
+    """{cluster: Ground} for every junction centre (lat, lon), from cache or NAIP."""
+    import numpy as np
+    try:
+        import rasterio
+        from rasterio.windows import from_bounds
+        from rasterio.warp import transform as rtransform
+    except ImportError:
+        sys.exit("needs rasterio and numpy: pip install rasterio numpy")
+    from concurrent.futures import ThreadPoolExecutor
+    items = naip_items()
+    epsg = items[0]["epsg"]
+    keys = list(centres)
+    xs, ys = rtransform("EPSG:4326", f"EPSG:{epsg}", [centres[k][1] for k in keys], [centres[k][0] for k in keys])
+    utm = {k: (xs[i], ys[i]) for i, k in enumerate(keys)}
+    cdir = os.path.join(CACHE, "naip")
+    os.makedirs(cdir, exist_ok=True)
+    out, todo = {}, defaultdict(list)
+    for k in keys:
+        ux, uy = utm[k]
+        f = os.path.join(cdir, f"{int(ux)}_{int(uy)}.npz")
+        if os.path.exists(f):
+            z = np.load(f)
+            out[k] = (z["nd"].astype(np.float32) / 100, float(z["x0"]), float(z["y0"]), float(z["res"]))
+            continue
+        # the photo that holds this window with the most room to spare
+        best, bm = None, -1e9
+        for it in items:
+            if it["epsg"] != epsg:
+                continue
+            b = it["bbox"]
+            m = min(ux - CHIP_HALF - b[0], b[2] - ux - CHIP_HALF, uy - CHIP_HALF - b[1], b[3] - uy - CHIP_HALF)
+            if m > bm:
+                best, bm = it, m
+        todo[best["href"]].append((k, ux, uy, f))
+    if todo:
+        print(f"  reading {sum(len(v) for v in todo.values())} photo windows from {len(todo)} NAIP tiles...")
+        token = {"t": "", "at": 0}
+        def sas():
+            if time.time() - token["at"] > 1800:
+                token["t"] = json.load(urllib.request.urlopen(NAIP_SAS, timeout=60))["token"]
+                token["at"] = time.time()
+            return token["t"]
+        def one_tile(href):
+            env = dict(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MULTIRANGE="YES",
+                       GDAL_HTTP_MERGE_CONSECUTIVE_RANGES="YES", GDAL_HTTP_MAX_RETRY="4", GDAL_HTTP_RETRY_DELAY="2")
+            got = {}
+            for attempt in range(3):
+                try:
+                    with rasterio.Env(**env), rasterio.open(href + "?" + sas()) as ds:
+                        for k, ux, uy, f in todo[href]:
+                            if k in got:
+                                continue
+                            win = from_bounds(ux - CHIP_HALF, uy - CHIP_HALF, ux + CHIP_HALF, uy + CHIP_HALF, ds.transform)
+                            a = ds.read([1, 4], window=win, boundless=True, fill_value=0).astype(np.float32)
+                            r, nir = a[0], a[1]
+                            nd = np.where((r + nir) > 0, (nir - r) / np.maximum(r + nir, 1), -2.0)
+                            x0, y0 = ux - CHIP_HALF, uy + CHIP_HALF
+                            res = (2 * CHIP_HALF) / nd.shape[1]
+                            np.savez_compressed(f, nd=np.round(nd * 100).astype(np.int8), x0=x0, y0=y0, res=res)
+                            got[k] = (nd, x0, y0, res)
+                    return got
+                except Exception as e:
+                    print(f"  retry NAIP tile ({str(e)[:80]})")
+                    time.sleep(5 * (attempt + 1))
+            raise SystemExit("NAIP tile kept failing: " + href)
+        with ThreadPoolExecutor(8) as ex:
+            for got in ex.map(one_tile, list(todo)):
+                out.update(got)
+    # How tall it is, on the same grid as the photo.
+    from rasterio.warp import reproject, Resampling
+    from rasterio.transform import from_origin
+    hdir = os.path.join(CACHE, "chm")
+    os.makedirs(hdir, exist_ok=True)
+    def qkey(lat, lon, z=9):
+        n = 2 ** z
+        x = int((lon + 180) / 360 * n)
+        y = int((1 - math.log(math.tan(math.radians(lat)) + 1 / math.cos(math.radians(lat))) / math.pi) / 2 * n)
+        return "".join(str(((x >> (i - 1)) & 1) + 2 * ((y >> (i - 1)) & 1)) for i in range(z, 0, -1))
+    heights, need = {}, defaultdict(list)
+    for k in keys:
+        ux, uy = utm[k]
+        f = os.path.join(hdir, f"{int(ux)}_{int(uy)}.npz")
+        if os.path.exists(f):
+            heights[k] = np.load(f)["h"]
+        else:
+            need[qkey(*centres[k])].append((k, f))
+    if need:
+        print(f"  reading tree heights for {sum(len(v) for v in need.values())} junctions...")
+        def one_q(q):
+            got = {}
+            env = dict(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MAX_RETRY="4", GDAL_HTTP_RETRY_DELAY="2")
+            with rasterio.Env(**env), rasterio.open(CHM.format(q)) as ds:
+                for k, f in need[q]:
+                    nd, x0, y0, res = out[k]
+                    dst = np.zeros(nd.shape, np.float32)
+                    lat, lon = centres[k]
+                    mx, my = rtransform("EPSG:4326", ds.crs, [lon], [lat])
+                    pad = CHIP_HALF * 1.6 / math.cos(math.radians(lat))
+                    win = from_bounds(mx[0] - pad, my[0] - pad, mx[0] + pad, my[0] + pad, ds.transform)
+                    src = ds.read(1, window=win, boundless=True, fill_value=0).astype(np.float32)
+                    reproject(src, dst, src_transform=ds.window_transform(win), src_crs=ds.crs,
+                              dst_transform=from_origin(x0, y0, res, res), dst_crs=f"EPSG:{epsg}",
+                              resampling=Resampling.max)
+                    h = np.clip(np.round(dst), 0, 120).astype(np.uint8)
+                    np.savez_compressed(f, h=h)
+                    got[k] = h
+            return got
+        with ThreadPoolExecutor(8) as ex:
+            for got in ex.map(one_q, list(need)):
+                heights.update(got)
+    # Lidar: bare earth and surface, drawn on the photo's own grid.
+    from scipy.ndimage import uniform_filter
+    ldir = os.path.join(CACHE, "lidar")
+    os.makedirs(ldir, exist_ok=True)
+    lay = json.load(open(os.path.join(CACHE, "lidar-layers.json"))) if os.path.exists(os.path.join(CACHE, "lidar-layers.json")) else lidar_layers()
+    def surveys(k):
+        """Only the surveys whose footprint covers this junction: naming all
+        118 makes the server draw all 118, a minute a request."""
+        lat, lon = centres[k]
+        mx = lon * 20037508.34 / 180
+        my = math.log(math.tan((90 + lat) * math.pi / 360)) * 20037508.34 / math.pi
+        h = CHIP_HALF * 1.5 / math.cos(math.radians(lat))
+        pick = [i for i, e in enumerate(lay["ext"]) if None not in e and
+                e[0] < mx + h and e[2] > mx - h and e[1] < my + h and e[3] > my - h]
+        return [lay["dtm"][i] for i in pick], [lay["dsm"][i] for i in pick]
+    objs, lneed = {}, []
+    for k in (keys if lidar_keys is None else [k for k in keys if k in lidar_keys]):
+        ux, uy = utm[k]
+        f = os.path.join(ldir, f"{int(ux)}_{int(uy)}.npz")
+        if os.path.exists(f):
+            z = np.load(f)
+            objs[k] = (z["r"] > LIDAR_ROUGH) if z["ok"] else None
+        else:
+            lneed.append((k, f))
+    if lneed:
+        print(f"  reading lidar for {len(lneed)} junctions (Washington DNR)...")
+        from PIL import Image
+        import io
+        def lstd(a, n):
+            m = uniform_filter(a, n)
+            return np.sqrt(np.maximum(uniform_filter(a * a, n) - m * m, 0))
+        def grab(ids, x0, y0, res, shp):
+            q = {"bbox": f"{x0},{y0 - shp[0] * res},{x0 + shp[1] * res},{y0}", "bboxSR": epsg, "imageSR": epsg,
+                 "size": f"{shp[1]},{shp[0]}", "format": "png", "transparent": "true", "f": "image",
+                 "layers": "show:" + ",".join(map(str, ids))}
+            for attempt in range(5):
+                try:
+                    req = urllib.request.Request(LIDAR + "/export", data=urllib.parse.urlencode(q).encode(), headers=UA)
+                    im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=180).read())).convert("LA")
+                    return np.asarray(im).astype(np.float32)
+                except Exception as e:
+                    time.sleep(4 * (attempt + 1))
+            return None
+        def one_l(item):
+            k, f = item
+            nd, x0, y0, res = out[k]
+            dtm, dsm = surveys(k)
+            if not dtm:
+                np.savez_compressed(f, r=np.zeros((1, 1), np.uint8), ok=False)
+                return k, None
+            a = grab(dtm, x0, y0, res, nd.shape)
+            b = grab(dsm, x0, y0, res, nd.shape)
+            if a is None or b is None or a.shape[:2] != nd.shape or b.shape[:2] != nd.shape:
+                return k, None                              # not cached: tried again next run
+            ok = (a[..., 1] > 0) & (b[..., 1] > 0)
+            if ok.mean() < 0.9:
+                np.savez_compressed(f, r=np.zeros((1, 1), np.uint8), ok=False)
+                return k, None
+            # the texture itself is cached, so the threshold can be tuned without refetching
+            r = np.clip(lstd(b[..., 0], 5) - lstd(a[..., 0], 5), 0, 254).astype(np.uint8)
+            r[~ok] = 255
+            np.savez_compressed(f, r=r, ok=True)
+            return k, r > LIDAR_ROUGH
+        with ThreadPoolExecutor(3) as ex:
+            for k, o in ex.map(one_l, lneed):
+                objs[k] = o
+    nl = sum(1 for k in keys if objs.get(k) is not None)
+    if lidar_keys:
+        print(f"  lidar for {nl} of {len(lidar_keys)} junctions asked")
+    return {k: Ground(v[0], heights[k].astype(np.float32), v[1], v[2], v[3], objs.get(k)) for k, v in out.items()}, epsg
+
+
+def lidar_layers():
+    """The DNR survey pairs from 2016 on, newest first: (bare earth, surface) ids."""
+    d = fetch(LIDAR + "/layers?f=json", None, "lidar-layers-raw.json")
+    by = {l["id"]: l for l in d["layers"]}
+    rows = []
+    for l in d["layers"]:
+        subs = l.get("subLayers") or []
+        if l.get("type") == "Group Layer" and len(subs) == 2:
+            m = re.search(r"(20\d\d)", l["name"])
+            yr = int(m.group(1)) if m else 0
+            if yr < 2016:
+                continue
+            a, b = sorted(subs, key=lambda x: int("".join(ch for ch in by[x["id"]]["name"] if ch.isdigit()) or 0))
+            e = l.get("extent") or by[a["id"]].get("extent") or {}
+            rows.append((yr, l["name"], a["id"], b["id"], [e.get("xmin"), e.get("ymin"), e.get("xmax"), e.get("ymax")]))
+    rows.sort(key=lambda r: -r[0])
+    out = {"dtm": [r[2] for r in rows], "dsm": [r[3] for r in rows], "names": [r[1] for r in rows],
+           "ext": [r[4] for r in rows]}
+    json.dump(out, open(os.path.join(CACHE, "lidar-layers.json"), "w"))
+    return out
+
+
+def ground_place(worth, ways, rails):
+    """Move each pin onto grass it can stand in, or drop it. Returns the kept spots."""
+    from rasterio.warp import transform as rtransform
+    print("Checking the ground under every pin (NAIP 2023 infrared)...")
+    by_cl = defaultdict(list)
+    for x in worth:
+        by_cl[x["cl"]].append(x)
+    centres = {cl: ll(*xs[0]["centre"]) for cl, xs in by_cl.items()}
+    # Two passes: the photo and canopy map first, then lidar only for the
+    # junctions that still have a pin (the lidar server manages about ten
+    # junctions a minute, so it isn't asked about ones already ruled out).
+    chips, epsg = ground_chips(centres, lidar_keys=set())
+    first = place_all(by_cl, chips, epsg, ways, rails, quiet=True)
+    chips, epsg = ground_chips(centres, lidar_keys={x["cl"] for x in first})
+    return place_all(by_cl, chips, epsg, ways, rails)
+
+
+def place_all(by_cl, chips, epsg, ways, rails, quiet=False):
+    from rasterio.warp import transform as rtransform
+    # every mapped road and bridge near a junction, with how wide it is
+    lines, meta = [], []
+    for wid, el in ways.items():
+        t = el["tags"]
+        pts = [xy(g["lat"], g["lon"]) for g in el["geometry"]]
+        if len(pts) < 2:
+            continue
+        lines.append(LineString(pts))
+        lanes = lanes_of(t) or (1 if str(t.get("oneway", "")).lower() in ("yes", "true", "1") else LANES_GUESS.get(t.get("highway"), 2))
+        br = str(t.get("bridge", "no")).lower() not in ("no", "") or str(t.get("tunnel", "no")).lower() not in ("no", "")
+        meta.append((wid, lanes * 3.4 / 2, br))
+    # Railways: a sign by the tracks is on the railroad's land, and one past
+    # them is across the tracks from its road. 6 m clear.
+    for r in rails:
+        lines.append(r)
+        meta.append((None, 1.5 + 4.5, False))
+    tree = STRtree(lines)
+    why = defaultdict(int)
+    kept = []
+    # (the grass test below is "growing and under 1 m": see MAX_GROWTH_M)
+    # candidate points for one approach, then one batch of UTM conversions
+    for cl, xs in by_cl.items():
+        g = chips.get(cl)
+        for x in xs:
+            near = [int(i) for i in tree.query(LineString(x["leg"]).buffer(LAT_MAX + x["half"] + BRIDGE_CLEAR + 15))]
+            if x["legbridge"]:
+                why["the road there is a bridge"] += 1
+                continue
+            lo, ideal, hi = PLACE_RANGE[x["ctrl"]]
+            leg = x["leg"]
+            L = polylen(leg)
+            hi = min(hi, L - 1)
+            cands = []
+            d = lo
+            while d <= hi:
+                p, trav_out = along(leg, d)
+                head = (trav_out + 180) % 360
+                hr = math.radians(head)
+                nx, ny = math.cos(hr), -math.sin(hr)
+                side = x["half"] + 0.5
+                while side <= x["half"] + LAT_MAX:
+                    cands.append((d, side, p[0] + nx * side, p[1] + ny * side, head, nx, ny))
+                    side += 1.0
+                d += 2.0
+            if not cands or g is None:
+                why["no photo"] += 1
+                continue
+            lls = [ll(c[2], c[3]) for c in cands]
+            ux, uy = rtransform("EPSG:4326", f"EPSG:{epsg}", [q[1] for q in lls], [q[0] for q in lls])
+            best, bcost = None, 1e9
+            first_side = {}
+            for i, (d, side, px, py, head, nx, ny) in enumerate(cands):
+                if d in first_side and first_side[d] is not None:
+                    continue                                # already found the grass nearest the road here
+                if g.grass(ux[i], uy[i], 1.0) < GRASS_SHARE:
+                    continue
+                P = Point(px, py)
+                # the stretch from the kerb to the pin: nothing mapped may cross it
+                reach = LineString([(px - nx * (side - x["half"]), py - ny * (side - x["half"])), (px, py)]) \
+                    if side - x["half"] > 0.6 else None
+                clear = True
+                for j in near:
+                    wid, hw, br = meta[j]
+                    if reach is not None and wid != x["legway"] and lines[j].intersects(reach):
+                        clear = False
+                        break
+                    dist = lines[j].distance(P)
+                    if br and dist < BRIDGE_CLEAR:
+                        clear = False
+                        break
+                    if dist < hw + 1.0:
+                        clear = False
+                        break
+                if not clear:
+                    continue
+                first_side[d] = side
+                cost = abs(d - ideal) / ideal + 0.06 * (side - x["half"])
+                if cost < bcost:
+                    best, bcost = (d, side, px, py, head), cost
+            if best is None:
+                why["no open grass beside the road"] += 1
+                continue
+            d, side, px, py, head = best
+            x["xy"], x["back"], x["side"], x["head"] = (px, py), d, side - x["half"], head
+            kept.append(x)
+    if not quiet:
+        print(f"  {len(kept)} of {sum(len(v) for v in by_cl.values())} approaches have grass to stand a sign in; dropped: {dict(why)}")
+    return kept
+
+
 def write_json(keep):
-    cols = ["id", "lat", "lon", "score", "ctrl", "aadt", "spd", "head", "road", "cross", "town", "flags", "jx"]
+    cols = ["id", "lat", "lon", "score", "ctrl", "aadt", "spd", "head", "road", "cross", "town", "flags", "jx", "back", "side"]
     rows = []
     for x in keep:
         lat, lon = ll(*x["xy"])
         rows.append([x["id"], round(lat, 5), round(lon, 5), x["score"], x["ctrl"], int(round(x["aadt"], -2)) or x["aadt"],
-                     x["speed"], int(round(x["head"])) % 360, x["road"], x["cross"], x["town"], x["flags"], x["jx"]])
+                     x["speed"], int(round(x["head"])) % 360, x["road"], x["cross"], x["town"], x["flags"], x["jx"],
+                     int(round(x["back"])), round(x["side"], 1)])
     towns = []
     for t, (lat, lon) in TOWN_CENTRES.items():
         towns.append([t, lat, lon, sum(1 for x in keep if x["town"] == t)])

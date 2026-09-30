@@ -287,7 +287,11 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
 
 - **The spot list** is `print/yard-signs/spots.json`, made by
   `python3 print/tools/sign-spots.py` (FHWA HPMS traffic counts, OpenStreetMap
-  lights and stop signs, Census households). Copy it to the dashboard repo as
+  lights and stop signs, Census households). Every pin is placed on grass
+  checked against the NAIP infrared photo and Washington DNR lidar, off roads,
+  rails, bridges and cemeteries; an approach with no such spot is dropped.
+  **Look at the pins after every change:** `python3 print/tools/sign-spot-check.py`
+  draws them on the aerial photo. Copy the list to the dashboard repo as
   `public/sign-spots.json` after every run, same as the hanger zones.
 - **The crew app** lives in the dashboard repo (`public/signs.html`, routes
   `/api/crew/*` and `/api/signs` in `src/index.js`). Helpers join from a link

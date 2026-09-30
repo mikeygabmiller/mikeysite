@@ -212,7 +212,7 @@ replies routed from that number too, so it is a later decision, not built yet.
 
 ## 7. How the spot list is made
 
-`python3 print/tools/sign-spots.py` (needs `pip install shapely`). Plain words
+`python3 print/tools/sign-spots.py` (needs `pip install shapely rasterio numpy scipy pillow`). Plain words
 are in the script's header. In short: every intersection in the twelve towns
 from OpenStreetMap; cars per day from the 2023 federal HPMS counts that WSDOT
 files for every arterial and collector; how long drivers have to read (stopped
@@ -228,12 +228,41 @@ speed, and those spots were 70% of the first list and buried the lights and
 stop signs. The list is about 3,400 spots at about 2,000 corners, which is
 still three times what 1,000 signs can fill.
 
-**What it can't see:** grass, ditches, fences, trees in the sight line, or which
-side of a driveway the pin lands on (it's worked out from the road's centre
-line, good to 10 to 20 m). The map's **Satellite** button and each spot's
-**Street View** button are the check before driving there; the crew's skip
-reasons do the rest. The weights are judgment until real signs are out: after
-the first two weekends, compare survival and sign leads by town and adjust.
+**Where the pin goes, and how it's checked.** The first list put every pin a
+fixed distance back and a guessed distance sideways and never looked at the
+ground; one of the best Snohomish spots landed on the deck of the Avenue D
+bridge. Now each pin is placed on the ground itself:
+
+- **Grass.** The 2023 NAIP aerial photo (USDA, 60 cm) has an infrared band:
+  growing plants reflect it and pavement, roofs and water don't. The pin's
+  3 m patch has to be green.
+- **Not trees, hedges or anything standing.** Washington DNR's lidar (laser
+  surveys, 2016 on) shows what stands above the bare earth. A tree, hedge,
+  shrub, car or wall at the pin rules it out, and so does a pin in the woods.
+  Lidar also fixes what the photo gets wrong: a photo leans tall trees several
+  metres off their trunks. Where there's no lidar, Meta's canopy-height map
+  stands in.
+- **Off roads, rails, bridges and cemeteries**, with nothing mapped between
+  the pin and its road, so it's never across a side street or the tracks.
+- **As close to the ideal spot as that allows:** just past the curb, where the
+  cars in question are looking (the line of cars at a light, the waiting car
+  at a stop sign). The app's directions give the real distance: "about 120 ft
+  before the light, on the grass about 10 ft past the curb."
+
+An approach with no such spot is dropped, not guessed.
+
+**Look before you trust it.** `python3 print/tools/sign-spot-check.py` draws
+the top pins per town on the aerial photo (`random 24` for a fair sample,
+`LIDAR=1` for the laser view beside each). Page through the sheets after every
+change to the script.
+
+**What it still can't see:** a ditch, a fence line, a sight line blocked by
+something upstream, a lawn someone will defend, or change since the photo and
+lidar were taken. The map's **Satellite** button and each spot's **Street
+View** button are the look before driving; the crew's skip reasons and
+Mikey's "hide this corner" do the rest. The weights are judgment until real
+signs are out: after the first two weekends, compare survival and sign leads
+by town and adjust.
 
 After running it, **copy `spots.json` to the dashboard repo as
 `public/sign-spots.json`** so the app matches. The app also learns on top of the
