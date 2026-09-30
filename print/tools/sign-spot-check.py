@@ -8,7 +8,6 @@ right road, facing the cars it says it faces.
     python3 print/tools/sign-spot-check.py 40  # top 40 per town
     python3 print/tools/sign-spot-check.py id u6b59S u6pfnW   # just these
     python3 print/tools/sign-spot-check.py random 24          # a fair sample
-    LIDAR=1 python3 print/tools/sign-spot-check.py random 24  # with the lidar surface beside each photo
 
 Writes print/yard-signs/check/<town>.jpg (git-ignored). Each tile is 60 m
 across, north up. The yellow ring is the pin; the arrow is the way the cars
@@ -37,8 +36,6 @@ ITEMS = os.path.join(HERE, ".cache", "naip-items.json")
 OUT = os.path.join(ROOT, "print", "yard-signs", "check")
 SAS = "https://planetarycomputer.microsoft.com/api/sas/v1/token/naipeuwest/naip"
 HALF, PX = 30.0, 300
-LIDAR = "https://lidarportal.dnr.wa.gov/arcgis/rest/services/lidar/wadnr_hillshade/MapServer/export"
-LAYERS = os.path.join(HERE, ".cache", "lidar-layers.json")
 
 _tok = {"t": "", "at": 0}
 
@@ -80,21 +77,8 @@ def tiles(spots, items):
     return out
 
 
-def lidar_surface(s, epsg):
-    import io, urllib.parse
-    lay = json.load(open(LAYERS))
-    xs, ys = rtransform("EPSG:4326", f"EPSG:{epsg}", [s["lon"]], [s["lat"]])
-    q = {"bbox": f"{xs[0] - HALF},{ys[0] - HALF},{xs[0] + HALF},{ys[0] + HALF}", "bboxSR": epsg, "imageSR": epsg,
-         "size": f"{PX},{PX}", "format": "png", "f": "image", "layers": "show:" + ",".join(map(str, lay["dsm"]))}
-    req = urllib.request.Request(LIDAR, data=urllib.parse.urlencode(q).encode())
-    return Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=180).read())).convert("RGB")
-
-
 def tile(img, s):
     im = img.copy()
-    if im.size[0] > PX:                                   # photo | lidar: ring the pin on both
-        d = ImageDraw.Draw(im)
-        d.ellipse((PX * 1.5 - 9, PX / 2 - 9, PX * 1.5 + 9, PX / 2 + 9), outline=(255, 0, 0), width=3)
     d = ImageDraw.Draw(im)
     c = PX / 2
     d.ellipse((c - 9, c - 9, c + 9, c + 9), outline=(255, 230, 0), width=3)
@@ -137,24 +121,14 @@ def main():
     allsp = [s for g in groups.values() for s in g]
     print(f"reading {len(allsp)} photo tiles...")
     imgs = tiles(allsp, items)
-    if os.environ.get("LIDAR"):
-        with ThreadPoolExecutor(8) as ex:
-            surf = dict(zip([s["id"] for s in allsp], ex.map(lambda s: lidar_surface(s, items[0]["epsg"]), allsp)))
-        for s in allsp:
-            if s["id"] in imgs:
-                both = Image.new("RGB", (PX * 2, PX))
-                both.paste(imgs[s["id"]], (0, 0))
-                both.paste(surf[s["id"]], (PX, 0))
-                imgs[s["id"]] = both
     os.makedirs(OUT, exist_ok=True)
     for name, g in groups.items():
-        wide = 2 if os.environ.get("LIDAR") else 1
-        cols = 4 // wide
+        cols = 4
         rows = (len(g) + cols - 1) // cols
-        sheet = Image.new("RGB", (cols * PX * wide, rows * PX), (40, 40, 40))
+        sheet = Image.new("RGB", (cols * PX, rows * PX), (40, 40, 40))
         for i, s in enumerate(g):
             if s["id"] in imgs:
-                sheet.paste(tile(imgs[s["id"]], s), ((i % cols) * PX * wide, (i // cols) * PX))
+                sheet.paste(tile(imgs[s["id"]], s), ((i % cols) * PX, (i // cols) * PX))
         path = os.path.join(OUT, name.lower().replace(" ", "-") + ".jpg")
         sheet.save(path, quality=85)
         print("wrote", os.path.relpath(path, ROOT))

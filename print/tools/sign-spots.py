@@ -190,16 +190,6 @@ TREE_M = 2                # check sheets had pins there), a strip between street
 # eye on the check sheets, then checked on fresh samples.
 WOODS_R = 17.7            # half-side of a square the area of a 20 m circle
 WOODS_R_SHARE = 0.33
-# Lidar settles it. Washington DNR publishes every survey as two hillshades:
-# bare earth and first surface. Ground is smooth in both; a tree, hedge, shrub,
-# car or wall is rough in the surface one only. Lidar is also true to the
-# ground where the photo isn't: an aerial photo leans tall trees several metres
-# off their trunks, so a pin can look like it's under a tree and not be, or
-# the other way round. Surveys from 2016 on, newest drawn on top.
-LIDAR = "https://lidarportal.dnr.wa.gov/arcgis/rest/services/lidar/wadnr_hillshade/MapServer"
-LIDAR_ROUGH = 12          # surface texture minus ground texture, 0-255 hillshade units
-LIDAR_PATCH = 0.15        # at most this share of the pin's 3 m patch has something standing on it
-LIDAR_WOODS = 0.50        # and at most this share within 5 m
 BRIDGE_CLEAR = 12.0
 NAIP_STAC = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 NAIP_SAS = "https://planetarycomputer.microsoft.com/api/sas/v1/token/naipeuwest/naip"
@@ -207,7 +197,11 @@ CHIP_HALF = 118.0         # metres either side of the junction: covers the farth
 # Infrared says "growing", which is grass and trees alike, and the first run
 # put pins in the woods. Meta's 1 m canopy-height map (public, from the same
 # kind of aerial photo plus lidar) says how tall it is: under 1 m is grass,
-# planting or low shrubs a stake goes into and a driver sees past.
+# planting or low shrubs a stake goes into and a driver sees past. It's soft
+# at a few metres, so 1 to 2 pins in 10 still sit by a shrub or small tree it
+# misses; Mikey's Check tab in the crew app is where those get caught.
+# (Washington DNR lidar hillshades were tried for those and didn't separate
+# them from clear grass, so they aren't used.)
 CHM = "https://dataforgood-fb-data.s3.amazonaws.com/forests/v1/alsgedi_global_v6_float/chm/{}.tif"
 MAX_GROWTH_M = 1
 
@@ -967,20 +961,12 @@ def naip_items():
 class Ground:
     """NDVI around one junction, in UTM metres, with a summed-area table so a
     patch's grass share is four lookups."""
-    def __init__(self, nd, chm, x0, y0, res, obj=None):
+    def __init__(self, nd, chm, x0, y0, res):
         import numpy as np
         self.np, self.x0, self.y0, self.res = np, x0, y0, res
         self.h, self.w = nd.shape
-        self.lidar = obj is not None
-        if self.lidar:
-            # with lidar, "something standing here" replaces the soft canopy map
-            # at the pin; the canopy map still speaks for the 20 m woods test
-            self.so_ = np.pad(obj.astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
-            chm_pin = np.zeros_like(chm)
-        else:
-            chm_pin = chm
-        g = ((nd >= NDVI_GRASS) & (chm_pin <= MAX_GROWTH_M)).astype(np.int32)
-        self.sl = np.pad((chm_pin <= MAX_GROWTH_M).astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+        g = ((nd >= NDVI_GRASS) & (chm <= MAX_GROWTH_M)).astype(np.int32)
+        self.sl = np.pad((chm <= MAX_GROWTH_M).astype(np.int32).cumsum(0).cumsum(1), ((1, 0), (1, 0)))
         tall = (chm > TREE_M).astype(np.int32)
         self.st = np.pad(tall.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
         ok = (nd > -1.5).astype(np.int32)                  # -2 marks "no picture here"
@@ -1001,18 +987,11 @@ class Ground:
         k2 = max(1, int(round(OPEN_R / self.res)))
         a2, b2, d0, d1 = max(0, rr - k2), min(self.h, rr + k2 + 1), max(0, c - k2), min(self.w, c + k2 + 1)
         n2 = (b2 - a2) * (d1 - d0)
-        if self.lidar:
-            so = self.so_
-            if so[b, c1] - so[a, c1] - so[b, c0] + so[a, c0] > LIDAR_PATCH * n:
-                return 0.0
-            if so[b2, d1] - so[a2, d1] - so[b2, d0] + so[a2, d0] > LIDAR_WOODS * n2:
-                return 0.0
-        else:
-            # nothing taller than knee height where the stake goes
-            if self.sl[b, c1] - self.sl[a, c1] - self.sl[b, c0] + self.sl[a, c0] < n:
-                return 0.0
-            if self.st[b2, d1] - self.st[a2, d1] - self.st[b2, d0] + self.st[a2, d0] > WOODS_SHARE * n2:
-                return 0.0
+        # nothing taller than knee height where the stake goes
+        if self.sl[b, c1] - self.sl[a, c1] - self.sl[b, c0] + self.sl[a, c0] < n:
+            return 0.0
+        if self.st[b2, d1] - self.st[a2, d1] - self.st[b2, d0] + self.st[a2, d0] > WOODS_SHARE * n2:
+            return 0.0
         k3 = int(round(WOODS_R / self.res))
         a3, b3, e0, e1 = max(0, rr - k3), min(self.h, rr + k3 + 1), max(0, c - k3), min(self.w, c + k3 + 1)
         n3 = (b3 - a3) * (e1 - e0)
@@ -1021,7 +1000,7 @@ class Ground:
         return (self.sg[b, c1] - self.sg[a, c1] - self.sg[b, c0] + self.sg[a, c0]) / n
 
 
-def ground_chips(centres, lidar_keys=None):
+def ground_chips(centres):
     """{cluster: Ground} for every junction centre (lat, lon), from cache or NAIP."""
     import numpy as np
     try:
@@ -1132,98 +1111,7 @@ def ground_chips(centres, lidar_keys=None):
         with ThreadPoolExecutor(8) as ex:
             for got in ex.map(one_q, list(need)):
                 heights.update(got)
-    # Lidar: bare earth and surface, drawn on the photo's own grid.
-    from scipy.ndimage import uniform_filter
-    ldir = os.path.join(CACHE, "lidar")
-    os.makedirs(ldir, exist_ok=True)
-    lay = json.load(open(os.path.join(CACHE, "lidar-layers.json"))) if os.path.exists(os.path.join(CACHE, "lidar-layers.json")) else lidar_layers()
-    def surveys(k):
-        """Only the surveys whose footprint covers this junction: naming all
-        118 makes the server draw all 118, a minute a request."""
-        lat, lon = centres[k]
-        mx = lon * 20037508.34 / 180
-        my = math.log(math.tan((90 + lat) * math.pi / 360)) * 20037508.34 / math.pi
-        h = CHIP_HALF * 1.5 / math.cos(math.radians(lat))
-        pick = [i for i, e in enumerate(lay["ext"]) if None not in e and
-                e[0] < mx + h and e[2] > mx - h and e[1] < my + h and e[3] > my - h]
-        return [lay["dtm"][i] for i in pick], [lay["dsm"][i] for i in pick]
-    objs, lneed = {}, []
-    for k in (keys if lidar_keys is None else [k for k in keys if k in lidar_keys]):
-        ux, uy = utm[k]
-        f = os.path.join(ldir, f"{int(ux)}_{int(uy)}.npz")
-        if os.path.exists(f):
-            z = np.load(f)
-            objs[k] = (z["r"] > LIDAR_ROUGH) if z["ok"] else None
-        else:
-            lneed.append((k, f))
-    if lneed:
-        print(f"  reading lidar for {len(lneed)} junctions (Washington DNR)...")
-        from PIL import Image
-        import io
-        def lstd(a, n):
-            m = uniform_filter(a, n)
-            return np.sqrt(np.maximum(uniform_filter(a * a, n) - m * m, 0))
-        def grab(ids, x0, y0, res, shp):
-            q = {"bbox": f"{x0},{y0 - shp[0] * res},{x0 + shp[1] * res},{y0}", "bboxSR": epsg, "imageSR": epsg,
-                 "size": f"{shp[1]},{shp[0]}", "format": "png", "transparent": "true", "f": "image",
-                 "layers": "show:" + ",".join(map(str, ids))}
-            for attempt in range(5):
-                try:
-                    req = urllib.request.Request(LIDAR + "/export", data=urllib.parse.urlencode(q).encode(), headers=UA)
-                    im = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=180).read())).convert("LA")
-                    return np.asarray(im).astype(np.float32)
-                except Exception as e:
-                    time.sleep(4 * (attempt + 1))
-            return None
-        def one_l(item):
-            k, f = item
-            nd, x0, y0, res = out[k]
-            dtm, dsm = surveys(k)
-            if not dtm:
-                np.savez_compressed(f, r=np.zeros((1, 1), np.uint8), ok=False)
-                return k, None
-            a = grab(dtm, x0, y0, res, nd.shape)
-            b = grab(dsm, x0, y0, res, nd.shape)
-            if a is None or b is None or a.shape[:2] != nd.shape or b.shape[:2] != nd.shape:
-                return k, None                              # not cached: tried again next run
-            ok = (a[..., 1] > 0) & (b[..., 1] > 0)
-            if ok.mean() < 0.9:
-                np.savez_compressed(f, r=np.zeros((1, 1), np.uint8), ok=False)
-                return k, None
-            # the texture itself is cached, so the threshold can be tuned without refetching
-            r = np.clip(lstd(b[..., 0], 5) - lstd(a[..., 0], 5), 0, 254).astype(np.uint8)
-            r[~ok] = 255
-            np.savez_compressed(f, r=r, ok=True)
-            return k, r > LIDAR_ROUGH
-        with ThreadPoolExecutor(3) as ex:
-            for k, o in ex.map(one_l, lneed):
-                objs[k] = o
-    nl = sum(1 for k in keys if objs.get(k) is not None)
-    if lidar_keys:
-        print(f"  lidar for {nl} of {len(lidar_keys)} junctions asked")
-    return {k: Ground(v[0], heights[k].astype(np.float32), v[1], v[2], v[3], objs.get(k)) for k, v in out.items()}, epsg
-
-
-def lidar_layers():
-    """The DNR survey pairs from 2016 on, newest first: (bare earth, surface) ids."""
-    d = fetch(LIDAR + "/layers?f=json", None, "lidar-layers-raw.json")
-    by = {l["id"]: l for l in d["layers"]}
-    rows = []
-    for l in d["layers"]:
-        subs = l.get("subLayers") or []
-        if l.get("type") == "Group Layer" and len(subs) == 2:
-            m = re.search(r"(20\d\d)", l["name"])
-            yr = int(m.group(1)) if m else 0
-            if yr < 2016:
-                continue
-            a, b = sorted(subs, key=lambda x: int("".join(ch for ch in by[x["id"]]["name"] if ch.isdigit()) or 0))
-            e = l.get("extent") or by[a["id"]].get("extent") or {}
-            rows.append((yr, l["name"], a["id"], b["id"], [e.get("xmin"), e.get("ymin"), e.get("xmax"), e.get("ymax")]))
-    rows.sort(key=lambda r: -r[0])
-    out = {"dtm": [r[2] for r in rows], "dsm": [r[3] for r in rows], "names": [r[1] for r in rows],
-           "ext": [r[4] for r in rows]}
-    json.dump(out, open(os.path.join(CACHE, "lidar-layers.json"), "w"))
-    return out
+    return {k: Ground(v[0], heights[k].astype(np.float32), v[1], v[2], v[3]) for k, v in out.items()}, epsg
 
 
 def ground_place(worth, ways, rails):
@@ -1234,16 +1122,11 @@ def ground_place(worth, ways, rails):
     for x in worth:
         by_cl[x["cl"]].append(x)
     centres = {cl: ll(*xs[0]["centre"]) for cl, xs in by_cl.items()}
-    # Two passes: the photo and canopy map first, then lidar only for the
-    # junctions that still have a pin (the lidar server manages about ten
-    # junctions a minute, so it isn't asked about ones already ruled out).
-    chips, epsg = ground_chips(centres, lidar_keys=set())
-    first = place_all(by_cl, chips, epsg, ways, rails, quiet=True)
-    chips, epsg = ground_chips(centres, lidar_keys={x["cl"] for x in first})
+    chips, epsg = ground_chips(centres)
     return place_all(by_cl, chips, epsg, ways, rails)
 
 
-def place_all(by_cl, chips, epsg, ways, rails, quiet=False):
+def place_all(by_cl, chips, epsg, ways, rails):
     from rasterio.warp import transform as rtransform
     # every mapped road and bridge near a junction, with how wide it is
     lines, meta = [], []
@@ -1330,18 +1213,19 @@ def place_all(by_cl, chips, epsg, ways, rails, quiet=False):
             d, side, px, py, head = best
             x["xy"], x["back"], x["side"], x["head"] = (px, py), d, side - x["half"], head
             kept.append(x)
-    if not quiet:
-        print(f"  {len(kept)} of {sum(len(v) for v in by_cl.values())} approaches have grass to stand a sign in; dropped: {dict(why)}")
+    print(f"  {len(kept)} of {sum(len(v) for v in by_cl.values())} approaches have grass to stand a sign in; dropped: {dict(why)}")
     return kept
 
 
 def write_json(keep):
+    # flags: s state highway, c shopping frontage, f 45 mph, e traffic estimated
     cols = ["id", "lat", "lon", "score", "ctrl", "aadt", "spd", "head", "road", "cross", "town", "flags", "jx", "back", "side"]
     rows = []
     for x in keep:
         lat, lon = ll(*x["xy"])
         rows.append([x["id"], round(lat, 5), round(lon, 5), x["score"], x["ctrl"], int(round(x["aadt"], -2)) or x["aadt"],
-                     x["speed"], int(round(x["head"])) % 360, x["road"], x["cross"], x["town"], x["flags"], x["jx"],
+                     x["speed"], int(round(x["head"])) % 360, x["road"], x["cross"], x["town"],
+                     x["flags"], x["jx"],
                      int(round(x["back"])), round(x["side"], 1)])
     towns = []
     for t, (lat, lon) in TOWN_CENTRES.items():

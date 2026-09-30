@@ -236,12 +236,10 @@ bridge. Now each pin is placed on the ground itself:
 - **Grass.** The 2023 NAIP aerial photo (USDA, 60 cm) has an infrared band:
   growing plants reflect it and pavement, roofs and water don't. The pin's
   3 m patch has to be green.
-- **Not trees, hedges or anything standing.** Washington DNR's lidar (laser
-  surveys, 2016 on) shows what stands above the bare earth. A tree, hedge,
-  shrub, car or wall at the pin rules it out, and so does a pin in the woods.
-  Lidar also fixes what the photo gets wrong: a photo leans tall trees several
-  metres off their trunks. Where there's no lidar, Meta's canopy-height map
-  stands in.
+- **Not trees.** Meta's canopy-height map says how tall what's growing is:
+  under 1 m at the pin, not a gap in the woods (at most a third of the ground
+  within 5 m under trees) and not a road through the woods (under a third
+  within 20 m).
 - **Off roads, rails, bridges and cemeteries**, with nothing mapped between
   the pin and its road, so it's never across a side street or the tracks.
 - **As close to the ideal spot as that allows:** just past the curb, where the
@@ -252,13 +250,26 @@ bridge. Now each pin is placed on the ground itself:
 An approach with no such spot is dropped, not guessed.
 
 **Look before you trust it.** `python3 print/tools/sign-spot-check.py` draws
-the top pins per town on the aerial photo (`random 24` for a fair sample,
-`LIDAR=1` for the laser view beside each). Page through the sheets after every
-change to the script.
+the top pins per town on the aerial photo (`random 24` for a fair sample). Page through the sheets after every change
+to the script.
 
-**What it still can't see:** a ditch, a fence line, a sight line blocked by
-something upstream, a lawn someone will defend, or change since the photo and
-lidar were taken. The map's **Satellite** button and each spot's **Street
+**How good it is, measured.** Graded by eye against the photos on random
+samples: roughly 8 to 9 pins in 10 are on clear grass beside the right road;
+1 to 2 in 10 are against a shrub or small tree the canopy map is too coarse to see
+(it's soft at a few metres). Washington DNR's lidar hillshades were tried to
+catch those and didn't separate them reliably, so they aren't used. None of
+the pins in the samples were on a bridge, pavement, water, a roof or a
+parking lot.
+
+**Mikey's Check tab closes the gap.** In the crew app's owner view, **Check**
+shows the best open spots one at a time on the satellite photo with the pin and
+the drivers' direction drawn. Good puts a spot ahead of unchecked ones; Bad
+takes it off every map. Two or three seconds a pin: the best 300 corners take
+about fifteen minutes, and that's the list the crew should work from first.
+
+**What it still can't see:** those shrubs and small trees until someone checks, a ditch, a
+fence line, a sight line blocked by something upstream, a lawn someone will
+defend, or change since the 2023 photo. The map's **Satellite** button and each spot's **Street
 View** button are the look before driving; the crew's skip reasons and
 Mikey's "hide this corner" do the rest. The weights are judgment until real
 signs are out: after the first two weekends, compare survival and sign leads
