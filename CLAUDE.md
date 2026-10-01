@@ -292,7 +292,10 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   roads, rails, bridges and cemeteries; an approach with no such spot is
   dropped. About 1 to 2 pins in 10 still sit against a shrub or small tree the
   data can't see; Mikey's **Check** tab in the crew app (Good / Bad on the
-  satellite photo, best spots first) is how those get caught.
+  satellite photo, best spots first) is how those get caught, and the app
+  learns from those marks (plus the crew's field results) using the 17 ground
+  measurements each pin carries (`fx`). Change that set only with a new
+  `FX_VERSION` in `sign-spots.py`.
   **Look at the pins after every change:** `python3 print/tools/sign-spot-check.py`
   draws them on the aerial photo. Copy the list to the dashboard repo as
   `public/sign-spots.json` after every run, same as the hanger zones.
