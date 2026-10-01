@@ -15,7 +15,7 @@
 // The design Mikey picked on 2026-10-01 ("C1"), two ink colours (red, black)
 // on white so it prints at the cheaper 2-colour rate:
 //
-//   MIKEY'S              black, Racing Sans One (the logo's face), small: it
+//   MIKEY'S              red, Racing Sans One (the logo's face), small: it
 //                        tells the regulars who it is without competing
 //                        with what, how and the number (Mikey, 2026-10-01)
 //   CAR DETAILING        black, Barlow Condensed
@@ -56,7 +56,7 @@ const fontFace = (name, pkg, weight) =>
 // Each line: top and height on the trimmed 24 x 18 board, the width its text
 // may fill, and the largest font size (in) it may grow to.
 const LINES = [
-  { id: 'name', text: "MIKEY'S", y: 0.8, h: 1.75, w: 22.5, max: 1.85, font: "400 1in/1 'Racing Sans One'", color: INK },
+  { id: 'name', text: "MIKEY'S", y: 0.8, h: 1.75, w: 22.5, max: 1.85, font: "400 1in/1 'Racing Sans One'", color: RED },
   { id: 'what', text: 'CAR DETAILING', y: 2.85, h: 4.1, w: 22.5, max: 5.0, font: "800 1in/1 'Barlow Condensed'", color: INK },
   { id: 'how', text: 'I COME TO YOU', y: 7.3, h: 3.85, w: 21, max: 3.9, font: "800 1in/1 'Barlow Condensed'", color: '#fff', band: true },
   { id: 'phone', text: PHONE, y: 11.4, h: 5.85, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
