@@ -21,7 +21,8 @@ it.
   design uses it as the main idea and doesn't stop at rounded corners.
 - **The back does one job, with three things.** 4OVER4's guide: a back should
   "pick two or three" things, and for a card handed to strangers the job is
-  getting back to him. So the back is the phone (big, "Text or call Mikey"),
+  getting back to him. So the back is who he is and his phone ("Mikey
+  Miller, Owner", "Call or text", the number, in that order, Mikey's layout),
   where he works (the twelve towns), and a QR to the quote calculator. The web
   address is on the front only: "Do not repeat the front."
 - **The towns are a list you can look things up in.** Alphabetical, down the
@@ -45,14 +46,15 @@ strangers, not only after a job, and the research backs him: the only back
 patterns with real evidence (punch cards, appointment lines) work on existing
 customers. "300+ cars" came off the front because it didn't say anything to
 the person holding it. The "Online" row came off the back because the address
-is on the front.
+is on the front. Mikey then asked for his name and "Owner" at the top of the
+back, over "Call or text" and the number.
 
 ## What's on it, and what's left off on purpose
 
 Front: the truck, MIKEY'S / MOBILE DETAILING, "I come to you.", Snohomish
 County, WA, "Text or call" (425) 600-7897, mikeysdetailing.com.
 
-Back: "Text or call Mikey" (425) 600-7897, "I come to you in" and the twelve
+Back: "Mikey Miller" / "Owner", "Call or text" (425) 600-7897, "I come to you in" and the twelve
 towns, a QR to the quote calculator ("See your price in 60 seconds"), and 5.0
 on Google in the bump.
 
