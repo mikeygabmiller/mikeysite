@@ -109,15 +109,16 @@ version". The shared card above mails the same two routes (R006, R028), so
 
 **Proof:** indicia box top right on the white area, nothing cut off at the edges.
 
-## Yard signs: printer not picked yet
+## Yard signs: Yard Sign Plus
 
 Details: `yard-signs/README.md`, sections 1 and 3.
 
 | | |
 |---|---|
-| Product | **18 x 24 in coroplast**, printed **both sides, same design**, with **H-stakes** |
+| Printer | yardsignplus.com. Mikey's first order is 2608539798 (proof #1 on Aug 28 was the old design, 50 single-sided: needs a new proof) |
+| Product | **18 x 24 in coroplast**, **2 imprint colours** (red, black), printed **both sides, same design**, with **H-stakes** (10 x 30 if offered) |
 | File | `yard-signs/print-files/18x24/sign.pdf` (one page; it goes on both sides) |
-| Quantity | **100 to 200 first**, run two weekends, read Insights → Yard signs, then the big batch |
+| Quantity | **250** (Mikey, 2026-10-01). Then run two weekends, read Insights → Yard signs, before any bigger batch |
 | Price guide | about $2 to $4 a sign with stake; 100 full colour with stakes listed at $395 at one printer |
 
 **First order:** Claude prices the same spec at two or three sign printers up
@@ -125,8 +126,9 @@ to the final page (no payment), lists the totals, and Mikey picks. Then write
 the winner and its menu path into this section so reorders skip the search.
 
 **Before paying:** "same design both sides" (or "double sided, same artwork")
-is selected, stakes are in the cart, the preview shows the QR whole and the
-phone number nowhere near the edge.
+is selected, stakes are in the cart, the quantity is right, and the proof
+shows MIKEY'S / CAR DETAILING / I COME TO YOU / 425-600-7897 with the number
+nowhere near the edge. The sign has no QR on purpose.
 
 ## Business cards and flyers: not designed yet
 
