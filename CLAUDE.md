@@ -325,6 +325,21 @@ postcard on 2026-09-27; don't reprint it after that date with the offer on.
 The generator also fails if anything touches the white mail zone or the EDDM
 indicia leaves the corner USPS allows.
 
+## Ordering print
+
+When Mikey says "order the hangers" (or signs, or postcards), read
+`print/ORDERING.md` first: it has each product's printer, menu path, options,
+files and pre-payment checks. Orders run only in his own browser (Claude in
+Chrome or the desktop app), never from a cloud session.
+
+- **Never handle the card.** It's saved on the printer account or in Chrome.
+  Don't type, read out, store or ask for a card number, CVV or password, and
+  never put an address or card detail in this repo.
+- **Stop at the final page** with the total (tax and shipping in) and click
+  Place Order only after he says yes to that total. One yes, one order.
+- Small batch first on anything new, and log every order at the bottom of
+  `ORDERING.md`.
+
 ## Shipping
 
 **Mikey wants work merged and live in the same session, not left sitting in a

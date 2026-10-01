@@ -1,0 +1,142 @@
+# Ordering print: the order book
+
+This is what lets Mikey say "order the door hangers" and have Claude do it:
+open the printer's site, pick every option, upload the right files, and take
+the order to the final checkout page. One section per product, with the exact
+options, the files, and what to check before paying. Not served (`_config.yml`
+excludes `print/`).
+
+The product READMEs are the source of truth. This file is the short version
+for the person (or Claude) at the checkout page. If the two disagree, the
+README wins and this file gets fixed.
+
+## Where an order can run
+
+**Only on Mikey's own computer:** Claude in Chrome (the browser extension) or
+the Claude desktop app. That's where his printer logins and saved card are.
+A cloud session (Claude Code on the web) can't reach his browser and must
+never be handed a login or a card to get around that.
+
+## The money rules
+
+1. **Claude never sees the card.** The card is saved on the printer account
+   (Vistaprint, 55Printing) or in Chrome's autofill. Claude never types, reads
+   out, stores or asks for a card number, a CVV or a password. If checkout
+   wants the CVV again, Mikey types it.
+2. **No address in this repo.** Ship-to is the address saved on the printer
+   account. Addresses and card details don't go into git.
+3. **Claude stops at the final page and asks.** It reports: printer, product,
+   size, paper, quantity, files uploaded, ship-to town, arrival date, and the
+   total with tax and shipping. It clicks Place Order only after Mikey says yes
+   to that total in the chat. One yes covers one order.
+4. **Stop if the total is more than 15% over the number below.** Say what
+   changed (rush shipping got ticked, a paper upgrade, a price rise) instead
+   of paying it.
+5. **Small batch first** on anything that hasn't been printed before. A
+   misprint on 50 costs a few dollars; on 2,500 it costs the run.
+6. **Offer versions stop on December 31, 2026.** From January 1, 2027, order
+   only the `-no-offer` hanger files, and the postcards need a rebuild
+   without the Rain-Ready offer first (CLAUDE.md, "Offers and countdowns").
+7. **After paying,** add a row to the order log at the bottom: date, what,
+   quantity, total, order number, expected arrival. Nothing else.
+
+## Getting the files onto the computer
+
+The upload has to come from the computer doing the ordering. Keep the PDFs in
+one folder there (a GitHub "Download ZIP" of this repo works; the files are
+under `print/`), and re-download after any change to a design, because the
+generators rewrite them.
+
+---
+
+## Door hangers: Vistaprint
+
+Details: `door-hanger/README.md`, "Ordering it, step by step".
+
+| | |
+|---|---|
+| Path | Marketing Materials → Door Hangers → **Large (4.5" x 11")** → Upload your design |
+| Files | front `door-hanger/print-files/4.5x11-vistaprint/front.pdf`, back `.../back.pdf` (from Jan 1, 2027: `front-no-offer.pdf` / `back-no-offer.pdf`) |
+| Paper | the thickest **matte** they offer (16 pt if listed, else 14) |
+| Quantity | **50 first** (Vistaprint's minimum). After the 50 check out: about **2,500** |
+| Shipping | standard, not rush |
+
+**Before paying:** in the preview, the hole lands inside the red band and cuts
+nothing but red. Front and back are the right way round.
+
+**When the 50 arrive (Mikey):** scan both QR codes with two phones from about a
+foot away, check the reds and blacks, check the hole. Then order the 2,500.
+
+Another printer instead: **4.25" x 11"**, files from `4.25x11-standard/`. Stop
+and ask if their hole is bigger than 1.75" or sits lower than 2.2" from the top.
+
+## Shared EDDM postcard (with Trinity): 55Printing, then USPS
+
+Details: `postcard-shared/README.md`, "Step by step".
+
+**Don't start until** Louis has paid his half (~$549) and both brothers have
+approved `postcard-shared/mockup-both-sides.jpg`. Ask Mikey if either isn't
+confirmed.
+
+| | |
+|---|---|
+| Path | EDDM Postcards → **8.5" x 11"** → **14 pt Gloss** → **Full Color Both Sides** |
+| Files | front `postcard-shared/print-files/11x8.5/front-mikey.pdf`, back `.../back-trinity-mail-side.pdf` |
+| Quantity | **2,500** |
+| Turnaround / shipping | regular turnaround, ground |
+| If asked about EDDM indicia | it's already in the file |
+
+**Proof (both brothers approve it):** the indicia box is top right in the
+white area, nothing is cut off, both QR codes scan from the proof on a phone.
+
+**Then the postage, on eddm.usps.com** (signed in with Mikey's USPS.com
+account): ZIP 98290, routes **R006** and **R028**, **Residential only**, size
+**Flat**, and **two orders**, one per drop date. Same money rules. Print the
+facing slips for each order.
+
+## Solo EDDM postcard: 55Printing
+
+Details: `postcard/README.md`, "Ordering at 55Printing" and "The $1,000
+version". The shared card above mails the same two routes (R006, R028), so
+**ask Mikey before ordering this one**; it isn't the default.
+
+| | |
+|---|---|
+| Path | EDDM Postcards → **6.5" x 9"** → **14 pt Gloss** → **Full Color Both Sides** |
+| Files | front `postcard/print-files/6.5x9/front.pdf`, back `.../back.pdf` |
+| Quantity | **2,500** (~$247 + ~$60 shipping, their price file, 2026-09-27) |
+| Turnaround / shipping | regular (3 to 5 business days), ground |
+
+**Proof:** indicia box top right on the white area, nothing cut off at the edges.
+
+## Yard signs: printer not picked yet
+
+Details: `yard-signs/README.md`, sections 1 and 3.
+
+| | |
+|---|---|
+| Product | **18 x 24 in coroplast**, printed **both sides, same design**, with **H-stakes** |
+| File | `yard-signs/print-files/18x24/sign.pdf` (one page; it goes on both sides) |
+| Quantity | **100 to 200 first**, run two weekends, read Insights → Yard signs, then the big batch |
+| Price guide | about $2 to $4 a sign with stake; 100 full colour with stakes listed at $395 at one printer |
+
+**First order:** Claude prices the same spec at two or three sign printers up
+to the final page (no payment), lists the totals, and Mikey picks. Then write
+the winner and its menu path into this section so reorders skip the search.
+
+**Before paying:** "same design both sides" (or "double sided, same artwork")
+is selected, stakes are in the cart, the preview shows the QR whole and the
+phone number nowhere near the edge.
+
+## Business cards and flyers: not designed yet
+
+There are no business card or flyer files in this repo. They get designed
+first, the same way as the others (a generator in `print/tools/` that checks
+the facts and the voice), and then they get a section here.
+
+---
+
+## Order log
+
+| Date | What | Qty | Printer | Total | Order # | Arrives |
+|---|---|---|---|---|---|---|
