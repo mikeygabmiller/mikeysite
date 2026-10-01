@@ -161,7 +161,10 @@ function trace(maskBuf) {
     t.loadImage(maskBuf, err => {
       if (err) return rej(err);
       const tag = t.getPathTag();
-      res(tag.match(/ d="([^"]+)"/)[1]);
+      // One closed outline, said explicitly: potrace ends the path on its start
+      // point but leaves out the Z, and some cutting software wants the Z.
+      const d = tag.match(/ d="([^"]+)"/)[1].trim();
+      res(/z$/i.test(d) ? d : d + ' Z');
     });
   });
 }
