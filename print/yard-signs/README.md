@@ -98,35 +98,52 @@ so a phone number you want read from 100 feet needs 3 to 4 inch characters.
   cars leaving the intersection).
 - H-stakes, 10 x 30 in or similar heavy wire. Push the sign down so its bottom
   sits about a foot off the grass.
-- Colour: the brand's red, black and white. High contrast is what matters;
-  never mid-tones or photos.
+- Colour: **two inks only**, the brand red (`#E31924`) and black on white, so
+  it prices at a printer's 2-colour rate. High contrast is what matters; never
+  mid-tones or photos.
 
-**Copy (7 words and a number)**
+**Copy (7 words and a number)**, picked by Mikey on 2026-10-01 ("C1" of the
+options compared that day):
 
 ```
-[truck logo]  MIKEY'S  MOBILE DETAILING
-         I COME TO YOU            (white on a red band, 2.5 in letters)
-        (425) 600-7897            (2.6 in digits)
-mikeysdetailing.com  Scan for your exact price in 60 seconds  [QR]
+            MIKEY'S               (red, Racing Sans One, the logo's face: 1.9 in letters)
+         CAR DETAILING            (black, Barlow Condensed: 2.9 in letters)
+         I COME TO YOU            (white on a full-width red band: 2.6 in letters)
+          425-600-7897            (black, Anton stretched tall: 5 in digits)
 ```
+
+Why it's laid out that way:
+
+- **What it is, big.** The first version only said "detailing" inside the logo,
+  in letters under an inch tall, so a driver read "Mikey's... I come to
+  you... number" and had to guess. "Car detailing" is now the second-biggest
+  line.
+- **The number is the biggest thing**, and the only thing a driver can act on.
+  A tall, narrow number font (an idea taken off the printer's first proof)
+  and dropping the brackets took the digits from 2.6 in to 5 in.
+- **No QR and no website.** Drivers don't scan, and the strip they took up was
+  most of the number's lost height. Sign leads get logged by asking (section 6).
+- **No "call or text" line.** Mikey's call: people text a number on a sign
+  anyway, and the line would cost about half an inch of digit height.
 
 **The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
-plus 0.125 in bleed; order it "same design both sides"). `preview.png` and
-`mockup.png` are for looking at. Rebuild with `npm run sign` in `print/tools`:
-the generator fails if the phone number drops under 2.3 in, if the big copy
-passes 7 words, if a price, an offer, "we", an em dash or an unserved town gets
-in, or if the QR stops decoding.
+plus 0.125 in bleed, fonts embedded; order it "same design both sides").
+`preview.png` and `mockup.png` are for looking at. Rebuild with `npm run sign`
+in `print/tools`: the generator fails if the phone number drops under 2.3 in or
+"car detailing" under 2 in, if the big copy passes 7 words, if a price, an
+offer, "we", an em dash or an unserved town gets in, or if any ink other than
+the red band reaches the 0.75 in margin.
 
 - First person, per the voice rules. "I come to you" is the whole pitch.
 - **No price and no offer on the sign.** Prices change and 1,000 printed
   signs can't. The Rain-Ready offer ends Dec 31, 2026 and stays on the hangers
   and postcards only (CLAUDE.md, "Offers and countdowns").
-- The QR is for people on foot and at permission yards. It encodes
-  `https://mikeysdetailing.com/?utm_source=yardsign#booking`. The dashboard
-  already reads `utm_source` off every visit, so anyone who scans it and then
-  sends a quote or books a time is tagged **sign** and credited to yard signs
-  automatically. Print it at least 5 in square: a QR scans from about 10 times
-  its own width.
+- If a QR ever goes on a sign (a small run for permission yards, where people
+  walk past), it encodes `https://mikeysdetailing.com/?utm_source=yardsign#booking`.
+  The dashboard already reads `utm_source` off every visit, so anyone who scans
+  it and then sends a quote or books a time is tagged **sign** and credited to
+  yard signs automatically. Print it at least 5 in square: a QR scans from
+  about 10 times its own width.
 
 ## 4. Where exactly a sign goes
 
@@ -201,12 +218,12 @@ booked. Recheck Monday.
 
 | How | Automatic? | Counts as |
 |---|---|---|
-| Scanned the QR, then sent a quote or booked a time | Yes (`utm_source=yardsign` on the visit, tagged at `/submit` and `/api/book`) | QR |
+| Scanned a sign QR, then sent a quote or booked a time (the roadside sign has none; only a QR yard run would) | Yes (`utm_source=yardsign` on the visit, tagged at `/submit` and `/api/book`) | QR |
 | A conversation tagged **sign** | Yes, once tagged | tagged |
 | "Saw your sign" by text or call | One tap: **+ Add one** in the app's Results | said so |
 
-Ask "where did you see me?" on every call that mentions a sign and note the
-corner. A dedicated tracking phone number printed on the signs would make every
+With no QR on the roadside sign, asking is the count. Ask "where did you see
+me?" on every new call or text and note the corner. A dedicated tracking phone number printed on the signs would make every
 call automatic; it costs about $1 to $2 a month on Twilio plus usage, and needs
 replies routed from that number too, so it is a later decision, not built yet.
 
@@ -281,9 +298,9 @@ list: fast removals, "HOA" and "no good spot" skips push a spot down or out.
 
 ## 8. Ordering checklist
 
-- [ ] Print file: 18 x 24, landscape, both sides, 4 mm coroplast, vertical flutes.
-- [ ] Order 100 to 200 first, H-stakes included.
-- [ ] Scan the QR on the printed proof from 5 ft before approving the run.
+- [ ] Print file: `print-files/18x24/sign.pdf`. 18 x 24, landscape, **both sides, same design**, 2 colours, 4 mm coroplast, vertical flutes.
+- [ ] Order 100 to 200 first (250 is fine if the price break is real), H-stakes included, 10 x 30 if offered.
+- [ ] Read the proof before approving: quantity, both sides, and the number is 425-600-7897.
 - [ ] Dashboard → Insights → Yard signs → set sign cost, pay per sign (if any), photo proof.
 - [ ] Make the crew link, text it to the first helper, do the first route together.
 - [ ] After two weekends: read leads per 100 signs and median days up, then decide on the 1,000.

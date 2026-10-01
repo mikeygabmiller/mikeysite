@@ -303,9 +303,12 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   you", first person. No prices and no offer on a sign: 1,000 printed signs
   can't follow a price change, and the Rain-Ready offer stays on the hangers and
   postcards.
-- **The QR** is `https://mikeysdetailing.com/?utm_source=yardsign#booking`. The
-  dashboard tags a quote or booking from that visit **sign** and credits it.
-  Don't change the `utm_source` without changing the dashboard.
+- **The roadside sign has no QR and no website** (Mikey picked the design on
+  2026-10-01: MIKEY'S / CAR DETAILING / I COME TO YOU / 425-600-7897, two inks).
+  The room went to a 5 in phone number. If a QR ever goes on a sign, it is
+  `https://mikeysdetailing.com/?utm_source=yardsign#booking`; the dashboard tags
+  a quote or booking from that visit **sign** and credits it. Don't change the
+  `utm_source` without changing the dashboard.
 - **Only the twelve towns.** The Mill Creek Community Association's divisions
   are excluded as an HOA that pulls signs; don't add other HOAs to the script
   without Mikey or the crew's removal data saying so.
