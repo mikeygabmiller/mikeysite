@@ -316,6 +316,18 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   are excluded as an HOA that pulls signs; don't add other HOAs to the script
   without Mikey or the crew's removal data saying so.
 
+## Business card
+
+`print/business-card/` (not served) holds the die-cut card: 3.5 x 2 in, cut
+to the truck's outline so the roof and mirrors stick up out of the top edge.
+Read its `README.md` first. Copy lives in `print/tools/build-business-card.cjs`
+(`npm run card`), which also generates the cut line from the logo truck, so
+never hand-edit `dieline*.svg`. Same rules as the sign: it's one more copy of
+the facts table, and it carries **no prices, no offer and no review count**,
+because a kept card outlives all three. The back is a glovebox cheat sheet
+and a "Next detail" line; the tips are Mikey's advice, so change them only
+with him.
+
 ## EDDM postcard
 
 `print/postcard/` (not served) holds the 6.5" x 9" Every Door Direct Mail
