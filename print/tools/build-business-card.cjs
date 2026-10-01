@@ -40,6 +40,7 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 // The review count is left off for the same reason (41 today, more later);
 // "5.0 on Google" stays true as it grows.
 const PHONE = '(425) 600-7897';
+const OWNER = 'Mikey Miller';
 const SITE = 'mikeysdetailing.com';
 // Its own utm_source so Google Analytics keeps cards apart from hangers,
 // postcards and signs: Reports > Acquisition > Traffic acquisition, "card / print".
@@ -216,11 +217,14 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .back .rate .stars svg{width:6.4pt;height:6.4pt;fill:#fff}
 .back .rate .on{font-weight:700;font-size:7pt;line-height:1;letter-spacing:.2em;text-transform:uppercase;margin-top:1.8pt;color:rgba(255,255,255,.9)}
 .back .k{font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--red);line-height:1}
-.back .phone{font-weight:800;font-size:17.5pt;letter-spacing:-.015em;line-height:1;margin-top:3pt;white-space:nowrap}
-.back .rule{height:0;border-top:.6pt solid var(--line);margin:5.5pt 0 5pt}
+.back .phone{font-weight:800;font-size:16pt;letter-spacing:-.015em;line-height:1;margin-top:3pt;white-space:nowrap}
+.back .area{margin-top:5pt}
+/* Mikey's layout (2026-10-01): his name and "Owner", then "Call or text", then the number */
+.back .who{display:flex;align-items:baseline;gap:5pt;white-space:nowrap;margin-bottom:3pt}
+.back .who b{font-weight:800;font-size:11pt;letter-spacing:-.01em;line-height:1}
 /* alphabetical, down the columns, so a stranger finds their town the way they'd find it in any list */
-.back .towns{display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,auto);column-gap:9pt;row-gap:1pt;justify-content:start;
-  margin-top:3.5pt;font-size:7.5pt;line-height:1.05;font-weight:500;color:#2b2825;white-space:nowrap}
+.back .towns{display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,auto);column-gap:9pt;row-gap:.6pt;justify-content:start;
+  margin-top:3pt;font-size:7.5pt;line-height:1;font-weight:500;color:#2b2825;white-space:nowrap}
 .back .qr{background:#fff;border-radius:3pt;box-shadow:0 0 0 .6pt var(--line)}
 .back .qr svg{display:block;width:100%;height:100%}
 .back .qcap{text-align:center;line-height:1}
@@ -266,7 +270,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
   // Back layout, in page inches. The bump is at the top right after the flip,
   // and the QR sits under it, as high and as far right as the safe area allows.
   const qrL = BLEED + W - SAFE - 0.02 - qrBox, qrT = BLEED + BODY_TOP + SAFE + 0.005;
-  const B = { left: BLEED + 0.16, top: BLEED + BODY_TOP + SAFE + 0.015 };
+  const B = { left: BLEED + 0.16, top: BLEED + BODY_TOP + SAFE + 0.005 };
   B.colW = qrL - 0.14 - B.left;
 
   const front = `<div class="page front" id="front">
@@ -287,10 +291,10 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
   <div class="abs rate" style="left:${bumpL + bumpW / 2}in;transform:translateX(-50%);width:max-content;top:${BLEED + 0.135}in">
     <b class="txt rl">5.0</b><span class="stars txt rl">${star.repeat(5)}</span><span class="on txt rl">on Google</span></div>
   <div class="abs txt" style="left:${B.left}in;top:${B.top}in;width:${B.colW}in">
-    <div class="k">Text or call Mikey</div>
+    <div class="who"><b>${OWNER}</b><span class="k">Owner</span></div>
+    <div class="k">Call or text</div>
     <div class="phone">${PHONE}</div>
-    <div class="rule"></div>
-    <div class="k">I come to you in</div>
+    <div class="k area">I come to you in</div>
     <div class="towns">${[...TOWNS].sort().map(t => `<span>${t}</span>`).join('')}</div>
   </div>
   <div class="abs qr txt" style="left:${qrL}in;top:${qrT}in;width:${qrBox}in;height:${qrBox}in;padding:${qrPad}in">${qr}</div>
@@ -325,11 +329,12 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
     // piece of type is inside the safe area.
     const rects = await page.evaluate(() => ({
       boxes: [...document.querySelectorAll('.txt')].map(e => { const r = e.getBoundingClientRect(); return { c: e.className, x0: r.left, y0: r.top, x1: r.right, y1: r.bottom }; }),
-      over: [...document.querySelectorAll('.phone, .towns, .site')].filter(e => e.scrollWidth > e.clientWidth + 1).map(e => e.textContent),
+      over: [...document.querySelectorAll('.phone, .towns, .site, .who')].filter(e => e.scrollWidth > e.clientWidth + 1).map(e => e.textContent),
       small: [...document.querySelectorAll('body *')].filter(e => [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
         .map(e => ({ c: [...e.classList], t: e.textContent.trim().slice(0, 32), pt: parseFloat(getComputedStyle(e).fontSize) * 0.75 })),
     }));
     rects.over.forEach(t => problems.push(`${name}: runs past its column: "${t}"`));
+    if (process.env.DEBUG_BOXES) rects.boxes.forEach(b => console.log(name, b.c, (b.x0/96-BLEED).toFixed(3), (b.y0/96-BLEED).toFixed(3), (b.x1/96-BLEED).toFixed(3), (b.y1/96-BLEED).toFixed(3)));
     for (const e of rects.small) if (e.pt < MIN_PT - 0.01 && !e.c.some(c => SMALL_OK[name].includes(c)))
       problems.push(`${name}: "${e.t}" is ${e.pt.toFixed(1)} pt, under the ${MIN_PT} pt floor`);
     // the rating is white on the red bump; below the body's top edge it is white on cream
