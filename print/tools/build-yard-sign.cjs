@@ -12,13 +12,23 @@
 // words a second, 50 to 100 ft away. So seven words and a phone number, the
 // biggest type the board allows, and nothing that changes (no price, no offer).
 //
+// The design Mikey picked on 2026-10-01 ("C1"), two ink colours (red, black)
+// on white so it prints at the cheaper 2-colour rate:
+//
+//   MIKEY'S              red, Racing Sans One (the logo's face)
+//   CAR DETAILING        black, Barlow Condensed
+//   I COME TO YOU        white on a full-width red band
+//   425-600-7897         black, Anton stretched tall: about 5 in digits
+//
+// No QR and no website: drivers don't scan, and the room went to the number
+// (2.6 in tall on the old layout, 5 in now). Sign leads get logged by asking
+// "where did you see me?" (README section 6).
+//
 // 18 x 24 in landscape, corrugated plastic, 0.125 in bleed on every side. Keep
 // everything that matters 0.75 in inside the trim: the H-stake flutes and the
-// printer's cut both eat the edges.
+// printer's cut both eat the edges. Only the red band runs to the edge.
 
 const { chromium } = require('playwright');
-const QRCode = require('qrcode');
-const jsQR = require('jsqr');
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
@@ -28,127 +38,117 @@ const OUT = path.join(__dirname, '..', 'yard-signs');
 const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join('/').replace(/^%2F/, '/');
 
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
-const PHONE = '(425) 600-7897';
-const SITE = 'mikeysdetailing.com';
-// utm_source=yardsign is what the dashboard reads to credit a sign lead (the
-// visitor's journey is tagged at /submit and /api/book). Change it here and
-// the credit stops.
-const QR_URL = 'https://mikeysdetailing.com/?utm_source=yardsign#booking';
+// Same number as (425) 600-7897; the brackets cost digit height on a sign.
+const PHONE = '425-600-7897';
 
 const W = 24, H = 18, BLEED = 0.125, SAFE = 0.75;
 const RED = '#E31924', INK = '#111114';
+// Anton is stretched vertically by this much: a tall, narrow number gets far
+// more height out of 22.5 in of width (the idea came off the printer's proof).
+const STRETCH = 1.42;
 
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
   `@font-face{font-family:'${name}';src:url(${fileUrl(path.join(FS, pkg, 'files', `${pkg}-latin-${weight}-normal.woff2`))}) format('woff2');font-weight:${weight}}`;
 
-const logo = fs.readFileSync(path.join(ROOT, 'social', 'brand', 'logo-light.svg'), 'utf8').replace('<svg ', '<svg class="logo" ');
-
-async function qrSvg() {
-  return QRCode.toString(QR_URL, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: INK, light: '#ffffff' } });
-}
+// Each line: top and height on the trimmed 24 x 18 board, the width its text
+// may fill, and the largest font size (in) it may grow to.
+const LINES = [
+  { id: 'name', text: "MIKEY'S", y: 0.75, h: 2.7, w: 22.5, max: 3.0, font: "400 1in/1 'Racing Sans One'", color: RED },
+  { id: 'what', text: 'CAR DETAILING', y: 3.35, h: 3.9, w: 22.5, max: 5.0, font: "800 1in/1 'Barlow Condensed'", color: INK },
+  { id: 'how', text: 'I COME TO YOU', y: 7.45, h: 3.75, w: 21, max: 3.7, font: "800 1in/1 'Barlow Condensed'", color: '#fff', band: true },
+  { id: 'phone', text: PHONE, y: 11.4, h: 5.85, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
+];
 
 const CSS = `
 ${fontFace('Barlow Condensed', 'barlow-condensed', 800)}
-${fontFace('Barlow Condensed', 'barlow-condensed', 700)}
+${fontFace('Racing Sans One', 'racing-sans-one', 400)}
+${fontFace('Anton', 'anton', 400)}
 @page{size:${W + 2 * BLEED}in ${H + 2 * BLEED}in;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff}
 .page{position:relative;width:${W + 2 * BLEED}in;height:${H + 2 * BLEED}in;overflow:hidden;background:#fff}
-.safe{position:absolute;left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;top:${BLEED + SAFE}in;bottom:${BLEED + SAFE}in}
-.logo{position:absolute;left:50%;transform:translateX(-50%);top:${BLEED + 0.9}in;width:11.6in;height:auto}
-.band{position:absolute;left:0;right:0;top:${BLEED + 4.55}in;height:4.6in;background:${RED};display:flex;align-items:center;justify-content:center}
-.band span{font:800 1in/1 'Barlow Condensed';color:#fff;letter-spacing:.02em;white-space:nowrap}
-.phone{position:absolute;left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;top:${BLEED + 9.55}in;height:4.4in;display:flex;align-items:center;justify-content:center}
-.phone span{font:800 1in/1 'Barlow Condensed';color:${INK};white-space:nowrap;letter-spacing:.01em}
-.foot{position:absolute;left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;bottom:${BLEED + SAFE}in;height:3.1in;display:flex;align-items:center;gap:.45in;border-top:.09in solid ${INK};padding-top:.3in}
-.foot .txt{flex:1;display:flex;flex-direction:column;justify-content:center}
-.foot .url{font:800 1.15in/1 'Barlow Condensed';color:${INK}}
-.foot .sub{font:700 .6in/1.1 'Barlow Condensed';color:${RED};margin-top:.12in}
-.foot .qr{width:2.8in;height:2.8in;background:#fff;padding:.12in}
-.foot .qr svg{width:100%;height:100%;display:block}
+.band{position:absolute;left:0;right:0;background:${RED}}
+.ln{position:absolute;left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;display:flex;align-items:center;justify-content:center}
+.ln span{display:inline-block;white-space:nowrap}
 `;
 
-const html = (qr) => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
+const html = () => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
 <div class="page">
-  ${logo}
-  <div class="band"><span id="fit1">I COME TO YOU</span></div>
-  <div class="phone"><span id="fit2">${PHONE}</span></div>
-  <div class="foot"><div class="txt"><div class="url">${SITE}</div><div class="sub">Scan for your exact price in 60 seconds</div></div><div class="qr">${qr}</div></div>
-  <div class="safe"></div>
+${LINES.filter(l => l.band).map(l => `  <div class="band" style="top:${BLEED + l.y}in;height:${l.h}in"></div>`).join('\n')}
+${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"><span id="${l.id}" style="font:${l.font};color:${l.color}${l.stretch ? `;transform:scaleY(${l.stretch})` : ''}">${l.text}</span></div>`).join('\n')}
 </div></body></html>`;
-
-async function checkQr(pngBuf) {
-  const { data, info } = await sharp(pngBuf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  const code = jsQR(new Uint8ClampedArray(data), info.width, info.height);
-  if (!code || code.data !== QR_URL) throw new Error(`QR does not decode to ${QR_URL}: ${code && code.data}`);
-  // Seen from about 4 ft on a phone: roughly 40 dpi of board, a little blur.
-  const rough = await sharp(pngBuf).resize({ width: Math.round(info.width * 40 / 150) }).blur(1)
-    .ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  const hard = jsQR(new Uint8ClampedArray(rough.data), rough.info.width, rough.info.height);
-  if (!hard || hard.data !== QR_URL) throw new Error('QR fails at low resolution with blur');
-  console.log('  QR ok (sharp and rough):', code.data);
-}
 
 (async () => {
   fs.mkdirSync(path.join(OUT, 'print-files', '18x24'), { recursive: true });
-  const qr = await qrSvg();
   const tmp = path.join(OUT, '.render.html');
-  fs.writeFileSync(tmp, html(qr));
+  fs.writeFileSync(tmp, html());
   const browser = await chromium.launch();
   // 150 dpi is plenty for a sign read from a car, and keeps the preview sane.
-  const ctx = await browser.newContext({ deviceScaleFactor: 150 / 96, viewport: { width: Math.round((W + 2 * BLEED) * 96), height: Math.round((H + 2 * BLEED) * 96) } });
+  const DPI = 150;
+  const ctx = await browser.newContext({ deviceScaleFactor: DPI / 96, viewport: { width: Math.round((W + 2 * BLEED) * 96), height: Math.round((H + 2 * BLEED) * 96) } });
   const page = await ctx.newPage();
   await page.goto(fileUrl(tmp));
   await page.evaluate(() => document.fonts.ready);
-  await page.waitForFunction(() => [...document.images].every(i => i.complete && i.naturalWidth > 0));
-  // Biggest type that fits: grow each line until it touches its box.
-  const sizes = await page.evaluate(() => {
-    const out = {};
-    for (const [id, maxH] of [['fit1', 0.78], ['fit2', 0.9]]) {
-      const s = document.getElementById(id), box = s.parentElement.getBoundingClientRect();
-      let lo = 10, hi = 2000;
-      while (hi - lo > 1) {
-        const mid = (lo + hi) / 2; s.style.fontSize = mid + 'px';
-        const r = s.getBoundingClientRect();
-        if (r.width <= box.width * 0.96 && r.height <= box.height * maxH) lo = mid; else hi = mid;
-      }
-      s.style.fontSize = lo + 'px';
-      out[id] = +(lo / 96).toFixed(2);
+  const missing = await page.evaluate(() => ["400 20px 'Racing Sans One'", "800 20px 'Barlow Condensed'", "400 20px 'Anton'"].filter(f => !document.fonts.check(f)));
+  if (missing.length) throw new Error('fonts did not load: ' + missing.join(', '));
+
+  // Biggest type that fits: each line as large as its width allows, up to its
+  // max. Ink height is measured off the glyphs, so the numbers are real.
+  const sizes = await page.evaluate((LINES) => {
+    const c = document.createElement('canvas').getContext('2d'), out = {};
+    for (const l of LINES) {
+      const s = document.getElementById(l.id), cs = getComputedStyle(s);
+      c.font = `${cs.fontWeight} 960px ${cs.fontFamily}`;
+      const perIn = c.measureText(l.text).width / 960; // inches of width per inch of font size
+      const size = Math.min(l.max, l.w / perIn);
+      s.style.fontSize = size + 'in';
+      const m = c.measureText(l.id === 'phone' ? '8' : 'H');
+      out[l.id] = +(size * m.actualBoundingBoxAscent / 960 * (l.stretch || 1)).toFixed(2);
     }
     return out;
-  });
-  // Cap height of Barlow Condensed is about 0.7 of the font size.
-  console.log(`  "I COME TO YOU" ${(sizes.fit1 * 0.7).toFixed(1)} in tall, phone ${(sizes.fit2 * 0.7).toFixed(1)} in tall`);
-  if (sizes.fit2 * 0.7 < 2.3) { console.error('  FAIL phone number under 2.3 in tall: unreadable from a car'); process.exitCode = 1; }
+  }, LINES);
+  console.log(`  MIKEY'S ${sizes.name} in, CAR DETAILING ${sizes.what} in, I COME TO YOU ${sizes.how} in, phone ${sizes.phone} in tall`);
+  const problems = [];
+  if (sizes.phone < 2.3) problems.push(`phone number ${sizes.phone} in tall: unreadable from a car`);
+  if (sizes.what < 2) problems.push(`CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
 
-  const problems = await page.evaluate(({ BLEED, SAFE }) => {
-    const out = [], px = 96, page = document.querySelector('.page').getBoundingClientRect();
-    const inset = (BLEED + SAFE) * px - 1;
-    ['.logo', '#fit1', '#fit2', '.foot'].forEach(sel => {
-      const r = document.querySelector(sel).getBoundingClientRect();
-      if (sel !== '#fit1' && (r.left < page.left + inset || r.right > page.right - inset || r.top < page.top + inset || r.bottom > page.bottom - inset + 2))
-        out.push(sel + ' outside the safe area');
-    });
-    return out;
-  }, { BLEED, SAFE });
   const text = await page.evaluate(() => document.body.innerText);
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
     [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\$\d/, 'a price (a printed sign cannot follow a price change)'],
     [/\bwe\b|\bour\b/i, 'business "we" (it is one guy: "I")'], [/free|rain-ready|offer/i, 'an offer (the Rain-Ready offer is not on signs)'],
     [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  const words = text.replace(SITE, '').replace(PHONE, '').replace(/Scan for your exact price in 60 seconds/, '').split(/\s+/).filter(Boolean);
+  const words = text.replace(PHONE, '').split(/\s+/).filter(Boolean);
   if (words.length > 7) problems.push(`the big copy is ${words.length} words; a driver reads 7`);
+
+  const buf = await (await page.$('.page')).screenshot({ type: 'png' });
+  // Safe area, checked on the ink itself: outside the red band's rows, nothing
+  // but white may sit in the 0.75 in margin or the bleed.
+  {
+    const { data, info } = await sharp(buf).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const px = info.width / (W + 2 * BLEED), edge = Math.ceil((BLEED + SAFE) * px);
+    const bandRows = LINES.filter(l => l.band).map(l => [Math.floor((BLEED + l.y) * px) - 1, Math.ceil((BLEED + l.y + l.h) * px) + 1]);
+    let bad = 0;
+    for (let y = 0; y < info.height; y++) {
+      if (bandRows.some(([a, b]) => y >= a && y <= b)) continue;
+      const inYMargin = y < edge || y >= info.height - edge;
+      for (let x = 0; x < info.width; x++) {
+        if (!inYMargin && x >= edge && x < info.width - edge) continue;
+        const i = (y * info.width + x) * 3;
+        if (data[i] < 200 || data[i + 1] < 200 || data[i + 2] < 200) bad++;
+      }
+    }
+    if (bad) problems.push(`${bad} pixels of ink outside the safe area`);
+    else console.log('  safe area ok: nothing but the red band reaches the margin');
+  }
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 
   const pdf = path.join(OUT, 'print-files', '18x24', 'sign.pdf');
   await page.pdf({ path: pdf, width: `${W + 2 * BLEED}in`, height: `${H + 2 * BLEED}in`, printBackground: true, preferCSSPageSize: true });
   console.log('wrote', path.relative(ROOT, pdf));
-  const buf = await (await page.$('.page')).screenshot({ type: 'png' });
-  await checkQr(buf);
-  const px = 150, b = Math.round(BLEED * px);
-  await sharp(buf).extract({ left: b, top: b, width: W * px, height: H * px }).resize({ width: 1800 }).toFile(path.join(OUT, 'preview.png'));
+  const b = Math.round(BLEED * DPI);
+  await sharp(buf).extract({ left: b, top: b, width: W * DPI, height: H * DPI }).resize({ width: 1800 }).toFile(path.join(OUT, 'preview.png'));
   // On a stake, on grass, at the size a driver sees it from ~60 ft.
   const small = await sharp(path.join(OUT, 'preview.png')).resize({ width: 520 }).toBuffer();
   const sm = await sharp(small).metadata();
