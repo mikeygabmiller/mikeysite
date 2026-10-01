@@ -38,23 +38,18 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 // No prices and no Rain-Ready offer: a card is kept for years, 500 printed
 // cards can't follow a price change, and the offer ends December 31, 2026.
 // The review count is left off for the same reason (41 today, more later);
-// "5.0 on Google" and "300+" stay true as they grow.
+// "5.0 on Google" stays true as it grows.
 const PHONE = '(425) 600-7897';
 const SITE = 'mikeysdetailing.com';
 // Its own utm_source so Google Analytics keeps cards apart from hangers,
 // postcards and signs: Reports > Acquisition > Traffic acquisition, "card / print".
 const QR_URL = 'https://mikeysdetailing.com/?utm_source=card&utm_medium=print#booking';
 
-// The back is why the card gets kept: a glovebox cheat sheet for the spills
-// people actually call about, and a line for Mikey to write the next visit on.
-// Each tip is one line at 6.4 pt; the generator fails if one wraps.
-const TIPS = [
-  ['Coffee or soda', 'blot it with cold water. Don’t rub.'],
-  ['Bird droppings', 'off the same day. Soak, then lift.'],
-  ['Tree sap', 'don’t scrape it. Text me a photo.'],
-  ['Pet hair', 'a damp rubber glove pulls it up.'],
-  ['Winter', 'rinse the lower panels after sanded roads.'],
-];
+// The back is for reaching Mikey, because most of these go to strangers: the
+// phone big, the QR to the quote calculator, the site, and the twelve towns so
+// a stranger can tell at a glance whether he comes to them.
+const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', 'Marysville',
+  'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
 
 // ---- Geometry, inches. The trim box is 3.5 x 2; y runs down from its top. ----
 const W = 3.5, H = 2, BLEED = 0.125;
@@ -206,19 +201,18 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .back .rate b{display:block;font-weight:800;font-size:10pt;letter-spacing:-.01em}
 .back .rate .stars svg{width:6.4pt;height:6.4pt;fill:#fff}
 .back .rate span{display:block;font-weight:700;font-size:5.4pt;letter-spacing:.24em;text-transform:uppercase;margin-top:1.5pt;color:rgba(255,255,255,.88)}
-.back .head{font-family:'Barlow Condensed';font-weight:700;font-size:10pt;letter-spacing:.14em;text-transform:uppercase;color:var(--red);line-height:1}
-.back .head small{display:block;font-family:'Outfit';font-weight:600;font-size:5.4pt;letter-spacing:.16em;color:var(--sub);margin-top:2pt}
-.back ol{list-style:none;margin-top:3.5pt}
-.back li{font-size:6.4pt;line-height:1;white-space:nowrap;padding:1.9pt 0;border-top:.5pt solid var(--line)}
-.back li:first-child{border-top:0}
-.back li b{font-weight:800;color:var(--ink)}
-.back li{color:#2b2825;font-weight:500}
-.back .next{display:flex;align-items:flex-end;gap:4pt;font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
-.back .next i{flex:1;height:0;border-bottom:.7pt solid var(--ink);margin-bottom:1.5pt}
+.back .k{font-family:'Barlow Condensed';font-weight:700;font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--red);line-height:1}
+.back .phone{font-weight:800;font-size:17pt;letter-spacing:-.015em;line-height:1;margin-top:2.5pt;white-space:nowrap}
+.back .row{display:flex;align-items:baseline;gap:5pt;padding:3.2pt 0;border-top:.5pt solid var(--line);white-space:nowrap}
+.back .row .k{width:.5in;flex-shrink:0}
+.back .row b{font-weight:700;font-size:7.6pt}
+.back .rows{margin-top:6pt;border-bottom:.5pt solid var(--line)}
+.back .towns{margin-top:6pt;font-size:5.6pt;line-height:1.4;color:#3d3934;font-weight:500;white-space:nowrap}
+.back .towns b{font-family:'Barlow Condensed';color:var(--red);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:7.4pt}
 .back .qr{background:#fff;padding:3pt;border-radius:3pt;box-shadow:0 0 0 .6pt var(--line)}
 .back .qr svg{display:block;width:100%;height:100%}
 .back .qcap{text-align:center;line-height:1.05}
-.back .qcap b{display:block;font-weight:800;font-size:7pt}
+.back .qcap b{display:block;font-weight:800;font-size:7.4pt}
 .back .qcap span{display:block;font-weight:600;font-size:5.4pt;letter-spacing:.06em;color:var(--sub);margin-top:1.5pt}
 `;
 }
@@ -255,13 +249,13 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
   const bumpUrl = 'data:image/png;base64,' + bumpPng.toString('base64');
 
   // Back layout, in page inches. The bump is at the top right after the flip.
-  const B = { left: BLEED + 0.15, top: BLEED + BODY_TOP + 0.11, colW: 2.12, qrX: BLEED + 2.5, qr: 0.74 };
+  const B = { left: BLEED + 0.16, top: BLEED + BODY_TOP + 0.13, colW: 2.1, qrX: BLEED + 2.45, qr: 0.84 };
 
   const front = `<div class="page front" id="front">
   <div class="layer glow"></div>
   <img class="abs truck" src="${truckUrl}">
   <div class="abs rule"></div>
-  <div class="abs come txt"><div class="hand"><u>I come to you.</u></div><div class="where">300+ cars &middot; Snohomish County</div></div>
+  <div class="abs come txt"><div class="hand"><u>I come to you.</u></div><div class="where">Snohomish County, WA</div></div>
   <div class="abs rcol">
     <img class="word txt" src="${wordUrl}">
     <div class="lbl txt">Text or call</div>
@@ -275,12 +269,15 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
   <div class="abs rate txt" style="left:${bumpL + bumpW / 2}in;transform:translateX(-50%);width:max-content;top:${BLEED + 0.13}in">
     <b>5.0 <span class="stars">${star.repeat(5)}</span></b><span>on Google</span></div>
   <div class="abs txt" style="left:${B.left}in;top:${B.top}in;width:${B.colW}in">
-    <div class="head">Glovebox cheat sheet<small>Keep me in here. It happens to everyone.</small></div>
-    <ol>${TIPS.map(([k, v]) => `<li class="tip"><b>${k}:</b> ${v}</li>`).join('')}</ol>
+    <div class="k">Text or call</div>
+    <div class="phone">${PHONE}</div>
+    <div class="rows">
+      <div class="row"><span class="k">Online</span><b>${SITE}</b></div>
+    </div>
+    <div class="towns"><b>I come to you in</b><br>${TOWNS.slice(0, 6).join(' &middot; ')}<br>${TOWNS.slice(6).join(' &middot; ')}</div>
   </div>
-  <div class="abs next txt" style="left:${B.left}in;width:${B.colW}in;top:${BLEED + H - 0.1 - 0.17}in">Next detail<i></i></div>
-  <div class="abs qr txt" style="left:${B.qrX}in;top:${BLEED + BODY_TOP + 0.2}in;width:${B.qr}in;height:${B.qr}in">${qr}</div>
-  <div class="abs qcap txt" style="left:${B.qrX - 0.12}in;width:${B.qr + 0.24}in;top:${BLEED + BODY_TOP + 0.2 + B.qr + 0.07}in">
+  <div class="abs qr txt" style="left:${B.qrX}in;top:${BLEED + BODY_TOP + 0.16}in;width:${B.qr}in;height:${B.qr}in">${qr}</div>
+  <div class="abs qcap txt" style="left:${B.qrX - 0.05}in;width:${B.qr + 0.1}in;top:${BLEED + BODY_TOP + 0.16 + B.qr + 0.07}in">
     <b>See your price</b><span>in 60 seconds</span></div>
 </div>`;
 
@@ -307,11 +304,10 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
       [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/\b41\b/, 'the review count (it will grow; the card will not)']];
     for (const [re, what] of banned) if (re.test(text)) problems.push(`${name}: copy contains ${what}: "${text.match(re)[0]}"`);
 
-    // Every tip on one line, and every piece of type inside the safe area.
+    // Every row on one line, and every piece of type inside the safe area.
     const rects = await page.evaluate(() => ({
-      tips: [...document.querySelectorAll('.tip')].map(e => e.getClientRects().length === 1 && e.scrollWidth <= e.clientWidth + 1),
       boxes: [...document.querySelectorAll('.txt')].map(e => { const r = e.getBoundingClientRect(); return { c: e.className, x0: r.left, y0: r.top, x1: r.right, y1: r.bottom }; }),
-      over: [...document.querySelectorAll('.tip, .phone')].filter(e => e.getBoundingClientRect().right > e.parentElement.getBoundingClientRect().right + 0.5).map(e => e.textContent),
+      over: [...document.querySelectorAll('.row, .phone, .towns')].filter(e => e.getBoundingClientRect().right > e.parentElement.getBoundingClientRect().right + 0.5).map(e => e.textContent),
     }));
     rects.over.forEach(t => problems.push(`${name}: runs past its column: "${t}"`));
     // the rating is white on the red bump; below the body's top edge it is white on cream
@@ -378,5 +374,5 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
   await browser.close();
   fs.unlinkSync(tmp);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
-  else console.log('  checks ok: copy rules, tips on one line, type inside the safe area, QR');
+  else console.log('  checks ok: copy rules, rows on one line, type inside the safe area, QR');
 })().catch(e => { console.error(e); process.exit(1); });
