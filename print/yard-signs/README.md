@@ -284,6 +284,17 @@ the drivers' direction drawn. Good puts a spot ahead of unchecked ones; Bad
 takes it off every map. Two or three seconds a pin: the best 300 corners take
 about fifteen minutes, and that's the list the crew should work from first.
 
+**It learns from the checking.** Every pin carries 17 ground measurements
+(greenness, shade, texture, tree cover at 3 to 20 m, pavement nearby). The app
+learns from Mikey's Good/Bad and from the crew in the field (a sign placed
+there = good, "no good spot" = bad) which measurements mean a bad pin, shows
+its guess on each card with its running score, and picks the next card to
+teach it most. Once it has 30+ of his checks and gets 75%+ of them right on
+ones it didn't learn from, it sinks the pins it doubts for the whole crew. It
+never removes one; only his Bad does. Expect it to need about 150 to 300
+checks to get good. If the measurement set in `sign-spots.py` changes, bump
+`FX_VERSION`: his marks are kept (they're by spot id) and the app re-learns.
+
 **What it still can't see:** those shrubs and small trees until someone checks, a ditch, a
 fence line, a sight line blocked by something upstream, a lawn someone will
 defend, or change since the 2023 photo. The map's **Satellite** button and each spot's **Street

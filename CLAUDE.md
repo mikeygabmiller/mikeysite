@@ -292,7 +292,10 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   roads, rails, bridges and cemeteries; an approach with no such spot is
   dropped. About 1 to 2 pins in 10 still sit against a shrub or small tree the
   data can't see; Mikey's **Check** tab in the crew app (Good / Bad on the
-  satellite photo, best spots first) is how those get caught.
+  satellite photo, best spots first) is how those get caught, and the app
+  learns from those marks (plus the crew's field results) using the 17 ground
+  measurements each pin carries (`fx`). Change that set only with a new
+  `FX_VERSION` in `sign-spots.py`.
   **Look at the pins after every change:** `python3 print/tools/sign-spot-check.py`
   draws them on the aerial photo. Copy the list to the dashboard repo as
   `public/sign-spots.json` after every run, same as the hanger zones.
@@ -324,6 +327,21 @@ prints the Rain-Ready offer with the hanger's terms (book a Full Detail by
 postcard on 2026-09-27; don't reprint it after that date with the offer on.
 The generator also fails if anything touches the white mail zone or the EDDM
 indicia leaves the corner USPS allows.
+
+## Ordering print
+
+When Mikey says "order the hangers" (or signs, or postcards), read
+`print/ORDERING.md` first: it has each product's printer, menu path, options,
+files and pre-payment checks. Orders run only in his own browser (Claude in
+Chrome or the desktop app), never from a cloud session.
+
+- **Never handle the card.** It's saved on the printer account or in Chrome.
+  Don't type, read out, store or ask for a card number, CVV or password, and
+  never put an address or card detail in this repo.
+- **Stop at the final page** with the total (tax and shipping in) and click
+  Place Order only after he says yes to that total. One yes, one order.
+- Small batch first on anything new, and log every order at the bottom of
+  `ORDERING.md`.
 
 ## Shipping
 

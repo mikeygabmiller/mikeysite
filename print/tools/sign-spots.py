@@ -930,6 +930,7 @@ out tags geom;""", "osm-context.json")["elements"]
         x["jx"] = jmap[x["cl"]]
     print(f"  kept {len(keep)} spots at {len(jmap)} intersections")
 
+    pin_features(keep)
     write_json(keep)
     write_md(keep)
 
@@ -971,6 +972,7 @@ class Ground:
         self.st = np.pad(tall.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
         ok = (nd > -1.5).astype(np.int32)                  # -2 marks "no picture here"
         self.sg = np.pad(g.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
+        self.nd, self.chm = nd, chm                         # kept for the pin measurements (see pin_features)
         self.so = np.pad(ok.cumsum(0).cumsum(1), ((1, 0), (1, 0)))
 
     def grass(self, ux, uy, r=1.0):
@@ -1206,27 +1208,128 @@ def place_all(by_cl, chips, epsg, ways, rails):
                 first_side[d] = side
                 cost = abs(d - ideal) / ideal + 0.06 * (side - x["half"])
                 if cost < bcost:
-                    best, bcost = (d, side, px, py, head), cost
+                    best, bcost = (d, side, px, py, head, ux[i], uy[i]), cost
             if best is None:
                 why["no open grass beside the road"] += 1
                 continue
-            d, side, px, py, head = best
+            d, side, px, py, head, pux, puy = best
+            x["utm"], x["g"] = (pux, puy), g
             x["xy"], x["back"], x["side"], x["head"] = (px, py), d, side - x["half"], head
             kept.append(x)
     print(f"  {len(kept)} of {sum(len(v) for v in by_cl.values())} approaches have grass to stand a sign in; dropped: {dict(why)}")
     return kept
 
 
+# ---------------------------------------------------------------------------
+# What the ground looks like at each pin, for the crew app to learn from.
+# Mikey marks pins Good or Bad in the app's Check tab and the crew's field
+# results count too; the app fits a small model on these numbers to guess at
+# the pins nobody has looked at yet. Each is scaled to 0-255 so the list stays
+# small. Change the set and FX_VERSION together: the app drops a model that was
+# learned on a different set.
+# ---------------------------------------------------------------------------
+FX_VERSION = "fx1"
+FX = [  # name, what it is, range mapped to 0-255
+    ("ndvi_pin", "infrared greenness on the 3 m patch", (-0.2, 0.8)),
+    ("ndvi_6m", "infrared greenness within 6 m", (-0.2, 0.8)),
+    ("ndvi_sd", "how patchy the greenness is within 6 m", (0, 0.4)),
+    ("nir_pin", "infrared brightness on the patch", (0, 255)),
+    ("vis_pin", "visible brightness on the patch", (0, 255)),
+    ("nir_tex", "infrared texture within 6 m (tree crowns are lumpy)", (0, 80)),
+    ("vis_tex", "visible texture within 6 m", (0, 80)),
+    ("shade_6m", "share in deep shadow within 6 m", (0, 1)),
+    ("green_red", "green over red on the patch", (0.6, 1.8)),
+    ("tall_pin", "tallest growth on the patch, m", (0, 30)),
+    ("tall_3m", "share under trees within 3 m", (0, 1)),
+    ("tall_5m", "share under trees within 5 m", (0, 1)),
+    ("tall_10m", "share under trees within 10 m", (0, 1)),
+    ("tall_20m", "share under trees within 20 m", (0, 1)),
+    ("grass_3m", "share that is open grass within 3 m", (0, 1)),
+    ("grass_10m", "share that is open grass within 10 m", (0, 1)),
+    ("paved_10m", "share that is pavement or roof within 10 m", (0, 1)),
+]
+
+
+def pin_features(keep):
+    """Measures FX at every kept pin: the photo's own four bands from NAIP
+    (a 30 m window, cached), the rest from the junction's cached grids."""
+    import numpy as np
+    import rasterio
+    from rasterio.windows import from_bounds
+    from concurrent.futures import ThreadPoolExecutor
+    print("Measuring the ground at each pin (for the app's learner)...")
+    items = naip_items()
+    fdir = os.path.join(CACHE, "pins")
+    os.makedirs(fdir, exist_ok=True)
+    todo = defaultdict(list)
+    bands = {}
+    for x in keep:
+        ux, uy = x["utm"]
+        f = os.path.join(fdir, f"{int(round(ux))}_{int(round(uy))}.npy")
+        x["pinf"] = f
+        if os.path.exists(f):
+            continue
+        best, bm = None, -1e9
+        for it in items:
+            b = it["bbox"]
+            m = min(ux - 20 - b[0], b[2] - ux - 20, uy - 20 - b[1], b[3] - uy - 20)
+            if m > bm:
+                best, bm = it, m
+        todo[best["href"]].append(x)
+    if todo:
+        token = json.load(urllib.request.urlopen(NAIP_SAS, timeout=60))["token"]
+        def one(href):
+            env = dict(GDAL_DISABLE_READDIR_ON_OPEN="EMPTY_DIR", GDAL_HTTP_MULTIRANGE="YES", GDAL_HTTP_MAX_RETRY="4")
+            with rasterio.Env(**env), rasterio.open(href + "?" + token) as ds:
+                for x in todo[href]:
+                    ux, uy = x["utm"]
+                    a = ds.read(window=from_bounds(ux - 15, uy - 15, ux + 15, uy + 15, ds.transform),
+                                out_shape=(4, 51, 51), boundless=True, fill_value=0)
+                    np.save(x["pinf"], a.astype(np.uint8))
+        with ThreadPoolExecutor(8) as ex:
+            list(ex.map(one, list(todo)))
+    for x in keep:
+        a = np.load(x["pinf"]).astype(np.float32)         # R, G, B, NIR; 51 px over 30 m
+        r, gr, bl, nir = a
+        c = 25
+        nd = (nir - r) / np.maximum(nir + r, 1)
+        vis = (r + gr + bl) / 3
+        def win(arr, m):                                   # m metres either side
+            k = max(1, int(round(m / (30 / 51))))
+            return arr[c - k:c + k + 1, c - k:c + k + 1]
+        g = x["g"]
+        ux, uy = x["utm"]
+        col = int((ux - g.x0) / g.res)
+        row = int((g.y0 - uy) / g.res)
+        def gw(arr, m):
+            k = max(1, int(round(m / g.res)))
+            return arr[max(0, row - k):row + k + 1, max(0, col - k):col + k + 1]
+        tall = g.chm > TREE_M
+        grass = (g.nd >= NDVI_GRASS) & (g.chm <= MAX_GROWTH_M)
+        paved = (g.nd < 0.1) & (g.nd > -1.5)
+        v = {
+            "ndvi_pin": win(nd, 1.5).mean(), "ndvi_6m": win(nd, 6).mean(), "ndvi_sd": win(nd, 6).std(),
+            "nir_pin": win(nir, 1.5).mean(), "vis_pin": win(vis, 1.5).mean(),
+            "nir_tex": win(nir, 6).std(), "vis_tex": win(vis, 6).std(),
+            "shade_6m": (win(vis, 6) < 55).mean(),
+            "green_red": (win(gr, 1.5).mean() + 1) / (win(r, 1.5).mean() + 1),
+            "tall_pin": gw(g.chm, 1.5).max(), "tall_3m": gw(tall, 3).mean(), "tall_5m": gw(tall, 5).mean(),
+            "tall_10m": gw(tall, 10).mean(), "tall_20m": gw(tall, 20).mean(),
+            "grass_3m": gw(grass, 3).mean(), "grass_10m": gw(grass, 10).mean(), "paved_10m": gw(paved, 10).mean(),
+        }
+        x["fx"] = [int(round(255 * min(1, max(0, (float(v[n]) - lo) / (hi - lo))))) for n, _, (lo, hi) in FX]
+
+
 def write_json(keep):
     # flags: s state highway, c shopping frontage, f 45 mph, e traffic estimated
-    cols = ["id", "lat", "lon", "score", "ctrl", "aadt", "spd", "head", "road", "cross", "town", "flags", "jx", "back", "side"]
+    cols = ["id", "lat", "lon", "score", "ctrl", "aadt", "spd", "head", "road", "cross", "town", "flags", "jx", "back", "side", "fx"]
     rows = []
     for x in keep:
         lat, lon = ll(*x["xy"])
         rows.append([x["id"], round(lat, 5), round(lon, 5), x["score"], x["ctrl"], int(round(x["aadt"], -2)) or x["aadt"],
                      x["speed"], int(round(x["head"])) % 360, x["road"], x["cross"], x["town"],
                      x["flags"], x["jx"],
-                     int(round(x["back"])), round(x["side"], 1)])
+                     int(round(x["back"])), round(x["side"], 1), x["fx"]])
     towns = []
     for t, (lat, lon) in TOWN_CENTRES.items():
         towns.append([t, lat, lon, sum(1 for x in keep if x["town"] == t)])
@@ -1239,6 +1342,7 @@ def write_json(keep):
         "base": {"lat": BASE[0], "lon": BASE[1]},
         "towns": towns,
         "cols": cols,
+        "fxv": FX_VERSION, "fx": [[n, d] for n, d, _ in FX],
         "spots": rows,
     }
     os.makedirs(OUT_DIR, exist_ok=True)
