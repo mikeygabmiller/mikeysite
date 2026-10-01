@@ -106,9 +106,9 @@ so a phone number you want read from 100 feet needs 3 to 4 inch characters.
 options compared that day):
 
 ```
-            MIKEY'S               (red, Racing Sans One, the logo's face: 1.9 in letters)
+            MIKEY'S               (black, Racing Sans One, the logo's face: 1.2 in letters)
          CAR DETAILING            (black, Barlow Condensed: 2.9 in letters)
-         I COME TO YOU            (white on a full-width red band: 2.6 in letters)
+         I COME TO YOU            (white on a full-width red band: 2.7 in letters)
           425-600-7897            (black, Anton stretched tall: 5 in digits)
 ```
 
@@ -121,6 +121,10 @@ Why it's laid out that way:
 - **The number is the biggest thing**, and the only thing a driver can act on.
   A tall, narrow number font (an idea taken off the printer's first proof)
   and dropping the brackets took the digits from 2.6 in to 5 in.
+- **The name sits back.** MIKEY'S is small and black, not red, so the only red
+  on the sign is the band and the eye goes what, how, number (Mikey,
+  2026-10-01). It's there for the people who pass it every day and later
+  search the name, not for the first glance.
 - **No QR and no website.** Drivers don't scan, and the strip they took up was
   most of the number's lost height. Sign leads get logged by asking (section 6).
 - **No "call or text" line.** Mikey's call: people text a number on a sign
