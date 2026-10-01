@@ -138,7 +138,7 @@ Details: `business-card/README.md`, "Ordering".
 |---|---|
 | Product | **Custom die-cut business cards**, 3.5 x 2 in, full color both sides, **your own die line** (not a preset shape) |
 | Files | front `business-card/print-files/3.5x2/front.pdf`, back `.../back.pdf`, cut line `.../dieline.pdf` (or `dieline-front.svg` if they want vector) |
-| Paper | **16 pt or thicker, matte or uncoated.** No gloss or UV on the back: Mikey writes the next visit there in pen |
+| Paper | **16 pt or thicker,** matte or soft-touch |
 | Quantity | **500** (Mikey, 2026-10-01) |
 | Printer | not picked yet. Same as the signs: price the spec at two or three printers that take a custom die line, up to the final page, and Mikey picks. Ask about the one-time die charge and whether they keep the die |
 

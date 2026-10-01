@@ -324,9 +324,10 @@ Read its `README.md` first. Copy lives in `print/tools/build-business-card.cjs`
 (`npm run card`), which also generates the cut line from the logo truck, so
 never hand-edit `dieline*.svg`. Same rules as the sign: it's one more copy of
 the facts table, and it carries **no prices, no offer and no review count**,
-because a kept card outlives all three. The back is a glovebox cheat sheet
-and a "Next detail" line; the tips are Mikey's advice, so change them only
-with him.
+because a kept card outlives all three. Most cards go to strangers, so the
+back is for reaching him: phone, site, QR to the quote calculator, and the
+twelve towns (Mikey, 2026-10-01: not a glovebox cheat sheet, and no "300+
+cars" on the front).
 
 ## EDDM postcard
 

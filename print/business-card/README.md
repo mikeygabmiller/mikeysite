@@ -9,41 +9,42 @@ box. Not served (`_config.yml` excludes `print/`).
 
 ## Why it's built this way
 
-A business card gets thrown out unless it's useful or it's fun to hold. This one
-tries to be both.
+Most of these go to strangers, so the card's job is to get Mikey a text.
 
 - **The shape is the logo.** A plain rectangle with a truck printed on it looks
-  like every other card. A card shaped like the truck gets noticed on a fridge
-  or a dashboard, and people show it to each other. It's the one thing a custom
-  die gets you, so the design uses it as the main idea and doesn't stop at
-  rounded corners.
-- **The back is a glovebox cheat sheet.** Five spills people actually call
-  about, one line each, in Mikey's voice. It's useful to someone who never
-  books, so it goes in the glovebox and not in the trash, and the phone number
-  goes with it. (Same "give before you ask" rule as `social/PLAYBOOK.md`.)
-- **"Next detail ____" is for Mikey's pen.** He writes the next visit on the
-  card he hands over at the end of a job. An appointment card gets kept, and it
-  sells Clean Club without printing a price.
+  like every other card. A card shaped like the truck gets noticed and gets
+  kept, and people show it to each other. It's the one thing a custom die gets
+  you, so the design uses it as the main idea and doesn't stop at rounded
+  corners.
+- **The back is how to reach him.** The phone number big, the site, and a QR
+  straight to the quote calculator. Plus the twelve towns, so a stranger can
+  tell at a glance that he comes to them.
 - **The bump on the back says 5.0 on Google.** On the front it's the truck. On
   the back the same shape is solid red with the rating in it.
 
+Changed on 2026-10-01 at Mikey's call. The first version's back was a glovebox
+cheat sheet with a "Next detail ____" line, which only made sense for handing
+over after a job. "300+ cars" also came off the front because it didn't say
+anything to the person holding it.
+
 ## What's on it, and what's left off on purpose
 
-Front: the truck, MIKEY'S / MOBILE DETAILING, "I come to you.", 300+ cars,
-Snohomish County, "Text or call" (425) 600-7897, mikeysdetailing.com.
+Front: the truck, MIKEY'S / MOBILE DETAILING, "I come to you.", Snohomish
+County, WA, "Text or call" (425) 600-7897, mikeysdetailing.com.
 
-Back: the cheat sheet, the "Next detail" line, a QR to the quote calculator
-("See your price in 60 seconds"), 5.0 on Google.
+Back: "Text or call" (425) 600-7897, mikeysdetailing.com, "I come to you in"
+and the twelve towns, a QR to the quote calculator ("See your price in 60
+seconds"), 5.0 on Google.
 
 Left off, and the generator fails if they come back:
 
 | Left off | Why |
 |---|---|
-| Prices | 500 cards sit in gloveboxes for years and can't follow a price change. Same rule as the yard sign. |
+| Prices | 500 cards sit in wallets and drawers for years and can't follow a price change. Same rule as the yard sign. |
 | The Rain-Ready offer | It ends December 31, 2026. These cards last longer than that. |
-| "41 reviews" | The count will grow; the card won't. "5.0 on Google" and "300+" stay true. |
+| "41 reviews" | The count will grow; the card won't. "5.0 on Google" stays true. |
 | Licensed / insured | Still unconfirmed (CLAUDE.md). |
-| Towns he doesn't serve | Same rule as everything else. |
+| Lynnwood, Edmonds | He doesn't serve them. Only the twelve towns. |
 
 The QR goes to `https://mikeysdetailing.com/?utm_source=card&utm_medium=print#booking`.
 In Google Analytics that shows up as **card / print**, apart from the hangers,
@@ -72,7 +73,7 @@ The generator fails if:
 
 - any of the copy rules above is broken, or an em dash shows up
 - any type sits within 0.1 in of the cut (cutting drifts about 1/32 in)
-- a cheat-sheet line wraps
+- a contact line or the town list runs past its column
 - the rating spills off the red bump onto the cream
 - the QR stops decoding to the right link
 
@@ -87,11 +88,8 @@ Short version in `print/ORDERING.md`. What to ask for:
   the dieline above as the custom shape. Some printers only offer preset shapes
   (rounded corners, leaf, circle). That isn't this. It has to be a printer that
   takes **your own die line**.
-- **Stock: 16 pt (or thicker) matte or uncoated.** Matte matters: Mikey writes
-  the next visit on the back with a pen, and a pen smears on gloss or UV
-  coating. Thick matters because it's what makes a card feel worth keeping.
-- **No coating on the back.** If the printer only offers coating on both
-  sides, pick matte/soft-touch and test a pen on the sample.
+- **Stock: 16 pt or thicker,** matte or soft-touch. Thick is what makes a card
+  feel worth keeping.
 - **Check the proof:** the cut line follows the truck's roof and mirrors, the
   back's red bump is at the **top right** (it's the mirror image of the front),
   and nothing important is near the edge.
@@ -99,12 +97,10 @@ Short version in `print/ORDERING.md`. What to ask for:
   2026-10-01). A custom die usually adds a one-time setup charge; reorders on
   the same die are cheaper. Ask whether they keep the die on file.
 
-## Before printing: things Mikey should check
+## Before printing: one thing Mikey should decide
 
-1. **The cheat sheet is his advice now.** Read the five tips and change any he
-   wouldn't say in a driveway. Edit `TIPS` in `print/tools/build-business-card.cjs`.
-2. **The grille.** `social/brand/logo-final/README.md` says the truck's grille
-   is still very close to a real Ford Bronco's and should be redrawn before a
-   large print run. On this card the truck is the whole shape, so it's the
-   most visible place the grille will ever be. 500 cards is a small run, so this
-   is his call, but he should make it knowing that.
+**The grille.** `social/brand/logo-final/README.md` says the truck's grille is
+still very close to a real Ford Bronco's and should be redrawn before a large
+print run. On this card the truck is the whole shape, so it's the most visible
+place the grille will ever be. 500 cards is a small run, so this is his call,
+but he should make it knowing that.
