@@ -325,9 +325,11 @@ Read its `README.md` first. Copy lives in `print/tools/build-business-card.cjs`
 never hand-edit `dieline*.svg`. Same rules as the sign: it's one more copy of
 the facts table, and it carries **no prices, no offer and no review count**,
 because a kept card outlives all three. Most cards go to strangers, so the
-back is for reaching him: phone, site, QR to the quote calculator, and the
-twelve towns (Mikey, 2026-10-01: not a glovebox cheat sheet, and no "300+
-cars" on the front).
+back is for reaching him: the phone, the twelve towns and a QR to the quote
+calculator, nothing smaller than 7 pt (Mikey, 2026-10-01: not a glovebox cheat
+sheet, and no "300+ cars" on the front). `RESEARCH.md` beside it has what
+printers and the few real studies say goes on a card; read it before adding
+anything to the back.
 
 ## EDDM postcard
 

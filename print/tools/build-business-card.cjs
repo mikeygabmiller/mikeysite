@@ -45,9 +45,11 @@ const SITE = 'mikeysdetailing.com';
 // postcards and signs: Reports > Acquisition > Traffic acquisition, "card / print".
 const QR_URL = 'https://mikeysdetailing.com/?utm_source=card&utm_medium=print#booking';
 
-// The back is for reaching Mikey, because most of these go to strangers: the
-// phone big, the QR to the quote calculator, the site, and the twelve towns so
-// a stranger can tell at a glance whether he comes to them.
+// The back is for reaching Mikey, because most of these go to strangers. It
+// carries three things, the most any printer guide allows a back (RESEARCH.md):
+// the phone big, the twelve towns so a stranger can tell at a glance whether
+// he comes to them, and the QR to the quote calculator. The web address is on
+// the front, and 4OVER4's rule is "Do not repeat the front".
 const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', 'Marysville',
   'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
 
@@ -58,8 +60,18 @@ const BODY_TOP = 0.55;                  // top edge of the rectangle part
 const CORNER = 0.125;                   // the body's corner radius
 const TRUCK = { x: 0.12, y: 0.075, w: 1.72 }; // front side; height follows the image
 const DIE_GAP = 0.06;                   // black between the truck's white outline and the cut
-const CLOSE = 0.08;                     // smallest inside radius on the die
+const CLOSE = 0.125;                    // smallest inside radius on the die; 4OVER4 asks for 0.125 in or more
 const SAFE = 0.1;                       // type stays this far inside the cut
+// Printers' floor for type on a card is 7 pt (4OVER4) to 8 pt (Vistaprint,
+// UPrinting); see print/business-card/RESEARCH.md. The generator fails on
+// anything smaller, except the front labels in SMALL_OK.
+const MIN_PT = 7;
+// Mikey likes the front as it is (2026-10-01), so these two 5.6 pt labels stay
+// until he says otherwise. Raising them is recommendation 1 in RESEARCH.md.
+const SMALL_OK = { front: ['lbl', 'where'], back: [] };
+// The QR itself, not counting its white margin. Vistaprint's floor is 0.8 in,
+// and the QR standard wants a margin four squares wide on every side.
+const QR_IN = 0.8, QR_QUIET = 4;
 
 const PW = W + 2 * BLEED, PH = H + 2 * BLEED;
 const MW = Math.round(PW * DPI), MH = Math.round(PH * DPI);
@@ -197,23 +209,23 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 /* ============ BACK ============ */
 .back{background:var(--cream);color:var(--ink)}
 .back .bump{left:0;top:0}
-.back .rate{color:#fff;text-align:center;line-height:1}
-.back .rate b{display:block;font-weight:800;font-size:10pt;letter-spacing:-.01em}
+/* a column of lines, each as wide as its own text, so the safe-area check sees the shape the bump has */
+.back .rate{display:flex;flex-direction:column;align-items:center;color:#fff;text-align:center;line-height:1}
+.back .rate b{font-weight:800;font-size:10pt;line-height:.95;letter-spacing:-.01em}
+.back .rate .stars{display:flex;justify-content:center;margin-top:1.8pt}
 .back .rate .stars svg{width:6.4pt;height:6.4pt;fill:#fff}
-.back .rate span{display:block;font-weight:700;font-size:5.4pt;letter-spacing:.24em;text-transform:uppercase;margin-top:1.5pt;color:rgba(255,255,255,.88)}
-.back .k{font-family:'Barlow Condensed';font-weight:700;font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;color:var(--red);line-height:1}
-.back .phone{font-weight:800;font-size:17pt;letter-spacing:-.015em;line-height:1;margin-top:2.5pt;white-space:nowrap}
-.back .row{display:flex;align-items:baseline;gap:5pt;padding:3.2pt 0;border-top:.5pt solid var(--line);white-space:nowrap}
-.back .row .k{width:.5in;flex-shrink:0}
-.back .row b{font-weight:700;font-size:7.6pt}
-.back .rows{margin-top:6pt;border-bottom:.5pt solid var(--line)}
-.back .towns{margin-top:6pt;font-size:5.6pt;line-height:1.4;color:#3d3934;font-weight:500;white-space:nowrap}
-.back .towns b{font-family:'Barlow Condensed';color:var(--red);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:7.4pt}
-.back .qr{background:#fff;padding:3pt;border-radius:3pt;box-shadow:0 0 0 .6pt var(--line)}
+.back .rate .on{font-weight:700;font-size:7pt;line-height:1;letter-spacing:.2em;text-transform:uppercase;margin-top:1.8pt;color:rgba(255,255,255,.9)}
+.back .k{font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--red);line-height:1}
+.back .phone{font-weight:800;font-size:17.5pt;letter-spacing:-.015em;line-height:1;margin-top:3pt;white-space:nowrap}
+.back .rule{height:0;border-top:.6pt solid var(--line);margin:5.5pt 0 5pt}
+/* alphabetical, down the columns, so a stranger finds their town the way they'd find it in any list */
+.back .towns{display:grid;grid-auto-flow:column;grid-template-rows:repeat(4,auto);column-gap:9pt;row-gap:1pt;justify-content:start;
+  margin-top:3.5pt;font-size:7.5pt;line-height:1.05;font-weight:500;color:#2b2825;white-space:nowrap}
+.back .qr{background:#fff;border-radius:3pt;box-shadow:0 0 0 .6pt var(--line)}
 .back .qr svg{display:block;width:100%;height:100%}
-.back .qcap{text-align:center;line-height:1.05}
-.back .qcap b{display:block;font-weight:800;font-size:7.4pt}
-.back .qcap span{display:block;font-weight:600;font-size:5.4pt;letter-spacing:.06em;color:var(--sub);margin-top:1.5pt}
+.back .qcap{text-align:center;line-height:1}
+.back .qcap b{display:block;font-weight:800;font-size:8pt}
+.back .qcap span{display:block;font-weight:600;font-size:7.5pt;color:var(--sub);margin-top:1pt}
 `;
 }
 
@@ -244,12 +256,18 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
   const bumpL = bx0 / DPI, bumpW = (bx1 - bx0) / DPI;
 
   const qr = await QRCode.toString(QR_URL, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#0e0e0f', light: '#ffffff' } });
+  const qrN = QRCode.create(QR_URL, { errorCorrectionLevel: 'M' }).modules.size;
+  const qrMod = QR_IN / qrN, qrPad = QR_QUIET * qrMod, qrBox = QR_IN + 2 * qrPad;
+  console.log(`  QR: ${qrN} x ${qrN} squares, ${(qrMod * 25.4).toFixed(2)} mm each, ${QR_IN} in code + ${QR_QUIET}-square margin = ${qrBox.toFixed(3)} in box`);
   const truckUrl = fileUrl(path.join(BRAND, 'source', 'truck-cutout.png'));
   const wordUrl = fileUrl(path.join(BRAND, 'transparent-png', 'wordmark-dark.png'));
   const bumpUrl = 'data:image/png;base64,' + bumpPng.toString('base64');
 
-  // Back layout, in page inches. The bump is at the top right after the flip.
-  const B = { left: BLEED + 0.16, top: BLEED + BODY_TOP + 0.13, colW: 2.1, qrX: BLEED + 2.45, qr: 0.84 };
+  // Back layout, in page inches. The bump is at the top right after the flip,
+  // and the QR sits under it, as high and as far right as the safe area allows.
+  const qrL = BLEED + W - SAFE - 0.02 - qrBox, qrT = BLEED + BODY_TOP + SAFE + 0.005;
+  const B = { left: BLEED + 0.16, top: BLEED + BODY_TOP + SAFE + 0.015 };
+  B.colW = qrL - 0.14 - B.left;
 
   const front = `<div class="page front" id="front">
   <div class="layer glow"></div>
@@ -266,18 +284,17 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 
   const back = `<div class="page back" id="back">
   <img class="layer bump" src="${bumpUrl}">
-  <div class="abs rate txt" style="left:${bumpL + bumpW / 2}in;transform:translateX(-50%);width:max-content;top:${BLEED + 0.13}in">
-    <b>5.0 <span class="stars">${star.repeat(5)}</span></b><span>on Google</span></div>
+  <div class="abs rate" style="left:${bumpL + bumpW / 2}in;transform:translateX(-50%);width:max-content;top:${BLEED + 0.135}in">
+    <b class="txt rl">5.0</b><span class="stars txt rl">${star.repeat(5)}</span><span class="on txt rl">on Google</span></div>
   <div class="abs txt" style="left:${B.left}in;top:${B.top}in;width:${B.colW}in">
-    <div class="k">Text or call</div>
+    <div class="k">Text or call Mikey</div>
     <div class="phone">${PHONE}</div>
-    <div class="rows">
-      <div class="row"><span class="k">Online</span><b>${SITE}</b></div>
-    </div>
-    <div class="towns"><b>I come to you in</b><br>${TOWNS.slice(0, 6).join(' &middot; ')}<br>${TOWNS.slice(6).join(' &middot; ')}</div>
+    <div class="rule"></div>
+    <div class="k">I come to you in</div>
+    <div class="towns">${[...TOWNS].sort().map(t => `<span>${t}</span>`).join('')}</div>
   </div>
-  <div class="abs qr txt" style="left:${B.qrX}in;top:${BLEED + BODY_TOP + 0.16}in;width:${B.qr}in;height:${B.qr}in">${qr}</div>
-  <div class="abs qcap txt" style="left:${B.qrX - 0.05}in;width:${B.qr + 0.1}in;top:${BLEED + BODY_TOP + 0.16 + B.qr + 0.07}in">
+  <div class="abs qr txt" style="left:${qrL}in;top:${qrT}in;width:${qrBox}in;height:${qrBox}in;padding:${qrPad}in">${qr}</div>
+  <div class="abs qcap txt" style="left:${qrL}in;width:${qrBox}in;top:${qrT + qrBox + 0.03}in">
     <b>See your price</b><span>in 60 seconds</span></div>
 </div>`;
 
@@ -304,21 +321,31 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
       [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/\b41\b/, 'the review count (it will grow; the card will not)']];
     for (const [re, what] of banned) if (re.test(text)) problems.push(`${name}: copy contains ${what}: "${text.match(re)[0]}"`);
 
-    // Every row on one line, and every piece of type inside the safe area.
+    // Nothing spills out of its column, nothing is set under MIN_PT, and every
+    // piece of type is inside the safe area.
     const rects = await page.evaluate(() => ({
       boxes: [...document.querySelectorAll('.txt')].map(e => { const r = e.getBoundingClientRect(); return { c: e.className, x0: r.left, y0: r.top, x1: r.right, y1: r.bottom }; }),
-      over: [...document.querySelectorAll('.row, .phone, .towns')].filter(e => e.getBoundingClientRect().right > e.parentElement.getBoundingClientRect().right + 0.5).map(e => e.textContent),
+      over: [...document.querySelectorAll('.phone, .towns, .site')].filter(e => e.scrollWidth > e.clientWidth + 1).map(e => e.textContent),
+      small: [...document.querySelectorAll('body *')].filter(e => [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()))
+        .map(e => ({ c: [...e.classList], t: e.textContent.trim().slice(0, 32), pt: parseFloat(getComputedStyle(e).fontSize) * 0.75 })),
     }));
     rects.over.forEach(t => problems.push(`${name}: runs past its column: "${t}"`));
+    for (const e of rects.small) if (e.pt < MIN_PT - 0.01 && !e.c.some(c => SMALL_OK[name].includes(c)))
+      problems.push(`${name}: "${e.t}" is ${e.pt.toFixed(1)} pt, under the ${MIN_PT} pt floor`);
     // the rating is white on the red bump; below the body's top edge it is white on cream
-    const rate = rects.boxes.find(b => /rate/.test(b.c));
-    if (rate && rate.y1 / 96 > BLEED + BODY_TOP - 0.03) problems.push(`${name}: the rating runs below the bump onto the cream`);
+    const rateBottom = Math.max(0, ...rects.boxes.filter(b => /\brl\b/.test(b.c)).map(b => b.y1));
+    if (name === 'back' && !rateBottom) problems.push('back: the rating lines are missing');
+    if (rateBottom / 96 > BLEED + BODY_TOP - 0.03) problems.push(`${name}: the rating runs below the bump onto the cream`);
     let outside = 0;
     for (const b of rects.boxes) {
       const s = DPI / 96;
       for (let y = Math.floor(b.y0 * s); y <= Math.ceil(b.y1 * s) && !outside; y += 4)
         for (let x = Math.floor(b.x0 * s); x <= Math.ceil(b.x1 * s); x += 4)
-          if (!safe[Math.min(MH - 1, y) * MW + Math.min(MW - 1, x)]) { outside++; problems.push(`${name}: "${b.c}" reaches within ${SAFE} in of the cut`); break; }
+          if (!safe[Math.min(MH - 1, y) * MW + Math.min(MW - 1, x)]) {
+            outside++;
+            problems.push(`${name}: "${b.c}" reaches within ${SAFE} in of the cut (at ${(x / DPI - BLEED).toFixed(2)}, ${(y / DPI - BLEED).toFixed(2)} in from the top left of the trim)`);
+            break;
+          }
       outside = 0;
     }
 
@@ -331,6 +358,12 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
       const code = jsQR(new Uint8ClampedArray(data), info.width, info.height);
       if (!code || code.data !== QR_URL) problems.push(`back: QR code does not decode to ${QR_URL}`);
       else console.log('  QR decodes:', code.data);
+      // A rough stand-in for a phone in poor light: half the resolution and a
+      // blur. Not a substitute for scanning the printed sample with real phones.
+      const soft = await sharp(shot).resize({ width: Math.round(PW * 150) }).blur(0.8).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      const code2 = jsQR(new Uint8ClampedArray(soft.data), soft.info.width, soft.info.height);
+      if (!code2 || code2.data !== QR_URL) problems.push('back: QR code does not decode at 150 dpi with a blur');
+      else console.log('  QR also decodes at 150 dpi, blurred');
     }
 
     // Preview: the card as it comes off the die, on transparent.
@@ -374,5 +407,5 @@ ${inner}${dieD ? `<div class="die">${dieSvg(dieD)}</div>` : ''}</body></html>`;
   await browser.close();
   fs.unlinkSync(tmp);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
-  else console.log('  checks ok: copy rules, rows on one line, type inside the safe area, QR');
+  else console.log(`  checks ok: copy rules, nothing spills its column, type ${MIN_PT} pt or more (front labels excepted), type inside the safe area, QR`);
 })().catch(e => { console.error(e); process.exit(1); });
