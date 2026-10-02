@@ -60,11 +60,12 @@ const stars = n => `<span class="stars">${star.repeat(n)}</span>`;
 const qr = url => QRCode.toString(url, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#0e0e0f', light: '#ffffff' } });
 const IN = n => `${n}in`;
 
-const CSS = `
+let CSS = `
 ${[400, 500, 600, 700, 800].map(w => fontFace('Outfit', 'outfit', w)).join('')}
 ${fontFace('Caveat', 'caveat', 700)}
 ${[500, 600, 700, 800, 900].map(w => fontFace('Inter', 'inter', w)).join('')}
 ${fontFace('Marker', 'permanent-marker', 400)}
+${process.env.CANVA ? [400, 500, 600, 700, 800].map(w => fontFace('Poppins', 'poppins', w)).join('') : ''}
 @page{size:${W + 2 * BLEED}in ${H + 2 * BLEED}in;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}
@@ -208,6 +209,10 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 .mt .quote .by .stars svg{width:8pt;height:8pt;fill:#C9A24B}
 .mt .badge.rr{background:linear-gradient(145deg,#E4CD8B,#C9A24B);color:#1a1408}
 `;
+
+// Canva has no Outfit and a free plan can't upload fonts, so the Canva copy of Mikey's
+// side uses Poppins, the closest geometric sans in Canva's library. Print keeps Outfit.
+if (process.env.CANVA) CSS = CSS.replace("--font:'Outfit',sans-serif", "--font:'Poppins',sans-serif").replace("--price-font:'Outfit'", "--price-font:'Poppins'") + '.mt.mkv .strip{font-size:7.8pt}';
 
 const ph = (f, cls, label) => `<div class="ph ${cls}"><img src="${fileUrl(path.join(SOCIAL, 'photos', f))}"><span class="chip">${label}</span></div>`;
 
@@ -384,7 +389,7 @@ async function checkQr(el, want, label) {
       pg.querySelectorAll('.box *, .box, .strip span').forEach(el => {
         const r = el.getBoundingClientRect();
         if (r.width && (r.left < box.l - .5 || r.top < box.t - .5 || r.right > box.r + .5 || r.bottom > box.b + .5))
-          out.push(`${side}: <${el.tagName.toLowerCase()} class="${el.className.baseVal ?? el.className}"> outside the safe area`);
+          out.push(`${side}: <${el.tagName.toLowerCase()} class="${el.className.baseVal ?? el.className}"> outside the safe area ("${(el.textContent || "").trim().slice(0, 40)}")`);
       });
       pg.querySelectorAll('.left, .right, .band > *').forEach(p => { if (p.scrollHeight > p.clientHeight + 1) out.push(`${side}: .${p.classList[p.classList.length - 1]} is ${p.scrollHeight - p.clientHeight}px too tall`); });
       // nothing sits on the colour strip
@@ -499,7 +504,7 @@ async function checkQr(el, want, label) {
       });
     }
     const css = CSS.replace(/@font-face\{[^}]*\}/g, '');
-    const fonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&family=Caveat:wght@700&family=Permanent+Marker&display=swap">';
+    const fonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&family=Caveat:wght@700&family=Permanent+Marker&display=swap">';
     let body = await page.evaluate(() => document.body.innerHTML);
     body = body.replace(/font-family:'Marker'/g, "font-family:'Permanent Marker'");
     const html = `<!doctype html><html><head><meta charset="utf-8"><title>Shared EDDM postcard (${tag})</title>${fonts}<style>${css.replace(/'Marker'/g, "'Permanent Marker'")}</style></head><body>${body}</body></html>`;
