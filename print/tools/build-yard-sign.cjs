@@ -17,13 +17,13 @@
 //
 //   MIKEY'S              red, Racing Sans One (the logo's face), small: it
 //                        tells the regulars who it is without competing
-//                        with what, the ask and the number
-//   MOBILE CAR DETAILING black, Barlow Condensed stretched 1.3x tall: three
-//                        words across the board would only be 1.9 in
-//   CALL OR TEXT ME      white on a full-width red band: the one line that
-//                        asks for the call (Mikey wanted this over
-//                        "I come to you" on 2026-10-02)
+//                        with what it is and the number
+//   MOBILE CAR           black, Barlow Condensed, two lines at the same size
+//   DETAILING            (one line across the board would only be 1.9 in)
 //   425-600-7897         black, Anton stretched tall: about 5 in digits
+//
+// No red band and no call line (Mikey, 2026-10-02): what it is and the number,
+// nothing else competing for the glance.
 //
 // No QR and no website: drivers don't scan, and the room went to the number
 // (2.6 in tall on the old layout, 5 in now). Sign leads get logged by asking
@@ -31,7 +31,7 @@
 //
 // 18 x 24 in landscape, corrugated plastic, 0.125 in bleed on every side. Keep
 // everything that matters 0.75 in inside the trim: the H-stake flutes and the
-// printer's cut both eat the edges. Only the red band runs to the edge.
+// printer's cut both eat the edges. Nothing runs to the edge.
 
 const { chromium } = require('playwright');
 const sharp = require('sharp');
@@ -45,8 +45,6 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
 // Same number as (425) 600-7897; the brackets cost digit height on a sign.
 const PHONE = '425-600-7897';
-// The red band's line. CTA="..." npm run sign tries another wording.
-const CTA = process.env.CTA || 'CALL OR TEXT ME';
 
 const W = 24, H = 18, BLEED = 0.125, SAFE = 0.75;
 const RED = '#E31924', INK = '#111114';
@@ -62,9 +60,9 @@ const fontFace = (name, pkg, weight) =>
 // may fill, and the largest font size (in) it may grow to.
 const LINES = [
   { id: 'name', text: "MIKEY'S", y: 0.8, h: 1.75, w: 22.5, max: 1.85, font: "400 1in/1 'Racing Sans One'", color: RED },
-  { id: 'what', text: 'MOBILE CAR DETAILING', y: 2.85, h: 4.1, w: 22.5, max: 5.0, font: "800 1in/1 'Barlow Condensed'", color: INK, stretch: 1.3 },
-  { id: 'how', text: CTA, y: 7.3, h: 3.85, w: 21, max: 3.9, font: "800 1in/1 'Barlow Condensed'", color: '#fff', band: true },
-  { id: 'phone', text: PHONE, y: 11.4, h: 5.85, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
+  { id: 'what', text: 'MOBILE CAR', y: 2.8, h: 3.8, w: 22.5, max: 4.6, font: "800 1in/1 'Barlow Condensed'", color: INK, group: 'what' },
+  { id: 'what2', text: 'DETAILING', y: 6.6, h: 3.8, w: 22.5, max: 4.6, font: "800 1in/1 'Barlow Condensed'", color: INK, group: 'what' },
+  { id: 'phone', text: PHONE, y: 10.9, h: 6.35, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
 ];
 
 const CSS = `
@@ -103,22 +101,28 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
   // Biggest type that fits: each line as large as its width allows, up to its
   // max. Ink height is measured off the glyphs, so the numbers are real.
   const sizes = await page.evaluate((LINES) => {
-    const c = document.createElement('canvas').getContext('2d'), out = {};
+    const c = document.createElement('canvas').getContext('2d'), out = {}, fit = {};
+    const fontOf = l => { const cs = getComputedStyle(document.getElementById(l.id)); return `${cs.fontWeight} 960px ${cs.fontFamily}`; };
     for (const l of LINES) {
-      const s = document.getElementById(l.id), cs = getComputedStyle(s);
-      c.font = `${cs.fontWeight} 960px ${cs.fontFamily}`;
+      c.font = fontOf(l);
       const perIn = c.measureText(l.text).width / 960; // inches of width per inch of font size
-      const size = Math.min(l.max, l.w / perIn);
+      fit[l.id] = Math.min(l.max, l.w / perIn);
+    }
+    // Lines in a group share the smallest size, so a stacked phrase reads as one.
+    for (const l of LINES) if (l.group) fit[l.id] = Math.min(...LINES.filter(o => o.group === l.group).map(o => fit[o.id]));
+    for (const l of LINES) {
+      const s = document.getElementById(l.id), size = fit[l.id];
+      c.font = fontOf(l);
       s.style.fontSize = size + 'in';
       const m = c.measureText(l.id === 'phone' ? '8' : 'H');
       out[l.id] = +(size * m.actualBoundingBoxAscent / 960 * (l.stretch || 1)).toFixed(2);
     }
     return out;
   }, LINES);
-  console.log(`  MIKEY'S ${sizes.name} in, MOBILE CAR DETAILING ${sizes.what} in, ${CTA} ${sizes.how} in, phone ${sizes.phone} in tall`);
+  console.log(`  MIKEY'S ${sizes.name} in, MOBILE CAR / DETAILING ${sizes.what} in, phone ${sizes.phone} in tall`);
   const problems = [];
   if (sizes.phone < 2.3) problems.push(`phone number ${sizes.phone} in tall: unreadable from a car`);
-  if (sizes.name >= sizes.how) problems.push(`MIKEY'S (${sizes.name} in) is as big as the red band's line: the name is meant to sit back`);
+  if (sizes.name >= sizes.what / 2) problems.push(`MIKEY'S (${sizes.name} in) is over half the size of MOBILE CAR DETAILING: the name is meant to sit back`);
   if (sizes.what < 2) problems.push(`MOBILE CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
 
   const text = await page.evaluate(() => document.body.innerText);
@@ -127,14 +131,14 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
     [/\bwe\b|\bour\b/i, 'business "we" (it is one guy: "I")'], [/free|rain-ready|offer/i, 'an offer (the Rain-Ready offer is not on signs)'],
     [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  // The glance copy: what it is and the ask. MIKEY'S is the small brand mark
-  // for people who pass it every day, so it doesn't count against the 7.
-  const words = LINES.filter(l => l.id === 'what' || l.id === 'how').map(l => l.text).join(' ').split(/\s+/);
+  // The glance copy: what it is. MIKEY'S is the small brand mark for people
+  // who pass it every day, so it doesn't count against the 7.
+  const words = LINES.filter(l => l.group === 'what').map(l => l.text).join(' ').split(/\s+/);
   if (words.length > 7) problems.push(`the big copy is ${words.length} words; a driver reads 7`);
 
   const buf = await (await page.$('.page')).screenshot({ type: 'png' });
-  // Safe area, checked on the ink itself: outside the red band's rows, nothing
-  // but white may sit in the 0.75 in margin or the bleed.
+  // Safe area, checked on the ink itself: nothing but white may sit in the
+  // 0.75 in margin or the bleed (a band, if one comes back, is exempt).
   {
     const { data, info } = await sharp(buf).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     const px = info.width / (W + 2 * BLEED), edge = Math.ceil((BLEED + SAFE) * px);
@@ -150,7 +154,7 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
       }
     }
     if (bad) problems.push(`${bad} pixels of ink outside the safe area`);
-    else console.log('  safe area ok: nothing but the red band reaches the margin');
+    else console.log('  safe area ok: no ink in the margin');
   }
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 

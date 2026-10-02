@@ -102,13 +102,13 @@ so a phone number you want read from 100 feet needs 3 to 4 inch characters.
   it prices at a printer's 2-colour rate. High contrast is what matters; never
   mid-tones or photos.
 
-**Copy (7 words, the small name and a number)**, picked by Mikey on
+**Copy (3 words, the small name and a number)**, picked by Mikey on
 2026-10-01, wording changed on 2026-10-02:
 
 ```
             MIKEY'S               (red, Racing Sans One, the logo's face: 1.2 in letters)
-     MOBILE CAR DETAILING         (black, Barlow Condensed stretched 1.3x tall: 2.5 in letters)
-        CALL OR TEXT ME           (white on a full-width red band: 2.3 in letters)
+          MOBILE CAR              (black, Barlow Condensed, two lines at one size: 3.2 in letters)
+           DETAILING
           425-600-7897            (black, Anton stretched tall: 5 in digits)
 ```
 
@@ -117,32 +117,32 @@ Why it's laid out that way:
 - **What it is, big.** The first version only said "detailing" inside the logo,
   in letters under an inch tall, so a driver read "Mikey's... I come to
   you... number" and had to guess. "Mobile car detailing" is now the
-  second-biggest line, stretched tall because three words across 22.5 in would
-  otherwise be 1.9 in.
+  second-biggest thing, stacked on two lines because three words across
+  22.5 in would only be 1.9 in.
 - **The number is the biggest thing**, and the only thing a driver can act on.
   A tall, narrow number font (an idea taken off the printer's first proof)
   and dropping the brackets took the digits from 2.6 in to 5 in.
 - **The name sits back.** MIKEY'S stays brand red but small (1.2 in), so the
-  eye goes what, the ask, number before it gets to the name (Mikey, 2026-10-01). It's there for the people who pass it every day and later
+  eye goes to what it is and the number before the name (Mikey, 2026-10-01). It's there for the people who pass it every day and later
   search the name, not for the first glance.
 - **No QR and no website.** Drivers don't scan, and the strip they took up was
   most of the number's lost height. Sign leads get logged by asking (section 6).
-- **One line that asks for the call.** "CALL OR TEXT ME" on the red band
-  replaced "I COME TO YOU" (Mikey, 2026-10-02): "mobile" already says he comes
-  to you, and the band is the most-seen spot on the sign, so it asks. It keeps
-  "me" for first person and "text" because texting is how the business runs.
-  Try another wording with `CTA="..." npm run sign`; the 7-word check counts
-  the band line and the "what" line (the small name doesn't count).
+- **No red band and no slogan line** (Mikey, 2026-10-02). "I COME TO YOU" and
+  then "CALL OR TEXT ME" were tried on a red band and dropped: "mobile" says he
+  comes to you, and a phone number already asks to be called. Taking the band
+  out let "mobile car detailing" go from 2.5 in to 3.2 in. The only red left is
+  the name.
 
 **The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
 plus 0.125 in bleed, fonts embedded; order it "same design both sides").
 `preview.png` and `mockup.png` are for looking at. Rebuild with `npm run sign`
 in `print/tools`: the generator fails if the phone number drops under 2.3 in or
-"mobile car detailing" under 2 in, if the name grows as big as the band line, if the big copy passes 7 words, if a price, an
-offer, "we", an em dash or an unserved town gets in, or if any ink other than
-the red band reaches the 0.75 in margin.
+"mobile car detailing" under 2 in, if the name grows past half the size of
+"mobile car detailing", if the big copy passes 7 words, if a price, an offer,
+"we", an em dash or an unserved town gets in, or if any ink reaches the 0.75 in
+margin.
 
-- First person, per the voice rules: "call or text **me**", never "us".
+- First person, per the voice rules: if a line ever comes back, it's "me", never "us".
 - **No price and no offer on the sign.** Prices change and 1,000 printed
   signs can't. The Rain-Ready offer ends Dec 31, 2026 and stays on the hangers
   and postcards only (CLAUDE.md, "Offers and countdowns").
