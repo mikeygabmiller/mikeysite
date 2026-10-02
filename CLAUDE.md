@@ -340,6 +340,24 @@ sheet, and no "300+ cars" on the front). `RESEARCH.md` beside it has what
 printers and the few real studies say goes on a card; read it before adding
 anything to the back.
 
+## Gift cards
+
+Sold and tracked in the dashboard (Work → Get Paid → Gift cards, or Tools →
+Sell a gift card in a conversation): each card gets a number like `ABCD-EFGH`
+and a printable page at `/g/<token>` on the dashboard's domain. The printed
+5 x 7 card is `print/gift-card/` (`npm run gift` in `print/tools`); it has
+blanks for the number, never a printed one. Read its `README.md` first.
+
+- **The terms are Washington law** (RCW 19.240.020): no expiration date, no
+  fees, the unused value stays on the card, under $5 is cash on request. Never
+  write "expires", "valid for", "non-refundable" or a fee on anything that
+  sells a gift card.
+- **A gift card is not an offer.** It's face value, no discount, so it doesn't
+  need Mikey's yes the way a new offer does. A "buy $100, get $20" bonus would
+  be an offer: ask him.
+- **Not on the website yet.** Putting "gift cards available" on the site (a
+  homepage line, a page, a FAQ) is Mikey's call; ask before adding it.
+
 ## EDDM postcard
 
 `print/postcard/` (not served) holds the 6.5" x 9" Every Door Direct Mail
