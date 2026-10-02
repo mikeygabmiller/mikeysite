@@ -73,6 +73,13 @@ const LINES = [
   { id: 'phone', text: PHONE, cap: 4.2, stretch: 1.25, gap: 0, ...FIRA, color: INK, ref: '8' },
 ];
 
+// CANVA=1 npm run sign writes print-files/18x24/sign-canva.pdf instead: the
+// same sign with no tall stretch, because Canva can't stretch text and an
+// import of the stretched file spills off the board. Canva's lines come out a
+// little shorter (they fill the width instead); the print file stays sign.pdf.
+const CANVA = process.env.CANVA === '1';
+if (CANVA) for (const l of LINES) l.stretch = 1;
+
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFile = l => path.join(FS, l.pkg, 'files', `${l.pkg}-latin-${l.weight}-normal.woff2`);
 const faces = [...new Map(LINES.map(l => [l.family + l.weight, l])).values()]
@@ -126,7 +133,7 @@ ${LINES.map(l => {
       out[l.id] = { size, cap: size * capPer, width: size * widthPer, asc: size * t.actualBoundingBoxAscent / 100 * l.stretch, desc: size * t.actualBoundingBoxDescent / 100 * l.stretch };
     }
     return out;
-  }, { LINES, maxW: W - 2 * SAFE });
+  }, { LINES, maxW: W - 2 * SAFE - (CANVA ? 0.3 : 0) });
   // Lines in a group share the smallest size, so a stacked phrase reads as one.
   for (const l of LINES) if (l.group) {
     const k = Math.min(...LINES.filter(o => o.group === l.group).map(o => m[o.id].size)) / m[l.id].size;
@@ -180,6 +187,15 @@ ${LINES.map(l => {
     else console.log('  safe area ok: no ink in the margin');
   }
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
+
+  if (CANVA) {
+    const out = path.join(OUT, 'print-files', '18x24', 'sign-canva.pdf');
+    await page.pdf({ path: out, width: `${W + 2 * BLEED}in`, height: `${H + 2 * BLEED}in`, printBackground: true, preferCSSPageSize: true });
+    console.log('wrote', path.relative(ROOT, out), '(for importing into Canva; print sign.pdf)');
+    await browser.close();
+    fs.unlinkSync(tmp);
+    return;
+  }
 
   // What sign-legibility.py needs to score the type.
   fs.writeFileSync(path.join(OUT, 'sign-type.json'), JSON.stringify({
