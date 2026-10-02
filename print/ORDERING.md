@@ -117,10 +117,10 @@ Details: `yard-signs/README.md`, sections 1 and 3.
 | | |
 |---|---|
 | Printer | yardsignplus.com. Mikey's first order is 2608539798 (proof #1 on Aug 28 was the old design, 50 single-sided: needs a new proof) |
-| Product | **18 x 24 in coroplast**, **2 imprint colours** (red, black), printed **both sides, same design**, with **H-stakes** (10 x 30 if offered) |
+| Product | **18 x 24 in coroplast**, **yellow** sign: yellow stock with **2 imprint colours** (black, red) if the printer stocks it, otherwise white stock with **3 imprint colours** (yellow, black, red). Printed **both sides, same design**, with **H-stakes** (10 x 30 if offered) |
 | File | `yard-signs/print-files/18x24/sign.pdf` (one page; it goes on both sides) |
 | Quantity | **250** (Mikey, 2026-10-01). Then run two weekends, read Insights → Yard signs, before any bigger batch |
-| Price guide | about $2 to $4 a sign with stake; 100 full colour with stakes listed at $395 at one printer |
+| Price guide | about $2 to $4 a sign with stake; 100 full colour with stakes listed at $395 at one printer. Yard Sign Plus prices by imprint colour (white is free, the first colour is included), so a printed yellow background is one more colour: compare the 2- and 3-colour totals in the cart |
 
 **First order:** Claude prices the same spec at two or three sign printers up
 to the final page (no payment), lists the totals, and Mikey picks. Then write
@@ -128,8 +128,14 @@ the winner and its menu path into this section so reorders skip the search.
 
 **Before paying:** "same design both sides" (or "double sided, same artwork")
 is selected, stakes are in the cart, the quantity is right, and the proof
-shows MIKEY'S / MOBILE CAR / DETAILING / 425-600-7897 (no red band) with the number
-nowhere near the edge. The sign has no QR on purpose.
+shows MIKEY'S / MOBILE CAR / DETAILING / 425-600-7897 in black on yellow (no
+red band), yellow right to the edge with no white rim, with the number nowhere
+near the edge. The sign has no QR on purpose.
+
+**If yellow costs too much:** the third colour is the only extra. If it adds
+more than about 50 cents a sign, stop and tell Mikey before switching anything:
+the cheaper fallback is MIKEY'S in black (yellow and black, two colours), not
+going back to white.
 
 ## Business cards (die-cut truck shape)
 

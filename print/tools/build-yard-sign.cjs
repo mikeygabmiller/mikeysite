@@ -1,37 +1,45 @@
 // Renders the roadside yard sign to a print-ready PDF and a preview PNG.
 //
 //   cd print/tools && npm install && npm run sign
+//   python3 sign-legibility.py        (how far away each line reads; run it after any change here)
 //
 // Output lands in print/yard-signs/: print-files/18x24/sign.pdf (one page, the
 // same art on both sides: order it "printed both sides, same design"),
-// preview.png and mockup.png for looking at. Read print/yard-signs/README.md
-// before changing any copy: the sign is one more copy of the facts table in the
-// repo's CLAUDE.md, and the README says why every word is there.
+// preview.png and mockup.png for looking at, and sign-type.json (the measured
+// type, which sign-legibility.py reads). Read print/yard-signs/README.md before
+// changing any copy: the sign is one more copy of the facts table in the repo's
+// CLAUDE.md, and the README says why every word is there.
 //
 // What a sign has to survive: a driver with 3 to 5 seconds, reading about three
-// words a second, 50 to 100 ft away. So seven words and a phone number, the
-// biggest type the board allows, and nothing that changes (no price, no offer).
+// words a second, 50 to 100 ft away. So seven words and a phone number, type
+// picked for how far it reads (not how tall it looks), and nothing that changes
+// (no price, no offer).
 //
-// The design Mikey picked (2026-10-01, wording changed 2026-10-02), two ink
-// colours (red, black) on white so it prints at the cheaper 2-colour rate:
+// The design (Mikey's wording, 2026-10-02; colour and type rebuilt for distance
+// the same day):
 //
 //   MIKEY'S              red, Racing Sans One (the logo's face), small: it
 //                        tells the regulars who it is without competing
 //                        with what it is and the number
-//   MOBILE CAR           black, Barlow Condensed, two lines at the same size
-//   DETAILING            (one line across the board would only be 1.9 in)
-//   425-600-7897         black, Anton stretched tall: about 5 in digits
+//   MOBILE CAR           black, Fira Sans Extra Condensed 800, stretched 1.25
+//   DETAILING            tall, two lines at one size
+//   425-600-7897         same face and stretch, full width
+//
+// all on safety yellow. Black on yellow is what warning signs use: it reads
+// about as far as black on white and is far easier to spot among the white
+// campaign and real-estate signs at every corner. The type is Fira because its
+// 0, 6, 8 and 9 keep open insides at a distance; the old stretched Anton
+// digits were 5 in tall but closed up into blobs past about 64 ft
+// (sign-legibility.py has the numbers).
 //
 // No red band and no call line (Mikey, 2026-10-02): what it is and the number,
-// nothing else competing for the glance.
+// nothing else competing for the glance. No QR and no website: drivers don't
+// scan. Sign leads get logged by asking "where did you see me?" (README
+// section 6).
 //
-// No QR and no website: drivers don't scan, and the room went to the number
-// (2.6 in tall on the old layout, 5 in now). Sign leads get logged by asking
-// "where did you see me?" (README section 6).
-//
-// 18 x 24 in landscape, corrugated plastic, 0.125 in bleed on every side. Keep
-// everything that matters 0.75 in inside the trim: the H-stake flutes and the
-// printer's cut both eat the edges. Nothing runs to the edge.
+// 18 x 24 in landscape, corrugated plastic, 0.125 in bleed on every side. The
+// yellow runs into the bleed; keep all type 0.75 in inside the trim: the
+// H-stake flutes and the printer's cut both eat the edges.
 
 const { chromium } = require('playwright');
 const sharp = require('sharp');
@@ -47,116 +55,138 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 const PHONE = '425-600-7897';
 
 const W = 24, H = 18, BLEED = 0.125, SAFE = 0.75;
-const RED = '#E31924', INK = '#111114';
-// Anton is stretched vertically by this much: a tall, narrow number gets far
-// more height out of 22.5 in of width (the idea came off the printer's proof).
-const STRETCH = 1.42;
+// Safety yellow (Pantone 109 C). Ordering it on yellow coroplast stock, or as
+// a printed background, is in print/ORDERING.md.
+const RED = '#E31924', INK = '#111114', YELLOW = '#FFD100';
+const BG = YELLOW;
 
-const FS = path.join(__dirname, 'node_modules', '@fontsource');
-const fontFace = (name, pkg, weight) =>
-  `@font-face{font-family:'${name}';src:url(${fileUrl(path.join(FS, pkg, 'files', `${pkg}-latin-${weight}-normal.woff2`))}) format('woff2');font-weight:${weight}}`;
-
-// Each line: top and height on the trimmed 24 x 18 board, the width its text
-// may fill, and the largest font size (in) it may grow to.
+// Each line, top to bottom: the cap height it aims for (in), how much it is
+// stretched tall, and the gap (in) to the next line. A line that would pass
+// the 22.5 in between the margins is shrunk to fit. The words and number
+// sizes are the best split of the board's height between them (both read to
+// about the same distance; sign-legibility.py), with room left around them.
+const FIRA = { pkg: 'fira-sans-extra-condensed', family: 'Fira Sans Extra Condensed', weight: 800 };
 const LINES = [
-  { id: 'name', text: "MIKEY'S", y: 0.8, h: 1.75, w: 22.5, max: 1.85, font: "400 1in/1 'Racing Sans One'", color: RED },
-  { id: 'what', text: 'MOBILE CAR', y: 2.8, h: 3.8, w: 22.5, max: 4.6, font: "800 1in/1 'Barlow Condensed'", color: INK, group: 'what' },
-  { id: 'what2', text: 'DETAILING', y: 6.6, h: 3.8, w: 22.5, max: 4.6, font: "800 1in/1 'Barlow Condensed'", color: INK, group: 'what' },
-  { id: 'phone', text: PHONE, y: 10.9, h: 6.35, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
+  { id: 'name', text: "MIKEY'S", cap: 1.45, stretch: 1, gap: 0.75, pkg: 'racing-sans-one', family: 'Racing Sans One', weight: 400, color: RED, ref: 'H' },
+  { id: 'what', text: 'MOBILE CAR', cap: 3.86, stretch: 1.25, gap: 0.8, ...FIRA, color: INK, ref: 'H', group: 'what' },
+  { id: 'what2', text: 'DETAILING', cap: 3.86, stretch: 1.25, gap: 1.15, ...FIRA, color: INK, ref: 'H', group: 'what' },
+  { id: 'phone', text: PHONE, cap: 4.2, stretch: 1.25, gap: 0, ...FIRA, color: INK, ref: '8' },
 ];
 
+const FS = path.join(__dirname, 'node_modules', '@fontsource');
+const fontFile = l => path.join(FS, l.pkg, 'files', `${l.pkg}-latin-${l.weight}-normal.woff2`);
+const faces = [...new Map(LINES.map(l => [l.family + l.weight, l])).values()]
+  .map(l => `@font-face{font-family:'${l.family}';src:url(${fileUrl(fontFile(l))}) format('woff2');font-weight:${l.weight}}`).join('\n');
+
 const CSS = `
-${fontFace('Barlow Condensed', 'barlow-condensed', 800)}
-${fontFace('Racing Sans One', 'racing-sans-one', 400)}
-${fontFace('Anton', 'anton', 400)}
+${faces}
 @page{size:${W + 2 * BLEED}in ${H + 2 * BLEED}in;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#fff}
-.page{position:relative;width:${W + 2 * BLEED}in;height:${H + 2 * BLEED}in;overflow:hidden;background:#fff}
-.band{position:absolute;left:0;right:0;background:${RED}}
-.ln{position:absolute;left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;display:flex;align-items:center;justify-content:center}
-.ln span{display:inline-block;white-space:nowrap}
+html,body{background:${BG}}
+.page{position:relative;width:${W + 2 * BLEED}in;height:${H + 2 * BLEED}in;overflow:hidden;background:${BG}}
+svg{position:absolute;left:0;top:0;width:${W + 2 * BLEED}in;height:${H + 2 * BLEED}in}
 `;
 
-const html = () => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
-<div class="page">
-${LINES.filter(l => l.band).map(l => `  <div class="band" style="top:${BLEED + l.y}in;height:${l.h}in"></div>`).join('\n')}
-${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"><span id="${l.id}" style="font:${l.font};color:${l.color}${l.stretch ? `;transform:scaleY(${l.stretch})` : ''}">${l.text}</span></div>`).join('\n')}
-</div></body></html>`;
+// Lines are SVG text in inch units, so the PDF keeps them as vector type.
+// set: [{ id, size (font size, in), base (baseline y on the trimmed board, in) }]
+const html = set => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
+<div class="page"><svg viewBox="0 0 ${W + 2 * BLEED} ${H + 2 * BLEED}" xmlns="http://www.w3.org/2000/svg">
+${LINES.map(l => {
+  const s = set.find(o => o.id === l.id);
+  return `  <text id="${l.id}" x="${BLEED + W / 2}" y="${(BLEED + s.base) / l.stretch}" transform="scale(1 ${l.stretch})" text-anchor="middle" fill="${l.color}" style="font:${l.weight} ${s.size}px '${l.family}'">${l.text.replace(/'/g, '&#39;')}</text>`;
+}).join('\n')}
+</svg></div></body></html>`;
 
 (async () => {
   fs.mkdirSync(path.join(OUT, 'print-files', '18x24'), { recursive: true });
   const tmp = path.join(OUT, '.render.html');
-  fs.writeFileSync(tmp, html());
   const browser = await chromium.launch();
   // 150 dpi is plenty for a sign read from a car, and keeps the preview sane.
   const DPI = 150;
   const ctx = await browser.newContext({ deviceScaleFactor: DPI / 96, viewport: { width: Math.round((W + 2 * BLEED) * 96), height: Math.round((H + 2 * BLEED) * 96) } });
   const page = await ctx.newPage();
+  // First pass only loads the fonts so they can be measured.
+  fs.writeFileSync(tmp, html(LINES.map(l => ({ id: l.id, size: 1, base: 1 }))));
   await page.goto(fileUrl(tmp));
   await page.evaluate(() => document.fonts.ready);
-  const missing = await page.evaluate(() => ["400 20px 'Racing Sans One'", "800 20px 'Barlow Condensed'", "400 20px 'Anton'"].filter(f => !document.fonts.check(f)));
+  const missing = await page.evaluate(L => L.map(l => `${l.weight} 20px '${l.family}'`).filter(f => !document.fonts.check(f)), LINES);
   if (missing.length) throw new Error('fonts did not load: ' + missing.join(', '));
 
-  // Biggest type that fits: each line as large as its width allows, up to its
-  // max. Ink height is measured off the glyphs, so the numbers are real.
-  const sizes = await page.evaluate((LINES) => {
-    const c = document.createElement('canvas').getContext('2d'), out = {}, fit = {};
-    const fontOf = l => { const cs = getComputedStyle(document.getElementById(l.id)); return `${cs.fontWeight} 960px ${cs.fontFamily}`; };
+  // Measure every line off its glyphs: font size for the cap height asked for,
+  // shrunk if it won't fit across, and the ink's real top and bottom.
+  const m = await page.evaluate(({ LINES, maxW }) => {
+    const c = document.createElement('canvas').getContext('2d'), out = {};
     for (const l of LINES) {
-      c.font = fontOf(l);
-      const perIn = c.measureText(l.text).width / 960; // inches of width per inch of font size
-      fit[l.id] = Math.min(l.max, l.w / perIn);
-    }
-    // Lines in a group share the smallest size, so a stacked phrase reads as one.
-    for (const l of LINES) if (l.group) fit[l.id] = Math.min(...LINES.filter(o => o.group === l.group).map(o => fit[o.id]));
-    for (const l of LINES) {
-      const s = document.getElementById(l.id), size = fit[l.id];
-      c.font = fontOf(l);
-      s.style.fontSize = size + 'in';
-      const m = c.measureText(l.id === 'phone' ? '8' : 'H');
-      out[l.id] = +(size * m.actualBoundingBoxAscent / 960 * (l.stretch || 1)).toFixed(2);
+      c.font = `${l.weight} 100px '${l.family}'`;
+      const capPer = c.measureText(l.ref).actualBoundingBoxAscent / 100 * l.stretch; // ink cap height per unit of font size
+      const t = c.measureText(l.text);
+      const widthPer = (t.actualBoundingBoxLeft + t.actualBoundingBoxRight) / 100;
+      let size = l.cap / capPer;
+      if (size * widthPer > maxW) size = maxW / widthPer;
+      out[l.id] = { size, cap: size * capPer, width: size * widthPer, asc: size * t.actualBoundingBoxAscent / 100 * l.stretch, desc: size * t.actualBoundingBoxDescent / 100 * l.stretch };
     }
     return out;
-  }, LINES);
-  console.log(`  MIKEY'S ${sizes.name} in, MOBILE CAR / DETAILING ${sizes.what} in, phone ${sizes.phone} in tall`);
+  }, { LINES, maxW: W - 2 * SAFE });
+  // Lines in a group share the smallest size, so a stacked phrase reads as one.
+  for (const l of LINES) if (l.group) {
+    const k = Math.min(...LINES.filter(o => o.group === l.group).map(o => m[o.id].size)) / m[l.id].size;
+    for (const f of ['size', 'cap', 'width', 'asc', 'desc']) m[l.id][f] *= k;
+  }
+  // Stack the ink with the gaps asked for and centre the block on the board.
+  const total = LINES.reduce((a, l) => a + m[l.id].asc + m[l.id].desc + l.gap, 0);
+  let y = (H - total) / 2;
+  const set = LINES.map(l => { const base = y + m[l.id].asc; y = base + m[l.id].desc + l.gap; return { id: l.id, size: m[l.id].size, base }; });
+  fs.writeFileSync(tmp, html(set));
+  await page.goto(fileUrl(tmp));
+  await page.evaluate(() => document.fonts.ready);
+
+  const sizes = Object.fromEntries(LINES.map(l => [l.id, +m[l.id].cap.toFixed(2)]));
+  console.log(`  MIKEY'S ${sizes.name} in, MOBILE CAR / DETAILING ${sizes.what} in, phone ${sizes.phone} in tall (${m.phone.width.toFixed(1)} in wide)`);
+  console.log(`  margin above the type ${((H - total) / 2).toFixed(2)} in, below ${((H - total) / 2).toFixed(2)} in`);
   const problems = [];
   if (sizes.phone < 2.3) problems.push(`phone number ${sizes.phone} in tall: unreadable from a car`);
   if (sizes.name >= sizes.what / 2) problems.push(`MIKEY'S (${sizes.name} in) is over half the size of MOBILE CAR DETAILING: the name is meant to sit back`);
   if (sizes.what < 2) problems.push(`MOBILE CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
 
-  const text = await page.evaluate(() => document.body.innerText);
+  const text = await page.evaluate(() => [...document.querySelectorAll('text')].map(t => t.textContent).join('\n'));
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
     [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\$\d/, 'a price (a printed sign cannot follow a price change)'],
     [/\bwe\b|\bour\b/i, 'business "we" (it is one guy: "I")'], [/free|rain-ready|offer/i, 'an offer (the Rain-Ready offer is not on signs)'],
     [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
+  if (!text.includes(PHONE)) problems.push(`the phone number is not ${PHONE}`);
   // The glance copy: what it is. MIKEY'S is the small brand mark for people
   // who pass it every day, so it doesn't count against the 7.
   const words = LINES.filter(l => l.group === 'what').map(l => l.text).join(' ').split(/\s+/);
   if (words.length > 7) problems.push(`the big copy is ${words.length} words; a driver reads 7`);
 
   const buf = await (await page.$('.page')).screenshot({ type: 'png' });
-  // Safe area, checked on the ink itself: nothing but white may sit in the
-  // 0.75 in margin or the bleed (a band, if one comes back, is exempt).
+  // Safe area, checked on the ink itself: nothing but the background colour
+  // may sit in the 0.75 in margin or the bleed.
   {
     const { data, info } = await sharp(buf).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     const px = info.width / (W + 2 * BLEED), edge = Math.ceil((BLEED + SAFE) * px);
-    const bandRows = LINES.filter(l => l.band).map(l => [Math.floor((BLEED + l.y) * px) - 1, Math.ceil((BLEED + l.y + l.h) * px) + 1]);
+    const bg = [1, 3, 5].map(i => parseInt(BG.slice(i, i + 2), 16));
     let bad = 0;
     for (let y = 0; y < info.height; y++) {
-      if (bandRows.some(([a, b]) => y >= a && y <= b)) continue;
       const inYMargin = y < edge || y >= info.height - edge;
       for (let x = 0; x < info.width; x++) {
         if (!inYMargin && x >= edge && x < info.width - edge) continue;
         const i = (y * info.width + x) * 3;
-        if (data[i] < 200 || data[i + 1] < 200 || data[i + 2] < 200) bad++;
+        if (Math.abs(data[i] - bg[0]) + Math.abs(data[i + 1] - bg[1]) + Math.abs(data[i + 2] - bg[2]) > 60) bad++;
       }
     }
     if (bad) problems.push(`${bad} pixels of ink outside the safe area`);
     else console.log('  safe area ok: no ink in the margin');
   }
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
+
+  // What sign-legibility.py needs to score the type.
+  fs.writeFileSync(path.join(OUT, 'sign-type.json'), JSON.stringify({
+    note: 'Written by print/tools/build-yard-sign.cjs; read by print/tools/sign-legibility.py. Cap heights in inches on the 24 x 18 in board.',
+    background: BG,
+    lines: LINES.map(l => ({ id: l.id, text: l.text, pkg: l.pkg, weight: l.weight, stretch: l.stretch, capRef: l.ref, cap_in: sizes[l.id], width_in: +m[l.id].width.toFixed(2), color: l.color })),
+  }, null, 2) + '\n');
 
   const pdf = path.join(OUT, 'print-files', '18x24', 'sign.pdf');
   await page.pdf({ path: pdf, width: `${W + 2 * BLEED}in`, height: `${H + 2 * BLEED}in`, printBackground: true, preferCSSPageSize: true });
@@ -175,7 +205,7 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
       { input: await sharp(stake).png().toBuffer(), left: Math.round(Wm / 2 + 106), top: 90 + sm.height - 10 },
       { input: small, left: Math.round((Wm - 520) / 2), top: 90 },
     ]).png().toFile(path.join(OUT, 'mockup.png'));
-  console.log('wrote preview.png + mockup.png');
+  console.log('wrote preview.png + mockup.png + sign-type.json');
   await browser.close();
   fs.unlinkSync(tmp);
 })().catch(e => { console.error(e); process.exit(1); });

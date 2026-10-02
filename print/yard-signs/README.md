@@ -88,8 +88,10 @@ guy is everywhere" and "that detailing guy is trashing our street".
 
 Research on roadside reading (billboard and bandit-sign guidance): drivers get
 3 to 5 seconds, read about 3 words a second, and **7 words or fewer** is the
-limit. Letter height: about 1 inch per 30 feet of reading distance at best,
-so a phone number you want read from 100 feet needs 3 to 4 inch characters.
+limit. A sign has three jobs, in order: get **noticed** among everything else
+at the corner, get **read** from as far back as possible, and get
+**remembered** (Washington's hands-free law covers a driver stopped at a light,
+so most people act on a sign later, by the name or the number).
 
 **Spec**
 
@@ -98,49 +100,92 @@ so a phone number you want read from 100 feet needs 3 to 4 inch characters.
   cars leaving the intersection).
 - H-stakes, 10 x 30 in or similar heavy wire. Push the sign down so its bottom
   sits about a foot off the grass.
-- Colour: **two inks only**, the brand red (`#E31924`) and black on white, so
-  it prices at a printer's 2-colour rate. High contrast is what matters; never
+- Colour: **safety yellow** (`#FFD100`, Pantone 109 C) with **black** type and
+  the name in brand red (`#E31924`). On yellow coroplast stock that is two inks;
+  printed onto white stock the yellow is a third imprint colour
+  (`print/ORDERING.md` has the fallback if that costs too much). Never
   mid-tones or photos.
 
-**Copy (3 words, the small name and a number)**, picked by Mikey on
-2026-10-01, wording changed on 2026-10-02:
+**Copy (3 words, the small name and a number)**: Mikey's wording, picked on
+2026-10-01 and changed on 2026-10-02. Colour and type rebuilt for distance on
+2026-10-02:
 
 ```
-            MIKEY'S               (red, Racing Sans One, the logo's face: 1.2 in letters)
-          MOBILE CAR              (black, Barlow Condensed, two lines at one size: 3.2 in letters)
+            MIKEY'S               (red, Racing Sans One, the logo's face: 1.45 in letters)
+          MOBILE CAR              (black, Fira Sans Extra Condensed ExtraBold, 1.25x tall: 3.86 in letters)
            DETAILING
-          425-600-7897            (black, Anton stretched tall: 5 in digits)
+          425-600-7897            (same face and stretch, the full 22.5 in across: 3.65 in digits)
 ```
+
+**How far each line reads** (`python3 print/tools/sign-legibility.py`, which
+also draws `driver-view.png`, the sign through 20/40 eyes at 40 to 100 ft):
+
+| | 2026-10-01 sign (white, Anton number) | This sign |
+|---|---|---|
+| MOBILE CAR DETAILING | 46 ft | **70 ft** |
+| 425-600-7897 | 64 ft | **75 ft** |
+| The whole message | 46 ft | **70 ft** |
 
 Why it's laid out that way:
 
-- **What it is, big.** The first version only said "detailing" inside the logo,
-  in letters under an inch tall, so a driver read "Mikey's... I come to
-  you... number" and had to guess. "Mobile car detailing" is now the
-  second-biggest thing, stacked on two lines because three words across
-  22.5 in would only be 1.9 in.
-- **The number is the biggest thing**, and the only thing a driver can act on.
-  A tall, narrow number font (an idea taken off the printer's first proof)
-  and dropping the brackets took the digits from 2.6 in to 5 in.
-- **The name sits back.** MIKEY'S stays brand red but small (1.2 in), so the
-  eye goes to what it is and the number before the name (Mikey, 2026-10-01). It's there for the people who pass it every day and later
-  search the name, not for the first glance.
-- **No QR and no website.** Drivers don't scan, and the strip they took up was
-  most of the number's lost height. Sign leads get logged by asking (section 6).
+- **Yellow, to get noticed.** Black on yellow is what warning signs use: it
+  reads about as far as black on white, it reads just as well to people with
+  red-green colour blindness, and it doesn't blend in. Most of the other signs
+  at a corner are white (campaign signs through the Nov 3 election, real estate,
+  garage sales), and a white sign among white signs is one more of them. The
+  bandit-sign trade swears by yellow; the one head-to-head anyone published
+  ("yellow pulled three times the calls of white in the same neighbourhood",
+  unnamed, on a printer's blog) is an anecdote, not a study. Test it if you
+  doubt it (below).
+- **Type picked for distance, not for how tall it looks.** From far away the
+  eye loses the gaps inside letters first: the hole in a 6, the waist of an 8.
+  The old number was Anton stretched to 5 in, but its insides are slits, and
+  past about 64 ft the 0, 6, 8 and 9 turned into the same blob. Fira Sans Extra
+  Condensed keeps those gaps open (same idea as highway sign lettering), so a
+  3.65 in number reads farther than the 5 in one did. About 25 faces and
+  weights were scored (Anton, Barlow Condensed, Overpass, Oswald, League
+  Gothic, Bebas Neue, B612, Atkinson Hyperlegible, Roboto Condensed and more);
+  Fira read farthest at this width, at every eyesight level tried.
+- **What it is reads nearly as far as the number.** On the old sign there was a
+  stretch between 46 and 64 ft where a driver could make out a phone number
+  but not what it was for. Now MOBILE CAR DETAILING is the biggest thing and
+  both read out to about 70 to 75 ft: someone who can read the number already
+  knows it's a car detailer.
+- **The name sits back.** MIKEY'S stays brand red and small (under half the
+  size of MOBILE CAR DETAILING, Mikey, 2026-10-01). It's there for the people
+  who pass it every day and later search the name, not for the first glance.
+- **No QR and no website.** Drivers don't scan. Sign leads get logged by asking
+  (section 6).
 - **No red band and no slogan line** (Mikey, 2026-10-02). "I COME TO YOU" and
   then "CALL OR TEXT ME" were tried on a red band and dropped: "mobile" says he
-  comes to you, and a phone number already asks to be called. Taking the band
-  out let "mobile car detailing" go from 2.5 in to 3.2 in. The only red left is
-  the name.
+  comes to you, and a phone number already asks to be called.
+- **Big type over empty space, on purpose.** The US Sign Council wants type to
+  cover no more than 40% of a sign. A yard sign can't afford that at its
+  reading distance: the old sign and this one both sit at about 55%. Another
+  half inch of margin all round would cost about 3 ft of reading distance; the
+  gaps between lines carry the breathing room instead.
+- **Considered and left off:** the logo truck (full colour doesn't survive two
+  inks or 60 ft, and its grille is still too close to a Bronco's for a big
+  run), a handwritten-marker look (the investor blogs like it; it costs digit
+  legibility, and a detailer is selling care), a border (costs
+  letter height and adds no reading distance).
+
+**Testing yellow against white, if you want proof.** Put 50 of each out on the
+same weekends, alternating at similar corners (each placement photo shows
+which one went where). Every "saw your sign" lead gets its corner, so after
+two weekends compare leads per 50. Until then, yellow is the call.
 
 **The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
-plus 0.125 in bleed, fonts embedded; order it "same design both sides").
-`preview.png` and `mockup.png` are for looking at. Rebuild with `npm run sign`
-in `print/tools`: the generator fails if the phone number drops under 2.3 in or
-"mobile car detailing" under 2 in, if the name grows past half the size of
-"mobile car detailing", if the big copy passes 7 words, if a price, an offer,
-"we", an em dash or an unserved town gets in, or if any ink reaches the 0.75 in
-margin.
+plus 0.125 in bleed, yellow runs into the bleed, fonts embedded; order it "same
+design both sides"). `preview.png`, `mockup.png` and `driver-view.png` are for
+looking at. Rebuild with `npm run sign` in `print/tools`, then run
+`python3 sign-legibility.py` there. The generator fails if the phone number
+drops under 2.3 in or "mobile car detailing" under 2 in, if the name grows
+past half the size of "mobile car detailing", if the big copy passes 7 words,
+if a price, an offer, "we", an em dash or an unserved town gets in, or if any
+type reaches the 0.75 in margin. The legibility check fails if the number or
+"mobile car detailing" reads under 65 ft (where the old sign gave out), so a
+future draft can't go backwards without someone seeing it.
 
 - First person, per the voice rules: if a line ever comes back, it's "me", never "us".
 - **No price and no offer on the sign.** Prices change and 1,000 printed
@@ -317,7 +362,8 @@ list: fast removals, "HOA" and "no good spot" skips push a spot down or out.
 
 ## 8. Ordering checklist
 
-- [ ] Print file: `print-files/18x24/sign.pdf`. 18 x 24, landscape, **both sides, same design**, 2 colours, 4 mm coroplast, vertical flutes.
+- [ ] Print file: `print-files/18x24/sign.pdf`. 18 x 24, landscape, **both sides, same design**, 4 mm coroplast, vertical flutes. **Yellow**: yellow stock with 2 inks (black, red), or white stock with 3 imprint colours (yellow, black, red).
+- [ ] Proof is yellow edge to edge (no white rim) and the yellow is a bright safety yellow, not cream or orange.
 - [ ] Order 100 to 200 first (250 is fine if the price break is real), H-stakes included, 10 x 30 if offered.
 - [ ] Read the proof before approving: quantity, both sides, and the number is 425-600-7897.
 - [ ] Dashboard → Insights → Yard signs → set sign cost, pay per sign (if any), photo proof.
@@ -334,6 +380,10 @@ list: fast removals, "HOA" and "no good spot" skips push a spot down or out.
   [window cleaning bandit signs](https://community.windowcleaner.com/t/bandit-signs/3046)
 - Contractor yard signs and permission discounts: [Pipeline](https://pipelineon.com/blog/yard-sign-strategy/),
   [FieldPulse](https://www.fieldpulse.com/resources/blog/yard-sign-marketing-guide)
+- Legibility per inch of letter height and the 40% copy-area rule: [USSC Sign Legibility Rules of Thumb](https://files.secure.website/wscfus/7691102/uploads/USSC_Sign_Legibility_Rules_of_Thumb.pdf)
+  (Table 1: black Helvetica capitals on white, externally lit, 25 ft per inch);
+  yellow vs white anecdote: [4over4](https://www.4over4.com/article/bandit-signs-the-ultimate-real-estate-advertising-tool);
+  Washington's hands-free law applies when stopped at a light: [RCW 46.61.672](https://app.leg.wa.gov/rcw/default.aspx?cite=46.61.672)
 - Reading at speed: [FHWA conspicuity summary](https://www.fhwa.dot.gov/publications/research/safety/13044/006.cfm),
   [seven-word rule](https://trailheadmedia.com/how-many-words-should-a-billboard-have/);
   QR sizing: [QR code minimum size](https://www.qr-code-generator.com/blog/minimum-qr-code-size/)

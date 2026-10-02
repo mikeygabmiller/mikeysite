@@ -314,10 +314,14 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   person if any line ever speaks. No prices and no offer on a sign: 1,000 printed signs
   can't follow a price change, and the Rain-Ready offer stays on the hangers and
   postcards.
-- **The roadside sign has no QR and no website** (Mikey picked the design on
-  2026-10-01, wording 2026-10-02: MIKEY'S small in red / MOBILE CAR /
-  DETAILING / 425-600-7897, two inks, no red band and no slogan line).
-  The room went to a 5 in phone number. If a QR ever goes on a sign, it is
+- **The roadside sign has no QR and no website** (Mikey's wording, 2026-10-02:
+  MIKEY'S small in red / MOBILE CAR / DETAILING / 425-600-7897, no red band
+  and no slogan line). Since 2026-10-02 it's black on **safety yellow** in Fira
+  Sans Extra Condensed, chosen for distance: the words and the number read to
+  about 70 to 75 ft, against 46 and 64 ft for the old white sign with its 5 in
+  Anton number. Judge a new draft on `python3 print/tools/sign-legibility.py`
+  (feet a 20/40 driver can read it from), not on how tall the type looks.
+  If a QR ever goes on a sign, it is
   `https://mikeysdetailing.com/?utm_source=yardsign#booking`; the dashboard tags
   a quote or booking from that visit **sign** and credits it. Don't change the
   `utm_source` without changing the dashboard.
