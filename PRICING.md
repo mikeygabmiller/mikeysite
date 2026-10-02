@@ -41,6 +41,7 @@ and Exterior separately, and the calculator says so.
 | `social/tools/posts.cjs`, `render.cjs` | posts (they say "from $369", never per-size) |
 | `print/tools/build-door-hanger.cjs`, `build-postcard.cjs` | print pieces |
 | `outreach/FLEET-EMAILS.md` | fleet emails and the fleet-price floor math |
+| dashboard repo: `src/index.js` `BOOK_FACTS`, and the fallback `CONFIG` in `public/book.html` | the dashboard's own booking page, where referral links land. Bookings → Settings shows a "doesn't match your website" card until Mikey taps Match the website |
 
 ## Why the prices went up (2026-09-27)
 
@@ -135,6 +136,10 @@ disagree across sources:
    pair), merge, and confirm the live site shows the new numbers.
 8. Write down here what is honored at the old price and until when.
 9. Do the "outside the repo" list the same day.
+10. In the dashboard repo: change `BOOK_FACTS` in `src/index.js` and the
+    fallback `CONFIG` in `public/book.html`, ship it, then open Bookings →
+    Settings and tap **Match the website**. Until that tap, the booking page
+    (where referral links land) keeps quoting the old prices.
 
 ## History
 
@@ -143,3 +148,4 @@ disagree across sources:
 | to 2026-09-27 | $160–$240 | $200–$280 | $299–$379 | pages +$40/+$80, calculator +$20/+$40 | launch prices |
 | 2026-09-27 | $199–$279 | $249–$329 | $369–$449 | +$40/+$80 everywhere | booked full, going all in on ads |
 | 2026-09-27 | same | same | same | same | paint correction unified at from $400; Deep Clean to $399+; Clean Club kept at $125 |
+| 2026-10-02 | same | same | same | same | found the dashboard's booking page (referral links land there) still on the launch prices; it now has a facts check and a Match the website button |
