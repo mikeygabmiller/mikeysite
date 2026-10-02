@@ -272,18 +272,22 @@ const T = {
     <div class="quote" style="font-size:${quoteSize(s.quote)}px">${s.quote}</div>
     <div class="src"><span>Customer review</span><span><b>5.0</b> across 41 Google reviews</span></div></div>`,
 
+  // The Rain-Ready Full Detail as the homepage, the hanger and the postcard
+  // print it (Mikey, 2026-09-28): book a Full Detail by December 31, 2026 and
+  // polish, ceramic wax and RainX come free. Picking Full Detail in the quote
+  // puts them on by themselves, so there's no code word to type.
   offer: () => `<div class="main offer">
-    <div class="eyebrow">October through March</div>
+    <div class="eyebrow">Book by December 31</div>
     <h1>The Rain-Ready<br><em>Full Detail</em></h1>
-    <div class="lede">Book a full detail and three<br>rain-season extras come free.</div>
+    <div class="lede">Book a full detail and the three<br>things that help most in the rain are free.</div>
     <div class="stack">
       <div class="row base"><span>Full detail, inside and out</span><span class="p">from $369</span></div>
+      <div class="row"><span>Exterior polish</span><span class="p"><s>$30</s><span class="free">FREE</span></span></div>
       <div class="row"><span>Ceramic wax</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
-      <div class="row"><span>RainX on the windows</span><span class="p"><s>$10</s><span class="free">FREE</span></span></div>
-      <div class="row"><span>Carpet shampoo</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
-      <div class="row tot"><span>Extras on me</span><span class="p">$50</span></div>
+      <div class="row"><span>RainX on the glass</span><span class="p"><s>$10</s><span class="free">FREE</span></span></div>
+      <div class="row tot"><span>Extras on me</span><span class="p">$60</span></div>
     </div>
-    <div class="code">Type <b>RAIN READY</b> in the notes when you get your quote.</div>
+    <div class="code">Pick <b>Full Detail</b> in the quote. The extras go on by themselves.</div>
     <div class="guar">You don't pay until you love it.</div></div>`,
 
   steps: () => `<div class="main steps"><div class="eyebrow">Booking with me</div>
@@ -380,7 +384,9 @@ Post order and the weekly rhythm are in \`PLAYBOOK.md\`.
   for (const p of POSTS) {
     if (p.week !== week) {
       week = p.week;
-      md += week === 'bank' ? `\n---\n\n## Bank (ready to go, use to fill any week)\n\n` : `\n---\n\n## Week ${week}\n\n`;
+      md += week === 'bank' ? `\n---\n\n## Bank (ready to go, use to fill any week)\n\n`
+        : week === 'winter' ? `\n---\n\n## Winter, October to December (in this order, three a week)\n\n`
+        : `\n---\n\n## Week ${week}\n\n`;
     }
     md += `### ${p.id} · ${p.title}${p.pin ? ' · 📌 pin' : ''}${p.offer ? ' · ⚠️ offer' : ''}\n\n`;
     md += `**Image${p.slides.length > 1 ? 's (carousel, in this order)' : ''}:** ${files(p)}  \n**Type:** ${p.pillar}\n\n`;

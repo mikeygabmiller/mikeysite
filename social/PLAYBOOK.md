@@ -96,25 +96,31 @@ bio", Facebook has the actual link and no hashtags).
 
 ## 3. The offer: the Rain-Ready Full Detail
 
-> **Book a full detail between October and March and three rain-season extras
-> come free:** ceramic wax ($20), RainX on the windows ($10), carpet shampoo
-> ($20). **$50 of extras.** Exterior polish stays paid. To get it, type **RAIN
-> READY** in the notes box of the quote, or text it to (425) 600-7897.
+> **Book a Full Detail by December 31, 2026 and three rain-season extras come
+> free:** exterior polish ($30), ceramic wax ($20), RainX on the glass ($10).
+> Full detail from $369. In the quote on the site, picking Full Detail puts the
+> three extras on at $0 by themselves; by text, they say "Rain-Ready".
 
-Decided 2026-09-25: the $50 version, not the original $80 one with polish.
-Polish is the slow one, and a promise you can keep on a slammed Saturday beats
-a bigger one you start to resent. Polish can be added later if bookings are
-slow; taking it away later would look bad.
+This is the same offer the homepage, the door hanger and the postcard carry
+(Mikey's call on 2026-09-28: polish in, carpet shampoo out, book by Dec 31).
+A job booked by December 31 can be done as late as January 31, 2027. The
+first version of this playbook (2026-09-25) had a $50 October-to-March
+version with carpet shampoo and a RAIN READY code word; it was replaced by
+this one on 2026-10-02 so a post can never promise something the site
+doesn't. `CLAUDE.md` ("Offers and countdowns") is the source of truth.
 
 It's bank post **B07**. It does **not** go up at launch: people who've never
 heard of you don't want an offer from you yet. Post it no earlier than week 5,
-after a month of tips, and never right after another ask.
+after a month of tips, and never right after another ask. **Last day to post
+it is December 31.** After that, delete it from anything scheduled.
 
 ### ⚠️ Confirm this before B07 goes up
 
 This is a real promise to real customers, so it's the one thing in here that
-needs your yes. What it costs you: nothing off the full detail price, roughly
-20 to 30 minutes of extra work per offer car, and a little product. If that's not OK, just never post B07. Nothing else depends on it.
+needs your yes. What it costs you: nothing off the full detail price, extra
+time on every offer car (the polish is the slow one), and a little product.
+The homepage already makes this promise, so the post only adds reach. If that's not OK, just never post B07. Nothing else depends
+on it.
 
 ### Why this offer (the Hormozi logic)
 
@@ -132,46 +138,45 @@ adding value, not cutting price.** His value equation:
 
 The rest of his checklist:
 
-- **Bonuses, not a discount.** Knocking $50 off tells people your price was
-  padded. Giving $50 of extras keeps the full detail price whole and makes it
+- **Bonuses, not a discount.** Knocking $60 off tells people your price was
+  padded. Giving $60 of extras keeps the full detail price whole and makes it
   look like more.
 - **Cheap for you to deliver, valuable to them.** All three are things you
-  already carry and already sell. Each one solves a rain-season problem: water sitting on the paint, a
-  windshield you can't see through, muddy carpets.
+  already carry and already sell. Each one solves a rain-season problem: a
+  dull film the wax would seal in, water sitting on the paint, a windshield
+  you can't see through.
 - **Real scarcity:** none by number. "12 cars a week" was retired on
   2026-09-29. The site's scarcity is the live "Next opening" line, which a
   post can't carry, so posts point at the quote instead: "the quote on my
   site shows my real open times".
-- **Real urgency:** the rain season window. Named, not a fake countdown. The
-  window really ends, so the second visit to the page doesn't make it look
-  fake.
+- **Real urgency:** December 31. Named, not a fake countdown. The window
+  really ends (the homepage switches the offer off by itself at midnight going
+  into January 1), so the second visit to the page doesn't make it look fake.
 - **A name that says who it's for and what it gets them.** "Rain-Ready Full
   Detail" beats "Fall Special."
-- **A code word.** RAIN READY lands in the notes of the quote (the same notes
-  line that reaches your texts and email), so you can count exactly how many
-  bookings came from social.
+- **No code word any more.** The quote puts the extras on by itself and
+  labels them "(free, Rain-Ready)" in the text and email you get. Social
+  bookings are counted from the link tails instead (section 10).
 
 It's also deliberately smaller than the old free exterior offer. That one gave
-away a whole $160 service. This one gives away $50 of extras on your
+away a whole $160 service. This one gives away $60 of extras on your
 highest-priced job.
 
 ### Honoring it
 
-- Applies to a **Full Detail** booked October 1 to March 31 where the customer
-  wrote or texted **RAIN READY**.
-- If they also ticked some of the extras in the quote calculator, don't charge
-  for those extras.
+- Applies to a **Full Detail** booked by **December 31, 2026**; the job itself
+  can be done as late as January 31, 2027.
+- The quote already shows the three extras at $0 on a Full Detail. By text,
+  "Rain-Ready" or "saw your post" is enough.
+- **Someone holding an older piece** (a hanger printed before 2026-09-28, the
+  shared postcard that lists carpet shampoo, or this playbook's first $50
+  version if it ever got posted) gets what their piece said. Honor whichever
+  they mention.
 - Busy weeks: don't quietly drop an extra. If the offer gets more popular
   than your schedule can take, post that it's closed and stop posting B07.
-- **The door hanger prints its own version on a shorter window**
-  (`print/door-hanger/`): a Full Detail booked by December 31, 2026 where the
-  customer mentions the hanger gets **exterior polish, ceramic wax and RainX**
-  free (no carpet shampoo; Mikey's change on 2026-09-28). No code word needed.
-  The postcard gives the three extras above. Honor whichever piece they
-  mention.
-- **After March 31, stop posting it.** For summer, the same three-extra bundle
+- **After December 31, stop posting it.** For summer, the same kind of bundle
   can come back as a "Road-Trip Ready Full Detail" (bugs, tree sap, summer
-  dust) if you want it.
+  dust) if you want it; that's a new offer and needs your yes.
 
 ---
 
@@ -283,6 +288,30 @@ map of your 12 towns, B14 driveway or garage (the Pilot, in a customer's
 garage).
 
 After week 4, story answers and new job photos keep it going (section 6).
+
+### Winter posts (October to December)
+
+Nine more, built 2026-10-02, in `CAPTIONS.md` under "Winter". Post them in
+order, three a week, mixed in with before/afters as job photos come in. Seven
+teach, two ask, and the asks never sit next to each other.
+
+| Order | Post | Type | What it is | When |
+|---|---|---|---|---|
+| 1 | W01 | Teach | Wet footwell? Check the cowl (needles clog the drains) | October |
+| 2 | W02 | Teach | Wet leaves stain paint (tannin) | October |
+| 3 | W03 | Teach | Streaky wipers: it's usually the glass | **before Nov 1**, when the clocks go back |
+| 4 | W04 | Myths | 4 winter car myths (hot water can crack a windshield) | November |
+| 5 | W05 | Teach | The crumb cave under the car seat (straps: read the manual) | November |
+| 6 | W06 | **Ask** ⚠️ | Gift cards: "Somebody's getting a clean car." | **your yes first**, then late Nov or early Dec |
+| 7 | W07 | Teach | Selling it? Clean it before the photos | December |
+| 8 | W08 | Ask | If your spigot is shut off for winter, turn it on the day of the job | December |
+| 9 | W09 | Teach | Back from the pass? Rinse underneath | once the passes have snow |
+
+**W06 sells something**, so it waits for your yes like B07. It's face value
+(no discount, so it isn't an offer), it never expires and has no fees
+(Washington law), and the dashboard does the rest: Work → Get Paid → Gift
+cards makes the card and its number. The printed version is
+`print/gift-card/`.
 
 ### Posting checklist, every post
 
@@ -396,7 +425,9 @@ you work** and **whether you're licensed and insured.**
 
 ## 10. Keeping score (once a month, 10 minutes)
 
-- **Bookings from social:** count the quotes and texts that said RAIN READY.
+- **Bookings from social:** quotes whose visit came from `instagram` or
+  `facebook` (the link tails in the bios), plus texts that say they saw a
+  post.
 - **Site visits from social:** Google Analytics → Reports → Acquisition →
   Traffic acquisition, look for `instagram` and `facebook` as the source
   (that's what the link tails in the bios are for).
@@ -408,6 +439,7 @@ you work** and **whether you're licensed and insured.**
 ## 11. What's still open
 
 - [ ] Your yes (or no) on the Rain-Ready offer before B07 goes up.
+- [ ] Your yes (or no) on selling gift cards before W06 goes up.
 - [ ] Answers in the Story questions doc, whenever you have ten minutes.
 - [ ] **Get insured**: general liability plus garagekeepers ("care, custody
       and control") coverage, from an agent who insures mobile detailers. Check
