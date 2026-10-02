@@ -40,12 +40,13 @@ const TR_PHONE = '425-595-7758';
 const TR_SITE = 'trinityexteriorco.com/lights';
 const TR_QR = 'https://trinityexteriorco.com/lights/?utm_source=sharedcard&utm_medium=mail';
 const TR_REVIEWS = 34; // cleaning reviews, as of 2026-09-24. Recheck before printing.
-const TR_OFFER = null;
+// e.g. OFFER='$100 off|Book by Oct 31 and mention this postcard' npm run shared
+const TR_OFFER = process.env.OFFER ? (([big, small]) => ({ big, small }))(process.env.OFFER.split('|')) : null;
 
 const BLEED = 0.125, W = 11, H = 8.5, SAFE = 0.25, STRIP = 0.5;
 const INDICIA_MAX = { right: 1.625, top: 1.375 };
 const MAILZONE = { w: 3.5, h: 1.95 };
-const PHOTO = { w: 6.55, h: 4.3 }; // Louis's photo is 1575 px wide: 6.55 in keeps it at 240 dpi
+const HERO = 5.7; // height of Louis's photo on his side, trim to where the band starts
 
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
@@ -99,13 +100,13 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 .mk .need b{color:#fff}
 .mk .right{left:${BLEED + 5.6}in;right:${BLEED + SAFE}in;top:${BLEED + SAFE}in;bottom:${BLEED + STRIP + 0.14}in;display:flex;flex-direction:column;justify-content:space-between}
 .mk .head{display:flex;gap:.16in;align-items:center}
-.mk .logo{flex:none;width:1.75in;height:auto}
+.mk .logo{flex:none;width:1.45in;height:auto}
 .mk .eb{font-weight:700;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.mk h1{font-weight:800;font-size:23pt;line-height:1.02;letter-spacing:-.02em;margin-top:.05in}
+.mk h1{font-weight:800;font-size:27pt;line-height:1.02;letter-spacing:-.02em;margin-top:.05in}
 .mk h1 em{font-style:normal;color:var(--red)}
 .mk .offer{border:1.2pt solid var(--gold);border-radius:8pt;padding:.1in .14in;background:linear-gradient(135deg,rgba(201,162,75,.14),rgba(201,162,75,.04))}
 .mk .offer .when{font-weight:800;font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.mk .offer .name{font-weight:800;font-size:16pt;line-height:1.05;margin-top:2pt}
+.mk .offer .name{font-weight:800;font-size:18pt;line-height:1.05;margin-top:2pt}
 .mk .offer .name em{font-style:normal;color:var(--red)}
 .mk .stack{list-style:none;margin-top:5pt;display:grid;grid-template-columns:1fr 1fr;gap:2pt 14pt}
 .mk .stack li{display:flex;justify-content:space-between;font-size:8.6pt;color:var(--muted)}
@@ -121,61 +122,65 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 .mk .prices b{display:block;font-weight:800;font-size:15pt;margin-top:1pt}
 .mk .prices small{font-size:7.4pt;font-weight:600;color:var(--dim);margin-right:2pt}
 .mk .pnote{font-size:7.4pt;color:var(--dim);margin-top:3pt}
-.mk .cta{display:flex;align-items:center;gap:.16in;background:#141414;border:1pt solid #2a2a2a;border-radius:9pt;padding:.1in}
+.mk .cta{display:flex;align-items:center;gap:.16in;background:linear-gradient(135deg,#d81232,#a00c24);box-shadow:0 6pt 22pt rgba(200,16,46,.35);border-radius:9pt;padding:.1in}
 .mk .cta .scan{font-weight:800;font-size:15pt;line-height:1.05}
-.mk .cta .sub{font-size:8.2pt;color:var(--muted);margin-top:2pt}
-.mk .cta .or{font-size:7.2pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:6pt}
+.mk .cta .sub{font-size:8.2pt;color:#fff;opacity:.9;margin-top:2pt}
+.mk .cta .or{font-size:7.2pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-top:6pt}
 .mk .cta .phone{font-weight:800;font-size:22pt;line-height:1;margin-top:1pt;white-space:nowrap}
-.mk .cta .url{font-size:8.2pt;font-weight:600;color:var(--muted);margin-top:2pt}
+.mk .cta .url{font-size:8.2pt;font-weight:600;color:#fff;opacity:.9;margin-top:2pt}
 .mk .fine{font-size:6.5pt;line-height:1.35;color:#8a8a8a}
 .mk .strip{background:var(--red);color:#fff;font-family:'Outfit'}
 
 /* ================= TRINITY (mail side) =================
-   trinityexteriorco.com/lights: Inter, blue #2e3eb0 / #232f8a / #1a2360, yellow #ffb400 CTA, white cards. */
-.tr{font-family:'Inter',sans-serif;background:linear-gradient(180deg,#141c4f 0%,#1a2360 55%,#141b4c 100%);color:#fff;
-  --blue:#2e3eb0;--deep:#1a2360;--accent:#ffb400;--accent-ink:#231a02;--warm:#ffd98a;--soft:#c9cff0}
+   trinityexteriorco.com/lights: Inter, blues #2e3eb0 / #232f8a / #1a2360, yellow #ffb400 CTA.
+   Built to the postcard rules in README: one photo carries the side, a short headline
+   in the top half, the CTA is the brightest block, bottom right. */
+.tr{font-family:'Inter',sans-serif;background:#121a4a;color:#fff;
+  --blue:#2e3eb0;--deep:#1a2360;--accent:#ffb400;--accent-ink:#231a02;--warm:#ffd98a;--soft:#cdd3f2}
 .tr .stars svg{fill:var(--accent)}
-.tr .photo{position:absolute;left:0;top:0;width:${PHOTO.w + BLEED}in;height:${PHOTO.h + BLEED}in}
-.tr .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block}
-.tr .photo{-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent 100%),linear-gradient(180deg,#000 58%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect}
-.tr .wm{left:${BLEED + SAFE}in;top:${BLEED + SAFE}in;background:rgba(16,22,63,.78);border-radius:6pt;padding:.07in .12in;line-height:1}
-.tr .wm b{display:block;font-weight:900;font-size:17pt;letter-spacing:.1em}
-.tr .wm span{display:block;font-weight:700;font-size:6.6pt;letter-spacing:.34em;margin-top:2pt;color:var(--warm)}
-.tr .left{left:${BLEED + SAFE}in;width:${PHOTO.w - SAFE - 0.1}in;top:${BLEED + PHOTO.h - 0.62}in;bottom:${BLEED + STRIP + 0.14}in;display:flex;flex-direction:column;justify-content:space-between}
-.tr .eb{display:inline-block;align-self:flex-start;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;padding:3pt 7pt;border-radius:3pt}
-.tr h1{font-weight:900;font-size:28pt;line-height:1.03;letter-spacing:-.025em;margin-top:.07in;text-shadow:0 1pt 6pt rgba(0,0,0,.35)}
+.tr .photo{position:absolute;left:0;top:0;width:${W + 2 * BLEED}in;height:${HERO + BLEED}in;
+  -webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%)}
+.tr .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 38%;display:block}
+.tr .shade{position:absolute;left:0;top:0;width:${W + 2 * BLEED}in;height:${HERO + BLEED}in;
+  background:linear-gradient(180deg,transparent 45%,rgba(10,14,44,.55) 72%,rgba(18,26,74,.0) 100%),linear-gradient(90deg,rgba(10,14,44,.55) 0%,transparent 55%)}
+.tr .wm{left:${BLEED + SAFE}in;top:${BLEED + SAFE}in;line-height:1;text-shadow:0 1pt 8pt rgba(0,0,0,.6)}
+.tr .wm b{display:block;font-weight:900;font-size:20pt;letter-spacing:.1em}
+.tr .wm span{display:block;font-weight:700;font-size:7.4pt;letter-spacing:.36em;margin-top:3pt;color:var(--warm)}
+.tr .wm i{display:block;font-style:normal;font-weight:600;font-size:7.4pt;letter-spacing:.04em;margin-top:5pt;color:#fff;opacity:.85}
+.tr .hero{left:${BLEED + SAFE}in;width:7.3in;top:${BLEED + HERO - 2.55}in}
+.tr .eb{display:inline-block;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:8pt;letter-spacing:.14em;text-transform:uppercase;padding:3.5pt 8pt;border-radius:3pt}
+.tr h1{font-weight:900;font-size:50pt;line-height:.95;letter-spacing:-.035em;margin-top:.1in;text-shadow:0 2pt 14pt rgba(0,0,0,.55)}
 .tr h1 em{font-style:normal;color:var(--accent)}
-.tr .inc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.06in .16in}
-.tr .inc li{position:relative;padding-left:15pt;font-size:9.6pt;line-height:1.3;color:var(--soft)}
-.tr .inc li b{display:block;color:#fff;font-weight:800;font-size:11pt}
-.tr .inc li:before{content:'';position:absolute;left:1pt;top:3pt;width:7pt;height:4pt;border-left:2pt solid var(--accent);border-bottom:2pt solid var(--accent);transform:rotate(-45deg)}
-.tr .price{display:flex;align-items:center;gap:.14in;background:#fff;color:var(--deep);border-radius:8pt;padding:.08in .14in}
-.tr .price .big{font-family:'Marker';font-size:25pt;line-height:1;color:var(--blue);white-space:nowrap}
-.tr .price p{font-size:8.2pt;line-height:1.35;color:#3a4051}
-.tr .price p b{color:var(--deep);font-weight:800}
-.tr .mailzone{position:absolute;right:0;top:0;width:${MAILZONE.w + BLEED}in;height:${MAILZONE.h + BLEED}in;background:#fff;border-bottom-left-radius:10pt}
+.tr .sub{max-width:5.7in;font-size:13pt;font-weight:600;line-height:1.3;margin-top:.1in;color:#fff;text-shadow:0 1pt 8pt rgba(0,0,0,.7)}
+.tr .badge{left:${BLEED + 7.75}in;top:${BLEED + HERO - 2.75}in;width:1.75in;height:1.75in;border-radius:50%;background:var(--accent);color:var(--accent-ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:.16in;transform:rotate(-8deg);box-shadow:0 4pt 18pt rgba(0,0,0,.45);
+  font-weight:900;font-size:25pt;line-height:1;letter-spacing:-.02em}
+.tr .badge small{display:block;font-weight:800;font-size:8.4pt;line-height:1.2;letter-spacing:0;margin-top:5pt}
+.tr .band{left:${BLEED + SAFE}in;right:${BLEED + SAFE}in;top:${BLEED + HERO + 0.02}in;bottom:${BLEED + STRIP + 0.14}in;display:flex;gap:.14in;align-items:stretch}
+.tr .val{flex:1.15;background:#fff;color:var(--deep);border-radius:9pt;padding:.1in .14in;display:flex;flex-direction:column;justify-content:space-between}
+.tr .val .top{display:flex;align-items:flex-end;gap:.1in}
+.tr .val .lbl{font-weight:800;font-size:7.4pt;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);line-height:1.2}
+.tr .val .big{font-family:'Marker';font-size:34pt;line-height:.9;color:var(--blue)}
+.tr .val ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2.5pt 10pt}
+.tr .val li{position:relative;padding-left:12pt;font-size:8.6pt;font-weight:700;line-height:1.2}
+.tr .val li:before{content:'';position:absolute;left:1pt;top:2pt;width:6pt;height:3.4pt;border-left:1.8pt solid var(--accent-dark,#f59e0b);border-bottom:1.8pt solid #f59e0b;transform:rotate(-45deg)}
+.tr .val .rates{font-size:7.2pt;line-height:1.3;color:#5a6075;border-top:.6pt solid #e6e9f2;padding-top:3pt}
+.tr .trust{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:.02in 0}
+.tr .trust .rate{display:flex;align-items:center;gap:5pt}
+.tr .trust .rate b{font-weight:900;font-size:17pt}
+.tr .trust .rate + p{font-size:7.6pt;color:var(--soft);margin-top:1pt}
+.tr .trust .t{font-size:8.6pt;line-height:1.3;color:var(--soft)}
+.tr .trust .t b{display:block;color:#fff;font-weight:800;font-size:10pt}
+.tr .cta{flex:1.3;display:flex;align-items:center;gap:.12in;background:var(--accent);color:var(--accent-ink);border-radius:10pt;padding:.11in;box-shadow:0 0 0 2pt rgba(255,180,0,.25),0 6pt 22pt rgba(255,180,0,.25)}
+.tr .cta .scan{font-weight:900;font-size:14pt;line-height:1.05}
+.tr .cta .or{font-size:6.8pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:6pt;opacity:.8}
+.tr .cta .phone{font-weight:900;font-size:17pt;line-height:1;margin-top:1pt;white-space:nowrap}
+.tr .cta .url{font-size:7.2pt;font-weight:700;margin-top:3pt}
+.tr .cta .qr{padding:.06in}
+.tr .mailzone{position:absolute;right:${BLEED + 0.16}in;top:${BLEED + 0.16}in;width:${MAILZONE.w - 0.16}in;height:${MAILZONE.h - 0.16}in;background:#fff;border-radius:9pt;box-shadow:0 4pt 16pt rgba(0,0,0,.35)}
 .tr .indicia{position:absolute;right:${BLEED + 0.28}in;top:${BLEED + 0.26}in;width:1.08in;border:1pt solid #000;padding:4pt 3pt;
   font-family:'Inter';font-weight:700;font-size:6.6pt;line-height:1.28;text-align:center;letter-spacing:.03em;color:#000}
 .tr .addr{position:absolute;right:${BLEED + 0.28}in;top:${BLEED + 1.3}in;width:${MAILZONE.w - 0.56}in;font-family:'Inter';font-weight:600;font-size:10pt;letter-spacing:.06em;text-transform:uppercase;color:#000}
-.tr .right{left:${BLEED + PHOTO.w + 0.22}in;right:${BLEED + SAFE}in;top:${BLEED + MAILZONE.h + 0.2}in;bottom:${BLEED + STRIP + 0.14}in;display:flex;flex-direction:column;justify-content:space-between}
-.tr .hi{font-family:'Marker';font-size:22pt;line-height:1;color:var(--warm)}
-.tr .who{font-size:9.6pt;line-height:1.4;color:var(--soft);margin-top:4pt}
-.tr .who b{color:#fff}
-.tr .grt{border:1.2pt solid var(--accent);border-radius:8pt;padding:.08in .12in;background:rgba(255,180,0,.08)}
-.tr .grt h3{font-weight:900;font-size:12.5pt;line-height:1.1}
-.tr .grt p{font-size:8.8pt;line-height:1.35;color:var(--soft);margin-top:2pt}
-.tr .rate{display:flex;align-items:center;gap:6pt;font-size:8.4pt;color:var(--soft)}
-.tr .rate b{font-weight:900;font-size:13pt;color:#fff}
-.tr .rev{font-size:9.2pt;line-height:1.4;color:#fff;font-style:italic;border-left:2.4pt solid var(--accent);padding-left:.1in}
-.tr .rev span{display:block;font-style:normal;font-size:7.6pt;font-weight:700;letter-spacing:.06em;color:var(--soft);margin-top:3pt}
-.tr .offer{background:var(--accent);color:var(--accent-ink);border-radius:8pt;padding:.08in .12in;font-weight:800;font-size:10pt;line-height:1.25}
-.tr .cta{display:flex;align-items:center;gap:.12in;background:var(--accent);color:var(--accent-ink);border-radius:10pt;padding:.1in}
-.tr .cta .scan{font-weight:900;font-size:12.5pt;line-height:1.08}
-.tr .cta .or{font-size:6.8pt;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-top:5pt;opacity:.8}
-.tr .cta .phone{font-weight:900;font-size:16.5pt;line-height:1;margin-top:1pt;white-space:nowrap}
-.tr .cta .url{font-size:7.4pt;font-weight:700;margin-top:3pt}
-.tr .cta .qr{padding:.06in}
-.tr .cta .qr svg{width:1.05in;height:1.05in}
 .tr .strip{background:#fff;color:var(--deep)}
 `;
 
@@ -234,38 +239,37 @@ const mikey = q => `
   <div class="strip"><span><b>Flip it over:</b> Christmas lights, hung and taken down by my brother Louis at Trinity Exterior Co.</span></div>
 </section>`;
 
-const trinity = q => `
+const trinity = (q, hero) => `
 <section class="page tr">
-  <div class="photo"><img src="${fileUrl(path.join(OUT, 'assets', 'trinity-roofline.webp'))}"></div>
-  <div class="box wm"><b>TRINITY</b><span>EXTERIOR CO.</span></div>
+  <div class="photo"><img src="${fileUrl(hero)}"></div><div class="shade"></div>
+  <div class="box wm"><b>TRINITY</b><span>EXTERIOR CO.</span><i>Snohomish County, WA</i></div>
   <div class="mailzone"></div>
   <div class="indicia">PRSRT STD<br>ECRWSS<br>U.S. POSTAGE PAID<br>EDDM RETAIL</div>
   <div class="addr">Local Postal Customer</div>
 
-  <div class="box left">
-    <div><span class="eb">Christmas light installation · Snohomish County</span>
-      <h1>Your house lit for the holidays.<br><em>You never touch a ladder.</em></h1></div>
-    <ul class="inc">
-      <li><b>I supply the lights</b>Commercial-grade LEDs. Nothing to buy, no tangled bins.</li>
-      <li><b>Custom-cut to your house</b>Straight lines that follow your roof edges and gables.</li>
-      <li><b>Clipped on, never nailed</b>No nails or staples in your house.</li>
-      <li><b>Takedown and storage included</b>Down after the holidays, stored until next year.</li>
-    </ul>
-    <div class="price"><div class="big">from $600</div>
-      <p><b>Rooflines: one story $5 to $8 a foot, two stories $7 to $10.</b> Lights, install, repairs, takedown and storage all in. Exact price after I see the house.</p></div>
-  </div>
+  <div class="box hero"><span class="eb">Christmas light installation</span>
+    <h1>This year,<br><em>skip the ladder.</em></h1>
+    <div class="sub">I hang them, fix them all season, then take them down and store them. You just enjoy the house.</div></div>
+  ${TR_OFFER ? `<div class="box badge">${TR_OFFER.big}<small>${TR_OFFER.small}</small></div>` : ''}
 
-  <div class="box right">
-    <div><div class="hi">Hey, I'm Louis.</div>
-      <div class="who">I own Trinity and <b>I do the work myself.</b> Licensed, bonded and insured, so the ladder on a wet roof is my risk, not yours.</div></div>
-    <div><div class="rate"><b>5.0</b>${stars(5)}<span>${TR_REVIEWS} Google reviews of my cleaning work</span></div>
-      <div class="rev" style="margin-top:6pt">"Louis always arrives on time and explains thoroughly what work he'll perform… always pleased."<span>DIANE P., GOOGLE REVIEW</span></div></div>
-    <div class="grt"><h3>Stays lit all season, or I fix it free.</h3>
-      <p>If a strand or bulb quits between install and takedown, call or text and I come back out. No charge.</p></div>
-    ${TR_OFFER ? `<div class="offer">${TR_OFFER}</div>` : ''}
+  <div class="box band">
+    <div class="val">
+      <div class="top"><div class="big">$600</div><div class="lbl">All-in<br>starting price</div></div>
+      <ul>
+        <li>Commercial-grade LEDs</li><li>Custom-cut to your roof</li>
+        <li>Clips, no nails or staples</li><li>Repairs all season</li>
+        <li>Takedown and storage</li><li>Free quote</li>
+      </ul>
+      <div class="rates">Rooflines: one story $5 to $8 a foot, two stories $7 to $10. Exact price after I see the house.</div>
+    </div>
+    <div class="trust">
+      <div><div class="rate"><b>5.0</b>${stars(5)}</div><p>${TR_REVIEWS} Google reviews of my cleaning work</p></div>
+      <div class="t"><b>Stays lit, or I fix it free.</b>A strand quits mid-season? Call or text, I come back out.</div>
+      <div class="t"><b>Louis does the work.</b>Licensed, bonded and insured. The ladder is my risk.</div>
+    </div>
     <div class="cta" data-qr="tr">
       <div class="qr">${q}</div>
-      <div><div class="scan">Scan for a free lighting quote</div>
+      <div><div class="scan">Scan for your free lighting quote</div>
         <div class="or">Or call or text Louis</div><div class="phone">${TR_PHONE}</div><div class="url">${TR_SITE}</div></div>
     </div>
   </div>
@@ -291,10 +295,17 @@ async function checkQr(el, want, label) {
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const [mq, tq] = await Promise.all([qr(MK_QR), qr(TR_QR)]);
+  // Louis's photo is 1575 px wide; full width is 11.25 in. Resample to 300 dpi so the
+  // printer gets smooth pixels instead of blocks. It adds no detail: a bigger original
+  // from Louis's phone is the real fix (see README).
+  const hero = path.join(OUT, '.hero.jpg');
+  await sharp(path.join(OUT, 'assets', 'trinity-roofline.webp')).resize({ width: Math.round((W + 2 * BLEED) * 300), kernel: 'lanczos3' })
+    .sharpen({ sigma: 0.8 }).jpeg({ quality: 94 }).toFile(hero);
+  const sfx = TR_OFFER ? '-with-offer' : '';
   const browser = await chromium.launch();
   const pageW = W + 2 * BLEED, pageH = H + 2 * BLEED;
   const tmp = path.join(OUT, '.render.html');
-  fs.writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${mikey(mq)}${trinity(tq)}</body></html>`);
+  fs.writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${mikey(mq)}${trinity(tq, hero)}</body></html>`);
   const ctx = await browser.newContext({ deviceScaleFactor: 300 / 96, viewport: { width: Math.round(pageW * 96), height: Math.round(pageH * 96) } });
   const page = await ctx.newPage();
   await page.goto(fileUrl(tmp));
@@ -332,7 +343,8 @@ async function checkQr(el, want, label) {
 
   const all = await page.evaluate(() => document.body.innerText);
   const mk = await page.evaluate(() => document.querySelector('.page.mk').innerText);
-  const tr = await page.evaluate(() => document.querySelector('.page.tr').innerText);
+  // The badge is Louis's own offer, book-by date included, so it's left out of the date check.
+  const tr = await page.evaluate(() => { const c = document.querySelector('.page.tr').cloneNode(true); c.querySelector('.badge')?.remove(); document.body.append(c); const t = c.innerText; c.remove(); return t; });
   if (/\u2014|&mdash;/.test(all)) problems.push('copy contains an em dash');
   // Mikey's side: the CLAUDE.md facts table and voice.
   const banned = [[/insur|licens/i, 'licensed/insured on Mikey\'s side (unconfirmed)'], [/lynnwood|edmonds/i, 'a town Mikey does not serve'],
@@ -346,8 +358,8 @@ async function checkQr(el, want, label) {
   for (const [re, what] of [[/timer/i, 'timers (known false)'], [/hundreds|\d{3,}\+? (homes|customers|houses)/i, 'a customer count (unverified)'],
     [/\b(nov|dec|thanksgiving)/i, 'an install date (ask Louis first)'], [/peace of mind|crystal clear|reach out|proudly/i, 'a phrase Trinity bans']])
     if (re.test(tr)) problems.push(`Trinity side: ${what}: "${tr.match(re)[0]}"`);
-  for (const m of [TR_PHONE, 'commercial-grade LEDs', 'Custom-cut', 'nails or staples', 'Takedown and storage', 'fix it free', 'Licensed, bonded and insured', '$600'])
-    if (!tr.toLowerCase().includes(m.toLowerCase())) problems.push(`Trinity side is missing "${m}"`);
+  for (const m of [TR_PHONE, 'Commercial-grade LEDs', 'Custom-cut', 'no nails or staples', 'Takedown and storage', 'fix it free', 'Repairs all season', 'Licensed, bonded and insured', '$600'])
+    if (!tr.includes(m)) problems.push(`Trinity side is missing "${m}"`);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
   if (!TR_OFFER) console.log('  note: no Trinity offer set (TR_OFFER). His side prints without one.');
 
@@ -357,18 +369,18 @@ async function checkQr(el, want, label) {
   const dir = path.join(OUT, 'print-files', '11x8.5');
   fs.mkdirSync(dir, { recursive: true });
   for (const [range, name] of [['1', 'front-mikey'], ['2', 'back-trinity-mail-side']])
-    await page.pdf({ path: path.join(dir, `${name}.pdf`), width: `${pageW}in`, height: `${pageH}in`, printBackground: true, preferCSSPageSize: true, pageRanges: range });
+    await page.pdf({ path: path.join(dir, `${name}${sfx}.pdf`), width: `${pageW}in`, height: `${pageH}in`, printBackground: true, preferCSSPageSize: true, pageRanges: range });
   const sides = await page.$$('.page'), px = 300, b = Math.round(BLEED * px);
   for (const [i, name] of ['mikey', 'trinity'].entries()) {
     const buf = await sides[i].screenshot({ type: 'png' });
-    await sharp(buf).extract({ left: b, top: b, width: W * px, height: Math.round(H * px) }).jpeg({ quality: 90 }).toFile(path.join(OUT, `preview-${name}.jpg`));
+    await sharp(buf).extract({ left: b, top: b, width: W * px, height: Math.round(H * px) }).jpeg({ quality: 90 }).toFile(path.join(OUT, `preview-${name}${sfx}.jpg`));
   }
-  await ctx.close(); await browser.close(); fs.unlinkSync(tmp);
-  const s1 = await sharp(path.join(OUT, 'preview-mikey.jpg')).resize({ width: 1800 }).toBuffer();
-  const s2 = await sharp(path.join(OUT, 'preview-trinity.jpg')).resize({ width: 1800 }).toBuffer();
+  await ctx.close(); await browser.close(); fs.unlinkSync(tmp); fs.unlinkSync(hero);
+  const s1 = await sharp(path.join(OUT, `preview-mikey${sfx}.jpg`)).resize({ width: 1800 }).toBuffer();
+  const s2 = await sharp(path.join(OUT, `preview-trinity${sfx}.jpg`)).resize({ width: 1800 }).toBuffer();
   const h = (await sharp(s1).metadata()).height, pad = 70;
   await sharp({ create: { width: 1800 + pad * 2, height: h * 2 + pad * 3, channels: 3, background: '#e9e7e3' } })
     .composite([{ input: s1, left: pad, top: pad }, { input: s2, left: pad, top: h + pad * 2 }]).jpeg({ quality: 88 })
-    .toFile(path.join(OUT, 'mockup-both-sides.jpg'));
+    .toFile(path.join(OUT, `mockup-both-sides${sfx}.jpg`));
   console.log('wrote print/postcard-shared/');
 })().catch(e => { console.error(e); process.exit(1); });
