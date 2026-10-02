@@ -23,13 +23,37 @@ built 2026-10-01, redesigned 2026-10-02 to the postcard rules below.
   mail side up, so his side may be seen first. That's fair: lights have a
   hard season and a short window; detailing doesn't.
 
+## Two layouts to pick from (added 2026-10-02)
+
+Mikey asked for a test where both sides share one design, so a reader who
+flips the card finds everything in the same place.
+
+| | **Split** (`mockup-both-sides.jpg`) | **Matched** (`mockup-both-sides-matched.jpg`) |
+|---|---|---|
+| Louis's side | the template | the same template, pixel for pixel |
+| Mikey's side | its own layout: before/after on the left, offer box, guarantee in big handwriting | Louis's template in Mikey's colors: before/after across the top, big headline, gold Rain-Ready badge, $369 card, red QR panel |
+| Top-right white box | postage on Louis's side only | postage on Louis's side, Angela's review in the same box on Mikey's |
+| Mikey's photos | ~280 dpi | ~160 dpi (stretched wider), softer up close |
+
+**Why matched is the pick:** both sides read in the same order: photo,
+headline, price, proof, then the button. Mikey's side gets the same
+treatment that made Louis's strong. The card also reads as one piece from two
+brothers, not two ads glued together. The cost is softer back-seat photos:
+the copies in `social/photos/` are 900 px web versions. The full-size
+originals from Mikey's phone fix that; swap them in and re-run.
+
+**Don't split-test it in the mail.** At about 3 bookings per 1,000 cards, two
+versions across 1,151 homes would give each a handful of calls, and that's
+noise, not an answer. Two print versions also cost more. Pick one by eye.
+
 ## Files
 
 | File | What it is |
 |---|---|
 | `print-files/11x8.5/front-mikey.pdf` | Mikey's side. 11.25" x 8.75" (trim plus 1/8" bleed) |
 | `print-files/11x8.5/back-trinity-mail-side.pdf` | Trinity's side, with the EDDM Retail indicia and "Local Postal Customer" |
-| `preview-*.jpg`, `mockup-both-sides.jpg` | For looking at, not printing |
+| `front-mikey-matched.pdf`, `back-trinity-mail-side-matched.pdf` | The matched layout (`LAYOUT=matched npm run shared`). Upload this pair **or** the pair above, never one of each |
+| `preview-*.jpg`, `mockup-both-sides*.jpg` | For looking at, not printing |
 | `assets/trinity-roofline.webp` | Louis's photo, from trinityexteriorco.com/lights (he uploaded it 2026-09-23) |
 
 QR codes (both decode out of the finished image, sharp and blurred, every run):
@@ -179,14 +203,15 @@ only his own offer; neither promises anything for the other.
 ## Changing it
 
 Copy lives in `print/tools/build-shared-postcard.cjs` (`npm run shared` in
-`print/tools`). The generator fails if:
+`print/tools`, `LAYOUT=matched npm run shared` for the matched layout; Louis's
+side is the same template in both). The generator fails if:
 
 - anything leaves the safe area, runs into the bottom strip or the mail zone,
   or the indicia leaves the corner USPS allows;
 - either QR stops decoding;
 - Mikey's side drifts from the CLAUDE.md facts table (retired prices, "12 cars
   a week", 30/90 seconds, "insured", Lynnwood/Edmonds, business "we", missing
-  spigot/outlet, any of the twelve towns);
+  spigot/outlet, and in the split layout any of the twelve towns);
 - Trinity's side claims timers, a customer count or install dates, uses a
   phrase his CLAUDE.md bans, or loses one of his established facts;
 - anything has an em dash.
