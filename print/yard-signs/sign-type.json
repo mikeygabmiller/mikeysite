@@ -20,8 +20,8 @@
       "weight": 800,
       "stretch": 1.25,
       "capRef": "H",
-      "cap_in": 3.86,
-      "width_in": 20.5,
+      "cap_in": 3.75,
+      "width_in": 19.91,
       "color": "#111114"
     },
     {
@@ -31,8 +31,8 @@
       "weight": 800,
       "stretch": 1.25,
       "capRef": "H",
-      "cap_in": 3.86,
-      "width_in": 17.27,
+      "cap_in": 3.75,
+      "width_in": 16.78,
       "color": "#111114"
     },
     {
@@ -40,9 +40,9 @@
       "text": "425-600-7897",
       "pkg": "fira-sans-extra-condensed",
       "weight": 800,
-      "stretch": 1.25,
+      "stretch": 1.42,
       "capRef": "8",
-      "cap_in": 3.65,
+      "cap_in": 4.15,
       "width_in": 22.5,
       "color": "#111114"
     }
