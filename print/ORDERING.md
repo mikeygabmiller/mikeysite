@@ -127,7 +127,7 @@ the winner and its menu path into this section so reorders skip the search.
 
 **Before paying:** "same design both sides" (or "double sided, same artwork")
 is selected, stakes are in the cart, the quantity is right, and the proof
-shows MIKEY'S / CAR DETAILING / I COME TO YOU / 425-600-7897 with the number
+shows MIKEY'S / MOBILE CAR DETAILING / CALL OR TEXT ME / 425-600-7897 with the number
 nowhere near the edge. The sign has no QR on purpose.
 
 ## Business cards (die-cut truck shape)

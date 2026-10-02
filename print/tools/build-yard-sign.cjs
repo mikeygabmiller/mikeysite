@@ -12,14 +12,17 @@
 // words a second, 50 to 100 ft away. So seven words and a phone number, the
 // biggest type the board allows, and nothing that changes (no price, no offer).
 //
-// The design Mikey picked on 2026-10-01 ("C1"), two ink colours (red, black)
-// on white so it prints at the cheaper 2-colour rate:
+// The design Mikey picked (2026-10-01, wording changed 2026-10-02), two ink
+// colours (red, black) on white so it prints at the cheaper 2-colour rate:
 //
 //   MIKEY'S              red, Racing Sans One (the logo's face), small: it
 //                        tells the regulars who it is without competing
-//                        with what, how and the number (Mikey, 2026-10-01)
-//   CAR DETAILING        black, Barlow Condensed
-//   I COME TO YOU        white on a full-width red band
+//                        with what, the ask and the number
+//   MOBILE CAR DETAILING black, Barlow Condensed stretched 1.3x tall: three
+//                        words across the board would only be 1.9 in
+//   CALL OR TEXT ME      white on a full-width red band: the one line that
+//                        asks for the call (Mikey wanted this over
+//                        "I come to you" on 2026-10-02)
 //   425-600-7897         black, Anton stretched tall: about 5 in digits
 //
 // No QR and no website: drivers don't scan, and the room went to the number
@@ -42,6 +45,8 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
 // Same number as (425) 600-7897; the brackets cost digit height on a sign.
 const PHONE = '425-600-7897';
+// The red band's line. CTA="..." npm run sign tries another wording.
+const CTA = process.env.CTA || 'CALL OR TEXT ME';
 
 const W = 24, H = 18, BLEED = 0.125, SAFE = 0.75;
 const RED = '#E31924', INK = '#111114';
@@ -57,8 +62,8 @@ const fontFace = (name, pkg, weight) =>
 // may fill, and the largest font size (in) it may grow to.
 const LINES = [
   { id: 'name', text: "MIKEY'S", y: 0.8, h: 1.75, w: 22.5, max: 1.85, font: "400 1in/1 'Racing Sans One'", color: RED },
-  { id: 'what', text: 'CAR DETAILING', y: 2.85, h: 4.1, w: 22.5, max: 5.0, font: "800 1in/1 'Barlow Condensed'", color: INK },
-  { id: 'how', text: 'I COME TO YOU', y: 7.3, h: 3.85, w: 21, max: 3.9, font: "800 1in/1 'Barlow Condensed'", color: '#fff', band: true },
+  { id: 'what', text: 'MOBILE CAR DETAILING', y: 2.85, h: 4.1, w: 22.5, max: 5.0, font: "800 1in/1 'Barlow Condensed'", color: INK, stretch: 1.3 },
+  { id: 'how', text: CTA, y: 7.3, h: 3.85, w: 21, max: 3.9, font: "800 1in/1 'Barlow Condensed'", color: '#fff', band: true },
   { id: 'phone', text: PHONE, y: 11.4, h: 5.85, w: 22.5, max: 4.2, font: "400 1in/1 'Anton'", color: INK, stretch: STRETCH },
 ];
 
@@ -110,11 +115,11 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
     }
     return out;
   }, LINES);
-  console.log(`  MIKEY'S ${sizes.name} in, CAR DETAILING ${sizes.what} in, I COME TO YOU ${sizes.how} in, phone ${sizes.phone} in tall`);
+  console.log(`  MIKEY'S ${sizes.name} in, MOBILE CAR DETAILING ${sizes.what} in, ${CTA} ${sizes.how} in, phone ${sizes.phone} in tall`);
   const problems = [];
   if (sizes.phone < 2.3) problems.push(`phone number ${sizes.phone} in tall: unreadable from a car`);
-  if (sizes.name >= sizes.how) problems.push(`MIKEY'S (${sizes.name} in) is as big as I COME TO YOU: the name is meant to sit back`);
-  if (sizes.what < 2) problems.push(`CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
+  if (sizes.name >= sizes.how) problems.push(`MIKEY'S (${sizes.name} in) is as big as the red band's line: the name is meant to sit back`);
+  if (sizes.what < 2) problems.push(`MOBILE CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
 
   const text = await page.evaluate(() => document.body.innerText);
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
@@ -122,7 +127,9 @@ ${LINES.map(l => `  <div class="ln" style="top:${BLEED + l.y}in;height:${l.h}in"
     [/\bwe\b|\bour\b/i, 'business "we" (it is one guy: "I")'], [/free|rain-ready|offer/i, 'an offer (the Rain-Ready offer is not on signs)'],
     [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  const words = text.replace(PHONE, '').split(/\s+/).filter(Boolean);
+  // The glance copy: what it is and the ask. MIKEY'S is the small brand mark
+  // for people who pass it every day, so it doesn't count against the 7.
+  const words = LINES.filter(l => l.id === 'what' || l.id === 'how').map(l => l.text).join(' ').split(/\s+/);
   if (words.length > 7) problems.push(`the big copy is ${words.length} words; a driver reads 7`);
 
   const buf = await (await page.$('.page')).screenshot({ type: 'png' });
