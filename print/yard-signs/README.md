@@ -14,7 +14,7 @@ Three pieces work together:
 | **Yard signs in the dashboard** | dashboard → Insights → Yard signs (opens the same app as Mikey) | Crew links, who put out what, what's still up, pay owed, leads from signs |
 
 A sign is one more copy of the facts table in the repo's `CLAUDE.md`. The phone
-number, "I come to you" and the twelve towns on it have to match everywhere else.
+number, first person and the twelve towns on it have to match everywhere else.
 
 ---
 
@@ -102,13 +102,13 @@ so a phone number you want read from 100 feet needs 3 to 4 inch characters.
   it prices at a printer's 2-colour rate. High contrast is what matters; never
   mid-tones or photos.
 
-**Copy (7 words and a number)**, picked by Mikey on 2026-10-01 ("C1" of the
-options compared that day):
+**Copy (7 words, the small name and a number)**, picked by Mikey on
+2026-10-01, wording changed on 2026-10-02:
 
 ```
             MIKEY'S               (red, Racing Sans One, the logo's face: 1.2 in letters)
-         CAR DETAILING            (black, Barlow Condensed: 2.9 in letters)
-         I COME TO YOU            (white on a full-width red band: 2.7 in letters)
+     MOBILE CAR DETAILING         (black, Barlow Condensed stretched 1.3x tall: 2.5 in letters)
+        CALL OR TEXT ME           (white on a full-width red band: 2.3 in letters)
           425-600-7897            (black, Anton stretched tall: 5 in digits)
 ```
 
@@ -116,28 +116,33 @@ Why it's laid out that way:
 
 - **What it is, big.** The first version only said "detailing" inside the logo,
   in letters under an inch tall, so a driver read "Mikey's... I come to
-  you... number" and had to guess. "Car detailing" is now the second-biggest
-  line.
+  you... number" and had to guess. "Mobile car detailing" is now the
+  second-biggest line, stretched tall because three words across 22.5 in would
+  otherwise be 1.9 in.
 - **The number is the biggest thing**, and the only thing a driver can act on.
   A tall, narrow number font (an idea taken off the printer's first proof)
   and dropping the brackets took the digits from 2.6 in to 5 in.
 - **The name sits back.** MIKEY'S stays brand red but small (1.2 in), so the
-  eye goes what, how, number before it gets to the name (Mikey, 2026-10-01). It's there for the people who pass it every day and later
+  eye goes what, the ask, number before it gets to the name (Mikey, 2026-10-01). It's there for the people who pass it every day and later
   search the name, not for the first glance.
 - **No QR and no website.** Drivers don't scan, and the strip they took up was
   most of the number's lost height. Sign leads get logged by asking (section 6).
-- **No "call or text" line.** Mikey's call: people text a number on a sign
-  anyway, and the line would cost about half an inch of digit height.
+- **One line that asks for the call.** "CALL OR TEXT ME" on the red band
+  replaced "I COME TO YOU" (Mikey, 2026-10-02): "mobile" already says he comes
+  to you, and the band is the most-seen spot on the sign, so it asks. It keeps
+  "me" for first person and "text" because texting is how the business runs.
+  Try another wording with `CTA="..." npm run sign`; the 7-word check counts
+  the band line and the "what" line (the small name doesn't count).
 
 **The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
 plus 0.125 in bleed, fonts embedded; order it "same design both sides").
 `preview.png` and `mockup.png` are for looking at. Rebuild with `npm run sign`
 in `print/tools`: the generator fails if the phone number drops under 2.3 in or
-"car detailing" under 2 in, if the big copy passes 7 words, if a price, an
+"mobile car detailing" under 2 in, if the name grows as big as the band line, if the big copy passes 7 words, if a price, an
 offer, "we", an em dash or an unserved town gets in, or if any ink other than
 the red band reaches the 0.75 in margin.
 
-- First person, per the voice rules. "I come to you" is the whole pitch.
+- First person, per the voice rules: "call or text **me**", never "us".
 - **No price and no offer on the sign.** Prices change and 1,000 printed
   signs can't. The Rain-Ready offer ends Dec 31, 2026 and stays on the hangers
   and postcards only (CLAUDE.md, "Offers and countdowns").
