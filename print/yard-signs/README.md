@@ -112,9 +112,9 @@ so most people act on a sign later, by the name or the number).
 
 ```
             MIKEY'S               (red, Racing Sans One, the logo's face: 1.45 in letters)
-          MOBILE CAR              (black, Fira Sans Extra Condensed ExtraBold, 1.25x tall: 3.86 in letters)
+          MOBILE CAR              (black, Fira Sans Extra Condensed ExtraBold, 1.25x tall: 3.75 in letters)
            DETAILING
-          425-600-7897            (same face and stretch, the full 22.5 in across: 3.65 in digits)
+          425-600-7897            (same face, 1.42x tall, the full 22.5 in across: 4.15 in digits)
 ```
 
 **How far each line reads** (`python3 print/tools/sign-legibility.py`, which
@@ -122,9 +122,9 @@ also draws `driver-view.png`, the sign through 20/40 eyes at 40 to 100 ft):
 
 | | 2026-10-01 sign (white, Anton number) | This sign |
 |---|---|---|
-| MOBILE CAR DETAILING | 46 ft | **70 ft** |
-| 425-600-7897 | 64 ft | **75 ft** |
-| The whole message | 46 ft | **70 ft** |
+| MOBILE CAR DETAILING | 46 ft | **68 ft** |
+| 425-600-7897 | 64 ft | **79 ft** |
+| The whole message | 46 ft | **68 ft** |
 
 Why it's laid out that way:
 
@@ -142,15 +142,19 @@ Why it's laid out that way:
   The old number was Anton stretched to 5 in, but its insides are slits, and
   past about 64 ft the 0, 6, 8 and 9 turned into the same blob. Fira Sans Extra
   Condensed keeps those gaps open (same idea as highway sign lettering), so a
-  3.65 in number reads farther than the 5 in one did. About 25 faces and
+  4.15 in number reads farther than the 5 in one did. About 25 faces and
   weights were scored (Anton, Barlow Condensed, Overpass, Oswald, League
   Gothic, Bebas Neue, B612, Atkinson Hyperlegible, Roboto Condensed and more);
   Fira read farthest at this width, at every eyesight level tried.
 - **What it is reads nearly as far as the number.** On the old sign there was a
   stretch between 46 and 64 ft where a driver could make out a phone number
   but not what it was for. Now MOBILE CAR DETAILING is the biggest thing and
-  both read out to about 70 to 75 ft: someone who can read the number already
+  both read out to about 68 to 79 ft: someone who can read the number already
   knows it's a car detailer.
+- **The number is the biggest thing** (Mikey, 2026-10-02: "need the phone
+  number bigger"). It is stretched taller than the words (1.42x against
+  1.25x), which is how it grows when it already fills the width: 3.65 in
+  became 4.15 in, and the words gave up 0.1 in.
 - **The name sits back.** MIKEY'S stays brand red and small (under half the
   size of MOBILE CAR DETAILING, Mikey, 2026-10-01). It's there for the people
   who pass it every day and later search the name, not for the first glance.

@@ -23,7 +23,8 @@
 //                        with what it is and the number
 //   MOBILE CAR           black, Fira Sans Extra Condensed 800, stretched 1.25
 //   DETAILING            tall, two lines at one size
-//   425-600-7897         same face and stretch, full width
+//   425-600-7897         same face, stretched 1.42 tall, full width: the
+//                        biggest thing on the sign (Mikey, 2026-10-02)
 //
 // all on safety yellow. Black on yellow is what warning signs use: it reads
 // about as far as black on white and is far easier to spot among the white
@@ -67,10 +68,10 @@ const BG = YELLOW;
 // about the same distance; sign-legibility.py), with room left around them.
 const FIRA = { pkg: 'fira-sans-extra-condensed', family: 'Fira Sans Extra Condensed', weight: 800 };
 const LINES = [
-  { id: 'name', text: "MIKEY'S", cap: 1.45, stretch: 1, gap: 0.75, pkg: 'racing-sans-one', family: 'Racing Sans One', weight: 400, color: RED, ref: 'H' },
-  { id: 'what', text: 'MOBILE CAR', cap: 3.86, stretch: 1.25, gap: 0.8, ...FIRA, color: INK, ref: 'H', group: 'what' },
-  { id: 'what2', text: 'DETAILING', cap: 3.86, stretch: 1.25, gap: 1.15, ...FIRA, color: INK, ref: 'H', group: 'what' },
-  { id: 'phone', text: PHONE, cap: 4.2, stretch: 1.25, gap: 0, ...FIRA, color: INK, ref: '8' },
+  { id: 'name', text: "MIKEY'S", cap: 1.45, stretch: 1, gap: 0.7, pkg: 'racing-sans-one', family: 'Racing Sans One', weight: 400, color: RED, ref: 'H' },
+  { id: 'what', text: 'MOBILE CAR', cap: 3.75, stretch: 1.25, gap: 0.7, ...FIRA, color: INK, ref: 'H', group: 'what' },
+  { id: 'what2', text: 'DETAILING', cap: 3.75, stretch: 1.25, gap: 0.95, ...FIRA, color: INK, ref: 'H', group: 'what' },
+  { id: 'phone', text: PHONE, cap: 4.3, stretch: 1.42, gap: 0, ...FIRA, color: INK, ref: '8' },
 ];
 
 // CANVA=1 npm run sign writes print-files/18x24/sign-canva.pdf instead: the
