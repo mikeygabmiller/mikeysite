@@ -428,6 +428,66 @@ async function checkQr(el, want, label) {
   for (const [sel, url] of [['[data-qr=mk] .qr', MK_QR], ['[data-qr=tr] .qr', TR_QR]])
     await checkQr(await page.$(sel), url, sel);
 
+  // CANVA=1: write an HTML version Canva can import as an editable design (a PDF
+  // import loses the photos and doubles letter-spaced text). Photos, QR codes and
+  // the logo become image files; every text block stays live text.
+  if (process.env.CANVA) {
+    const BASE = process.env.CANVA_BASE || 'https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/postcard-shared/canva/';
+    const cdir = path.join(OUT, 'canva'), tag = MATCHED ? 'matched' : 'split';
+    fs.mkdirSync(cdir, { recursive: true });
+    const shot = async (el, name, opts = {}) => { await el.screenshot({ path: path.join(cdir, name), ...opts }); return BASE + name; };
+    const pages = await page.$$('.page');
+    for (const [i, pg] of pages.entries()) {
+      const biz = await pg.getAttribute('data-biz');
+      // Bake the photo with its fade and shade into one picture: hide everything else for a moment.
+      const heroEl = await pg.$('.photo');
+      if (heroEl) {
+        await pg.evaluate(el => el.querySelectorAll(':scope > *').forEach(c => { if (!c.matches('.photo, .shade')) c.style.visibility = 'hidden'; }));
+        const bb = await pg.boundingBox();
+        const hh = (HERO + BLEED) * 96;
+        const url = BASE + `hero-${tag}-${biz}.jpg`;
+        await page.screenshot({ path: path.join(cdir, `hero-${tag}-${biz}.jpg`), type: 'jpeg', quality: 92, fullPage: true, clip: { x: bb.x, y: bb.y + (await page.evaluate(() => scrollY)), width: bb.width, height: hh } });
+        await pg.evaluate((el, a) => {
+          el.querySelectorAll(':scope > *').forEach(c => { c.style.visibility = ''; });
+          el.querySelector('.shade')?.remove();
+          const ph = el.querySelector('.photo');
+          const img = document.createElement('img');
+          img.src = a.url; img.style.cssText = `position:absolute;left:0;top:0;width:100%;height:${a.hh}px;display:block`;
+          ph.replaceWith(img);
+        }, { url, hh });
+      }
+      for (const [j, q] of (await pg.$$('.qr')).entries()) {
+        const url = await shot(await q.$('svg'), `qr-${tag}-${biz}${j || ''}.png`);
+        await q.evaluate((el, u) => { el.querySelector('svg').outerHTML = `<img src="${u}" style="display:block;width:${el.querySelector('svg').getBoundingClientRect().width}px">`; }, url);
+      }
+      for (const [j, lg] of (await pg.$$('svg.logo')).entries()) {
+        const w = (await lg.boundingBox()).width;
+        const url = await shot(lg, `logo-${tag}-${biz}${j || ''}.png`, { omitBackground: true });
+        await lg.evaluate((el, a) => { el.outerHTML = `<img src="${a.url}" style="display:block;width:${a.w}px">`; }, { url, w });
+      }
+      // Simple flat backgrounds stay as shapes; any remaining img (split layout photos) gets a public URL.
+      for (const [j, im] of (await pg.$$('img:not([src^="https"])')).entries()) {
+        const url = await shot(im, `photo-${tag}-${biz}${j}.jpg`, { type: 'jpeg', quality: 92 });
+        await im.evaluate((el, u) => { el.src = u; el.style.objectFit = 'fill'; }, url);
+      }
+      await pg.evaluate(el => {
+        el.querySelectorAll('.stars').forEach(s => { s.outerHTML = `<span style="color:${getComputedStyle(s.querySelector('svg')).fill};letter-spacing:1px">★★★★★</span>`; });
+        el.setAttribute('data-document-role', 'page');
+        el.setAttribute('data-label', el.dataset.biz === 'mk' ? "Mikey's side" : "Trinity side (mail side)");
+      });
+    }
+    const css = CSS.replace(/@font-face\{[^}]*\}/g, '');
+    const fonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&family=Caveat:wght@700&family=Permanent+Marker&display=swap">';
+    let body = await page.evaluate(() => document.body.innerHTML);
+    body = body.replace(/font-family:'Marker'/g, "font-family:'Permanent Marker'");
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>Shared EDDM postcard (${tag})</title>${fonts}<style>${css.replace(/'Marker'/g, "'Permanent Marker'")}</style></head><body>${body}</body></html>`;
+    if (/file:\/\//.test(html)) throw new Error('canva html still points at a local file');
+    fs.writeFileSync(path.join(cdir, `postcard-${tag}.html`), html);
+    console.log(`  wrote canva/postcard-${tag}.html (import from ${BASE}postcard-${tag}.html)`);
+    await ctx.close(); await browser.close(); fs.unlinkSync(tmp); fs.unlinkSync(hero);
+    return;
+  }
+
   const dir = path.join(OUT, 'print-files', '11x8.5');
   fs.mkdirSync(dir, { recursive: true });
   for (const [range, name] of [['1', 'front-mikey'], ['2', 'back-trinity-mail-side']])
