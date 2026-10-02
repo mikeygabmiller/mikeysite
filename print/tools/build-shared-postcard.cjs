@@ -212,7 +212,7 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 
 // Canva has no Outfit and a free plan can't upload fonts, so the Canva copy of Mikey's
 // side uses Poppins, the closest geometric sans in Canva's library. Print keeps Outfit.
-if (process.env.CANVA) CSS = CSS.replace("--font:'Outfit',sans-serif", "--font:'Poppins',sans-serif").replace("--price-font:'Outfit'", "--price-font:'Poppins'") + '.mt.mkv .strip{font-size:7.8pt}';
+if (process.env.CANVA) CSS = CSS.replace("--font:'Outfit',sans-serif", "--font:'Poppins',sans-serif").replace("--price-font:'Outfit'", "--price-font:'Poppins'") + '.mt.mkv .strip{font-size:7.8pt}.mt.mkv .badge small{font-size:7.6pt}';
 
 const ph = (f, cls, label) => `<div class="ph ${cls}"><img src="${fileUrl(path.join(SOCIAL, 'photos', f))}"><span class="chip">${label}</span></div>`;
 
@@ -467,7 +467,9 @@ async function checkQr(el, want, label) {
       }
       for (const [j, lg] of (await pg.$$('svg.logo')).entries()) {
         const w = (await lg.boundingBox()).width;
-        const url = await shot(lg, `logo-${tag}-${biz}${j || ''}.png`, { omitBackground: true });
+        // Rasterize the SVG itself so the PNG is transparent (a screenshot would carry the photo behind it).
+        const name = `logo-${tag}-${biz}${j || ''}.png`, url = BASE + name;
+        await sharp(Buffer.from(await lg.evaluate(el => el.outerHTML)), { density: 600 }).resize({ width: Math.round(w / 96 * 300) }).png().toFile(path.join(cdir, name));
         await lg.evaluate((el, a) => { el.outerHTML = `<img src="${a.url}" style="display:block;width:${a.w}px">`; }, { url, w });
       }
       // Simple flat backgrounds stay as shapes; any remaining img (split layout photos) gets a public URL.
