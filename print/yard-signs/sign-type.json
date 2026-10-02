@@ -1,0 +1,50 @@
+{
+  "note": "Written by print/tools/build-yard-sign.cjs; read by print/tools/sign-legibility.py. Cap heights in inches on the 24 x 18 in board.",
+  "background": "#FFD100",
+  "lines": [
+    {
+      "id": "name",
+      "text": "MIKEY'S",
+      "pkg": "racing-sans-one",
+      "weight": 400,
+      "stretch": 1,
+      "capRef": "H",
+      "cap_in": 1.45,
+      "width_in": 8.42,
+      "color": "#E31924"
+    },
+    {
+      "id": "what",
+      "text": "MOBILE CAR",
+      "pkg": "fira-sans-extra-condensed",
+      "weight": 800,
+      "stretch": 1.25,
+      "capRef": "H",
+      "cap_in": 3.86,
+      "width_in": 20.5,
+      "color": "#111114"
+    },
+    {
+      "id": "what2",
+      "text": "DETAILING",
+      "pkg": "fira-sans-extra-condensed",
+      "weight": 800,
+      "stretch": 1.25,
+      "capRef": "H",
+      "cap_in": 3.86,
+      "width_in": 17.27,
+      "color": "#111114"
+    },
+    {
+      "id": "phone",
+      "text": "425-600-7897",
+      "pkg": "fira-sans-extra-condensed",
+      "weight": 800,
+      "stretch": 1.25,
+      "capRef": "8",
+      "cap_in": 3.65,
+      "width_in": 22.5,
+      "color": "#111114"
+    }
+  ]
+}
