@@ -178,7 +178,10 @@ two weekends compare leads per 50. Until then, yellow is the call.
 **The print file is ready:** `print-files/18x24/sign.pdf` (one page, 18 x 24 in
 plus 0.125 in bleed, yellow runs into the bleed, fonts embedded; order it "same
 design both sides"). `preview.png`, `mockup.png` and `driver-view.png` are for
-looking at. Rebuild with `npm run sign` in `print/tools`, then run
+looking at. **To edit it in Canva**, import
+`print-files/18x24/sign-canva.pdf` (`CANVA=1 npm run sign`): Canva can't
+stretch text taller, so that version fills the width instead (words 3.34 in,
+number 2.88 in). Print `sign.pdf` unless a change was made in Canva. Rebuild with `npm run sign` in `print/tools`, then run
 `python3 sign-legibility.py` there. The generator fails if the phone number
 drops under 2.3 in or "mobile car detailing" under 2 in, if the name grows
 past half the size of "mobile car detailing", if the big copy passes 7 words,
