@@ -394,19 +394,19 @@ ${Q}
   {
     id: 'B07', week: 'bank', pillar: 'Offer', title: 'Rain-Ready offer (not before week 5)', offer: true,
     slides: [{ t: 'offer' }],
-    alt: 'Offer graphic: The Rain-Ready Full Detail, October through March. Full detail from $369, plus ceramic wax ($20), RainX on the windows ($10) and carpet shampoo ($20), all free. Type RAIN READY in the notes when you get your quote. You don\'t pay until you love it.',
-    ig: `The Rain-Ready Full Detail. Runs October through March.
+    alt: 'Offer graphic: The Rain-Ready Full Detail, book by December 31. Full detail from $369, plus exterior polish ($30), ceramic wax ($20) and RainX on the glass ($10), all free. Pick Full Detail in the quote and the extras go on by themselves. You don\'t pay until you love it.',
+    ig: `The Rain-Ready Full Detail. Book it by December 31.
 
-Book a full detail and three rain-season extras come free:
+From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
+Exterior polish ($30)
 Ceramic wax ($20)
-RainX on the windows ($10)
-Carpet shampoo ($20)
+RainX on the glass ($10)
 
-That's $50 of extras on me, on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
+Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
 
-Why these three: ceramic wax makes the rain bead up and roll off the paint, RainX helps rain clear off the windshield, and carpet shampoo deals with the mud and wet boots winter brings in.
+That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
 
-How to get it: get your quote on my site and type RAIN READY in the notes box. Or text me at (425) 600-7897 and say RAIN READY.
+How to get it: pick Full Detail in the quote on my site and the extras go on by themselves. Or text me at (425) 600-7897 and say Rain-Ready.
 
 The quote on my site shows my real open times, so you can grab a day without texting back and forth.
 
@@ -519,6 +519,223 @@ I don't have a shop. I come to wherever your car lives: the driveway, the garage
 Where does your car live? Tell me below.
 
 #mobiledetailing #snohomishcounty #cardetailing #garagelife #pnw`,
+  },
+  // ---------------- WINTER: October to December, in this order ----------------
+  // Three a week fits the playbook's rhythm. Seven teach, two ask, and the two
+  // asks (W06 gift cards, W08 winter spigots) never sit next to each other.
+  // W03 goes up before the clocks change on November 1, W06 by early December,
+  // W09 once the passes have snow. W06 sells something: Mikey's yes first,
+  // same as B07.
+  {
+    id: 'W01', week: 'winter', pillar: 'Teach', title: 'Check the cowl',
+    slides: [
+      { t: 'tipcover', eyebrow: 'Before the heavy rain', h: 'Wet passenger footwell? <em>Check the cowl.</em>', sub: 'The five-minute check that keeps the inside of your car dry.' },
+      { t: 'tipstep', n: 1, h: 'Find it.', body: 'The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and out through drains underneath.' },
+      { t: 'tipstep', n: 2, h: 'Look for needles and leaves.', body: 'Fir needles, maple seeds and leaves pile up in there all fall. Once they mat down, the drains clog and the water has to go somewhere.' },
+      { t: 'tipstep', n: 3, h: 'Clear what you can reach.', body: "Lift the wipers off the glass first so one can't snap back onto the windshield. Then pull out what's on top by hand or with a shop vac." },
+      { t: 'tipstep', n: 4, h: 'Still damp inside? Get it looked at.', body: "Some drains sit under the panel, out of reach, and a mechanic can clear those. Don't leave the carpet wet: that's how the musty smell starts." },
+      { t: 'tipend' },
+    ],
+    alt: 'Six-slide tip carousel: a wet passenger footwell often starts at the cowl, the panel under the wipers. Look for needles and leaves clogging its drains, lift the wipers and clear what you can reach, and get a mechanic to clear the drains you cannot.',
+    ig: `Wet passenger footwell after a heavy rain? Before you blame a seal, check the cowl.
+
+The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's into the car.
+
+1. Lift the wipers off the glass so one can't snap back onto the windshield.
+2. Pull out what's sitting on top, by hand or with a shop vac.
+3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
+
+Don't leave the carpet wet. That's how the musty smell starts.
+
+Save this for the next windy week.
+
+#pnwrain #carcaretips #cardetailingtips #snohomishcounty #woodinville`,
+  },
+  {
+    id: 'W02', week: 'winter', pillar: 'Teach', title: 'Leaves on the paint',
+    slides: [
+      { t: 'tipcover', dark: true, eyebrow: 'October', h: 'Wet leaves on your paint <em>leave a mark.</em>', sub: 'Why that brown shadow shows up, and how to keep it off.' },
+      { t: 'tipstep', n: 1, h: 'Leaves leak tannin.', body: 'A wet leaf sitting on the paint for days bleeds the same brown stain it leaves on a sidewalk. On white and silver cars you can see the outline.' },
+      { t: 'tipstep', n: 2, h: "Don't wipe them off dry.", body: 'There is grit under every leaf. Rinse them off, blow them off, or lift them straight up instead of dragging them across the clear coat.' },
+      { t: 'tipstep', n: 3, h: 'Check the corners.', body: 'Leaves hide where the hood meets the windshield, in the door gaps and around the hatch. They stay wet there the longest.' },
+      { t: 'tipstep', n: 4, h: 'Already stained?', body: 'A wash takes the fresh ones off. One that sat for weeks can take a polish to get out. Wax underneath makes the next ones slide off.' },
+      { t: 'tipend' },
+    ],
+    alt: 'Six-slide tip carousel: wet leaves leak tannin and can stain paint, especially white and silver. Rinse or lift them off instead of wiping dry, check the corners where they hide, and old stains can take a polish.',
+    ig: `Wet leaves on your paint leave a mark. Here's why, and how to keep it off.
+
+A wet leaf leaks tannin, the same brown stain it leaves on a sidewalk. Let one sit on the hood for a couple of weeks and you can see its outline, especially on white and silver cars.
+
+1. Don't wipe them off dry. There's grit under every leaf. Rinse them off, blow them off, or lift them straight up.
+2. Check the corners: where the hood meets the windshield, the door gaps, around the hatch. They stay wet there the longest.
+3. Already stained? A wash takes the fresh ones off. One that's been there for weeks can take a polish to get out.
+
+What's dropping on your car right now, maple or oak?
+
+#pnwfall #carcaretips #cardetailingtips #snohomishcounty #millcreekwa`,
+  },
+  {
+    id: 'W03', week: 'winter', pillar: 'Teach', title: 'Streaky wipers',
+    slides: [
+      { t: 'tipcover', eyebrow: 'Before the clocks go back', h: 'Streaky wipers? <em>Check this first.</em>', sub: 'Most streaks come from the glass, not the blade.' },
+      { t: 'tipstep', n: 1, h: 'Wipe the blade edge.', body: 'Run a damp paper towel down the rubber edge of each blade. The black line that comes off is what has been smearing.' },
+      { t: 'tipstep', n: 2, h: 'Clean where the wipers park.', body: 'Road film builds up along the bottom of the windshield, right where the blades rest. Glass cleaner, then a dry towel.' },
+      { t: 'tipstep', n: 3, h: 'Still streaking? Replace them.', body: 'If they still smear or skip after both of those, the rubber is worn out. Blades are cheap, and the dark wet evenings are coming.' },
+      { t: 'tipstep', n: 4, h: 'RainX goes on clean glass only.', body: 'On clean glass, rain sheets off at speed and you use the wipers less. On dirty glass it just smears over the film.' },
+      { t: 'tipend' },
+    ],
+    alt: 'Six-slide tip carousel: fixing streaky wipers. Wipe the blade edge with a damp paper towel, clean the strip of windshield where the wipers park, replace blades that still smear, and only put RainX on clean glass.',
+    ig: `Streaky wipers? Most of the time it's the glass, not the blade.
+
+1. Wipe the blade edge. A damp paper towel down the rubber. The black line that comes off is what's been smearing.
+2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
+3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
+4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
+
+The clocks go back November 1. Do this before the dark, wet drives home.
+
+Save this one.
+
+#pnwrain #carcaretips #cardetailingtips #snohomishcounty #everettwa`,
+  },
+  {
+    id: 'W04', week: 'winter', pillar: 'Myths', title: '4 winter car myths',
+    slides: [
+      { t: 'tipcover', dark: true, eyebrow: 'Myths', h: '4 winter car myths <em>I hear every year.</em>', swipe: 'Swipe', sub: 'One of them can crack your windshield.' },
+      { t: 'tipstep', kick: 'Myth 1', h: '"No point washing it in winter."', body: "Road film and de-icer sit on the paint until something takes them off, and rain doesn't. A wash every few weeks keeps them from settling in." },
+      { t: 'tipstep', kick: 'Myth 2', h: '"Hot water clears a frozen windshield."', body: 'Hot water on freezing glass can crack it. Start the car, run the defroster, and use a plastic scraper.' },
+      { t: 'tipstep', kick: 'Myth 3', h: '"The rain washes it for me."', body: 'Rain lands dirty and dries in spots. It moves the dust around. It does not take off the film underneath.' },
+      { t: 'tipstep', kick: 'Myth 4', h: '"Wax is a summer thing."', body: "Wax matters more in the rain, not less. It's what makes water bead and roll off instead of sitting on the paint for days." },
+      { t: 'tipend', h: 'Got a winter one I missed?', body: "Put it in the comments and I'll tell you straight whether it's true. I'm Mikey, I detail cars around Snohomish County." },
+    ],
+    alt: 'Six-slide carousel: four winter car myths. Washing in winter is worth it, hot water can crack a frozen windshield, rain does not wash a car, and wax matters more in the rain.',
+    ig: `Four winter car myths I hear every year:
+
+"No point washing it in winter." Road film and de-icer sit on the paint until something takes them off, and rain doesn't.
+
+"Hot water clears a frozen windshield." Hot water on freezing glass can crack it. Defroster and a plastic scraper.
+
+"The rain washes it for me." Rain lands dirty and dries in spots. It moves the dust around, it doesn't take the film off.
+
+"Wax is a summer thing." Wax matters more in the rain. It's what makes water bead and roll off instead of sitting on the paint.
+
+Got a winter one I missed? Comment it and I'll tell you straight.
+
+#pnwwinter #carcaretips #cardetailing #snohomishcounty #lakestevens`,
+  },
+  {
+    id: 'W05', week: 'winter', pillar: 'Teach', title: 'The crumb cave',
+    slides: [
+      { t: 'tipcover', eyebrow: 'Parents', h: 'The crumb cave <em>under the car seat.</em>', sub: 'Cleaning under and around it without messing up the install.' },
+      { t: 'tipstep', n: 1, h: 'Only take it out if you can put it back right.', body: "If you remove it, reinstall it the way the seat's manual says. Not sure it's back in right? A certified car seat tech can check it." },
+      { t: 'tipstep', n: 2, h: 'Crevice tool on every seam.', body: 'Along the seams of the car seat and under the buckle pad. That is where the crackers and the cereal end up.' },
+      { t: 'tipstep', n: 3, h: 'Straps: read the manual first.', body: "Many car seat makers say the harness straps get surface-cleaned with mild soap and water, never soaked, bleached or machine-washed, because that can weaken them. Your manual says what yours needs." },
+      { t: 'tipstep', n: 4, h: 'Careful with mats underneath.', body: "Vacuum the dent in the car's seat cushion. Before adding a protector mat under the car seat, check its manual: some makers don't allow them." },
+      { t: 'tipend', h: 'Save this for the next big crumb day.' },
+    ],
+    alt: 'Six-slide tip carousel: cleaning around a child car seat. Only remove it if you can reinstall it per the manual, use a crevice tool on every seam, surface-clean harness straps per the manual, and check the manual before adding a mat underneath.',
+    ig: `The crumb cave under the car seat. Here's how I'd clean it without messing up the install.
+
+1. Only take the seat out if you can put it back the way its manual says. Not sure it's back in right? A certified car seat tech can check it.
+2. Crevice tool along every seam and under the buckle pad. That's where the crackers end up.
+3. Straps: read the manual first. Many makers say surface-clean with mild soap and water, never soak, bleach or machine-wash them, because that can weaken them.
+4. Vacuum the dent in the car's seat cushion underneath. Before adding a protector mat under the car seat, check the manual: some makers don't allow them.
+
+Save this for the next big crumb day. Parents, what's the strangest thing you've found under there?
+
+#momlife #carcleaninghacks #carcaretips #snohomishcounty #marysvillewa`,
+  },
+  {
+    id: 'W06', week: 'winter', pillar: 'Ask', title: 'Gift cards (Mikey\'s yes first)', offer: true,
+    slides: [{
+      t: 'statement', slim: 'dark',
+      eyebrow: 'For the person who has everything',
+      h: "Somebody's getting <em>a clean car.</em>",
+      body: [
+        'Gift cards for any detail I do, in any amount. They never expire and there are no fees.',
+        "Text me who it's for and how much. You get a card with its own number to print, forward, or tuck in a stocking.",
+      ],
+      note: 'Text (425) 600-7897 and say gift card.',
+      sign: 'Mikey',
+    }],
+    alt: "Text post: Somebody's getting a clean car. Gift cards for any detail, in any amount, that never expire and have no fees. Text 425-600-7897 and say gift card.",
+    ig: `Somebody on your list drives a car that needs me.
+
+Gift cards are good for any detail I do: interior, exterior, full detail, ceramic coating or paint correction. Any amount you want. They never expire and there are no fees, and if the job costs less than the card, the rest stays on it for next time.
+
+Text me at (425) 600-7897 with who it's for and how much. You get a card with its own number that you can print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.
+
+Who's the one person you know whose car could really use it?
+
+#giftideas #shoplocal #snohomishcounty #mobiledetailing #christmasgifts`,
+  },
+  {
+    id: 'W07', week: 'winter', pillar: 'Teach', title: 'Selling it? Detail before the photos',
+    slides: [
+      { t: 'tipcover', dark: true, eyebrow: 'Selling or trading in', h: 'Clean it <em>before the photos.</em>', sub: 'Buyers decide from the pictures. Here is what they notice.' },
+      { t: 'tipstep', n: 1, h: 'The smell goes first.', body: "A buyer opens the door before anything else. Smoke, dog or old food is the first thing they'll ask money off for." },
+      { t: 'tipstep', n: 2, h: 'Door jambs and glass.', body: 'Open doors show the jambs in every interior photo. Hazy glass makes the whole car look older than it is.' },
+      { t: 'tipstep', n: 3, h: 'Empty it completely.', body: 'Door pockets, glovebox, trunk, under the seats. A car full of stuff looks like a car that was lived in hard.' },
+      { t: 'tipstep', n: 4, h: 'Shoot on a gray day.', body: 'Hard sun glares off the paint and hides the shape of the car. A cloudy PNW afternoon is actually perfect for car photos.' },
+      { t: 'tipend' },
+    ],
+    alt: 'Six-slide tip carousel: getting a car ready to sell. Deal with the smell first, clean the door jambs and glass, empty it completely, and photograph it on a cloudy day.',
+    ig: `Selling your car or trading it in this winter? Clean it before you take the photos. Buyers decide from the pictures.
+
+1. The smell goes first. A buyer opens the door before anything else, and smoke, dog or old food is the first thing they ask money off for.
+2. Door jambs and glass. Open doors show the jambs in every interior photo, and hazy glass makes the whole car look older.
+3. Empty it completely. Door pockets, glovebox, trunk, under the seats.
+4. Shoot on a gray day. Hard sun glares off the paint. A cloudy afternoon is perfect, and we get plenty.
+
+Save this for when it's time to sell.
+
+#carsforsale #cardetailingtips #snohomishcounty #pnw #everettwa`,
+  },
+  {
+    id: 'W08', week: 'winter', pillar: 'How I do it', title: 'Winter spigots',
+    slides: [{
+      t: 'statement', slim: 'dark',
+      eyebrow: 'Booked on a cold day?',
+      h: 'If your spigot is <em>shut off for winter</em>',
+      body: [
+        "Lots of outdoor spigots get turned off from inside for the winter so the pipe doesn't freeze. That's smart.",
+        "If yours is, turn it back on the day of the job and off again after I leave. No water, no wash.",
+      ],
+      note: 'All I need is an outdoor spigot and a power outlet. I bring the rest.',
+      sign: 'Mikey',
+    }],
+    alt: 'Text post: if your outdoor spigot is shut off for winter, turn it back on the day of the job and off again after. All Mikey needs is an outdoor spigot and a power outlet.',
+    ig: `A winter thing nobody thinks about until the day of the job: the outdoor spigot.
+
+Lots of people shut their outdoor spigot off from inside for the winter so the pipe doesn't freeze. That's smart. If yours is, turn it back on the day I'm coming and back off after I leave.
+
+All I need from you is an outdoor spigot and a power outlet within reach of the car. I bring everything else.
+
+${Q}
+
+#snohomishcounty #mobiledetailing #cardetailing #pnwwinter #monroewa`,
+  },
+  {
+    id: 'W09', week: 'winter', pillar: 'Teach', title: 'Back from the pass',
+    slides: [
+      { t: 'tipcover', eyebrow: 'Ski and snow trips', h: 'Back from the pass? <em>Rinse underneath.</em>', sub: 'What a snowy trip up US-2 leaves on your car, and the ten minutes that take it off.' },
+      { t: 'tipstep', n: 1, h: "What's on the road up there.", body: 'When it snows, the passes get sand and de-icer. Both get sprayed into the wheel wells, onto the lower doors and underneath the car.' },
+      { t: 'tipstep', n: 2, h: 'Rinse within a few days.', body: 'Aim the hose into the wheel wells and along the bottom of the doors. No hose? A self-serve wand at a coin wash does the job.' },
+      { t: 'tipstep', n: 3, h: 'Then the inside.', body: 'Snow melts off boots into the carpet. Pull the mats out that night and let them dry inside the house, not in the trunk.' },
+      { t: 'tipstep', n: 4, h: 'Wet gear on a towel.', body: 'Wet ski bags, boards and jackets drip onto seats and cargo carpet. An old towel or blanket underneath saves the carpet.' },
+      { t: 'tipend' },
+    ],
+    alt: 'Six-slide tip carousel: after a snowy trip over the pass, rinse sand and de-icer out of the wheel wells and off the lower doors within a few days, dry the floor mats inside, and put wet gear on a towel.',
+    ig: `Back from a snowy trip up US-2? Give your car ten minutes before the week starts.
+
+1. When it snows, the passes get sand and de-icer, and both get sprayed into your wheel wells, onto the lower doors and underneath.
+2. Rinse within a few days. Aim the hose into the wheel wells and along the bottom of the doors. No hose? A self-serve wand at a coin wash does it.
+3. Then the inside. Pull the mats out that night and dry them in the house, not in the trunk.
+4. Wet ski bags and jackets go on an old towel, not straight on the seats.
+
+Save this for your first trip up this season. Stevens or Baker?
+
+#stevenspass #pnwwinter #carcaretips #snohomishcounty #monroewa`,
   },
 ];
 

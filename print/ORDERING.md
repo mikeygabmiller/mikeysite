@@ -82,6 +82,7 @@ confirmed.
 |---|---|
 | Path | EDDM Postcards → **8.5" x 11"** → **14 pt Gloss** → **Full Color Both Sides** |
 | Files | front `postcard-shared/print-files/11x8.5/front-mikey.pdf`, back `.../back-trinity-mail-side.pdf` |
+| If Louis set an offer | the `-with-offer.pdf` pair instead (same folder). Never the SAMPLE mockup's offer: only one Louis picked |
 | Quantity | **2,500** |
 | Turnaround / shipping | regular turnaround, ground |
 | If asked about EDDM indicia | it's already in the file |
@@ -153,6 +154,24 @@ back's red bump is at the **top right**, and no type sits near the cut. The die'
 inside corners are 0.125 in; if the printer's minimum is bigger, stop and say so
 (it's one number in the generator). When the sample arrives, Mikey scans the QR
 with two or three phones, one of them old, in dim light.
+
+## Gift cards (5 x 7, in an envelope): Vistaprint, or print at home
+
+Details: `gift-card/README.md`, "Getting them made". The number and balance
+of every card live in the dashboard (Work → Get Paid → Gift cards); these
+cards have blanks, no printed number.
+
+| | |
+|---|---|
+| Path | Stationery → **Note Cards** → **5" x 7" flat** → Upload your design |
+| Files | front `gift-card/print-files/5x7/front.pdf`, back `.../back.pdf` |
+| Paper | a **matte** stock (the back gets written on in pen); envelopes come with note cards |
+| Quantity | **10 to 25** the first time (small batch first); more once one has been written on and handed over |
+| No order needed | `gift-card/print-files/letter/two-up.pdf` on letter cardstock at Actual size, cut on the crop marks, A7 envelopes (5.25 x 7.25) |
+
+**Before paying:** the size reads 5" x 7", the front is black to the edge, the
+back's red border sits inside the trim line on the preview, and the envelope
+count matches the card count.
 
 ## Flyers: not designed yet
 
