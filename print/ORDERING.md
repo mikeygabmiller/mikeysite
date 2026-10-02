@@ -82,6 +82,7 @@ confirmed.
 |---|---|
 | Path | EDDM Postcards → **8.5" x 11"** → **14 pt Gloss** → **Full Color Both Sides** |
 | Files | front `postcard-shared/print-files/11x8.5/front-mikey.pdf`, back `.../back-trinity-mail-side.pdf` |
+| If Louis set an offer | the `-with-offer.pdf` pair instead (same folder). Never the SAMPLE mockup's offer: only one Louis picked |
 | Quantity | **2,500** |
 | Turnaround / shipping | regular turnaround, ground |
 | If asked about EDDM indicia | it's already in the file |

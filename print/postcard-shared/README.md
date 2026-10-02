@@ -3,7 +3,7 @@
 One 11" x 8.5" card mailed through USPS Every Door Direct Mail. **Mikey's
 Mobile Detailing on one side, Louis's Christmas light installation (Trinity
 Exterior Co.) on the other.** Postage and printing split 50/50. Final version
-built 2026-10-01.
+built 2026-10-01, redesigned 2026-10-02 to the postcard rules below.
 
 ![both sides](mockup-both-sides.jpg)
 
@@ -57,19 +57,45 @@ lighting prices he approved on his site on 2026-09-26:
 - One review, quoted word for word from his /lights page
 - No timers (false), no customer count, no install dates (both unverified)
 
+## The design rules it follows (researched 2026-10-02)
+
+| Rule | Where it shows |
+|---|---|
+| **One picture carries each side.** People sort mail over the bin in about 3 seconds | Louis: his lit house, full width. Mikey: the before/after back seat |
+| **Headline and image in the top half, 4 to 8 words** | "This year, skip the ladder." 50 pt. "Your car, detailed right here in your driveway." |
+| **The call to action is the brightest block, bottom right**, where the eye ends | Yellow QR panel (Louis), red QR panel (Mikey) |
+| **Simple offer with a deadline beats a clever one.** For lights, early-bird pricing with a book-by date is the standard lever | Mikey: Rain-Ready, book by Dec 31. Louis: the badge, once he picks one |
+| **Price builds trust when it's all-in** | "$600 all-in starting price" with what's included under it |
+| **Real local photos beat stock** | Louis's own install photo, not the AI-looking ones in his site history |
+| **Proof next to the ask** | 5.0 stars and the guarantee sit beside each QR |
+| **Mail twice.** A second touch in early November catches the deciders | Drop 2, Nov 2 |
+
+Sources: [Lob postcard guide](https://www.lob.com/content/direct-mail-postcards-the-ultimate-guide),
+[Modern Postcard design guide](https://www.modernpostcard.com/guide/creating-a-high-impact-campaign-through-direct-mail-design),
+[Birdseye Post design principles](https://birdseyepost.com/blog/effective-direct-mail-postcard-design-principles),
+[GoodMail EDDM for holiday lights](https://goodmail.ai/eddm/holiday-lights),
+[USPS EDDM requirements](https://www.usps.com/business/every-door-direct-mail.htm) (indicia box, $0.26 Retail, bundles of 50 to 100).
+
 ## Before you order: Louis checks four things
 
 1. **Review count.** 34 was checked 2026-09-24. If it's higher, change
    `TR_REVIEWS` and re-run.
-2. **The photo is his job.** It's the "project" photo he put on /lights. If
-   it isn't his work, swap it; a mailed card can't show someone else's house
-   as his.
+2. **The photo is his job, and send the original.** It's the "project" photo
+   he put on /lights. If it isn't his work, swap it; a mailed card can't show
+   someone else's house as his. The copy on his site is only 1,575 px wide;
+   full width on the card that's about 140 dpi, resampled to 300 so it prints
+   smooth, but it's soft up close. **The original from his phone** (3,000+ px),
+   dropped in as `assets/trinity-roofline.webp`, fixes that. Re-run after.
 3. **Prices.** From $600, $5 to $8 / $7 to $10 a foot, as on his site.
-4. **An offer (optional, recommended).** Mikey's side has one; Louis's prints
-   without one. A dated deal plus "mention this postcard" is what lets him
-   count calls. Set `TR_OFFER` to one short line (for example a dollar amount
-   off a roofline booked by a date he picks) and re-run. Don't invent one for
-   him.
+4. **An offer. This is the biggest lever on his side.** Early-bird pricing
+   with a book-by date is what works for lights, and "mention this postcard"
+   is how he counts calls. `mockup-SAMPLE-offer-not-approved.jpg` shows the
+   badge with "$100 off, book by Nov 15": **that's a sample, not his offer.**
+   Both drops use the same cards, so the date has to outlast drop 2 (lands
+   about Nov 4). Nov 15 gives the second drop ten days and still leaves him
+   time to install before December. He picks the amount and date, then:
+   `OFFER='$100 off|Book by Nov 15. Mention this postcard.' npm run shared`
+   writes `*-with-offer.pdf` files; upload those instead.
 
 ## The plan: 1,151 homes, mailed twice
 
