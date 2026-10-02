@@ -194,7 +194,7 @@ second visit makes a real deadline look fake. Name the window instead.
 
 ## City pages
 
-Eight of them, plus service pages nested under some cities. They share process
+Eleven of them (every served town but Granite Falls), plus service pages nested under some cities. They share process
 steps, FAQ answers, pricing and footers — that's correct and it's what keeps the
 facts consistent. What must be **unique** per city is the intro prose and the
 neighborhood sections.
@@ -206,6 +206,14 @@ schedules in Everett; HOA rules in Mill Creek; gravel roads in Duvall.
 
 Keep city pages **900+ words**. Everett is the biggest market and was the
 shortest page on the site.
+
+**Granite Falls is written and parked** at `_disabled/granite-falls/index.html`
+(2026-10-02), because the growth plan paces city pages at 1 to 2 a month and
+Woodinville and Arlington went live that day. Put it up in November: move it
+to `granite-falls/index.html`, set `p:'/granite-falls/'` on its `TOWNS` entry,
+turn its homepage chip into a link, add it to the About list, the Lake Stevens
+and Arlington footers, `sitemap.xml` and `llms.txt`, re-read it against the
+facts table, then run `check-site.py`.
 
 ## SEO copy
 
