@@ -60,11 +60,12 @@ const stars = n => `<span class="stars">${star.repeat(n)}</span>`;
 const qr = url => QRCode.toString(url, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#0e0e0f', light: '#ffffff' } });
 const IN = n => `${n}in`;
 
-const CSS = `
+let CSS = `
 ${[400, 500, 600, 700, 800].map(w => fontFace('Outfit', 'outfit', w)).join('')}
 ${fontFace('Caveat', 'caveat', 700)}
 ${[500, 600, 700, 800, 900].map(w => fontFace('Inter', 'inter', w)).join('')}
 ${fontFace('Marker', 'permanent-marker', 400)}
+${process.env.CANVA ? [400, 500, 600, 700, 800].map(w => fontFace('Poppins', 'poppins', w)).join('') : ''}
 @page{size:${W + 2 * BLEED}in ${H + 2 * BLEED}in;margin:0}
 *{box-sizing:border-box;margin:0;padding:0}
 body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#fff}
@@ -208,6 +209,10 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 .mt .quote .by .stars svg{width:8pt;height:8pt;fill:#C9A24B}
 .mt .badge.rr{background:linear-gradient(145deg,#E4CD8B,#C9A24B);color:#1a1408}
 `;
+
+// Canva has no Outfit and a free plan can't upload fonts, so the Canva copy of Mikey's
+// side uses Poppins, the closest geometric sans in Canva's library. Print keeps Outfit.
+if (process.env.CANVA) CSS = CSS.replace("--font:'Outfit',sans-serif", "--font:'Poppins',sans-serif").replace("--price-font:'Outfit'", "--price-font:'Poppins'") + '.mt.mkv .strip{font-size:7.8pt}.mt.mkv .badge small{font-size:7.6pt}';
 
 const ph = (f, cls, label) => `<div class="ph ${cls}"><img src="${fileUrl(path.join(SOCIAL, 'photos', f))}"><span class="chip">${label}</span></div>`;
 
@@ -384,7 +389,7 @@ async function checkQr(el, want, label) {
       pg.querySelectorAll('.box *, .box, .strip span').forEach(el => {
         const r = el.getBoundingClientRect();
         if (r.width && (r.left < box.l - .5 || r.top < box.t - .5 || r.right > box.r + .5 || r.bottom > box.b + .5))
-          out.push(`${side}: <${el.tagName.toLowerCase()} class="${el.className.baseVal ?? el.className}"> outside the safe area`);
+          out.push(`${side}: <${el.tagName.toLowerCase()} class="${el.className.baseVal ?? el.className}"> outside the safe area ("${(el.textContent || "").trim().slice(0, 40)}")`);
       });
       pg.querySelectorAll('.left, .right, .band > *').forEach(p => { if (p.scrollHeight > p.clientHeight + 1) out.push(`${side}: .${p.classList[p.classList.length - 1]} is ${p.scrollHeight - p.clientHeight}px too tall`); });
       // nothing sits on the colour strip
@@ -427,6 +432,90 @@ async function checkQr(el, want, label) {
 
   for (const [sel, url] of [['[data-qr=mk] .qr', MK_QR], ['[data-qr=tr] .qr', TR_QR]])
     await checkQr(await page.$(sel), url, sel);
+
+  // CANVA=1: write an HTML version Canva can import as an editable design (a PDF
+  // import loses the photos and doubles letter-spaced text). Photos, QR codes and
+  // the logo become image files; every text block stays live text.
+  if (process.env.CANVA) {
+    const BASE = process.env.CANVA_BASE || 'https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/postcard-shared/canva/';
+    const cdir = path.join(OUT, 'canva'), tag = MATCHED ? 'matched' : 'split';
+    fs.mkdirSync(cdir, { recursive: true });
+    const shot = async (el, name, opts = {}) => { await el.screenshot({ path: path.join(cdir, name), ...opts }); return BASE + name; };
+    const pages = await page.$$('.page');
+    for (const [i, pg] of pages.entries()) {
+      const biz = await pg.getAttribute('data-biz');
+      // Bake the photo with its fade and shade into one picture: hide everything else for a moment.
+      const heroEl = await pg.$('.photo');
+      if (heroEl) {
+        await pg.evaluate(el => el.querySelectorAll(':scope > *').forEach(c => { if (!c.matches('.photo, .shade')) c.style.visibility = 'hidden'; }));
+        const bb = await pg.boundingBox();
+        const hh = (HERO + BLEED) * 96;
+        const url = BASE + `hero-${tag}-${biz}.jpg`;
+        await page.screenshot({ path: path.join(cdir, `hero-${tag}-${biz}.jpg`), type: 'jpeg', quality: 92, fullPage: true, clip: { x: bb.x, y: bb.y + (await page.evaluate(() => scrollY)), width: bb.width, height: hh } });
+        await pg.evaluate((el, a) => {
+          el.querySelectorAll(':scope > *').forEach(c => { c.style.visibility = ''; });
+          el.querySelector('.shade')?.remove();
+          const ph = el.querySelector('.photo');
+          const img = document.createElement('img');
+          img.src = a.url; img.style.cssText = `position:absolute;left:0;top:0;width:100%;height:${a.hh}px;display:block`;
+          ph.replaceWith(img);
+        }, { url, hh });
+      }
+      for (const [j, q] of (await pg.$$('.qr')).entries()) {
+        const url = await shot(await q.$('svg'), `qr-${tag}-${biz}${j || ''}.png`);
+        await q.evaluate((el, u) => { el.querySelector('svg').outerHTML = `<img src="${u}" style="display:block;width:${el.querySelector('svg').getBoundingClientRect().width}px">`; }, url);
+      }
+      for (const [j, lg] of (await pg.$$('svg.logo')).entries()) {
+        const w = (await lg.boundingBox()).width;
+        // Rasterize the SVG itself so the PNG is transparent (a screenshot would carry the photo behind it).
+        const name = `logo-${tag}-${biz}${j || ''}.png`, url = BASE + name;
+        await sharp(Buffer.from(await lg.evaluate(el => el.outerHTML)), { density: 600 }).resize({ width: Math.round(w / 96 * 300) }).png().toFile(path.join(cdir, name));
+        await lg.evaluate((el, a) => { el.outerHTML = `<img src="${a.url}" style="display:block;width:${a.w}px">`; }, { url, w });
+      }
+      // Simple flat backgrounds stay as shapes; any remaining img (split layout photos) gets a public URL.
+      for (const [j, im] of (await pg.$$('img:not([src^="https"])')).entries()) {
+        const url = await shot(im, `photo-${tag}-${biz}${j}.jpg`, { type: 'jpeg', quality: 92 });
+        await im.evaluate((el, u) => { el.src = u; el.style.objectFit = 'fill'; }, url);
+      }
+      await pg.evaluate(el => {
+        // Canva's importer misses CSS variables and grid lists: write each text box's own font,
+        // and turn the two-column checklists into plain rows with a check mark character.
+        el.querySelectorAll('ul').forEach(ul => {
+          const ck = getComputedStyle(ul.querySelector('li'), '::before').borderLeftColor;
+          const li0 = getComputedStyle(ul.querySelector('li'));
+          const box = document.createElement('div');
+          box.style.cssText = 'display:flex;flex-wrap:wrap;column-gap:10pt;row-gap:2.5pt';
+          ul.querySelectorAll('li').forEach(li => {
+            const d = document.createElement('div');
+            d.style.cssText = `width:calc(50% - 5pt);font-size:${li0.fontSize};font-weight:${li0.fontWeight};line-height:${li0.lineHeight};color:${li0.color}`;
+            d.innerHTML = `<span style="color:${ck};font-weight:900">\u2713</span> ${li.textContent}`;
+            box.append(d);
+          });
+          ul.replaceWith(box);
+        });
+        el.querySelectorAll('*').forEach(n => {
+          if (![...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())) return;
+          const cs = getComputedStyle(n);
+          n.style.fontFamily = cs.fontFamily.replace(/^["']?Marker["']?$/, "'Permanent Marker'");
+          n.style.fontWeight = cs.fontWeight; n.style.fontSize = cs.fontSize; n.style.color = cs.color;
+          n.style.letterSpacing = cs.letterSpacing; n.style.lineHeight = cs.lineHeight; n.style.textTransform = cs.textTransform;
+        });
+        el.querySelectorAll('.stars').forEach(s => { s.outerHTML = `<span style="color:${getComputedStyle(s.querySelector('svg')).fill};letter-spacing:1px">★★★★★</span>`; });
+        el.setAttribute('data-document-role', 'page');
+        el.setAttribute('data-label', el.dataset.biz === 'mk' ? "Mikey's side" : "Trinity side (mail side)");
+      });
+    }
+    const css = CSS.replace(/@font-face\{[^}]*\}/g, '');
+    const fonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&family=Caveat:wght@700&family=Permanent+Marker&display=swap">';
+    let body = await page.evaluate(() => document.body.innerHTML);
+    body = body.replace(/font-family:'Marker'/g, "font-family:'Permanent Marker'");
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>Shared EDDM postcard (${tag})</title>${fonts}<style>${css.replace(/'Marker'/g, "'Permanent Marker'")}</style></head><body>${body}</body></html>`;
+    if (/file:\/\//.test(html)) throw new Error('canva html still points at a local file');
+    fs.writeFileSync(path.join(cdir, `postcard-${tag}.html`), html);
+    console.log(`  wrote canva/postcard-${tag}.html (import from ${BASE}postcard-${tag}.html)`);
+    await ctx.close(); await browser.close(); fs.unlinkSync(tmp); fs.unlinkSync(hero);
+    return;
+  }
 
   const dir = path.join(OUT, 'print-files', '11x8.5');
   fs.mkdirSync(dir, { recursive: true });

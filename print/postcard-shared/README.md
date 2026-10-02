@@ -200,6 +200,27 @@ seven-route plan in `../postcard/README.md`. Louis: the lighting season is
 over by then, so his decision is about next year's October drop. Each honors
 only his own offer; neither promises anything for the other.
 
+## Editing in Canva
+
+**The editable copy:** "EDDM Postcard: Mikey's + Trinity (editable)" in
+Mikey's Canva, made 2026-10-02 from `canva/postcard-matched.html`. Every word
+is a live text box; the photos, QR codes and logo are images.
+
+- **Mikey's side is in Poppins there, not Outfit.** Canva has no Outfit and a
+  free plan can't upload fonts. The print PDFs in `print-files/` keep Outfit.
+- **The page is 11.25" x 8.75"**, bleed included, same as the PDFs. Keep
+  text 0.375" in from every edge. Nothing in Canva checks the safe area, the
+  postage box corner or the facts; this generator does.
+- **To print from Canva:** Share → Download → PDF Print, then upload that to
+  55Printing exactly like the files above. Check the proof the same way.
+- **To rebuild it** after a copy change here:
+  `CANVA=1 LAYOUT=matched npm run shared`, commit, then import
+  `https://raw.githack.com/mikeygabmiller/mikeysite/<commit>/print/postcard-shared/canva/postcard-matched.html`
+  with Canva's import tool. Set `CANVA_BASE` to the raw URL of a commit that
+  already has the images so a cached old image can't sneak in. A plain PDF
+  import is broken in Canva: it drops the photos and doubles letter-spaced
+  letters ("EXTERIIOR").
+
 ## Changing it
 
 Copy lives in `print/tools/build-shared-postcard.cjs` (`npm run shared` in
