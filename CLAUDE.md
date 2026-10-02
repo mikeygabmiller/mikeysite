@@ -303,12 +303,12 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   `/api/crew/*` and `/api/signs` in `src/index.js`). Helpers join from a link
   Mikey makes in Insights → Yard signs.
 - **A sign is one more copy of the facts table:** the phone number, first
-  person ("call or text me"). No prices and no offer on a sign: 1,000 printed signs
+  person if any line ever speaks. No prices and no offer on a sign: 1,000 printed signs
   can't follow a price change, and the Rain-Ready offer stays on the hangers and
   postcards.
 - **The roadside sign has no QR and no website** (Mikey picked the design on
-  2026-10-01, wording 2026-10-02: MIKEY'S small in red / MOBILE CAR DETAILING /
-  CALL OR TEXT ME on the red band / 425-600-7897, two inks).
+  2026-10-01, wording 2026-10-02: MIKEY'S small in red / MOBILE CAR /
+  DETAILING / 425-600-7897, two inks, no red band and no slogan line).
   The room went to a 5 in phone number. If a QR ever goes on a sign, it is
   `https://mikeysdetailing.com/?utm_source=yardsign#booking`; the dashboard tags
   a quote or booking from that visit **sign** and credits it. Don't change the
