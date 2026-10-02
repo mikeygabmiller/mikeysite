@@ -471,6 +471,28 @@ async function checkQr(el, want, label) {
         await im.evaluate((el, u) => { el.src = u; el.style.objectFit = 'fill'; }, url);
       }
       await pg.evaluate(el => {
+        // Canva's importer misses CSS variables and grid lists: write each text box's own font,
+        // and turn the two-column checklists into plain rows with a check mark character.
+        el.querySelectorAll('ul').forEach(ul => {
+          const ck = getComputedStyle(ul.querySelector('li'), '::before').borderLeftColor;
+          const li0 = getComputedStyle(ul.querySelector('li'));
+          const box = document.createElement('div');
+          box.style.cssText = 'display:flex;flex-wrap:wrap;column-gap:10pt;row-gap:2.5pt';
+          ul.querySelectorAll('li').forEach(li => {
+            const d = document.createElement('div');
+            d.style.cssText = `width:calc(50% - 5pt);font-size:${li0.fontSize};font-weight:${li0.fontWeight};line-height:${li0.lineHeight};color:${li0.color}`;
+            d.innerHTML = `<span style="color:${ck};font-weight:900">\u2713</span> ${li.textContent}`;
+            box.append(d);
+          });
+          ul.replaceWith(box);
+        });
+        el.querySelectorAll('*').forEach(n => {
+          if (![...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())) return;
+          const cs = getComputedStyle(n);
+          n.style.fontFamily = cs.fontFamily.replace(/^["']?Marker["']?$/, "'Permanent Marker'");
+          n.style.fontWeight = cs.fontWeight; n.style.fontSize = cs.fontSize; n.style.color = cs.color;
+          n.style.letterSpacing = cs.letterSpacing; n.style.lineHeight = cs.lineHeight; n.style.textTransform = cs.textTransform;
+        });
         el.querySelectorAll('.stars').forEach(s => { s.outerHTML = `<span style="color:${getComputedStyle(s.querySelector('svg')).fill};letter-spacing:1px">★★★★★</span>`; });
         el.setAttribute('data-document-role', 'page');
         el.setAttribute('data-label', el.dataset.biz === 'mk' ? "Mikey's side" : "Trinity side (mail side)");
