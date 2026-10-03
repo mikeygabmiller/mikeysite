@@ -208,6 +208,19 @@ body{-webkit-font-smoothing:antialiased;-webkit-print-color-adjust:exact;print-c
 .mt .quote .by{display:flex;align-items:center;gap:4pt;margin-top:5pt;font-size:7.6pt;font-weight:700;letter-spacing:.04em;color:#555}
 .mt .quote .by .stars svg{width:8pt;height:8pt;fill:#C9A24B}
 .mt .badge.rr{background:linear-gradient(145deg,#E4CD8B,#C9A24B);color:#1a1408}
+.mt.mkv .badge{left:${BLEED + 4.55}in;top:${BLEED + 3.85}in;width:1.45in;height:1.45in;font-size:18pt;padding:.12in;transform:rotate(-6deg)}
+.mt.mkv .badge small{font-size:7.6pt}
+.mt.mkv .sub{max-width:4.1in}
+.mt .photo.prints{-webkit-mask-image:none;background:radial-gradient(70% 90% at 78% 45%,#3a0a10 0%,#160608 45%,#0a0a0a 75%)}
+.mt .pr{position:absolute;top:${BLEED + 2.2}in;width:2.15in;height:3.0in;background:#fff;padding:.07in .07in .07in;box-shadow:0 8pt 24pt rgba(0,0,0,.6)}
+.mt .pr.b{left:${BLEED + 6.05}in;transform:rotate(-3deg)}
+.mt .pr.a{left:${BLEED + 8.4}in;top:${BLEED + 2.32}in;transform:rotate(2.5deg)}
+.mt .pr img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block}
+.mt .pr span{position:absolute;left:.16in;bottom:.16in;font-weight:800;font-size:8.5pt;letter-spacing:.16em;text-transform:uppercase;padding:3.5pt 7pt 3pt;border-radius:3pt;color:#fff;background:rgba(10,10,10,.88)}
+.mt .pr.a span{background:#C8102E}
+.mt .note{left:${BLEED + 6.0}in;width:4.7in;top:${BLEED + 5.3}in;text-align:center;font-family:'Caveat';font-weight:700;font-size:15pt;line-height:1;color:#E4CD8B}
+.mt.mkv .hero{width:5.6in;top:${BLEED + 2.05}in}
+.mt.mkv h1{font-size:44pt}
 `;
 
 // Canva has no Outfit and a free plan can't upload fonts, so the Canva copy of Mikey's
@@ -298,50 +311,54 @@ const trinity = (q, hero) => sideT({
   <div class="addr">Local Postal Customer</div>`,
   chip: 'Christmas light installation',
   h1: 'This year,<br><em>skip the ladder.</em>',
-  sub: 'I hang them, fix them all season, then take them down and store them. You just enjoy the house.',
+  sub: 'I bring commercial-grade lights, cut them to fit your roofline and clip them on. A strand goes out, I fix it. After the holidays I take them down and store them for next year.',
   badge: TR_OFFER ? `<div class="box badge">${TR_OFFER.big}<small>${TR_OFFER.small}</small></div>` : '',
-  val: `<div class="top"><div class="big">$600</div><div class="lbl">All-in<br>starting price</div></div>
+  val: `<div class="top"><div class="big">$600</div><div class="lbl">Rooflines from<br>lights included</div></div>
       <ul>
         <li>Commercial-grade LEDs</li><li>Custom-cut to your roof</li>
         <li>Clips, no nails or staples</li><li>Repairs all season</li>
         <li>Takedown and storage</li><li>Free quote</li>
       </ul>
-      <div class="rates">Rooflines: one story $5 to $8 a foot, two stories $7 to $10. Exact price after I see the house.</div>`,
+      <div class="rates">One story $5 to $8 a foot, two stories $7 to $10, before tax. Steep roofs, trees and wreaths are quoted on their own. I confirm the price after I see the house.</div>`,
   trust: `<div><div class="rate"><b>5.0</b>${stars(5)}</div><p>${TR_REVIEWS} Google reviews of my cleaning work</p></div>
-      <div class="t"><b>Stays lit, or I fix it free.</b>A strand quits mid-season? Call or text, I come back out.</div>
-      <div class="t"><b>Louis does the work.</b>Licensed, bonded and insured. The ladder is my risk.</div>`,
+      <div class="t"><b>Stays lit, or I fix it free.</b>A strand quits in the middle of the season? Call or text and I come back out.</div>
+      <div class="t"><b>I'm the one on your roof.</b>Owner-operated, licensed, bonded and insured. The ladder is my risk, not yours.</div>`,
   cta: `<div class="qr">${q}</div>
       <div><div class="scan">Scan for your free lighting quote</div>
         <div class="or">Or call or text Louis</div><div class="phone">${TR_PHONE}</div><div class="url">${TR_SITE}</div></div>`,
-  strip: `<b>Flip it over:</b> your car detailed in your driveway by my brother Mikey, Mikey's Mobile Detailing.`,
+  strip: `<b>Flip it over:</b> my brother Mikey details cars right in your driveway. Mikey's Mobile Detailing.`,
 });
 
 // Mikey in the same template (LAYOUT=matched). Same facts as his split side.
 const mikeyT = q => sideT({
   biz: 'mk', cls: 'mkv',
-  photo: `<div class="photo ba"><div class="ph"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}"></div><div class="ph"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}"></div></div>
-  <div class="seam"><span class="b">Before</span><span class="a">After</span></div>`,
+  // The before/after reads as proof only when you can see it's the same seat, so it's two
+  // framed prints, not a background: at 2.15 in wide the 900 px photos print at ~400 dpi.
+  photo: `<div class="photo prints">
+    <div class="pr b"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}"><span>Before</span></div>
+    <div class="pr a"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}"><span>After</span></div></div>
+  <div class="box note">Same back seat. No judgment, I've seen everything.</div>`,
   brand: `${logoSvg()}<i>Snohomish, WA</i>`,
   label: `<div class="box quote"><p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p>
     <div class="by">${stars(5)} ANGELA, SNOHOMISH</div></div>`,
-  chip: 'Mobile detailing',
+  chip: 'Mobile detailing · Snohomish',
   h1: 'Your car, detailed<br><em>in your driveway.</em>',
-  sub: 'Same back seat, no judgment. I bring every product and tool. You provide an outdoor spigot and an outlet.',
-  badge: `<div class="box badge rr">Free extras<small>Polish, ceramic wax and RainX on a Full Detail booked by Dec 31</small></div>`,
-  val: `<div class="top"><div class="big">$369</div><div class="lbl">Rain-Ready<br>Full Detail, worth $508</div></div>
+  sub: 'No dropping it off, no waiting room. I bring every product and tool and do the whole car right there. All I need from you is an outdoor spigot and an outlet.',
+  badge: `<div class="box badge rr">3 extras free<small>with a Full Detail booked by Dec 31</small></div>`,
+  val: `<div class="top"><div class="big">$369</div><div class="lbl">Rain-Ready Full Detail<br>worth $508 on a sedan</div></div>
       <ul>
         <li>Interior detail</li><li>Exterior polish, free</li>
         <li>Exterior detail</li><li>Ceramic wax, free</li>
         <li>Mention this postcard</li><li>RainX on the glass, free</li>
       </ul>
-      <div class="rates">Exterior from $199, Interior from $249. Book a Full Detail by December 31, 2026; the work can run to January 31, 2027. $508 is a sedan's Interior and Exterior booked apart, plus the extras.</div>`,
+      <div class="rates">SUV or pickup +$40, van or 3-row +$80. Book by December 31, 2026 and I can do the work as late as January 31, 2027. $508 is a sedan's Interior and Exterior booked apart, plus the three extras.</div>`,
   trust: `<div><div class="rate"><b>5.0</b>${stars(5)}</div><p>41 Google reviews</p></div>
-      <div class="t"><b>You don't pay until you love it.</b>We walk around it together and I fix anything you point at.</div>
-      <div class="t"><b>Same guy, every car.</b>300+ cars since 2021. The guy who texts you back does your car.</div>`,
+      <div class="t"><b>You don't pay until you love it.</b>We walk around the car together first. Anything you point at, I fix right there.</div>
+      <div class="t"><b>One guy, every car.</b>300+ cars since 2021. The person who texts you back is the one in your driveway.</div>`,
   cta: `<div class="qr">${q}</div>
-      <div><div class="scan">Scan for your<br>exact price</div><div class="sub2">About 60 seconds. No phone tag.</div>
+      <div><div class="scan">Scan for your<br>exact price</div><div class="sub2">About 60 seconds, then pick a time.</div>
         <div class="or">Or call or text Mikey</div><div class="phone">${MK_PHONE}</div><div class="url">mikeysdetailing.com</div></div>`,
-  strip: `<b>Flip it over:</b> Christmas lights, hung and taken down by my brother Louis at Trinity Exterior Co.`,
+  strip: `<b>Flip it over:</b> my brother Louis hangs Christmas lights, fixes them all season and takes them down. Trinity Exterior Co.`,
 });
 
 async function decode(buf) {
@@ -425,8 +442,8 @@ async function checkQr(el, want, label) {
   for (const [re, what] of [[/timer/i, 'timers (known false)'], [/hundreds|\d{3,}\+? (homes|customers|houses)/i, 'a customer count (unverified)'],
     [/\b(nov|dec|thanksgiving)/i, 'an install date (ask Louis first)'], [/peace of mind|crystal clear|reach out|proudly/i, 'a phrase Trinity bans']])
     if (re.test(tr)) problems.push(`Trinity side: ${what}: "${tr.match(re)[0]}"`);
-  for (const m of [TR_PHONE, 'Commercial-grade LEDs', 'Custom-cut', 'no nails or staples', 'Takedown and storage', 'fix it free', 'Repairs all season', 'Licensed, bonded and insured', '$600'])
-    if (!tr.includes(m)) problems.push(`Trinity side is missing "${m}"`);
+  for (const m of [TR_PHONE, 'Commercial-grade LEDs', 'Custom-cut', 'no nails or staples', 'Takedown and storage', 'fix it free', 'Repairs all season', 'licensed, bonded and insured', '$600'])
+    if (!tr.toLowerCase().includes(m.toLowerCase())) problems.push(`Trinity side is missing "${m}"`);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
   if (!TR_OFFER) console.log('  note: no Trinity offer set (TR_OFFER). His side prints without one.');
 
