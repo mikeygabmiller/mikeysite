@@ -19,6 +19,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Size step | **+$40 SUV or pickup, +$80 van or 3-row** | condition (+$30 / +$60) and add-ons ride on top, outside the ranges |
 | Ceramic coating | **from $500** | tiered, quoted |
 | Clean Club | **$125 a visit** | members' price is locked in; kept at $125 on 2026-09-27 |
+| Clean Club join | **$150 off the first Full Detail; keep the next 2 club visits or pay back $75 each** | Mikey, 2026-10-03. Every 4 or 8 weeks at $125. Never more than $150 back, nothing owed before the first visit. Sold only on the call page (`/onbored/`), not on the public site |
 | Paint correction | **from $400** | 1-Step $400+ / 2-Step $650+ / Multi-Stage $900+, quoted. One-step **6–8 hrs**, multi-stage **1–2 days** |
 | Quote calculator takes | **60 seconds** | never 30, never 90 |
 | Full detail takes | **3–5 hours** | never 3–4 |
@@ -31,7 +32,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | When he works | **Mon–Fri one job at 1:00 PM; Sat 7:00 AM and 1:00 PM; never Sunday** | Mikey, 2026-09-29, while he's in school until noon. Copy says "weekday afternoons and Saturdays", not exact times, because it'll change. The real times live in the dashboard (Bookings → Settings → My start times) |
 | Longest job times | **Exterior 2 hrs, Interior 3 hrs, Full Detail 4.5 hrs** | the booking calendar plans on these; not customer copy (customers get the ranges above) |
 | Capacity | **no weekly number** | "12 cars a week" was retired 2026-09-29 (his real week holds about 7). Scarcity is the live "Next opening" line instead |
-| Payment | after the work, never a deposit | |
+| Payment | after the work, never a deposit | a Clean Club card is saved with Stripe, not charged |
 | **Customer must provide** | **outdoor water spigot + power outlet** | no tank, no generator — do not write that he can bring his own |
 
 Still **unconfirmed**, ask Mikey before writing it:
@@ -145,6 +146,44 @@ exactly as before.
 - **A street without a house number is allowed.** His alert tells him to ask.
 - Anything on his Google Calendar blocks a time. That's his off switch.
 
+## The call page (`/onbored/`)
+
+Built 2026-10-03 at Mikey's request. He texts it while he's on the phone with
+someone who asked about a detail and walks them through it: their car, their
+one-time price first, then the Clean Club tabs (every 8 or every 4 weeks).
+
+- **Unlisted on purpose.** `noindex`, nothing links to it, and it is not in
+  `sitemap.xml`, `llms.txt` or the About list. That's the one exception to "a
+  new page goes in all three". `/onboard/` redirects to it with the query
+  string, because that's how people type it after hearing it.
+- **The deal** (Mikey, 2026-10-03): joining makes the first visit a Full
+  Detail at $150 off, whatever they called about (a club keeps a car up, and
+  you can't keep up one that was never reset), then $125 a visit every 4 or 8
+  weeks. They keep their next 2 club visits or pay back $75 for each one
+  skipped, never more than $150, and nothing is owed if they cancel before the
+  first visit. It's a contract people sign: don't change a word of it without
+  him.
+- **The dashboard worker prices it and owns the words.** `CLUB` and
+  `clubTerms()` in `twillowdashbored/src/index.js` work out the price and
+  return the seven lines of terms for that exact car; the page shows them and
+  the worker stores the same lines against the name they type. Change a word
+  there and bump `CLUB.terms`. The page's own `PRICE` and `CLUB` are for
+  display only, but they're one more copy of the price book, so a price change
+  lands there too.
+- **The card is Stripe's.** Saved on Stripe's hosted page in setup mode
+  (nothing charged), switched on by `STRIPE_SECRET_KEY` on the `texting`
+  Worker. Until that's set, sign-ups still book and his alert says the card is
+  missing. Nothing ever charges a card on its own: a payback is Mikey, in
+  Stripe, after the text the terms promise. Tools → Clean Club in a
+  conversation works out what they'd owe.
+- **Rain-Ready shows here too**, because a club first visit is a Full Detail.
+  It has its own copy of `RR_END` (see Offers and countdowns).
+- **What a club visit includes is unconfirmed.** The page and the terms say "an
+  upkeep detail, inside and out", which is all the site has ever said. Ask
+  Mikey before listing what's in one.
+- Times come from the same `/api/next-openings` as the homepage, so everything
+  in Online booking applies as-is. The phone script is `outreach/CALL-SCRIPT.md`.
+
 ## The service area
 
 Base is **Snohomish, WA 98290** (`47.9129, -122.0982`). Mikey is in these twelve
@@ -183,7 +222,9 @@ all three switch off on their own at midnight Pacific going into January 1:
    email Mikey gets
 
 The section's script holds its own copy of the end date. Change one, change
-both. Don't widen it, extend the window or swap the extras without Mikey; it's
+both. The call page (`onbored/index.html`) has a third copy, `RR_END`, for
+the extras it shows on a Clean Club first visit: same date, same switch-off.
+Don't widen it, extend the window or swap the extras without Mikey; it's
 the same promise the hangers and postcards make. After January 1 take the
 dormant code out rather than leaving it.
 
