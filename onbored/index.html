@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Your Price | Mikey's Mobile Detailing</title>
+<!-- The call page. Mikey texts this link while he's on the phone with someone
+     and walks them through it: their car, their price, then the Clean Club.
+     It's a sales tool for a live call, not a landing page, so it stays out of
+     search (noindex, not in sitemap.xml or llms.txt) and nothing links to it.
+     /onboard/ redirects here, because that's how most people will type it. -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Your detail price from Mikey, and the Clean Club: $150 off your first Full Detail when you join.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G9WMXW2MF5');
+</script>
+<style>
+:root{
+  --red:#C8102E; --red-press:#e11533; --red-rgb:200,16,46;
+  --gold:#d8b25c; --gold-ink:#2a1e02; --green:#2fb358;
+  --bg:#0a0a0a; --card:#151517; --card-2:#1d1d20; --card-3:#2a2a2e;
+  --text:#f5f5f7; --text-2:#b8b8be; --text-3:#8e8e93;
+  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;
+  background-image:radial-gradient(900px 420px at 50% -120px,rgba(200,16,46,.22),transparent 70%);background-repeat:no-repeat}
+a{color:inherit}
+button{font-family:inherit}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px calc(28px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 6px}
+.top img{display:block;width:150px;height:auto}
+.top .call{font-size:14px;font-weight:700;color:var(--text-2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap}
+.hello{margin:14px 0 2px;font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+/* From step 2 on, the greeting has done its job: it shrinks and the stars go,
+   so each step's buttons stay on one phone screen. */
+body.compact .hello{font-size:18px;margin-top:8px}
+body.compact .hello-sub,body.compact .proof{display:none}
+body.compact .prog{margin-top:10px}
+.hello-sub{margin:0 0 4px;color:var(--text-2);font-size:15.5px}
+.proof{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--text-3);margin:8px 0 0}
+.proof .stars{color:var(--gold);letter-spacing:1px}
+.proof b{color:var(--text-2);font-weight:700}
+.prog{display:flex;gap:6px;margin:18px 0 6px}
+.prog i{flex:1;height:5px;border-radius:9px;background:var(--card-3)}
+.prog i.on{background:var(--red)}
+.prog-l{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+
+.step{display:none;animation:in .28s ease both}
+.step.show{display:block}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.step{animation:none}}
+h1,h2{margin:10px 0 4px;font-size:27px;line-height:1.12;letter-spacing:-.02em;font-weight:800}
+.hint{margin:0 0 14px;color:var(--text-2);font-size:15.5px}
+
+.opts{display:grid;gap:11px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;min-height:76px;text-align:left;background:var(--card);
+  border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;color:var(--text);font-size:17px;cursor:pointer;
+  transition:border-color .15s,background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
+.opt:active{transform:scale(.985)}
+.opt:focus-visible{outline:none;border-color:var(--red)}
+.opt.sel{border-color:var(--red);background:rgba(var(--red-rgb),.12)}
+.opt .n{display:flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:50%;
+  background:var(--card-3);font-weight:800;font-size:15px;color:var(--text-2)}
+.opt.sel .n{background:var(--red);color:#fff}
+.opt .t{display:block;font-weight:750;font-size:18.5px;line-height:1.2}
+.opt .d{display:block;font-size:14px;color:var(--text-3);margin-top:2px}
+.opt .p{margin-left:auto;font-weight:800;font-size:19px;white-space:nowrap}
+.opt .tag{display:inline-block;margin-left:6px;vertical-align:2px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--gold-ink);background:var(--gold);border-radius:999px;padding:2px 8px}
+.field{margin:0 0 11px}
+.field label{display:block;font-size:13.5px;font-weight:650;color:var(--text-2);margin:0 0 6px}
+.field label span{font-weight:400;color:var(--text-3)}
+.field input,.field select{width:100%;font:inherit;font-size:17px;color:var(--text);background:var(--card);border:1.5px solid var(--line);
+  border-radius:14px;padding:14px 15px;-webkit-appearance:none;appearance:none}
+.field select{background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);
+  background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat}
+.field input:focus,.field select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(var(--red-rgb),.16)}
+.field.bad input,.field.bad select{border-color:var(--red)}
+.field .msg{display:none;font-size:13px;color:#ff6b7f;margin-top:5px}
+.field.bad .msg{display:block}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:58px;border:none;border-radius:16px;
+  background:var(--red);color:#fff;font-size:18.5px;font-weight:800;cursor:pointer;padding:14px 18px;text-align:center;
+  box-shadow:0 10px 28px rgba(var(--red-rgb),.35);-webkit-tap-highlight-color:transparent;transition:transform .1s,background .15s}
+.btn:active{transform:scale(.985);background:var(--red-press)}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn.ghost{background:var(--card-2);color:var(--text);box-shadow:none;border:1.5px solid var(--line)}
+.link{display:block;width:100%;background:none;border:none;color:var(--text-3);font-size:15px;font-weight:600;
+  text-decoration:underline;text-underline-offset:3px;padding:12px 8px;cursor:pointer;text-align:center}
+.back{display:inline-block;background:none;border:none;color:var(--text-3);font-size:15px;font-weight:650;padding:12px 2px;cursor:pointer}
+
+/* The price screen. The number is the whole point of it, so nothing sits
+   between the number and the plan tabs. */
+.price{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:6px 0 14px}
+.price .lbl{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.price .amt{font-size:62px;font-weight:900;letter-spacing:-.04em;line-height:1;margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.price .was{font-size:26px;font-weight:700;color:var(--text-3);text-decoration:line-through;margin-left:10px;letter-spacing:-.02em;vertical-align:10px}
+.price .what{color:var(--text-2);font-size:15.5px}
+.price .rows{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.price .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--text-2);padding:4px 0}
+.price .row b{color:var(--text);font-weight:700;white-space:nowrap}
+.price .row.free b{color:var(--gold)}
+.price .rr{margin-top:12px;padding:10px 12px;border:1px solid rgba(216,178,92,.45);border-radius:12px;background:rgba(216,178,92,.08);font-size:14.5px;color:var(--text-2)}
+.price .rr b{color:var(--gold)}
+.price .note{margin-top:10px;font-size:14px;color:var(--text-3)}
+.price.club{border-color:var(--red);background:linear-gradient(180deg,rgba(var(--red-rgb),.16),var(--card) 55%)}
+.price .then{margin-top:12px;padding:12px 13px;background:var(--card-2);border-radius:14px;font-size:15.5px;color:var(--text-2)}
+.price .then b{color:var(--text)}
+.price .vs{margin-top:10px;font-size:15px;color:var(--gold);font-weight:650}
+.tabs-l{font-size:14px;font-weight:700;color:var(--text-2);margin:2px 0 8px}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:5px;margin:0 0 6px}
+.tab{min-height:54px;border:none;border-radius:12px;background:transparent;color:var(--text-2);font-size:15.5px;font-weight:750;cursor:pointer;line-height:1.15;padding:6px 4px}
+.tab.on{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(var(--red-rgb),.35)}
+.tabs-sub{font-size:13.5px;color:var(--text-3);margin:0 0 14px;text-align:center}
+
+.opens{display:grid;gap:10px}
+.open{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:66px;padding:13px 16px;
+  border:1.5px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);font-size:17px;text-align:left;cursor:pointer}
+.open:active{transform:scale(.985)}
+.open .od{font-weight:750}
+.open .op{display:block;font-size:13.5px;color:var(--text-3);margin-top:2px}
+.open .ot{font-weight:800;color:#ff5a6e;white-space:nowrap}
+.box{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:13px 15px;margin:4px 0 14px;font-size:15.5px;color:var(--text-2)}
+.box b{color:var(--text)}
+.msgbox{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--text-2);margin:0 0 12px}
+.err{display:none;background:rgba(var(--red-rgb),.12);border:1px solid rgba(var(--red-rgb),.5);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--text);margin:12px 0 0}
+.err a{display:block;margin-top:8px;font-weight:800;color:#fff}
+.consent{font-size:12.5px;color:var(--text-3);margin:4px 2px 12px;line-height:1.5}
+.consent a{color:var(--text-2)}
+
+/* The agreement. Big enough to actually read on a phone, numbered so he can
+   say "number four is the one about cancelling" on the call. */
+.terms{margin:4px 0 14px;padding:0;list-style:none;counter-reset:t}
+.terms li{counter-increment:t;position:relative;padding:12px 12px 12px 48px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;margin:0 0 8px;font-size:15.5px;color:var(--text-2)}
+.terms li::before{content:counter(t);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--card-3);
+  color:var(--text);font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
+.terms li.key{border-color:rgba(216,178,92,.55)}
+.agree{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px;margin:0 0 12px;cursor:pointer;font-size:16px}
+.agree input{width:26px;height:26px;flex:none;margin:0;accent-color:var(--red)}
+.agree.bad{border-color:var(--red)}
+.fine{font-size:13px;color:var(--text-3);text-align:center;margin:10px 0 0}
+
+.done{text-align:center;padding-top:10px}
+.ring{width:76px;height:76px;margin:6px auto 12px;border-radius:50%;background:rgba(47,179,88,.14);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;color:var(--green)}
+.ring svg{width:38px;height:38px}
+.done h2{font-size:30px}
+.sum{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:6px 16px;margin:16px 0 12px}
+.sum .r{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--text-2)}
+.sum .r:last-child{border-bottom:none}
+.sum .r b{color:var(--text);text-align:right}
+.cardline{text-align:left;border-radius:16px;padding:13px 15px;margin:0 0 12px;font-size:15.5px}
+.cardline.ok{background:rgba(47,179,88,.1);border:1px solid rgba(47,179,88,.45)}
+.cardline.todo{background:rgba(216,178,92,.1);border:1px solid rgba(216,178,92,.5)}
+details.signed{text-align:left;margin:4px 0 12px;font-size:14.5px;color:var(--text-2)}
+details.signed summary{cursor:pointer;font-weight:700;color:var(--text);padding:8px 0}
+details.signed ol{margin:6px 0 8px 20px;padding:0}
+details.signed li{margin:0 0 6px}
+.foot{margin-top:26px;text-align:center;font-size:13px;color:var(--text-3)}
+.foot a{color:var(--text-2)}
+.loading{opacity:.6;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <img src="/images/logo-header.png" alt="Mikey's Mobile Detailing" width="524" height="150">
+    <a class="call" href="tel:+14256007897">(425) 600-7897</a>
+  </header>
+
+  <div id="intro">
+    <p class="hello" id="hello">Hey, it's Mikey.</p>
+    <p class="hello-sub">I'm on the phone with you. Tap along as I walk you through it.</p>
+    <p class="proof"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span><b data-md-rating>5.0</b> on Google &middot; <b data-md-reviews="{n}">41</b> reviews &middot; <b data-md-cars>300</b>+ cars</span></p>
+    <div class="prog" id="prog" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="prog-l" id="progL">Step 1 of 4</div>
+  </div>
+
+  <!-- 1. The car -->
+  <section class="step show" id="s1">
+    <h1>What are we detailing?</h1>
+    <p class="hint">Tap your size. The make and model is optional.</p>
+    <div class="field">
+      <label for="car">Year, make and model <span>(optional)</span></label>
+      <input type="text" id="car" placeholder="2019 Honda Pilot" autocomplete="off">
+    </div>
+    <div class="opts">
+      <button type="button" class="opt" data-size="sedan"><span class="n">1</span><span><span class="t">Car or sedan</span><span class="d">Compact, coupe, small crossover</span></span></button>
+      <button type="button" class="opt" data-size="suv"><span class="n">2</span><span><span class="t">SUV or pickup</span><span class="d">Mid-size SUV, crossover, truck</span></span></button>
+      <button type="button" class="opt" data-size="truck"><span class="n">3</span><span><span class="t">Van or 3-row</span><span class="d">Minivan, big SUV, 3 rows of seats</span></span></button>
+    </div>
+  </section>
+
+  <!-- 2. The service -->
+  <section class="step" id="s2">
+    <h1>What are you thinking?</h1>
+    <p class="hint">Tap one. The prices are for your size.</p>
+    <div class="opts">
+      <button type="button" class="opt" data-svc="full"><span class="n">1</span><span><span class="t">Full Detail <span class="tag">Inside and out</span></span><span class="d">Both, in one visit. $79 less than booking them apart</span></span><span class="p" data-from="full"></span></button>
+      <button type="button" class="opt" data-svc="interior"><span class="n">2</span><span><span class="t">Interior</span><span class="d">Vacuum, steam, shampoo, every surface, inside glass</span></span><span class="p" data-from="interior"></span></button>
+      <button type="button" class="opt" data-svc="exterior"><span class="n">3</span><span><span class="t">Exterior</span><span class="d">Hand wash, clay bar, wheels and tires, wax or sealant</span></span><span class="p" data-from="exterior"></span></button>
+    </div>
+    <button type="button" class="back" data-go="1">&lsaquo; Back</button>
+  </section>
+
+  <!-- 3. The condition -->
+  <section class="step" id="s3">
+    <h1>How's it looking right now?</h1>
+    <p class="hint">No judgment at all. I've seen everything.</p>
+    <div class="opts">
+      <button type="button" class="opt" data-cond="Pretty Clean"><span class="n">1</span><span><span class="t">Pretty clean</span><span class="d">Well kept, just due</span></span></button>
+      <button type="button" class="opt" data-cond="Needs Work"><span class="n">2</span><span><span class="t">Needs work</span><span class="d">Overdue. Crumbs, dust, some stains</span></span><span class="p">+$30</span></button>
+      <button type="button" class="opt" data-cond="War Zone"><span class="n">3</span><span><span class="t">War zone</span><span class="d">Really rough. Pet hair, spills, the works</span></span><span class="p">+$60</span></button>
+    </div>
+    <button type="button" class="back" data-go="2">&lsaquo; Back</button>
+  </section>
+
+  <!-- 4. The price, then the club -->
+  <section class="step" id="s4">
+    <h1 id="priceHead">Here's your price</h1>
+    <!-- The tabs sit above the price, not under it: the club card is taller
+         than the one-time card, and tabs below it got pushed off the screen
+         the moment someone tapped one. -->
+    <div class="tabs-l">How often should I come out?</div>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab on" role="tab" data-plan="once" aria-selected="true">Just once</button>
+      <button type="button" class="tab" role="tab" data-plan="56" aria-selected="false">Every<br>8 weeks</button>
+      <button type="button" class="tab" role="tab" data-plan="28" aria-selected="false">Every<br>4 weeks</button>
+    </div>
+    <p class="tabs-sub" id="tabsSub">Every 4 or 8 weeks is the Clean Club. Tap one to see it.</p>
+    <div class="price" id="priceCard" aria-live="polite"></div>
+    <button type="button" class="btn" id="goTimes">Pick my time</button>
+    <button type="button" class="link" id="textMe">Not ready? Text me this quote instead</button>
+    <button type="button" class="back" data-go="3">&lsaquo; Back</button>
+  </section>
+
+  <!-- 5. The time -->
+  <section class="step" id="s5">
+    <h1 id="timeHead">Pick a time</h1>
+    <p class="hint" id="timeHint">I come to you. These are my real openings.</p>
+    <div class="msgbox" id="timeMsg" style="display:none"></div>
+    <div class="opens" id="opens"></div>
+    <div class="opens" id="opensMore" style="display:none;margin-top:10px"></div>
+    <button type="button" class="link" id="moreTimes" style="display:none">See more days</button>
+    <button type="button" class="back" data-go="4">&lsaquo; Back to my price</button>
+  </section>
+
+  <!-- 6. Where -->
+  <section class="step" id="s6">
+    <h1>Where am I headed?</h1>
+    <div class="box" id="bookSum"></div>
+    <form id="form" novalidate>
+      <div class="field" id="fName"><label for="name">Your name</label><input type="text" id="name" autocomplete="name"><span class="msg">I need a name for the booking.</span></div>
+      <div class="field" id="fPhone"><label for="phone">Cell phone</label><input type="tel" id="phone" autocomplete="tel" inputmode="tel"><span class="msg">A 10-digit number, so I can text you the confirmation.</span></div>
+      <div class="field" id="fTown"><label for="town">Town</label>
+        <select id="town"><option value="">Pick your town</option>
+          <option>Snohomish</option><option>Lake Stevens</option><option>Everett</option><option>Monroe</option>
+          <option>Mill Creek</option><option>Marysville</option><option>Bothell</option><option>Duvall</option>
+          <option>Mukilteo</option><option>Woodinville</option><option>Granite Falls</option><option>Arlington</option>
+          <option value="other">Somewhere else</option></select><span class="msg">Pick your town so I know where I'm going.</span></div>
+      <div class="field" id="fOther" style="display:none"><label for="other">Which town?</label><input type="text" id="other" autocomplete="address-level2"><span class="msg">Tell me the town.</span></div>
+      <div class="field" id="fStreet"><label for="street">Street address <span>(just the street is fine)</span></label><input type="text" id="street" autocomplete="street-address"><span class="msg">Your street is enough if you'd rather not give the number yet.</span></div>
+      <input type="text" id="company" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <p class="consent" id="consentText">By tapping below you agree to receive text messages about your appointment from Mikey's Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
+      <button type="submit" class="btn" id="formBtn">Book it</button>
+    </form>
+    <div class="err" id="formErr" role="alert"></div>
+    <button type="button" class="back" data-go="5">&lsaquo; Pick a different time</button>
+  </section>
+
+  <!-- 7. The agreement (Clean Club only) -->
+  <section class="step" id="s7">
+    <h1>Here's the deal, in writing</h1>
+    <p class="hint">Same as I just told you. Read it over with me.</p>
+    <ol class="terms" id="terms"></ol>
+    <label class="agree" id="agreeBox"><input type="checkbox" id="agree"><span>I've read this and I'm in.</span></label>
+    <div class="field" id="fSign"><label for="sign">Type your full name to sign</label><input type="text" id="sign" autocomplete="name"><span class="msg">Type your name to sign it.</span></div>
+    <button type="button" class="btn" id="joinBtn">Sign and join</button>
+    <p class="fine" id="joinFine"></p>
+    <div class="err" id="joinErr" role="alert"></div>
+    <button type="button" class="back" data-go="6">&lsaquo; Back</button>
+  </section>
+
+  <!-- 8. Done -->
+  <section class="step" id="s8">
+    <div class="done" id="doneBody"></div>
+  </section>
+
+  <p class="foot">Questions? Call or text me at <a href="tel:+14256007897">(425) 600-7897</a>.<br>Mikey's Mobile Detailing &middot; Snohomish, WA</p>
+</div>
+
+<script src="/site-stats.js" defer></script>
+<script>
+(function(){
+  // ===== The call page =====
+  // One screen at a time, big buttons, so Mikey can say "tap number two" on
+  // the phone and it's obvious which one he means. The one-time price comes
+  // first on purpose: that's the number the club gets compared against.
+  //
+  // Prices: the same book as the homepage calculator and PRICING.md. The club
+  // numbers here are only for showing; the dashboard worker prices a sign-up
+  // itself (/api/club/offer and /api/club/join) and the terms come from it, so
+  // a stale number on this page can never become what someone signs.
+  var API = 'https://texting.mikeysdetailingsnohomish.workers.dev';
+  var PRICE = { full:{ sedan:369, suv:409, truck:449 }, interior:{ sedan:249, suv:289, truck:329 }, exterior:{ sedan:199, suv:239, truck:279 } };
+  var NAMES = { full:'Full Detail', interior:'Interior Detail', exterior:'Exterior Detail' };
+  var SIZES = { sedan:'Car / Sedan', suv:'SUV / Pickup', truck:'Van / 3-row' };
+  var COND = { 'Pretty Clean':0, 'Needs Work':30, 'War Zone':60 };
+  var CLUB = { off:150, visit:125, keep:2, per:75 };
+  // Rain-Ready: a Full Detail booked by December 31, 2026 gets polish, ceramic
+  // wax and RainX free. Same offer and the same cutoff as RR_END in index.html
+  // (midnight Pacific going into January 1). Past it this goes quiet by itself.
+  var RR_END = Date.UTC(2027, 0, 1, 8);
+  // [the add-on's name in the calculator and on his alert, how it reads here, its price]
+  var RR = [['Exterior Polish', 'exterior polish', 30], ['Ceramic Wax', 'ceramic wax', 20], ['RainX Windows', 'RainX on the glass', 10]];
+  function rrOn(){ return Date.now() < RR_END; }
+
+  var S = { size:'', svc:'', cond:'', plan:'once', opens:null, pick:null, offer:null, step:1, club:null, busy:false };
+
+  function $(id){ return document.getElementById(id); }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+  function val(id){ var e = $(id); return e ? String(e.value || '').trim() : ''; }
+  function track(label, detail){ try { if (typeof window.MDTrack === 'function') window.MDTrack(label, detail || ''); } catch (e) {} }
+  function ga(name, params){ try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch (e) {} }
+  function q(name){ try { return new URLSearchParams(location.search).get(name) || ''; } catch (e) { return ''; } }
+  function money(n){ return '$' + Math.round(n); }
+
+  function once(){ return S.plan === 'once'; }
+  function every(){ return once() ? 0 : +S.plan; }
+  function oneTime(svc){ return PRICE[svc][S.size] + (COND[S.cond] || 0); }
+  function clubFirst(){ return Math.max(0, oneTime('full') - CLUB.off); }
+  // The service actually being booked: the club always starts with a Full
+  // Detail, whatever they called about (a club keeps up a car, and that only
+  // works on one that was reset first).
+  function svcNow(){ return once() ? S.svc : 'full'; }
+  function priceNow(){ return once() ? oneTime(S.svc) : clubFirst(); }
+
+  // ---- moving between screens --------------------------------------------
+  function go(n, push){
+    for (var i = 1; i <= 8; i++){ var s = $('s' + i); if (s) s.classList.remove('show'); }
+    var t = $('s' + n); if (t) t.classList.add('show');
+    S.step = n;
+    var bars = $('prog').children, at = Math.min(4, n);
+    for (var j = 0; j < bars.length; j++) bars[j].classList.toggle('on', j < at);
+    var lbl = { 1:'Step 1 of 4', 2:'Step 2 of 4', 3:'Step 3 of 4', 4:'Step 4 of 4', 5:'Almost done', 6:'Almost done', 7:'Last step', 8:'' };
+    $('progL').textContent = lbl[n] || '';
+    // The receipt has its own headline with their name in it.
+    $('intro').style.display = (n === 8) ? 'none' : '';
+    document.body.classList.toggle('compact', n > 1);
+    if (push !== false){ try { history.pushState({ s:n }, '', location.pathname + location.search); } catch (e) {} }
+    window.scrollTo(0, 0);
+    track('Call page, step ' + n, ({ 1:'car', 2:'service', 3:'condition', 4:'price', 5:'time', 6:'details', 7:'agreement', 8:'done' })[n] || '');
+  }
+  window.addEventListener('popstate', function(e){
+    var n = e.state && e.state.s;
+    if (n && n !== 8 && S.step !== 8) go(n, false);
+  });
+  function mark(attr, v){
+    var els = document.querySelectorAll('[' + attr + ']');
+    for (var i = 0; i < els.length; i++) els[i].classList.toggle('sel', els[i].getAttribute(attr) === v);
+  }
+
+  // ---- the price screen -----------------------------------------------------
+  function render(){
+    var card = $('priceCard'), h = '';
+    var rr = rrOn() && svcNow() === 'full';
+    var car = val('car');
+    var who = [SIZES[S.size], car, S.cond].filter(Boolean).join(' · ');
+    if (once()){
+      card.classList.remove('club');
+      $('priceHead').textContent = "Here's your price";
+      h += '<div class="lbl">' + esc(NAMES[S.svc]) + '</div>' +
+        '<div class="amt" id="amt">' + money(oneTime(S.svc)) + '</div>' +
+        '<div class="what">' + esc(who) + '</div>';
+      if (rr) h += rrRows();
+      h += '<div class="note">You pay after the work, when you love it. No deposit.</div>';
+      $('goTimes').textContent = 'Book my ' + NAMES[S.svc];
+      $('tabsSub').textContent = 'Every 4 or 8 weeks is the Clean Club. Tap one to see it.';
+    } else {
+      var wk = every() / 7, reg = oneTime('full'), first = clubFirst();
+      card.classList.add('club');
+      $('priceHead').textContent = 'The Clean Club';
+      h += '<div class="lbl">Your first visit, then every ' + wk + ' weeks</div>' +
+        '<div class="amt" id="amt">' + money(first) + '<span class="was">' + money(reg) + '</span></div>' +
+        '<div class="what">My Full Detail, inside and out. $' + CLUB.off + ' off for joining.</div>';
+      if (S.svc !== 'full'){
+        var asked = oneTime(S.svc), diff = asked - first;
+        h += '<div class="vs">' + (diff >= 0
+          ? 'You asked about the ' + NAMES[S.svc].replace(' Detail', '').toLowerCase() + ' at ' + money(asked) + '. On the club I do the whole car for ' + (diff ? money(diff) + ' less' : 'the same price') + '.'
+          : 'You asked about the ' + NAMES[S.svc].replace(' Detail', '').toLowerCase() + ' at ' + money(asked) + '. For ' + money(-diff) + ' more, the club gets the whole car done, inside too.') + '</div>';
+      }
+      if (rr) h += rrRows();
+      h += '<div class="then">Then <b>every ' + wk + ' weeks: $' + CLUB.visit + ' a visit</b>, any size. It stays $' + CLUB.visit + ' while you\'re in. ' +
+        'Keep your next ' + CLUB.keep + ' visits, then cancel anytime with a text.</div>';
+      $('goTimes').textContent = 'Join the Clean Club';
+      $('tabsSub').textContent = 'Same $' + CLUB.visit + ' a visit either way. Every 4 weeks keeps it closest to how it looks after today.';
+    }
+    card.innerHTML = h;
+    var tabs = document.querySelectorAll('.tab');
+    for (var i = 0; i < tabs.length; i++){
+      var on = tabs[i].getAttribute('data-plan') === String(S.plan);
+      tabs[i].classList.toggle('on', on); tabs[i].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+  }
+  function rrRows(){
+    var worth = 0; for (var i = 0; i < RR.length; i++) worth += RR[i][2];
+    return '<div class="rr"><b>Plus ' + RR.map(function(r){ return r[1]; }).join(', ').replace(/, ([^,]*)$/, ' and $1') +
+      ', free</b> ($' + worth + ' value). Rain-Ready: any Full Detail booked by Dec 31.</div>';
+  }
+  function countUp(){
+    var el = $('amt'); if (!el) return;
+    var target = priceNow(), was = el.querySelector('.was'), wasHtml = was ? was.outerHTML : '';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cur = 0, inc = Math.max(1, Math.ceil(target / 24));
+    var iv = setInterval(function(){
+      cur = Math.min(target, cur + inc);
+      el.innerHTML = money(cur) + wasHtml;
+      if (cur >= target) clearInterval(iv);
+    }, 26);
+  }
+
+  // ---- openings, from the same calendar the homepage books from ------------
+  function fetchOpens(){
+    var key = svcNow() + '|' + S.size;
+    if (S.opensKey === key && S.opens) return Promise.resolve(S.opens);
+    S.opensKey = key; S.opens = null;
+    return new Promise(function(resolve){
+      var done = false, t = setTimeout(function(){ if (!done){ done = true; S.opensKey = ''; resolve(null); } }, 6000);
+      fetch(API + '/api/next-openings?n=12&service=' + svcNow() + '&size=' + S.size)
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(j){ if (done) return; done = true; clearTimeout(t);
+          if (j && j.ok && j.openings){ S.opens = j.openings; resolve(j.openings); } else { S.opensKey = ''; resolve(null); } })
+        .catch(function(){ if (!done){ done = true; clearTimeout(t); S.opensKey = ''; resolve(null); } });
+    });
+  }
+  function part(hm){ return (+String(hm).split(':')[0]) < 12 ? 'Morning' : 'Afternoon'; }
+  function openBtn(o, i){
+    return '<button type="button" class="open" data-open="' + i + '"><span><span class="od">' + esc(o.label) + '</span><span class="op">' + part(o.slot) + '</span></span><span class="ot">' + esc(o.time) + '</span></button>';
+  }
+  function showTimes(msg){
+    $('timeHead').textContent = once() ? 'Pick a time' : 'Pick your first visit';
+    $('timeHint').textContent = once() ? 'I come to you. These are my real openings.' : 'Your Full Detail. I come to you, and these are my real openings.';
+    $('opens').innerHTML = '<div class="msgbox">Checking my calendar…</div>';
+    $('opensMore').style.display = 'none'; $('moreTimes').style.display = 'none';
+    var m = $('timeMsg'); m.textContent = msg || ''; m.style.display = msg ? 'block' : 'none';
+    go(5);
+    fetchOpens().then(function(list){
+      if (!list){ $('opens').innerHTML = '<div class="msgbox">My calendar won\'t load right now. Tell me on the phone which day works and I\'ll book it for you.</div>' + smsLink('Text me instead'); return; }
+      if (!list.length){ $('opens').innerHTML = '<div class="msgbox">Nothing open online right now. Tell me on the phone and I\'ll find you a time.</div>'; return; }
+      var a = '', b = '';
+      for (var i = 0; i < list.length; i++){ if (i < 3) a += openBtn(list[i], i); else b += openBtn(list[i], i); }
+      $('opens').innerHTML = a; $('opensMore').innerHTML = b;
+      $('moreTimes').style.display = b ? 'block' : 'none';
+      track('Call page, saw times', list[0] ? 'first: ' + list[0].label + ' ' + list[0].time : 'none');
+    });
+  }
+  function pickTime(i){
+    var o = (S.opens || [])[+i]; if (!o) return;
+    S.pick = o;
+    var line = once() ? NAMES[S.svc] : 'Full Detail, then the Clean Club every ' + (every() / 7) + ' weeks';
+    $('bookSum').innerHTML = '<b>' + esc(o.label + ' at ' + o.time) + '</b><br>' + esc(line + ' · ' + money(priceNow()) + (once() ? '' : ' today'));
+    $('formBtn').textContent = once() ? ('Book ' + o.label + ' at ' + o.time) : 'Next: the agreement';
+    go(6);
+    if (!val('name')) setTimeout(function(){ try { $('name').focus(); } catch (e) {} }, 50);
+  }
+
+  // ---- the details form -------------------------------------------------------
+  function townVal(){ var t = $('town').value; return t === 'other' ? val('other') : t; }
+  // One of the twelve towns on the list (anything but "Somewhere else").
+  function served(){ var t = $('town').value; return !!t && t !== 'other'; }
+  function digits(){ return val('phone').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, ''); }
+  function check(){
+    var first = null;
+    var bad = function(f, id, on){ $(f).classList.toggle('bad', on); if (on && !first) first = id; };
+    bad('fName', 'name', !val('name'));
+    bad('fPhone', 'phone', digits().length !== 10);
+    bad('fTown', 'town', !$('town').value);
+    if ($('town').value === 'other') bad('fOther', 'other', !val('other'));
+    bad('fStreet', 'street', val('street').length < 3);
+    if (first){ try { $(first).focus(); } catch (e) {} return false; }
+    return true;
+  }
+  function smsBody(){
+    var o = S.pick;
+    return "Hi Mikey, it's " + (val('name') || 'me') + '. ' + (once()
+      ? "I'd like the " + NAMES[S.svc] + ' (' + money(oneTime(S.svc)) + ')'
+      : "I'd like to join the Clean Club, every " + (every() / 7) + ' weeks, starting with the Full Detail at ' + money(clubFirst())) +
+      ' for my ' + (val('car') || SIZES[S.size]) + (o ? ', ' + o.label + ' at ' + o.time : '') + '.';
+  }
+  function smsLink(label){ return '<a href="sms:+14256007897?&body=' + encodeURIComponent(smsBody()) + '">' + esc(label) + '</a>'; }
+
+  function submitForm(e){
+    e.preventDefault();
+    if (S.busy) return;
+    if (!check()) return;
+    if (!S.pick){ showTimes(); return; }
+    if (once()) return bookOnce();
+    loadTerms();
+  }
+  function bookOnce(){
+    var o = S.pick, btn = $('formBtn'), err = $('formErr');
+    if (val('company')){ doneOnce('pending'); return; }
+    S.busy = true; btn.disabled = true; btn.textContent = 'Booking…'; err.style.display = 'none';
+    var extras = (rrOn() && S.svc === 'full') ? RR.map(function(r){ return r[0] + ' (free, Rain-Ready)'; }) : [];
+    var payload = {
+      service:S.svc, size:S.size, sizeLabel:SIZES[S.size], vehicle:val('car'), condition:S.cond,
+      date:o.date, slot:o.slot, dateLabel:o.label, name:val('name'), phone:'+1' + digits(),
+      address:val('street'), city:townVal(), estimate:oneTime(S.svc), addons:extras,
+      notes:'Booked on the call page, with Mikey on the phone', smsConsent:true, website:'',
+      consent:{ text:($('consentText').textContent || '').replace(/\s+/g, ' ').trim(), at:new Date().toISOString(), source:'call_page', page:location.href },
+      vid:window.MD_VID || ''
+    };
+    post('/api/book', payload).then(function(res){
+      S.busy = false; btn.disabled = false;
+      if (res.j && res.j.ok){ ga('call_page_booking', { value:payload.estimate, currency:'USD' }); track('BOOKED on the call page', o.label + ' ' + o.time + ' · ' + money(payload.estimate)); doneOnce(res.j.status); return; }
+      if (res.status === 409){ S.opensKey = ''; showTimes('Someone just grabbed that one. Here\'s what\'s still open.'); return; }
+      fail(err, btn, 'Book ' + o.label + ' at ' + o.time);
+    }).catch(function(){ S.busy = false; fail(err, btn, 'Book ' + o.label + ' at ' + o.time); });
+  }
+  function fail(err, btn, label){
+    btn.disabled = false; btn.textContent = label;
+    err.innerHTML = 'That didn\'t go through, but nothing is lost. Tap below to send it to me by text and I\'ll lock it in.' + smsLink('Text it to Mikey');
+    err.style.display = 'block';
+  }
+  function post(path, body){
+    return fetch(API + path, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { status:r.status, j:j }; }); });
+  }
+
+  // ---- the agreement ---------------------------------------------------------------
+  // The words come from the server for this exact car and schedule, and the
+  // server stores the same words against the name they type. So what they
+  // read here is exactly what they signed.
+  function loadTerms(){
+    var btn = $('formBtn');
+    S.busy = true; btn.disabled = true; btn.textContent = 'One sec…';
+    fetch(API + '/api/club/offer?every=' + every() + '&size=' + S.size + '&condition=' + encodeURIComponent(S.cond))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        S.busy = false; btn.disabled = false; btn.textContent = 'Next: the agreement';
+        if (!(j && j.ok && j.lines)){ fail($('formErr'), btn, 'Next: the agreement'); return; }
+        S.offer = j;
+        $('terms').innerHTML = j.lines.map(function(l, i){ return '<li' + (i === 3 ? ' class="key"' : '') + '>' + esc(l) + '</li>'; }).join('');
+        $('joinBtn').textContent = j.card ? 'Sign and save my card' : 'Sign and join';
+        $('joinFine').textContent = j.card ? 'Next is Stripe\'s secure page to save your card. Nothing is charged today.' : 'I\'ll text you a secure link to save your card before your first visit. Nothing is charged today.';
+        if (!val('sign') && val('name')) $('sign').placeholder = val('name');
+        go(7);
+      })
+      .catch(function(){ S.busy = false; fail($('formErr'), btn, 'Next: the agreement'); });
+  }
+  function join(){
+    if (S.busy) return;
+    var ok = true;
+    $('agreeBox').classList.toggle('bad', !$('agree').checked); if (!$('agree').checked) ok = false;
+    var signed = val('sign');
+    $('fSign').classList.toggle('bad', signed.replace(/[^A-Za-z]/g, '').length < 2); if (signed.replace(/[^A-Za-z]/g, '').length < 2) ok = false;
+    if (!ok) return;
+    var o = S.pick, btn = $('joinBtn'), err = $('joinErr'), label = btn.textContent;
+    S.busy = true; btn.disabled = true; btn.textContent = 'Signing you up…'; err.style.display = 'none';
+    var payload = {
+      every:every(), terms:S.offer.terms, agree:true, signed:signed, size:S.size, condition:S.cond, vehicle:val('car'),
+      date:o.date, slot:o.slot, dateLabel:o.label, name:val('name'), phone:'+1' + digits(), address:val('street'), city:townVal(),
+      smsConsent:true, page:location.href, vid:window.MD_VID || '', website:val('company')
+    };
+    post('/api/club/join', payload).then(function(res){
+      var j = res.j || {};
+      if (j.ok && j.token){
+        ga('club_join', { value:S.offer.price, currency:'USD', every:every() });
+        track('JOINED the Clean Club', o.label + ' ' + o.time + ' · every ' + (every() / 7) + ' weeks');
+        try { history.replaceState({ s:8 }, '', location.pathname + '?club=' + encodeURIComponent(j.token)); } catch (e) {}
+        // Only ever Stripe's own checkout page: a card form anywhere else is
+        // not something this page will send anyone to.
+        if (j.cardUrl && /^https:\/\/checkout\.stripe\.com\//.test(j.cardUrl)){ btn.textContent = 'Opening Stripe…'; location.href = j.cardUrl; return; }
+        S.busy = false; showClub(j.token); return;
+      }
+      S.busy = false; btn.disabled = false; btn.textContent = label;
+      if (res.status === 409 && j.error === 'slot_taken'){ S.opensKey = ''; showTimes('Someone just grabbed that time. Here\'s what\'s still open.'); return; }
+      if (res.status === 409 && j.error === 'terms_changed'){ loadTerms(); return; }
+      err.innerHTML = 'That didn\'t go through, but nothing is lost. Tell me on the phone, or tap below and I\'ll set it up by text.' + smsLink('Text it to Mikey');
+      err.style.display = 'block';
+    }).catch(function(){
+      S.busy = false; btn.disabled = false; btn.textContent = label;
+      err.innerHTML = 'That didn\'t go through, but nothing is lost. Tell me on the phone, or tap below and I\'ll set it up by text.' + smsLink('Text it to Mikey');
+      err.style.display = 'block';
+    });
+  }
+
+  // ---- done ----------------------------------------------------------------------------
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  function doneOnce(status){
+    var o = S.pick || {}, instant = status === 'confirmed';
+    $('doneBody').innerHTML = '<div class="ring">' + CHECK + '</div><h2>' + (instant ? 'You\'re booked!' : 'Request sent!') + '</h2>' +
+      '<div class="sum"><div class="r"><span>When</span><b>' + esc((o.label || '') + ' at ' + (o.time || '')) + '</b></div>' +
+      '<div class="r"><span>What</span><b>' + esc(NAMES[S.svc]) + '</b></div><div class="r"><span>Price</span><b>' + money(oneTime(S.svc)) + '</b></div></div>' +
+      '<p>' + (instant ? 'I just texted you the confirmation, and I\'ll send a reminder the day before.'
+        : (served() ? 'I\'ll check it against my week and text you to confirm, usually the same day.'
+          : townVal() + ' is a little outside my usual towns, so I\'ll check the drive and text you to confirm, usually the same day.')) + '</p>' +
+      '<p style="color:var(--text-3);font-size:15px">All I need there is an outdoor spigot and an outlet I can reach. You pay after, when you love it.</p>';
+    go(8);
+  }
+  // A club sign-up, from the server's record: right after joining, back from
+  // Stripe, or from the link Mikey texts later to save the card.
+  function showClub(token, note){
+    $('doneBody').innerHTML = '<div class="msgbox">Loading your sign-up…</div>';
+    go(8, false);
+    fetch(API + '/api/club/state?token=' + encodeURIComponent(token))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        if (!(j && j.ok && j.club)){ $('doneBody').innerHTML = '<div class="msgbox">I couldn\'t find that sign-up. Text me at (425) 600-7897 and I\'ll sort it out.</div>'; return; }
+        renderClub(token, j.club, j.stripe, note);
+      })
+      .catch(function(){ $('doneBody').innerHTML = '<div class="msgbox">That didn\'t load. Check your signal and refresh, or text me at (425) 600-7897.</div>'; });
+  }
+  function renderClub(token, c, stripe, note){
+    var card = c.card || {}, saved = card.status === 'saved', left = c.status === 'cancelled';
+    var h = '<div class="ring">' + CHECK + '</div><h2>' + (left ? 'Your Clean Club sign-up' : 'You\'re in' + (c.first ? ', ' + esc(c.first) : '') + '!') + '</h2>';
+    if (note) h += '<div class="msgbox">' + esc(note) + '</div>';
+    h += '<div class="sum">' +
+      '<div class="r"><span>First visit</span><b>' + esc(c.dateLabel + ' at ' + c.time) + '</b></div>' +
+      '<div class="r"><span>Full Detail</span><b>$' + esc(c.price) + ' <s style="color:var(--text-3);font-weight:500">$' + esc(c.regular) + '</s></b></div>' +
+      (c.rainReady ? '<div class="r"><span>Rain-Ready extras</span><b>Free</b></div>' : '') +
+      '<div class="r"><span>Then</span><b>$' + esc(c.visit) + ' every ' + esc(c.weeks) + ' weeks</b></div></div>';
+    if (!left){
+      if (saved) h += '<div class="cardline ok"><b>Card saved</b>' + (card.last4 ? ': ' + esc(card.brand || 'Card') + ' ending ' + esc(card.last4) : '') + '. Nothing is charged today.</div>';
+      else if (stripe) h += '<div class="cardline todo"><b>One more step:</b> save your card on Stripe\'s secure page. It isn\'t charged today.</div><button type="button" class="btn" id="saveCard">Save my card</button><div class="err" id="cardErr" role="alert"></div>';
+      else h += '<div class="cardline todo"><b>One more step:</b> I\'ll text you a secure link to save your card before your first visit. Nothing is charged today.</div>';
+    }
+    h += '<p style="font-size:15.5px">' + (c.instant ? 'I texted you the confirmation, and I\'ll send a reminder the day before.' : 'I\'ll text you to confirm the time, usually the same day.') + ' All I need there is an outdoor spigot and an outlet I can reach.</p>';
+    h += '<details class="signed"><summary>What you signed</summary><ol>' + (c.terms || []).map(function(l){ return '<li>' + esc(l) + '</li>'; }).join('') + '</ol>' +
+      '<div style="color:var(--text-3)">Signed “' + esc(c.signed) + '” ' + esc(c.signedAt ? new Date(c.signedAt).toLocaleString([], { month:'short', day:'numeric', year:'numeric', hour:'numeric', minute:'2-digit' }) : '') + '. Screenshot this page if you\'d like a copy.</div></details>';
+    $('doneBody').innerHTML = h;
+    var sb = $('saveCard');
+    if (sb) sb.onclick = function(){
+      sb.disabled = true; sb.textContent = 'Opening Stripe…';
+      post('/api/club/card', { token:token }).then(function(res){
+        if (res.j && res.j.ok && res.j.url && /^https:\/\/checkout\.stripe\.com\//.test(res.j.url)){ location.href = res.j.url; return; }
+        sb.disabled = false; sb.textContent = 'Save my card';
+        var ce = $('cardErr'); ce.innerHTML = 'Stripe didn\'t open. Try again in a minute, or text me and I\'ll send you a fresh link.' + '<a href="sms:+14256007897">Text Mikey</a>'; ce.style.display = 'block';
+      }).catch(function(){ sb.disabled = false; sb.textContent = 'Save my card'; });
+    };
+  }
+  // Back from Stripe with a session id: ask the server, which asks Stripe.
+  function backFromStripe(token, sid){
+    $('doneBody').innerHTML = '<div class="msgbox">Checking your card with Stripe…</div>';
+    go(8, false);
+    post('/api/club/card', { token:token, sid:sid }).then(function(res){
+      try { history.replaceState({ s:8 }, '', location.pathname + '?club=' + encodeURIComponent(token)); } catch (e) {}
+      var j = res.j || {};
+      showClub(token, j.ok && j.card && j.card.status === 'saved' ? '' : (j.pending ? 'Stripe says that card didn\'t finish saving. Tap Save my card to try again.' : ''));
+    }).catch(function(){ showClub(token); });
+  }
+
+  // ---- wiring --------------------------------------------------------------------------
+  document.addEventListener('click', function(e){
+    var el = e.target.closest ? e.target.closest('button') : null;
+    if (!el) return;
+    if (el.hasAttribute('data-size')){ S.size = el.getAttribute('data-size'); mark('data-size', S.size);
+      var tags = document.querySelectorAll('[data-from]');
+      for (var i = 0; i < tags.length; i++) tags[i].textContent = money(PRICE[tags[i].getAttribute('data-from')][S.size]);
+      track('Call page, size', SIZES[S.size]); go(2); return; }
+    if (el.hasAttribute('data-svc')){ S.svc = el.getAttribute('data-svc'); mark('data-svc', S.svc); track('Call page, service', NAMES[S.svc]); go(3); return; }
+    if (el.hasAttribute('data-cond')){ S.cond = el.getAttribute('data-cond'); mark('data-cond', S.cond); S.plan = 'once'; render(); go(4); countUp();
+      ga('call_page_price', { value:oneTime(S.svc), currency:'USD' }); track('Call page, saw the price', money(oneTime(S.svc)) + ' · ' + NAMES[S.svc]); return; }
+    if (el.hasAttribute('data-plan')){ var p = el.getAttribute('data-plan'); if (p === String(S.plan)) return;
+      S.plan = p === 'once' ? 'once' : +p; S.opens = null; S.opensKey = ''; render(); countUp();
+      track(once() ? 'Call page, back to just once' : 'Call page, tapped the club', once() ? '' : 'every ' + (every() / 7) + ' weeks'); return; }
+    if (el.hasAttribute('data-open')){ pickTime(el.getAttribute('data-open')); return; }
+    if (el.hasAttribute('data-go')){ go(+el.getAttribute('data-go')); return; }
+    if (el.id === 'goTimes'){ showTimes(); return; }
+    if (el.id === 'moreTimes'){ $('opensMore').style.display = 'grid'; el.style.display = 'none'; return; }
+    if (el.id === 'textMe'){ location.href = 'sms:+14256007897?&body=' + encodeURIComponent(smsBody()); return; }
+    if (el.id === 'joinBtn'){ join(); return; }
+  });
+  $('form').addEventListener('submit', submitForm);
+  $('town').addEventListener('change', function(){ $('fOther').style.display = this.value === 'other' ? 'block' : 'none'; });
+
+  // Mikey's link from the dashboard carries their first name, car and town,
+  // so the first thing they see while he talks is their own name.
+  var n = q('n').replace(/[^A-Za-z' -]/g, '').slice(0, 30).trim();
+  if (n){ $('hello').textContent = 'Hey ' + n + ", it's Mikey."; $('name').value = n; }
+  var car = q('car').slice(0, 60); if (car) $('car').value = car;
+  var town = q('t').toLowerCase();
+  if (town){ var ts = $('town').options; for (var i = 0; i < ts.length; i++) if (ts[i].text.toLowerCase() === town){ $('town').value = ts[i].text; break; } }
+
+  var club = q('club').replace(/[^A-Za-z0-9_-]/g, '');
+  var sid = q('sid').replace(/[^A-Za-z0-9_]/g, '');
+  if (club && sid) backFromStripe(club, sid);
+  else if (club) showClub(club);
+  else { try { history.replaceState({ s:1 }, '', location.pathname + location.search); } catch (e) {} track('Opened the call page', n ? 'name on the link: ' + n : ''); }
+})();
+</script>
+</body>
+</html>

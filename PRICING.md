@@ -42,6 +42,8 @@ and Exterior separately, and the calculator says so.
 | `print/tools/build-door-hanger.cjs`, `build-postcard.cjs` | print pieces |
 | `outreach/FLEET-EMAILS.md` | fleet emails and the fleet-price floor math |
 | dashboard repo: `src/index.js` `BOOK_FACTS`, and the fallback `CONFIG` in `public/book.html` | the dashboard's own booking page, where referral links land. Bookings → Settings shows a "doesn't match your website" card until Mikey taps Match the website |
+| `onbored/index.html`, `PRICE` / `CLUB` / `RR` | the call page Mikey walks people through on the phone. Display only, but it shows the book, so it changes with it |
+| dashboard repo: `src/index.js` `CLUB` and `clubTerms()` | the Clean Club join offer: what a sign-up is actually priced at, and the terms they sign. The worker prices off `BOOK_FACTS` / the booking config, so the $150 follows a Full Detail price change on its own |
 
 ## Why the prices went up (2026-09-27)
 
@@ -94,6 +96,15 @@ Decided by Mikey on 2026-09-27 unless marked open:
   tiers; they now match `paint-correction-snohomish-county/`. Worth knowing: a
   one-step takes 6–8 hours, so $400 earns $50–$67 an hour, less than a Full
   Detail. That's the next number to look at.
+- **Clean Club join, on the call page (Mikey, 2026-10-03).** Joining makes the
+  first visit a Full Detail at $150 off the book (a clean sedan comes to $219),
+  then $125 a visit every 4 or 8 weeks. They keep their next 2 club visits or
+  pay back $75 for each one skipped, $150 at most, on a card saved with Stripe;
+  nothing is owed before the first visit. Sold on the phone only, never
+  published. Worth watching: each club visit takes one of his ~7 weekly slots
+  at $125, the cheapest slot there is (see the next line), so past a handful
+  of members the calendar needs to fit two or three club visits into one
+  afternoon.
 - **Clean Club: $125 a visit, kept.** Members were promised a locked price,
   and recurring visits are guaranteed income. It is now 63% of an exterior
   detail (was 78%), so it's the cheapest slot on the calendar; if the week is
@@ -149,3 +160,4 @@ disagree across sources:
 | 2026-09-27 | $199–$279 | $249–$329 | $369–$449 | +$40/+$80 everywhere | booked full, going all in on ads |
 | 2026-09-27 | same | same | same | same | paint correction unified at from $400; Deep Clean to $399+; Clean Club kept at $125 |
 | 2026-10-02 | same | same | same | same | found the dashboard's booking page (referral links land there) still on the launch prices; it now has a facts check and a Match the website button |
+| 2026-10-03 | same | same | same | same | Clean Club join offer on the call page: first Full Detail $150 off, keep 2 club visits or pay back $75 each |

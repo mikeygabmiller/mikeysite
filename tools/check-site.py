@@ -38,6 +38,10 @@ for p in pages:
     html = p.read_text(encoding="utf-8")
     blocks = JSONLD.findall(html)
     if not blocks:
+        # A noindex page (the call page, /onbored/, and its /onboard/ alias)
+        # is kept out of search on purpose, so it has no schema to check.
+        if re.search(r'<meta name="robots" content="[^"]*noindex', html):
+            continue
         warns.append(f"{rel}: no JSON-LD")
         continue
     if len(blocks) != 1:
