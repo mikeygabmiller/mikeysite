@@ -1,6 +1,10 @@
 {
   "note": "Written by print/tools/build-yard-sign.cjs; read by print/tools/sign-legibility.py. Cap heights in inches on the 24 x 18 in board.",
   "background": "#FFD100",
+  "strip": {
+    "top_in": 12.19,
+    "color": "#111114"
+  },
   "lines": [
     {
       "id": "name",
@@ -39,12 +43,12 @@
       "id": "phone",
       "text": "425-600-7897",
       "pkg": "fira-sans-extra-condensed",
-      "weight": 800,
+      "weight": 700,
       "stretch": 1.42,
       "capRef": "8",
-      "cap_in": 4.15,
+      "cap_in": 4.23,
       "width_in": 22.5,
-      "color": "#111114"
+      "color": "#FFD100"
     }
   ]
 }

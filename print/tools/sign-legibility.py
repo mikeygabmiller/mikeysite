@@ -26,7 +26,10 @@ Helvetica capitals on a white sign read at 25 ft per inch of letter height
 Helvetica's letter widths, is set to that, and every other font is measured on
 the same scale. The ranking of fonts holds whether the eye is assumed sharper
 or blurrier than 20/40. Black on yellow is treated as black on white: both are dark
-type on a light ground, which is what reads best.
+type on a light ground, which is what reads best. The number's yellow on the
+black strip scores the same as black on yellow here, because a blur can't tell
+the two apart; a real eye can (light type glows into a dark ground), which is
+why the number is set a weight lighter than the words.
 
 What it leaves out: real eyes also lose letters packed tight together, and
 words read a little farther than random letters because the reader guesses
