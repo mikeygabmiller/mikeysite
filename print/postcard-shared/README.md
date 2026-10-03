@@ -146,8 +146,14 @@ lights have a short buying window, so the second drop can't land in December.
 | **Total** | **~$1,098** |
 | **Each pays** | **~$549** |
 
-Prices are from 2026-09-27; the checkout and the EDDM tool show the real
-numbers. About 200 cards are spare: hand them to customers for neighbors.
+Rechecked 2026-10-03 against 55Printing's own price data: $394.01 printing +
+$104.51 ground, unchanged. No live coupon (their EDDM shipping code ran out
+Aug 24). Rush (2 to 3 business days) is +$51.22. Postage is $0.26 EDDM Retail
+(USPS). Elsewhere for the same card: ClubFlyers lists 2,500 at $383.99 before
+shipping (shown only at checkout), BlockbusterPrint $780 (16 pt, free
+shipping). Smaller sizes at 55Printing, 2,500 with shipping: 6x11 $351.58,
+6.5x9 $307.69, but the layout is built for 11 x 8.5 and each business would
+lose space. The checkout and the EDDM tool show the final numbers. About 200 cards are spare: hand them to customers for neighbors.
 Never put one in a mailbox yourself (18 U.S.C. § 1725).
 
 ### Break-even
