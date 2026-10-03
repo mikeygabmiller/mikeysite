@@ -114,7 +114,8 @@ so most people act on a sign later, by the name or the number).
             MIKEY'S               (red, Racing Sans One, the logo's face: 1.45 in letters)
           MOBILE CAR              (black, Fira Sans Extra Condensed ExtraBold, 1.25x tall: 3.75 in letters)
            DETAILING
-          425-600-7897            (same face, 1.42x tall, the full 22.5 in across: 4.15 in digits)
+          425-600-7897            (same face at 700, 1.42x tall, the full 22.5 in across: 4.23 in digits,
+                                   yellow on a black strip that runs off the bottom and both sides)
 ```
 
 **How far each line reads** (`python3 print/tools/sign-legibility.py`, which
@@ -123,7 +124,7 @@ also draws `driver-view.png`, the sign through 20/40 eyes at 40 to 100 ft):
 | | 2026-10-01 sign (white, Anton number) | This sign |
 |---|---|---|
 | MOBILE CAR DETAILING | 46 ft | **68 ft** |
-| 425-600-7897 | 64 ft | **79 ft** |
+| 425-600-7897 | 64 ft | **82 ft** |
 | The whole message | 46 ft | **68 ft** |
 
 Why it's laid out that way:
@@ -142,19 +143,33 @@ Why it's laid out that way:
   The old number was Anton stretched to 5 in, but its insides are slits, and
   past about 64 ft the 0, 6, 8 and 9 turned into the same blob. Fira Sans Extra
   Condensed keeps those gaps open (same idea as highway sign lettering), so a
-  4.15 in number reads farther than the 5 in one did. About 25 faces and
+  4.23 in number reads farther than the 5 in one did. About 25 faces and
   weights were scored (Anton, Barlow Condensed, Overpass, Oswald, League
   Gothic, Bebas Neue, B612, Atkinson Hyperlegible, Roboto Condensed and more);
   Fira read farthest at this width, at every eyesight level tried.
 - **What it is reads nearly as far as the number.** On the old sign there was a
   stretch between 46 and 64 ft where a driver could make out a phone number
   but not what it was for. Now MOBILE CAR DETAILING is the biggest thing and
-  both read out to about 68 to 79 ft: someone who can read the number already
+  both read out to about 68 to 82 ft: someone who can read the number already
   knows it's a car detailer.
 - **The number is the biggest thing** (Mikey, 2026-10-02: "need the phone
   number bigger"). It is stretched taller than the words (1.42x against
   1.25x), which is how it grows when it already fills the width: 3.65 in
   became 4.15 in, and the words gave up 0.1 in.
+- **The number sits on its own black strip** (Mikey, 2026-10-03). The strip
+  starts half an inch above the digits and runs off the bottom and both sides,
+  with a band of yellow kept between it and DETAILING. It splits the sign into
+  two jobs a glance can tell apart (what it is, then how to reach him) and
+  gives the number a hard edge to sit in. Same two inks, same contrast, just
+  reversed. One catch, and it is handled: light type on a dark ground looks
+  bolder than it is, because the yellow glows into the black at a distance
+  and starts closing the gaps in 0, 6, 8 and 9. So the number is Fira 700,
+  one weight lighter than the words, which also made it 0.08 in taller in the
+  same width (4.15 to 4.23 in). `sign-legibility.py` scores yellow on black
+  the same as black on yellow (a blur can't tell them apart), so its 82 ft is
+  for the lighter weight, not for the strip; the strip is a design call, not
+  a measured gain. A black flood adds ink, not a colour: it is still
+  yellow and black (and red).
 - **The name sits back.** MIKEY'S stays brand red and small (under half the
   size of MOBILE CAR DETAILING, Mikey, 2026-10-01). It's there for the people
   who pass it every day and later search the name, not for the first glance.
@@ -172,7 +187,8 @@ Why it's laid out that way:
   inks or 60 ft, and its grille is still too close to a Bronco's for a big
   run), a handwritten-marker look (the investor blogs like it; it costs digit
   legibility, and a detailer is selling care), a border (costs
-  letter height and adds no reading distance).
+  letter height and adds no reading distance; the black strip has no
+  border and bleeds off three edges for the same reason).
 
 **Testing yellow against white, if you want proof.** Put 50 of each out on the
 same weekends, alternating at similar corners (each placement photo shows

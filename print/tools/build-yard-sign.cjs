@@ -23,8 +23,12 @@
 //                        with what it is and the number
 //   MOBILE CAR           black, Fira Sans Extra Condensed 800, stretched 1.25
 //   DETAILING            tall, two lines at one size
-//   425-600-7897         same face, stretched 1.42 tall, full width: the
-//                        biggest thing on the sign (Mikey, 2026-10-02)
+//   425-600-7897         same face at 700, stretched 1.42 tall, full width:
+//                        the biggest thing on the sign (Mikey, 2026-10-02),
+//                        in yellow on a black strip that runs off the
+//                        bottom and both sides (Mikey, 2026-10-03), so the
+//                        number reads as its own thing, apart from what
+//                        the sign is selling
 //
 // all on safety yellow. Black on yellow is what warning signs use: it reads
 // about as far as black on white and is far easier to spot among the white
@@ -71,8 +75,18 @@ const LINES = [
   { id: 'name', text: "MIKEY'S", cap: 1.45, stretch: 1, gap: 0.7, pkg: 'racing-sans-one', family: 'Racing Sans One', weight: 400, color: RED, ref: 'H' },
   { id: 'what', text: 'MOBILE CAR', cap: 3.75, stretch: 1.25, gap: 0.7, ...FIRA, color: INK, ref: 'H', group: 'what' },
   { id: 'what2', text: 'DETAILING', cap: 3.75, stretch: 1.25, gap: 0.95, ...FIRA, color: INK, ref: 'H', group: 'what' },
-  { id: 'phone', text: PHONE, cap: 4.3, stretch: 1.42, gap: 0, ...FIRA, color: INK, ref: '8' },
+  { id: 'phone', text: PHONE, cap: 4.3, stretch: 1.42, gap: 0, ...FIRA, weight: 700, color: YELLOW, ref: '8', strip: true },
 ];
+// The black strip behind the number: it starts STRIP_PAD in above the top of
+// the digits and runs off the bottom and both sides into the bleed, so there
+// is no thin black edge for the printer's cut to wander across. Yellow on
+// black is the same two inks and the same contrast as black on yellow, just
+// reversed. Light type on a dark ground looks bolder than it is (the yellow
+// glows into the black at a distance and closes the gaps in 0, 6, 8 and 9),
+// so the number is a weight lighter (700) than the words: thinner strokes,
+// wider gaps, and it fits 0.08 in taller across the same width. At least STRIP_GAP in of yellow has to stay between DETAILING and
+// the strip, or the two run together from a distance.
+const STRIP_PAD = 0.5, STRIP_GAP = 0.35;
 
 // CANVA=1 npm run sign writes print-files/18x24/sign-canva.pdf instead: the
 // same sign with no tall stretch, because Canva can't stretch text and an
@@ -97,8 +111,9 @@ svg{position:absolute;left:0;top:0;width:${W + 2 * BLEED}in;height:${H + 2 * BLE
 
 // Lines are SVG text in inch units, so the PDF keeps them as vector type.
 // set: [{ id, size (font size, in), base (baseline y on the trimmed board, in) }]
-const html = set => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
+const html = (set, strip) => `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>
 <div class="page"><svg viewBox="0 0 ${W + 2 * BLEED} ${H + 2 * BLEED}" xmlns="http://www.w3.org/2000/svg">
+${strip == null ? '' : `  <rect x="0" y="${BLEED + strip}" width="${W + 2 * BLEED}" height="${H + BLEED - strip}" fill="${INK}"/>`}
 ${LINES.map(l => {
   const s = set.find(o => o.id === l.id);
   return `  <text id="${l.id}" x="${BLEED + W / 2}" y="${(BLEED + s.base) / l.stretch}" transform="scale(1 ${l.stretch})" text-anchor="middle" fill="${l.color}" style="font:${l.weight} ${s.size}px '${l.family}'">${l.text.replace(/'/g, '&#39;')}</text>`;
@@ -144,7 +159,10 @@ ${LINES.map(l => {
   const total = LINES.reduce((a, l) => a + m[l.id].asc + m[l.id].desc + l.gap, 0);
   let y = (H - total) / 2;
   const set = LINES.map(l => { const base = y + m[l.id].asc; y = base + m[l.id].desc + l.gap; return { id: l.id, size: m[l.id].size, base }; });
-  fs.writeFileSync(tmp, html(set));
+  // Top of the black strip (in, on the trimmed board), from the line marked strip.
+  const sl = LINES.find(l => l.strip), ss = sl && set.find(o => o.id === sl.id);
+  const strip = sl ? ss.base - m[sl.id].asc - STRIP_PAD : null;
+  fs.writeFileSync(tmp, html(set, strip));
   await page.goto(fileUrl(tmp));
   await page.evaluate(() => document.fonts.ready);
 
@@ -155,6 +173,12 @@ ${LINES.map(l => {
   if (sizes.phone < 2.3) problems.push(`phone number ${sizes.phone} in tall: unreadable from a car`);
   if (sizes.name >= sizes.what / 2) problems.push(`MIKEY'S (${sizes.name} in) is over half the size of MOBILE CAR DETAILING: the name is meant to sit back`);
   if (sizes.what < 2) problems.push(`MOBILE CAR DETAILING ${sizes.what} in tall: a driver has to see what this is`);
+  if (sl) {
+    const above = LINES[LINES.indexOf(sl) - 1], aboveSet = set.find(o => o.id === above.id);
+    const yellowGap = strip - (aboveSet.base + m[above.id].desc);
+    console.log(`  black strip from ${strip.toFixed(2)} in down (${(H - strip).toFixed(2)} in tall), ${yellowGap.toFixed(2)} in of yellow above it`);
+    if (yellowGap < STRIP_GAP) problems.push(`only ${yellowGap.toFixed(2)} in of yellow between ${above.text} and the black strip`);
+  }
 
   const text = await page.evaluate(() => [...document.querySelectorAll('text')].map(t => t.textContent).join('\n'));
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
@@ -170,16 +194,23 @@ ${LINES.map(l => {
 
   const buf = await (await page.$('.page')).screenshot({ type: 'png' });
   // Safe area, checked on the ink itself: nothing but the background colour
-  // may sit in the 0.75 in margin or the bleed.
+  // may sit in the 0.75 in margin or the bleed (black, inside the strip).
   {
     const { data, info } = await sharp(buf).removeAlpha().raw().toBuffer({ resolveWithObject: true });
     const px = info.width / (W + 2 * BLEED), edge = Math.ceil((BLEED + SAFE) * px);
-    const bg = [1, 3, 5].map(i => parseInt(BG.slice(i, i + 2), 16));
+    const rgb = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16));
+    const stripPx = strip == null ? Infinity : (BLEED + strip) * px;
     let bad = 0;
     for (let y = 0; y < info.height; y++) {
+      if (Math.abs(y + 0.5 - stripPx) < 1.5) continue; // the strip's own anti-aliased edge
+      // The screenshot rounds the page up to whole pixels, so its last row and
+      // column are part page, part the yellow behind it: not on the sign.
+      if (strip != null && y === info.height - 1) continue;
+      const bg = rgb(y + 0.5 > stripPx ? INK : BG);
       const inYMargin = y < edge || y >= info.height - edge;
       for (let x = 0; x < info.width; x++) {
         if (!inYMargin && x >= edge && x < info.width - edge) continue;
+        if (strip != null && x === info.width - 1) continue;
         const i = (y * info.width + x) * 3;
         if (Math.abs(data[i] - bg[0]) + Math.abs(data[i + 1] - bg[1]) + Math.abs(data[i + 2] - bg[2]) > 60) bad++;
       }
@@ -202,6 +233,7 @@ ${LINES.map(l => {
   fs.writeFileSync(path.join(OUT, 'sign-type.json'), JSON.stringify({
     note: 'Written by print/tools/build-yard-sign.cjs; read by print/tools/sign-legibility.py. Cap heights in inches on the 24 x 18 in board.',
     background: BG,
+    strip: strip == null ? null : { top_in: +strip.toFixed(2), color: INK },
     lines: LINES.map(l => ({ id: l.id, text: l.text, pkg: l.pkg, weight: l.weight, stretch: l.stretch, capRef: l.ref, cap_in: sizes[l.id], width_in: +m[l.id].width.toFixed(2), color: l.color })),
   }, null, 2) + '\n');
 

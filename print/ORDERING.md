@@ -129,8 +129,9 @@ the winner and its menu path into this section so reorders skip the search.
 
 **Before paying:** "same design both sides" (or "double sided, same artwork")
 is selected, stakes are in the cart, the quantity is right, and the proof
-shows MIKEY'S / MOBILE CAR / DETAILING / 425-600-7897 in black on yellow (no
-red band), yellow right to the edge with no white rim, with the number nowhere
+shows MIKEY'S / MOBILE CAR / DETAILING in black on yellow and 425-600-7897 in
+yellow on a black strip across the bottom (no red band), yellow and black
+right to the edge with no white rim, with the number nowhere
 near the edge. The sign has no QR on purpose.
 
 **If yellow costs too much:** the third colour is the only extra. If it adds

@@ -318,7 +318,8 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   MIKEY'S small in red / MOBILE CAR / DETAILING / 425-600-7897, no red band
   and no slogan line). Since 2026-10-02 it's black on **safety yellow** in Fira
   Sans Extra Condensed, chosen for distance: the words and the number read to
-  about 68 and 79 ft (number 4.15 in tall, Mikey wanted it bigger), against
+  about 68 and 82 ft (number 4.23 in tall, Mikey wanted it bigger; since
+  2026-10-03 it's yellow Fira 700 on a black strip across the bottom), against
   46 and 64 ft for the old white sign with its 5 in Anton number. Judge a new draft on `python3 print/tools/sign-legibility.py`
   (feet a 20/40 driver can read it from), not on how tall the type looks.
   If a QR ever goes on a sign, it is
