@@ -7,14 +7,18 @@ price changes there, it changes here.
 ## The deal, so it's the same every time
 
 - They see their **one-time price** first, the real one from the book.
-- **Joining the Clean Club** makes their first visit a **Full Detail at $150
-  off**, whatever they called about. A clean sedan is $219 instead of $369.
+- **Joining the Clean Club** makes their first visit a **Full Detail at $270
+  off**, whatever they called about. A clean sedan is **$99** instead of $369,
+  an SUV or pickup $139, a van or 3-row $179. Needs Work and War Zone still add
+  their $30 or $60.
 - Then **$125 a visit, every 4 or every 8 weeks**, any size. It stays $125
   while they're in.
-- For the $150 off they **keep their next 2 club visits**. Cancel before those
-  are done and it's **$75 for each one skipped** (never more than $150), on the
+- For the $270 off they **keep their next 3 club visits**. Cancel before those
+  are done and it's **$90 for each one skipped** (never more than $270), on the
   card they save. Cancel before the first visit and they owe nothing. After
-  the 2 visits, cancel anytime.
+  the 3 visits, cancel anytime.
+- Anyone who joined at the first deal ($150 off, keep 2, $75 each) keeps that
+  deal. Tools → Clean Club shows each member's own numbers.
 - Rain-Ready still applies: a Full Detail booked by Dec 31 gets polish, ceramic
   wax and RainX free, club or not.
 
@@ -41,17 +45,18 @@ Either spelling works.
    It's a real price, so you don't need to defend it.
 6. **The club.** "See the three buttons right above the price? Tap Every 4
    weeks." Then: "That's my Clean Club. Because you're joining, your first
-   visit is my full detail, inside and out, $150 off. After that I come back
+   visit is my full detail, inside and out, for $99 instead of $369. After that I come back
    every 4 weeks at $125, any size. Are you more of an every-4-weeks person or
    every 8?"
    - Called about an interior? The page already says it: the whole car on the
-     club costs less than the interior alone. Point at the gold line.
-7. **Say the catch out loud.** "The one thing: for the $150 off, you keep your
-   next two visits. Cancel before that and it's $75 for each one you skip.
-   After those two, cancel anytime." Saying it now is what keeps it from
+     club costs less than the interior alone. Point at the pink box under the
+     price.
+7. **Say the catch out loud.** "The one thing: for the $270 off, you keep your
+   next three visits. Cancel before that and it's $90 for each one you skip.
+   After those three, cancel anytime." Saying it now is what keeps it from
    feeling like a trick later.
 8. **Book it.** "Tap Join, pick a time, put in your address." Then: "Now read
-   the deal with me. Number 4 is the cancelling one. Tick the box, type your
+   the deal with me. Number 4, the red one, is the cancelling one. Tick the box, type your
    name, and it'll take you to Stripe to save a card. It's not charged today."
 9. **Close.** "You'll get my confirmation text in a second. See you [day]."
 
@@ -70,7 +75,7 @@ the [service]." Then the same page books the one-time job. Don't push twice.
 
 | They say | You say |
 |---|---|
-| "Why do you need my card?" | "Because the first one's $150 off. It's only ever charged if you cancel before your two visits, $75 each, and I'll text you before I charge anything. Stripe holds it, I never see the number." |
+| "Why do you need my card?" | "Because the first one's $270 off. It's only ever charged if you cancel before your three visits, $90 each, and I'll text you before I charge anything. Stripe holds it, I never see the number." |
 | "Is it $125 for my truck too?" | "Yep, any size." |
 | "What if I need to move a visit?" | "Moving isn't cancelling. Just text me." |
 | "What if you can't make it?" | "Then you don't owe anything for that visit." |
