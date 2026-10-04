@@ -19,7 +19,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Size step | **+$40 SUV or pickup, +$80 van or 3-row** | condition (+$30 / +$60) and add-ons ride on top, outside the ranges |
 | Ceramic coating | **from $500** | tiered, quoted |
 | Clean Club | **$125 a visit** | members' price is locked in; kept at $125 on 2026-09-27 |
-| Clean Club join | **$150 off the first Full Detail; keep the next 2 club visits or pay back $75 each** | Mikey, 2026-10-03. Every 4 or 8 weeks at $125. Never more than $150 back, nothing owed before the first visit. Sold only on the call page (`/onbored/`), not on the public site |
+| Clean Club join | **$270 off the first Full Detail ($99 sedan / $139 SUV-pickup / $179 van-3-row); keep the next 3 club visits or pay back $90 each** | Mikey, 2026-10-04 (it launched 2026-10-03 at $150 off, keep 2, $75 each; those members keep their deal). Condition rides on top. Every 4 or 8 weeks at $125. Never more than $270 back, nothing owed before the first visit. Sold only on the call page (`/onbored/`), not on the public site |
 | Paint correction | **from $400** | 1-Step $400+ / 2-Step $650+ / Multi-Stage $900+, quoted. One-step **6–8 hrs**, multi-stage **1–2 days** |
 | Quote calculator takes | **60 seconds** | never 30, never 90 |
 | Full detail takes | **3–5 hours** | never 3–4 |
@@ -156,12 +156,14 @@ one-time price first, then the Clean Club tabs (every 8 or every 4 weeks).
   `sitemap.xml`, `llms.txt` or the About list. That's the one exception to "a
   new page goes in all three". `/onboard/` redirects to it with the query
   string, because that's how people type it after hearing it.
-- **The deal** (Mikey, 2026-10-03): joining makes the first visit a Full
-  Detail at $150 off, whatever they called about (a club keeps a car up, and
-  you can't keep up one that was never reset), then $125 a visit every 4 or 8
-  weeks. They keep their next 2 club visits or pay back $75 for each one
-  skipped, never more than $150, and nothing is owed if they cancel before the
-  first visit. It's a contract people sign: don't change a word of it without
+- **The deal** (Mikey, 2026-10-04): joining makes the first visit a Full
+  Detail at $270 off, $99 for a clean sedan, whatever they called about (a club
+  keeps a car up, and you can't keep up one that was never reset), then $125 a
+  visit every 4 or 8 weeks. They keep their next 3 club visits or pay back $90
+  for each one skipped, never more than $270, and nothing is owed if they
+  cancel before the first visit. It launched the day before at $150 off, keep
+  2, $75 each; anyone who signed that keeps it, because each sign-up stores its
+  own numbers. It's a contract people sign: don't change a word of it without
   him.
 - **The dashboard worker prices it and owns the words.** `CLUB` and
   `clubTerms()` in `twillowdashbored/src/index.js` work out the price and

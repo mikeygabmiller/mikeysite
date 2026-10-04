@@ -10,7 +10,7 @@
      search (noindex, not in sitemap.xml or llms.txt) and nothing links to it.
      /onboard/ redirects here, because that's how most people will type it. -->
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Your detail price from Mikey, and the Clean Club: $150 off your first Full Detail when you join.">
+<meta name="description" content="Your detail price from Mikey, and the Clean Club: your first Full Detail is $270 off when you join, $99 for a sedan.">
 <meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
@@ -328,15 +328,17 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   // first on purpose: that's the number the club gets compared against.
   //
   // Prices: the same book as the homepage calculator and PRICING.md. The club
-  // numbers here are only for showing; the dashboard worker prices a sign-up
-  // itself (/api/club/offer and /api/club/join) and the terms come from it, so
-  // a stale number on this page can never become what someone signs.
+  // deal is the dashboard worker's: it prices a sign-up itself (/api/club/offer
+  // and /api/club/join) and writes the terms, and the club card shows its
+  // numbers as soon as it answers (deal() below), so the card can't disagree
+  // with what someone signs. CLUB here is only what shows until it answers.
   var API = 'https://texting.mikeysdetailingsnohomish.workers.dev';
   var PRICE = { full:{ sedan:369, suv:409, truck:449 }, interior:{ sedan:249, suv:289, truck:329 }, exterior:{ sedan:199, suv:239, truck:279 } };
   var NAMES = { full:'Full Detail', interior:'Interior Detail', exterior:'Exterior Detail' };
   var SIZES = { sedan:'Car / Sedan', suv:'SUV / Pickup', truck:'Van / 3-row' };
   var COND = { 'Pretty Clean':0, 'Needs Work':30, 'War Zone':60 };
-  var CLUB = { off:150, visit:125, keep:2, per:75 };
+  // $270 off, keep 3, $90 each (Mikey, 2026-10-04: $99 for a clean sedan, so saying no feels stupid).
+  var CLUB = { off:270, visit:125, keep:3, per:90 };
   // Rain-Ready: a Full Detail booked by December 31, 2026 gets polish, ceramic
   // wax and RainX free. Same offer and the same cutoff as RR_END in index.html
   // (midnight Pacific going into January 1). Past it this goes quiet by itself.
@@ -358,7 +360,30 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   function once(){ return S.plan === 'once'; }
   function every(){ return once() ? 0 : +S.plan; }
   function oneTime(svc){ return PRICE[svc][S.size] + (COND[S.cond] || 0); }
-  function clubFirst(){ return Math.max(0, oneTime('full') - CLUB.off); }
+  // The club numbers for this exact car and schedule: the worker's, once it has
+  // answered, otherwise the same sums done here.
+  function offerKey(){ return every() + '|' + S.size + '|' + S.cond; }
+  function deal(){
+    var o = (S.offer && S.offerFor === offerKey()) ? S.offer : null;
+    if (o) return { first:o.price, regular:o.regular, off:o.off, keep:o.keep, per:o.per, visit:o.visit };
+    return { first:Math.max(0, oneTime('full') - CLUB.off), regular:oneTime('full'), off:CLUB.off, keep:CLUB.keep, per:CLUB.per, visit:CLUB.visit };
+  }
+  function clubFirst(){ return deal().first; }
+  // Asks once per car and schedule. The answer re-draws the card only if
+  // they're still looking at that same club card.
+  function fetchOffer(){
+    var key = offerKey();
+    if (S.offer && S.offerFor === key) return Promise.resolve(S.offer);
+    return fetch(API + '/api/club/offer?every=' + every() + '&size=' + S.size + '&condition=' + encodeURIComponent(S.cond))
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(j){
+        if (!(j && j.ok && j.lines)) return null;
+        S.offer = j; S.offerFor = j.every + '|' + j.size + '|' + j.condition;
+        if (!once() && S.step === 4 && S.offerFor === offerKey()) render();
+        return j;
+      })
+      .catch(function(){ return null; });
+  }
   // The service actually being booked: the club always starts with a Full
   // Detail, whatever they called about (a club keeps up a car, and that only
   // works on one that was reset first).
@@ -408,12 +433,12 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
       $('goTimes').textContent = 'Book my ' + NAMES[S.svc];
       $('tabsSub').textContent = 'Every 4 or 8 weeks is the Clean Club. Tap one to see it.';
     } else {
-      var wk = every() / 7, reg = oneTime('full'), first = clubFirst();
+      var wk = every() / 7, d = deal(), reg = d.regular, first = d.first;
       card.classList.add('club');
       $('priceHead').textContent = 'The Clean Club';
       h += '<div class="lbl">Your first visit, then every ' + wk + ' weeks</div>' +
         '<div class="amt" id="amt">' + money(first) + '<span class="was">' + money(reg) + '</span></div>' +
-        '<div class="save">Save $' + CLUB.off + ' on your first visit</div>' +
+        '<div class="save">Save $' + d.off + ' on your first visit</div>' +
         '<div class="what">That\'s my Full Detail, inside and out.</div>';
       if (S.svc !== 'full'){
         var asked = oneTime(S.svc), diff = asked - first;
@@ -422,10 +447,10 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
           : 'You asked about the ' + NAMES[S.svc].replace(' Detail', '').toLowerCase() + ' at ' + money(asked) + '. For ' + money(-diff) + ' more, the club gets the whole car done, inside too.') + '</div>';
       }
       if (rr) h += rrRows();
-      h += '<div class="then">Then <b>every ' + wk + ' weeks: $' + CLUB.visit + ' a visit</b>, any size. It stays $' + CLUB.visit + ' while you\'re in. ' +
-        'Keep your next ' + CLUB.keep + ' visits, then cancel anytime with a text.</div>';
+      h += '<div class="then">Then <b>every ' + wk + ' weeks: $' + d.visit + ' a visit</b>, any size. It stays $' + d.visit + ' while you\'re in. ' +
+        'Keep your next ' + d.keep + ' visits, then cancel anytime with a text.</div>';
       $('goTimes').textContent = 'Join the Clean Club';
-      $('tabsSub').textContent = '$' + CLUB.visit + ' a visit either way.';
+      $('tabsSub').textContent = '$' + d.visit + ' a visit either way.';
     }
     card.innerHTML = h;
     var tabs = document.querySelectorAll('.tab');
@@ -571,7 +596,7 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
       .then(function(j){
         S.busy = false; btn.disabled = false; btn.textContent = 'Next: the agreement';
         if (!(j && j.ok && j.lines)){ fail($('formErr'), btn, 'Next: the agreement'); return; }
-        S.offer = j;
+        S.offer = j; S.offerFor = j.every + '|' + j.size + '|' + j.condition;
         $('terms').innerHTML = j.lines.map(function(l, i){ return '<li' + (i === 3 ? ' class="key"' : '') + '>' + esc(l) + '</li>'; }).join('');
         $('joinBtn').textContent = j.card ? 'Sign and save my card' : 'Sign and join';
         $('joinFine').textContent = j.card ? 'Next is Stripe\'s secure page to save your card. Nothing is charged today.' : 'I\'ll text you a secure link to save your card before your first visit. Nothing is charged today.';
@@ -695,6 +720,7 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
       ga('call_page_price', { value:oneTime(S.svc), currency:'USD' }); track('Call page, saw the price', money(oneTime(S.svc)) + ' · ' + NAMES[S.svc]); return; }
     if (el.hasAttribute('data-plan')){ var p = el.getAttribute('data-plan'); if (p === String(S.plan)) return;
       S.plan = p === 'once' ? 'once' : +p; S.opens = null; S.opensKey = ''; render(); countUp();
+      if (!once()) fetchOffer();
       track(once() ? 'Call page, back to just once' : 'Call page, tapped the club', once() ? '' : 'every ' + (every() / 7) + ' weeks'); return; }
     if (el.hasAttribute('data-open')){ pickTime(el.getAttribute('data-open')); return; }
     if (el.hasAttribute('data-go')){ go(+el.getAttribute('data-go')); return; }
