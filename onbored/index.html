@@ -11,7 +11,8 @@
      /onboard/ redirects here, because that's how most people will type it. -->
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Your detail price from Mikey, and the Clean Club: $150 off your first Full Detail when you join.">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,159 +26,169 @@
   gtag('config', 'G-G9WMXW2MF5');
 </script>
 <style>
+/* White page, black type, one action color. Mikey's call (2026-10-04): the
+   dark version was hard to follow on a phone, and a sales page reads best as
+   clear over clever: a headline, the number, one red button. Red means "tap
+   this" and nothing else does, so his "tap the red button" always has one
+   answer. */
 :root{
-  --red:#C8102E; --red-press:#e11533; --red-rgb:200,16,46;
-  --gold:#d8b25c; --gold-ink:#2a1e02; --green:#2fb358;
-  --bg:#0a0a0a; --card:#151517; --card-2:#1d1d20; --card-3:#2a2a2e;
-  --text:#f5f5f7; --text-2:#b8b8be; --text-3:#8e8e93;
-  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24);
+  color-scheme:light;
+  --red:#C8102E; --red-press:#A00C24; --red-rgb:200,16,46; --red-soft:#FDECEF; --red-line:#F3B8C2;
+  --ink:#111114; --text:#111114; --text-2:#3F3F46; --text-3:#6B6B74;
+  --bg:#FFFFFF; --card:#FFFFFF; --card-2:#F5F5F7; --card-3:#E9E9ED;
+  --line:#E2E2E7; --line-2:#CFCFD6;
+  --green:#15803D; --green-soft:#ECFDF3; --amber-soft:#FFF7E6; --amber-line:#F2C46D; --star:#F5A700;
+  --shadow:0 1px 2px rgba(17,17,20,.06),0 4px 14px rgba(17,17,20,.06);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
-  font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;
-  background-image:radial-gradient(900px 420px at 50% -120px,rgba(200,16,46,.22),transparent 70%);background-repeat:no-repeat}
+  font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;border-top:5px solid var(--red)}
 a{color:inherit}
 button{font-family:inherit}
 .wrap{max-width:480px;margin:0 auto;padding:0 16px calc(28px + env(safe-area-inset-bottom))}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0 6px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 6px}
 .top img{display:block;width:150px;height:auto}
-.top .call{font-size:14px;font-weight:700;color:var(--text-2);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap}
-.hello{margin:14px 0 2px;font-size:25px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.top .call{font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;border:1.5px solid var(--line);border-radius:999px;padding:7px 12px;white-space:nowrap}
+.hello{margin:14px 0 2px;font-size:26px;font-weight:900;letter-spacing:-.025em;line-height:1.12;color:var(--ink)}
 /* From step 2 on, the greeting has done its job: it shrinks and the stars go,
    so each step's buttons stay on one phone screen. */
-body.compact .hello{font-size:18px;margin-top:8px}
+body.compact .hello{font-size:18px;font-weight:800;margin-top:8px}
 body.compact .hello-sub,body.compact .proof{display:none}
 body.compact .prog{margin-top:10px}
-.hello-sub{margin:0 0 4px;color:var(--text-2);font-size:15.5px}
-.proof{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--text-3);margin:8px 0 0}
-.proof .stars{color:var(--gold);letter-spacing:1px}
-.proof b{color:var(--text-2);font-weight:700}
+.hello-sub{margin:0 0 4px;color:var(--text-2);font-size:16px}
+.proof{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--text-3);margin:8px 0 0}
+.proof .stars{color:var(--star);letter-spacing:1px}
+.proof b{color:var(--ink);font-weight:800}
 .prog{display:flex;gap:6px;margin:18px 0 6px}
-.prog i{flex:1;height:5px;border-radius:9px;background:var(--card-3)}
+.prog i{flex:1;height:6px;border-radius:9px;background:var(--card-3)}
 .prog i.on{background:var(--red)}
-.prog-l{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3)}
+.prog-l{font-size:12.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--text-3)}
 
 .step{display:none;animation:in .28s ease both}
 .step.show{display:block}
 @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.step{animation:none}}
-h1,h2{margin:10px 0 4px;font-size:27px;line-height:1.12;letter-spacing:-.02em;font-weight:800}
-.hint{margin:0 0 14px;color:var(--text-2);font-size:15.5px}
+h1,h2{margin:10px 0 4px;font-size:29px;line-height:1.1;letter-spacing:-.025em;font-weight:900;color:var(--ink)}
+.hint{margin:0 0 14px;color:var(--text-2);font-size:16px}
 
-.opts{display:grid;gap:11px}
+.opts{display:grid;gap:10px}
 .opt{display:flex;align-items:center;gap:14px;width:100%;min-height:76px;text-align:left;background:var(--card);
-  border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;color:var(--text);font-size:17px;cursor:pointer;
+  border:2px solid var(--line);border-radius:16px;padding:14px 16px;color:var(--ink);font-size:17px;cursor:pointer;box-shadow:var(--shadow);
   transition:border-color .15s,background .15s,transform .1s;-webkit-tap-highlight-color:transparent}
 .opt:active{transform:scale(.985)}
 .opt:focus-visible{outline:none;border-color:var(--red)}
-.opt.sel{border-color:var(--red);background:rgba(var(--red-rgb),.12)}
-.opt .n{display:flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:50%;
-  background:var(--card-3);font-weight:800;font-size:15px;color:var(--text-2)}
-.opt.sel .n{background:var(--red);color:#fff}
-.opt .t{display:block;font-weight:750;font-size:18.5px;line-height:1.2}
+.opt.sel{border-color:var(--red);background:var(--red-soft)}
+.opt .n{display:flex;align-items:center;justify-content:center;flex:none;width:36px;height:36px;border-radius:50%;
+  background:var(--card-2);border:1.5px solid var(--line-2);font-weight:900;font-size:16px;color:var(--ink)}
+.opt.sel .n{background:var(--red);border-color:var(--red);color:#fff}
+.opt .t{display:block;font-weight:800;font-size:19px;line-height:1.2}
 .opt .d{display:block;font-size:14px;color:var(--text-3);margin-top:2px}
-.opt .p{margin-left:auto;font-weight:800;font-size:19px;white-space:nowrap}
+.opt .p{margin-left:auto;font-weight:900;font-size:20px;white-space:nowrap;color:var(--ink)}
 .opt .tag{display:inline-block;margin-left:6px;vertical-align:2px;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--gold-ink);background:var(--gold);border-radius:999px;padding:2px 8px}
+  color:#fff;background:var(--red);border-radius:999px;padding:3px 8px}
 .field{margin:0 0 11px}
-.field label{display:block;font-size:13.5px;font-weight:650;color:var(--text-2);margin:0 0 6px}
+.field label{display:block;font-size:14px;font-weight:700;color:var(--ink);margin:0 0 6px}
 .field label span{font-weight:400;color:var(--text-3)}
-.field input,.field select{width:100%;font:inherit;font-size:17px;color:var(--text);background:var(--card);border:1.5px solid var(--line);
-  border-radius:14px;padding:14px 15px;-webkit-appearance:none;appearance:none}
+.field input,.field select{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--card);border:2px solid var(--line);
+  border-radius:12px;padding:13px 15px;-webkit-appearance:none;appearance:none}
+.field input::placeholder{color:#A1A1AA}
 .field select{background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);
   background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px;background-repeat:no-repeat}
-.field input:focus,.field select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(var(--red-rgb),.16)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(var(--red-rgb),.14)}
 .field.bad input,.field.bad select{border-color:var(--red)}
-.field .msg{display:none;font-size:13px;color:#ff6b7f;margin-top:5px}
+.field .msg{display:none;font-size:13.5px;color:var(--red);font-weight:600;margin-top:5px}
 .field.bad .msg{display:block}
 
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:58px;border:none;border-radius:16px;
-  background:var(--red);color:#fff;font-size:18.5px;font-weight:800;cursor:pointer;padding:14px 18px;text-align:center;
-  box-shadow:0 10px 28px rgba(var(--red-rgb),.35);-webkit-tap-highlight-color:transparent;transition:transform .1s,background .15s}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:60px;border:none;border-radius:14px;
+  background:var(--red);color:#fff;font-size:19px;font-weight:900;letter-spacing:-.01em;cursor:pointer;padding:14px 18px;text-align:center;
+  box-shadow:0 8px 20px rgba(var(--red-rgb),.28);-webkit-tap-highlight-color:transparent;transition:transform .1s,background .15s}
 .btn:active{transform:scale(.985);background:var(--red-press)}
 .btn[disabled]{opacity:.55;cursor:default}
-.btn.ghost{background:var(--card-2);color:var(--text);box-shadow:none;border:1.5px solid var(--line)}
-.link{display:block;width:100%;background:none;border:none;color:var(--text-3);font-size:15px;font-weight:600;
+.btn.ghost{background:var(--card);color:var(--ink);box-shadow:none;border:2px solid var(--line)}
+.link{display:block;width:100%;background:none;border:none;color:var(--text-2);font-size:15px;font-weight:600;
   text-decoration:underline;text-underline-offset:3px;padding:12px 8px;cursor:pointer;text-align:center}
-.back{display:inline-block;background:none;border:none;color:var(--text-3);font-size:15px;font-weight:650;padding:12px 2px;cursor:pointer}
+.back{display:inline-block;background:none;border:none;color:var(--text-2);font-size:15px;font-weight:700;padding:12px 2px;cursor:pointer}
 
-/* The price screen. The number is the whole point of it, so nothing sits
-   between the number and the plan tabs. */
-.price{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:18px 18px 16px;margin:6px 0 14px}
-.price .lbl{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
-.price .amt{font-size:62px;font-weight:900;letter-spacing:-.04em;line-height:1;margin:8px 0 4px;font-variant-numeric:tabular-nums}
-.price .was{font-size:26px;font-weight:700;color:var(--text-3);text-decoration:line-through;margin-left:10px;letter-spacing:-.02em;vertical-align:10px}
-.price .what{color:var(--text-2);font-size:15.5px}
-.price .rows{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
-.price .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--text-2);padding:4px 0}
-.price .row b{color:var(--text);font-weight:700;white-space:nowrap}
-.price .row.free b{color:var(--gold)}
-.price .rr{margin-top:12px;padding:10px 12px;border:1px solid rgba(216,178,92,.45);border-radius:12px;background:rgba(216,178,92,.08);font-size:14.5px;color:var(--text-2)}
-.price .rr b{color:var(--gold)}
-.price .note{margin-top:10px;font-size:14px;color:var(--text-3)}
-.price.club{border-color:var(--red);background:linear-gradient(180deg,rgba(var(--red-rgb),.16),var(--card) 55%)}
-.price .then{margin-top:12px;padding:12px 13px;background:var(--card-2);border-radius:14px;font-size:15.5px;color:var(--text-2)}
-.price .then b{color:var(--text)}
-.price .vs{margin-top:10px;font-size:15px;color:var(--gold);font-weight:650}
-.tabs-l{font-size:14px;font-weight:700;color:var(--text-2);margin:2px 0 8px}
-.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:5px;margin:0 0 6px}
-.tab{min-height:54px;border:none;border-radius:12px;background:transparent;color:var(--text-2);font-size:15.5px;font-weight:750;cursor:pointer;line-height:1.15;padding:6px 4px}
-.tab.on{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(var(--red-rgb),.35)}
-.tabs-sub{font-size:13.5px;color:var(--text-3);margin:0 0 14px;text-align:center}
+/* The price screen. The number is the whole point of it. */
+.price{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:18px 18px 16px;margin:6px 0 14px;box-shadow:var(--shadow)}
+.price .lbl{font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3)}
+.price .amt{font-size:66px;font-weight:900;letter-spacing:-.045em;line-height:1;margin:8px 0 6px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.price .was{font-size:27px;font-weight:700;color:var(--text-3);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px;margin-left:10px;letter-spacing:-.02em;vertical-align:12px}
+.price .save{display:inline-block;background:var(--red);color:#fff;font-weight:900;font-size:15px;letter-spacing:.02em;text-transform:uppercase;border-radius:8px;padding:5px 10px;margin:0 0 8px}
+.price .what{color:var(--text-2);font-size:16px}
+.price .rr{margin-top:12px;padding:11px 13px;border:2px dashed var(--red);border-radius:12px;background:var(--card);font-size:15px;color:var(--text-2)}
+.price .rr b{color:var(--red)}
+.price .note{margin-top:10px;font-size:14.5px;color:var(--text-3)}
+.price.club{border-color:var(--red)}
+.price.club .lbl{color:var(--red)}
+.price .then{margin-top:12px;padding:12px 14px;background:var(--card-2);border-radius:12px;font-size:16px;color:var(--text-2)}
+.price .then b{color:var(--ink)}
+.price .vs{margin-top:10px;padding:10px 12px;background:var(--red-soft);border-radius:12px;font-size:15.5px;color:var(--ink);font-weight:700}
+.tabs-l{font-size:15px;font-weight:800;color:var(--ink);margin:2px 0 8px}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;background:var(--card-2);border:2px solid var(--line);border-radius:14px;padding:5px;margin:0 0 6px}
+.tab{min-height:56px;border:none;border-radius:10px;background:transparent;color:var(--text-2);font-size:16px;font-weight:800;cursor:pointer;line-height:1.15;padding:6px 4px}
+.tab.on{background:var(--red);color:#fff;box-shadow:0 4px 12px rgba(var(--red-rgb),.3)}
+.tabs-sub{font-size:14px;color:var(--text-3);margin:0 0 14px;text-align:center}
 
 .opens{display:grid;gap:10px}
-.open{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:66px;padding:13px 16px;
-  border:1.5px solid var(--line);border-radius:16px;background:var(--card);color:var(--text);font-size:17px;text-align:left;cursor:pointer}
-.open:active{transform:scale(.985)}
-.open .od{font-weight:750}
-.open .op{display:block;font-size:13.5px;color:var(--text-3);margin-top:2px}
-.open .ot{font-weight:800;color:#ff5a6e;white-space:nowrap}
-.box{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:13px 15px;margin:4px 0 14px;font-size:15.5px;color:var(--text-2)}
-.box b{color:var(--text)}
-.msgbox{background:var(--card-2);border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--text-2);margin:0 0 12px}
-.err{display:none;background:rgba(var(--red-rgb),.12);border:1px solid rgba(var(--red-rgb),.5);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--text);margin:12px 0 0}
-.err a{display:block;margin-top:8px;font-weight:800;color:#fff}
+.open{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:68px;padding:13px 16px;
+  border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:17px;text-align:left;cursor:pointer;box-shadow:var(--shadow)}
+.open:active{transform:scale(.985);border-color:var(--red)}
+.open .od{font-weight:800}
+.open .op{display:block;font-size:14px;color:var(--text-3);margin-top:2px}
+.open .ot{font-weight:900;color:var(--red);white-space:nowrap}
+.box{background:var(--card-2);border:2px solid var(--line);border-radius:14px;padding:13px 15px;margin:4px 0 14px;font-size:16px;color:var(--text-2)}
+.box b{color:var(--ink)}
+.msgbox{background:var(--card-2);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15.5px;color:var(--text-2);margin:0 0 12px}
+.err{display:none;background:var(--red-soft);border:2px solid var(--red-line);border-radius:12px;padding:12px 14px;font-size:15.5px;color:var(--ink);margin:12px 0 0}
+.err a{display:block;margin-top:8px;font-weight:900;color:var(--red)}
 .consent{font-size:12.5px;color:var(--text-3);margin:4px 2px 12px;line-height:1.5}
 .consent a{color:var(--text-2)}
 
 /* The agreement. Big enough to actually read on a phone, numbered so he can
    say "number four is the one about cancelling" on the call. */
 .terms{margin:4px 0 14px;padding:0;list-style:none;counter-reset:t}
-.terms li{counter-increment:t;position:relative;padding:12px 12px 12px 48px;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;margin:0 0 8px;font-size:15.5px;color:var(--text-2)}
-.terms li::before{content:counter(t);position:absolute;left:12px;top:11px;width:26px;height:26px;border-radius:50%;background:var(--card-3);
-  color:var(--text);font-weight:800;font-size:13.5px;display:flex;align-items:center;justify-content:center}
-.terms li.key{border-color:rgba(216,178,92,.55)}
-.agree{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:14px;margin:0 0 12px;cursor:pointer;font-size:16px}
+.terms li{counter-increment:t;position:relative;padding:12px 12px 12px 50px;background:var(--card);border:2px solid var(--line);
+  border-radius:12px;margin:0 0 8px;font-size:16px;color:var(--text-2)}
+.terms li::before{content:counter(t);position:absolute;left:12px;top:11px;width:27px;height:27px;border-radius:50%;background:var(--card-2);
+  border:1.5px solid var(--line-2);color:var(--ink);font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+.terms li.key{border-color:var(--red);background:var(--red-soft);color:var(--ink)}
+.terms li.key::before{background:var(--red);border-color:var(--red);color:#fff}
+.agree{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px;margin:0 0 12px;cursor:pointer;font-size:16.5px;font-weight:700;color:var(--ink)}
 .agree input{width:26px;height:26px;flex:none;margin:0;accent-color:var(--red)}
-.agree.bad{border-color:var(--red)}
-.fine{font-size:13px;color:var(--text-3);text-align:center;margin:10px 0 0}
+.agree.bad{border-color:var(--red);background:var(--red-soft)}
+.fine{font-size:13.5px;color:var(--text-3);text-align:center;margin:10px 0 0}
 
 .done{text-align:center;padding-top:10px}
-.ring{width:76px;height:76px;margin:6px auto 12px;border-radius:50%;background:rgba(47,179,88,.14);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;color:var(--green)}
+.ring{width:76px;height:76px;margin:6px auto 12px;border-radius:50%;background:var(--green-soft);border:2.5px solid var(--green);display:flex;align-items:center;justify-content:center;color:var(--green)}
 .ring svg{width:38px;height:38px}
-.done h2{font-size:30px}
-.sum{text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:6px 16px;margin:16px 0 12px}
-.sum .r{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--text-2)}
+.done h2{font-size:32px}
+.sum{text-align:left;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:6px 16px;margin:16px 0 12px;box-shadow:var(--shadow)}
+.sum .r{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:16px;color:var(--text-2)}
 .sum .r:last-child{border-bottom:none}
-.sum .r b{color:var(--text);text-align:right}
-.cardline{text-align:left;border-radius:16px;padding:13px 15px;margin:0 0 12px;font-size:15.5px}
-.cardline.ok{background:rgba(47,179,88,.1);border:1px solid rgba(47,179,88,.45)}
-.cardline.todo{background:rgba(216,178,92,.1);border:1px solid rgba(216,178,92,.5)}
-details.signed{text-align:left;margin:4px 0 12px;font-size:14.5px;color:var(--text-2)}
-details.signed summary{cursor:pointer;font-weight:700;color:var(--text);padding:8px 0}
+.sum .r b{color:var(--ink);text-align:right}
+.cardline{text-align:left;border-radius:14px;padding:13px 15px;margin:0 0 12px;font-size:16px;color:var(--ink)}
+.cardline.ok{background:var(--green-soft);border:2px solid #9AD8AF}
+.cardline.todo{background:var(--amber-soft);border:2px solid var(--amber-line)}
+details.signed{text-align:left;margin:4px 0 12px;font-size:15px;color:var(--text-2)}
+details.signed summary{cursor:pointer;font-weight:800;color:var(--ink);padding:8px 0}
 details.signed ol{margin:6px 0 8px 20px;padding:0}
 details.signed li{margin:0 0 6px}
-.foot{margin-top:26px;text-align:center;font-size:13px;color:var(--text-3)}
-.foot a{color:var(--text-2)}
+.foot{margin-top:26px;text-align:center;font-size:13.5px;color:var(--text-3)}
+.foot a{color:var(--ink)}
 .loading{opacity:.6;pointer-events:none}
+.ctabar{display:none}
+body.on-price .ctabar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(255,255,255,.96);
+  border-top:1px solid var(--line);box-shadow:0 -6px 18px rgba(17,17,20,.08);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+body.on-price .ctabar .btn{max-width:448px;margin:0 auto}
+body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <img src="/images/logo-header.png" alt="Mikey's Mobile Detailing" width="524" height="150">
+    <img src="/images/logo-header-light.png" alt="Mikey's Mobile Detailing" width="524" height="166">
     <a class="call" href="tel:+14256007897">(425) 600-7897</a>
   </header>
 
@@ -242,7 +253,6 @@ details.signed li{margin:0 0 6px}
     </div>
     <p class="tabs-sub" id="tabsSub">Every 4 or 8 weeks is the Clean Club. Tap one to see it.</p>
     <div class="price" id="priceCard" aria-live="polite"></div>
-    <button type="button" class="btn" id="goTimes">Pick my time</button>
     <button type="button" class="link" id="textMe">Not ready? Text me this quote instead</button>
     <button type="button" class="back" data-go="3">&lsaquo; Back</button>
   </section>
@@ -298,6 +308,13 @@ details.signed li{margin:0 0 6px}
   <section class="step" id="s8">
     <div class="done" id="doneBody"></div>
   </section>
+
+  <!-- The price screen's button, stuck to the bottom of the phone. The club
+       card runs taller than a phone screen, and "scroll down and tap Join" is
+       the one instruction nobody should need on a call. Outside the steps on
+       purpose: a step animates with a transform, and position:fixed inside a
+       transformed box sticks to the box instead of the screen. -->
+  <div class="ctabar" id="ctabar"><button type="button" class="btn" id="goTimes">Pick my time</button></div>
 
   <p class="foot">Questions? Call or text me at <a href="tel:+14256007897">(425) 600-7897</a>.<br>Mikey's Mobile Detailing &middot; Snohomish, WA</p>
 </div>
@@ -360,6 +377,7 @@ details.signed li{margin:0 0 6px}
     // The receipt has its own headline with their name in it.
     $('intro').style.display = (n === 8) ? 'none' : '';
     document.body.classList.toggle('compact', n > 1);
+    document.body.classList.toggle('on-price', n === 4);
     if (push !== false){ try { history.pushState({ s:n }, '', location.pathname + location.search); } catch (e) {} }
     window.scrollTo(0, 0);
     track('Call page, step ' + n, ({ 1:'car', 2:'service', 3:'condition', 4:'price', 5:'time', 6:'details', 7:'agreement', 8:'done' })[n] || '');
@@ -395,7 +413,8 @@ details.signed li{margin:0 0 6px}
       $('priceHead').textContent = 'The Clean Club';
       h += '<div class="lbl">Your first visit, then every ' + wk + ' weeks</div>' +
         '<div class="amt" id="amt">' + money(first) + '<span class="was">' + money(reg) + '</span></div>' +
-        '<div class="what">My Full Detail, inside and out. $' + CLUB.off + ' off for joining.</div>';
+        '<div class="save">Save $' + CLUB.off + ' on your first visit</div>' +
+        '<div class="what">That\'s my Full Detail, inside and out.</div>';
       if (S.svc !== 'full'){
         var asked = oneTime(S.svc), diff = asked - first;
         h += '<div class="vs">' + (diff >= 0
@@ -406,7 +425,7 @@ details.signed li{margin:0 0 6px}
       h += '<div class="then">Then <b>every ' + wk + ' weeks: $' + CLUB.visit + ' a visit</b>, any size. It stays $' + CLUB.visit + ' while you\'re in. ' +
         'Keep your next ' + CLUB.keep + ' visits, then cancel anytime with a text.</div>';
       $('goTimes').textContent = 'Join the Clean Club';
-      $('tabsSub').textContent = 'Same $' + CLUB.visit + ' a visit either way. Every 4 weeks keeps it closest to how it looks after today.';
+      $('tabsSub').textContent = '$' + CLUB.visit + ' a visit either way.';
     }
     card.innerHTML = h;
     var tabs = document.querySelectorAll('.tab');

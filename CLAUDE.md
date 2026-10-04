@@ -176,6 +176,13 @@ one-time price first, then the Clean Club tabs (every 8 or every 4 weeks).
   missing. Nothing ever charges a card on its own: a payback is Mikey, in
   Stripe, after the text the terms promise. Tools → Clean Club in a
   conversation works out what they'd owe.
+- **White, not the site's black** (Mikey, 2026-10-04: the dark version threw
+  him off on a phone). Black type on white, and the brand red only on what to
+  tap and what they save, so "tap the red button" always has one answer. Its
+  logo is `/images/logo-header-light.png` (black MOBILE DETAILING); the dark
+  site's logo has white lettering that vanishes on white. On the price screen
+  the main button is pinned to the bottom of the phone, because the club card
+  runs taller than one screen.
 - **Rain-Ready shows here too**, because a club first visit is a Full Detail.
   It has its own copy of `RR_END` (see Offers and countdowns).
 - **What a club visit includes is unconfirmed.** The page and the terms say "an
