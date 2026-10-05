@@ -26,11 +26,11 @@ lands here too, and `tools/check-site.py` scans it for retired prices.
 About 2 hours total. In this order, because each one makes the next easier.
 
 0. **Before anything (10 min): answer two questions for yourself.**
-   - **What is (425) 232-1355?** Yelp shows it as your phone, and Yahoo copies
-     it from Yelp. If it's an old number, a second line or a Google Voice
-     number, it has to come off. Only (425) 600-7897 goes on any listing.
-     Yelp verifies by calling the number on the page, so if 232-1355 isn't a
-     phone you can answer, ask Yelp support to change it before you verify.
+   - **(425) 232-1355 is your old number** (you confirmed it on 2026-10-05).
+     Yelp shows it as your phone and Yahoo copies it from Yelp, so it has to
+     come off both. Only (425) 600-7897 goes on any listing. Yelp verifies by
+     calling the number on the page, so if you can't answer 232-1355 any
+     more, ask Yelp support to change it to 600-7897 before you verify.
    - **Does your Google Business Profile match the canonical block below?**
      Open it and check name, phone, website, the twelve towns and that the
      address is hidden. Bing copies it in step 2, so fix GBP first or you copy
