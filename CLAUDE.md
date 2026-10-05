@@ -395,6 +395,18 @@ sheet, and no "300+ cars" on the front). `RESEARCH.md` beside it has what
 printers and the few real studies say goes on a card; read it before adding
 anything to the back.
 
+## Car window decal
+
+`print/car-decal/` (not served) holds the decal for Mikey's own car (2026-10-05,
+for a Temu UV DTF order): MIKEY'S, MOBILE DETAILING and `425-600-7897`, white
+with a thin black keyline on a square transparent PNG. Read its `README.md`
+first. Copy lives in `print/tools/build-car-decal.cjs` (`npm run decal`). Same
+rules as the sign: one more copy of the facts table, **no prices, no offer, no
+review count**. It goes on the outside of the glass and **never on the front
+door windows** (RCW 46.37.410(2): nothing on a window that blocks the driver's
+view). UV DTF is a short-term product on a car; the README says so and what
+lasts longer.
+
 ## Gift cards
 
 Sold and tracked in the dashboard (Work → Get Paid → Gift cards, or Tools →
