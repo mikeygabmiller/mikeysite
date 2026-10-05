@@ -400,9 +400,10 @@ anything to the back.
 `print/car-decal/` (not served) holds the decal for Mikey's own car (2026-10-05,
 for a Temu UV DTF order): MIKEY'S, MOBILE DETAILING and `425-600-7897`, white
 with a thin black keyline on a square transparent PNG. Read its `README.md`
-first. Copy lives in `print/tools/build-car-decal.cjs` (`npm run decal`). Same
-rules as the sign: one more copy of the facts table, **no prices, no offer, no
-review count**. It goes on the outside of the glass and **never on the front
+first. Copy lives in `print/tools/build-car-decal.cjs` (`npm run decal`), which
+also writes the DIY versions: a one-colour cut SVG for a Cricut and a hand-cut
+template on Letter paper. Same rules as the sign: one more copy of the facts
+table, **no prices, no offer, no review count**. It goes on the outside of the glass and **never on the front
 door windows** (RCW 46.37.410(2): nothing on a window that blocks the driver's
 view). UV DTF is a short-term product on a car; the README says so and what
 lasts longer.

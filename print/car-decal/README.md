@@ -2,7 +2,8 @@
 
 The decal for Mikey's own car: MIKEY'S, MOBILE DETAILING and the number, white
 on clear so it reads on glass. Made 2026-10-05, when Mikey asked for a design
-to put on his side windows with a Temu UV DTF sticker order. Not served
+to put on his side windows with a Temu UV DTF sticker order, plus a cut file
+and a hand-cut template for doing it himself in vinyl. Not served
 (`_config.yml` excludes `print/`).
 
 A decal is one more copy of the facts table in the repo's `CLAUDE.md`: the
@@ -73,6 +74,23 @@ from inside shows its white backing, and aftermarket tint is on the inside).
   window goes down, the rubber strip at the bottom of the window opening drags
   over the decal, and that's what lifts edges.
 
+**Mikey's car is a 2005 Honda Accord EX** (2026-10-05; sedan or coupe not
+confirmed yet).
+
+- **Sedan:** the back window has no wiper, but the third brake light sits
+  inside the glass at the bottom middle, so the decal goes in a lower corner.
+  The rear door glass rolls down; the small fixed glass behind it is too small
+  for this decal.
+- **Coupe:** no rear doors, so the back window, or the fixed window behind
+  each door if 12 x 7 in of it is clear.
+- The factory glass isn't privacy glass, so unless it's been tinted the decal
+  sits on near-clear glass. White is still right (the inside of a car is
+  darker than daylight) and the keyline helps. Measure 12 x 7 in of glass
+  clear of the black dotted border first: nothing sticks well over the dots.
+- The back glass leans back, so from straight behind the letters look shorter
+  than they are. The car stopped right behind him is close enough; from far
+  back it reads less far than the table above.
+
 ## The honest part about UV DTF
 
 UV DTF (the Temu kind) is made for tumblers, bottles and phone cases. Its
@@ -98,11 +116,51 @@ come out white).
 
 Order one more than the windows need: the first one is practice.
 
+## Doing it yourself: cut vinyl
+
+Mikey asked for a DIY way (2026-10-05). Cut vinyl is what sign shops letter
+windows with, and it outlasts UV DTF: ORACAL 651 is rated up to 6 years
+outdoors in white or black (4 in colours). It's one colour a sheet, so the DIY
+decal is all white: same layout, MIKEY'S as plain letters (its white outline
+in one colour would melt the letters together, and the sparkle is too fine to
+weed), no keyline.
+
+- **With a cutting machine:** `print-files/window-decal-cut.svg`, outlines
+  traced from the render so no fonts are needed. Cricut Design Space opens it;
+  so does Silhouette Studio Designer Edition (the free Basic edition can't open
+  SVG). It's drawn black so it shows on screen; cut it from white. Check the
+  width reads 11.28 in after upload; up to 11.5 in fits a 12 x 12 mat.
+- **No machine:** `print-files/hand-cut-template.pdf`, the same letters 10 in
+  wide on Letter paper turned sideways. Print at Actual size and check the
+  10 in bar, tape it over the vinyl, and cut along the letters through the
+  paper and the vinyl but not the backing. An hour or two with fresh blades.
+  At 10 in the number reads to about 36 ft and MOBILE DETAILING about 23 ft.
+- **What to buy:** white ORACAL 651 (a 12 in roll), clear transfer tape, a
+  squeegee or an old card; for cutting by hand, a hobby knife with spare #11
+  blades and a cutting mat or thick cardboard.
+- **Not worth it:** inkjet printable vinyl (a home printer can't print white,
+  and the ink fades in the sun) and window markers or paint pens (they look
+  hand-done, and markers wash off).
+
+Putting vinyl on is the hinge method, not the transfer steps above:
+
+1. Strip the spot of glass the same way (step 1 above).
+2. Lay the decal (backing, letters, transfer tape) where it goes and tape a
+   strip of masking tape across its middle, so it hinges there.
+3. Flip one half up, peel the backing off that half and cut it away, then
+   squeegee that half down from the hinge out. Pull the hinge tape and do the
+   other half the same way.
+4. Peel the transfer tape back slowly, flat against itself. If a letter
+   comes up with it, lay it back down and rub it.
+5. Give it a couple of days before it gets washed.
+
 ## Rebuilding it
 
     cd print/tools && npm install && npm run decal
     WIDTH=10 npm run decal      # another width, in inches
 
-The generator fails on a price, an offer, a review count, "we", an em dash, a
-town he doesn't serve, a different phone number, or ink in the clear margin.
-Look at `preview.png` after any change.
+One run writes all four files: the PNG, `preview.png`, the cut SVG and the
+hand-cut template. The generator fails on a price, an offer, a review count,
+"we", an em dash, a town he doesn't serve, a different phone number, ink in
+the clear margin, or a template that spills onto a second page. Look at
+`preview.png` and the template after any change.
