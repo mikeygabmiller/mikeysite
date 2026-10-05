@@ -323,7 +323,7 @@ const frontHtml = (qr) => `
         <li class="f"><span>Ceramic wax</span><i><s>$20</s>Free</i></li>
         <li class="f"><span>RainX on the glass</span><i><s>$10</s>Free</i></li>
       </ul>
-      <div class="code">Mention this hanger when you book. I take 12 cars a week.</div>
+      <div class="code">Mention this hanger when you book.</div>
     </div>` : `
     <div class="plain">
       <div><b>No deposit.</b><span>You pay after the walk-around, never before.</span></div>
@@ -479,7 +479,7 @@ async function checkQr(page, pngBuf, label) {
     // Copy guard: the same rules as CLAUDE.md, checked on what actually rendered.
     const text = await page.evaluate(() => document.body.innerText);
     const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
-      [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'],
+      [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/cars a week|limited spots|a few a week/i, 'a retired scarcity claim (CLAUDE.md, 2026-09-29)'],
       [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b|\bour (?:team|crew|detailers)\b/i, 'business "we" (it is one guy: "I"; "we walk around it together" is fine)'], [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day (unconfirmed)']];
     for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
     if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
