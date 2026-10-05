@@ -5,7 +5,9 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 ROOT = Path("/home/user/mikeysite")
-SKIP = {"mockups", "systems", "_disabled", "social", "print"}  # _disabled/ is parked code, not served
+SKIP = {"mockups", "systems", "_disabled", "social", "print", "tools"}  # _disabled/ is parked code, not served
+# tools/ is excluded in _config.yml too; tools/blog-redirect/ is deployed to the old
+# blog subdomain on Netlify, not to this site.
 # social/ is the Instagram/Facebook kit, excluded in _config.yml. Its npm install
 # drops vendor HTML into social/tools/node_modules that is not ours to police;
 # the post copy gets its own em dash check in social/tools/render.cjs.

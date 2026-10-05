@@ -1,0 +1,15 @@
+# blog.mikeysdetailing.com moved onto mikeysdetailing.com on 2026-10-05.
+# This folder is deployed to the Netlify project "mikeysqqc" (drag and drop
+# on its Deploys page). The "!" forces the redirect even though index.html
+# exists. First match wins.
+/posts/how-to-get-coffee-stains-out-of-car-seats      https://mikeysdetailing.com/blog/how-to-get-coffee-stains-out-of-car-seats/  301!
+/posts/how-to-get-pet-hair-out-of-car-seats           https://mikeysdetailing.com/blog/how-to-get-pet-hair-out-of-car-seats/       301!
+/posts/how-often-should-you-detail-your-car           https://mikeysdetailing.com/blog/how-often-should-you-detail-your-car/       301!
+/posts/why-your-car-smells-bad                        https://mikeysdetailing.com/blog/why-your-car-smells-bad/                    301!
+/posts/headlight-restoration-worth-it                 https://mikeysdetailing.com/blog/headlight-restoration-worth-it/             301!
+/posts/is-ceramic-coating-worth-it-pacific-northwest  https://mikeysdetailing.com/ceramic-coating-snohomish-county/                301!
+/posts/car-wash-vs-detail-whats-the-difference        https://mikeysdetailing.com/mobile-detailing-vs-car-wash/                    301!
+/posts/mobile-car-detailing-monroe-wa                 https://mikeysdetailing.com/monroe/                                          301!
+/posts/car-detailing-lake-stevens-wa                  https://mikeysdetailing.com/lake-stevens/                                    301!
+/posts/everett-car-detailing-guide                    https://mikeysdetailing.com/everett/                                         301!
+/*                                                    https://mikeysdetailing.com/blog/                                            301!
