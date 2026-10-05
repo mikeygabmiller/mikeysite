@@ -407,6 +407,20 @@ door windows** (RCW 46.37.410(2): nothing on a window that blocks the driver's
 view). UV DTF is a short-term product on a car; the README says so and what
 lasts longer.
 
+## Air freshener
+
+`print/air-freshener/` (not served) holds the paper hang-tag freshener Mikey
+hands a customer at the walk-around, cut to the logo truck in two shapes until
+he picks one: **A** (the truck alone) and **B** (the truck over MIKEY'S /
+MOBILE DETAILING, recommended because it says what he does). Read its
+`README.md` first. Copy lives in `print/tools/build-air-freshener.cjs`
+(`npm run freshener`), which also makes the cut lines, so never hand-edit
+`dieline*.svg`. Same rules as the card: one more copy of the facts table, no
+prices, no offer, no review count. No name line either (Mikey questioned it on
+2026-10-05; the logo already says MIKEY'S). The back is the phone, the twelve
+towns and a QR with `utm_source=freshener`. Never a tree shape: Car-Freshner
+owns it.
+
 ## Gift cards
 
 Sold and tracked in the dashboard (Work → Get Paid → Gift cards, or Tools →

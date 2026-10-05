@@ -1,7 +1,7 @@
 {
   "name": "mikeys-print-tools",
   "private": true,
-  "description": "Renders print pieces (door hangers, EDDM postcard, yard sign, business card, gift card, car window decal). Not part of the website build.",
+  "description": "Renders print pieces (door hangers, EDDM postcard, yard sign, business card, gift card, car window decal, air freshener). Not part of the website build.",
   "scripts": {
     "hanger": "node build-door-hanger.cjs",
     "postcard": "node build-postcard.cjs",
@@ -10,7 +10,8 @@
     "card": "node build-business-card.cjs",
     "gift": "node build-gift-card.cjs",
     "spots": "python3 sign-spots.py",
-    "decal": "node build-car-decal.cjs"
+    "decal": "node build-car-decal.cjs",
+    "freshener": "node build-air-freshener.cjs"
   },
   "dependencies": {
     "@fontsource/anton": "^5.3.0",

@@ -175,6 +175,13 @@ cards have blanks, no printed number.
 back's red border sits inside the trim line on the preview, and the envelope
 count matches the card count.
 
+## Air fresheners: shape and printer not picked yet
+
+Details: `air-freshener/README.md`, "Getting it made". Two shapes are drawn
+(A, truck only; B, truck and name). Once Mikey picks one and a printer, this
+section gets the product path, files, quantity and the before-paying checks,
+like the others.
+
 ## Flyers: not designed yet
 
 There are no flyer files in this repo. They get designed first, the same way
