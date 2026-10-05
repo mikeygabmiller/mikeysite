@@ -494,6 +494,502 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 ---
 
+## Week 5
+
+### W01 · Check the cowl
+
+**Images (carousel, in this order):** `posts/W01-1.jpg`, `posts/W01-2.jpg`, `posts/W01-3.jpg`, `posts/W01-4.jpg`, `posts/W01-5.jpg`, `posts/W01-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Wet passenger footwell after a heavy rain? Before you blame a seal, check the cowl.
+
+The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's into the car.
+
+1. Lift the wipers off the glass so one can't snap back onto the windshield.
+2. Pull out what's sitting on top, by hand or with a shop vac.
+3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
+
+Don't leave the carpet wet. That's how the musty smell starts.
+
+Save this for the next windy week.
+
+#pnwrain #carcaretips #cardetailingtips #snohomishcounty #woodinville
+```
+
+**Facebook**
+
+```
+Wet passenger footwell after a heavy rain? Before you blame a seal, check the cowl.
+
+The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's into the car.
+
+1. Lift the wipers off the glass so one can't snap back onto the windshield.
+2. Pull out what's sitting on top, by hand or with a shop vac.
+3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
+
+Don't leave the carpet wet. That's how the musty smell starts.
+
+Save this for the next windy week.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: a wet passenger footwell often starts at the cowl, the panel under the wipers. Look for needles and leaves clogging its drains, lift the wipers and clear what you can reach, and get a mechanic to clear the drains you cannot.
+
+### P13 · Pumpkin patch mud
+
+**Images (carousel, in this order):** `posts/P13-1.jpg`, `posts/P13-2.jpg`, `posts/P13-3.jpg`, `posts/P13-4.jpg`, `posts/P13-5.jpg`, `posts/P13-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Muddy boots from the pumpkin patch? Don't scrub the carpet tonight. Let the mud dry first.
+
+Wet mud smears down into the carpet fibers. Dry mud breaks up and lifts out.
+
+1. Pull the floor mats out and dry them in the house. Leave the carpet alone tonight.
+2. Once it's dry and crumbly, knock it loose with a stiff brush.
+3. Vacuum slowly, twice, from two directions.
+4. Blot what's left with a damp microfiber. A shadow that still won't come out is what a carpet extractor is for.
+
+Save this for the corn maze trip. Which patch does your family go to?
+
+#pumpkinpatch #snohomish #carcleaninghacks #carcaretips #snohomishcounty
+```
+
+**Facebook**
+
+```
+Muddy boots from the pumpkin patch? Don't scrub the carpet tonight. Let the mud dry first.
+
+Wet mud smears down into the carpet fibers. Dry mud breaks up and lifts out.
+
+1. Pull the floor mats out and dry them in the house. Leave the carpet alone tonight.
+2. Once it's dry and crumbly, knock it loose with a stiff brush.
+3. Vacuum slowly, twice, from two directions.
+4. Blot what's left with a damp microfiber. A shadow that still won't come out is what a carpet extractor is for.
+
+Save this for the corn maze trip. Which patch does your family go to?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: getting mud out of car carpet. Leave wet mud alone and dry the mats inside, break it up with a stiff brush once dry, vacuum slowly twice, then blot what is left with a damp microfiber.
+
+### W02 · Leaves on the paint
+
+**Images (carousel, in this order):** `posts/W02-1.jpg`, `posts/W02-2.jpg`, `posts/W02-3.jpg`, `posts/W02-4.jpg`, `posts/W02-5.jpg`, `posts/W02-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Wet leaves on your paint leave a mark. Here's why, and how to keep it off.
+
+A wet leaf leaks tannin, the same brown stain it leaves on a sidewalk. Let one sit on the hood for a couple of weeks and you can see its outline, especially on white and silver cars.
+
+1. Don't wipe them off dry. There's grit under every leaf. Rinse them off, blow them off, or lift them straight up.
+2. Check the corners: where the hood meets the windshield, the door gaps, around the hatch. They stay wet there the longest.
+3. Already stained? A wash takes the fresh ones off. One that's been there for weeks can take a polish to get out.
+
+What's dropping on your car right now, maple or oak?
+
+#pnwfall #carcaretips #cardetailingtips #snohomishcounty #millcreekwa
+```
+
+**Facebook**
+
+```
+Wet leaves on your paint leave a mark. Here's why, and how to keep it off.
+
+A wet leaf leaks tannin, the same brown stain it leaves on a sidewalk. Let one sit on the hood for a couple of weeks and you can see its outline, especially on white and silver cars.
+
+1. Don't wipe them off dry. There's grit under every leaf. Rinse them off, blow them off, or lift them straight up.
+2. Check the corners: where the hood meets the windshield, the door gaps, around the hatch. They stay wet there the longest.
+3. Already stained? A wash takes the fresh ones off. One that's been there for weeks can take a polish to get out.
+
+What's dropping on your car right now, maple or oak?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: wet leaves leak tannin and can stain paint, especially white and silver. Rinse or lift them off instead of wiping dry, check the corners where they hide, and old stains can take a polish.
+
+
+---
+
+## Week 6
+
+### P14 · Wet dog season
+
+**Images (carousel, in this order):** `posts/P14-1.jpg`, `posts/P14-2.jpg`, `posts/P14-3.jpg`, `posts/P14-4.jpg`, `posts/P14-5.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Wet dog in the car? Three things before you drive, because the musty car in February starts with damp seats in October.
+
+1. Towel them at the door. Paws and belly. Most of the water and mud is on the bottom half of the dog.
+2. Cover the seat. A washable seat cover or an old blanket. Wet fur on cloth seats soaks through to the foam, and that takes days to dry.
+3. Dry the car out after. Heat on fresh air, not recirculate, on the drive home, and take the wet towel and blanket inside. A damp car shut up overnight smells musty by morning.
+
+Save this for the next muddy walk. Whose dog refuses to sit on the towel?
+
+#dogsofinstagram #pnwdogs #carcaretips #snohomishcounty #lakestevens
+```
+
+**Facebook**
+
+```
+Wet dog in the car? Three things before you drive, because the musty car in February starts with damp seats in October.
+
+1. Towel them at the door. Paws and belly. Most of the water and mud is on the bottom half of the dog.
+2. Cover the seat. A washable seat cover or an old blanket. Wet fur on cloth seats soaks through to the foam, and that takes days to dry.
+3. Dry the car out after. Heat on fresh air, not recirculate, on the drive home, and take the wet towel and blanket inside. A damp car shut up overnight smells musty by morning.
+
+Save this for the next muddy walk. Whose dog refuses to sit on the towel?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Five-slide tip carousel: wet dog in the car. Towel the dog off at the door, cover the seat with a washable cover or blanket, and dry the car out with heat on fresh air and the wet towels taken inside.
+
+### W03 · Streaky wipers
+
+**Images (carousel, in this order):** `posts/W03-1.jpg`, `posts/W03-2.jpg`, `posts/W03-3.jpg`, `posts/W03-4.jpg`, `posts/W03-5.jpg`, `posts/W03-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Streaky wipers? Most of the time it's the glass, not the blade.
+
+1. Wipe the blade edge. A damp paper towel down the rubber. The black line that comes off is what's been smearing.
+2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
+3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
+4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
+
+The clocks go back November 1. Do this before the dark, wet drives home.
+
+Save this one.
+
+#pnwrain #carcaretips #cardetailingtips #snohomishcounty #everettwa
+```
+
+**Facebook**
+
+```
+Streaky wipers? Most of the time it's the glass, not the blade.
+
+1. Wipe the blade edge. A damp paper towel down the rubber. The black line that comes off is what's been smearing.
+2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
+3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
+4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
+
+The clocks go back November 1. Do this before the dark, wet drives home.
+
+Save this one.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: fixing streaky wipers. Wipe the blade edge with a damp paper towel, clean the strip of windshield where the wipers park, replace blades that still smear, and only put RainX on clean glass.
+
+### B07 · Rain-Ready offer (not before week 5) · ⚠️ offer
+
+**Image:** `posts/B07.jpg`  
+**Type:** Offer
+
+**Instagram**
+
+```
+The Rain-Ready Full Detail. Book it by December 31.
+
+From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
+Exterior polish ($30)
+Ceramic wax ($20)
+RainX on the glass ($10)
+
+Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
+
+That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
+
+How to get it: pick Full Detail in the quote on my site and the extras go on by themselves. Or text me at (425) 600-7897 and say Rain-Ready.
+
+The quote on my site shows my real open times, so you can grab a day without texting back and forth.
+
+#snohomishcounty #cardetailing #mobiledetailing #pnwrain #lakestevens
+```
+
+**Facebook**
+
+```
+The Rain-Ready Full Detail. Book it by December 31.
+
+From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
+Exterior polish ($30)
+Ceramic wax ($20)
+RainX on the glass ($10)
+
+Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
+
+That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
+
+How to get it: pick Full Detail in the quote on my site and the extras go on by themselves. Or text me at (425) 600-7897 and say Rain-Ready.
+
+The quote on my site shows my real open times, so you can grab a day without texting back and forth.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Offer graphic: The Rain-Ready Full Detail, book by December 31. Full detail from $369, plus exterior polish ($30), ceramic wax ($20) and RainX on the glass ($10), all free. Pick Full Detail in the quote and the extras go on by themselves. You don't pay until you love it.
+
+
+---
+
+## Week 7
+
+### P15 · Headlights before the clocks go back
+
+**Images (carousel, in this order):** `posts/P15-1.jpg`, `posts/P15-2.jpg`, `posts/P15-3.jpg`, `posts/P15-4.jpg`, `posts/P15-5.jpg`, `posts/P15-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Dim headlights? Check the lens before you buy new bulbs. The clocks go back November 1, and the drive home is about to be dark.
+
+1. Wipe off the road film. The grey film on your lower doors is on your headlights and taillights too. A wet towel, then a dry one, whenever you stop for gas.
+2. Yellow or cloudy? That's the plastic. The clear protective layer on the lens breaks down in the sun over the years. It's on the outside, and a wash won't take it off.
+3. Restoring them? Seal it after. Sanding and polishing takes the haze off. Without a UV sealant on top, it can go cloudy again within months. (I do restorations as an add-on, but a parts store kit works too if you seal it.)
+4. Walk around with them on. Park facing the garage door at dusk: low beams, high beams, signals, and someone on the brake while you check the back.
+
+Save this one.
+
+#pnwwinter #carcaretips #cardetailingtips #snohomishcounty #marysvillewa
+```
+
+**Facebook**
+
+```
+Dim headlights? Check the lens before you buy new bulbs. The clocks go back November 1, and the drive home is about to be dark.
+
+1. Wipe off the road film. The grey film on your lower doors is on your headlights and taillights too. A wet towel, then a dry one, whenever you stop for gas.
+2. Yellow or cloudy? That's the plastic. The clear protective layer on the lens breaks down in the sun over the years. It's on the outside, and a wash won't take it off.
+3. Restoring them? Seal it after. Sanding and polishing takes the haze off. Without a UV sealant on top, it can go cloudy again within months. (I do restorations as an add-on, but a parts store kit works too if you seal it.)
+4. Walk around with them on. Park facing the garage door at dusk: low beams, high beams, signals, and someone on the brake while you check the back.
+
+Save this one.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: dim headlights before the clocks go back. Wipe road film off the lenses, yellow haze is the lens plastic breaking down, seal the lens after a restoration, and check every bulb at dusk.
+
+### P16 · Sticky cup holders
+
+**Images (carousel, in this order):** `posts/P16-1.jpg`, `posts/P16-2.jpg`, `posts/P16-3.jpg`, `posts/P16-4.jpg`, `posts/P16-5.jpg`, `posts/P16-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Candy season means sticky cup holders. Soak them, don't scrape them.
+
+1. See if it lifts out. Lots of cup holders have an insert that pulls straight up. If yours does, it goes in the sink with warm soapy water.
+2. If it doesn't, soak it. A warm, wet microfiber in the bottom for a few minutes softens the sugar so it wipes out.
+3. A soft brush for the ridges. An old toothbrush works. Skip the butter knife and the screwdriver, they scratch the plastic for good.
+4. Dry it, then line it. A silicone liner catches the next spill and goes in the sink next time.
+
+What's the stickiest thing you've found in a cup holder?
+
+#halloween #carcleaninghacks #carcaretips #snohomishcounty #millcreekwa
+```
+
+**Facebook**
+
+```
+Candy season means sticky cup holders. Soak them, don't scrape them.
+
+1. See if it lifts out. Lots of cup holders have an insert that pulls straight up. If yours does, it goes in the sink with warm soapy water.
+2. If it doesn't, soak it. A warm, wet microfiber in the bottom for a few minutes softens the sugar so it wipes out.
+3. A soft brush for the ridges. An old toothbrush works. Skip the butter knife and the screwdriver, they scratch the plastic for good.
+4. Dry it, then line it. A silicone liner catches the next spill and goes in the sink next time.
+
+What's the stickiest thing you've found in a cup holder?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: cleaning sticky cup holders. Check if the insert lifts out and wash it in the sink, otherwise soak the gunk with a warm wet microfiber, use a soft brush in the ridges instead of a knife, then dry it and add a silicone liner.
+
+### P17 · The trunk, October to March
+
+**Images (carousel, in this order):** `posts/P17-1.jpg`, `posts/P17-2.jpg`, `posts/P17-3.jpg`, `posts/P17-4.jpg`, `posts/P17-5.jpg`, `posts/P17-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+What I'd keep in the trunk from October to March. Four cheap things:
+
+1. Winter washer fluid. Summer fluid can freeze in the lines on a cold night, right when the road spray is worst. Get one rated below freezing and top up before it runs dry.
+2. Two microfiber towels. One for the inside of the glass when it fogs, one for mirrors and lights. Paper towels leave lint.
+3. A snow brush with a scraper. Brush the snow off first, then scrape, so you're not dragging grit across the glass.
+4. A trash bag. Wet umbrellas, jackets and muddy boots go in it instead of soaking into the carpet.
+
+Save this and stock it this weekend. What's in your trunk right now?
+
+#pnwwinter #carcaretips #cardetailingtips #snohomishcounty #monroewa
+```
+
+**Facebook**
+
+```
+What I'd keep in the trunk from October to March. Four cheap things:
+
+1. Winter washer fluid. Summer fluid can freeze in the lines on a cold night, right when the road spray is worst. Get one rated below freezing and top up before it runs dry.
+2. Two microfiber towels. One for the inside of the glass when it fogs, one for mirrors and lights. Paper towels leave lint.
+3. A snow brush with a scraper. Brush the snow off first, then scrape, so you're not dragging grit across the glass.
+4. A trash bag. Wet umbrellas, jackets and muddy boots go in it instead of soaking into the carpet.
+
+Save this and stock it this weekend. What's in your trunk right now?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: what to keep in the trunk from October to March. Winter washer fluid rated below freezing, two microfiber towels, a snow brush with a scraper, and a trash bag for wet gear.
+
+
+---
+
+## Week 8
+
+### W04 · 4 winter car myths
+
+**Images (carousel, in this order):** `posts/W04-1.jpg`, `posts/W04-2.jpg`, `posts/W04-3.jpg`, `posts/W04-4.jpg`, `posts/W04-5.jpg`, `posts/W04-6.jpg`  
+**Type:** Myths
+
+**Instagram**
+
+```
+Four winter car myths I hear every year:
+
+"No point washing it in winter." Road film and de-icer sit on the paint until something takes them off, and rain doesn't.
+
+"Hot water clears a frozen windshield." Hot water on freezing glass can crack it. Defroster and a plastic scraper.
+
+"The rain washes it for me." Rain lands dirty and dries in spots. It moves the dust around, it doesn't take the film off.
+
+"Wax is a summer thing." Wax matters more in the rain. It's what makes water bead and roll off instead of sitting on the paint.
+
+Got a winter one I missed? Comment it and I'll tell you straight.
+
+#pnwwinter #carcaretips #cardetailing #snohomishcounty #lakestevens
+```
+
+**Facebook**
+
+```
+Four winter car myths I hear every year:
+
+"No point washing it in winter." Road film and de-icer sit on the paint until something takes them off, and rain doesn't.
+
+"Hot water clears a frozen windshield." Hot water on freezing glass can crack it. Defroster and a plastic scraper.
+
+"The rain washes it for me." Rain lands dirty and dries in spots. It moves the dust around, it doesn't take the film off.
+
+"Wax is a summer thing." Wax matters more in the rain. It's what makes water bead and roll off instead of sitting on the paint.
+
+Got a winter one I missed? Comment it and I'll tell you straight.
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide carousel: four winter car myths. Washing in winter is worth it, hot water can crack a frozen windshield, rain does not wash a car, and wax matters more in the rain.
+
+### P18 · Frozen door seals
+
+**Images (carousel, in this order):** `posts/P18-1.jpg`, `posts/P18-2.jpg`, `posts/P18-3.jpg`, `posts/P18-4.jpg`, `posts/P18-5.jpg`, `posts/P18-6.jpg`  
+**Type:** Teach
+
+**Instagram**
+
+```
+Door frozen shut on a frosty morning? It's the rubber seals, and two minutes now fixes it.
+
+Rain sits on the seals around your doors. On a frosty night that water freezes the seal to the frame.
+
+1. Open each door and wipe the rubber with a damp microfiber, then dry it. Grit in the seal holds water and wears it down.
+2. Put a little silicone spray or rubber seal conditioner on a towel, not straight on the car, and wipe it onto the seals. Water beads off instead of freezing.
+3. Stuck anyway? Lean on the door a few times to crack the ice, then open it. Yanking it is how seals tear.
+
+Save this for the first frost. Has a door ever beaten you?
+
+#pnwwinter #carcaretips #cardetailingtips #snohomishcounty #duvallwa
+```
+
+**Facebook**
+
+```
+Door frozen shut on a frosty morning? It's the rubber seals, and two minutes now fixes it.
+
+Rain sits on the seals around your doors. On a frosty night that water freezes the seal to the frame.
+
+1. Open each door and wipe the rubber with a damp microfiber, then dry it. Grit in the seal holds water and wears it down.
+2. Put a little silicone spray or rubber seal conditioner on a towel, not straight on the car, and wipe it onto the seals. Water beads off instead of freezing.
+3. Stuck anyway? Lean on the door a few times to crack the ice, then open it. Yanking it is how seals tear.
+
+Save this for the first frost. Has a door ever beaten you?
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Six-slide tip carousel: doors frozen shut. Water on the rubber seals freezes them to the frame; wipe the seals clean and dry, wipe on a silicone or rubber protectant from a towel, and if stuck, push on the door before pulling.
+
+### B12 · Review: on time, as quoted
+
+**Image:** `posts/B12.jpg`  
+**Type:** Trust
+
+**Instagram**
+
+```
+"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+
+This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+
+5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
+
+Exact price for your car in 60 seconds, link in bio.
+
+#snohomishcounty #mobiledetailing #cardetailing #snohomish #shoplocal
+```
+
+**Facebook**
+
+```
+"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
+
+This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
+
+5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
+
+Exact price for your car in 60 seconds: mikeysdetailing.com
+```
+
+**Alt text** (Instagram: Advanced settings → Accessibility)
+
+> Five-star customer review: Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.
+
+
+---
+
 ## Bank (ready to go, use to fill any week)
 
 ### B01 · Recent driveways
@@ -682,55 +1178,6 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 > A clean Audi interior with cream leather seats and a spotless dashboard. Text: How often should you detail? Most cars: a full detail every 4 to 6 months.
 
-### B07 · Rain-Ready offer (not before week 5) · ⚠️ offer
-
-**Image:** `posts/B07.jpg`  
-**Type:** Offer
-
-**Instagram**
-
-```
-The Rain-Ready Full Detail. Book it by December 31.
-
-From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
-Exterior polish ($30)
-Ceramic wax ($20)
-RainX on the glass ($10)
-
-Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
-
-That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
-
-How to get it: pick Full Detail in the quote on my site and the extras go on by themselves. Or text me at (425) 600-7897 and say Rain-Ready.
-
-The quote on my site shows my real open times, so you can grab a day without texting back and forth.
-
-#snohomishcounty #cardetailing #mobiledetailing #pnwrain #lakestevens
-```
-
-**Facebook**
-
-```
-The Rain-Ready Full Detail. Book it by December 31.
-
-From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
-Exterior polish ($30)
-Ceramic wax ($20)
-RainX on the glass ($10)
-
-Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
-
-That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
-
-How to get it: pick Full Detail in the quote on my site and the extras go on by themselves. Or text me at (425) 600-7897 and say Rain-Ready.
-
-The quote on my site shows my real open times, so you can grab a day without texting back and forth.
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Offer graphic: The Rain-Ready Full Detail, book by December 31. Full detail from $369, plus exterior polish ($30), ceramic wax ($20) and RainX on the glass ($10), all free. Pick Full Detail in the quote and the extras go on by themselves. You don't pay until you love it.
-
 ### B08 · Cargo area before/after
 
 **Images (carousel, in this order):** `posts/B08-1.jpg`, `posts/B08-2.jpg`, `posts/B08-3.jpg`  
@@ -877,41 +1324,6 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 > Map of Snohomish County with pins on the twelve towns Mikey is in most weeks: Arlington, Marysville, Granite Falls, Lake Stevens, Everett, Mukilteo, Snohomish, Mill Creek, Monroe, Bothell, Woodinville and Duvall. No travel fee.
 
-### B12 · Review: on time, as quoted
-
-**Image:** `posts/B12.jpg`  
-**Type:** Trust
-
-**Instagram**
-
-```
-"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
-
-This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
-
-5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
-
-Exact price for your car in 60 seconds, link in bio.
-
-#snohomishcounty #mobiledetailing #cardetailing #snohomish #shoplocal
-```
-
-**Facebook**
-
-```
-"Mikey showed up on time, did exactly what he said, charged exactly what he quoted."
-
-This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
-
-5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
-
-Exact price for your car in 60 seconds: mikeysdetailing.com
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Five-star customer review: Mikey showed up on time, did exactly what he said, charged exactly what he quoted. That kind of service is really rare these days.
-
 ### B13 · Review: truck before selling
 
 **Image:** `posts/B13.jpg`  
@@ -978,172 +1390,6 @@ Where does your car live? Tell me below.
 ---
 
 ## Winter, October to December (in this order, three a week)
-
-### W01 · Check the cowl
-
-**Images (carousel, in this order):** `posts/W01-1.jpg`, `posts/W01-2.jpg`, `posts/W01-3.jpg`, `posts/W01-4.jpg`, `posts/W01-5.jpg`, `posts/W01-6.jpg`  
-**Type:** Teach
-
-**Instagram**
-
-```
-Wet passenger footwell after a heavy rain? Before you blame a seal, check the cowl.
-
-The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's into the car.
-
-1. Lift the wipers off the glass so one can't snap back onto the windshield.
-2. Pull out what's sitting on top, by hand or with a shop vac.
-3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
-
-Don't leave the carpet wet. That's how the musty smell starts.
-
-Save this for the next windy week.
-
-#pnwrain #carcaretips #cardetailingtips #snohomishcounty #woodinville
-```
-
-**Facebook**
-
-```
-Wet passenger footwell after a heavy rain? Before you blame a seal, check the cowl.
-
-The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's into the car.
-
-1. Lift the wipers off the glass so one can't snap back onto the windshield.
-2. Pull out what's sitting on top, by hand or with a shop vac.
-3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
-
-Don't leave the carpet wet. That's how the musty smell starts.
-
-Save this for the next windy week.
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Six-slide tip carousel: a wet passenger footwell often starts at the cowl, the panel under the wipers. Look for needles and leaves clogging its drains, lift the wipers and clear what you can reach, and get a mechanic to clear the drains you cannot.
-
-### W02 · Leaves on the paint
-
-**Images (carousel, in this order):** `posts/W02-1.jpg`, `posts/W02-2.jpg`, `posts/W02-3.jpg`, `posts/W02-4.jpg`, `posts/W02-5.jpg`, `posts/W02-6.jpg`  
-**Type:** Teach
-
-**Instagram**
-
-```
-Wet leaves on your paint leave a mark. Here's why, and how to keep it off.
-
-A wet leaf leaks tannin, the same brown stain it leaves on a sidewalk. Let one sit on the hood for a couple of weeks and you can see its outline, especially on white and silver cars.
-
-1. Don't wipe them off dry. There's grit under every leaf. Rinse them off, blow them off, or lift them straight up.
-2. Check the corners: where the hood meets the windshield, the door gaps, around the hatch. They stay wet there the longest.
-3. Already stained? A wash takes the fresh ones off. One that's been there for weeks can take a polish to get out.
-
-What's dropping on your car right now, maple or oak?
-
-#pnwfall #carcaretips #cardetailingtips #snohomishcounty #millcreekwa
-```
-
-**Facebook**
-
-```
-Wet leaves on your paint leave a mark. Here's why, and how to keep it off.
-
-A wet leaf leaks tannin, the same brown stain it leaves on a sidewalk. Let one sit on the hood for a couple of weeks and you can see its outline, especially on white and silver cars.
-
-1. Don't wipe them off dry. There's grit under every leaf. Rinse them off, blow them off, or lift them straight up.
-2. Check the corners: where the hood meets the windshield, the door gaps, around the hatch. They stay wet there the longest.
-3. Already stained? A wash takes the fresh ones off. One that's been there for weeks can take a polish to get out.
-
-What's dropping on your car right now, maple or oak?
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Six-slide tip carousel: wet leaves leak tannin and can stain paint, especially white and silver. Rinse or lift them off instead of wiping dry, check the corners where they hide, and old stains can take a polish.
-
-### W03 · Streaky wipers
-
-**Images (carousel, in this order):** `posts/W03-1.jpg`, `posts/W03-2.jpg`, `posts/W03-3.jpg`, `posts/W03-4.jpg`, `posts/W03-5.jpg`, `posts/W03-6.jpg`  
-**Type:** Teach
-
-**Instagram**
-
-```
-Streaky wipers? Most of the time it's the glass, not the blade.
-
-1. Wipe the blade edge. A damp paper towel down the rubber. The black line that comes off is what's been smearing.
-2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
-3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
-4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
-
-The clocks go back November 1. Do this before the dark, wet drives home.
-
-Save this one.
-
-#pnwrain #carcaretips #cardetailingtips #snohomishcounty #everettwa
-```
-
-**Facebook**
-
-```
-Streaky wipers? Most of the time it's the glass, not the blade.
-
-1. Wipe the blade edge. A damp paper towel down the rubber. The black line that comes off is what's been smearing.
-2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
-3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
-4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
-
-The clocks go back November 1. Do this before the dark, wet drives home.
-
-Save this one.
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Six-slide tip carousel: fixing streaky wipers. Wipe the blade edge with a damp paper towel, clean the strip of windshield where the wipers park, replace blades that still smear, and only put RainX on clean glass.
-
-### W04 · 4 winter car myths
-
-**Images (carousel, in this order):** `posts/W04-1.jpg`, `posts/W04-2.jpg`, `posts/W04-3.jpg`, `posts/W04-4.jpg`, `posts/W04-5.jpg`, `posts/W04-6.jpg`  
-**Type:** Myths
-
-**Instagram**
-
-```
-Four winter car myths I hear every year:
-
-"No point washing it in winter." Road film and de-icer sit on the paint until something takes them off, and rain doesn't.
-
-"Hot water clears a frozen windshield." Hot water on freezing glass can crack it. Defroster and a plastic scraper.
-
-"The rain washes it for me." Rain lands dirty and dries in spots. It moves the dust around, it doesn't take the film off.
-
-"Wax is a summer thing." Wax matters more in the rain. It's what makes water bead and roll off instead of sitting on the paint.
-
-Got a winter one I missed? Comment it and I'll tell you straight.
-
-#pnwwinter #carcaretips #cardetailing #snohomishcounty #lakestevens
-```
-
-**Facebook**
-
-```
-Four winter car myths I hear every year:
-
-"No point washing it in winter." Road film and de-icer sit on the paint until something takes them off, and rain doesn't.
-
-"Hot water clears a frozen windshield." Hot water on freezing glass can crack it. Defroster and a plastic scraper.
-
-"The rain washes it for me." Rain lands dirty and dries in spots. It moves the dust around, it doesn't take the film off.
-
-"Wax is a summer thing." Wax matters more in the rain. It's what makes water bead and roll off instead of sitting on the paint.
-
-Got a winter one I missed? Comment it and I'll tell you straight.
-```
-
-**Alt text** (Instagram: Advanced settings → Accessibility)
-
-> Six-slide carousel: four winter car myths. Washing in winter is worth it, hot water can crack a frozen windshield, rain does not wash a car, and wax matters more in the rain.
 
 ### W05 · The crumb cave
 
