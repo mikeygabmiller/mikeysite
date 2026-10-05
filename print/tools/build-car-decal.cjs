@@ -7,9 +7,12 @@
 //
 // Output lands in print/car-decal/: print-files/window-decal-<W>in.png (square,
 // transparent, 300 dpi: that's the upload) and preview.png (on tinted glass
-// and on clear glass over light seats). Read print/car-decal/README.md before
-// changing copy: like the sign and the card, the decal is one more copy of the
-// facts table in CLAUDE.md.
+// and on clear glass over light seats). For cutting it out of vinyl yourself
+// (the DIY way) it also writes print-files/window-decal-cut.svg (Cricut Design
+// Space, Silhouette Designer) and print-files/hand-cut-template.pdf (print it,
+// tape it over the vinyl, cut along the letters with a knife). Read
+// print/car-decal/README.md before changing copy: like the sign and the card,
+// the decal is one more copy of the facts table in CLAUDE.md.
 //
 // Who reads it: someone on the sidewalk or across the street while Mikey works
 // in their neighbour's driveway, 20 to 50 ft away, or a driver beside him at a
@@ -36,6 +39,7 @@
 // cropped, and nothing prints there (a transfer only lays down ink).
 
 const { chromium } = require('playwright');
+const { Potrace } = require('potrace');
 const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
@@ -126,6 +130,24 @@ function dist2(mask, w, h) {
   return out;
 }
 
+// Black-on-white render to outlines. Every outline gets its Z: potrace ends
+// each one on its start point but leaves the Z out, and some cutting software
+// wants it (as in build-business-card.cjs).
+function traceOutlines(png) {
+  return new Promise((res, rej) => {
+    const t = new Potrace({ turdSize: 100, optTolerance: 0.2, threshold: 128, alphaMax: 1 });
+    t.loadImage(png, err => {
+      if (err) return rej(err);
+      const d = t.getPathTag().match(/ d="([^"]+)"/)[1].trim();
+      res(d.split(/(?=M)/).map(s => s.trim().replace(/\s*[zZ]?$/, ' Z')).join(' '));
+    });
+  });
+}
+
+// The hand-cut template's width, in: the widest the design goes on Letter
+// paper turned sideways with half an inch either side.
+const TPL_W = 10;
+
 (async () => {
   fs.mkdirSync(path.join(OUT, 'print-files'), { recursive: true });
   const tmp = path.join(OUT, '.render.html');
@@ -173,6 +195,61 @@ function dist2(mask, w, h) {
 
   const art = await page.locator('#art').screenshot({ omitBackground: true, type: 'png' });
   const copy = await page.evaluate(() => [...document.querySelectorAll('text')].map(t => t.textContent).join('\n'));
+
+  // ---- The DIY cut file: one colour, the same layout, cut from white vinyl. ----
+  // Cut vinyl is one colour a sheet, so MIKEY'S is plain letters: its white
+  // outline in one colour would melt the letters into one blob, and the
+  // sparkle's points are too fine to weed. No keyline either. Traced from the
+  // 300 dpi render, so the cutter gets outlines and needs no fonts.
+  await page.evaluate(() => {
+    document.documentElement.style.background = document.body.style.background = '#fff';
+    const [letters, sparkle] = document.querySelectorAll('#mark path');
+    letters.setAttribute('fill', '#000');
+    letters.setAttribute('stroke', 'none');
+    sparkle.remove();
+    for (const t of document.querySelectorAll('text')) t.setAttribute('fill', '#000');
+  });
+  const band = { x: SIDE, y: L.top - 0.1, w: W - 2 * SIDE, h: L.bottom - L.top + 0.2 };
+  const flat = await page.screenshot({ type: 'png', clip: { x: band.x * 96, y: band.y * 96, width: band.w * 96, height: band.h * 96 } });
+  const fm = await sharp(flat).metadata();
+  const outlines = await traceOutlines(flat);
+  const cutSvg = (size = true) => `<svg xmlns="http://www.w3.org/2000/svg"${size ? ` width="${band.w.toFixed(3)}in" height="${band.h.toFixed(3)}in"` : ''} viewBox="0 0 ${fm.width} ${fm.height}">` +
+    `<path d="${outlines}" fill="#000" fill-rule="evenodd"/></svg>`;
+  fs.writeFileSync(path.join(OUT, 'print-files', 'window-decal-cut.svg'), cutSvg() + '\n');
+
+  // The template for cutting it by hand: the same outlines on Letter paper,
+  // TPL_W wide, with a bar to measure so a printer that shrinks it to fit
+  // gets caught before the vinyl is cut.
+  const tplH = TPL_W * band.h / band.w;
+  const arimo = wt => fileUrl(path.join(FS, 'arimo', 'files', `arimo-latin-${wt}-normal.woff2`));
+  const tpl = await browser.newPage();
+  await tpl.setContent(`<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:'Arimo';src:url(${arimo(400)}) format('woff2');font-weight:400}
+@font-face{font-family:'Arimo';src:url(${arimo(700)}) format('woff2');font-weight:700}
+@page{size:11in 8.5in;margin:0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:400 10pt/1.3 'Arimo';color:#111}
+.p{position:relative;width:11in;height:8.5in;padding:0.4in 0.5in}
+h1{font:700 11pt 'Arimo';margin-bottom:0.15in}
+.art svg{display:block;width:${TPL_W}in;height:${tplH}in}
+.bar{width:${TPL_W}in;height:0.1in;background:#111;margin:0.22in 0 0.07in}
+.note{margin-bottom:0.14in}
+ol{display:grid;grid-template-columns:1fr 1fr;column-gap:0.35in;row-gap:0.06in;padding-left:0.2in}
+</style></head><body><div class="p">
+<h1>Mikey's Mobile Detailing window decal: hand-cut template (${TPL_W} in wide)</h1>
+<div class="art">${cutSvg(false)}</div>
+<div class="bar"></div>
+<p class="note"><b>Print at Actual size (100%), not Fit to page.</b> This bar should measure exactly ${TPL_W} inches. If it doesn't, the letters are off too.</p>
+<ol>
+<li>Tape this sheet on top of white permanent outdoor vinyl (Oracal 651), on a cutting mat or cardboard.</li>
+<li>With a brand new hobby knife blade, cut along every letter edge, the holes inside letters too: through the paper and the vinyl, not the backing under it. Change the blade when it starts to drag.</li>
+<li>Lift off the paper. Peel away all the vinyl that isn't a letter, and pick the holes out of A, B, D, O, 6, 8, 9 and 0. The letters stay on the backing.</li>
+<li>Lay transfer tape over the letters, rub it down hard, then put it on the glass.</li>
+</ol>
+</div></body></html>`);
+  await tpl.evaluate(() => document.fonts.ready);
+  const tplPdf = await tpl.pdf({ width: '11in', height: '8.5in', printBackground: true });
+  fs.writeFileSync(path.join(OUT, 'print-files', 'hand-cut-template.pdf'), tplPdf);
   await browser.close();
   fs.unlinkSync(tmp);
 
@@ -210,6 +287,8 @@ function dist2(mask, w, h) {
   for (let x = 0; x < out.info.width; x += 4) for (const y of [0, out.info.height - 1])
     if (alphaAt(x, y)) { problems.push(`ink on the top or bottom edge (${x}, ${y})`); x = Infinity; break; }
   const [what, phone] = L.lines;
+  const pages = (tplPdf.toString('latin1').match(/\/Type\s*\/Page(?!s)/g) || []).length;
+  if (pages !== 1) problems.push(`the hand-cut template runs to ${pages} pages: it has to print on one`);
   if (phone.cap < what.cap) problems.push('the number is meant to be the biggest thing');
 
   // ---- Preview: the same decal on tinted glass and on clear glass over light seats. ----
