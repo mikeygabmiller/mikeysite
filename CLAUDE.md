@@ -315,6 +315,15 @@ Cold emails to businesses with vans, lots and fleets live in
 fact change lands there too. Same voice, no em dashes, only the twelve towns,
 and nothing about being insured until Mikey confirms it.
 
+## Directory listings
+
+`outreach/DIRECTORIES.md` (not served) is the kit for the 15 directories in
+GROWTH-PLAN.md SG6: the canonical name, phone, URL and twelve towns, what
+each existing listing gets wrong, and paste-ready copy fitted to each site's
+character limits. It restates prices and towns, so a fact change lands there
+too, and then on every listing. No street address ever goes on a listing or
+in that file (the repo is public on GitHub). Mikey submits them himself.
+
 ## Door hangers
 
 The print files live in `print/door-hanger/` (not served, `_config.yml`
