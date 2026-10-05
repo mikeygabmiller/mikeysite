@@ -18,13 +18,17 @@
 // in their neighbour's driveway, 20 to 50 ft away, or a driver beside him at a
 // light. So it follows the yard sign: what it is and the number, big, with
 // MIKEY'S as the brand mark, and nothing that changes (no price, no offer, no
-// review count: a decal stays on the glass for years). No QR and no website:
-// nobody scans a car, and the name finds the website.
+// review count: a decal stays on the glass for years). No QR: nobody scans a
+// car. The website went on at Mikey's request (2026-10-05), smallest and last:
+// a parked car gets read by people walking past, and the site gives them a
+// price without a phone call.
 //
 //   MIKEY'S              the logo's own MIKEY'S (vector: red, white outline,
 //                        sparkle), from logo-final/svg/wordmark-dark.svg
 //   MOBILE DETAILING     white, Fira Sans Extra Condensed 700, 1.25x tall, full width
 //   425-600-7897         white, same face, 1.42x tall, full width: the biggest thing
+//   mikeysdetailing.com  white, same face, 1.25x tall, 3/4 width, lower case like
+//                        the business card has it
 //
 // White, because what's behind a car window is dark: tint, or the shadow
 // inside the car. A thin black keyline around everything keeps it readable on
@@ -52,6 +56,7 @@ const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join(
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
 // Same number as (425) 600-7897; the brackets cost digit height, as on the sign.
 const PHONE = '425-600-7897';
+const SITE = 'mikeysdetailing.com';
 
 const W = +(process.env.WIDTH || 12);   // decal width, in; the canvas is W x W
 if (!(W >= 4 && W <= 24)) throw new Error('WIDTH is the decal width in inches, 4 to 24');
@@ -59,16 +64,19 @@ const DPI = 300;
 const SIDE = 0.03 * W;                  // clear margin left and right
 const KEY = 0.04;                       // keyline, in (about 1 mm)
 const MARK_W = 0.62;                    // MIKEY'S, as a share of the type width
-const GAPS = [0.035, 0.045];            // under MIKEY'S, under MOBILE DETAILING, as a share of W
+const GAPS = [0.035, 0.045, 0.035];     // under MIKEY'S, MOBILE DETAILING and the number, as a share of W
 const FIRA = { pkg: 'fira-sans-extra-condensed', family: 'Fira Sans Extra Condensed', weight: 700 };
+// share: how much of the type width the line's ink fills, centred.
 const LINES = [
-  { id: 'what', text: 'MOBILE DETAILING', stretch: 1.25, ref: 'H' },
-  { id: 'phone', text: PHONE, stretch: 1.42, ref: '8' },
+  { id: 'what', text: 'MOBILE DETAILING', stretch: 1.25, ref: 'H', share: 1 },
+  { id: 'phone', text: PHONE, stretch: 1.42, ref: '8', share: 1 },
+  { id: 'site', text: SITE, stretch: 1.25, ref: 'x', share: 0.75 },
 ];
 // Feet per inch of letter height for these exact faces and stretches, from
 // sign-legibility.py's model (2026-10-05; it gives the yard sign's 68 ft for
-// Fira 800 the same way). Glass reflects the sky, so on a car this is the best case.
-const FT_PER_IN = { what: 18.3, phone: 19.5 };
+// Fira 800 the same way). The website's is per inch of x-height, scored on the
+// letters in it. Glass reflects the sky, so on a car this is the best case.
+const FT_PER_IN = { what: 18.3, phone: 19.5, site: 23.2 };
 
 // MIKEY'S and its sparkle, lifted from the vector wordmark with the transform
 // they sit in. MOBILE DETAILING and its red rules stay behind: at decal size
@@ -144,10 +152,6 @@ function traceOutlines(png) {
   });
 }
 
-// The hand-cut template's width, in: the widest the design goes on Letter
-// paper turned sideways with half an inch either side.
-const TPL_W = 10;
-
 (async () => {
   fs.mkdirSync(path.join(OUT, 'print-files'), { recursive: true });
   const tmp = path.join(OUT, '.render.html');
@@ -172,19 +176,19 @@ const TPL_W = 10;
     const lines = LINES.map(l => {
       c.font = `${FIRA.weight} 100px '${FIRA.family}'`;
       const t = c.measureText(l.text), r = c.measureText(l.ref);
-      const size = usable / ((t.actualBoundingBoxLeft + t.actualBoundingBoxRight) / 100);
-      return { id: l.id, stretch: l.stretch, size, abl: t.actualBoundingBoxLeft / 100 * size,
+      const width = usable * l.share, size = width / ((t.actualBoundingBoxLeft + t.actualBoundingBoxRight) / 100);
+      return { id: l.id, stretch: l.stretch, size, x: (W - width) / 2 + t.actualBoundingBoxLeft / 100 * size,
         asc: t.actualBoundingBoxAscent / 100 * size * l.stretch, desc: t.actualBoundingBoxDescent / 100 * size * l.stretch,
         cap: r.actualBoundingBoxAscent / 100 * size * l.stretch };
     });
-    const markH = bh * s, total = markH + GAPS[0] * W + lines[0].asc + lines[0].desc + GAPS[1] * W + lines[1].asc + lines[1].desc;
+    const markH = bh * s, total = markH + lines.reduce((a, l, i) => a + GAPS[i] * W + l.asc + l.desc, 0);
     let y = (W - total) / 2;
     const top = y;
     mark.setAttribute('transform', `translate(${(W - bw * s) / 2 - bx * s} ${y - by * s}) scale(${s})`);
     y += markH + GAPS[0] * W;
     lines.forEach((l, i) => {
       const t = document.getElementById(l.id), base = y + l.asc;
-      t.setAttribute('x', SIDE + KEY + l.abl);
+      t.setAttribute('x', l.x);
       t.setAttribute('y', base / l.stretch);
       t.setAttribute('transform', `scale(1 ${l.stretch})`);
       t.style.fontSize = l.size + 'px';
@@ -217,9 +221,12 @@ const TPL_W = 10;
     `<path d="${outlines}" fill="#000" fill-rule="evenodd"/></svg>`;
   fs.writeFileSync(path.join(OUT, 'print-files', 'window-decal-cut.svg'), cutSvg() + '\n');
 
-  // The template for cutting it by hand: the same outlines on Letter paper,
-  // TPL_W wide, with a bar to measure so a printer that shrinks it to fit
-  // gets caught before the vinyl is cut.
+  // The template for cutting it by hand: the same outlines on Letter paper
+  // turned sideways, as wide as fits inside a home printer's margins (to the
+  // half inch, 10 in at most), and a bar to measure so a printer that shrinks
+  // it to fit gets caught before the vinyl is cut. The steps go on page 2.
+  const TPL_ROOM = 8.5 - 1.75;            // the page less its margins, the top line, the bar and its label
+  const TPL_W = Math.min(10, Math.floor(TPL_ROOM * band.w / band.h * 2) / 2);
   const tplH = TPL_W * band.h / band.w;
   const arimo = wt => fileUrl(path.join(FS, 'arimo', 'files', `arimo-latin-${wt}-normal.woff2`));
   const tpl = await browser.newPage();
@@ -229,25 +236,36 @@ const TPL_W = 10;
 @page{size:11in 8.5in;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font:400 10pt/1.3 'Arimo';color:#111}
-.p{position:relative;width:11in;height:8.5in;padding:0.4in 0.5in}
-h1{font:700 11pt 'Arimo';margin-bottom:0.15in}
-.art svg{display:block;width:${TPL_W}in;height:${tplH}in}
-.bar{width:${TPL_W}in;height:0.1in;background:#111;margin:0.22in 0 0.07in}
-.note{margin-bottom:0.14in}
-ol{display:grid;grid-template-columns:1fr 1fr;column-gap:0.35in;row-gap:0.06in;padding-left:0.2in}
-</style></head><body><div class="p">
-<h1>Mikey's Mobile Detailing window decal: hand-cut template (${TPL_W} in wide)</h1>
+.p{position:relative;width:11in;height:8.5in;padding:0.45in 0.5in;overflow:hidden;break-after:page}
+.p:last-child{break-after:auto}
+.top{margin-bottom:0.12in;text-align:center}
+.art svg{display:block;margin:0 auto;width:${TPL_W}in;height:${tplH}in}
+.lbl{margin:0.15in 0 0.05in;text-align:center}
+.bar{width:${TPL_W}in;height:0.1in;margin:0 auto;background:#111}
+h1{font:700 14pt 'Arimo';margin-bottom:0.2in}
+ol{padding-left:0.3in;font-size:12pt;line-height:1.4;max-width:8.6in}
+li{margin-bottom:0.14in}
+</style></head><body>
+<div class="p">
+<p class="top"><b>Mikey's Mobile Detailing window decal, hand-cut template.</b> Print at Actual size (100%), not Fit to page. The steps are on page 2.</p>
 <div class="art">${cutSvg(false)}</div>
+<p class="lbl">This bar has to measure exactly ${TPL_W} inches. If it doesn't, the letters are off too.</p>
 <div class="bar"></div>
-<p class="note"><b>Print at Actual size (100%), not Fit to page.</b> This bar should measure exactly ${TPL_W} inches. If it doesn't, the letters are off too.</p>
+</div>
+<div class="p">
+<h1>Cutting it by hand</h1>
 <ol>
-<li>Tape this sheet on top of white permanent outdoor vinyl (Oracal 651), on a cutting mat or cardboard.</li>
+<li>Tape page 1 on top of white permanent outdoor vinyl (Oracal 651), on a cutting mat or thick cardboard.</li>
 <li>With a brand new hobby knife blade, cut along every letter edge, the holes inside letters too: through the paper and the vinyl, not the backing under it. Change the blade when it starts to drag.</li>
-<li>Lift off the paper. Peel away all the vinyl that isn't a letter, and pick the holes out of A, B, D, O, 6, 8, 9 and 0. The letters stay on the backing.</li>
-<li>Lay transfer tape over the letters, rub it down hard, then put it on the glass.</li>
+<li>Lift off the paper and peel away all the vinyl that isn't a letter. Pick out the holes: the O, B, D and A, the 6, 0, 8 and 9, and the e, d, a, g and o in the website. The dots on the i's and the full stop are small, so leave them on the backing.</li>
+<li>Lay transfer tape over the letters and rub it down hard.</li>
+<li>Get the glass ready: polish any RainX or sealant off that spot until water sheets off instead of beading, wipe it with rubbing alcohol and let it dry.</li>
+<li>Put it on: tape it in place with a strip of masking tape across the middle. Flip one half up, peel the backing off that half, cut it away and squeegee that half down from the middle out. Pull the tape and do the other half. Then peel the transfer tape back slowly, flat against itself. Give it a couple of days before it gets washed.</li>
 </ol>
-</div></body></html>`);
+</div>
+</body></html>`);
   await tpl.evaluate(() => document.fonts.ready);
+  const tplOver = await tpl.evaluate(() => [...document.querySelectorAll('.p')].map(p => p.scrollHeight > p.clientHeight + 1));
   const tplPdf = await tpl.pdf({ width: '11in', height: '8.5in', printBackground: true });
   fs.writeFileSync(path.join(OUT, 'print-files', 'hand-cut-template.pdf'), tplPdf);
   await browser.close();
@@ -286,9 +304,13 @@ ol{display:grid;grid-template-columns:1fr 1fr;column-gap:0.35in;row-gap:0.06in;p
     if (alphaAt(x, y)) { problems.push(`ink at the side margin (${x}, ${y})`); y = Infinity; break; }
   for (let x = 0; x < out.info.width; x += 4) for (const y of [0, out.info.height - 1])
     if (alphaAt(x, y)) { problems.push(`ink on the top or bottom edge (${x}, ${y})`); x = Infinity; break; }
-  const [what, phone] = L.lines;
+  const [what, phone, site] = L.lines;
+  if (!copy.includes(SITE)) problems.push(`the website is not ${SITE}`);
+  if (site.cap >= what.cap * 0.7) problems.push('the website is meant to sit under MOBILE DETAILING, not compete with it');
   const pages = (tplPdf.toString('latin1').match(/\/Type\s*\/Page(?!s)/g) || []).length;
-  if (pages !== 1) problems.push(`the hand-cut template runs to ${pages} pages: it has to print on one`);
+  if (pages !== 2) problems.push(`the hand-cut template is ${pages} pages: it should be the cut sheet and the steps`);
+  tplOver.forEach((over, i) => over && problems.push(`page ${i + 1} of the hand-cut template runs off the paper`));
+  if (TPL_W < 8) problems.push(`the hand-cut template only fits ${TPL_W} in wide`);
   if (phone.cap < what.cap) problems.push('the number is meant to be the biggest thing');
 
   // ---- Preview: the same decal on tinted glass and on clear glass over light seats. ----
@@ -310,7 +332,7 @@ ol{display:grid;grid-template-columns:1fr 1fr;column-gap:0.35in;row-gap:0.06in;p
 
   const inch = v => v.toFixed(2) + ' in';
   console.log(`  ${path.relative(ROOT, file)}: ${w} x ${h} px, ${(png.length / 1e6).toFixed(2)} MB, the design ${inch(W - 2 * SIDE)} wide x ${inch(L.bottom - L.top + 2 * KEY)} tall`);
-  console.log(`  MIKEY'S ${inch(L.markCap)} letters, MOBILE DETAILING ${inch(what.cap)}, phone ${inch(phone.cap)}`);
-  console.log(`  reads to about ${Math.round(what.cap * FT_PER_IN.what)} ft (what it is) and ${Math.round(phone.cap * FT_PER_IN.phone)} ft (the number), 20/40 eyes, best case`);
+  console.log(`  MIKEY'S ${inch(L.markCap)} letters, MOBILE DETAILING ${inch(what.cap)}, phone ${inch(phone.cap)}, website ${inch(site.cap)} x-height`);
+  console.log(`  reads to about ${Math.round(what.cap * FT_PER_IN.what)} ft (what it is), ${Math.round(phone.cap * FT_PER_IN.phone)} ft (the number) and ${Math.round(site.cap * FT_PER_IN.site)} ft (the website), 20/40 eyes, best case`);
   if (problems.length) { console.error('\nPROBLEMS:\n  ' + problems.join('\n  ')); process.exit(1); }
 })().catch(e => { console.error(e); process.exit(1); });
