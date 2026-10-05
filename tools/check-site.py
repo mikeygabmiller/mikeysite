@@ -444,6 +444,15 @@ if len(said) != 3:
     fails.append(f"index.html: the guarantee is said {len(said)} times outside the Love It Guarantee section; "
                  f"it belongs in the hero, the price reveal and the final CTA only")
 
+# Every image is served from mikeysdetailing.com (GROWTH-PLAN.md SG5). Until
+# 2026-10-05, 22 loaded from Google Drive, two of them 1.6 MB with a customer's
+# plate readable. A Drive or i.ibb.co link breaks the day its owner tidies up.
+for p in pages:
+    src = p.read_text(encoding="utf-8")
+    for m in re.finditer(r'<img\b[^>]*\ssrc="(https?://(?!mikeysdetailing\.com/)[^"]+)"'
+                         r'|<meta property="og:image" content="(https?://(?!mikeysdetailing\.com/)[^"]+)"', src):
+        fails.append(f"{p.relative_to(ROOT)}: image served from another site: {(m.group(1) or m.group(2))[:80]}")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:
