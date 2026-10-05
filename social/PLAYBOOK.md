@@ -280,20 +280,46 @@ then pin all three (on each post: ⋯ → Pin to your profile).
 
 That's 11 posts that give and 1 that asks.
 
-**Bank** (finished, for week 5 on; keep the one-ask-in-four rule): B01 recent
-driveways, B02 to B05 and B12, B13 reviews (no more than one every two weeks),
-B06 how often to detail, **B07 the Rain-Ready offer ⚠️ your yes first**, B08
+**Bank** (finished, for week 9 on; keep the one-ask-in-four rule): B01 recent
+driveways, B02 to B05 and B13 reviews (no more than one every two weeks),
+B06 how often to detail, B08
 cargo before/after, B09 how booking works, B10 spigot and an outlet, B11 the
 map of your 12 towns, B14 driveway or garage (the Pilot, in a customer's
 garage).
 
 After week 4, story answers and new job photos keep it going (section 6).
 
+### Weeks 5 to 8 (mid-October to mid-November)
+
+Queued 2026-10-05. Rain, leaves, mud, the clocks going back on November 1
+and the first frosts. Ten give, two ask, and the asks sit six posts apart.
+Four of the winter posts are in here under their own ids, because this is
+when they're true.
+
+| Week | Post | Type | What it is |
+|---|---|---|---|
+| 5 | W01 | Teach | Wet footwell? Check the cowl |
+| 5 | P13 | Teach | Mud from the pumpkin patch: let it dry first |
+| 5 | W02 | Teach | Wet leaves stain paint (tannin) |
+| 6 | P14 | Teach | Wet dog in the car: towel, cover, dry it out |
+| 6 | W03 | Teach | Streaky wipers (must go up **before Nov 1**) |
+| 6 | B07 | **Ask** ⚠️ | The Rain-Ready Full Detail (your yes first, see section 3) |
+| 7 | P15 | Teach | Dim headlights before the clocks go back |
+| 7 | P16 | Teach | Sticky cup holders (Halloween week) |
+| 7 | P17 | Teach | What I'd keep in the trunk, October to March |
+| 8 | W04 | Myths | 4 winter car myths |
+| 8 | P18 | Teach | Door frozen shut? Treat the rubber seals |
+| 8 | B12 | **Ask** | Review: on time, as quoted |
+
+If job photos come in, swap a before/after (told as a lesson) into any
+week's third slot and push the bumped post into week 9.
+
 ### Winter posts (October to December)
 
-Nine more, built 2026-10-02, in `CAPTIONS.md` under "Winter". Post them in
-order, three a week, mixed in with before/afters as job photos come in. Seven
-teach, two ask, and the asks never sit next to each other.
+Nine more, built 2026-10-02. W01 to W04 went into weeks 5 to 8 above on
+2026-10-05; W05 to W09 are in `CAPTIONS.md` under "Winter", for week 9 on.
+Post them in order, mixed in with before/afters as job photos come in, and
+the asks never sit next to each other.
 
 | Order | Post | Type | What it is | When |
 |---|---|---|---|---|
