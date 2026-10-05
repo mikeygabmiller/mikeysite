@@ -32,19 +32,29 @@ JSONLD = re.compile(
 BIZ_ID   = f"{SITE}/#business"
 PERSON_ID= f"{SITE}/#mikey"
 SITE_ID  = f"{SITE}/#website"
-OG_IMAGE = "https://iili.io/qKtjLcx.jpg"   # TODO: swap to /images/og-image.jpg once self-hosted (G1)
-LOGO     = "https://i.ibb.co/Kxzv8C6d/logo.jpg"
+OG_IMAGE = f"{SITE}/images/og-image.jpg"
+LOGO     = f"{SITE}/images/logo-square.png"
 
 # --- canonical city data (one coordinate per city; the repo had drift) -----
+# The twelve served towns, in the order areaServed lists them. This is one more
+# copy of the TOWNS list in index.html: a town added there goes here too, or a
+# rerun drops it from every page's schema. Duvall and Woodinville are King
+# County; filing them under Snohomish is the error check-site caught on
+# 2026-09-10.
+SNO, KING = "Snohomish County, WA", "King County, WA"
 CITIES = {
-    "Snohomish":    ("98290", 47.9129, -122.0982),
-    "Everett":      ("98201", 47.9789, -122.2021),
-    "Lake Stevens": ("98258", 48.0151, -122.0610),
-    "Mill Creek":   ("98012", 47.8601, -122.2043),
-    "Monroe":       ("98272", 47.8554, -121.9718),
-    "Bothell":      ("98021", 47.7623, -122.2054),
-    "Duvall":       ("98019", 47.7423, -121.9854),
-    "Marysville":   ("98270", 48.0518, -122.1771),
+    "Snohomish":     ("98290", 47.9129, -122.0982, SNO),
+    "Everett":       ("98201", 47.9789, -122.2021, SNO),
+    "Lake Stevens":  ("98258", 48.0151, -122.0610, SNO),
+    "Mill Creek":    ("98012", 47.8601, -122.2043, SNO),
+    "Monroe":        ("98272", 47.8554, -121.9718, SNO),
+    "Bothell":       ("98021", 47.7623, -122.2054, SNO),
+    "Duvall":        ("98019", 47.7423, -121.9854, KING),
+    "Marysville":    ("98270", 48.0518, -122.1771, SNO),
+    "Mukilteo":      ("98275", 47.9445, -122.3046, SNO),
+    "Granite Falls": ("98252", 48.0832, -121.9676, SNO),
+    "Arlington":     ("98223", 48.1987, -122.1251, SNO),
+    "Woodinville":   ("98072", 47.7543, -122.1635, KING),
 }
 
 # --- canonical price book -------------------------------------------------
@@ -58,7 +68,7 @@ CORE_SERVICES = [
      "Hand wash, decontamination, clay bar, wheels and tires, exterior glass, "
      "wax or sealant applied to the paint."),
     ("Full Detail", "Full Car Detailing", 369, 449,
-     "Interior and exterior combined — the complete service, inside and out."),
+     "Interior and exterior combined. The complete service, inside and out."),
 ]
 
 # --- per-page Service definitions -----------------------------------------
@@ -82,6 +92,9 @@ PAGE_SERVICE = {
     "bothell/index.html":              ("Bothell",     "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "duvall/index.html":               ("Duvall",      "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "marysville/index.html":           ("Marysville",  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "mukilteo/index.html":             ("Mukilteo",    "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "woodinville/index.html":          ("Woodinville", "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "arlington/index.html":            ("Arlington",   "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "paint-correction-snohomish-county/index.html": (None,"Paint Correction",  "Paint Correction",     400, 1200),
     "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      500, None),
@@ -92,23 +105,30 @@ PAGE_SERVICE = {
     "services/exterior.html":          (None, "Exterior Detail", "Exterior Car Detailing", 199, 279),
 }
 
-SKIP_DIRS = {"mockups", "systems"}
+# The same set check-site.py skips: parked code, design experiments, and the
+# social and print kits (their node_modules carry vendor HTML). A noindex page
+# (the call page) is skipped in main(), because it is kept out of search on
+# purpose and has no schema to write.
+SKIP_DIRS = {"mockups", "systems", "_disabled", "social", "print"}
 
 
 def price_spec(lo, hi):
-    spec = {"@type": "PriceSpecification", "minPrice": str(lo), "priceCurrency": "USD"}
+    # Key order matches the pages as they are (maxPrice before priceCurrency),
+    # so a rerun that changes nothing writes nothing.
+    spec = {"@type": "PriceSpecification", "minPrice": str(lo)}
     if hi is not None:
         spec["maxPrice"] = str(hi)
+    spec["priceCurrency"] = "USD"
     return spec
 
 
 def area_served():
     out = []
-    for name, (zipc, lat, lng) in CITIES.items():
+    for name, (zipc, lat, lng, county) in CITIES.items():
         out.append({
             "@type": "City", "name": name,
             "containedInPlace": {"@type": "AdministrativeArea",
-                                 "name": "Snohomish County, WA"},
+                                 "name": county},
         })
     out.append({
         "@type": "GeoCircle",
@@ -129,7 +149,7 @@ def business_node(reviews, speakable):
         "description": (
             "Owner-operated mobile car detailing serving Snohomish County and north "
             "King County, Washington. Mikey drives to your home or workplace and details "
-            "the vehicle in your driveway — there is no shop to visit. Interior, exterior, "
+            "the vehicle in your driveway. There is no shop to visit. Interior, exterior, "
             "full detail, paint correction and ceramic coating. You don't pay until you "
             "love it."
         ),
@@ -203,7 +223,7 @@ def person_node():
         "jobTitle": "Owner & Detailer",
         "description": (
             "Mikey Miller has been detailing cars since 2021 and runs Mikey's Mobile "
-            "Detailing single-handed — every car on the books is detailed by him, not "
+            "Detailing single-handed. Every car on the books is detailed by him, not "
             "by a crew. Over 300 vehicles detailed across Snohomish County at a 5.0-star "
             "average."
         ),
@@ -246,7 +266,7 @@ def service_node(page_url, spec):
         "areaServed": (
             {"@type": "City", "name": city,
              "containedInPlace": {"@type": "AdministrativeArea",
-                                  "name": "Snohomish County, WA"},
+                                  "name": CITIES[city][3]},
              "geo": {"@type": "GeoCoordinates",
                      "latitude": CITIES[city][1], "longitude": CITIES[city][2]}}
             if city else
@@ -262,6 +282,115 @@ def service_node(page_url, spec):
     return node
 
 
+def rebuild(rels, html):
+    """The page as this script would write it: (new_html, note), or (None,
+    reason) for a page it leaves alone. check-site.py calls this and fails if
+    a rerun would change any page, so the generator and the pages can't drift
+    apart unnoticed (a meta description edited without its JSON-LD twin, a new
+    town missing from CITIES)."""
+    m = re.search(r'<link rel="canonical" href="([^"]+)"', html)
+    if not m:
+        return None, "SKIP (no canonical)"
+    page_url = m.group(1)
+    if re.search(r'<meta name="robots" content="[^"]*noindex', html):
+        return None, "SKIP (noindex)"
+
+    blocks = JSONLD.findall(html)
+    faq = breadcrumb = None
+    reviews = speakable = None
+    extras = []
+    # Flatten: a page may hold separate blocks (first run) or a single
+    # @graph (re-run). Both must yield the same nodes, or re-running the
+    # script silently drops the FAQ and breadcrumb it can no longer see.
+    nodes = []
+    for b in blocks:
+        d = json.loads(b)
+        nodes.extend(d["@graph"] if "@graph" in d else [d])
+    for d in nodes:
+        t = d.get("@type")
+        ts = set(t) if isinstance(t, list) else {t}
+        if t == "FAQPage":
+            faq = d
+        elif t == "BreadcrumbList":
+            breadcrumb = d
+        elif ts & {"LocalBusiness", "AutoDetailing", "AutoRepair"}:
+            reviews = d.get("review") or reviews
+            speakable = d.get("speakable") or speakable
+        elif not ts & {"Person", "WebSite", "WebPage", "Service"}:
+            extras.append(d)   # a node this script doesn't build itself
+
+    title = re.search(r"<title>(.*?)</title>", html, re.S)
+    desc = re.search(r'<meta name="description" content="([^"]*)"', html)
+
+    graph = [business_node(reviews, speakable), person_node(), website_node()]
+
+    webpage = {
+        "@type": "WebPage",
+        "@id": page_url + "#webpage",
+        "url": page_url,
+        "name": (title.group(1).strip() if title else "Mikey's Mobile Detailing"),
+        "isPartOf": {"@id": SITE_ID},
+        "about": {"@id": BIZ_ID},
+        "primaryImageOfPage": OG_IMAGE,
+        "inLanguage": "en-US",
+    }
+    if desc:
+        webpage["description"] = desc.group(1)
+    if breadcrumb:
+        webpage["breadcrumb"] = {"@id": page_url + "#breadcrumb"}
+    graph.append(webpage)
+
+    if breadcrumb:
+        breadcrumb = dict(breadcrumb)
+        breadcrumb.pop("@context", None)
+        breadcrumb["@id"] = page_url + "#breadcrumb"
+        graph.append(breadcrumb)
+
+    if faq:
+        faq = dict(faq)
+        faq.pop("@context", None)
+        faq["@id"] = page_url + "#faq"
+        faq["isPartOf"] = {"@id": page_url + "#webpage"}
+        faq["about"] = {"@id": BIZ_ID}
+        graph.append(faq)
+
+    # Anything else on the page (the Polish Test's VideoGame) is kept as
+    # it is and anchored to the page. "Nothing is dropped" has to include
+    # node types this script has never heard of.
+    for d in extras:
+        d = dict(d)
+        d.pop("@context", None)
+        t = d.get("@type")
+        d.setdefault("@id", page_url + "#" + str((t[0] if isinstance(t, list) else t) or "node").lower())
+        graph.append(d)
+
+    spec = PAGE_SERVICE.get(rels)
+    if spec:
+        graph.append(service_node(page_url, spec))
+
+    payload = {"@context": "https://schema.org", "@graph": graph}
+    script = ('<!-- Schema: one linked entity graph, see GROWTH-PLAN.md -->\n'
+              '<script type="application/ld+json">\n'
+              + json.dumps(payload, indent=2, ensure_ascii=False)
+              + '\n</script>\n')
+
+    new_html, n = BLOCK.subn("", html)
+    if blocks:
+        # Re-insert at the position the first block occupied.
+        first = JSONLD.search(html)
+        head_close = new_html.find("</head>")
+        new_html = new_html[:head_close] + script + new_html[head_close:]
+    else:
+        head_close = new_html.find("</head>")
+        if head_close == -1:
+            return None, "SKIP (no </head>)"
+        new_html = new_html[:head_close] + script + new_html[head_close:]
+
+
+    return new_html, (f"{len(graph)} nodes "
+                      f"({'+svc' if spec else '   '}{',+faq' if faq else ''})")
+
+
 def main(apply=False):
     changed, report = [], []
     for p in sorted(ROOT.rglob("*.html")):
@@ -269,95 +398,11 @@ def main(apply=False):
         if rel.parts[0] in SKIP_DIRS:
             continue
         rels = str(rel)
-        html = p.read_text(encoding="utf-8")
-
-        m = re.search(r'<link rel="canonical" href="([^"]+)"', html)
-        if not m:
-            report.append(f"SKIP (no canonical): {rels}")
+        new_html, note = rebuild(rels, p.read_text(encoding="utf-8"))
+        if new_html is None:
+            report.append(f"{note}: {rels}")
             continue
-        page_url = m.group(1)
-
-        blocks = JSONLD.findall(html)
-        faq = breadcrumb = None
-        reviews = speakable = None
-        # Flatten: a page may hold separate blocks (first run) or a single
-        # @graph (re-run). Both must yield the same nodes, or re-running the
-        # script silently drops the FAQ and breadcrumb it can no longer see.
-        nodes = []
-        for b in blocks:
-            d = json.loads(b)
-            nodes.extend(d["@graph"] if "@graph" in d else [d])
-        for d in nodes:
-            t = d.get("@type")
-            ts = set(t) if isinstance(t, list) else {t}
-            if t == "FAQPage":
-                faq = d
-            elif t == "BreadcrumbList":
-                breadcrumb = d
-            elif ts & {"LocalBusiness", "AutoDetailing", "AutoRepair"}:
-                reviews = d.get("review") or reviews
-                speakable = d.get("speakable") or speakable
-
-        title = re.search(r"<title>(.*?)</title>", html, re.S)
-        desc = re.search(r'<meta name="description" content="([^"]*)"', html)
-
-        graph = [business_node(reviews, speakable), person_node(), website_node()]
-
-        webpage = {
-            "@type": "WebPage",
-            "@id": page_url + "#webpage",
-            "url": page_url,
-            "name": (title.group(1).strip() if title else "Mikey's Mobile Detailing"),
-            "isPartOf": {"@id": SITE_ID},
-            "about": {"@id": BIZ_ID},
-            "primaryImageOfPage": OG_IMAGE,
-            "inLanguage": "en-US",
-        }
-        if desc:
-            webpage["description"] = desc.group(1)
-        if breadcrumb:
-            webpage["breadcrumb"] = {"@id": page_url + "#breadcrumb"}
-        graph.append(webpage)
-
-        if breadcrumb:
-            breadcrumb = dict(breadcrumb)
-            breadcrumb.pop("@context", None)
-            breadcrumb["@id"] = page_url + "#breadcrumb"
-            graph.append(breadcrumb)
-
-        if faq:
-            faq = dict(faq)
-            faq.pop("@context", None)
-            faq["@id"] = page_url + "#faq"
-            faq["isPartOf"] = {"@id": page_url + "#webpage"}
-            faq["about"] = {"@id": BIZ_ID}
-            graph.append(faq)
-
-        spec = PAGE_SERVICE.get(rels)
-        if spec:
-            graph.append(service_node(page_url, spec))
-
-        payload = {"@context": "https://schema.org", "@graph": graph}
-        script = ('<!-- Schema: one linked entity graph — see GROWTH-PLAN.md -->\n'
-                  '<script type="application/ld+json">\n'
-                  + json.dumps(payload, indent=2, ensure_ascii=False)
-                  + '\n</script>\n')
-
-        new_html, n = BLOCK.subn("", html)
-        if blocks:
-            # Re-insert at the position the first block occupied.
-            first = JSONLD.search(html)
-            head_close = new_html.find("</head>")
-            new_html = new_html[:head_close] + script + new_html[head_close:]
-        else:
-            head_close = new_html.find("</head>")
-            if head_close == -1:
-                report.append(f"SKIP (no </head>): {rels}")
-                continue
-            new_html = new_html[:head_close] + script + new_html[head_close:]
-
-        report.append(f"{'WROTE' if apply else 'would write'} {len(graph)} nodes "
-                      f"({'+svc' if spec else '   '}{',+faq' if faq else ''}) {rels}")
+        report.append(f"{'WROTE' if apply else 'would write'} {note} {rels}")
         if apply:
             p.write_text(new_html, encoding="utf-8")
         changed.append(rels)
