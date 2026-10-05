@@ -661,7 +661,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 ```
 How often should you detail your car? For most cars, a full detail every 4 to 6 months.
 
-If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 1 to 3 months for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
+If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 4 or 8 weeks for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
 
 Exact price for your car in 60 seconds, link in bio.
 
@@ -673,7 +673,7 @@ Exact price for your car in 60 seconds, link in bio.
 ```
 How often should you detail your car? For most cars, a full detail every 4 to 6 months.
 
-If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 1 to 3 months for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
+If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 4 or 8 weeks for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
 
 Exact price for your car in 60 seconds: mikeysdetailing.com
 ```

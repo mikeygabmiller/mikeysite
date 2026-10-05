@@ -385,7 +385,7 @@ ${Q}
     alt: 'A clean Audi interior with cream leather seats and a spotless dashboard. Text: How often should you detail? Most cars: a full detail every 4 to 6 months.',
     ig: `How often should you detail your car? For most cars, a full detail every 4 to 6 months.
 
-If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 1 to 3 months for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
+If you'd rather never let it get that far, that's what the Clean Club is for. I come back every 4 or 8 weeks for a flat $125 a visit, so the car never gets bad enough to need the deep reset.
 
 ${Q}
 
