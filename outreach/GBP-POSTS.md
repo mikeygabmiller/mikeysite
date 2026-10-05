@@ -152,12 +152,12 @@ Ceramic wax on top. Rain beads and rolls off, and road grime has a harder time s
 
 RainX on the glass. Water sheets off the windshield at speed, which you notice the first dark night on I-5 or US-2.
 
-All of that rides on a Full Detail, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Worth $508, from $369: that's a sedan's interior, exterior and the three extras booked separately.
+All of that rides on a Full Detail, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Booked separately, a sedan's interior, exterior and those three extras would be $508. Worth $508, from $369.
 
 Same price in Everett, Marysville, Mill Creek or Duvall, no travel fee. Pick Full Detail in the quote and the extras go on by themselves.
 ```
 
-*902 characters, 171 words.*
+*912 characters, 173 words.*
 
 ---
 
@@ -308,14 +308,14 @@ Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and
 
 It's the booking date that counts, not the day I do it. Short days mean a lot of Full Details land on Saturdays, so if you book in December, the detail itself can happen as late as January 31.
 
-Why these three: the polish takes off the film and swirls the fall left behind. The ceramic wax goes on clean paint so rain beads and grime slides off. RainX makes water sheet off the windshield, which you'll notice the first time you're on I-5 in the dark.
+Why these three: the polish takes off the film and swirls the fall left behind. The ceramic wax goes on clean paint so rain beads up and grime slides off. RainX makes water sheet off the windshield, which you'll notice the first time you're on I-5 in the dark.
 
 $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price from Arlington down to Bothell.
 
 Pick Full Detail in the quote and the extras go on by themselves.
 ```
 
-*813 characters, 155 words.*
+*816 characters, 156 words.*
 
 ---
 
