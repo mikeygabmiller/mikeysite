@@ -25,12 +25,14 @@
 - **Payment:** Payment is taken after the job, never a deposit: "you don't pay
   until you love it"
 - **Requirements:** The customer provides access to an outdoor water spigot and a
-  power outlet. The customer does not need to be home.
+  power outlet; using the customer's is how Mikey keeps prices low. If there truly
+  isn't one, he can bring water and power, but only if absolutely necessary. The
+  customer does not need to be home.
 
 ## Services and prices
 
 - **Exterior Detail, $199 to $279.** Wash, decontamination, wheels, tires, glass,
-  and protection applied to the paint.
+  and protection applied to the paint. Takes about 1 to 2 hours.
 - **Interior Detail, $249 to $329.** Vacuum, shampoo/extraction, plastics and
   leather cleaned and dressed, glass, deodorized. A basic interior takes about
   90 minutes, or 2 to 4 hours with extraction or heavy pet hair.

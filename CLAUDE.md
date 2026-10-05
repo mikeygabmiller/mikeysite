@@ -24,6 +24,8 @@ pages disagreeing is a promise he can't keep on one of them.
 | Quote calculator takes | **60 seconds** | never 30, never 90 |
 | Full detail takes | **3–5 hours** | never 3–4 |
 | Basic interior takes | **about 90 minutes** | 2–4 hrs with extraction or pet hair |
+| Exterior detail takes | **about 1–2 hours** | set 2026-10-05 to match the calendar's 2 hr plan (pages had said 1–1.5 and 1.5–2.5); Mikey to confirm |
+| Clean Club visit takes | **unconfirmed** | Mikey wasn't sure (2026-10-05). Copy says a club visit takes less than a first detail, never a number |
 | Cars detailed | **300+** | |
 | Google rating | **5.0 across 41 reviews** | |
 | Detailing since | **2021** | |
@@ -33,17 +35,23 @@ pages disagreeing is a promise he can't keep on one of them.
 | Longest job times | **Exterior 2 hrs, Interior 3 hrs, Full Detail 4.5 hrs** | the booking calendar plans on these; not customer copy (customers get the ranges above) |
 | Capacity | **no weekly number** | "12 cars a week" was retired 2026-09-29 (his real week holds about 7). Scarcity is the live "Next opening" line instead |
 | Payment | after the work, never a deposit | a Clean Club card is saved with Stripe, not charged |
-| **Customer must provide** | **outdoor water spigot + power outlet** | no tank, no generator — do not write that he can bring his own |
+| **Customer provides** | **outdoor water spigot + power outlet** | using theirs is how he keeps prices low. He can bring water and power if there's truly none, "if absolutely necessary" (Mikey, 2026-10-05): copy may say so as the exception, always with that reason, never as the default and never with a price |
+| Licensed / insured | **neither** | Mikey, 2026-10-05. Never claim or hint at either. `outreach/FLEET-EMAILS.md`: no dealership emails until he is |
+| Old phone number | **(425) 232-1355** | his old number, still on Yelp and Yahoo (`outreach/DIRECTORIES.md`). Never use it |
+
+Settled by Mikey on 2026-10-05:
+
+- **The schema's hours.** His Google Business Profile says open 24 hours, 7
+  days, so the schema's `openingHoursSpecification` (24/7) matches it. That's
+  quotes and texts; appointments stay "weekday afternoons and Saturdays" in
+  copy, as on the terms page and in `llms.txt`.
+- **Licensed and insured.** He is neither. It appears nowhere on the site;
+  keep it that way.
 
 Still **unconfirmed**, ask Mikey before writing it:
 
-- **The schema's hours.** `openingHoursSpecification` on every page says open
-  24 hours, 7 days. That's true for quotes and texts, not appointments, and it
-  should match whatever his Google Business Profile says. Left alone on
-  2026-09-29 until he checks his GBP hours; the terms page and `llms.txt` now
-  say weekday afternoons and Saturdays.
-- **Licensed and insured.** It appears nowhere on the site. It's a strong trust
-  signal for a stranger in a driveway, but don't assert it until he confirms.
+- **What's in a Clean Club visit, and how long one takes** (see the call page
+  section).
 
 **Prices have their own file: `PRICING.md`.** It has the price book, what
 old quotes and printed pieces are honored at, and the checklist for the next
@@ -94,7 +102,7 @@ Rules that follow from that:
   |---|---|
   | joining two whole sentences | a full stop. "Yes. I'm in Everett most weeks." |
   | an aside inside one sentence | a comma. "Bigger vehicles take more time, so I want your estimate accurate." |
-  | introducing a list | a colon. "I bring the tools: extractor, polisher, product." (Never "water" or "power": the customer provides both.) |
+  | introducing a list | a colon. "I bring the tools: extractor, polisher, product." (Not "water" or "power": the customer provides those unless there's truly none.) |
   | a true parenthetical | brackets. "I run a real trade (300+ cars, 5.0 stars) on this system." |
   | separating a title | the pipe. "Mobile Car Detailing Snohomish, WA \| See Your Price Now" |
 
@@ -240,6 +248,11 @@ Don't widen it, extend the window or swap the extras without Mikey; it's
 the same promise the hangers and postcards make. After January 1 take the
 dormant code out rather than leaving it.
 
+**The maintenance page has its own offer** (`/mobile-auto-maintenance/`): a
+free 30-point inspection with an oil change booked into a Friday-through-Monday
+slot. Mikey kept it on 2026-10-05. It names its window, which is the rule
+below, and since he never works Sunday there are no Sunday slots to take.
+
 The old free-exterior Fri-Mon offer is parked whole in
 `_disabled/free-exterior-offer.html`. Keep the rule it taught: **don't write
 copy that implies a one-off deadline** for something that runs every week, the
@@ -276,6 +289,9 @@ page's Service node), re-read it against the facts table, then run
   city, service and price so they survive the trim. Fifteen were over; the
   longest was 260.
 - Titles follow `Mobile Detailing <City>, WA | Mikey's Mobile Detailing`.
+  Everett and Bothell are testing `Mobile Car Detailing <City>, WA` since
+  2026-10-05 (`reports/2026-10-scoreboard.md`): roll it out to the other city
+  pages if they move by the November pull, put it back if they don't.
 - FAQ answers exist **twice** on most pages: once visible, once inside a
   JSON-LD `FAQPage` block. Edit both or the schema starts lying.
 - A page's JSON-LD `WebPage` name and description are its `<title>` and meta

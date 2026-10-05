@@ -317,7 +317,7 @@ def copy_text(src):
     s = re.sub(r"<[^>]+>", " ", s)
     return re.sub(r"\s+", " ", _html.unescape(s + " . " + attrs))
 
-SENT = re.compile(r"(?<=[.!?])[\"”']?\s+|\s\.\s")
+SENT = re.compile(r"(?<=[.!?])[\"”']?,?\s+|\s\.\s")
 copies = {str(p.relative_to(ROOT)): copy_text(p.read_text(encoding="utf-8")) for p in pages}
 copies["llms.txt"] = (ROOT / "llms.txt").read_text(encoding="utf-8")
 
@@ -326,9 +326,11 @@ copies["llms.txt"] = (ROOT / "llms.txt").read_text(encoding="utf-8")
 # interior about 90 minutes, 2-4 h with extraction or pet hair; one-step
 # correction 6-8 h (multi-stage is counted in days). Exterior, coating and
 # pet hair on its own have no number in the facts table, so they aren't checked.
+# An exterior is about 1-2 h (CLAUDE.md, 2026-10-05).
 HOURS = re.compile(r"(\d+(?:\.\d+)?)\s*(?:–|-|to)\s*(\d+(?:\.\d+)?)\s*(?:hours?|hrs?)\b", re.I)
-SUBJ = re.compile(r"full details?|\binteriors?\b|\bexteriors?\b|correction|coating|pet hair|\bwash\b", re.I)
-ALLOWED = {"full detail": {("3", "5")}, "interior": {("2", "4")}, "correction": {("6", "8")}}
+SUBJ = re.compile(r"full details?|interior (?:and|\+|&) exterior|\binteriors?\b|\bexteriors?\b|correction|coating|pet hair|\bwash\b", re.I)
+ALLOWED = {"full detail": {("3", "5")}, "interior": {("2", "4")}, "correction": {("6", "8")},
+           "exterior": {("1", "2")}}   # exterior: set 2026-10-05 to fit the calendar's 2 hr plan
 wrong_time = []
 for rel, text in copies.items():
     for sent in SENT.split(text):
@@ -341,7 +343,7 @@ for rel, text in copies.items():
             if not m:
                 continue
             subj = m.group(0).lower().rstrip("s")
-            subj = "full detail" if subj.startswith("full detail") else subj
+            subj = "full detail" if subj.startswith(("full detail", "interior and", "interior +", "interior &")) else subj
             if subj in ALLOWED and (h.group(1), h.group(2)) not in ALLOWED[subj]:
                 wrong_time.append(f"{rel}: {subj} {h.group(0)!r} in \"{sent.strip()[:90]}\"")
 if wrong_time:
@@ -409,7 +411,7 @@ for p in pages:
                          r"|\bour (?:team|crew|detailers|services)\b|\bOur Services\b", text, re.I):
         fails.append(f"{rel}: business \"{m.group(0)}\", it's \"I\"")
     for m in re.finditer(r"\b(seamless\w*|elevat(?:e|es|ed|ing)|unlock\w*|transform(?:s|ed|ing|ative|ation)?|jaw[- ]dropping"
-                         r"|meticulous\w*|showroom shine|bumper[- ]to[- ]bumper perfection)\b|\b(?:it'?s|is|isn['’]t) not just\b|\bnot just\b",
+                         r"|meticulous\w*|showroom[- ](?:shine|clean|finish|ready|quality)|bumper[- ]to[- ]bumper perfection)\b|\b(?:it'?s|is|isn['’]t) not just\b|\bnot just\b",
                          text, re.I):
         fails.append(f"{rel}: agency word \"{m.group(0)}\"")
     for m in re.finditer(r"<(?:a|button)\b[^>]*>\s*(Get Your[^<]{0,30})", src):
