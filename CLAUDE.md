@@ -315,6 +315,15 @@ Cold emails to businesses with vans, lots and fleets live in
 fact change lands there too. Same voice, no em dashes, only the twelve towns,
 and nothing about being insured until Mikey confirms it.
 
+## Directory listings
+
+`outreach/DIRECTORIES.md` (not served) is the kit for the 15 directories in
+GROWTH-PLAN.md SG6: the canonical name, phone, URL and twelve towns, what
+each existing listing gets wrong, and paste-ready copy fitted to each site's
+character limits. It restates prices and towns, so a fact change lands there
+too, and then on every listing. No street address ever goes on a listing or
+in that file (the repo is public on GitHub). Mikey submits them himself.
+
 ## Door hangers
 
 The print files live in `print/door-hanger/` (not served, `_config.yml`
@@ -398,8 +407,9 @@ anything to the back.
 ## Car window decal
 
 `print/car-decal/` (not served) holds the decal for Mikey's own car (2026-10-05,
-for a Temu UV DTF order): MIKEY'S, MOBILE DETAILING and `425-600-7897`, white
-with a thin black keyline on a square transparent PNG. Read its `README.md`
+for a Temu UV DTF order): MIKEY'S, MOBILE DETAILING, `425-600-7897` and
+`mikeysdetailing.com` (added at Mikey's request), white with a thin black
+keyline on a square transparent PNG. Read its `README.md`
 first. Copy lives in `print/tools/build-car-decal.cjs` (`npm run decal`), which
 also writes the DIY versions: a one-colour cut SVG for a Cricut and a hand-cut
 template on Letter paper. Same rules as the sign: one more copy of the facts

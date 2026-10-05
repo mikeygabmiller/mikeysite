@@ -198,7 +198,8 @@ for fp in biz_fingerprints:
 
 price_files = served + [ROOT / "social/tools/posts.cjs", ROOT / "social/tools/render.cjs",
                         ROOT / "print/tools/build-door-hanger.cjs", ROOT / "print/tools/build-postcard.cjs",
-                        ROOT / "outreach/FLEET-EMAILS.md"]
+                        ROOT / "outreach/FLEET-EMAILS.md",
+                        ROOT / "outreach/DIRECTORIES.md"]
 OLD = re.compile(r"\$(\d{3})\b(?: cordless)?")
 stale_prices = []
 for q in price_files:

@@ -1,7 +1,7 @@
 # Car window decal
 
-The decal for Mikey's own car: MIKEY'S, MOBILE DETAILING and the number, white
-on clear so it reads on glass. Made 2026-10-05, when Mikey asked for a design
+The decal for Mikey's own car: MIKEY'S, MOBILE DETAILING, the number and the
+website, white on clear so it reads on glass. Made 2026-10-05, when Mikey asked for a design
 to put on his side windows with a Temu UV DTF sticker order, plus a cut file
 and a hand-cut template for doing it himself in vinyl. Not served
 (`_config.yml` excludes `print/`).
@@ -25,15 +25,16 @@ prints nothing.
 - **Pick the biggest size they offer.** The decal reads about as far as its
   letters are tall:
 
-| Decal width | MOBILE DETAILING reads to | The number reads to |
-|---|---|---|
-| 12 in (the design is 11.3 x 6.4 in) | about 26 ft | about 41 ft |
-| 8 in | about 17 ft | about 27 ft |
-| 6 in | about 13 ft | about 20 ft |
+| Decal width | MOBILE DETAILING reads to | The number reads to | The website reads to |
+|---|---|---|---|
+| 12 in (the design is 11.3 x 8.2 in) | about 26 ft | about 41 ft | about 17 ft |
+| 8 in | about 17 ft | about 27 ft | about 11 ft |
+| 6 in | about 13 ft | about 20 ft | about 8 ft |
 
 Those are 20/40 eyes in the best case, from `print/tools/sign-legibility.py`'s
 model run on these exact faces (18.3 ft per inch of letter height for the
-words, 19.5 for the number). Glass reflects the sky, so real life is a bit
+words, 19.5 for the number, 23.2 per inch of x-height for the website's
+lower case). Glass reflects the sky, so real life is a bit
 less. Across a street from a driveway is 30 to 50 ft, which is why under 8 in
 isn't worth putting on a car.
 
@@ -56,8 +57,12 @@ isn't worth putting on a car.
 - **No truck.** At window size it would shrink the number for a picture that
   reads as a red blob from the street. A rear-window version with the truck is
   easy to add if Mikey wants one.
-- **No QR and no website.** Nobody scans a car, and "Mikey's detailing" finds
-  the website.
+- **No QR:** nobody scans a car. **The website went on at Mikey's request**
+  (2026-10-05). A parked car gets read by people walking past, and the site
+  gives them a price without a phone call. It's the smallest line, three
+  quarters of the width and lower case like the business card, so it sits
+  under the number instead of competing with it. It added 1.8 in to the
+  height.
 
 ## Where it goes
 
@@ -82,10 +87,10 @@ confirmed yet).
   The rear door glass rolls down; the small fixed glass behind it is too small
   for this decal.
 - **Coupe:** no rear doors, so the back window, or the fixed window behind
-  each door if 12 x 7 in of it is clear.
+  each door if 12 x 9 in of it is clear.
 - The factory glass isn't privacy glass, so unless it's been tinted the decal
   sits on near-clear glass. White is still right (the inside of a car is
-  darker than daylight) and the keyline helps. Measure 12 x 7 in of glass
+  darker than daylight) and the keyline helps. Measure 12 x 9 in of glass
   clear of the black dotted border first: nothing sticks well over the dots.
 - The back glass leans back, so from straight behind the letters look shorter
   than they are. The car stopped right behind him is close enough; from far
@@ -130,11 +135,13 @@ weed), no keyline.
   so does Silhouette Studio Designer Edition (the free Basic edition can't open
   SVG). It's drawn black so it shows on screen; cut it from white. Check the
   width reads 11.28 in after upload; up to 11.5 in fits a 12 x 12 mat.
-- **No machine:** `print-files/hand-cut-template.pdf`, the same letters 10 in
-  wide on Letter paper turned sideways. Print at Actual size and check the
-  10 in bar, tape it over the vinyl, and cut along the letters through the
-  paper and the vinyl but not the backing. An hour or two with fresh blades.
-  At 10 in the number reads to about 36 ft and MOBILE DETAILING about 23 ft.
+- **No machine:** `print-files/hand-cut-template.pdf`. Page 1 is the same
+  letters on Letter paper turned sideways, as wide as fits inside a home
+  printer's margins (9 in with the website line); page 2 is the steps. Print
+  at Actual size and check the bar, tape it over the vinyl, and cut along the
+  letters through the paper and the vinyl but not the backing. Two hours or
+  so with fresh blades. At 9 in the number reads to about 33 ft, MOBILE
+  DETAILING about 21 ft, the website about 13 ft.
 - **What to buy:** white ORACAL 651 (a 12 in roll), clear transfer tape, a
   squeegee or an old card; for cutting by hand, a hobby knife with spare #11
   blades and a cutting mat or thick cardboard.
@@ -162,5 +169,6 @@ Putting vinyl on is the hinge method, not the transfer steps above:
 One run writes all four files: the PNG, `preview.png`, the cut SVG and the
 hand-cut template. The generator fails on a price, an offer, a review count,
 "we", an em dash, a town he doesn't serve, a different phone number, ink in
-the clear margin, or a template that spills onto a second page. Look at
+the clear margin, a different website, a website line that grows past
+MOBILE DETAILING, or a template page that runs off the paper. Look at
 `preview.png` and the template after any change.

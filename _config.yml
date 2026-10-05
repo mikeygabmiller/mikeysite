@@ -55,6 +55,9 @@ exclude:
   # with the distribution and tracking plan. They go to a print shop, not here.
   - print/
 
+  # Monthly scoreboards: rankings, competitors and what to fix next. Strategy.
+  - reports/
+
   # Jekyll's own defaults, restated because setting this key replaces them.
   - Gemfile
   - Gemfile.lock
