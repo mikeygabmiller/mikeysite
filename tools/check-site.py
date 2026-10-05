@@ -269,6 +269,181 @@ else:
         for d in off[:12]:
             fails.append(f"    {d}")
 
+# --- the schema generator reproduces every page ------------------------------
+# tools/build-entity-graph.py writes each page's JSON-LD from the page itself
+# (title, meta description, FAQ, breadcrumb) and its own tables (the business
+# node, the twelve towns, each page's Service). If a rerun would change a page,
+# the two have drifted apart: on 2026-10-05 a rerun would have dropped four
+# towns from areaServed on every page and put Duvall back in Snohomish County,
+# and 15 pages had a meta description edited without its JSON-LD copy. Fix the
+# page or the generator's tables, then `python3 tools/build-entity-graph.py --apply`.
+import importlib.util
+sys.dont_write_bytecode = True
+_spec = importlib.util.spec_from_file_location("entity_graph", ROOT / "tools" / "build-entity-graph.py")
+eg = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(eg)
+regen = []
+for p in pages:
+    rel = str(p.relative_to(ROOT))
+    src = p.read_text(encoding="utf-8")
+    new, _ = eg.rebuild(rel, src)
+    if new is not None and new != src:
+        regen.append(rel)
+if regen:
+    fails.append(f"a rerun of tools/build-entity-graph.py would change {len(regen)} page(s), "
+                 f"so its tables and the pages disagree: {regen[:8]}")
+# The served towns live in three places: TOWNS on the homepage (the map and the
+# ZIP checker), CITIES in the generator (areaServed on every page), and a city
+# page for each one that has p: set. They have to name the same twelve.
+yes = re.findall(r"\{\s*n:'([^']+)',\s*t:'yes'", home)
+if set(yes) != set(eg.CITIES):
+    fails.append(f"served towns disagree: TOWNS has {sorted(set(yes) - set(eg.CITIES))} that CITIES "
+                 f"in build-entity-graph.py doesn't, CITIES has {sorted(set(eg.CITIES) - set(yes))} that TOWNS doesn't")
+for bad in ("Lynnwood", "Edmonds"):
+    if bad in eg.CITIES or bad in yes:
+        fails.append(f"{bad} is listed as served; Mikey said no (CLAUDE.md, the service area)")
+
+# --- the facts table, in the copy --------------------------------------------
+# What the 2026-10-05 audit found by reading, written down so it fails next time
+# instead of waiting for the next audit. Each rule is a fact from CLAUDE.md.
+def copy_text(src):
+    """What a reader or a crawler gets: visible text, meta content, alt text and
+    JSON-LD, without CSS, SVG or the page's own JavaScript."""
+    attrs = " . ".join(re.findall(r'<meta [^>]*content="([^"]*)"', src) + re.findall(r'\balt="([^"]*)"', src))
+    s = re.sub(r"<(style|svg|noscript)\b.*?</\1>", " ", src, flags=re.S | re.I)
+    s = re.sub(r"<script(?![^>]*ld\+json)\b.*?</script>", " ", s, flags=re.S | re.I)
+    s = re.sub(r"<!--.*?-->", " ", s, flags=re.S)
+    s = re.sub(r"<(?:/p|/li|/h\d|/td|/tr|br|/div)\b[^>]*>", " . ", s, flags=re.I)
+    s = re.sub(r"<[^>]+>", " ", s)
+    return re.sub(r"\s+", " ", _html.unescape(s + " . " + attrs))
+
+SENT = re.compile(r"(?<=[.!?])[\"”']?\s+|\s\.\s")
+copies = {str(p.relative_to(ROOT)): copy_text(p.read_text(encoding="utf-8")) for p in pages}
+copies["llms.txt"] = (ROOT / "llms.txt").read_text(encoding="utf-8")
+
+# Durations. A range's subject is the last of these named before it in the
+# sentence (or the first after it): full detail 3-5 h, never 3-4; a basic
+# interior about 90 minutes, 2-4 h with extraction or pet hair; one-step
+# correction 6-8 h (multi-stage is counted in days). Exterior, coating and
+# pet hair on its own have no number in the facts table, so they aren't checked.
+HOURS = re.compile(r"(\d+(?:\.\d+)?)\s*(?:–|-|to)\s*(\d+(?:\.\d+)?)\s*(?:hours?|hrs?)\b", re.I)
+SUBJ = re.compile(r"full details?|\binteriors?\b|\bexteriors?\b|correction|coating|pet hair|\bwash\b", re.I)
+ALLOWED = {"full detail": {("3", "5")}, "interior": {("2", "4")}, "correction": {("6", "8")}}
+wrong_time = []
+for rel, text in copies.items():
+    for sent in SENT.split(text):
+        for h in HOURS.finditer(sent):
+            before = list(SUBJ.finditer(sent, 0, h.start()))
+            after = SUBJ.search(sent, h.end())
+            if after and after.start() - h.end() > 30:
+                after = None   # "2-5 hours of hands-on work ... covering interior stains" isn't about an interior
+            m = before[-1] if before else after
+            if not m:
+                continue
+            subj = m.group(0).lower().rstrip("s")
+            subj = "full detail" if subj.startswith("full detail") else subj
+            if subj in ALLOWED and (h.group(1), h.group(2)) not in ALLOWED[subj]:
+                wrong_time.append(f"{rel}: {subj} {h.group(0)!r} in \"{sent.strip()[:90]}\"")
+if wrong_time:
+    fails.append(f"a duration that isn't the facts table's ({len(wrong_time)}):")
+    fails.extend(f"    {w}" for w in wrong_time[:12])
+
+# The quote calculator takes 60 seconds, never 30 or 90.
+for rel, text in copies.items():
+    for m in re.finditer(r"\b(30|90)[- ]second", text):
+        fails.append(f"{rel}: \"{m.group(0)}\", the quote takes 60 seconds")
+
+# Claims retired or never true, in the pages and in everything that prints or
+# posts the facts. Lines that define a generator's own ban list are skipped.
+RETIRED_CLAIMS = [
+    (re.compile(r"cars? (?:a|per) week|limited spots|a few (?:a|per) week|\d+-spot cap|spots? left", re.I),
+     "a scarcity claim: the one scarcity line is the live next opening"),
+    (re.compile(r"onsite in \d+\s*-\s*\d+\s*hrs", re.I),
+     "a turnaround his week can't keep (one weekday job, Saturdays, never same day)"),
+    (re.compile(r"every 1 to 3 months|frequency tiers|\d+-\d+ a year \(clean club", re.I),
+     "a Clean Club schedule: it's every 4 or 8 weeks"),
+    (re.compile(r"(?=.*\b(?:club|member|recurring)).*?\b(bi-monthly|quarterly)\b", re.I),
+     "a Clean Club schedule: it's every 4 or 8 weeks"),
+]
+claim_files = price_files + [ROOT / "outreach/DIRECTORIES.md", ROOT / "outreach/CALL-SCRIPT.md",
+                             ROOT / "print/tools/build-business-card.cjs", ROOT / "print/tools/build-yard-sign.cjs",
+                             ROOT / "print/tools/build-air-freshener.cjs", ROOT / "print/tools/build-car-decal.cjs",
+                             ROOT / "print/tools/build-gift-card.cjs", ROOT / "print/tools/build-shared-postcard.cjs"]
+for q in claim_files:
+    if not q.exists():
+        continue
+    for lineno, line in enumerate(q.read_text(encoding="utf-8").splitlines(), 1):
+        if re.search(r"\[/.*/i?,\s*'", line):
+            continue
+        for rx, why in RETIRED_CLAIMS:
+            m = rx.search(line)
+            if m:
+                fails.append(f"{q.relative_to(ROOT)}:{lineno}: \"{m.group(m.lastindex or 0)}\" is {why}")
+
+# Payment is after the work, never a deposit. A sentence about a deposit has to
+# say no to it (questions are fine: "Is a deposit required?").
+for rel, text in copies.items():
+    for sent in SENT.split(text):
+        if re.search(r"deposit", sent, re.I) and not sent.rstrip().endswith("?") \
+                and not re.search(r"\b(no|never|not|don't|do not|without|zero|nothing)\b|\$0", sent, re.I):
+            fails.append(f"{rel}: deposit without a no: \"{sent.strip()[:90]}\"")
+
+# Voice: one guy, "I". The descriptions are what Google and share cards show,
+# where "we" never means "you and me". On the page, only the business "we".
+# Legal pages are written in "we" on purpose; reviews are customers talking.
+LEGAL_PAGES = ("privacy-policy/", "terms/", "sms-opt-in/")
+NOT_MIKEY = LEGAL_PAGES + ("reviews/",)
+for p in pages:
+    rel = str(p.relative_to(ROOT))
+    src = p.read_text(encoding="utf-8")
+    descs = re.findall(r'<meta (?:name|property)="(?:description|og:description|twitter:description)" content="([^"]*)"', src)
+    descs += re.findall(r'"description": "((?:[^"\\]|\\.)*)"', src)
+    for d in descs if not rel.startswith(LEGAL_PAGES) else []:
+        m = re.search(r"\b(we|we're|we’re|we'll|our)\b", d, re.I)
+        if m:
+            fails.append(f"{rel}: \"{m.group(0)}\" in a description, it's one guy: \"{d[:70]}\"")
+    if rel.startswith(NOT_MIKEY):
+        continue
+    text = copies[rel]
+    for m in re.finditer(r"\bwe(?: come| bring| detail| offer| serve| service| extract| work in| send| don't just| don’t just)\b"
+                         r"|\bour (?:team|crew|detailers|services)\b|\bOur Services\b", text, re.I):
+        fails.append(f"{rel}: business \"{m.group(0)}\", it's \"I\"")
+    for m in re.finditer(r"\b(seamless\w*|elevat(?:e|es|ed|ing)|unlock\w*|transform(?:s|ed|ing|ative|ation)?|jaw[- ]dropping"
+                         r"|meticulous\w*|showroom shine|bumper[- ]to[- ]bumper perfection)\b|\b(?:it'?s|is|isn['’]t) not just\b|\bnot just\b",
+                         text, re.I):
+        fails.append(f"{rel}: agency word \"{m.group(0)}\"")
+    for m in re.finditer(r"<(?:a|button)\b[^>]*>\s*(Get Your[^<]{0,30})", src):
+        fails.append(f"{rel}: button says \"{m.group(1).strip()}\", buttons say \"Get My\"")
+
+# Meta descriptions over 155 characters get cut by Google.
+for p in pages:
+    m = re.search(r'<meta name="description" content="([^"]*)"', p.read_text(encoding="utf-8"))
+    if m and len(_html.unescape(m.group(1))) > 155:
+        fails.append(f"{p.relative_to(ROOT)}: meta description is {len(_html.unescape(m.group(1)))} characters, keep it under 155")
+
+# City pages stay 900+ words of content (nav, header and footer don't count).
+def words(src):
+    s = re.sub(r"<head\b.*?</head>", " ", src, flags=re.S | re.I)
+    s = re.sub(r"<(script|style|svg|noscript|template|nav|footer|header)\b.*?</\1>", " ", s, flags=re.S | re.I)
+    s = re.sub(r"<!--.*?-->", " ", s, flags=re.S)
+    return len(re.findall(r"[A-Za-z0-9$][\w'’$.,/+-]*", _html.unescape(re.sub(r"<[^>]+>", " ", s))))
+for town, path in re.findall(r"\{\s*n:'([^']+)',\s*t:'yes'[^}]*?p:'(/[^']+/)'", home):
+    page = ROOT / path.strip("/") / "index.html"
+    if page.exists() and words(page.read_text(encoding="utf-8")) < 900:
+        fails.append(f"{page.relative_to(ROOT)}: {words(page.read_text(encoding='utf-8'))} words, city pages keep 900+")
+
+# The guarantee goes in four places on the homepage: the hero, the price reveal
+# in the calculator, the Love It Guarantee section and the final CTA. Outside
+# that section, that's three.
+outside = re.sub(r'<section class="grt4".*?</section>', " ", home, flags=re.S)
+outside = re.sub(r"<(script|style|svg|noscript|head)\b.*?</\1>", " ", outside, flags=re.S | re.I)
+outside = _html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<!--.*?-->", " ", outside, flags=re.S)))
+said = re.findall(r"pay (?:only )?(?:if|until|when) you(?:'re| are)? (?:love|happy)|love it or it'?s free|don'?t love it\?",
+                  outside.replace("’", "'"), re.I)
+if len(said) != 3:
+    fails.append(f"index.html: the guarantee is said {len(said)} times outside the Love It Guarantee section; "
+                 f"it belongs in the hero, the price reveal and the final CTA only")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:

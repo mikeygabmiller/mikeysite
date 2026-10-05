@@ -208,8 +208,11 @@ entries in the `TOWNS` list inside the `#service-area` section:
 - "Ask me" towns are ones he sometimes reaches. Never promise them.
 - **No travel fee anywhere in the area**, and the price is the same in every town.
 
-Three places have to agree when the area changes: the `TOWNS` list, the
-`areaServed` array in the homepage JSON-LD, and the map SVG. The map is
+Four places have to agree when the area changes: the `TOWNS` list, `CITIES`
+in `tools/build-entity-graph.py` (it writes `areaServed`, each town with its
+own county, into every page's JSON-LD; rerun it with `--apply`), the map SVG,
+and a city page for each `TOWNS` entry with a `p:`. `check-site.py` fails if
+`TOWNS` and `CITIES` name different towns. The map is
 generated — run `python3 tools/service-area-map.py` and paste the result over
 the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
 
@@ -262,8 +265,10 @@ shortest page on the site.
 Woodinville and Arlington went live that day. Put it up in November: move it
 to `granite-falls/index.html`, set `p:'/granite-falls/'` on its `TOWNS` entry,
 turn its homepage chip into a link, add it to the About list, the Lake Stevens
-and Arlington footers, `sitemap.xml` and `llms.txt`, re-read it against the
-facts table, then run `check-site.py`.
+and Arlington footers, `sitemap.xml` and `llms.txt`, add it to `PAGE_SERVICE`
+in `tools/build-entity-graph.py` and run that with `--apply` (it writes the
+page's Service node), re-read it against the facts table, then run
+`check-site.py`.
 
 ## SEO copy
 
@@ -273,6 +278,10 @@ facts table, then run `check-site.py`.
 - Titles follow `Mobile Detailing <City>, WA | Mikey's Mobile Detailing`.
 - FAQ answers exist **twice** on most pages: once visible, once inside a
   JSON-LD `FAQPage` block. Edit both or the schema starts lying.
+- A page's JSON-LD `WebPage` name and description are its `<title>` and meta
+  description, byte for byte. After changing either, run
+  `python3 tools/build-entity-graph.py --apply`, or `check-site.py` fails (15
+  pages had drifted on 2026-10-05).
 
 ## The logo
 
@@ -495,8 +504,15 @@ to — one edit that landed on the page you were looking at and nowhere else. On
 2026-09-10 it caught Duvall and Woodinville filed under the wrong county in
 schema on 35 pages, which no amount of reading the visible copy would have
 surfaced. It also fails on any em dash in a served file, per the Voice section.
-It currently reports 2 pre-existing failures, both in `polish-test/`; anything
-beyond those two is yours.
+Since 2026-10-05 it passes clean, so any failure is yours. That day it also
+learned the drift an audit had found by reading: a duration that isn't the
+facts table's, a deposit, a retired claim (scarcity, a 24-48 hr turnaround, a
+club schedule other than every 4 or 8 weeks), a business "we" or an agency
+word, a "Get Your" button, a meta description over 155, a city page under 900
+words, the guarantee in a fifth place on the homepage, a served-town list that
+disagrees with the generator, and any page a rerun of
+`tools/build-entity-graph.py` would change. When a rule is wrong rather than
+the copy, fix the rule and say why in its comment; don't delete it.
 
 **Deploying is automatic.** GitHub Pages serves `main` (confirmed 2026-09-10:
 a merge to `main` was live at `mikeysdetailing.com` within a couple of minutes,
