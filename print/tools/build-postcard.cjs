@@ -316,7 +316,7 @@ const backHtml = (qr) => `
         <div class="url">${SITE}</div>
       </div>
     </div>
-    <div class="fine">Rain-Ready: book a Full Detail by December 31, 2026 and mention this postcard. Ceramic wax, RainX and carpet shampoo come free. I take 12 cars a week.</div>
+    <div class="fine">Rain-Ready: book a Full Detail by December 31, 2026 and mention this postcard. Ceramic wax, RainX and carpet shampoo come free.</div>
   </div>
 </section>`;
 
@@ -383,7 +383,7 @@ async function checkQr(pngBuf, label) {
 
   const text = await page.evaluate(() => document.body.innerText);
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
-    [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'],
+    [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/cars a week|limited spots|a few a week/i, 'a retired scarcity claim (CLAUDE.md, 2026-09-29)'],
     [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b|\bour (?:team|crew|detailers)\b/i, 'business "we" (it is one guy)'],
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day (unconfirmed)'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
