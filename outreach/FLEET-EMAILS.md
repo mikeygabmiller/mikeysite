@@ -256,7 +256,7 @@ a specific time books more than a vague one.
 ```
 Depends on size and condition, so I'd rather look than guess. A first full
 detail is from $369, exterior only from $199. After that, keeping it up is
-$125 a vehicle every 1 to 3 months. For [5] or more in one visit it's
+$125 a vehicle every 4 or 8 weeks. For [5] or more in one visit it's
 [YOUR FLEET PRICE] each. Can I come look at them [day]?
 ```
 
