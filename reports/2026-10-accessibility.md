@@ -29,7 +29,8 @@ site served on `localhost:8099` (`python3 -m http.server 8099`).
 | Brand red too faint on black | serious | 493 | 493 (Mikey's call) |
 | Red link in grey text, no underline | serious | 2 | 2 (brand red) |
 | No skip link | (manual check) | 40 pages | 0 |
-| `region`, `landmark-one-main`, `heading-order` | moderate | 319 | 319 (not done) |
+| `region`, `landmark-one-main` | moderate | 291 | 1 page (the call page, left alone) |
+| `heading-order` | moderate | 28 | 28 (Mikey's call) |
 
 ## Keyboard walk
 
@@ -109,11 +110,36 @@ on the call page changed: it passed labels, names and focus as it was.
   the grey Honda Pilot (`unnamed (5).webp`) may show readable plates at full
   size. The social posts blur plates; the site's photos don't. Worth a look.
 
-**Not done in this pass (moderate, not serious):**
+## Second pass, same day: a `<main>` on every page
 
-- `landmark-one-main` (27 pages have no `<main>`) and `region` (content
-  outside any landmark). Wrapping each page's content in `<main>` is a
-  structural edit to 27 hand-written pages; safe, but bigger than a mechanical
-  fix on a day another session is editing the homepage.
+26 pages had no `<main>`, so screen readers had no "main content" to jump
+to and axe flagged everything on them as outside a landmark. Each one now
+wraps everything between the header and the footer in `<main
+id="main-content">`, and its skip link points there. The parked Granite Falls
+page got the same, plus the skip link it was missing, so it's ready when it
+goes up in November.
+
+- **Three skip links pointed home.** `paint-correction-snohomish-county`,
+  `pet-hair-removal-car-detailing` and `mobile-car-detailing-near-me` had
+  "Skip to main content" linking to `/`, so pressing it left the page. They
+  now jump to the content.
+- **Nothing anyone can see changed.** None of these pages has a CSS rule
+  that targets `main`, and none uses `body >` selectors. I screenshotted all
+  27 pages full length, before and after, at 390 x 844 (phone, touch) and
+  1280 x 800: **54 of 54 identical, pixel for pixel**
+  (`2026-10-accessibility/shots.cjs`, `cmp.py`). Animations were frozen and
+  outside requests (Google Fonts, analytics) blocked in both runs, so the
+  comparison is of the page itself. Two runs of the unchanged site differ by
+  one 6 px strip in the phone header of the paint correction page (something
+  in it moves on its own), so that's the noise floor; the after run matched
+  the first before run exactly.
+- axe on those 27 pages after the change: no `landmark-one-main` and no
+  `region`.
+- **Left alone:** the call page (`/onbored/`) still has no `<main>`. The rule
+  for that page is labels, names and focus only. It's one screen with no
+  menu, so nothing is lost; adding it is Mikey's call.
+
+**Still not done:**
+
 - `heading-order` on 25 pages: a heading level skipped (an h4 after an h2).
   Changing heading levels changes how they look, so it wants a look at each.
