@@ -609,6 +609,8 @@ header li a[href="#booking"],
 @media (max-width: 768px) {
   .sticky-cta-bar { display: flex; }
   main { padding-bottom: 76px; }
+  /* The footer sits outside <main>, so its last lines and button were under the bar. */
+  body { padding-bottom: 76px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .sticky-cta-bar { transition: opacity .2s ease, visibility .2s; transform: none; }

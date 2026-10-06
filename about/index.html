@@ -374,6 +374,11 @@ a:hover { text-decoration: underline; }
   text-transform: uppercase;
   color: var(--text-muted);
 }
+/* Phones under 400px: three columns plus 14px side padding ran 27px past a
+   360px screen and scrolled the whole page sideways. */
+@media (max-width: 400px) {
+  .about-price th, .about-price td { padding: 11px 8px; }
+}
 .about-price td:last-child {
   color: var(--brand-red);
   font-weight: 700;
