@@ -283,6 +283,32 @@ in `tools/build-entity-graph.py` and run that with `--apply` (it writes the
 page's Service node), re-read it against the facts table, then run
 `check-site.py`.
 
+## The blog (`/blog/`)
+
+Moved onto the site on 2026-10-05 (Mikey: "go ahead"). `blog.mikeysdetailing.com`
+was a one-off Netlify deploy from April 2026 (project `mikeysqqc`) that still
+quoted $130/$160/$260, a 2–4 hour full detail, a 30-second quote and "I bring
+water, power", and AI answers were repeating it. Five posts moved, rewritten
+against the facts table: coffee stains, pet hair, how often to detail, smells,
+headlights. The other five redirect to the pages that already cover them
+(ceramic coating, mobile detailing vs a car wash, and the Monroe, Lake Stevens
+and Everett posts to those city pages), because a second page on the same topic
+competes with the first in search.
+
+- **The redirects** are `tools/blog-redirect/_redirects`, deployed to the
+  Netlify project `mikeysqqc` by dragging the folder onto its Deploys page.
+  That's Mikey's step; until it's done the old blog keeps its wrong prices.
+  Check it with `curl -sI https://blog.mikeysdetailing.com/`: a 301 to
+  `https://mikeysdetailing.com/blog/` means it's done.
+- A post is one more copy of the facts table, and check-site reads it like any
+  other page. A new post goes in the `/blog/` index, `sitemap.xml` and
+  `llms.txt`, with a `BlogPosting` node like the others (the generator keeps it).
+- **Headlight restoration and odor removal have no published price.** The posts
+  say "text me a photo" and he quotes it. The old blog's $75 and $80–120 were
+  never in the price book; don't print a price until Mikey sets one.
+- These moved; they weren't new pages. New posts follow GROWTH-PLAN.md's pace
+  of one new page a month.
+
 ## SEO copy
 
 - **Meta descriptions under 155 characters.** Google cuts past that. Front-load

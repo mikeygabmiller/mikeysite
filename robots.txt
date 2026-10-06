@@ -110,4 +110,3 @@ Allow: /
 # Sitemaps
 # ---------------------------------------------------------------
 Sitemap: https://mikeysdetailing.com/sitemap.xml
-Sitemap: https://blog.mikeysdetailing.com/sitemap.xml

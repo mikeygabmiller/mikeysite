@@ -109,7 +109,7 @@ PAGE_SERVICE = {
 # social and print kits (their node_modules carry vendor HTML). A noindex page
 # (the call page) is skipped in main(), because it is kept out of search on
 # purpose and has no schema to write.
-SKIP_DIRS = {"mockups", "systems", "_disabled", "social", "print"}
+SKIP_DIRS = {"mockups", "systems", "_disabled", "social", "print", "tools"}
 
 
 def price_spec(lo, hi):
@@ -203,8 +203,8 @@ def business_node(reviews, speakable):
              "priceSpecification": price_spec(lo, hi)}
             for n, st, lo, hi, _ in CORE_SERVICES
         ],
-        "sameAs": ["https://g.page/r/CRCuKQ982VIZEBE",
-                   "https://blog.mikeysdetailing.com"],
+        # The blog lives at /blog/ since 2026-10-05; the old subdomain redirects there.
+        "sameAs": ["https://g.page/r/CRCuKQ982VIZEBE"],
     }
     if reviews:
         node["review"] = reviews
