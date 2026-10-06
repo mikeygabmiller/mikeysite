@@ -193,7 +193,7 @@ for n, la, lo, page, drive, anc0, dx0, dy0 in CITY:
     dx, dy, anc = CITY_LABEL[n]
     home = " sa-pin--home" if n == "Snohomish" else ""
     slug = n.lower().replace(" ", "-")
-    A('    <g class="sa-pin%s" data-city="%s" tabindex="0" role="button" aria-label="%s, %s. Show details." transform="translate(%s %s)">' % (home, n, n, ("my home base" if drive=="home" else drive + " from home base"), x, y))
+    A('    <g class="sa-pin%s" data-city="%s" tabindex="0" role="button" aria-label="%s, %s. Show details." transform="translate(%s %s)">' % (home, n, n, ("home base" if drive=="home" else drive + " from home base"), x, y))
     A('      <circle class="sa-hit" r="24"/>')
     A('      <circle class="sa-ring" r="13"/>')
     A('      <circle class="sa-dot" r="%s"/>' % ("7.5" if home else "5.5"))
