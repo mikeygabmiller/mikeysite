@@ -33,7 +33,7 @@ Playwright, opentype.js and the @fontsource fonts installed:
 
 ## Where it's in use (rolled out 2026-09-28)
 
-- Website: header `/images/logo-header.png`, schema logo `/images/logo-square.png`,
+- Website: header `/images/logo-header.webp` (a 405x116 copy of `logo-header.png`, which stays as the source and the image fallback), schema logo `/images/logo-square.png`,
   link preview `/images/og-image.jpg`, tab icon `/favicon.ico`.
 - `social/brand/logo.svg` (dark backgrounds), `logo-light.svg` (cream/white) and
   `logo-icon.svg` (truck) are what the door hanger, postcard and post renderers
