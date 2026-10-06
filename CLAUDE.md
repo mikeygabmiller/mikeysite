@@ -483,6 +483,17 @@ prices, no offer, no review count. No name line either (Mikey questioned it on
 towns and a QR with `utm_source=freshener`. Never a tree shape: Car-Freshner
 owns it.
 
+## Avery labels
+
+`print/avery-labels/` (not served) holds a sheet of Avery 5821 labels (2.5 x 4
+in, 8 to a letter sheet), each with the logo, the phone and the website
+(Mikey, 2026-10-06, for a shop to print on packs he bought). Read its
+`README.md` first. Copy lives in `print/tools/build-avery-labels.cjs`
+(`npm run labels`, and `DARK=1` for the black version); the sheet geometry was measured from Avery's own 5821
+template and the generator fails if a label moves. Same rules as the card: one
+more copy of the facts table, no prices, no offer, no review count. It prints
+at **Actual size**, never "Fit to page".
+
 ## Gift cards
 
 Sold and tracked in the dashboard (Work → Get Paid → Gift cards, or Tools →
