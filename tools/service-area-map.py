@@ -142,7 +142,7 @@ ROADS = [
 
 out = []
 A = out.append
-A('<svg class="sa-map" viewBox="0 0 %d %d" role="img" aria-labelledby="sa-map-t sa-map-d" preserveAspectRatio="xMidYMid meet">' % (W, H))
+A('<svg class="sa-map" viewBox="0 0 %d %d" role="group" aria-labelledby="sa-map-t sa-map-d" preserveAspectRatio="xMidYMid meet">' % (W, H))
 A('  <title id="sa-map-t">Mikey\'s Mobile Detailing service area map</title>')
 A('  <desc id="sa-map-d">A map of Snohomish County showing the towns Mikey drives to. The full list is written out below the map.</desc>')
 A('  <defs>')
