@@ -134,6 +134,34 @@
 .grt4-scarcity.av-on .dot { animation-play-state: running !important; }
 
 /* =========================================================
+   OFF-SCREEN SECTIONS SKIP RENDERING UNTIL SCROLLED NEAR
+   ---------------------------------------------------------
+   Style and layout of this one long page cost about 1.3s on a throttled phone,
+   and nearly all of it is sections nobody has scrolled to yet. With
+   content-visibility:auto the browser keeps them in the DOM (find in page,
+   links, screen readers and the scripts all still see them) but skips laying
+   them out until they come near the viewport. The headline shows sooner.
+
+   contain-intrinsic-size is each section's measured height at 390 wide, so the
+   page is about the right length before they render; `auto` then remembers the
+   real height. Everything from Before & After down; the hero, the calculator
+   and the trust strip render as before. None of these sections holds anything
+   fixed or sticky (containment would pin it to the section instead of the
+   screen); check that before adding one. Screen-by-screen screenshots at 390
+   and 1280 matched before and after (2026-10-06), apart from text landing up to
+   a pixel differently, because each section now snaps to whole pixels.
+   ========================================================= */
+#beforeafter   { content-visibility:auto; contain-intrinsic-size:auto 1310px; }
+#rain-ready    { content-visibility:auto; contain-intrinsic-size:auto 1240px; }
+main > .hg4    { content-visibility:auto; contain-intrinsic-size:auto 1580px; }
+#service-area  { content-visibility:auto; contain-intrinsic-size:auto 2070px; }
+#allservices   { content-visibility:auto; contain-intrinsic-size:auto 2350px; }
+#about         { content-visibility:auto; contain-intrinsic-size:auto 1080px; }
+#qanda         { content-visibility:auto; contain-intrinsic-size:auto 1100px; }
+.qcta          { content-visibility:auto; contain-intrinsic-size:auto 790px; }
+.site-footer   { content-visibility:auto; contain-intrinsic-size:auto 830px; }
+
+/* =========================================================
    DESIGN TOKENS
    ========================================================= */
 :root {
