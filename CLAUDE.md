@@ -547,3 +547,34 @@ keeping both intentions rather than taking your own side wholesale.
 `sitemap.xml`, `robots.txt` and `llms.txt` are maintained by hand. A new page
 means adding it to all three, and `llms.txt` restates the prices and durations,
 so a fact change lands there too.
+
+## The dashboard (its own repo, its own live branch)
+
+Mikey's texting dashboard (texts, calls, bookings, reminders, Clean Club
+sign-ups) is not in this repo. It's `mikeygabmiller/twillowdashbored`, a
+Cloudflare Worker live at `https://texting.mikeysdetailingsnohomish.workers.dev`.
+Saved here at Mikey's request (2026-10-06), because every session that starts
+in this repo had to rediscover how it goes live.
+
+- **It isn't attached to this environment.** Add it with `add_repo` (push
+  access) and clone it. The clone lands on GitHub's default branch, `main`,
+  which is **stale**: about 5,000 lines of worker against 24,000+ live, with
+  none of the booking, club or helper code. Never work from it or merge into it.
+- **Only `claude/qqc-submission-auto-text-cspjc3` goes live.** Cloudflare deploys
+  that branch and nothing else; any other branch is just a preview. A shallow
+  clone has to fetch it by name:
+  `git fetch --depth 60 origin +refs/heads/claude/qqc-submission-auto-text-cspjc3:refs/remotes/origin/claude/qqc-submission-auto-text-cspjc3`,
+  then branch off `origin/claude/qqc-submission-auto-text-cspjc3`, open the PR
+  into it, and squash merge.
+- **Read its `CLAUDE.md` and `DEPLOY.md` on that branch first.** They hold the
+  rules: bump `BUILD` (`src/index.js`) and `APP_BUILD` (`public/index.html`) to
+  the same value, `npm ci` then `npm run test:all` (every suite, about 4
+  minutes), and what to stop and ask Mikey about (anything that texts customers
+  on its own, rewriting stored data, keys and billing, the deploy wiring).
+- **Live means `/api/version` says so.** It has to return the build you just
+  set (reachable from these sandboxes as of 2026-10-06). Then tell Mikey to
+  fully close and reopen the dashboard app on his phone, or it keeps showing
+  the old version.
+- **The red "Workers Builds: matins" check fails on every PR there.** It's a
+  different Worker (the `matins/` folder), not the dashboard, and fails the
+  instant it starts. The dashboard posts no PR check; it deploys on merge.
