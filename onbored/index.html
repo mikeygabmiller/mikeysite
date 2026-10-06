@@ -590,10 +590,15 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   // read here is exactly what they signed.
   function loadTerms(){
     var btn = $('formBtn');
-    S.busy = true; btn.disabled = true; btn.textContent = 'One sec…';
+    S.busy = true; btn.disabled = true; btn.textContent = 'One sec…'; $('formErr').style.display = 'none';
+    // A worker that never answers would leave the button on "One sec…" for
+    // good, mid-call. After 10 seconds it gives up the same way a failed
+    // request does (the text-it-to-me link), and a late answer is ignored.
+    var done = false, t = setTimeout(function(){ if (!done){ done = true; S.busy = false; fail($('formErr'), btn, 'Next: the agreement'); } }, 10000);
     fetch(API + '/api/club/offer?every=' + every() + '&size=' + S.size + '&condition=' + encodeURIComponent(S.cond))
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(j){
+        if (done) return; done = true; clearTimeout(t);
         S.busy = false; btn.disabled = false; btn.textContent = 'Next: the agreement';
         if (!(j && j.ok && j.lines)){ fail($('formErr'), btn, 'Next: the agreement'); return; }
         S.offer = j; S.offerFor = j.every + '|' + j.size + '|' + j.condition;
@@ -603,7 +608,7 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
         if (!val('sign') && val('name')) $('sign').placeholder = val('name');
         go(7);
       })
-      .catch(function(){ S.busy = false; fail($('formErr'), btn, 'Next: the agreement'); });
+      .catch(function(){ if (done) return; done = true; clearTimeout(t); S.busy = false; fail($('formErr'), btn, 'Next: the agreement'); });
   }
   function join(){
     if (S.busy) return;
