@@ -64,8 +64,10 @@ main.container{padding-top:32px;padding-bottom:40px;}
 .links a{display:inline-block;background:#1c1c1c;border:2px solid #2a2a2a;padding:10px 16px;color:#fff;text-decoration:none;font-weight:700;}
 .links a:hover{border-color:#C8102E;color:#C8102E;}
 </style>
+<style>.skip-nav{position:absolute;top:-100px;left:16px;background:#c8102e;color:#fff;padding:8px 16px;font-size:14px;font-weight:700;border-radius:4px;z-index:99999;text-decoration:none}.skip-nav:focus{top:8px;outline:3px solid #fff;outline-offset:2px}</style>
 </head>
 <body>
+<a class="skip-nav" href="#main-content">Skip to main content</a>
 
 <header>
   <div class="container">
@@ -81,7 +83,7 @@ main.container{padding-top:32px;padding-bottom:40px;}
 
 <section class="hero">
   <div class="container">
-    <h1>That Page <span>Isn't Here</span></h1>
+    <h1 id="main-content">That Page <span>Isn't Here</span></h1>
     <p class="lede">That link's old or has a typo in it. Here's where to go instead.</p>
   </div>
 </section>

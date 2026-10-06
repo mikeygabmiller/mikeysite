@@ -1,4 +1,4 @@
-<svg class="sa-map" viewBox="0 0 620 623" role="img" aria-labelledby="sa-map-t sa-map-d" preserveAspectRatio="xMidYMid meet">
+<svg class="sa-map" viewBox="0 0 620 623" role="group" aria-labelledby="sa-map-t sa-map-d" preserveAspectRatio="xMidYMid meet">
   <title id="sa-map-t">Mikey's Mobile Detailing service area map</title>
   <desc id="sa-map-d">A map of Snohomish County showing the towns Mikey drives to. The full list is written out below the map.</desc>
   <defs>
@@ -67,7 +67,7 @@
       <circle class="sa-dot" r="5.5"/>
       <text class="sa-lbl" x="-13" y="4" text-anchor="end">Mukilteo</text>
     </g>
-    <g class="sa-pin sa-pin--home" data-city="Snohomish" tabindex="0" role="button" aria-label="Snohomish, home base from home base. Show details." transform="translate(351.6 348.8)">
+    <g class="sa-pin sa-pin--home" data-city="Snohomish" tabindex="0" role="button" aria-label="Snohomish, home base. Show details." transform="translate(351.6 348.8)">
       <circle class="sa-hit" r="24"/>
       <circle class="sa-ring" r="13"/>
       <circle class="sa-dot" r="7.5"/>
