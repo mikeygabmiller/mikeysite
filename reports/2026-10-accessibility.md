@@ -95,6 +95,13 @@ on the call page changed: it passed labels, names and focus as it was.
   small text on black (`#ff4d5e` clears 4.5:1 on every black the site uses, 5.3 to 6.1:1), keeping
   `#c8102e` for buttons and big headings; or white text with a red underline
   for small links. Your call.
+  See it before you decide (`2026-10-accessibility/red-before-*.png` and
+  `red-after-*.png`, phone size, made by `red-preview.cjs` in the browser only):
+  - **Pages:** the homepage footer, and `services/interior.html`, which has the
+    most failing small red on the site (33), around its "Pair it up" cards.
+  - **What changes:** only the small red text axe fails, to `#ff4d5e`: eyebrows
+    like "PAIR IT UP", links like "See exterior page", footer headings.
+  - **What stays `#c8102e`:** buttons, big headings and the logo.
 - **Red "See Monroe page" and "See Mukilteo page" links** on
   `/mobile-car-detailing-near-me/` sit in grey text with no underline, so
   they're told apart by colour alone. An underline would fix it without
