@@ -37,7 +37,7 @@
 <style>
 :root{
   --red:#C8102E; --bg:#08090b; --bg2:#101216; --line:#22262c;
-  --ink:#f4f6f8; --dim:#a2abb6; --dimmer:#6d7681;
+  --ink:#f4f6f8; --dim:#a2abb6; --dimmer:#7a838e;
   --good:#4ade80; --warn:#ffc357; --bad:#ff3b52;
   --font:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
@@ -238,6 +238,7 @@ body.touch #coach{bottom:76px;}
 }
 @media(prefers-reduced-motion:reduce){ .btn{transition:none;} }
 </style>
+<style>.skip-nav{position:absolute;top:-100px;left:16px;background:#c8102e;color:#fff;padding:8px 16px;font-size:14px;font-weight:700;border-radius:4px;z-index:99999;text-decoration:none}.skip-nav:focus{top:8px;outline:3px solid #fff;outline-offset:2px}</style>
 <!-- Schema: one linked entity graph, see GROWTH-PLAN.md -->
 <script type="application/ld+json">
 {
@@ -659,6 +660,7 @@ body.touch #coach{bottom:76px;}
 </script>
 </head>
 <body>
+<a class="skip-nav" href="#main-content">Skip to main content</a>
 
 <header class="site">
   <div class="container">
@@ -675,7 +677,7 @@ body.touch #coach{bottom:76px;}
 <main>
   <div class="container wide">
     <div class="hero">
-      <h1>Can you see what a <span>detailer</span> sees?</h1>
+      <h1 id="main-content">Can you see what a <span>detailer</span> sees?</h1>
       <p class="lede">This paint looks perfect. <b>It isn't.</b> Take the inspection light and find what's hiding in it.</p>
     </div>
 
@@ -786,7 +788,7 @@ body.touch #coach{bottom:76px;}
     <h2 class="sec">Put it on your own site</h2>
     <div class="embed">
       <p>Free to embed, no permission needed. Paste this anywhere:</p>
-      <textarea rows="3" readonly onclick="this.select()">&lt;iframe src="https://mikeysdetailing.com/polish-test/?embed=1" width="100%" height="660" style="border:0;border-radius:12px" title="The Polish Test" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
+      <textarea rows="3" readonly aria-label="Code to put the Polish Test on your site" onclick="this.select()">&lt;iframe src="https://mikeysdetailing.com/polish-test/?embed=1" width="100%" height="660" style="border:0;border-radius:12px" title="The Polish Test" loading="lazy"&gt;&lt;/iframe&gt;</textarea>
     </div>
   </div>
 
