@@ -1430,6 +1430,11 @@ header li a[href="#booking"],
 <!-- ===== QQC desktop shell: side info panel on wide screens, card-only on mobile ===== -->
 <style>
   .qqc-shell{ max-width:480px; margin:0 auto; padding:0 16px; }
+  /* Phones: .section-inner already gives the 20px gutter, so the shell's own 16px
+     stacked on it (plus the card's 26px) left the Full Detail card's text a
+     77px column at 390 wide. The card now lines up with the page gutter. */
+  @media (max-width:600px){ .qqc-shell{ padding:0; } }
+  @media (max-width:420px){ #qqcCard{ padding-left:18px; padding-right:18px; } }
   .qqc-card-col{ width:100%; }
   .qqc-aside{ display:none; }
   @media (min-width:980px){
