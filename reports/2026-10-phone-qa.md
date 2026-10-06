@@ -158,3 +158,78 @@ and the hero is a CSS gradient with no image to prioritise.
   - The homepage footer's blurb lists seven towns "and nearby areas";
     Mukilteo, Woodinville, Granite Falls, Arlington and Marysville aren't
     named (Marysville is in the link list).
+
+## Second pass (2026-10-06, homepage only)
+
+Goal: LCP under 2.5 s without changing what anyone sees. Lighthouse 12.3,
+mobile, median of 5 runs each, before = `main` at `2cd874b`, after = this
+branch. Measured two ways, because the plain `python3 -m http.server` sends
+the 349 KB homepage uncompressed and GitHub Pages gzips it (94 KB):
+
+| Homepage | Score | FCP | LCP | TBT | CLS | Bytes |
+|---|---|---|---|---|---|---|
+| plain server, before | 67 | 2.4 s | 3.4 s | 723 ms | 0.007 | 717 KB |
+| plain server, after | **72** | 2.5 s | 3.3 s | **431 ms** | 0.007 | **647 KB** |
+| gzip (like GitHub Pages), before | 79 | 1.2 s | 2.9 s | 736 ms | 0.007 | 454 KB |
+| gzip (like GitHub Pages), after | **86** | 1.2 s | **2.1 s** | **519 ms** | 0.007 | **383 KB** |
+
+LCP runs, gzip: before 2.19 / 2.86 / 3.39 / 2.12 / 2.88 s, after 2.11 / 2.17 /
+1.91 / 2.13 / 2.17 s. The after runs are also much steadier. On the plain
+server LCP can't get under 2.5 s from here: its FCP floor is the 2.4 s it
+takes to download 349 KB uncompressed on Lighthouse's simulated phone line.
+
+### What changed
+
+**Off-screen sections skip rendering until you scroll near them**
+(`content-visibility:auto`). Style and layout of this long page were about
+1.3 s of a throttled phone's main thread, and most of it was sections nobody
+had scrolled to. Everything from Before & After down to the footer now waits
+until it's close to the screen; the hero, the calculator and the trust strip
+render as before. The LCP element is the hero headline (`.mh-headline`), which
+fades in; with less layout work in the way, it appears sooner. Below-the-fold
+photos inside skipped sections also stop being fetched up front (71 KB).
+
+**It only does that on a fresh visit with no `#` in the address.** The first
+version broke jump links: `/#qanda` landed 143 px off on a phone and 1,336 px
+off at 1280, because the browser placed the section using estimated heights.
+So a tiny script in `<head>` turns it on only for a normal visit (not back,
+forward, reload or a `#` link), and turns it off the moment a `#` link on the
+page is tapped. Checked: direct links to `#rain-ready`, `#allservices` and
+`#qanda`, and tapping the page's links to six sections, land at exactly the
+same spot as on `main` (80 px from the top) at 390 and 1280.
+
+### Checked
+
+- Quote calculator walked at 390 with every non-GET request aborted: all 9
+  size/service/condition combinations priced right, Rain-Ready extras free on
+  Full Details, "Pick my time" to step 8 (not tapped), "Text me this quote
+  instead" form shown (not submitted). No page errors. Only GETs reached the
+  calendar.
+- "Next opening: Wed, Oct 7 at 1:00 PM" filled from the live calendar.
+- Screen-by-screen screenshots of the whole page at 390 and 1280, scrolled
+  top to bottom, against `main`: same page height (17,527 / 12,835 px), and
+  the only differences are text landing up to 1 px lower, because each
+  skipped section now snaps to whole pixels. `speed2-top-390.jpg` and
+  `speed2-about-390.jpg` (before left, after right).
+- Nothing fixed or sticky lives inside a skipped section (containment would
+  pin it to the section instead of the screen). The comment in the CSS says
+  to check that before adding a section.
+- `check-site.py` passes.
+
+### Looked at and left alone
+
+- **Preload / fetchpriority for the LCP element:** it's text, not an image.
+  The logo already has `fetchpriority="high"`.
+- **Render-blocking CSS and fonts:** none. All CSS is inline, Google Fonts
+  load with `media="print"` swap and `display=swap`, with preconnect.
+  Preloading the font files themselves would mean hard-coding Google's
+  versioned woff2 URLs, which change without notice.
+- **defer/async:** GA, Clarity and `site-stats.js` already are; the rest is
+  inline, and moving the calculator's script out of `index.html` is a
+  restructure, not a speed tweak.
+- **Header logo srcset:** Lighthouse says 13 KB could be saved by serving a
+  smaller logo to lower-density screens. Small, and it's the first thing on
+  the page, so I didn't swap it in a pass that promised no visible change.
+- **The headline fade** is still the biggest LCP cost (it's why LCP sits
+  about 0.9 s after FCP). Same as the first pass: showing it without the fade
+  is a look change, so it's Mikey's call.
