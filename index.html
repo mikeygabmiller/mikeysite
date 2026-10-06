@@ -74,6 +74,22 @@
   gtag('config', 'G-G9WMXW2MF5');
 </script>
 
+<!-- Lets the sections below the fold skip rendering on a fresh visit. Why, and
+     why only then, is in the OFF-SCREEN SECTIONS comment in the <style> below. -->
+<script>
+(function(){
+  var d=document.documentElement, nav=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+  if(location.hash||(nav&&nav.type!=='navigate'))return;
+  d.classList.add('cv');
+  function off(){ d.classList.remove('cv'); }
+  addEventListener('hashchange',off);
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href*="#"]');
+    if(a&&a.pathname===location.pathname&&a.hash)off();
+  },true);
+})();
+</script>
+
 <style>
 /* =========================================================
    ANIMATION BUDGET
@@ -132,6 +148,42 @@
 .hiw4-foot.av-on .dot,
 .grt4-seal.av-on::before,
 .grt4-scarcity.av-on .dot { animation-play-state: running !important; }
+
+/* =========================================================
+   OFF-SCREEN SECTIONS SKIP RENDERING UNTIL SCROLLED NEAR
+   ---------------------------------------------------------
+   Style and layout of this one long page cost about 1.3s on a throttled phone,
+   and nearly all of it is sections nobody has scrolled to yet. With
+   content-visibility:auto the browser keeps them in the DOM (find in page,
+   links, screen readers and the scripts all still see them) but skips laying
+   them out until they come near the viewport. The headline shows sooner.
+
+   contain-intrinsic-size is each section's measured height at 390 wide, so the
+   page is about the right length before they render; `auto` then remembers the
+   real height. Everything from Before & After down; the hero, the calculator
+   and the trust strip render as before. None of these sections holds anything
+   fixed or sticky (containment would pin it to the section instead of the
+   screen); check that before adding one. Screen-by-screen screenshots at 390
+   and 1280 matched before and after (2026-10-06), apart from text landing up to
+   a pixel differently, because each section now snaps to whole pixels.
+
+   The catch is jumping to a #link: the browser works out where the section is
+   from those estimates, then the real heights land and the page ends up
+   hundreds of pixels off (/#qanda landed 1,300px wrong at 1280 wide). So it
+   only applies under html.cv, which the script just above <style> sets on a
+   fresh visit with no # in the address (not on back, forward or reload, which
+   restore a scroll position), and takes off the moment a #link is tapped or
+   the # changes. Scrolling with your finger is fine either way.
+   ========================================================= */
+html.cv #beforeafter { content-visibility:auto; contain-intrinsic-size:auto 1310px; }
+html.cv #rain-ready { content-visibility:auto; contain-intrinsic-size:auto 1240px; }
+html.cv main > .hg4 { content-visibility:auto; contain-intrinsic-size:auto 1580px; }
+html.cv #service-area { content-visibility:auto; contain-intrinsic-size:auto 2070px; }
+html.cv #allservices { content-visibility:auto; contain-intrinsic-size:auto 2350px; }
+html.cv #about { content-visibility:auto; contain-intrinsic-size:auto 1080px; }
+html.cv #qanda { content-visibility:auto; contain-intrinsic-size:auto 1100px; }
+html.cv .qcta { content-visibility:auto; contain-intrinsic-size:auto 790px; }
+html.cv .site-footer { content-visibility:auto; contain-intrinsic-size:auto 830px; }
 
 /* =========================================================
    DESIGN TOKENS
