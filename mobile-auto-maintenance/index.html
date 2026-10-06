@@ -1768,6 +1768,11 @@ header li a[href="#booking"],
     border-radius: 6px;
     box-shadow: 0 0 22px rgba(200,16,46,0.7);
   }
+  /* At 40px the nowrap line is 418px wide and was cut off on a 390 phone.
+     As a wrapping inline-block it breaks inside and the gold rule stays under it. */
+  @media (max-width: 600px) {
+    .mko__head .free { white-space: normal; display: inline-block; }
+  }
 
   .mko__sub {
     max-width: 660px;
