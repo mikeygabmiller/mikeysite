@@ -1,8 +1,9 @@
 # Your dashboard's AI playbook, corrected
 
 The texting dashboard drafts every AI reply (and every autopilot follow-up)
-from its **playbook**. The built-in starter playbook in the dashboard's code
-still says Interior **$160**, Exterior **$130**, Full **$260**, "a first-time
+from its **playbook**. The built-in starter playbook in the dashboard's live
+code (branch `claude/qqc-submission-auto-text-cspjc3`) still says Interior
+**$200** (and **$160** in one answer), Exterior **$130**, Full **$260**, "a first-time
 full detail runs about **3–4 hours**", **Sultan** as a served town, hours of
 **Wednesday–Saturday**, a quote in "about **30 seconds**", "power and water
 within **20 ft**", payment by **check**, and "booking about a week out".

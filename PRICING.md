@@ -44,7 +44,7 @@ and Exterior separately, and the calculator says so.
 | dashboard repo: `src/index.js` `BOOK_FACTS`, and the fallback `CONFIG` in `public/book.html` | the dashboard's own booking page, where referral links land. Bookings → Settings shows a "doesn't match your website" card until Mikey taps Match the website |
 | `onbored/index.html`, `PRICE` / `CLUB` / `RR` | the call page Mikey walks people through on the phone. Display only, but it shows the book, so it changes with it |
 | dashboard repo: `src/index.js` `CLUB` and `clubTerms()` | the Clean Club join offer: what a sign-up is actually priced at, and the terms they sign. The worker prices off `BOOK_FACTS`, so the $270 off follows a Full Detail price change on its own |
-| dashboard repo: `defaultPlaybook()` in `src/index.js`, and the saved one in the dashboard's ☰ menu → "AI training · playbook" | what the texting AI drafts replies from (and autopilot sends). On 2026-10-05 the default still said Interior $160, Exterior $130, Full $260, "3–4 hours", Sultan and "about 30 seconds". `outreach/DASHBOARD-PLAYBOOK.md` is the paste-ready replacement; a price change lands there too |
+| dashboard repo: `defaultPlaybook()` in `src/index.js`, and the saved one in the dashboard's ☰ menu → "AI training · playbook" | what the texting AI drafts replies from (and autopilot sends). On 2026-10-06 the default on the live branch still said Interior $200 (and $160 in one answer), Exterior $130, Full $260, "3–4 hours", Sultan and "about 30 seconds". `outreach/DASHBOARD-PLAYBOOK.md` is the paste-ready replacement; a price change lands there too |
 
 ## Why the prices went up (2026-09-27)
 
