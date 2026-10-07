@@ -96,6 +96,35 @@ confirmed yet).
   than they are. The car stopped right behind him is close enough; from far
   back it reads less far than the table above.
 
+## The side windows
+
+Mikey wanted something simple on the side glass too (2026-10-07), after
+putting the cut file above in a Signs.com cart for the back window.
+`print-files/side-window-cut.svg` is that: MOBILE DETAILING over the number,
+each line the full width, white cut vinyl. MIKEY'S and the website stay on the
+back window, because on a short strip of side glass they'd shrink the number.
+It's 13 in wide by 5 in tall, sized to the 13.2 x 5.5 in the first plan gave
+for the rear door glass, so measure that glass before ordering.
+
+| Width | MOBILE DETAILING reads to | The number reads to |
+|---|---|---|
+| 13 in (5 in tall) | about 30 ft | about 47 ft |
+
+- **Rear door glass only, never the front door windows** (the law above, and
+  they're the windows he checks his mirrors through).
+- **The rear windows roll down,** and the rubber strip at the bottom of the
+  window opening drags over whatever goes down past it. Roll one all the way
+  down first: any glass still showing above the door never passes the strip,
+  so a decal there lasts. If less than 5 in shows, keep those windows up (the
+  window lock button on the driver's door stops the back switches).
+- **Ordering:** Signs.com vinyl lettering, upload the SVG, 13 in wide (the
+  height comes out about 5 in), white, standard (it goes on the outside),
+  quantity 2. It's drawn black only so it shows on screen.
+- Another width: `cd print/tools && WIDTH=12 npm run side-decal`. It writes the
+  SVG and `preview-side.png`, and fails on the same things the main decal
+  does: a price, an offer, a review count, "we", an em dash, a different phone
+  number, or ink touching the edge.
+
 ## The honest part about UV DTF
 
 UV DTF (the Temu kind) is made for tumblers, bottles and phone cases. Its
