@@ -375,6 +375,25 @@ character limits. It restates prices and towns, so a fact change lands there
 too, and then on every listing. No street address ever goes on a listing or
 in that file (the repo is public on GitHub). Mikey submits them himself.
 
+## Google Business Profile posts
+
+`outreach/GBP-POSTS.md` (not served) holds the weekly GBP posts. The first
+eight (Mondays 8:00 AM Pacific, Oct 12 to Nov 30, 2026) were **scheduled on his
+profile on 2026-10-07** with GBP's own "Schedule this post" switch, entered by
+Muse (a browser agent) with Mikey signing in himself. Don't schedule them again.
+
+- A scheduled post is one more copy of the facts table, and it doesn't update
+  itself: a fact change means editing or deleting the posts on his profile,
+  not only the file.
+- The next batch starts Monday Dec 7. Write it in that file first, checked
+  against this one, then schedule. Nothing that goes up after Dec 31, 2026
+  mentions Rain-Ready.
+- No phone number in post text (Google may reject the post); the Call now
+  button uses the profile's number. Photos only from `social/photos/`, wide.
+- Whoever posts signs in only with Mikey typing his own password. No saved
+  Google password in a bot, and no cloud browser logging into that account
+  on its own: GBP is where most of his leads come from.
+
 ## Door hangers
 
 The print files live in `print/door-hanger/` (not served, `_config.yml`
