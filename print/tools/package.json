@@ -11,6 +11,7 @@
     "gift": "node build-gift-card.cjs",
     "spots": "python3 sign-spots.py",
     "decal": "node build-car-decal.cjs",
+    "side-decal": "node build-side-decal.cjs",
     "freshener": "node build-air-freshener.cjs"
   },
   "dependencies": {
