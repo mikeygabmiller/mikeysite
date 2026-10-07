@@ -57,6 +57,35 @@ footer a{color:#C8102E;text-decoration:none;}
 ul{margin:16px 0 16px 24px;color:#ddd;}
 li{margin-bottom:8px;}
 @media(max-width:640px){h1{font-size:2rem;}h2{font-size:1.4rem;}.hero{padding:50px 0 30px;}nav a{margin-left:14px;font-size:0.8rem;}.logo{font-size:1.1rem;}}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-first {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-left: 4px solid #C8102E;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  margin: 0 0 32px;
+}
+.answer-first h2 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.answer-first p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #e4e4e4;
+}
+.answer-first p strong { color: #fff; }
+@media (max-width: 600px) {
+  .answer-first { padding: 20px; }
+  .answer-first p { font-size: 1rem; }
+}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -432,6 +461,26 @@ main.container{padding-top:32px;padding-bottom:40px;}
       "@id": "https://mikeysdetailing.com/blog/headlight-restoration-worth-it/#breadcrumb"
     },
     {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is headlight restoration worth it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, yes. Done properly, wet-sanded, polished and sealed with a UV coating, cloudy headlights come back clear and stay that way one to three years. It isn't worth it when there's moisture inside the lens, deep cracks, or a lens so far gone you can barely see the bulb: replace those. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA. Send me a photo and I'll tell you which yours is."
+          }
+        }
+      ],
+      "@id": "https://mikeysdetailing.com/blog/headlight-restoration-worth-it/#faq",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/blog/headlight-restoration-worth-it/#webpage"
+      },
+      "about": {
+        "@id": "https://mikeysdetailing.com/#business"
+      }
+    },
+    {
       "@type": "BlogPosting",
       "@id": "https://mikeysdetailing.com/blog/headlight-restoration-worth-it/#article",
       "headline": "Headlight Restoration: Is It Worth It?",
@@ -478,6 +527,11 @@ main.container{padding-top:32px;padding-bottom:40px;}
 </section>
 
 <main class="container">
+  <div class="answer-first">
+    <h2>Is headlight restoration worth it?</h2>
+    <p><strong>Usually, yes.</strong> Done properly, wet-sanded, polished and sealed with a UV coating, cloudy headlights come back clear and stay that way one to three years. It isn't worth it when there's moisture inside the lens, deep cracks, or a lens so far gone you can barely see the bulb: replace those. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA. Send me a photo and I'll tell you which yours is.</p>
+  </div>
+
   <p>Your headlights are cloudy and yellow, and someone told you about restoration. The fair question is whether it works or just looks good for a week. Done properly it works, and in most cases it's worth it. In a few cases it isn't, and I'd rather tell you that up front.</p>
 
   <h2>Why headlights fog</h2>

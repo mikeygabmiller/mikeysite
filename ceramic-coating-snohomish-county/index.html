@@ -77,6 +77,35 @@ footer a{color:#C8102E;text-decoration:none;}
 ul{margin:16px 0 16px 24px;color:#ddd;}
 li{margin-bottom:8px;}
 @media(max-width:640px){h1{font-size:2rem;}h2{font-size:1.4rem;}.hero{padding:50px 0 30px;}.tier-grid{grid-template-columns:1fr;}.benefits-grid{grid-template-columns:1fr;}.review-grid{grid-template-columns:1fr;}nav a{margin-left:14px;font-size:0.8rem;}.logo{font-size:1.1rem;}}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-first {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-left: 4px solid #C8102E;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  margin: 0 0 32px;
+}
+.answer-first h2 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.answer-first p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #e4e4e4;
+}
+.answer-first p strong { color: #fff; }
+@media (max-width: 600px) {
+  .answer-first { padding: 20px; }
+  .answer-first p { font-size: 1rem; }
+}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -444,10 +473,10 @@ li{margin-bottom:8px;}
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How much does ceramic coating cost in Snohomish County?",
+          "name": "What does mobile ceramic coating cost in Snohomish County?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Standard from $500, Pro from $850, Elite from $1,300. Final price depends on vehicle size and paint condition. If the paint needs correcting before it's coated, that's quoted on top."
+            "text": "At Mikey's Mobile Detailing, ceramic coating starts at $500: Standard from $500, Pro from $850, Elite from $1,300, quoted per car on its size and paint. It lasts 2 to 7 years depending on the tier. I apply it in your driveway or garage, from Arlington down to Woodinville, and you pay after the work, never a deposit."
           }
         },
         {
@@ -455,7 +484,7 @@ li{margin-bottom:8px;}
           "name": "How long does ceramic coating last?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Professional ceramic coatings last 2 to 7 years depending on the product tier. Maintenance washing and avoiding automatic brush washes extends coating life significantly. Most coatings I apply carry a 3-5 year protection window."
+            "text": "Two to seven years, depending on the tier. Careful hand washes and staying out of automatic brush washes are what get a coating to the long end."
           }
         },
         {
@@ -463,7 +492,7 @@ li{margin-bottom:8px;}
           "name": "Is ceramic coating worth it in the Pacific Northwest?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, especially here. Constant rain, road salt, sap, and pollen all bond to bare paint and cause long-term damage. Ceramic coating creates a hydrophobic barrier that makes water bead off and contamination wipe away easily, which matters more in our wet climate than in dry regions."
+            "text": "Yes, especially here. Constant rain, road salt, sap and pollen all bond to bare paint. A coating makes water bead off and lets that contamination wipe away, which matters more in our wet climate than in a dry one."
           }
         },
         {
@@ -471,7 +500,7 @@ li{margin-bottom:8px;}
           "name": "Do I need paint correction before ceramic coating?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Almost always, yes. Coating locks in whatever is on the paint, so any swirl marks, oxidation, or contamination present at application gets sealed in for years. Paint correction first ensures the coating goes on perfectly clean paint and looks its best."
+            "text": "Almost always. A coating locks in whatever is on the paint, so swirl marks, oxidation or contamination get sealed in for years. Correcting first means the coating goes on clean paint."
           }
         },
         {
@@ -479,7 +508,47 @@ li{margin-bottom:8px;}
           "name": "Can ceramic coating be applied at my home?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. I apply ceramic coatings mobile across Snohomish County in driveways, garages, and covered carports. The vehicle needs to stay dry for 24 hours after application, so a garage is preferred but a covered driveway works too."
+            "text": "Yes. I apply coatings in driveways, garages and covered carports across Snohomish County. The car has to stay dry for 24 hours after, so a garage is best, but a covered driveway works too."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the application take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4-8 hours for the coating itself. With paint correction included, plan a full day. Vehicle stays put for 24 hours after to cure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to be home?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need to be home at the start to confirm the work and at the end to walk through aftercare. In between, you're free."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if it rains?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Application happens in your garage or under coverage. The 24-hour cure window also needs dry shelter. We'll plan around weather when we book."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you coat a brand-new car?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and it's the ideal time. Brand-new paint with no swirl marks gets the cleanest coating result. Many customers schedule with their dealership delivery date."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about wheels and glass?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wheel face coating and glass coating are included starting at the Standard tier. Brake dust wipes off coated wheels way easier, and rain sheets off coated windshields without needing wipers as much."
           }
         }
       ],
@@ -543,6 +612,11 @@ li{margin-bottom:8px;}
 </section>
 
 <main class="container">
+
+  <div class="answer-first">
+    <h2>What does mobile ceramic coating cost in Snohomish County?</h2>
+    <p>At Mikey's Mobile Detailing, ceramic coating starts at <strong>$500</strong>: Standard from $500, Pro from $850, Elite from $1,300, quoted per car on its size and paint. It lasts 2 to 7 years depending on the tier. I apply it in your driveway or garage, from Arlington down to Woodinville, and you pay after the work, never a deposit.</p>
+  </div>
 
   <p>Ceramic coating is the strongest paint protection you can put on a daily driver. It bonds to your clear coat at a chemical level, making water bead off, dirt wipe away, and your paint stay glossy for years. I apply professional-grade coatings mobile across Snohomish County, no shop appointment, no driving anywhere. I come to you.</p>
 
@@ -674,6 +748,18 @@ li{margin-bottom:8px;}
   <p>Other nearby cities, ask. I cover most of the county.</p>
 
   <h2>Common Questions</h2>
+
+  <h3>How long does ceramic coating last?</h3>
+  <p>Two to seven years, depending on the tier. Careful hand washes and staying out of automatic brush washes are what get a coating to the long end.</p>
+
+  <h3>Is ceramic coating worth it in the Pacific Northwest?</h3>
+  <p>Yes, especially here. Constant rain, road salt, sap and pollen all bond to bare paint. A coating makes water bead off and lets that contamination wipe away, which matters more in our wet climate than in a dry one.</p>
+
+  <h3>Do I need paint correction before ceramic coating?</h3>
+  <p>Almost always. A coating locks in whatever is on the paint, so swirl marks, oxidation or contamination get sealed in for years. Correcting first means the coating goes on clean paint.</p>
+
+  <h3>Can ceramic coating be applied at my home?</h3>
+  <p>Yes. I apply coatings in driveways, garages and covered carports across Snohomish County. The car has to stay dry for 24 hours after, so a garage is best, but a covered driveway works too.</p>
 
   <h3>How long does the application take?</h3>
   <p>4-8 hours for the coating itself. With paint correction included, plan a full day. Vehicle stays put for 24 hours after to cure.</p>

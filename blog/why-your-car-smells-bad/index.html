@@ -57,6 +57,35 @@ footer a{color:#C8102E;text-decoration:none;}
 ul{margin:16px 0 16px 24px;color:#ddd;}
 li{margin-bottom:8px;}
 @media(max-width:640px){h1{font-size:2rem;}h2{font-size:1.4rem;}.hero{padding:50px 0 30px;}nav a{margin-left:14px;font-size:0.8rem;}.logo{font-size:1.1rem;}}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-first {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  border-left: 4px solid #C8102E;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  margin: 0 0 32px;
+}
+.answer-first h2 {
+  font-size: 1.15rem;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.answer-first p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #e4e4e4;
+}
+.answer-first p strong { color: #fff; }
+@media (max-width: 600px) {
+  .answer-first { padding: 20px; }
+  .answer-first p { font-size: 1rem; }
+}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -432,6 +461,26 @@ main.container{padding-top:32px;padding-bottom:40px;}
       "@id": "https://mikeysdetailing.com/blog/why-your-car-smells-bad/#breadcrumb"
     },
     {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does my car smell bad, and how do I get rid of it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most car smells come from something soaked into the carpet or seats: water in the padding (musty), smoke in every surface, spilled food or milk, or oil from a dog's coat. An air freshener only covers it. The fix is finding the source and drying it out, and anything that's been there for weeks needs hot water extraction and sanitizing. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA, and that's how I get them out."
+          }
+        }
+      ],
+      "@id": "https://mikeysdetailing.com/blog/why-your-car-smells-bad/#faq",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/blog/why-your-car-smells-bad/#webpage"
+      },
+      "about": {
+        "@id": "https://mikeysdetailing.com/#business"
+      }
+    },
+    {
       "@type": "BlogPosting",
       "@id": "https://mikeysdetailing.com/blog/why-your-car-smells-bad/#article",
       "headline": "Why Your Car Smells Bad (And How to Fix It)",
@@ -478,6 +527,11 @@ main.container{padding-top:32px;padding-bottom:40px;}
 </section>
 
 <main class="container">
+  <div class="answer-first">
+    <h2>Why does my car smell bad, and how do I get rid of it?</h2>
+    <p>Most car smells come from something soaked into the carpet or seats: water in the padding (musty), smoke in every surface, spilled food or milk, or oil from a dog's coat. An air freshener only covers it. The fix is finding the source and drying it out, and anything that's been there for weeks needs <strong>hot water extraction and sanitizing</strong>. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA, and that's how I get them out.</p>
+  </div>
+
   <p>The air freshener on your mirror isn't fixing anything. It covers the smell for a week or so, then it fades and you're back where you started, with a car that smells like stale pine and whatever was there before.</p>
   <p>Here are the smells I deal with most, and what gets rid of them.</p>
 

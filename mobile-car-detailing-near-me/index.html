@@ -133,6 +133,14 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
 .footer-bottom p{margin-bottom:4px}
 .intro-prose{max-width:760px;margin:0 auto;font-size:17px;color:var(--text-muted);line-height:1.75}
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -499,10 +507,18 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does mobile car detailing near me in Snohomish County?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mikey's Mobile Detailing: that's me, Mikey Miller, based in Snohomish, WA. I come to your driveway in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, with no travel fee. Exterior from $199, interior from $249, a full detail $369–$449. Rated 5.0 across 41 Google reviews, 300+ cars since 2021."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What is mobile car detailing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Mobile car detailing means the detailer brings the full setup, polishers, extractors, vacuums, products, to your home or workplace and works off your water spigot and outlet. The car never leaves your driveway. Same work as a shop, just at your location."
+            "text": "The detailer brings the full setup, polishers, extractors, vacuums, products, to your home or workplace and runs it off your water spigot and outlet. The car never leaves your driveway. Same work as a shop, your location."
           }
         },
         {
@@ -510,12 +526,12 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "How much does mobile car detailing cost near me?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "In Snohomish County: interior starts at $249, exterior at $199, full detail at $369. Trucks, SUVs, and heavily-soiled vehicles price higher. The instant quote tool gives an exact number in 60 seconds."
+            "text": "In Snohomish County: interior starts at $249, exterior $199, full detail $369. Trucks and heavily-soiled vehicles run higher. The instant quote tool gives an exact number in 60 seconds."
           }
         },
         {
           "@type": "Question",
-          "name": "How close do I need to be to book?",
+          "name": "How close do I need to be?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington most weeks, and there's no travel surcharge anywhere I go. Just outside that? Ask me, I get out there more often than I don't."
@@ -523,7 +539,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
         },
         {
           "@type": "Question",
-          "name": "Do I need to be home during the detail?",
+          "name": "Do I need to be home?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Leave the keys, head to work, come back to a clean car. Most clients pay through a text invoice link after I send before-and-after photos."
@@ -534,7 +550,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "What do you need from me to detail my car?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Access to an outdoor water spigot and a power outlet, plus a spot to park. If you're not sure what's available at your place, just mention it when you book and we'll sort it out. Using yours is how I keep my prices where they are. If you really don't have one, tell me when you book: I can bring water and power if I have to."
+            "text": "Access to a water spigot and a power outlet to run my equipment, plus a spot to park. If you're not sure what's available at your place, just mention it when you book and we'll figure out the closest hookup. Using yours is how I keep my prices where they are. If you really don't have one, tell me when you book: I can bring water and power if I have to."
           }
         }
       ],
@@ -646,6 +662,15 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
   </div>
 </section>
 
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does mobile car detailing near me in Snohomish County?</h2>
+      <p>Mikey's Mobile Detailing: that's me, Mikey Miller, based in Snohomish, WA. I come to your driveway in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, with no travel fee. Exterior from <strong>$199</strong>, interior from $249, a full detail <strong>$369&ndash;$449</strong>. Rated 5.0 across 41 Google reviews, 300+ cars since 2021.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">What "Near Me" Actually Means</div>
@@ -738,7 +763,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
     <p class="section-sub">Stuff people ask before booking.</p>
     <div class="faq">
       <div class="faq-item"><div class="faq-q">What is mobile car detailing?</div><div class="faq-a"><p>The detailer brings the full setup, polishers, extractors, vacuums, products, to your home or workplace and runs it off your water spigot and outlet. The car never leaves your driveway. Same work as a shop, your location.</p></div></div>
-      <div class="faq-item"><div class="faq-q">How much does it cost near me?</div><div class="faq-a"><p>In Snohomish County: interior starts at $249, exterior $199, full detail $369. Trucks and heavily-soiled vehicles run higher. The instant quote tool gives an exact number in 60 seconds.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How much does mobile car detailing cost near me?</div><div class="faq-a"><p>In Snohomish County: interior starts at $249, exterior $199, full detail $369. Trucks and heavily-soiled vehicles run higher. The instant quote tool gives an exact number in 60 seconds.</p></div></div>
       <div class="faq-item"><div class="faq-q">How close do I need to be?</div><div class="faq-a"><p>I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington most weeks, and there's no travel surcharge anywhere I go. Just outside that? Ask me, I get out there more often than I don't.</p></div></div>
       <div class="faq-item"><div class="faq-q">Do I need to be home?</div><div class="faq-a"><p>No. Leave the keys, head to work, come back to a clean car. Most clients pay through a text invoice link after I send before-and-after photos.</p></div></div>
       <div class="faq-item"><div class="faq-q">What do you need from me to detail my car?</div><div class="faq-a"><p>Access to a water spigot and a power outlet to run my equipment, plus a spot to park. If you're not sure what's available at your place, just mention it when you book and we'll figure out the closest hookup. Using yours is how I keep my prices where they are. If you really don't have one, tell me when you book: I can bring water and power if I have to.</p></div></div>

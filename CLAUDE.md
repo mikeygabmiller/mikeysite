@@ -308,6 +308,13 @@ competes with the first in search.
   never in the price book; don't print a price until Mikey sets one.
 - These moved; they weren't new pages. New posts follow GROWTH-PLAN.md's pace
   of one new page a month.
+- **Still live on 2026-10-07:** the redirect hadn't been deployed, and two
+  copies of the old quote widget (Interior $160+, Full $260+) were up too:
+  `mikeysquote.netlify.app` and `mikeygabmiller.github.io/MyQqc/`.
+  `tools/old-quote-redirect/` is their fix, and `reports/2026-10-07-aeo.md`
+  has the steps, with the GBP Services entry that still said "from $200".
+  A session's Netlify deploy needs Mikey's explicit yes (the safety check
+  stops it otherwise).
 
 ## SEO copy
 
@@ -318,8 +325,18 @@ competes with the first in search.
   Everett and Bothell are testing `Mobile Car Detailing <City>, WA` since
   2026-10-05 (`reports/2026-10-scoreboard.md`): roll it out to the other city
   pages if they move by the November pull, put it back if they don't.
-- FAQ answers exist **twice** on most pages: once visible, once inside a
-  JSON-LD `FAQPage` block. Edit both or the schema starts lying.
+- **The FAQ schema is built from the visible FAQ** (since 2026-10-07, when 23
+  pages had drifted and some hidden answers were wrong: 8 towns, "25-50% more"
+  for an SUV). `tools/build-entity-graph.py` reads the questions a reader can
+  see (the answer-first box, `.faq-item`, `details.faq2-item`, or `h3` pairs
+  under a "Common Questions" `h2`) and writes the `FAQPage` from them. Edit the
+  visible answer and rerun it with `--apply`; `check-site.py` fails until you
+  do. There's no such thing as a schema-only question: most AI crawlers strip
+  `<script>` and never see it. Put it on the page or leave it out.
+- **An answer names who's answering.** Every answer-first box says Mikey's
+  Mobile Detailing and the place in the same paragraph as the answer, because
+  an engine lifts the paragraph, not the page. The October panel: his pages
+  shaped answers to two question prompts that never said his name.
 - A page's JSON-LD `WebPage` name and description are its `<title>` and meta
   description, byte for byte. After changing either, run
   `python3 tools/build-entity-graph.py --apply`, or `check-site.py` fails (15
@@ -597,6 +614,15 @@ keeping both intentions rather than taking your own side wholesale.
 `sitemap.xml`, `robots.txt` and `llms.txt` are maintained by hand. A new page
 means adding it to all three, and `llms.txt` restates the prices and durations,
 so a fact change lands there too.
+
+**Sitemap dates and recrawls** (2026-10-07). Each `<lastmod>` is the day its
+page last changed: run `python3 tools/sitemap-lastmod.py --apply` after editing
+pages (session clones are shallow, so `git fetch --unshallow origin main`
+first). `check-site.py` fails on a date older than its page. Once a merge is
+live, run `python3 tools/indexnow.py /changed/ /pages/` (no arguments sends the
+whole sitemap) so Bing, which ChatGPT search and Copilot read, recrawls them.
+The 32-character `.txt` at the site root is its key: public by design, don't
+delete it.
 
 ## The dashboard (its own repo, its own live branch)
 

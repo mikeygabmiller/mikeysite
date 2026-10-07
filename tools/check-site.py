@@ -279,6 +279,9 @@ else:
 # towns from areaServed on every page and put Duvall back in Snohomish County,
 # and 15 pages had a meta description edited without its JSON-LD copy. Fix the
 # page or the generator's tables, then `python3 tools/build-entity-graph.py --apply`.
+# Since 2026-10-07 that includes the FAQ: the FAQPage schema is built from the
+# questions the page shows, so a visible answer edited without a rerun fails
+# here, and so does a schema question with no visible twin.
 import importlib.util
 sys.dont_write_bytecode = True
 _spec = importlib.util.spec_from_file_location("entity_graph", ROOT / "tools" / "build-entity-graph.py")
@@ -293,7 +296,22 @@ for p in pages:
         regen.append(rel)
 if regen:
     fails.append(f"a rerun of tools/build-entity-graph.py would change {len(regen)} page(s), "
-                 f"so its tables and the pages disagree: {regen[:8]}")
+                 f"so its tables (or a page's visible FAQ) and the schema disagree: {regen[:8]}")
+
+# --- sitemap.xml dates -------------------------------------------------------
+# A page's <lastmod> can't be older than the page. On 2026-10-07 31 of 43 still
+# said 2026-08-01 after the 10-05 fact audit, and the search engines' stale
+# copies were feeding AI answers prices the site had retired. Pages it can't
+# date (older than a shallow clone) are skipped, not guessed.
+# Fix: `python3 tools/sitemap-lastmod.py --apply`.
+_spec = importlib.util.spec_from_file_location("sitemap_lastmod", ROOT / "tools" / "sitemap-lastmod.py")
+sl = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(sl)
+stale = [f"/{p} says {cur}, changed {want}" for p, (cur, want) in
+         sl.expected((ROOT / "sitemap.xml").read_text(encoding="utf-8")).items() if want and cur < want]
+if stale:
+    fails.append(f"sitemap.xml lastmod older than the page ({len(stale)}), run tools/sitemap-lastmod.py --apply:")
+    fails.extend(f"    {d}" for d in stale[:12])
 # The served towns live in three places: TOWNS on the homepage (the map and the
 # ZIP checker), CITIES in the generator (areaServed on every page), and a city
 # page for each one that has p: set. They have to name the same twelve.
@@ -364,8 +382,12 @@ RETIRED_CLAIMS = [
      "a scarcity claim: the one scarcity line is the live next opening"),
     (re.compile(r"onsite in \d+\s*-\s*\d+\s*hrs", re.I),
      "a turnaround his week can't keep (one weekday job, Saturdays, never same day)"),
-    (re.compile(r"every 1 to 3 months|frequency tiers|\d+-\d+ a year \(clean club", re.I),
+    (re.compile(r"every 1 ?(?:to|-|–|&ndash;) ?3 months|frequency tiers|\d+-\d+ a year \(clean club", re.I),
      "a Clean Club schedule: it's every 4 or 8 weeks"),
+    # 2026-10-07: "mobile detailing is 2-5 hours" sat on two pages. No job is:
+    # exterior 1-2, interior about 90 minutes (2-4 with extraction), full 3-5.
+    (re.compile(r"\b2 ?(?:-|–|&ndash;|to) ?5 (?:hours|hrs)\b", re.I),
+     "a duration no job has: exterior 1-2 hours, interior about 90 minutes (2-4 with extraction), full 3-5"),
     (re.compile(r"(?=.*\b(?:club|member|recurring)).*?\b(bi-monthly|quarterly)\b", re.I),
      "a Clean Club schedule: it's every 4 or 8 weeks"),
 ]

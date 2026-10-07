@@ -133,6 +133,14 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
 .footer-bottom p{margin-bottom:4px}
 .intro-prose{max-width:760px;margin:0 auto;font-size:17px;color:var(--text-muted);line-height:1.75}
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -499,10 +507,18 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Can a mobile detailer get dog hair out of my car?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I'm Mikey (Mikey's Mobile Detailing, Snohomish, WA), and I pull pet hair out of cloth seats and carpet in your driveway with rubber pet-hair tools, a high-power vacuum, compressed air and steam. It's $50–$80 as an add-on to an interior, or $120–$220 on its own for heavy hair. Light shedding adds about an hour; hair woven into cloth can take 2 to 4 hours."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "How much does pet hair removal cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Light pet hair removal as an add-on is $50-$80. Stand-alone heavy pet hair removal starts at $120 and runs up to $220 for severe cases (woven into upholstery, multiple shedding dogs, fabric seats). A full interior detail with pet hair removal included starts at $249."
+            "text": "Light hair as an add-on: $50-$80. Stand-alone heavy pet hair removal: $120-$220 depending on severity and fabric type. Full interior with pet hair included: $249+."
           }
         },
         {
@@ -510,7 +526,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "Can you really get all the pet hair out?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. I use a combination of high-CFM vacuum, rubber pet hair tools, compressed air, and steam to lift hair that's woven into fabric. Cloth seats and carpet take the longest but it comes out. Leather is easier."
+            "text": "Yes. Combination of rubber pet hair tools, high-CFM vacuum, compressed air, and steam. Cloth interiors take longest but it comes out. Leather is easier."
           }
         },
         {
@@ -518,7 +534,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "How long does pet hair removal take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Light shedding: about an hour as an add-on. Heavy embedded hair on cloth interiors: 2-4 hours, on its own or as part of a full interior. The time depends on how deep the hair is and the fabric type."
+            "text": "Light shedding: about an hour as an add-on. Heavy embedded hair on cloth: 2-4 hours, on its own or as part of a full interior."
           }
         },
         {
@@ -526,7 +542,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "Will it damage my upholstery?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. The tools are made for it. Rubber pet hair brushes, soft microfiber, and a steamer at safe temperatures. I don't use anything abrasive on cloth or leather."
+            "text": "No. Rubber pet brushes, soft microfiber, and a steamer at safe temperatures. Nothing abrasive on cloth or leather."
           }
         },
         {
@@ -534,7 +550,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "Do you do pet hair removal as a stand-alone service?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. You don't have to book a full interior detail. Stand-alone pet hair removal is one of my most-requested add-ons and I offer it as its own service starting at $120."
+            "text": "Yes. Stand-alone is fine, one of my most-requested services on its own. Starts at $120. You don't have to book a full interior."
           }
         }
       ],
@@ -646,6 +662,15 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
   </div>
 </section>
 
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Can a mobile detailer get dog hair out of my car?</h2>
+      <p>Yes. I'm Mikey (Mikey's Mobile Detailing, Snohomish, WA), and I pull pet hair out of cloth seats and carpet in your driveway with rubber pet-hair tools, a high-power vacuum, compressed air and steam. It's <strong>$50&ndash;$80</strong> as an add-on to an interior, or <strong>$120&ndash;$220</strong> on its own for heavy hair. Light shedding adds about an hour; hair woven into cloth can take 2 to 4 hours.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">The Real Problem</div>
@@ -736,10 +761,10 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
     <p class="section-sub">Stuff dog and cat owners ask before booking.</p>
     <div class="faq">
       <div class="faq-item"><div class="faq-q">How much does pet hair removal cost?</div><div class="faq-a"><p>Light hair as an add-on: $50-$80. Stand-alone heavy pet hair removal: $120-$220 depending on severity and fabric type. Full interior with pet hair included: $249+.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Can you really get all of it out?</div><div class="faq-a"><p>Yes. Combination of rubber pet hair tools, high-CFM vacuum, compressed air, and steam. Cloth interiors take longest but it comes out. Leather is easier.</p></div></div>
-      <div class="faq-item"><div class="faq-q">How long does it take?</div><div class="faq-a"><p>Light shedding: about an hour as an add-on. Heavy embedded hair on cloth: 2-4 hours, on its own or as part of a full interior.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Can you really get all the pet hair out?</div><div class="faq-a"><p>Yes. Combination of rubber pet hair tools, high-CFM vacuum, compressed air, and steam. Cloth interiors take longest but it comes out. Leather is easier.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How long does pet hair removal take?</div><div class="faq-a"><p>Light shedding: about an hour as an add-on. Heavy embedded hair on cloth: 2-4 hours, on its own or as part of a full interior.</p></div></div>
       <div class="faq-item"><div class="faq-q">Will it damage my upholstery?</div><div class="faq-a"><p>No. Rubber pet brushes, soft microfiber, and a steamer at safe temperatures. Nothing abrasive on cloth or leather.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Do you do it stand-alone or only with a full detail?</div><div class="faq-a"><p>Stand-alone is fine, one of my most-requested services on its own. Starts at $120. You don't have to book a full interior.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do you do pet hair removal as a stand-alone service?</div><div class="faq-a"><p>Yes. Stand-alone is fine, one of my most-requested services on its own. Starts at $120. You don't have to book a full interior.</p></div></div>
     </div>
   </div>
 </section>

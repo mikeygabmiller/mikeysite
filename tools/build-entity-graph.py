@@ -17,6 +17,7 @@ Nothing is dropped: per-page city + geo + price data moves from the
 (incorrect) business address/geo/priceRange into the Service node where
 schema.org actually wants it.
 """
+import html as _html
 import json, re, sys
 from pathlib import Path
 
@@ -282,6 +283,48 @@ def service_node(page_url, spec):
     return node
 
 
+# --- the FAQ a reader can see ------------------------------------------------
+# The FAQPage node is built from the page's visible questions, never kept as
+# its own copy. On 2026-10-07, 23 pages carried FAQ schema that had drifted
+# from what the page showed: questions only the schema asked, answers only the
+# schema gave, and some of them wrong (8 towns instead of 12, "25-50% more"
+# for an SUV, "every 3-4 months"). Most AI crawlers drop <script> and read the
+# visible text, and Google wants marked-up answers on the page, so a hidden
+# answer is invisible to one and a liability with the other. To change a
+# question, change the page and rerun this; check-site fails until you do.
+#
+# The four shapes the site uses, in page order:
+#   <div class="answer-first"><h2>Q</h2><p>A</p></div>    (the guides)
+#   <div class="faq-item"><div class="faq-q">Q</div><div class="faq-a">A</div></div>
+#   <details class="faq2-item"><summary>Q</summary><p>A</p></details>
+#   <h2>Common Questions</h2> then <h3>Q</h3><p>A</p> pairs, up to the next h2
+FAQ_SHAPES = [
+    re.compile(r'<div class="answer-first">\s*<h2[^>]*>(.*?)</h2>(.*?)</div>', re.S),
+    re.compile(r'<div class="faq-item"[^>]*>\s*<div class="faq-q"[^>]*>(.*?)</div>\s*<div class="faq-a"[^>]*>(.*?)</div>\s*</div>', re.S),
+    re.compile(r'<details class="faq2-item">\s*<summary>(.*?)</summary>(.*?)</details>', re.S),
+]
+FAQ_SECTION = re.compile(r'<h2[^>]*>\s*Common Questions\s*</h2>(.*?)(?=<h2|<div class="related-links"|</main>|</section>)',
+                         re.S | re.I)
+FAQ_PAIR = re.compile(r'<h3[^>]*>([^<]*\?)\s*</h3>\s*((?:<p\b.*?</p>\s*)+)', re.S)
+
+
+def _faq_text(fragment):
+    s = re.sub(r"<(?:/p|br|/li)\b[^>]*>", " ", fragment)
+    s = re.sub(r"<[^>]+>", "", s)
+    return re.sub(r"\s+", " ", _html.unescape(s)).strip()
+
+
+def visible_faq(html):
+    body = html.split("</head>", 1)[-1]
+    body = re.sub(r"<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->", "", body, flags=re.S)
+    found = []
+    for rx in FAQ_SHAPES:
+        found += [(m.start(), m.group(1), m.group(2)) for m in rx.finditer(body)]
+    for sec in FAQ_SECTION.finditer(body):
+        found += [(sec.start(1) + m.start(), m.group(1), m.group(2)) for m in FAQ_PAIR.finditer(sec.group(1))]
+    return [(_faq_text(q), _faq_text(a)) for _, q, a in sorted(found)]
+
+
 def rebuild(rels, html):
     """The page as this script would write it: (new_html, note), or (None,
     reason) for a page it leaves alone. check-site.py calls this and fails if
@@ -346,9 +389,13 @@ def rebuild(rels, html):
         breadcrumb["@id"] = page_url + "#breadcrumb"
         graph.append(breadcrumb)
 
+    qa = visible_faq(html)
+    if faq and not qa:
+        print(f"  note: {rels} drops a FAQPage whose questions aren't on the page", file=sys.stderr)
+    faq = {"@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+        for q, a in qa]} if qa else None
     if faq:
-        faq = dict(faq)
-        faq.pop("@context", None)
         faq["@id"] = page_url + "#faq"
         faq["isPartOf"] = {"@id": page_url + "#webpage"}
         faq["about"] = {"@id": BIZ_ID}
