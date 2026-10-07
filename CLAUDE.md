@@ -463,10 +463,12 @@ for a Temu UV DTF order): MIKEY'S, MOBILE DETAILING, `425-600-7897` and
 keyline on a square transparent PNG. Read its `README.md`
 first. Copy lives in `print/tools/build-car-decal.cjs` (`npm run decal`), which
 also writes the DIY versions: a one-colour cut SVG for a Cricut and a hand-cut
-template on Letter paper. The back window gets that cut SVG, from Signs.com
-in white (2026-10-07). The side glass gets a simpler cut file,
-MOBILE DETAILING over the number only, from `build-side-decal.cjs`
-(`npm run side-decal`), for the rear door windows. Same rules as the sign: one more copy of the facts
+template on Letter paper. The back window gets that cut SVG and the rear
+door windows a simpler one, MOBILE DETAILING over the number only, from
+`build-side-decal.cjs` (`npm run side-decal`), which also writes
+`one-sheet-cut.svg` with all three. Order that sheet from CarStickers in white
+(2026-10-07: $30.87 shipped, against about $54 at Signs.com with its $25
+shipping minimum). Same rules as the sign: one more copy of the facts
 table, **no prices, no offer, no review count**. It goes on the outside of the glass and **never on the front
 door windows** (RCW 46.37.410(2): nothing on a window that blocks the driver's
 view). UV DTF is a short-term product on a car; the README says so and what
