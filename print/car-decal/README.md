@@ -117,11 +117,17 @@ for the rear door glass, so measure that glass before ordering.
   down first: any glass still showing above the door never passes the strip,
   so a decal there lasts. If less than 5 in shows, keep those windows up (the
   window lock button on the driver's door stops the back switches).
-- **Ordering:** Signs.com vinyl lettering, upload the SVG, 13 in wide (the
-  height comes out about 5 in), white, standard (it goes on the outside),
-  quantity 2. It's drawn black only so it shows on screen.
+- **Ordering: all three on one sheet.** `print-files/one-sheet-cut.svg` is
+  the back window decal and both side decals stacked, 1 in apart, 13 x 20.2
+  in. Signs.com prices cut lettering by the design's overall size with a base
+  charge on every item, so on 2026-10-07 (2 day production) one sheet was
+  $28.38 against $42.15 as separate items ($16.19 back, $25.96 for two
+  sides). Upload it as vinyl lettering, 13 in wide (the height comes out
+  about 20.2 in), white, standard (it goes on the outside), quantity 1, then
+  cut the three apart with scissors along the gaps before putting them on.
+  It's drawn black only so it shows on screen.
 - Another width: `cd print/tools && WIDTH=12 npm run side-decal`. It writes the
-  SVG and `preview-side.png`, and fails on the same things the main decal
+  SVG, the one sheet and `preview-side.png`, and fails on the same things the main decal
   does: a price, an offer, a review count, "we", an em dash, a different phone
   number, or ink touching the edge.
 

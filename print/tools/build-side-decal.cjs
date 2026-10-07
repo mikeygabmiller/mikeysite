@@ -131,6 +131,34 @@ function traceOutlines(png) {
   const file = path.join(OUT, 'print-files', 'side-window-cut.svg');
   fs.writeFileSync(file, svg + '\n');
 
+  // ---- One sheet: the back window and both sides in one file, cut apart at
+  // home with scissors along the gaps. Signs.com prices cut lettering by the
+  // design's overall size with a base charge per item, so on 2026-10-07 (2 day
+  // shipping) this sheet was $28.38 against $42.15 as separate items: $16.19
+  // for the back and $25.96 for two sides. The coordinates are baked in rather
+  // than wrapped in transforms, so a shop's converter has nothing to misread.
+  const SHEET_GAP = 1;                    // in, between pieces: plainly wider than the line gaps, so the cuts are obvious
+  const back = fs.readFileSync(path.join(OUT, 'print-files', 'window-decal-cut.svg'), 'utf8');
+  const piece = s => {
+    const [, w, h, vw, vh] = s.match(/width="([\d.]+)in" height="([\d.]+)in" viewBox="0 0 ([\d.]+) ([\d.]+)"/).map(Number);
+    return { w, h, vw, vh, d: s.match(/ d="([^"]+)"/)[1] };
+  };
+  // Only absolute M, L, C and Z, so every number is an x, y pair.
+  const place = (p, xIn, yIn) => {
+    if (/[^MLCZ\d\s.,-]/.test(p.d)) throw new Error('a cut path uses a command other than M, L, C, Z');
+    const s = p.w * DPI / p.vw;
+    let i = 0;
+    return p.d.replace(/-?\d+(?:\.\d+)?/g, n => (i++ % 2 ? +n * s + yIn * DPI : +n * s + xIn * DPI).toFixed(2));
+  };
+  const parts = [piece(back), piece(svg), piece(svg)];
+  const sheetW = Math.max(...parts.map(p => p.w));
+  let top = 0;
+  const ds = parts.map(p => { const d = place(p, (sheetW - p.w) / 2, top); top += p.h + SHEET_GAP; return d; });
+  const sheetH = top - SHEET_GAP;
+  fs.writeFileSync(path.join(OUT, 'print-files', 'one-sheet-cut.svg'),
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${sheetW.toFixed(3)}in" height="${sheetH.toFixed(3)}in" viewBox="0 0 ${(sheetW * DPI).toFixed(0)} ${(sheetH * DPI).toFixed(0)}">` +
+    `<path d="${ds.join(' ')}" fill="#000" fill-rule="evenodd"/></svg>\n`);
+
   // ---- Checks. ----
   const problems = [];
   const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (unconfirmed)'],
@@ -166,5 +194,6 @@ function traceOutlines(png) {
   console.log(`  ${path.relative(ROOT, file)}: ${inch(W)} wide x ${inch(L.H)} tall (letters ${inch(W - 2 * PAD)} wide)`);
   console.log(`  MOBILE DETAILING ${inch(what.cap)}, phone ${inch(phone.cap)}`);
   console.log(`  reads to about ${Math.round(what.cap * FT_PER_IN.what)} ft (what it is) and ${Math.round(phone.cap * FT_PER_IN.phone)} ft (the number), 20/40 eyes, best case`);
+  console.log(`  print/car-decal/print-files/one-sheet-cut.svg: the back window and both sides, ${inch(sheetW)} wide x ${inch(sheetH)} tall`);
   if (problems.length) { console.error('\nPROBLEMS:\n  ' + problems.join('\n  ')); process.exit(1); }
 })().catch(e => { console.error(e); process.exit(1); });
