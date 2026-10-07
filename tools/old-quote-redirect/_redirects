@@ -1,0 +1,7 @@
+# The old quote widget (mikeysquote.netlify.app, and the same file on
+# mikeygabmiller.github.io/MyQqc/) still showed Interior $160+, Exterior $130+,
+# Full $260+ on 2026-10-07 and mailed quotes through Web3Forms instead of the
+# dashboard. Deploy this folder to the Netlify project "mikeysquote" by
+# dragging it onto its Deploys page, so every old link lands on the real
+# calculator. GitHub Pages ignores _redirects; index.html covers MyQqc.
+/*    https://mikeysdetailing.com/#booking    301!

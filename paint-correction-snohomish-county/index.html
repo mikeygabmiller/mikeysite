@@ -133,6 +133,14 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
 .footer-bottom p{margin-bottom:4px}
 .intro-prose{max-width:760px;margin:0 auto;font-size:17px;color:var(--text-muted);line-height:1.75}
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
+
+/* Answer-first: the direct answer, near the top, that stands on its own. */
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -499,10 +507,18 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does paint correction near Everett and Snohomish?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA, and I machine-polish swirls, light scratches and oxidation out of the clear coat in your driveway, from Everett and Mill Creek out to Monroe. A 1-Step starts at $400 and takes 6 to 8 hours. A 2-Step from $650 or Multi-Stage from $900 takes one to two days. Each is quoted per car."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What is paint correction?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Leveling tiny scratches, swirls, and oxidation in the clear coat using a machine polisher and abrasive compounds. It physically removes damage from the clear coat, not a wash, not a wax."
+            "text": "Leveling tiny scratches, swirls, and oxidation in your clear coat with a machine polisher and abrasive compounds. It's not a wash, not a wax, it physically removes damage."
           }
         },
         {
@@ -510,7 +526,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "How much does paint correction cost in Snohomish County?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "One-step polish starts at $400 for sedans. Two-step correction starts at $650. Multi-stage runs $900 to $1,200. Final price depends on size, paint condition, and how aggressive the work needs to be."
+            "text": "One-step starts at $400 for sedans. Two-step starts at $650. Multi-stage runs $900-$1,200. Final price depends on size, paint condition, and how aggressive the work needs to be."
           }
         },
         {
@@ -518,7 +534,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "Will paint correction remove deep scratches?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Scratches you can catch with a fingernail are through the clear coat and need paint, not correction. Anything shallower, swirls, light scratches, water spot etching, oxidation, comes out."
+            "text": "Scratches you can catch with a fingernail are through the clear coat and need paint, not correction. Everything shallower comes out, swirls, light scratches, water spot etching, oxidation."
           }
         },
         {
@@ -526,7 +542,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "Do I need ceramic coating after paint correction?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not required, but it's the right time to do it. Correction removes damage; coating locks the result in for years. Bundling is cheaper than coming back later."
+            "text": "You don't need it, but it's the right time. Correction removes the damage. Coating locks the result in for years. Bundled together is cheaper than coming back later."
           }
         },
         {
@@ -534,7 +550,7 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
           "name": "How long does paint correction take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "One-step is 6 to 8 hours. Two-step is a day and a half to two days. Multi-stage runs two full days. All of it mobile in your driveway."
+            "text": "One-step is 6-8 hours. Two-step and multi-stage take one to two days. All of it mobile, in your driveway."
           }
         }
       ],
@@ -646,6 +662,15 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
   </div>
 </section>
 
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does paint correction near Everett and Snohomish?</h2>
+      <p>I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA, and I machine-polish swirls, light scratches and oxidation out of the clear coat in your driveway, from Everett and Mill Creek out to Monroe. A 1-Step starts at <strong>$400</strong> and takes 6 to 8 hours. A 2-Step from $650 or Multi-Stage from $900 takes one to two days. Each is quoted per car.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">What It Actually Is</div>
@@ -736,10 +761,10 @@ footer{border-top:2px solid var(--border);padding:50px 0 30px;color:var(--text-m
     <p class="section-sub">Stuff people ask before booking.</p>
     <div class="faq">
       <div class="faq-item"><div class="faq-q">What is paint correction?</div><div class="faq-a"><p>Leveling tiny scratches, swirls, and oxidation in your clear coat with a machine polisher and abrasive compounds. It's not a wash, not a wax, it physically removes damage.</p></div></div>
-      <div class="faq-item"><div class="faq-q">How much does it cost?</div><div class="faq-a"><p>One-step starts at $400 for sedans. Two-step starts at $650. Multi-stage runs $900-$1,200. Final price depends on size, paint condition, and how aggressive the work needs to be.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Will it remove deep scratches?</div><div class="faq-a"><p>Scratches you can catch with a fingernail are through the clear coat and need paint, not correction. Everything shallower comes out, swirls, light scratches, water spot etching, oxidation.</p></div></div>
-      <div class="faq-item"><div class="faq-q">Do I need ceramic coating after?</div><div class="faq-a"><p>You don't need it, but it's the right time. Correction removes the damage. Coating locks the result in for years. Bundled together is cheaper than coming back later.</p></div></div>
-      <div class="faq-item"><div class="faq-q">How long does it take?</div><div class="faq-a"><p>One-step is 6-8 hours. Two-step is a day and a half to two days. Multi-stage is two full days. All of it mobile in your driveway.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How much does paint correction cost in Snohomish County?</div><div class="faq-a"><p>One-step starts at $400 for sedans. Two-step starts at $650. Multi-stage runs $900-$1,200. Final price depends on size, paint condition, and how aggressive the work needs to be.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Will paint correction remove deep scratches?</div><div class="faq-a"><p>Scratches you can catch with a fingernail are through the clear coat and need paint, not correction. Everything shallower comes out, swirls, light scratches, water spot etching, oxidation.</p></div></div>
+      <div class="faq-item"><div class="faq-q">Do I need ceramic coating after paint correction?</div><div class="faq-a"><p>You don't need it, but it's the right time. Correction removes the damage. Coating locks the result in for years. Bundled together is cheaper than coming back later.</p></div></div>
+      <div class="faq-item"><div class="faq-q">How long does paint correction take?</div><div class="faq-a"><p>One-step is 6-8 hours. Two-step and multi-stage take one to two days. All of it mobile, in your driveway.</p></div></div>
     </div>
   </div>
 </section>
