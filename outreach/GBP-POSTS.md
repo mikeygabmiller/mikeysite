@@ -3,6 +3,12 @@
 Eight posts, one a week, ready to paste. GROWTH-PLAN.md Phase 2 #4 asks for one
 GBP post a week; this covers the first eight. Written 2026-10-05.
 
+**All eight are scheduled on the profile** (2026-10-07, Mondays at 8:00 AM
+Pacific, Oct 12 to Nov 30). Muse, a browser agent, entered them with Mikey
+signing in himself, and checked them in the profile's "Your posts" list. **Don't
+schedule them again.** What went up differs from the plan in two photos, noted
+in the table. The next batch starts Monday Dec 7 (see the end of this file).
+
 This folder is not served on mikeysdetailing.com (`_config.yml` excludes
 `outreach/`), but the GitHub repo is public. No address, no logins here.
 
@@ -34,8 +40,8 @@ label doesn't match, look for the nearest one.
    names, and for **Book** paste the link. **Call now** uses the number on your
    profile, so check that it's (425) 600-7897 before you use it.
 7. **Schedule:** turn on **Schedule this post** and pick the Monday of that
-   week, around 8 AM. If your account doesn't show the switch yet, post each
-   one on its Monday instead.
+   week, around 8 AM. Mikey's profile has the switch (used for all eight on
+   2026-10-07, offers included). Leave **Repeats** off.
 8. Click **Post** (or **Schedule**).
 
 **On your phone (Google Maps app):** tap your profile picture (top right) →
@@ -82,16 +88,16 @@ first, then change these links. Don't make one up in a single place.
 
 ## The eight at a glance
 
-| # | Week of | Type | What it is | Photo | Button |
+| # | Week of | Type | What it is | Photo (as scheduled) | Button |
 |---|---|---|---|---|---|
 | 1 | Oct 12 | Update | Tip: road film on wet roads | `volvo-driveway.jpg` | Book |
 | 2 | Oct 19 | Offer | Rain-Ready Full Detail (1 of 2) | `highlander-gloss.jpg` | View offer (automatic) |
 | 3 | Oct 26 | Update | Tip: leaves and tree sap | `lexus-side.jpg` | Book |
-| 4 | Nov 2 | Update | Interior Detail spotlight, wet carpets | `backseat-before.jpg` | Book |
+| 4 | Nov 2 | Update | Interior Detail spotlight, wet carpets | `backseat-before.jpg` + `backseat-after.jpg` | Book |
 | 5 | Nov 9 | Update | Tip: early dark, glass and headlights | `odyssey-interior.jpg` | Call now |
 | 6 | Nov 16 | Update | Exterior Detail spotlight | `subaru-driveway.jpg` | Book |
-| 7 | Nov 23 | Update | Full Detail spotlight, with the guarantee | `cargo-after.jpg` | Book |
-| 8 | Nov 30 | Offer | Rain-Ready Full Detail (2 of 2) | `mazda-woods.jpg` | View offer (automatic) |
+| 7 | Nov 23 | Update | Full Detail spotlight, with the guarantee | `cargo-after.jpg` only (the before wasn't added) | Book |
+| 8 | Nov 30 | Offer | Rain-Ready Full Detail (2 of 2) | `lexus-front.jpg` (in place of `mazda-woods.jpg`, a tall photo GBP's wide crop would cut) | View offer (automatic) |
 
 Rain-Ready is on two posts, the guarantee ("you don't pay until you love it")
 on one. Every town named is one of the twelve. No scarcity line anywhere,
@@ -265,6 +271,8 @@ Tap Book and the quote shows your exact price in 60 seconds.
 
 **Photo:** `social/photos/cargo-after.jpg` (the Acura's cargo area, cleaned).
 GBP lets you add `cargo-before.jpg` too; put it first so the pair reads in order.
+Scheduled with `cargo-after.jpg` only; edit the scheduled post to add the before
+if you want the pair.
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -287,8 +295,9 @@ Tap Book to see your exact price and pick a time.
 
 ## 8. Week of Nov 30 · Offer · Rain-Ready (2 of 2)
 
-**Photo:** `social/photos/mazda-woods.jpg` (navy CX-5 in the woods, plate
-blurred)
+**Photo:** `social/photos/lexus-front.jpg` (dark green Lexus on a gravel
+driveway, plate blurred). Planned as `mazda-woods.jpg`, swapped when scheduling
+because that one is tall and GBP crops posts wide.
 **Offer title:** `Rain-Ready Full Detail: book by Dec 31` (38 characters)
 **Start date:** the day you post it · **End date:** **December 31, 2026**
 **Link to redeem offer:** `https://mikeysdetailing.com/#booking`
@@ -330,3 +339,18 @@ Pick Full Detail in the quote and the extras go on by themselves.
    never the originals in `/images`, which show plates and house numbers.
 4. **After posting,** reply to any comment or question on a post the same way
    you reply to reviews: within a day, naming the service and the town.
+
+---
+
+## The next batch (from Monday Dec 7)
+
+Post 8 is the last one scheduled. Write posts 9 onward in this file first,
+checked against the facts table in `CLAUDE.md`, and only then schedule them.
+Same rules as these eight: no phone number in the text, only the twelve towns,
+photos only from `social/photos/` in a wide (4:3) shape, no Clean Club, no
+scarcity line, nothing about a license or insurance. **Nothing scheduled to go
+up after December 31, 2026 mentions Rain-Ready.**
+
+A scheduled post doesn't follow a fact change on its own. If a price, a
+duration or the towns change before Nov 30, edit or delete the affected
+scheduled posts on the profile as well as this file.
