@@ -27,7 +27,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Exterior detail takes | **about 1–2 hours** | set 2026-10-05 to match the calendar's 2 hr plan (pages had said 1–1.5 and 1.5–2.5); Mikey to confirm |
 | Clean Club visit takes | **unconfirmed** | Mikey wasn't sure (2026-10-05). Copy says a club visit takes less than a first detail, never a number |
 | Cars detailed | **300+** | |
-| Google rating | **5.0 across 41 reviews** | |
+| Google rating | **5.0 across 39 reviews** | what the public profile shows (Muse read it 2026-10-08; the site had said 41). `site-stats.js` first, then every hard-coded copy; `check-site.py` finds them |
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
@@ -436,7 +436,7 @@ excludes `print/`). Read its `README.md` before changing anything: it has the
 ordering steps, the distribution rules and why each section is there.
 
 - **A hanger is one more copy of the facts table.** Prices, 60 seconds, 300+,
-  5.0 across 41, the phone, the twelve towns, spigot and outlet: a fact change
+  5.0 across 39, the phone, the twelve towns, spigot and outlet: a fact change
   lands there too. Edit `print/tools/build-door-hanger.cjs`, then
   `npm run hanger` (and `OFFER=0 npm run hanger`) in `print/tools`.
 - **It prints the Rain-Ready offer** with its own terms: book a Full Detail by

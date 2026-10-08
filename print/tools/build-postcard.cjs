@@ -213,7 +213,7 @@ const frontHtml = (qr) => `
     <div class="cap">Same back seat. No judgment, I've seen everything.</div>
   </div>
   <div class="stats">
-    <div><b>5.0</b>${stars(5)}<span>41 Google reviews</span></div>
+    <div><b>5.0</b>${stars(5)}<span>39 Google reviews</span></div>
     <div><b>300+</b><span>cars since 2021</span></div>
     <div><b class="g">$0</b><span>deposit, ever</span></div>
   </div>
@@ -388,7 +388,7 @@ async function checkQr(pngBuf, label) {
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day (unconfirmed)'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  for (const must of ['spigot', 'outlet', '(425) 600-7897', '60 seconds', '5.0', '41 Google reviews', '300+', 'December 31, 2026'])
+  for (const must of ['spigot', 'outlet', '(425) 600-7897', '60 seconds', '5.0', '39 Google reviews', '300+', 'December 31, 2026'])
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 
