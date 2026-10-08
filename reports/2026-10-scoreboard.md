@@ -56,7 +56,8 @@ it to the other city pages. If they don't, put it back.
 
 **What Mikey has to do by hand:**
 
-*Added 2026-10-08, ahead of the list below:* (a) deploy the blog redirect,
+*Added 2026-10-08, ahead of the list below* ((a) is done: deployed that
+day, with the old quote widget and MyQqc): (a) deploy the blog redirect,
 because the old Lake Stevens post is on page one quoting $130/$160/$260
 (Search Console finding 3); (b) the GBP fixes in `reports/2026-10-07-aeo.md`,
 and in the same sitting switch the profile's `http://` links to `https://`
@@ -72,7 +73,9 @@ and in the same sitting switch the profile's `http://` links to `https://`
 
    Until then M1–M4 can't be filled in from a session. You can also read them
    straight off GBP → Performance, Search Console → Performance (28 days) and GA4.
-   (Checked 2026-10-08: Windsor still has only Google Ads. M2 was pulled by hand
+   (2026-10-08: Windsor's free plan allows one source, and Google Ads holds
+   it, so this needs either swapping that slot or a paid plan; Mikey's call.
+   Checked 2026-10-08: Windsor still has only Google Ads. M2 was pulled by hand
    instead, which took a browser agent and Search Console's Sheets export because
    its table wouldn't show more than 10 rows. Connected, it's a one-minute pull.)
 2. **Run the other 4 engines of the prompt panel**: ChatGPT, Perplexity, Gemini,
