@@ -14,7 +14,8 @@
 # read, list it here. It stays in the repo, it just stops being published.
 #
 # Anything NOT listed here still ships. polish-test/ is deliberately absent:
-# it is a real page, linked from the homepage and listed in sitemap.xml.
+# it is a real page, listed in sitemap.xml. (Its homepage links came out on
+# 2026-09-28; the page itself stays up.)
 
 exclude:
   # Strategy and planning. The reason this file exists.
