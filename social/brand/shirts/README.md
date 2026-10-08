@@ -18,27 +18,41 @@ If the rating or the phone changes, this shirt is one more copy of the facts.
 
 ## Ordering the transfers (DTF) and pressing them
 
-Worked out 2026-10-08, when Mikey asked where to get DTF fast and cheap for a
-heat press he might get access to. DTF transfers are for fabric only; the car
-decal is a different product (UV DTF or cut vinyl, `print/car-decal/`).
+Worked out 2026-10-08, when Mikey asked where to get DTF fast and cheap. He
+presses them at the **EvCC Create Space** (he's a student there). DTF
+transfers are for fabric only; the car decal is a different product (UV DTF or
+cut vinyl, `print/car-decal/`).
 
-**The file is ready.** `gang-sheet/gang-sheet-4-shirts-22x48.png` is one 22 x
-48 in sheet holding 4 DIRTY CAR? backs and 6 chest logos (one per shirt, one to
-practice on, one spare), at real print size, 300 dpi, transparent, not
-mirrored. Each shirt takes one foot of sheet because the backs are cropped to
-their ink (11.0 x 11.3 in; the 12 in PNG has clear padding). Other counts:
-`python3 source/build-gang-sheet.py 2 3 5` writes the 2, 3 and 5 shirt sheets
-at 22x24, 22x36 and 22x60, the smallest size that fits.
+**The press decides the back's size.** The college's Create Space page lists a
+**10 x 10 heat press** (model not stated; 2026-10-08). A design has to sit
+about half an inch inside the plate, because one that hangs over needs two
+presses and that's where prints fail. So for that press the back is **8.8 x
+9.0 in**, against 11.0 x 11.3 in for the full design on a 15 x 15 press. 8.8
+in is a small back print, but the phone still prints over 6 in wide.
+
+**The files are ready** (`gang-sheet/`, 300 dpi, transparent, not mirrored;
+each has a `-preview.jpg` on black). Each holds N backs and N + 2 chest logos
+(one to practice on, one spare):
+
+| File | Press | Shirts | Tuxedo size |
+|---|---|---|---|
+| `gang-sheet-4-shirts-22x24-for-10in-press.png` | 10 x 10 (EvCC) | 4 | 22" x 24" |
+| `gang-sheet-4-shirts-22x48-for-15in-press.png` | 15 x 15 | 4 | 22" x 48" |
+
+Other counts or presses: `python3 source/build-gang-sheet.py --press 10 2 6`
+writes them (on the 10 x 10, 2 shirts fit 22" x 12" and 6 fit 22" x 36"; the
+sheet length is always the smallest Tuxedo size that fits).
 
 **Printer: Tuxedo Print, Seattle** (tuxedoprint.com), product **DTF Gang Sheet
-- Upload a Print Ready File**, size to match the file name. Prices are from its
-cart on 2026-10-08, shipped to 98290:
+- Upload a Print Ready File**, size to match the file name. From its cart on
+2026-10-08, shipped to 98290:
 
-| Sheet | Shirts | Price | With `first40` (40% off a first order, checked in the cart) |
-|---|---|---|---|
-| 22 x 24 | 2 | $12.99 | $7.79 |
-| 22 x 36 | 3 | $18.99 | $11.39 |
-| 22 x 48 | 4 | $24.99 | $14.99 |
+| Sheet | Price | With `first40` (40% off a first order, checked in the cart) |
+|---|---|---|
+| 22 x 12 | $9.99 | $6.00 |
+| 22 x 24 | $12.99 | $7.80 |
+| 22 x 36 | $18.99 | $11.39 |
+| 22 x 48 | $24.99 | $15.00 |
 
 Shipping: Standard $6.90, Priority Mail $13.51 (quoted to arrive the next
 day). Free over $99. Orders in before **11 AM** ship the same day (Mon to
@@ -47,26 +61,35 @@ contact page has the address). No minimum, and they reprint free if a print is
 bad.
 
 Why them: closest (Seattle, so ground is a day), cheapest with the first-order
-code, and a pickup option in a pinch. Four shirts, shipped to 98290, that day:
+code, and a pickup option in a pinch. The comparison that day, four
+full-size shirts shipped to 98290 (before the 10 x 10 press came up):
 
 | Printer | Sheet | Sheet price | Shipping | Total |
 |---|---|---|---|---|
-| Tuxedo Print (Seattle) | 22x48 | $24.99 ($14.99 with `first40`) | $6.90 standard | $31.89 ($21.89) |
+| Tuxedo Print (Seattle) | 22x48 | $24.99 ($15.00 with `first40`) | $6.90 standard | $31.89 ($21.90) |
 | DTF Dallas | 22x50 | $20.50 | $9.95 UPS Ground, 1 to 3 days | $30.45 |
 | DTF West Coast | 22x50 | $22.50 | $10.00 2nd Day Air | $32.50 |
 | Ninja Transfers | 5 ft | $49.99 | $6.99 ground, 5 to 7 days | $56.98 |
 
-Dallas and West Coast sell in 10 in steps, so their sheet would need a 22x50
-version of the file (change `LENGTHS_IN` in the script). Before tax.
+Dallas and West Coast sell in 10 in steps; their sizes would need
+`LENGTHS_IN` changed in the script. Before tax.
 
 **Shirts:** black, 100% cotton or a cotton/poly blend. Not 100% polyester or
 "performance": black poly dye bleeds into the white ink.
 
-**Press:** the back is 11.0 x 11.3 in, so it needs a platen at least 12 in on
-its short side (15 x 15 is the common size). A 9 x 9 press or an EasyPress
-does it in two overlapping presses, and that's where prints fail. Tuxedo's own
-settings (their "How to Press DTF Transfers" page), which beat any general
-chart because it's their film and glue:
+**The Create Space** (from the college's page, 2026-10-08; it blocks scripts,
+so read it again before relying on it): Cascade Learning Resource Center, 2nd
+floor, room 206; Mon to Fri 9 to 5 and Sat 10 to 2 during the quarter; for
+EvCC students; no food or drink. Ask at the desk first: whether the press
+needs a sign-off, what model it is, and whether pressing a few shirts for his
+own business is fine (the catalog calls it a space for personal creative
+projects). Bring the transfers cut apart, the shirts, parchment paper, a tape
+measure and a lint roller. If the "press" turns out to be a hand-held one
+(Cricut EasyPress style), press on a hard table on its mat, not an ironing
+board, with both hands and full weight, and don't slide it.
+
+**Pressing.** Tuxedo's own settings (their "How to Press DTF Transfers"
+page), which beat any general chart because it's their film and glue:
 
 1. Clean dry shirt. A 2 to 5 second press first if it's damp or creased.
 2. Transfer **printed side down, clear film up.** (Their page says "film-side
