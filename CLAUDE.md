@@ -314,7 +314,8 @@ competes with the first in search.
   `tools/old-quote-redirect/` is their fix, and `reports/2026-10-07-aeo.md`
   has the steps, with the GBP Services entry that still said "from $200".
   A session's Netlify deploy needs Mikey's explicit yes (the safety check
-  stops it otherwise).
+  stops it otherwise). Still up on 2026-10-08, and Search Console had its
+  Lake Stevens post on page one (76 impressions at 10.0) with the old prices.
 
 ## SEO copy
 
@@ -325,6 +326,13 @@ competes with the first in search.
   Everett and Bothell are testing `Mobile Car Detailing <City>, WA` since
   2026-10-05 (`reports/2026-10-scoreboard.md`): roll it out to the other city
   pages if they move by the November pull, put it back if they don't.
+- **Search Console's real numbers** start in `reports/2026-10-scoreboard.md`
+  (pulled by hand 2026-10-07; Windsor still only has Google Ads). It has the
+  title test's before-picture, the position 5–15 watch list, and six pages
+  live since May with no impressions in three months (near-me, pet hair, vs
+  car wash, two city interior pages, Monroe ceramic). Read URL Inspection's
+  status for those before rewriting them. Semrush got the small towns wrong;
+  use Search Console for rankings.
 - **The FAQ schema is built from the visible FAQ** (since 2026-10-07, when 23
   pages had drifted and some hidden answers were wrong: 8 towns, "25-50% more"
   for an SUV). `tools/build-entity-graph.py` reads the questions a reader can
