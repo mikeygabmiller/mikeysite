@@ -296,7 +296,7 @@ const frontHtml = (qr) => `
 <section class="page front">
   <div class="page-bg"></div>
   <div class="band">
-    <div class="side l"><b>5.0</b>${stars(5)}<span>41 Google reviews</span></div>
+    <div class="side l"><b>5.0</b>${stars(5)}<span>39 Google reviews</span></div>
     <div class="side r"><b>300+</b><span>cars detailed<br>since 2021</span></div>
   </div>
   <div class="trim"><div class="safe">

@@ -10,10 +10,10 @@ Search Console itself, pulled by hand on 2026-10-07 (see
 
 | # | Metric | October reading |
 |---|---|---|
-| M1 | GBP: searches, calls, directions, website clicks | **blank**: Google Business Profile isn't connected to Windsor |
+| M1 | GBP: searches, calls, directions, website clicks | **September: 589 profile views, 31 interactions, 7 calls, 23 website clicks** (directions not reported). Read by Muse 2026-10-08 |
 | M2 | Search Console 28-day impressions, clicks, avg. position | **46 clicks, 2,681 impressions, 1.7% CTR, avg. position 13.1** (Sep 7 to Oct 4, web search). Pulled by hand; still not on Windsor |
-| M3 | Quote-calculator starts → completions | **blank**: GA4 isn't connected to Windsor |
-| M4 | Review count + reviews added this month | **blank** (GBP not connected). The site says 5.0 across 41; this month's adds are unknown |
+| M3 | Quote-calculator starts → completions | **45 started → 28 saw a price → 11 sent it → 1 booked a time** (users, Sep 7 to Oct 4; online booking only went live Sep 29). Read by Muse 2026-10-08 |
+| M4 | Review count + reviews added this month | **5.0 across 39** on the public profile (2026-10-08). The site said 41; it says 39 now. This month's adds weren't counted |
 | M5 | AI citation rate | **6 of 25 (24%) on 1 engine of 5** (Claude with web search). The other 4 engines are Mikey's to run |
 
 The only connected Windsor source is Google Ads (account 862-091-0274). Nothing
@@ -95,6 +95,41 @@ and in the same sitting switch the profile's `http://` links to `https://`
 
 Semrush cost about 3,880 API units this run (the keyword-gap report alone was
 2,400). Next month, skip the gap report unless there's a reason to rerun it.
+
+## Muse's run, 2026-10-08 (brief: `reports/2026-10-08-muse-brief.md`)
+
+**Business Profile, changed** (all showed "pending review", up to a day):
+
+- **Services.** Out: "Auto detailing, from $200" ("Full interior/exterior
+  detail starting at just $200"), "Car waxing from $10" ($10 / $30 / $50),
+  "Clay bar treatment $25", "Engine detailing $40". None of those is in
+  `PRICING.md`. In: Exterior from $199, Interior from $249, Full from $369,
+  Paint Correction from $400, Ceramic Coating from $500, with the
+  `outreach/DIRECTORIES.md` descriptions. Google's unpriced suggestions stayed.
+- **Description.** The old one was agency voice ("We offer a comprehensive
+  range...", "experience the difference!"); now the 489-character block.
+- **Links.** Website and appointment link went from `http://` to `https://`,
+  tags unchanged.
+- **Address** hidden ("No location; deliveries and home services only").
+- **Service area** went from **3 places** (Monroe, Everett, Snohomish) to the
+  twelve towns. Google says the service area isn't a ranking factor, but it is
+  what the profile tells people (and the engines that read it) about where he
+  works, and it named three of twelve.
+
+**Search Console: the six pages were never found.** All six say "URL is not on
+Google" / "URL is unknown to Google", no last crawl. And **`sitemap.xml` had
+never been submitted** (0 sitemaps). Both were done on 2026-10-08: indexing
+requested for all six, sitemap submitted (first status "Couldn't fetch", which
+is normal for a minute-old submission; the file serves 200 as XML to
+Googlebot's user agent, checked that day). Recheck around Oct 15: if the six
+are still unknown, they need links from pages Google already crawls.
+
+**Funnel (M3), read plainly.** Of 45 people who started the calculator, 28
+reached a price (62%) and 11 of those sent it (39%). One used "Pick my time" in
+the six days it existed in this window. The month to watch is October.
+
+**Not done (cut from the brief):** the 4-engine prompt panel, Bing Webmaster,
+the mikeyscrm decision. Windsor stays Google Ads only (free plan, one source).
 
 ---
 

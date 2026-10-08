@@ -186,7 +186,7 @@ def business_node(reviews, speakable):
             "closes": "23:59",
         }],
         "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0",
-                            "reviewCount": "41", "bestRating": "5"},
+                            "reviewCount": "39", "bestRating": "5"},
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Detailing Services",
