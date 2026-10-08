@@ -316,6 +316,11 @@ competes with the first in search.
   A session's Netlify deploy needs Mikey's explicit yes (the safety check
   stops it otherwise). Still up on 2026-10-08, and Search Console had its
   Lake Stevens post on page one (76 impressions at 10.0) with the old prices.
+  The redirect file covers all ten old posts (checked against the live blog
+  that day). Of the 16 Netlify projects a name search finds, only `mikeysqqc`,
+  `mikeysquote` and `mikeyscrm` serve anything; the rest return 404.
+  `mikerealsite` still lists mikeysdetailing.com as its domain, but the
+  domain points at GitHub Pages, so it serves nothing. Leave it alone.
 
 ## SEO copy
 
