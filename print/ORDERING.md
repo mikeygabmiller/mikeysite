@@ -179,20 +179,22 @@ count matches the card count.
 
 Details: `social/brand/shirts/README.md`, "Ordering the transfers (DTF) and
 pressing them". These are heat transfers Mikey presses onto his own black
-shirts; the printer ships film, not shirts.
+shirts at the EvCC Create Space (a 10 x 10 press); the printer ships film,
+not shirts.
 
 | | |
 |---|---|
 | Path | tuxedoprint.com → **DTF Gang Sheet - Upload a Print Ready File** → size → upload |
-| Files | `social/brand/shirts/gang-sheet/gang-sheet-4-shirts-22x48.png` (other counts: `python3 social/brand/shirts/source/build-gang-sheet.py <N>`) |
-| Size | the one in the file name: **22" x 48"** for 4 shirts |
+| Files | `social/brand/shirts/gang-sheet/gang-sheet-4-shirts-22x24-for-10in-press.png` (other counts or a 15 x 15 press: `python3 social/brand/shirts/source/build-gang-sheet.py --press <P> <N>`) |
+| Size | the one in the file name: **22" x 24"** for 4 shirts on the 10 x 10 press |
 | Quantity | **1** sheet |
 | Code | `first40` on a first order (40% off, worked in the cart 2026-10-08) |
 | Shipping | Standard ($6.90 on 2026-10-08), ordered before 11 AM Pacific on a weekday |
 
 **Before paying:** the size picked matches the file name, the upload preview
 shows the designs on a clear background (no black or white box round them),
-and the total is about **$22** with the code or **$32** without, plus tax.
+and the total is about **$14.70** with the code or **$19.89** without, plus
+tax.
 
 ## Air fresheners: shape and printer not picked yet
 
