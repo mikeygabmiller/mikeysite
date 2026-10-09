@@ -203,7 +203,7 @@ em{font-style:normal;color:var(--red)}
 
 const STAR = '<svg viewBox="0 0 24 24"><path d="M12 2.2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.1l-6.1 3.5 1.5-6.8L2.2 9.2l6.9-.7z"/></svg>';
 const VALUE = new Set(['tipcover', 'tipstep', 'tipend']);
-const slimFoot = (i, n, dark) => `<div class="sfoot ${dark ? 'dark' : 'paper'}"><div class="h"><img src="${ICON}" alt="">@mikeysdetailing</div><div class="n">${n > 1 ? i + ' / ' + n : ''}</div></div>`;
+const slimFoot = (i, n, dark) => `<div class="sfoot ${dark ? 'dark' : 'paper'}"><div class="h"><img src="${ICON}" alt="">@mikeysdetailing_sno</div><div class="n">${n > 1 ? i + ' / ' + n : ''}</div></div>`;
 const foot = `<div class="foot"><img src="${LOGO}" alt=""><div class="url">mikeysdetailing.com</div></div>`;
 const ph = (f, pos, extra = '') => `<div class="ph">${extra}<img src="${photo(f)}" style="object-position:${pos || '50% 50%'}"></div>`;
 

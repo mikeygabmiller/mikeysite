@@ -64,7 +64,8 @@ these apps; if a step doesn't match exactly, look for the nearest wording.
 
 ### Instagram
 
-1. Create the account with username **`@mikeysdetailing`**.
+1. The account is **`@mikeysdetailing_sno`** (connected 2026-10-09; the
+   images' footer and every caption use that handle).
 2. Switch it to a business account: Settings → **Account type and tools** →
    **Switch to professional account** → pick the same category → **Business**.
 3. **Name field:** `Mikey's Mobile Detailing` (this field is searchable, the

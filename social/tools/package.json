@@ -4,7 +4,8 @@
   "description": "Renders the Instagram/Facebook post images. Not part of the website build.",
   "scripts": {
     "photos": "node prep-photos.cjs",
-    "render": "node render.cjs"
+    "render": "node render.cjs",
+    "queue": "node queue.cjs"
   },
   "dependencies": {
     "playwright": "1.56.1",
