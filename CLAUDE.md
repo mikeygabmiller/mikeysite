@@ -385,7 +385,14 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
 - **Edit copy in `social/tools/posts.cjs`**, never in `social/CAPTIONS.md`,
   which the renderer rewrites. `npm run render` in `social/tools`.
 - **No readable plates, house numbers, faces or names** in any photo. New
-  photos get blur boxes in `social/tools/prep-photos.cjs`; look at the output.
+  photos get blur boxes in `social/tools/prep-photos.cjs`; look at the output,
+  zoomed in on every box (album photos use a stronger blur because at 1600px
+  the old one let plates read through).
+- **Job photos come from Mikey's shared Google Photos album, and everything in
+  it is cleared for posting** (Mikey, 2026-10-09: "all photos in the album are
+  ok"; he only adds cars whose owners said yes). `npm run album` pulls new ones
+  into the git-ignored `social/inbox/`; the album link is never committed (the
+  repo is public). `social/photos/album-seen.json` lists what's been reviewed.
 - **Give before you ask.** Most posts are tips, techniques, myths or Mikey's
   own stories, useful to someone who never books. At most one post in four
   asks for anything. Never invent a story; stories come from his answers.
