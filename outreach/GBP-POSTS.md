@@ -342,28 +342,34 @@ Pick Full Detail in the quote and the extras go on by themselves.
 
 ---
 
-## The next batch (from Monday Dec 7)
+## Posted by Make (from post 9)
 
 Post 8 is the last one scheduled on the profile by hand. **From post 9 on,
 Make posts them** (the "Social publisher" scenario, `social/AUTOPOST-PLAN.md`)
-on the Monday given in each post's **Goes up** line, at 6:30 PM Pacific (the
-scenario's one daily run), not 8 AM. `social/tools/queue.cjs` reads the posts
-below straight out of this file, so this file stays the only copy: edit a post
-here, run `npm run queue` in `social/tools`, and merge.
+on the date in each post's **Goes up** line, at 6:30 PM Pacific (the
+scenario's one daily run). `social/tools/queue.cjs` reads the posts straight
+out of this file, so this file stays the only copy: edit a post here, run
+`npm run queue` in `social/tools`, and merge.
+
+**Four a week, with nothing for Mikey to do** (Mikey, 2026-10-09: "I need 4
+google posts automated a week without me doing anything"). The slots are
+**Monday, Wednesday, Friday and Sunday**; through Nov 30 the Mondays are the
+eight scheduled by hand above. A weekly Claude routine ("GBP post writer",
+Wednesdays) writes the empty slots for the next two weeks, checks them and
+merges. **Updates post without his yes. An Offer-type post, or anything that
+sells something new (gift cards, a new deal), waits for his yes** (its number
+goes in `GBP_APPROVED` in `queue.cjs`).
 
 Same rules as the first eight: no phone number in the text, only the twelve
-towns, photos only from `social/photos/` in a wide (4:3) shape, no Clean Club,
-no scarcity line, nothing about a license or insurance. **Nothing that goes up
-after December 31, 2026 mentions Rain-Ready.** Post 12 goes up Dec 28 and
-stays the top post on the profile until the next one, so **post 13 has to be
-dated Monday Jan 4** to push it down.
+towns, photos only from `social/photos/` in a wide (4:3) shape and not the same
+photo within three posts, no Clean Club, no scarcity line, nothing about a
+license or insurance. Posts are numbered in the order they were written, not
+by date. **Nothing that goes up after December 31, 2026 mentions Rain-Ready,**
+and a post has to go up on Friday Jan 1 so a Rain-Ready one isn't left on top.
 
 A post doesn't follow a fact change on its own. If a price, a duration or the
-towns change, fix this file and the queue before the post's Monday, and edit
+towns change, fix this file and the queue before the post goes up, and edit
 any post already up on the profile.
-
-Nothing here posts until its number is in `GBP_APPROVED` in
-`social/tools/queue.cjs`.
 
 ---
 
@@ -453,4 +459,190 @@ After the holidays is a good time for it anyway. Road trips, wrapping paper, a m
 $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in all twelve towns I serve, no travel fee.
 
 Pick Full Detail in the quote and the extras go on by themselves. Tap Book.
+```
+
+---
+
+## 13. Week of Oct 11 · Update · Washing without scratching
+
+**Goes up:** 2026-10-11
+**Photo:** `social/photos/subaru-driveway.jpg` (blue Crosstrek on a wet
+driveway, house number blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Most of the fine swirls you see on paint in the low fall sun come from how the car gets washed, not from driving.
+
+If you wash at home between details, five habits fix most of it:
+
+1. Rinse the whole car before you touch it. Every bit of grit that rinses off is grit your mitt won't drag across the paint.
+2. Two buckets: one with soap, one with plain water to rinse the mitt before it goes back in the soap.
+3. Top down. Wheels and lower panels last, with their own mitt or brush.
+4. Car wash soap, not dish soap. Dish soap strips your wax or sealant.
+5. Dry it with a clean microfiber towel instead of letting it air dry.
+
+That's the same order I follow in your driveway on every Exterior Detail, with decontamination and protection on top: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. Same price in Lake Stevens, Marysville, Arlington or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 14. Week of Oct 11 · Update · Wet footwell? Check the cowl
+
+**Goes up:** 2026-10-14
+**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Wet passenger footwell after a heavy rain? Before you blame a door seal, check the cowl.
+
+The cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's onto your floor.
+
+1. Lift the wipers off the glass first, so one can't snap back onto the windshield.
+2. Pull out what's sitting in there, by hand or with a shop vac.
+3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.
+
+Don't leave the carpet wet. That's how the musty smell starts. If it's already there, the Interior Detail steams the seats and carpet instead of just vacuuming them, from $249 for a sedan.
+
+Woodinville, Duvall and Granite Falls, with all those firs, see the most of this. Tap Book for your exact price.
+```
+
+---
+
+## 15. Week of Oct 11 · Update · Pumpkin patch mud
+
+**Goes up:** 2026-10-16
+**Photo:** `social/photos/lexus-front.jpg` (dark green Lexus on a gravel
+driveway, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Muddy boots from the pumpkin patch? Don't scrub the carpet tonight. Let the mud dry first.
+
+Wet mud smears down into the carpet fibers. Dry mud breaks up and lifts out.
+
+1. Pull the floor mats out and dry them in the house. Leave the carpet alone tonight.
+2. Once it's dry and crumbly, knock it loose with a stiff brush.
+3. Vacuum slowly, twice, from two directions.
+4. Blot what's left with a damp microfiber.
+
+A shadow that still won't come out is what the extractor is for. October in Snohomish County is mud month, and the price is the same in every town I serve, no travel fee.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 16. Week of Oct 18 · Update · Why the windshield fogs
+
+**Goes up:** 2026-10-18
+**Photo:** `social/photos/odyssey-interior.jpg` (Odyssey dash and windshield
+from the driver's seat)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Why does the inside of your windshield fog up so fast when it rains? Part of it is the weather. Part of it is the glass.
+
+A film builds up on the inside of the windshield from the dash, the vents and everyone breathing in the car. Moisture grabs onto that film, so dirty glass fogs faster and clears slower.
+
+1. Two microfiber towels: one with glass cleaner, one dry right behind it.
+2. Spray the towel, not the glass, so the cleaner doesn't end up on your dash.
+3. Wipe side to side on the inside, up and down on the outside. If you see a streak, its direction tells you which side it's on.
+4. In the rain, run the AC with the defrost and switch off recirculate.
+
+I clean the glass inside and out on every detail I do, whether it's in Everett, Mukilteo or out in Monroe.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 17. Week of Oct 18 · Update · Dog hair: the rubber glove trick
+
+**Goes up:** 2026-10-21
+**Photo:** `social/photos/cargo-after.jpg` (an Acura's cargo area, cleaned)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+The trick for dog hair in car carpet: a rubber glove.
+
+A vacuum can't pull dog hair out on its own, because the hair weaves itself into the carpet fibers. So:
+
+1. Put on a regular rubber dish glove, or use a rubber pet brush.
+2. Drag it across the carpet in short strokes, one direction. The hair balls up on top.
+3. Then vacuum. It comes up in one pass.
+
+For heavy shedders, this is exactly why pet hair turns a 90 minute interior into a 2 to 4 hour job for me. The Interior Detail is $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, and I tell you before I start if the hair adds anything, not after.
+
+Mill Creek, Bothell, Snohomish: same price everywhere I go. Tap Book to see yours.
+```
+
+---
+
+## 18. Week of Oct 18 · Update · Spilled on the seat
+
+**Goes up:** 2026-10-23
+**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Spilled coffee on the seat? What you do in the first few minutes decides whether it comes out.
+
+1. Blot, don't rub. Rubbing pushes it deeper and spreads it wider.
+2. A little cold water, then blot again. You're rinsing it out, not flooding it.
+3. Don't soak the seat. Water in the foam underneath takes days to dry and can start to smell.
+4. Leather? Wipe it right away with a damp microfiber, then dry it.
+
+Keep a microfiber towel in the glovebox. It costs a couple of dollars and saves a seat.
+
+If the stain has already set, that's what my steamer and extractor are for. No judgment at all. I've seen everything.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 19. Week of Oct 25 · Update · Streaky wipers
+
+**Goes up:** 2026-10-25
+**Photo:** `social/photos/volvo-driveway.jpg` (red Volvo on a wet driveway,
+plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Streaky wipers? Most of the time it's the glass, not the blade.
+
+1. Wipe the blade edge. Run a damp paper towel down the rubber. The black line that comes off is what's been smearing.
+2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.
+3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.
+4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.
+
+The clocks go back November 1. Do this before the dark, wet drives home on I-5 and US-2.
+
+Book a Full Detail by December 31 and the RainX comes free, with an exterior polish and ceramic wax (the Rain-Ready Full Detail, from $369). Tap Book to see your price.
+```
+
+---
+
+## 20. Week of Oct 4 · Update · Where car smells come from
+
+**Goes up:** 2026-10-09
+**Photo:** `social/photos/pilot-garage.jpg` (gray Pilot in a customer's
+garage, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Car smells and you can't figure out why? Check these four places before you buy another air freshener.
+
+1. Under the seats. Slide each one all the way forward and back and look with a flashlight.
+2. Under the floor mats. Water gets tracked in all fall and winter and soaks the carpet underneath, where it can't dry.
+3. Between the seats and the console. The gap everything falls into.
+4. The cabin air filter. If the smell gets worse with the fan on, check it. Your owner's manual says where it is.
+
+An air freshener covers a smell. Finding the source gets rid of it.
+
+If you've checked all four and it's still there, that's an Interior Detail. I pull everything out, vacuum and steam the seats and carpet, and clean the spots nobody reaches, from $249 for a sedan. Same price in every town I serve, Snohomish to Arlington.
+
+Tap Book to see your exact price in 60 seconds.
 ```
