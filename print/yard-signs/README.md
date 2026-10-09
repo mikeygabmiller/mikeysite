@@ -74,7 +74,10 @@ The only places the app keeps signs out of on purpose:
   can read it at that speed, and nobody should be standing on that shoulder.
 - **Private roads and gated streets.**
 
-Everything else is fair game, as the plan asks. The app is deliberately
+Everything else is fair game, as the plan asks. **Not verified against city
+codes:** Everett wants the next-door owner's permission for a sign in the right
+of way, and the other towns haven't been checked. `SCALE.md` section 1c has it;
+do that check before ordering past the first 250. The app is deliberately
 generous about *where* a sign may go and strict about *whether enough people
 will see it*.
 
@@ -285,6 +288,10 @@ whatever Mikey decides. Mark people paid in the same screen.
 | 1. Test | 100 to 200 | Mikey + 1 helper, 2 weekends | Real survival and lead numbers for 3 to 4 towns |
 | 2. Cover the twelve towns | 300 to 500 | 3 to 5 helpers | ~25 signs per town at the best lights; permission yards on every busy-road friend |
 | 3. Keep it up | 1,000 ordered | anyone with the link | Keep about 250 up at once; each weekend, re-check and refill what's gone |
+
+**Taking Mikey out of it** (one captain, a pickup bin, paid crew and what the
+app still needs) is `SCALE.md`. Read it before phase 2: paid helpers are
+almost certainly employees under Washington's L&I test.
 
 Timing: put roadside signs out **Friday afternoon or evening** so they catch the
 whole weekend, when people are home, errands are slow and detailing gets
