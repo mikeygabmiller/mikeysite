@@ -376,8 +376,7 @@ any post already up on the profile.
 ## 9. Week of Dec 7 · Update · How booking works
 
 **Goes up:** 2026-12-07
-**Photo:** `social/photos/pilot-garage.jpg` (gray Pilot in a customer's
-garage, plate blurred)
+**Photo:** `social/photos/explorer-garage.jpg` (a white Explorer in a customer's garage, plate blurred)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -385,7 +384,7 @@ Booking a detail with me takes about two minutes, and you never have to call.
 
 1. Open the quote on my site and pick your car and the service. You see the exact price in 60 seconds, not a range.
 2. Tap Pick my time. It shows my next real openings and you pick one.
-3. I come to you: your driveway, your work lot, or your garage like this Pilot. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.
+3. I come to you: your driveway, your work lot, or your garage like this Explorer. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.
 4. When I'm done we walk around the car together and I fix anything you point at. Then you pay. Never a deposit.
 
 I work weekday afternoons and Saturdays. Same price in Snohomish, Everett, Lake Stevens, Mill Creek, Bothell and every other town I serve, no travel fee.
@@ -398,8 +397,7 @@ Tap Book to see your price.
 ## 10. Week of Dec 14 · Update · Back from the pass
 
 **Goes up:** 2026-12-14
-**Photo:** `social/photos/cargo-before.jpg` (an Acura's cargo area full of
-gear and crumbs, before the detail)
+**Photo:** `social/photos/rav4-cargo-before.jpg` (a RAV4 cargo area before the detail, dried mud and grit)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -421,7 +419,7 @@ Tap Book and the quote shows your exact price in 60 seconds.
 ## 11. Week of Dec 21 · Update · Selling it after the holidays
 
 **Goes up:** 2026-12-21
-**Photo:** `social/photos/r8.jpg` (green R8 on a gravel driveway)
+**Photo:** `social/photos/escalade-white.jpg` (a white Escalade on a driveway after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -446,7 +444,7 @@ Tap Book to see your exact price.
 ## 12. Week of Dec 28 · Update · Last week for Rain-Ready
 
 **Goes up:** 2026-12-28
-**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Photo:** `social/photos/lexus-interior.jpg` (a Lexus interior, tan leather, after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -466,8 +464,7 @@ Pick Full Detail in the quote and the extras go on by themselves. Tap Book.
 ## 13. Week of Oct 11 · Update · Washing without scratching
 
 **Goes up:** 2026-10-11
-**Photo:** `social/photos/subaru-driveway.jpg` (blue Crosstrek on a wet
-driveway, house number blurred)
+**Photo:** `social/photos/foam-sedan.jpg` (a sedan covered in foam during the wash)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -491,7 +488,7 @@ Tap Book to see your exact price in 60 seconds.
 ## 14. Week of Oct 11 · Update · Wet footwell? Check the cowl
 
 **Goes up:** 2026-10-14
-**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Photo:** `social/photos/wrangler-interior.jpg` (a Jeep Wrangler dash and floor after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -537,8 +534,7 @@ Tap Book to see your exact price in 60 seconds.
 ## 16. Week of Oct 18 · Update · Why the windshield fogs
 
 **Goes up:** 2026-10-18
-**Photo:** `social/photos/odyssey-interior.jpg` (Odyssey dash and windshield
-from the driver's seat)
+**Photo:** `social/photos/volvo-interior.jpg` (a Volvo dash and windshield from the driver's side)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -561,7 +557,7 @@ Tap Book to see your exact price in 60 seconds.
 ## 17. Week of Oct 18 · Update · Dog hair: the rubber glove trick
 
 **Goes up:** 2026-10-21
-**Photo:** `social/photos/cargo-after.jpg` (an Acura's cargo area, cleaned)
+**Photo:** `social/photos/rav4-cargo-after.jpg` (a RAV4 cargo area after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -583,7 +579,7 @@ Mill Creek, Bothell, Snohomish: same price everywhere I go. Tap Book to see your
 ## 18. Week of Oct 18 · Update · Spilled on the seat
 
 **Goes up:** 2026-10-23
-**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Photo:** `social/photos/corolla-interior.jpg` (a Corolla interior after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -606,8 +602,7 @@ Tap Book to see your exact price in 60 seconds.
 ## 19. Week of Oct 25 · Update · Streaky wipers
 
 **Goes up:** 2026-10-25
-**Photo:** `social/photos/volvo-driveway.jpg` (red Volvo on a wet driveway,
-plate blurred)
+**Photo:** `social/photos/impreza-white.jpg` (a white Impreza on gravel after the detail, plate blurred)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
@@ -628,8 +623,7 @@ Book a Full Detail by December 31 and the RainX comes free, with an exterior pol
 ## 20. Week of Oct 4 · Update · Where car smells come from
 
 **Goes up:** 2026-10-09
-**Photo:** `social/photos/pilot-garage.jpg` (gray Pilot in a customer's
-garage, plate blurred)
+**Photo:** `social/photos/escalade-interior.jpg` (an Escalade interior after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
 ```
