@@ -10,3 +10,6 @@ print/tools/.cache/
 
 # yard sign pin check sheets (print/tools/sign-spot-check.py)
 print/yard-signs/check/
+
+# album originals (plates, house numbers, location data): never commit
+social/inbox/
