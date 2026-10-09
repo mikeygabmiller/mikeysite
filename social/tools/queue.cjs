@@ -44,8 +44,19 @@ const APPROVED = new Set([
 
 // Google Business Profile posts, by their number in outreach/GBP-POSTS.md.
 // Only posts with a "**Goes up:**" line are read (9 on); 1 to 8 were scheduled
-// on the profile by hand.
+// on the profile by hand. Mikey, 2026-10-09: four a week "without me doing
+// anything", so an Update posts on its own once it passes the checks below.
+// Only an Offer-type post, or one that sells something new (gift cards), needs
+// its number here.
 const GBP_APPROVED = new Set([]);
+const GBP_DAYS = [0, 1, 3, 5]; // Sun, Mon, Wed, Fri
+const GBP_HAND_SCHEDULED_UNTIL = '2026-11-30'; // Mondays up to here are posts 1 to 8
+// Claims and words that never go in a post (CLAUDE.md facts and Voice).
+const GBP_BANNED = [
+  /\blicen[sc]ed\b/i, /\binsured\b/i, /\binsurance\b/i, /\bLynnwood\b/i, /\bEdmonds\b/i,
+  /\bdeposit (is )?required\b/i, /12 cars/i, /limited spots/i, /\bclean club\b/i,
+  /\b(seamless|elevate|unlock|transform|jaw-dropping)\b/i,
+];
 
 // These sell something, so they need his yes even after the first month.
 const NEEDS_YES = new Set(['B07', 'W06']);
@@ -97,30 +108,58 @@ const out = SCHEDULE.map(([date, id], i) => {
 const GBP_FILE = path.join(SOCIAL, '..', 'outreach', 'GBP-POSTS.md');
 const gbpMd = fs.readFileSync(GBP_FILE, 'utf8');
 const gbp = [];
+// Width and height of a JPEG, read from its header (no dependencies).
+function jpegSize(file) {
+  const b = fs.readFileSync(file);
+  for (let i = 2; i < b.length;) {
+    if (b[i] !== 0xff) { i++; continue; }
+    const m = b[i + 1], len = b.readUInt16BE(i + 2);
+    if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+    i += 2 + len;
+  }
+  return [0, 0];
+}
+
 for (const sec of gbpMd.split(/\n(?=## \d+\. )/).slice(1)) {
   const goes = sec.match(/\*\*Goes up:\*\* (\d{4}-\d{2}-\d{2})/);
   if (!goes) continue;
-  const num = +sec.match(/^## (\d+)\./)[1];
-  const title = sec.match(/^## \d+\. [^·]*· [^·]*· (.+)/)[1].trim();
+  const head = sec.match(/^## (\d+)\. [^·]*· ([^·]+) · (.+)/);
+  const num = +head[1], type = head[2].trim(), title = head[3].trim();
   const photo = (sec.match(/\*\*Photo:\*\* `social\/photos\/([^`]+)`/) || [])[1];
   const url = (sec.match(/\*\*Button:\*\* Book → `([^`]+)`/) || [])[1];
   const text = (sec.match(/```\n([\s\S]*?)\n```/) || [])[1];
   const date = goes[1];
   const tag = `GBP ${num}`;
   if (!photo || !url || !text) { errors.push(`${tag}: needs a Photo, a Book button and a text block`); continue; }
-  if (new Date(date + 'T12:00:00Z').getUTCDay() !== 1) errors.push(`${tag}: ${date} isn't a Monday`);
+  const dow = new Date(date + 'T12:00:00Z').getUTCDay();
+  if (!GBP_DAYS.includes(dow)) errors.push(`${tag}: ${date} isn't a Mon, Wed, Fri or Sun`);
+  if (dow === 1 && date <= GBP_HAND_SCHEDULED_UNTIL) errors.push(`${tag}: ${date} is a Monday already taken by a hand-scheduled post`);
+  if (type !== 'Update' && type !== 'Offer') errors.push(`${tag}: type must be Update or Offer, not "${type}"`);
   if (text.length > 1500) errors.push(`${tag}: ${text.length} characters, Google's limit is 1,500`);
   if (/\(?\d{3}\)?[ .-]?\d{3}[ .-]\d{4}/.test(text)) errors.push(`${tag}: phone number in the text (Google rejects it)`);
   if (/\u2014/.test(text)) errors.push(`${tag}: em dash`);
+  for (const re of GBP_BANNED) if (re.test(text)) errors.push(`${tag}: "${text.match(re)[0]}" can't go in a post`);
   if (/rain-ready/i.test(text) && date > RR_LAST_DAY) errors.push(`${tag}: mentions Rain-Ready after it ends`);
   const file = path.join(SOCIAL, 'photos', photo);
   if (!fs.existsSync(file)) errors.push(`${tag}: missing photo ${photo}`);
+  else {
+    const [w, h] = jpegSize(file);
+    if (w / h < 1.2) errors.push(`${tag}: ${photo} is ${w}x${h}, too tall for Google's wide crop`);
+  }
+  const sells = type === 'Offer' || /gift card/i.test(text);
   gbp.push({
     kind: 'gbp', date, id: `GBP${num}`, title,
-    approved: GBP_APPROVED.has(num),
+    approved: sells ? GBP_APPROVED.has(num) : true,
+    needs_yes: sells,
     gbp: { summary: text, photo: RAW.replace('/posts/', '/photos/') + photo, url },
   });
 }
+gbp.sort((a, b) => a.date.localeCompare(b.date));
+gbp.forEach((e, i) => {
+  if (i && gbp[i - 1].date === e.date) errors.push(`${e.id}: same day as ${gbp[i - 1].id}`);
+  const recent = gbp.slice(Math.max(0, i - 3), i).find(r => r.gbp.photo === e.gbp.photo);
+  if (recent) errors.push(`${e.id}: same photo as ${recent.id}, less than three posts ago`);
+});
 for (const n of GBP_APPROVED) {
   if (!gbp.some(e => e.id === `GBP${n}`)) errors.push(`GBP ${n}: approved but not in GBP-POSTS.md`);
 }
@@ -142,4 +181,19 @@ if (errors.length) {
 const all = out.concat(gbp).sort((a, b) => a.date.localeCompare(b.date));
 fs.writeFileSync(path.join(SOCIAL, 'queue.json'), JSON.stringify(all, null, 2) + '\n');
 const approved = out.filter(e => e.approved).length;
-console.log(`queue.json: ${out.length} Instagram/Facebook posts (${approved} approved), ${gbp.length} Google posts (${gbp.filter(e => e.approved).length} approved)`);
+console.log(`queue.json: ${out.length} Instagram/Facebook posts (${approved} approved), ${gbp.length} Google posts (${gbp.filter(e => e.approved).length} will post)`);
+
+// Empty Google slots in the next 14 days (the weekly writer fills these).
+const today = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+const taken = new Set(gbp.map(e => e.date));
+const empty = [];
+for (let d = 0; d < 14; d++) {
+  const day = new Date(today.getFullYear(), today.getMonth(), today.getDate() + d);
+  const iso = `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`;
+  if (!GBP_DAYS.includes(day.getDay()) || taken.has(iso)) continue;
+  if (day.getDay() === 1 && iso <= GBP_HAND_SCHEDULED_UNTIL) continue;
+  empty.push(iso);
+}
+console.log(empty.length ? `Google slots still empty in the next 14 days: ${empty.join(', ')}` : 'Google: every slot in the next 14 days is filled');
+const waiting = gbp.filter(e => !e.approved).map(e => e.id);
+if (waiting.length) console.log(`Google posts waiting for Mikey's yes: ${waiting.join(', ')}`);

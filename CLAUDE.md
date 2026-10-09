@@ -395,9 +395,9 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
   `social/AUTOPOST-PLAN.md` has the ids). The Make scenario "Social
   publisher" posts Instagram (`@mikeysdetailing_sno`) and the Facebook Page at
   6:30 PM Pacific from `social/queue.json`, which `social/tools/queue.cjs`
-  writes, and the Google Business Profile from post 9 of
-  `outreach/GBP-POSTS.md`. **Nothing posts unless it's in `APPROVED` or
-  `GBP_APPROVED` there,** and offers
+  writes, and the Google Business Profile (four a week) from post 9 of
+  `outreach/GBP-POSTS.md`. **Instagram/Facebook posts need their id in
+  `APPROVED`; Google Updates post on their own,** and offers
   wait for Mikey's yes. The Facebook connections expire 2026-12-08. Nextdoor
   has no API for a small business, so it stays a paste.
 - **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
@@ -429,12 +429,16 @@ Muse (a browser agent) with Mikey signing in himself. Don't schedule them again.
 - A scheduled post is one more copy of the facts table, and it doesn't update
   itself: a fact change means editing or deleting the posts on his profile,
   not only the file.
-- **From post 9 (Monday Dec 7) Make posts them**, at 6:30 PM Pacific, reading
-  each post's `**Goes up:**` date and text straight from that file
-  (`social/tools/queue.cjs`). Write a post there, checked against this file,
-  then add its number to `GBP_APPROVED` once Mikey says yes. Nothing that goes
-  up after Dec 31, 2026 mentions Rain-Ready, and post 13 must be dated Jan 4 so
-  the Rain-Ready post (12) doesn't stay on top.
+- **Four a week, automated, from post 9** (Mikey, 2026-10-09: "4 google posts
+  automated a week without me doing anything"). Mon/Wed/Fri/Sun at 6:30 PM
+  Pacific through Make, reading each post's `**Goes up:**` date and text
+  straight from that file (`social/tools/queue.cjs`); through Nov 30 the
+  Mondays are the hand-scheduled eight. The **"GBP post writer" routine**
+  (Wednesdays) writes the empty slots for the next two weeks and merges them.
+  **Updates post without his yes; an Offer, or anything selling something new
+  (gift cards), waits for it** (`GBP_APPROVED`). Nothing that goes up after
+  Dec 31, 2026 mentions Rain-Ready, and a post goes up Fri Jan 1 so a
+  Rain-Ready one isn't left on top.
 - No phone number in post text (Google may reject the post); the Call now
   button uses the profile's number. Photos only from `social/photos/`, wide.
 - Whoever posts signs in only with Mikey typing his own password. No saved

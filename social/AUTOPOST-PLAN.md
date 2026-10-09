@@ -28,12 +28,18 @@ their own, as cheap as possible, with Mikey's only regular job being photos.
   Facebook post scheduled two days out was created and deleted, so posting
   works. Instagram has no hidden test, so its first real run is the test:
   check that evening's run.
-- **Google posts** are numbered sections of `outreach/GBP-POSTS.md` with a
-  `**Goes up:**` date (9 onward, Mondays). `queue.cjs` reads them from there.
+- **Google posts, four a week** (Mon/Wed/Fri/Sun), are numbered sections of
+  `outreach/GBP-POSTS.md` with a `**Goes up:**` date (9 onward). `queue.cjs`
+  reads them from there and checks them. Updates post with no approval
+  (Mikey, 2026-10-09); offers and anything selling something new wait for him.
+- **"GBP post writer"**, a Claude routine every Wednesday morning, fills the
+  empty Google slots for the next two weeks (`npm run queue` lists them),
+  merges, and checks the last week's Make runs.
 - **Approvals:** `APPROVED` (Instagram/Facebook ids) and `GBP_APPROVED` (Google
   post numbers) in `social/tools/queue.cjs`. Add ids, run
   `npm run queue`, merge to `main`. Nothing posts without it.
-- **Not built yet:** the Sunday Claude check-in, the Nextdoor text, YouTube.
+- **Not built yet:** the weekly Instagram/Facebook writer and approvals check-in,
+  the Nextdoor text, YouTube.
 
 The rest of this file is the plan as written before the build. `PLAYBOOK.md` is still the
 source for what a post says; this file is only about how posts get made and

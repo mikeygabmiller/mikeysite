@@ -1,5 +1,18 @@
 [
   {
+    "kind": "gbp",
+    "date": "2026-10-09",
+    "id": "GBP20",
+    "title": "Where car smells come from",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Car smells and you can't figure out why? Check these four places before you buy another air freshener.\n\n1. Under the seats. Slide each one all the way forward and back and look with a flashlight.\n2. Under the floor mats. Water gets tracked in all fall and winter and soaks the carpet underneath, where it can't dry.\n3. Between the seats and the console. The gap everything falls into.\n4. The cabin air filter. If the smell gets worse with the fan on, check it. Your owner's manual says where it is.\n\nAn air freshener covers a smell. Finding the source gets rid of it.\n\nIf you've checked all four and it's still there, that's an Interior Detail. I pull everything out, vacuum and steam the seats and carpet, and clean the spots nobody reaches, from $249 for a sedan. Same price in every town I serve, Snohomish to Arlington.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/pilot-garage.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-10-11",
     "id": "P01",
@@ -172,6 +185,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-10-11",
+    "id": "GBP13",
+    "title": "Washing without scratching",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Most of the fine swirls you see on paint in the low fall sun come from how the car gets washed, not from driving.\n\nIf you wash at home between details, five habits fix most of it:\n\n1. Rinse the whole car before you touch it. Every bit of grit that rinses off is grit your mitt won't drag across the paint.\n2. Two buckets: one with soap, one with plain water to rinse the mitt before it goes back in the soap.\n3. Top down. Wheels and lower panels last, with their own mitt or brush.\n4. Car wash soap, not dish soap. Dish soap strips your wax or sealant.\n5. Dry it with a clean microfiber towel instead of letting it air dry.\n\nThat's the same order I follow in your driveway on every Exterior Detail, with decontamination and protection on top: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. Same price in Lake Stevens, Marysville, Arlington or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/subaru-driveway.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-10-13",
     "id": "W01",
@@ -238,6 +264,19 @@
       }
     ],
     "gbp": null
+  },
+  {
+    "kind": "gbp",
+    "date": "2026-10-14",
+    "id": "GBP14",
+    "title": "Wet footwell? Check the cowl",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Wet passenger footwell after a heavy rain? Before you blame a door seal, check the cowl.\n\nThe cowl is the plastic panel along the bottom of the windshield, under the wipers. Rain runs into it and drains out underneath. In the fall it fills with fir needles, maple seeds and leaves, the drains clog, and the water finds its own way out. Sometimes that's onto your floor.\n\n1. Lift the wipers off the glass first, so one can't snap back onto the windshield.\n2. Pull out what's sitting in there, by hand or with a shop vac.\n3. Still damp inside after the next rain? Some drains are under the panel, and a mechanic can clear those.\n\nDon't leave the carpet wet. That's how the musty smell starts. If it's already there, the Interior Detail steams the seats and carpet instead of just vacuuming them, from $249 for a sedan.\n\nWoodinville, Duvall and Granite Falls, with all those firs, see the most of this. Tap Book for your exact price.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/etron-interior.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
   },
   {
     "kind": "social",
@@ -308,6 +347,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-10-16",
+    "id": "GBP15",
+    "title": "Pumpkin patch mud",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Muddy boots from the pumpkin patch? Don't scrub the carpet tonight. Let the mud dry first.\n\nWet mud smears down into the carpet fibers. Dry mud breaks up and lifts out.\n\n1. Pull the floor mats out and dry them in the house. Leave the carpet alone tonight.\n2. Once it's dry and crumbly, knock it loose with a stiff brush.\n3. Vacuum slowly, twice, from two directions.\n4. Blot what's left with a damp microfiber.\n\nA shadow that still won't come out is what the extractor is for. October in Snohomish County is mud month, and the price is the same in every town I serve, no travel fee.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/lexus-front.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-10-18",
     "id": "P06",
@@ -366,6 +418,19 @@
       }
     ],
     "gbp": null
+  },
+  {
+    "kind": "gbp",
+    "date": "2026-10-18",
+    "id": "GBP16",
+    "title": "Why the windshield fogs",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Why does the inside of your windshield fog up so fast when it rains? Part of it is the weather. Part of it is the glass.\n\nA film builds up on the inside of the windshield from the dash, the vents and everyone breathing in the car. Moisture grabs onto that film, so dirty glass fogs faster and clears slower.\n\n1. Two microfiber towels: one with glass cleaner, one dry right behind it.\n2. Spray the towel, not the glass, so the cleaner doesn't end up on your dash.\n3. Wipe side to side on the inside, up and down on the outside. If you see a streak, its direction tells you which side it's on.\n4. In the rain, run the AC with the defrost and switch off recirculate.\n\nI clean the glass inside and out on every detail I do, whether it's in Everett, Mukilteo or out in Monroe.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/odyssey-interior.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
   },
   {
     "kind": "social",
@@ -436,6 +501,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-10-21",
+    "id": "GBP17",
+    "title": "Dog hair: the rubber glove trick",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "The trick for dog hair in car carpet: a rubber glove.\n\nA vacuum can't pull dog hair out on its own, because the hair weaves itself into the carpet fibers. So:\n\n1. Put on a regular rubber dish glove, or use a rubber pet brush.\n2. Drag it across the carpet in short strokes, one direction. The hair balls up on top.\n3. Then vacuum. It comes up in one pass.\n\nFor heavy shedders, this is exactly why pet hair turns a 90 minute interior into a 2 to 4 hour job for me. The Interior Detail is $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, and I tell you before I start if the hair adds anything, not after.\n\nMill Creek, Bothell, Snohomish: same price everywhere I go. Tap Book to see yours.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/cargo-after.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-10-22",
     "id": "W03",
@@ -504,6 +582,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-10-23",
+    "id": "GBP18",
+    "title": "Spilled on the seat",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Spilled coffee on the seat? What you do in the first few minutes decides whether it comes out.\n\n1. Blot, don't rub. Rubbing pushes it deeper and spreads it wider.\n2. A little cold water, then blot again. You're rinsing it out, not flooding it.\n3. Don't soak the seat. Water in the foam underneath takes days to dry and can start to smell.\n4. Leather? Wipe it right away with a damp microfiber, then dry it.\n\nKeep a microfiber towel in the glovebox. It costs a couple of dollars and saves a seat.\n\nIf the stain has already set, that's what my steamer and extractor are for. No judgment at all. I've seen everything.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/etron-interior.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-10-25",
     "id": "P04",
@@ -570,6 +661,19 @@
       }
     ],
     "gbp": null
+  },
+  {
+    "kind": "gbp",
+    "date": "2026-10-25",
+    "id": "GBP19",
+    "title": "Streaky wipers",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Streaky wipers? Most of the time it's the glass, not the blade.\n\n1. Wipe the blade edge. Run a damp paper towel down the rubber. The black line that comes off is what's been smearing.\n2. Clean where the wipers park. Road film builds up along the bottom of the windshield, right where the blades rest.\n3. Still streaking or skipping after both? The rubber's worn out. Blades are cheap.\n4. RainX only goes on clean glass. On clean glass the rain sheets off at speed. On dirty glass it smears over the film.\n\nThe clocks go back November 1. Do this before the dark, wet drives home on I-5 and US-2.\n\nBook a Full Detail by December 31 and the RainX comes free, with an exterior polish and ceramic wax (the Rain-Ready Full Detail, from $369). Tap Book to see your price.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/volvo-driveway.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
   },
   {
     "kind": "social",
@@ -1576,7 +1680,8 @@
     "date": "2026-12-07",
     "id": "GBP9",
     "title": "How booking works",
-    "approved": false,
+    "approved": true,
+    "needs_yes": false,
     "gbp": {
       "summary": "Booking a detail with me takes about two minutes, and you never have to call.\n\n1. Open the quote on my site and pick your car and the service. You see the exact price in 60 seconds, not a range.\n2. Tap Pick my time. It shows my next real openings and you pick one.\n3. I come to you: your driveway, your work lot, or your garage like this Pilot. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.\n4. When I'm done we walk around the car together and I fix anything you point at. Then you pay. Never a deposit.\n\nI work weekday afternoons and Saturdays. Same price in Snohomish, Everett, Lake Stevens, Mill Creek, Bothell and every other town I serve, no travel fee.\n\nTap Book to see your price.",
       "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/pilot-garage.jpg",
@@ -1712,7 +1817,8 @@
     "date": "2026-12-14",
     "id": "GBP10",
     "title": "Back from the pass",
-    "approved": false,
+    "approved": true,
+    "needs_yes": false,
     "gbp": {
       "summary": "Once the passes get snow, US-2 gets sand and de-icer, and your car brings both home.\n\nThey get sprayed into the wheel wells, onto the lower doors and underneath, and they sit there all winter if nobody rinses them off. Ten minutes after a trip up to Stevens saves a lot:\n\n1. Rinse within a few days. Aim the hose into the wheel wells and along the bottom of the doors. No hose? A self-serve wand at a coin wash does it.\n2. Pull the floor mats out that night and dry them in the house, not in the trunk. Snow melts off boots straight into the carpet.\n3. Put wet ski bags, boards and jackets on an old towel, not on the cargo carpet.\n\nIf the cargo area already looks like this one, that's an Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, trunk included. Monroe and Snohomish sit right on US-2 and see the most of this, and it's the same price in every town I go to.\n\nTap Book and the quote shows your exact price in 60 seconds.",
       "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/cargo-before.jpg",
@@ -1724,7 +1830,8 @@
     "date": "2026-12-21",
     "id": "GBP11",
     "title": "Selling it after the holidays",
-    "approved": false,
+    "approved": true,
+    "needs_yes": false,
     "gbp": {
       "summary": "Selling your car or trading it in after the holidays? Clean it before you take the photos, not after.\n\nPeople scroll past a listing with crumbs in the seat seams and a dull, spotted hood, and the person appraising a trade-in notices the same things. A clean car photographs like a car somebody looked after.\n\nWhat shows up most in the photos:\n\n1. Glass, inside and out. A hazy windshield is in every interior shot.\n2. Door jambs. They're the first thing anyone sees when they open the door.\n3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.\n4. Clean wheels and tires. They're half of every outside photo.\n\nA Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: exterior polish, ceramic wax and RainX on the glass.\n\nTap Book to see your exact price.",
       "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/r8.jpg",
@@ -1736,7 +1843,8 @@
     "date": "2026-12-28",
     "id": "GBP12",
     "title": "Last week for Rain-Ready",
-    "approved": false,
+    "approved": true,
+    "needs_yes": false,
     "gbp": {
       "summary": "Last week for the Rain-Ready Full Detail: book by Thursday, December 31.\n\nAny Full Detail booked by then comes with three rain-season extras I don't charge for: exterior polish to take the dull film off, ceramic wax so the rain beads up and rolls off, and RainX on the glass. The booking date is what counts, so the detail itself can be as late as January 31.\n\nAfter the holidays is a good time for it anyway. Road trips, wrapping paper, a month of wet boots and crumbs in the back seat. The inside gets the full treatment: vacuum, steam on the seats and carpet, leather cleaned, dash and trim wiped down, door jambs and glass done. Then the outside, with the three extras on top.\n\n$369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in all twelve towns I serve, no travel fee.\n\nPick Full Detail in the quote and the extras go on by themselves. Tap Book.",
       "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/etron-interior.jpg",
