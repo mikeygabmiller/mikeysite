@@ -36,8 +36,16 @@ const SCHEDULE = [
   ['2026-12-08', 'W09'], ['2026-12-10', 'B06'], ['2026-12-13', 'W08'],
 ];
 
-// Ids Mikey has said yes to. Empty until he approves.
-const APPROVED = new Set([]);
+// Ids Mikey has said yes to.
+// 2026-10-09: "I approve" for the first three weeks (Oct 11 to Nov 1).
+const APPROVED = new Set([
+  'P01', 'P02', 'P03', 'W01', 'P13', 'P06', 'W02', 'W03', 'P04', 'P15', 'P16', 'P12',
+]);
+
+// Google Business Profile posts, by their number in outreach/GBP-POSTS.md.
+// Only posts with a "**Goes up:**" line are read (9 on); 1 to 8 were scheduled
+// on the profile by hand.
+const GBP_APPROVED = new Set([]);
 
 // These sell something, so they need his yes even after the first month.
 const NEEDS_YES = new Set(['B07', 'W06']);
@@ -70,7 +78,7 @@ const out = SCHEDULE.map(([date, id], i) => {
   if (p.ig.length > 2200) errors.push(`${id}: Instagram caption over 2,200 characters`);
   const urls = p.images.map(f => RAW + f);
   return {
-    date, id, title: p.title, pillar: p.pillar,
+    kind: 'social', date, id, title: p.title, pillar: p.pillar,
     ask: ASK_PILLARS.has(p.pillar) || ASK_IDS.has(id),
     pin: p.pin,
     needs_yes: NEEDS_YES.has(id),
@@ -84,6 +92,38 @@ const out = SCHEDULE.map(([date, id], i) => {
     gbp: null,
   };
 }).filter(Boolean);
+
+// ---- Google Business Profile, parsed from outreach/GBP-POSTS.md ----
+const GBP_FILE = path.join(SOCIAL, '..', 'outreach', 'GBP-POSTS.md');
+const gbpMd = fs.readFileSync(GBP_FILE, 'utf8');
+const gbp = [];
+for (const sec of gbpMd.split(/\n(?=## \d+\. )/).slice(1)) {
+  const goes = sec.match(/\*\*Goes up:\*\* (\d{4}-\d{2}-\d{2})/);
+  if (!goes) continue;
+  const num = +sec.match(/^## (\d+)\./)[1];
+  const title = sec.match(/^## \d+\. [^·]*· [^·]*· (.+)/)[1].trim();
+  const photo = (sec.match(/\*\*Photo:\*\* `social\/photos\/([^`]+)`/) || [])[1];
+  const url = (sec.match(/\*\*Button:\*\* Book → `([^`]+)`/) || [])[1];
+  const text = (sec.match(/```\n([\s\S]*?)\n```/) || [])[1];
+  const date = goes[1];
+  const tag = `GBP ${num}`;
+  if (!photo || !url || !text) { errors.push(`${tag}: needs a Photo, a Book button and a text block`); continue; }
+  if (new Date(date + 'T12:00:00Z').getUTCDay() !== 1) errors.push(`${tag}: ${date} isn't a Monday`);
+  if (text.length > 1500) errors.push(`${tag}: ${text.length} characters, Google's limit is 1,500`);
+  if (/\(?\d{3}\)?[ .-]?\d{3}[ .-]\d{4}/.test(text)) errors.push(`${tag}: phone number in the text (Google rejects it)`);
+  if (/\u2014/.test(text)) errors.push(`${tag}: em dash`);
+  if (/rain-ready/i.test(text) && date > RR_LAST_DAY) errors.push(`${tag}: mentions Rain-Ready after it ends`);
+  const file = path.join(SOCIAL, 'photos', photo);
+  if (!fs.existsSync(file)) errors.push(`${tag}: missing photo ${photo}`);
+  gbp.push({
+    kind: 'gbp', date, id: `GBP${num}`, title,
+    approved: GBP_APPROVED.has(num),
+    gbp: { summary: text, photo: RAW.replace('/posts/', '/photos/') + photo, url },
+  });
+}
+for (const n of GBP_APPROVED) {
+  if (!gbp.some(e => e.id === `GBP${n}`)) errors.push(`GBP ${n}: approved but not in GBP-POSTS.md`);
+}
 
 // One ask in any four posts, never two in a row (launch-day posts count separately).
 for (let i = 0; i < out.length; i++) {
@@ -99,6 +139,7 @@ if (errors.length) {
   process.exit(1);
 }
 
-fs.writeFileSync(path.join(SOCIAL, 'queue.json'), JSON.stringify(out, null, 2) + '\n');
+const all = out.concat(gbp).sort((a, b) => a.date.localeCompare(b.date));
+fs.writeFileSync(path.join(SOCIAL, 'queue.json'), JSON.stringify(all, null, 2) + '\n');
 const approved = out.filter(e => e.approved).length;
-console.log(`queue.json: ${out.length} posts, ${out[0].date} to ${out[out.length - 1].date}, ${approved} approved`);
+console.log(`queue.json: ${out.length} Instagram/Facebook posts (${approved} approved), ${gbp.length} Google posts (${gbp.filter(e => e.approved).length} approved)`);

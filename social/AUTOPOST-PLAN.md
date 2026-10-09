@@ -11,7 +11,10 @@ their own, as cheap as possible, with Mikey's only regular job being photos.
   organization's timezone is New York, so don't "fix" the 21:30. It reads
   `social/queue.json` from GitHub's raw URL, keeps entries dated today
   (Pacific) with `approved: true`, and posts each one to Instagram (one photo
-  or a carousel) and to the Facebook Page. Any failure emails
+  or a carousel) and to the Facebook Page (`kind: social`), or to the Google
+  Business Profile (`kind: gbp`, the location "Mikey's Mobile Detailing -
+  Snohomish", `locations/8659452995326437651`; the same Google login also
+  holds Trinity Exterior Cleaning and Mikey's Can Cleaning, never post there). Any failure emails
   `mikeysdetailing4u@gmail.com` and the other platform still goes ahead.
 - **Accounts:** Instagram **`@mikeysdetailing_sno`** (id `17841410828885646`),
   Facebook Page **Mikey's Mobile Detailing** (id `1404175872772078`). The same
@@ -25,10 +28,12 @@ their own, as cheap as possible, with Mikey's only regular job being photos.
   Facebook post scheduled two days out was created and deleted, so posting
   works. Instagram has no hidden test, so its first real run is the test:
   check that evening's run.
-- **Approvals:** `APPROVED` in `social/tools/queue.cjs`. Add ids, run
+- **Google posts** are numbered sections of `outreach/GBP-POSTS.md` with a
+  `**Goes up:**` date (9 onward, Mondays). `queue.cjs` reads them from there.
+- **Approvals:** `APPROVED` (Instagram/Facebook ids) and `GBP_APPROVED` (Google
+  post numbers) in `social/tools/queue.cjs`. Add ids, run
   `npm run queue`, merge to `main`. Nothing posts without it.
-- **Not built yet:** the Google Business Profile route (add it with the Dec 7
-  batch), the Sunday Claude check-in, the Nextdoor text, YouTube.
+- **Not built yet:** the Sunday Claude check-in, the Nextdoor text, YouTube.
 
 The rest of this file is the plan as written before the build. `PLAYBOOK.md` is still the
 source for what a post says; this file is only about how posts get made and

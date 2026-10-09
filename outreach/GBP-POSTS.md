@@ -344,13 +344,113 @@ Pick Full Detail in the quote and the extras go on by themselves.
 
 ## The next batch (from Monday Dec 7)
 
-Post 8 is the last one scheduled. Write posts 9 onward in this file first,
-checked against the facts table in `CLAUDE.md`, and only then schedule them.
-Same rules as these eight: no phone number in the text, only the twelve towns,
-photos only from `social/photos/` in a wide (4:3) shape, no Clean Club, no
-scarcity line, nothing about a license or insurance. **Nothing scheduled to go
-up after December 31, 2026 mentions Rain-Ready.**
+Post 8 is the last one scheduled on the profile by hand. **From post 9 on,
+Make posts them** (the "Social publisher" scenario, `social/AUTOPOST-PLAN.md`)
+on the Monday given in each post's **Goes up** line, at 6:30 PM Pacific (the
+scenario's one daily run), not 8 AM. `social/tools/queue.cjs` reads the posts
+below straight out of this file, so this file stays the only copy: edit a post
+here, run `npm run queue` in `social/tools`, and merge.
 
-A scheduled post doesn't follow a fact change on its own. If a price, a
-duration or the towns change before Nov 30, edit or delete the affected
-scheduled posts on the profile as well as this file.
+Same rules as the first eight: no phone number in the text, only the twelve
+towns, photos only from `social/photos/` in a wide (4:3) shape, no Clean Club,
+no scarcity line, nothing about a license or insurance. **Nothing that goes up
+after December 31, 2026 mentions Rain-Ready.** Post 12 goes up Dec 28 and
+stays the top post on the profile until the next one, so **post 13 has to be
+dated Monday Jan 4** to push it down.
+
+A post doesn't follow a fact change on its own. If a price, a duration or the
+towns change, fix this file and the queue before the post's Monday, and edit
+any post already up on the profile.
+
+Nothing here posts until its number is in `GBP_APPROVED` in
+`social/tools/queue.cjs`.
+
+---
+
+## 9. Week of Dec 7 · Update · How booking works
+
+**Goes up:** 2026-12-07
+**Photo:** `social/photos/pilot-garage.jpg` (gray Pilot in a customer's
+garage, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Booking a detail with me takes about two minutes, and you never have to call.
+
+1. Open the quote on my site and pick your car and the service. You see the exact price in 60 seconds, not a range.
+2. Tap Pick my time. It shows my next real openings and you pick one.
+3. I come to you: your driveway, your work lot, or your garage like this Pilot. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.
+4. When I'm done we walk around the car together and I fix anything you point at. Then you pay. Never a deposit.
+
+I work weekday afternoons and Saturdays. Same price in Snohomish, Everett, Lake Stevens, Mill Creek, Bothell and every other town I serve, no travel fee.
+
+Tap Book to see your price.
+```
+
+---
+
+## 10. Week of Dec 14 · Update · Back from the pass
+
+**Goes up:** 2026-12-14
+**Photo:** `social/photos/cargo-before.jpg` (an Acura's cargo area full of
+gear and crumbs, before the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Once the passes get snow, US-2 gets sand and de-icer, and your car brings both home.
+
+They get sprayed into the wheel wells, onto the lower doors and underneath, and they sit there all winter if nobody rinses them off. Ten minutes after a trip up to Stevens saves a lot:
+
+1. Rinse within a few days. Aim the hose into the wheel wells and along the bottom of the doors. No hose? A self-serve wand at a coin wash does it.
+2. Pull the floor mats out that night and dry them in the house, not in the trunk. Snow melts off boots straight into the carpet.
+3. Put wet ski bags, boards and jackets on an old towel, not on the cargo carpet.
+
+If the cargo area already looks like this one, that's an Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, trunk included. Monroe and Snohomish sit right on US-2 and see the most of this, and it's the same price in every town I go to.
+
+Tap Book and the quote shows your exact price in 60 seconds.
+```
+
+---
+
+## 11. Week of Dec 21 · Update · Selling it after the holidays
+
+**Goes up:** 2026-12-21
+**Photo:** `social/photos/r8.jpg` (green R8 on a gravel driveway)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Selling your car or trading it in after the holidays? Clean it before you take the photos, not after.
+
+People scroll past a listing with crumbs in the seat seams and a dull, spotted hood, and the person appraising a trade-in notices the same things. A clean car photographs like a car somebody looked after.
+
+What shows up most in the photos:
+
+1. Glass, inside and out. A hazy windshield is in every interior shot.
+2. Door jambs. They're the first thing anyone sees when they open the door.
+3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.
+4. Clean wheels and tires. They're half of every outside photo.
+
+A Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: exterior polish, ceramic wax and RainX on the glass.
+
+Tap Book to see your exact price.
+```
+
+---
+
+## 12. Week of Dec 28 · Update · Last week for Rain-Ready
+
+**Goes up:** 2026-12-28
+**Photo:** `social/photos/etron-interior.jpg` (a clean Audi e-tron interior)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Last week for the Rain-Ready Full Detail: book by Thursday, December 31.
+
+Any Full Detail booked by then comes with three rain-season extras I don't charge for: exterior polish to take the dull film off, ceramic wax so the rain beads up and rolls off, and RainX on the glass. The booking date is what counts, so the detail itself can be as late as January 31.
+
+After the holidays is a good time for it anyway. Road trips, wrapping paper, a month of wet boots and crumbs in the back seat. The inside gets the full treatment: vacuum, steam on the seats and carpet, leather cleaned, dash and trim wiped down, door jambs and glass done. Then the outside, with the three extras on top.
+
+$369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in all twelve towns I serve, no travel fee.
+
+Pick Full Detail in the quote and the extras go on by themselves. Tap Book.
+```
