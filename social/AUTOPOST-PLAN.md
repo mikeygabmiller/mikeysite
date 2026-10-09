@@ -4,7 +4,33 @@ Written 2026-10-09 at Mikey's request: posts on Google Business Profile,
 Instagram, Facebook, Nextdoor and maybe YouTube, made by Claude, posted on
 their own, as cheap as possible, with Mikey's only regular job being photos.
 
-This file is the plan. Nothing in it is built yet. `PLAYBOOK.md` is still the
+## What's built (2026-10-09)
+
+- **Make scenario "Social publisher"** (id `6572593`, team `747736`), active.
+  Runs daily at **21:30 New York time**, which is **6:30 PM Pacific**: the Make
+  organization's timezone is New York, so don't "fix" the 21:30. It reads
+  `social/queue.json` from GitHub's raw URL, keeps entries dated today
+  (Pacific) with `approved: true`, and posts each one to Instagram (one photo
+  or a carousel) and to the Facebook Page. Any failure emails
+  `mikeysdetailing4u@gmail.com` and the other platform still goes ahead.
+- **Accounts:** Instagram **`@mikeysdetailing_sno`** (id `17841410828885646`),
+  Facebook Page **Mikey's Mobile Detailing** (id `1404175872772078`). The same
+  Facebook login also manages a Page called St. Michael's Sword; never post
+  there.
+- **Make connections:** `Mikey's Facebook + Instagram` (`11599068`) and
+  `Mikey's Facebook Page` (`11599079`), both **expiring 2026-12-08**. Before
+  then, create a credential request (Make connector) for Mikey to sign in
+  again, or posts stop. Gmail alerts use `9723941`; GBP is `10164893`.
+- **Tested:** a dry run read all 30 queue entries and posted nothing; a
+  Facebook post scheduled two days out was created and deleted, so posting
+  works. Instagram has no hidden test, so its first real run is the test:
+  check that evening's run.
+- **Approvals:** `APPROVED` in `social/tools/queue.cjs`. Add ids, run
+  `npm run queue`, merge to `main`. Nothing posts without it.
+- **Not built yet:** the Google Business Profile route (add it with the Dec 7
+  batch), the Sunday Claude check-in, the Nextdoor text, YouTube.
+
+The rest of this file is the plan as written before the build. `PLAYBOOK.md` is still the
 source for what a post says; this file is only about how posts get made and
 published without anyone opening the apps.
 
