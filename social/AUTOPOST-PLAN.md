@@ -239,6 +239,8 @@ A scheduled Claude routine runs every Sunday afternoon:
 
 ## Who does what
 
+The click-by-click steps for the accounts are in `ACCOUNT-SETUP.md`.
+
 ### Only you (it's your identity or your password)
 
 | Task | Time | Notes |
