@@ -5,7 +5,8 @@
   "scripts": {
     "photos": "node prep-photos.cjs",
     "render": "node render.cjs",
-    "queue": "node queue.cjs"
+    "queue": "node queue.cjs",
+    "album": "node album.cjs"
   },
   "dependencies": {
     "playwright": "1.56.1",

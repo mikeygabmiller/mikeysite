@@ -38,6 +38,13 @@ their own, as cheap as possible, with Mikey's only regular job being photos.
 - **Approvals:** `APPROVED` (Instagram/Facebook ids) and `GBP_APPROVED` (Google
   post numbers) in `social/tools/queue.cjs`. Add ids, run
   `npm run queue`, merge to `main`. Nothing posts without it.
+- **Job photos come from Mikey's shared Google Photos album** ("Car photos";
+  he keeps adding to it). `ALBUM_URL=... npm run album` in `social/tools`
+  downloads new ones to `social/inbox/`, which git ignores. The link is never
+  committed (this repo is public and the link opens the unblurred originals);
+  it lives in the GBP post writer routine's prompt. A photo reaches
+  `social/photos/` only through `prep-photos.cjs`, blurred and stripped of
+  metadata, and `social/photos/album-seen.json` records what was reviewed.
 - **Not built yet:** the weekly Instagram/Facebook writer and approvals check-in,
   the Nextdoor text, YouTube.
 
