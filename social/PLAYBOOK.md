@@ -92,6 +92,10 @@ images → paste the caption → Schedule. Turn on the option to write different
 text for each platform, since the two captions differ (Instagram says "link in
 bio", Facebook has the actual link and no hashtags).
 
+The plan to make this automatic (Make.com posting from a queue, a weekly
+Claude check-in, $0 a month) is `AUTOPOST-PLAN.md`. Until it's built, this is
+how posts go up.
+
 ---
 
 ## 3. The offer: the Rain-Ready Full Detail
@@ -443,7 +447,11 @@ you work** and **whether you're licensed and insured.**
   posts but allow replies. When someone asks "anyone know a good detailer?",
   answer as yourself, briefly, with the quote link. Don't paste the same ad
   into every group. That gets you removed and remembered for the wrong reason.
-- **Nextdoor:** claim a free business page. Same rule: answer, don't advertise.
+- **Nextdoor:** claim the free business page (it exists but is unclaimed,
+  `outreach/DIRECTORIES.md`). Same rule: answer, don't advertise. Since
+  August 19, 2026 Nextdoor requires anything that promotes a business,
+  replies included, to come from the **Business Page**, not your personal
+  account; a personal-account answer gets flagged and shown to fewer people.
 - **Ask happy customers to tag you** when they post their car. A customer's
   post reaches people who trust them.
 
