@@ -156,12 +156,75 @@ like step 3. An empty channel does nothing.
 
 ---
 
+## On a computer instead (Mikey asked, 2026-10-09)
+
+Same copy as the phone steps above; only the clicks change. Use Chrome, signed
+in as yourself.
+
+### Facebook Page
+
+1. Go to `facebook.com/pages/create` (or left menu **Pages** → **Create new
+   Page**). If it asks, **Public Page** → **Next** → **Get Started**.
+2. Name, category and bio from section 1 → **Create Page**.
+3. Contact info (website with the `utm_source=facebook` tail, phone, email).
+   **Location blank, hours blank** → **Next**.
+4. Profile picture and cover photo, action button **Book now** → **Next**.
+5. WhatsApp **Skip**, invite friends **Next**, notifications **Done**.
+6. Username: while you're switched into the Page, open its Settings and look
+   for **Username**; set `mikeysdetailing`.
+7. Two-factor: profile picture (top right) → **Settings & privacy** →
+   **Settings** → **Accounts Center** → **Password and security** →
+   **Two-factor authentication**.
+
+### Instagram
+
+1. **Log out of any personal Instagram first** (or open an Incognito window),
+   then go to `instagram.com/accounts/emailsignup/`.
+2. Sign up with your Gmail, full name `Mikey's Mobile Detailing`, username
+   `mikeysdetailing`, a password, your birthday, then the code Instagram
+   emails you.
+3. Switch to business: **More** (☰, bottom left) → **Settings** → **Account
+   type and tools** → **Switch to professional account** → same category as
+   Facebook → **Business** → **Done**.
+4. **Edit profile** (on your profile page): profile picture and the 4-line bio.
+   The **website link** field on the website may say editing links is only
+   available on mobile; if it does, add the link in the app later (Edit
+   profile → Links), it's one paste.
+5. **Link it to the Facebook Page, from Facebook:** facebook.com → your
+   profile picture (top right) → **See all profiles** → pick **Mikey's Mobile
+   Detailing** → click the Page's profile picture (top right) → **Settings &
+   privacy** → **Settings** → under **Permissions**, **Linked accounts** →
+   **Instagram** → **Connect account** → log in to @mikeysdetailing and accept.
+6. Two-factor for Instagram: same Accounts Center as Facebook (step 7 above);
+   once the accounts are linked, it lists both.
+
+### Make
+
+Section 3 above is already the computer steps.
+
+### Nextdoor
+
+1. First switch off call screening in the dashboard
+   (`https://texting.mikeysdetailingsnohomish.workers.dev` → **More** →
+   **Settings** → **Auto follow-ups & calls** → **Call screening** off).
+2. Sign in at `nextdoor.com`, open
+   `https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/`
+   → **Claim page** → **professional business**.
+3. Answer the verification call on your cell, type the code.
+4. Switch call screening back on.
+5. Edit the page: name `Mikey's Mobile Detailing`, email
+   `book@mikeysdetailing.com`, the 500 block, the twelve towns'
+   neighborhoods. This step is the one to hand to Muse if you want.
+
+---
+
 ## When you're done
 
 Tell Claude which of these are finished and the exact Instagram username.
 That's everything Claude needs to build the queue and the Make scenario.
 
 Sources (2026-10-09): Facebook, Create a Page
-(https://www.facebook.com/help/104002523024878); Instagram, connect a Page
+(https://www.facebook.com/help/104002523024878); Facebook, link Instagram from a
+computer (https://www.facebook.com/help/1148909221857370); Instagram, connect a Page
 (https://help.instagram.com/ipad-app/399237934150902); Nextdoor, claim and
 verify (https://business.nextdoor.com/local/resources/managing-your-nextdoor-business-page-answers-to-your-most-asked-questions).
