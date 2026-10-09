@@ -66,7 +66,7 @@ const out = SCHEDULE.map(([date, id], i) => {
   for (const f of p.images) {
     if (!fs.existsSync(path.join(SOCIAL, 'posts', f))) errors.push(`${id}: missing image ${f}`);
   }
-  if (/—/.test(p.ig + p.fb)) errors.push(`${id}: em dash in a caption`);
+  if (/\u2014/.test(p.ig + p.fb)) errors.push(`${id}: em dash in a caption`);
   if (p.ig.length > 2200) errors.push(`${id}: Instagram caption over 2,200 characters`);
   const urls = p.images.map(f => RAW + f);
   return {
