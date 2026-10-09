@@ -494,6 +494,10 @@ honest cost math, where signs go, the crew link, pay, and lead tracking.
   `https://mikeysdetailing.com/?utm_source=yardsign#booking`; the dashboard tags
   a quote or booking from that visit **sign** and credits it. Don't change the
   `utm_source` without changing the dashboard.
+- **Scaling it so Mikey only orders and pays** is `print/yard-signs/SCALE.md`
+  (2026-10-09): one captain, a pickup bin, the calendar as the ceiling, the
+  city-code and L&I checks that come before phase 2, and what the crew app
+  still needs.
 - **Only the twelve towns.** The Mill Creek Community Association's divisions
   are excluded as an HOA that pulls signs; don't add other HOAs to the script
   without Mikey or the crew's removal data saying so.
