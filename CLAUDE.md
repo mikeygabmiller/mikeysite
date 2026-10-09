@@ -391,6 +391,10 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
   asks for anything. Never invent a story; stories come from his answers.
 - **Only the twelve served towns** on the map or in copy. The renderer strips
   the "ask me" tier from the map for that reason.
+- **Automated posting is planned, not built** (2026-10-09):
+  `social/AUTOPOST-PLAN.md`. Make.com posts Instagram, Facebook, GBP and later
+  YouTube from `social/queue.json`; Nextdoor has no API for a small business,
+  so it stays a paste. Read it before building any of it.
 - **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
   extend its window, or add a new offer without Mikey saying so.
 
