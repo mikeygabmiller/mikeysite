@@ -385,8 +385,13 @@ sharper. Every job is a chance to refill the bank.
 - **Ask first:** "Mind if I post before and after pics of the car? No plate,
   no address, no names." Only post if they say yes.
 
-**Getting them to me:** drop them in the Google Drive folder **Mikey Social
-Photos**, one folder per job, named like this:
+**Getting them to me:** add them to the shared Google Photos album **Car
+photos** (Mikey, 2026-10-09). In the Google Photos app: press and hold the first
+photo, drag across the rest, tap **Add to**, then **Album**, then **Car
+photos**. Every photo in that album is cleared for posting, so only add cars
+whose owners said yes. The weekly job pulls new ones, blurs them and uses them.
+Optional, and it makes better captions: a one-line note per car in the Claude
+chat (the album page doesn't pass photo descriptions along), like:
 
 ```
 2019 MDX - Lake Stevens - full interior - cereal ground into leather
