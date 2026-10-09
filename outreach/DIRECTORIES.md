@@ -333,8 +333,8 @@ blocks above.
 - Category: see the table. **Intro:** the tagline (93 of 101).
 - Address: **leave it blank** and set the service area to the twelve towns.
 - About / details: Long block. Website, phone, email exact.
-- Username: `mikeysdetailing` if it's free (match Instagram, per
-  `social/PLAYBOOK.md`).
+- Username: `mikeysdetailing` if it's free. Instagram is
+  `@mikeysdetailing_sno` (`social/PLAYBOOK.md`).
 - Then follow `social/PLAYBOOK.md` for posting.
 
 ### 6. Foursquare

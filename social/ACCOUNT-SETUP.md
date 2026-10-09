@@ -1,5 +1,8 @@
 # Setting up the accounts (do this once)
 
+**Done 2026-10-09:** the Facebook Page and Instagram (`@mikeysdetailing_sno`)
+exist and are connected to Make. Nextdoor is still to claim.
+
 Written 2026-10-09 for `AUTOPOST-PLAN.md`. About 45 minutes in all, most of it
 on your phone. Menu names were checked against Meta's and Nextdoor's help pages
 that day. Apps move things around, so if a label doesn't match exactly, look
@@ -105,7 +108,7 @@ sees your password.
    window opens.
 4. **Continue as Mikey**. If it shows **Edit access** or **Opt in to all
    current and future**, choose the one that includes **Mikey's Mobile
-   Detailing** and **@mikeysdetailing**. Leave every permission switched on
+   Detailing** and **@mikeysdetailing_sno**. Leave every permission switched on
    (it's asking to post, read comments and read stats; it can't do anything
    else). **Save** / **Got it**.
 5. Do it once more for **Facebook Pages**, same Page.
@@ -194,7 +197,7 @@ in as yourself.
    profile picture (top right) → **See all profiles** → pick **Mikey's Mobile
    Detailing** → click the Page's profile picture (top right) → **Settings &
    privacy** → **Settings** → under **Permissions**, **Linked accounts** →
-   **Instagram** → **Connect account** → log in to @mikeysdetailing and accept.
+   **Instagram** → **Connect account** → log in to @mikeysdetailing_sno and accept.
 6. Two-factor for Instagram: same Accounts Center as Facebook (step 7 above);
    once the accounts are linked, it lists both.
 
