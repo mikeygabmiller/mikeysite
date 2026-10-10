@@ -31,7 +31,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
-| When he works | **Mon–Fri one job at 1:00 PM; Sat 7:00 AM and 1:00 PM; never Sunday** | Mikey, 2026-09-29, while he's in school until noon. Copy says "weekday afternoons and Saturdays", not exact times, because it'll change. The real times live in the dashboard (Bookings → Settings → My start times) |
+| When he works | **Tue–Fri one job at 1:00 PM; Sat 7:00 AM and 1:00 PM; never Sunday; Mondays off for now** | Mikey, 2026-09-29, while he's in school until noon. Mondays off "for now" since 2026-10-10 (dashboard build `2026-10-10·no-mondays`); ask before bringing them back. Copy says "weekday afternoons and Saturdays", not exact times, because it'll change. The real times live in the dashboard (Bookings → Settings → My start times) |
 | Longest job times | **Exterior 2 hrs, Interior 3 hrs, Full Detail 4.5 hrs** | the booking calendar plans on these; not customer copy (customers get the ranges above) |
 | Capacity | **no weekly number** | "12 cars a week" was retired 2026-09-29 (his real week holds about 7). Scarcity is the live "Next opening" line instead |
 | Payment | after the work, never a deposit | a Clean Club card is saved with Stripe, not charged |
