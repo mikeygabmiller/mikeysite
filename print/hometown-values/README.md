@@ -45,13 +45,31 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
 
 ## What's on it, and why
 
-- **Your car, detailed right here in your driveway**, the logo, and the
-  back-seat before/after: the same front as the postcard, because it's the
-  photo that shows the work best.
-- **The three "from" prices**, Full Detail in gold. A coupon magazine is read
+- **White, with one black band.** Version 1 was black like the site and Mikey
+  didn't like it (2026-10-12). A coupon magazine is mostly busy ads on white
+  paper, so a clean white box with a big red headline stands out, and white is
+  what he picked for the call page. The thin black frame keeps it from melting
+  into the page.
+- **One big headline**, YOUR CAR, DETAILED / IN YOUR DRIVEWAY, in the logo's
+  Barlow Condensed. It says what he does from across the room.
+- **The back-seat before/after, shown whole.** Picked 2026-10-12 out of every
+  photo in `social/photos/` and `images/`, at Mikey's ask for the highest
+  converting one. There are five real before/after pairs. The back seat
+  (crushed snacks, juice, stained leather) is the one every parent recognizes,
+  and it's the website's lead photo. The RAV4 cargo (mud) is real cleaning but
+  a trunk doesn't sell a detail. The MDX cargo reads as "emptied the trunk".
+  The Focus exterior is 640 px with the after shot from a different angle.
+  The steering wheel's fuzzy cover confuses the before. The photos are
+  portrait, so they sit whole beside the prices: cropping them to a strip cut
+  off the mess, and Mikey called that out.
+- **The three "from" prices**, stacked beside the photo, Full Detail in red
+  on top. A coupon magazine is read
   by people comparing prices, so the price is right there, and "from $369"
   filters out the $99 crowd the 2024 ad drew.
-- **The guarantee once**, then 5.0 across 39 reviews, 300+ cars, no deposit.
+- **5.0, 39 reviews, 300+ cars** up top beside the logo, where trust gets read
+  first.
+- **The black band is the call to action**: the 1 in QR, "Call or text
+  Mikey", the phone big, and the guarantee once.
 - **The spigot and outlet line**, with the reason. Every piece of print says
   who provides water and power.
 - **The twelve towns and "no travel fee"**, because the magazine goes to whole
