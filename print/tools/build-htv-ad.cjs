@@ -13,7 +13,7 @@
 // goes in; change W and H here if his differs.
 //
 // OFFER='$40 off|Any Full Detail. Mention Hometown Values when you book.'
-// adds a coupon box above the call to action (the photo gets shorter to make room). Off by default: a new offer is
+// puts a coupon box in the review's slot (there's room for one or the other). Off by default: a new offer is
 // Mikey's call (CLAUDE.md, Offers and countdowns), and it writes ad-offer.*
 // so the two versions can't get mixed up.
 
@@ -40,12 +40,19 @@ const QR_URL = 'https://mikeysdetailing.com/?utm_source=hometownvalues&utm_mediu
 const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', 'Marysville',
   'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
 // This is the Lake Stevens edition, so the ad talks to Lake Stevens only (Mikey,
-// 2026-10-12: "make it like I'm local right in Lake Stevens"). The places are
-// the ones his /lake-stevens/ page already names. He's based in Snohomish, so
+// 2026-10-12: "make it like I'm local right in Lake Stevens"). The town is
+// in the headline. He's based in Snohomish, so
 // it says he's in Lake Stevens most weeks (true of all twelve towns), never
 // that he lives or is based there.
 const TOWN = 'Lake Stevens';
-const PLACES = 'Frontier Village, Cavalero, downtown, the lake shore';
+// The review slot. Right now it holds an EXAMPLE of the review that would sell
+// best, so Mikey can find the closest real one (2026-10-12). A made-up review
+// can't go to print (FTC rule, 16 CFR 465), so while REVIEW_IS_EXAMPLE is true
+// the ad says EXAMPLE on it and the generator warns. Swap in a real customer's
+// words (trimmed with "...", never reworded), their first name, and set it false.
+const REVIEW = "My kids wrecked the back seat. Mikey came to my driveway, charged exactly what he quoted, and it looked brand new. I didn't even have to be home.";
+const REVIEW_BY = 'First name, Lake Stevens';
+const REVIEW_IS_EXAMPLE = true;
 
 const W = 4.0625, H = 4.75;
 const SAFE = 0.14;       // magazines trim and register loosely; keep type off the frame
@@ -107,23 +114,27 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .mid{display:flex;gap:.07in;align-items:stretch}
 /* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
    because cropping them to a strip cuts off the mess, which is the point. */
-.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.64in;border-radius:3pt;overflow:hidden;background:#fff}
-.has-offer .ba{height:1.28in}
+.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.28in;border-radius:3pt;overflow:hidden;background:#fff}
 .ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
 .ba .chip{position:absolute;top:.05in;font-weight:800;font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;padding:2.5pt 4.5pt 2pt;border-radius:2pt;color:#fff}
-.ba .b .chip{left:.05in;background:rgba(10,10,10,.85)}
+.ba .b .chip{left:.05in;background:#0e0e0f}
 .ba .a .chip{right:.05in;background:var(--red)}
 
 .prices{flex:1;display:flex;flex-direction:column;gap:.045in}
-.prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;border:.9pt solid var(--line);border-radius:3pt}
+.prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;background:var(--line);border-radius:3pt}
 .prices span{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
 .prices b{display:block;font-weight:800;font-size:16pt;letter-spacing:-.015em;margin-top:1.5pt}
-.prices .full{background:var(--red);border-color:var(--red);color:#fff}
-.prices .full span{color:rgba(255,255,255,.9)}
+.prices .full{background:var(--red);color:#fff}
+.prices .full span{color:#ffffff}
 
 .fine{font-size:6.5pt;line-height:1.3;color:var(--sub);text-align:center}
 .fine b{color:var(--ink);font-weight:700}
+.rev{text-align:center}
+.rev .q{font-weight:700;font-style:italic;font-size:7.4pt;line-height:1.2}
+.rev .by{font-size:6.5pt;color:var(--sub);margin-top:2pt}
+.rev .by .stars svg{width:6.5pt;height:6.5pt}
+.rev .by i{font-style:normal;font-weight:800;color:#ffffff;background:var(--red);padding:.5pt 3pt;border-radius:2pt;margin-left:3pt}
 
 .offer{display:flex;align-items:center;gap:.08in;border:1pt dashed var(--ink);border-radius:3pt;padding:2.5pt .08in}
 .offer b{flex:none;font-family:'Barlow Condensed';font-weight:800;font-size:17pt;color:var(--red)}
@@ -136,10 +147,11 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .bar .txt{flex:1;min-width:0}
 .bar .call{font-family:'Barlow Condensed';font-weight:700;font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 .bar .phone{font-weight:800;font-size:18.5pt;line-height:1;letter-spacing:-.015em;white-space:nowrap;margin-top:1pt}
-.bar .scan{font-size:7pt;line-height:1.25;color:rgba(255,255,255,.82);margin-top:3pt}
+.bar .scan{font-size:7pt;line-height:1.25;color:#d6d6d6;margin-top:3pt}
 .bar .scan b{color:#fff;font-weight:700}
 .bar .promise{font-family:'Caveat';font-weight:700;font-size:13pt;line-height:1;margin-top:4pt}
 .bar .promise u{text-decoration:none;background:linear-gradient(transparent 76%,rgba(227,25,36,.95) 76%,rgba(227,25,36,.95) 92%,transparent 92%)}
+${process.env.CANVA ? '/* Poppins runs wider than Outfit */ .ba{height:1.16in} .rev .q{font-size:7.1pt}' : ''}
 `;
 
 const html = (qr) => `
@@ -147,9 +159,9 @@ const html = (qr) => `
   <div class="in">
     <div class="top">
       ${logoSvg()}
-      <div class="rate"><div class="r1"><b>5.0</b>${stars(5)}</div><span>${REVIEWS} Google reviews</span><span>300+ cars since 2021</span></div>
+      <div class="rate"><div class="r1"><b>5.0</b>${stars(5)}</div><span>${REVIEWS} Google reviews</span></div>
     </div>
-    <h1>Your car, detailed in your<em>${TOWN} driveway.</em></h1>
+    <h1>${TOWN} car detailing.<em>I come to your home or work.</em></h1>
     <div class="mid">
       <div class="ba">
         <div class="ph b"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}"><span class="chip">Before</span></div>
@@ -162,14 +174,15 @@ const html = (qr) => `
       </div>
     </div>
     ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
-    <div class="fine"><b>I'm in ${TOWN} most weeks:</b> ${PLACES}. I come to you, at home or work. Same price, no travel fee.<br>You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
+    ${OFFER_BIG ? '' : `<div class="rev"><div class="q">“${REVIEW}”</div><div class="by">${stars(5)} ${REVIEW_BY} · Google review${REVIEW_IS_EXAMPLE ? ' <i>EXAMPLE: swap in a real one</i>' : ''}</div></div>`}
+    <div class="fine">I'm in ${TOWN} most weeks, no travel fee. You provide an outdoor spigot and outlet: that's how I keep prices down.</div>
   </div>
   <div class="bar">
     <div class="qr">${qr}</div>
     <div class="txt">
       <div class="call">Call or text Mikey</div>
       <div class="phone">${PHONE}</div>
-      <div class="scan">Or scan for <b>your exact price</b> in about 60 seconds. ${SITE}</div>
+      <div class="scan">Or scan for <b>your exact price</b> in 60 seconds. ${SITE}</div>
       <div class="promise"><u>You don't pay until you love it.</u></div>
     </div>
   </div>
@@ -236,10 +249,11 @@ async function checkQr(pngBuf) {
     [/360-799|232-1355/, 'an old phone number'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  for (const must of ['spigot', 'outlet', PHONE, '60 seconds', '5.0', `${REVIEWS} Google reviews`, '300+', '$199', '$249', '$369', `${TOWN} driveway`, `in ${TOWN} most weeks`, 'no travel fee'])
+  for (const must of ['spigot', 'outlet', PHONE, '60 seconds', '5.0', `${REVIEWS} Google reviews`, '$199', '$249', '$369', `${TOWN} car detailing`, 'home or work', `in ${TOWN} most weeks`, 'no travel fee'])
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
   // it goes to Lake Stevens homes only; any other town on it is wasted space
   for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);
+  if (REVIEW_IS_EXAMPLE && !OFFER_BIG) console.warn('  WARN the review is the EXAMPLE, not a real customer. Swap in a real one before this goes to Jim.');
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 
   // CANVA=1: write an HTML version Canva imports as an editable design, the same

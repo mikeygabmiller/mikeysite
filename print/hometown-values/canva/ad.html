@@ -30,23 +30,27 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .mid{display:flex;gap:.07in;align-items:stretch}
 /* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
    because cropping them to a strip cuts off the mess, which is the point. */
-.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.64in;border-radius:3pt;overflow:hidden;background:#fff}
-.has-offer .ba{height:1.28in}
+.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.28in;border-radius:3pt;overflow:hidden;background:#fff}
 .ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
 .ba .chip{position:absolute;top:.05in;font-weight:800;font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;padding:2.5pt 4.5pt 2pt;border-radius:2pt;color:#fff}
-.ba .b .chip{left:.05in;background:rgba(10,10,10,.85)}
+.ba .b .chip{left:.05in;background:#0e0e0f}
 .ba .a .chip{right:.05in;background:var(--red)}
 
 .prices{flex:1;display:flex;flex-direction:column;gap:.045in}
-.prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;border:.9pt solid var(--line);border-radius:3pt}
+.prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;background:var(--line);border-radius:3pt}
 .prices span{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
 .prices b{display:block;font-weight:800;font-size:16pt;letter-spacing:-.015em;margin-top:1.5pt}
-.prices .full{background:var(--red);border-color:var(--red);color:#fff}
-.prices .full span{color:rgba(255,255,255,.9)}
+.prices .full{background:var(--red);color:#fff}
+.prices .full span{color:#ffffff}
 
 .fine{font-size:6.5pt;line-height:1.3;color:var(--sub);text-align:center}
 .fine b{color:var(--ink);font-weight:700}
+.rev{text-align:center}
+.rev .q{font-weight:700;font-style:italic;font-size:7.4pt;line-height:1.2}
+.rev .by{font-size:6.5pt;color:var(--sub);margin-top:2pt}
+.rev .by .stars svg{width:6.5pt;height:6.5pt}
+.rev .by i{font-style:normal;font-weight:800;color:#ffffff;background:var(--red);padding:.5pt 3pt;border-radius:2pt;margin-left:3pt}
 
 .offer{display:flex;align-items:center;gap:.08in;border:1pt dashed var(--ink);border-radius:3pt;padding:2.5pt .08in}
 .offer b{flex:none;font-family:'Barlow Condensed';font-weight:800;font-size:17pt;color:var(--red)}
@@ -59,31 +63,33 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .bar .txt{flex:1;min-width:0}
 .bar .call{font-family:'Barlow Condensed';font-weight:700;font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
 .bar .phone{font-weight:800;font-size:18.5pt;line-height:1;letter-spacing:-.015em;white-space:nowrap;margin-top:1pt}
-.bar .scan{font-size:7pt;line-height:1.25;color:rgba(255,255,255,.82);margin-top:3pt}
+.bar .scan{font-size:7pt;line-height:1.25;color:#d6d6d6;margin-top:3pt}
 .bar .scan b{color:#fff;font-weight:700}
 .bar .promise{font-family:'Caveat';font-weight:700;font-size:13pt;line-height:1;margin-top:4pt}
 .bar .promise u{text-decoration:none;background:linear-gradient(transparent 76%,rgba(227,25,36,.95) 76%,rgba(227,25,36,.95) 92%,transparent 92%)}
+/* Poppins runs wider than Outfit */ .ba{height:1.16in} .rev .q{font-size:7.1pt}
 </style></head><body>
 <section class="ad" data-document-role="page" data-label="Hometown Values quarter page (Lake Stevens)" style="background-color: rgb(255, 255, 255); border: 2px solid rgb(14, 14, 15);">
   <div class="in">
     <div class="top">
       <img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/logo.png" style="display:block;width:155.515625px">
-      <div class="rate"><div class="r1"><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 20px; color: rgb(14, 14, 15); letter-spacing: -0.4px; line-height: 20px; text-transform: none;">5.0</b><span style="color: rgb(232, 163, 23); letter-spacing: 1px; font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; line-height: 8.66667px; text-transform: none;">★★★★★</span></div><span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: 8.66667px; text-transform: none;">39 Google reviews</span><span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: 8.66667px; text-transform: none;">300+ cars since 2021</span></div>
+      <div class="rate"><div class="r1"><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 20px; color: rgb(14, 14, 15); letter-spacing: -0.4px; line-height: 20px; text-transform: none;">5.0</b><span style="color: rgb(232, 163, 23); letter-spacing: 1px; font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; line-height: 8.66667px; text-transform: none;">★★★★★</span></div><span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: 8.66667px; text-transform: none;">39 Google reviews</span></div>
     </div>
-    <h1 style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 30.6667px; color: rgb(14, 14, 15); letter-spacing: 0.122667px; line-height: 28.2134px; text-transform: uppercase;">Your car, detailed in your<em style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 30.6667px; color: rgb(227, 25, 36); letter-spacing: 0.122667px; line-height: 28.2134px; text-transform: uppercase;">Lake Stevens driveway.</em></h1>
+    <h1 style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 30.6667px; color: rgb(14, 14, 15); letter-spacing: 0.122667px; line-height: 28.2134px; text-transform: uppercase;">Lake Stevens car detailing.<em style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 30.6667px; color: rgb(227, 25, 36); letter-spacing: 0.122667px; line-height: 28.2134px; text-transform: uppercase;">I come to your home or work.</em></h1>
     <div class="mid">
       <div class="ba" style="background-color: rgb(255, 255, 255);">
-        <div class="ph b" style="width: 110.516px; height: 157.438px; aspect-ratio: auto; flex: 0 0 auto; background-color: rgb(34, 34, 34);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/photo-before.jpg" style="width: 110.516px; height: 157.438px;"><span class="chip" style="background-color: rgba(10, 10, 10, 0.85); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: 1.04px; line-height: normal; text-transform: uppercase;">Before</span></div>
-        <div class="ph a" style="width: 110.516px; height: 157.438px; aspect-ratio: auto; flex: 0 0 auto; background-color: rgb(34, 34, 34);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/photo-after.jpg" style="width: 110.516px; height: 157.438px;"><span class="chip" style="background-color: rgb(227, 25, 36); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: 1.04px; line-height: normal; text-transform: uppercase;">After</span></div>
+        <div class="ph b" style="width: 78.1719px; height: 111.359px; aspect-ratio: auto; flex: 0 0 auto; background-color: rgb(34, 34, 34);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/photo-before.jpg" style="width: 78.1719px; height: 111.359px;"><span class="chip" style="background-color: rgb(14, 14, 15); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: 1.04px; line-height: normal; text-transform: uppercase;">Before</span></div>
+        <div class="ph a" style="width: 78.1719px; height: 111.359px; aspect-ratio: auto; flex: 0 0 auto; background-color: rgb(34, 34, 34);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/photo-after.jpg" style="width: 78.1719px; height: 111.359px;"><span class="chip" style="background-color: rgb(227, 25, 36); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: 1.04px; line-height: normal; text-transform: uppercase;">After</span></div>
       </div>
       <div class="prices">
-        <div class="full" style="background-color: rgb(227, 25, 36); border: 1px solid rgb(227, 25, 36);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgba(255, 255, 255, 0.9); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Full detail from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(255, 255, 255); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$369</b></div>
-        <div style="border: 1px solid rgb(227, 221, 210);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgb(74, 70, 64); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Interior from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(14, 14, 15); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$249</b></div>
-        <div style="border: 1px solid rgb(227, 221, 210);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgb(74, 70, 64); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Exterior from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(14, 14, 15); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$199</b></div>
+        <div class="full" style="background-color: rgb(227, 25, 36);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgb(255, 255, 255); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Full detail from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(255, 255, 255); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$369</b></div>
+        <div style="background-color: rgb(227, 221, 210);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgb(74, 70, 64); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Interior from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(14, 14, 15); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$249</b></div>
+        <div style="background-color: rgb(227, 221, 210);"><span style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 10.6667px; color: rgb(74, 70, 64); letter-spacing: 0.853336px; line-height: 10.6667px; text-transform: uppercase;">Exterior from</span><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 21.3333px; color: rgb(14, 14, 15); letter-spacing: -0.319999px; line-height: 21.3333px; text-transform: none;">$199</b></div>
       </div>
     </div>
     
-    <div class="fine" style="font-family: Poppins, sans-serif; font-weight: 400; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: 11.2667px; text-transform: none;"><b style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 8.66667px; color: rgb(14, 14, 15); letter-spacing: normal; line-height: 11.2667px; text-transform: none;">I'm in Lake Stevens most weeks:</b> Frontier Village, Cavalero, downtown, the lake shore. I come to you, at home or work. Same price, no travel fee.<br>You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
+    <div class="rev"><div class="q" style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 9.46667px; color: rgb(14, 14, 15); letter-spacing: normal; line-height: 11.36px; text-transform: none;">“My kids wrecked the back seat. Mikey came to my driveway, charged exactly what he quoted, and it looked brand new. I didn't even have to be home.”</div><div class="by" style="font-family: Poppins, sans-serif; font-weight: 400; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: normal; text-transform: none;"><span style="color: rgb(232, 163, 23); letter-spacing: 1px; font-family: Poppins, sans-serif; font-weight: 400; font-size: 8.66667px; line-height: normal; text-transform: none;">★★★★★</span> First name, Lake Stevens · Google review <i style="background-color: rgb(227, 25, 36); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: normal; text-transform: none;">EXAMPLE: swap in a real one</i></div></div>
+    <div class="fine" style="font-family: Poppins, sans-serif; font-weight: 400; font-size: 8.66667px; color: rgb(74, 70, 64); letter-spacing: normal; line-height: 11.2667px; text-transform: none;">I'm in Lake Stevens most weeks, no travel fee. You provide an outdoor spigot and outlet: that's how I keep prices down.</div>
   </div>
   <div class="bar" style="background-color: rgb(14, 14, 15);">
     <div class="qr" style="background-color: rgb(255, 255, 255);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/qr.png" style="display:block;width:96px">
@@ -91,7 +97,7 @@ h1 em{font-style:normal;color:var(--red);display:block}
     <div class="txt">
       <div class="call" style="font-family: &quot;Barlow Condensed&quot;; font-weight: 700; font-size: 11.3333px; color: rgb(210, 174, 94); letter-spacing: 1.13333px; line-height: normal; text-transform: uppercase;">Call or text Mikey</div>
       <div class="phone" style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 24.6667px; color: rgb(255, 255, 255); letter-spacing: -0.370001px; line-height: 24.6667px; text-transform: none;">(425) 600-7897</div>
-      <div class="scan" style="font-family: Poppins, sans-serif; font-weight: 400; font-size: 9.33333px; color: rgba(255, 255, 255, 0.82); letter-spacing: normal; line-height: 11.6667px; text-transform: none;">Or scan for <b style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 9.33333px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 11.6667px; text-transform: none;">your exact price</b> in about 60 seconds. mikeysdetailing.com</div>
+      <div class="scan" style="font-family: Poppins, sans-serif; font-weight: 400; font-size: 9.33333px; color: rgb(214, 214, 214); letter-spacing: normal; line-height: 11.6667px; text-transform: none;">Or scan for <b style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 9.33333px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 11.6667px; text-transform: none;">your exact price</b> in 60 seconds. mikeysdetailing.com</div>
       <div class="promise"><u style="background: none; text-decoration: underline 2px rgb(227, 25, 36); text-underline-offset: 2px; font-family: Caveat; font-weight: 700; font-size: 17.3333px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 17.3333px; text-transform: none;">You don't pay until you love it.</u></div>
     </div>
   </div>

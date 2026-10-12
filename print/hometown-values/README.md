@@ -50,8 +50,10 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   paper, so a clean white box with a big red headline stands out, and white is
   what he picked for the call page. The thin black frame keeps it from melting
   into the page.
-- **One big headline**, YOUR CAR, DETAILED / IN YOUR DRIVEWAY, in the logo's
-  Barlow Condensed. It says what he does from across the room.
+- **One big headline**, LAKE STEVENS CAR DETAILING. / I COME TO YOUR HOME OR
+  WORK., in the logo's Barlow Condensed. The second line is Mikey's own (his
+  Canva edit, 2026-10-12); the first puts the reader's town back in, in place
+  of his "Professional", which every competitor says.
 - **The back-seat before/after, shown whole.** Picked 2026-10-12 out of every
   photo in `social/photos/` and `images/`, at Mikey's ask for the highest
   converting one. There are five real before/after pairs. The back seat
@@ -62,24 +64,33 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   The steering wheel's fuzzy cover confuses the before. The photos are
   portrait, so they sit whole beside the prices: cropping them to a strip cut
   off the mess, and Mikey called that out.
-- **The three "from" prices**, stacked beside the photo, Full Detail in red
-  on top. A coupon magazine is read
+- **The three "from" prices**, stacked beside the photo in filled boxes
+  (Mikey's Canva edit), Full Detail in red on top. A coupon magazine is read
   by people comparing prices, so the price is right there, and "from $369"
   filters out the $99 crowd the 2024 ad drew.
-- **5.0, 39 reviews, 300+ cars** up top beside the logo, where trust gets read
-  first.
+- **5.0 and 39 Google reviews** up top beside the logo. Mikey's edit said
+  "5-Star rated on Google" instead; the count is back because it's what makes
+  a 5.0 believable. He dropped "300+ cars", so it's off.
+- **A review under the photos. Right now it's an EXAMPLE**, written to show
+  the review that would sell best: the mess in the photo, "came to my
+  driveway", "charged exactly what he quoted" (the biggest fear with anyone
+  who comes to your house), the result, not having to be home, and a Lake
+  Stevens name. Mikey is finding the closest real one. A made-up review can't
+  print (FTC rule, 16 CFR 465), so while `REVIEW_IS_EXAMPLE` is true the ad
+  carries a red EXAMPLE tag and the generator warns. Swap in the real words
+  (trim with "...", never reword) and the first name, and set it false. A
+  close candidate already on the site: "Mikey showed up on time, did exactly
+  what he said, and charged exactly what he quoted. That kind of service is
+  really rare these days." With an offer on, the coupon takes this slot.
 - **The black band is the call to action**: the 1 in QR, "Call or text
   Mikey", the phone big, and the guarantee once.
 - **The spigot and outlet line**, with the reason. Every piece of print says
   who provides water and power.
 - **Lake Stevens only** (Mikey, 2026-10-12: "make it like I'm local right in
-  Lake Stevens"). The headline ends LAKE STEVENS DRIVEWAY in red, and the small
-  print names the places his `/lake-stevens/` page already names (Frontier
-  Village, Cavalero, downtown, the lake shore). He's based in Snohomish, so it
-  says "I'm in Lake Stevens most weeks", never that he lives or is based there.
-  The magazine edition only reaches Lake Stevens homes, so no other town is
-  on it. A different edition means changing `TOWN` and `PLACES` in the
-  generator.
+  Lake Stevens"). The town leads the headline and the small print says "I'm in
+  Lake Stevens most weeks". He's based in Snohomish, so never that he lives or
+  is based there. The edition only reaches Lake Stevens homes, so no other town
+  is on it. A different edition means changing `TOWN` in the generator.
 - **No offer.** Rain-Ready ends December 31, 2026 and this ad runs after it.
   A new offer is Mikey's call. A coupon box probably pulls better in a coupon
   magazine; if he picks one, `OFFER='$40 off|Any Full Detail. Mention
