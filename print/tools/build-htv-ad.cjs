@@ -77,13 +77,14 @@ const BAR_H = 1.27; // the black call band across the bottom: 1 in QR plus its f
 
 const CSS = `
 ${[400, 500, 600, 700, 800].map(w => fontFace('Outfit', 'outfit', w)).join('')}
+${process.env.CANVA ? [400, 500, 600, 700, 800].map(w => fontFace('Poppins', 'poppins', w)).join('') : ''}
 ${[700, 800].map(w => fontFace('Barlow Condensed', 'barlow-condensed', w)).join('')}
 ${fontFace('Caveat', 'caveat', 700)}
 @page{size:${W}in ${H}in;margin:0}
 :root{--ink:#0e0e0f;--red:#E31924;--gold:#D2AE5E;--sub:#4a4640;--line:#e3ddd2}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff}
-body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;
+body{font-family:${process.env.CANVA ? "'Poppins'" : "'Outfit'"},sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;
   -webkit-print-color-adjust:exact;print-color-adjust:exact}
 .ad{position:relative;width:${W}in;height:${H}in;overflow:hidden;background:#fff;color:var(--ink);border:1.6pt solid var(--ink)}
 .in{position:absolute;left:${SAFE}in;right:${SAFE}in;top:${SAFE}in;bottom:${BAR_H + 0.05}in;display:flex;flex-direction:column;justify-content:space-between}
@@ -241,6 +242,54 @@ async function checkQr(pngBuf) {
   // it goes to Lake Stevens homes only; any other town on it is wasted space
   for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
+
+  // CANVA=1: write an HTML version Canva imports as an editable design, the same
+  // way as the shared postcard (a PDF import loses the photos and doubles
+  // letter-spaced text). Photos, the QR and the logo become image files; every
+  // word stays a live text box. Canva has no Outfit, so this version is Poppins.
+  if (process.env.CANVA) {
+    const BASE = process.env.CANVA_BASE || 'https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/';
+    const cdir = path.join(OUT, 'canva');
+    fs.mkdirSync(cdir, { recursive: true });
+    // the photos go in whole at full size (they're shown uncropped), so they stay sharp if resized in Canva
+    for (const side of ['before', 'after']) {
+      fs.copyFileSync(path.join(SOCIAL, 'photos', `backseat-${side}.jpg`), path.join(cdir, `photo-${side}.jpg`));
+      await page.$eval(`.ba .${side[0]} img`, (el, u) => { el.src = u; }, BASE + `photo-${side}.jpg`);
+    }
+    const q = await page.$('.qr svg'), qname = `qr${SUFFIX}.png`;
+    await q.screenshot({ path: path.join(cdir, qname) });
+    await q.evaluate((el, u) => { el.outerHTML = `<img src="${u}" style="display:block;width:${el.getBoundingClientRect().width}px">`; }, BASE + qname);
+    // rasterize the logo SVG itself so the PNG is transparent
+    const lg = await page.$('svg.logo'), lw = (await lg.boundingBox()).width, lname = `logo${SUFFIX}.png`;
+    await sharp(Buffer.from(await lg.evaluate(el => el.outerHTML)), { density: 600 }).resize({ width: Math.round(lw / 96 * 300) }).png().toFile(path.join(cdir, lname));
+    await lg.evaluate((el, a) => { el.outerHTML = `<img src="${a.u}" style="display:block;width:${a.w}px">`; }, { u: BASE + lname, w: lw });
+    await page.evaluate(() => {
+      const ad = document.querySelector('.ad');
+      ad.querySelectorAll('.stars').forEach(st => { st.outerHTML = `<span style="color:${getComputedStyle(st.querySelector('svg')).fill};letter-spacing:1px">★★★★★</span>`; });
+      // the hand-drawn underline is a gradient, which the importer drops
+      ad.querySelectorAll('.promise u').forEach(u => { u.style.background = 'none'; u.style.textDecoration = 'underline'; u.style.textDecorationColor = '#E31924'; u.style.textDecorationThickness = '2px'; u.style.textUnderlineOffset = '2px'; });
+      // Canva's importer misses CSS variables: write each box's own colors and fonts
+      [ad, ...ad.querySelectorAll('*')].forEach(n => {
+        const cs = getComputedStyle(n);
+        if (cs.backgroundColor !== 'rgba(0, 0, 0, 0)') n.style.backgroundColor = cs.backgroundColor;
+        if (parseFloat(cs.borderTopWidth)) n.style.border = `${cs.borderTopWidth} ${cs.borderTopStyle} ${cs.borderTopColor}`;
+        if (![...n.childNodes].some(c => c.nodeType === 3 && c.textContent.trim())) return;
+        n.style.fontFamily = cs.fontFamily; n.style.fontWeight = cs.fontWeight; n.style.fontSize = cs.fontSize; n.style.color = cs.color;
+        n.style.letterSpacing = cs.letterSpacing; n.style.lineHeight = cs.lineHeight; n.style.textTransform = cs.textTransform;
+      });
+      ad.setAttribute('data-document-role', 'page');
+      ad.setAttribute('data-label', 'Hometown Values quarter page (Lake Stevens)');
+    });
+    const css = CSS.replace(/@font-face\{[^}]*\}/g, '');
+    const fonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800&family=Caveat:wght@700&display=swap">';
+    const body = await page.evaluate(() => document.body.innerHTML);
+    const out = `<!doctype html><html><head><meta charset="utf-8"><title>Hometown Values ad (Lake Stevens)</title>${fonts}<style>${css}</style></head><body>${body}</body></html>`;
+    if (/file:\/\//.test(out)) throw new Error('canva html still points at a local file');
+    fs.writeFileSync(path.join(cdir, `ad${SUFFIX}.html`), out);
+    console.log(`  wrote canva/ad${SUFFIX}.html (import from ${BASE}ad${SUFFIX}.html)`);
+    await ctx.close(); await browser.close(); fs.unlinkSync(tmp);
+    return;
+  }
 
   const pdf = path.join(dir, `ad${SUFFIX}.pdf`);
   await page.pdf({ path: pdf, width: `${W}in`, height: `${H}in`, printBackground: true, preferCSSPageSize: true });

@@ -130,6 +130,27 @@ Detail.
 4. Ask Jim to take down anything of Mikey's old ad in the Hometown Values app
    or website (the 360 number, $99).
 
+## Editing in Canva
+
+`CANVA=1 npm run htv` writes `canva/ad.html` plus its images (the two
+full-size back-seat photos, the QR and the logo). Canva's import tool turns
+that page into a design where every word is a live text box. A PDF import
+doesn't work: it drops the photos and doubles letter-spaced text (the shared
+postcard found that out).
+
+- **The Canva version is in Poppins, not Outfit.** Canva has no Outfit and a
+  free plan can't upload fonts. The headline (Barlow Condensed) and the
+  handwriting (Caveat) are the same.
+- **Nothing in Canva checks the facts**, the safe margin, the QR size or the
+  6.5 pt floor; this generator does. Keep text 0.14 in from the edges and the
+  QR at 1 inch. A price or review count changed in Canva is one more copy of
+  the facts table that the repo can't see.
+- **To print from Canva:** Share, Download, PDF Print, and send Jim that.
+- **To rebuild it** after a copy change here: `CANVA=1 npm run htv`, merge,
+  then import `https://raw.githack.com/mikeygabmiller/mikeysite/<commit>/print/hometown-values/canva/ad.html`
+  with Canva's import tool (raw.githack serves it as a web page, which Canva
+  needs).
+
 ## Changing it
 
 Copy lives in `print/tools/build-htv-ad.cjs`. Never edit the PDF.
