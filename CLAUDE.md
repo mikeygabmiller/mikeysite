@@ -37,7 +37,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Payment | after the work, never a deposit | a Clean Club card is saved with Stripe, not charged |
 | **Customer provides** | **outdoor water spigot + power outlet** | using theirs is how he keeps prices low. He can bring water and power if there's truly none, "if absolutely necessary" (Mikey, 2026-10-05): copy may say so as the exception, always with that reason, never as the default and never with a price |
 | Licensed / insured | **neither** | Mikey, 2026-10-05. Never claim or hint at either. `outreach/FLEET-EMAILS.md`: no dealership emails until he is |
-| Old phone number | **(425) 232-1355** | his old number, still on Yelp and Yahoo (`outreach/DIRECTORIES.md`). Never use it |
+| Old phone numbers | **(425) 232-1355** and **360-799-9312** | 232-1355 is still on Yelp and Yahoo (`outreach/DIRECTORIES.md`); 360-799-9312 was on his 2024 Hometown Values ad. Never use either |
 
 Settled by Mikey on 2026-10-05:
 
@@ -586,6 +586,19 @@ blanks for the number, never a printed one. Read its `README.md` first.
   be an offer: ask him.
 - **Not on the website yet.** Putting "gift cards available" on the site (a
   homepage line, a page, a FAQ) is Mikey's call; ask before adding it.
+
+## Hometown Values magazine ad
+
+`print/hometown-values/` (not served) holds a quarter-page ad (4.0625 x 4.75
+in, measured off his 2024 proof) for Jim Lee's coupon magazine, built
+2026-10-12. Read its `README.md` first: it has what the 2024 ad got wrong
+(an old number, a typo, "from $99") and the plan (one issue, late February or
+March 2027, the Lake Stevens or Monroe edition, so it doesn't overlap the
+EDDM routes). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
+It's one more copy of the facts table: prices, 5.0 across 39, 300+, the
+twelve towns, spigot and outlet. **No offer** unless Mikey picks one
+(`OFFER=` writes a separate `ad-offer.pdf`); the coupon box in
+`preview-SAMPLE-offer-not-approved.png` is only a sample.
 
 ## EDDM postcard
 
