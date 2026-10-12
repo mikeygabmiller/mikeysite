@@ -72,8 +72,14 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   Mikey", the phone big, and the guarantee once.
 - **The spigot and outlet line**, with the reason. Every piece of print says
   who provides water and power.
-- **The twelve towns and "no travel fee"**, because the magazine goes to whole
-  towns.
+- **Lake Stevens only** (Mikey, 2026-10-12: "make it like I'm local right in
+  Lake Stevens"). The headline ends LAKE STEVENS DRIVEWAY in red, and the small
+  print names the places his `/lake-stevens/` page already names (Frontier
+  Village, Cavalero, downtown, the lake shore). He's based in Snohomish, so it
+  says "I'm in Lake Stevens most weeks", never that he lives or is based there.
+  The magazine edition only reaches Lake Stevens homes, so no other town is
+  on it. A different edition means changing `TOWN` and `PLACES` in the
+  generator.
 - **No offer.** Rain-Ready ends December 31, 2026 and this ad runs after it.
   A new offer is Mikey's call. A coupon box probably pulls better in a coupon
   magazine; if he picks one, `OFFER='$40 off|Any Full Detail. Mention
@@ -138,6 +144,6 @@ It fails if anything leaves the safe area, type drops under 6.5 pt, blocks
 touch, the QR stops decoding (sharp, and at 95 dpi blurred), or the copy
 picks up an em dash, "insured" or "licensed", a business "we", a work day,
 Lynnwood, Edmonds or Kenmore, Rain-Ready, an old phone number, a quote time
-other than 60 seconds, or loses a price, the spigot and outlet, or one of the
-twelve towns. Every fact on the ad is one more copy of the table in the
+other than 60 seconds, or any served town but Lake Stevens, or loses a price,
+the spigot and outlet, or the Lake Stevens lines. Every fact on the ad is one more copy of the table in the
 repo's `CLAUDE.md`.
