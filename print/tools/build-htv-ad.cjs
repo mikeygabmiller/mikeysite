@@ -118,10 +118,9 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .prices{flex:1;display:flex;flex-direction:column;gap:.045in}
 .prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;border:.9pt solid var(--line);border-radius:3pt}
 .prices span{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
-.prices b{display:block;font-weight:800;font-size:15pt;letter-spacing:-.015em;margin-top:1.5pt}
-.prices small{font-weight:500;font-size:6.5pt;margin-right:1.5pt;color:var(--sub)}
+.prices b{display:block;font-weight:800;font-size:16pt;letter-spacing:-.015em;margin-top:1.5pt}
 .prices .full{background:var(--red);border-color:var(--red);color:#fff}
-.prices .full span,.prices .full small{color:rgba(255,255,255,.9)}
+.prices .full span{color:rgba(255,255,255,.9)}
 
 .fine{font-size:6.5pt;line-height:1.3;color:var(--sub);text-align:center}
 .fine b{color:var(--ink);font-weight:700}
@@ -157,9 +156,9 @@ const html = (qr) => `
         <div class="ph a"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}"><span class="chip">After</span></div>
       </div>
       <div class="prices">
-        <div class="full"><span>Full detail</span><b><small>from</small>$369</b></div>
-        <div><span>Interior</span><b><small>from</small>$249</b></div>
-        <div><span>Exterior</span><b><small>from</small>$199</b></div>
+        <div class="full"><span>Full detail from</span><b>$369</b></div>
+        <div><span>Interior from</span><b>$249</b></div>
+        <div><span>Exterior from</span><b>$199</b></div>
       </div>
     </div>
     ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
@@ -251,6 +250,12 @@ async function checkQr(pngBuf) {
     const BASE = process.env.CANVA_BASE || 'https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/';
     const cdir = path.join(OUT, 'canva');
     fs.mkdirSync(cdir, { recursive: true });
+    // Canva's importer ignores aspect-ratio and crops the photo frames: pin each frame to its rendered size
+    await page.$$eval('.ba .ph', els => els.forEach(e => {
+      const r = e.getBoundingClientRect();
+      e.style.width = r.width + 'px'; e.style.height = r.height + 'px'; e.style.aspectRatio = 'auto'; e.style.flex = 'none';
+      const im = e.querySelector('img'); im.style.width = r.width + 'px'; im.style.height = r.height + 'px';
+    }));
     // the photos go in whole at full size (they're shown uncropped), so they stay sharp if resized in Canva
     for (const side of ['before', 'after']) {
       fs.copyFileSync(path.join(SOCIAL, 'photos', `backseat-${side}.jpg`), path.join(cdir, `photo-${side}.jpg`));
