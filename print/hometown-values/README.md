@@ -8,10 +8,10 @@ jim@myhometownvalues.com). Built 2026-10-12.
 
 ## History: the 2024 ad
 
-Mikey ran one quarter page with Jim in fall 2024 ($460 on Sep 26, 2024,
-invoice 6262FAB; most likely the Snohomish edition, about 15,000 homes, at
-$435 plus a $25 extra proof). He skipped the holiday issue Jim offered next
-($435 for 15,000 homes in Snohomish, $505 for 20,000 in Lake Stevens). That ad
+Mikey ran one quarter page with Jim in fall 2024: the **Monroe/Sky Valley**
+edition, 15,000 homes, **$460** (invoice 6262FAB dated Sep 17, paid Sep 26,
+2024), mailed **Oct 1 to 3, 2024**. He skipped the holiday issue Jim offered
+next ($435 for 15,000 homes in Snohomish, $505 for 20,000 in Lake Stevens). That ad
 had:
 
 - **360-799-9312**, an old number, and that phone was down for a stretch
@@ -63,14 +63,35 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   photo gets shorter to make room). The amount and wording there are only
   the sample.
 
+## The schedule
+
+Every edition mails four times a year, in one of two cycles six weeks apart.
+Jim's 2024 schedule (expect 2027 to land within a few days of it):
+
+| Cycle | Editions (homes) | Spring | Summer | Fall | Winter |
+|---|---|---|---|---|---|
+| **A** | Lake Stevens (20,000), Snohomish (15,000), Mill Creek/Silver Lake (15,000), Marysville/Tulalip (30,000), plus Skagit, Pasco, Richland, Kennewick, Yakima | Feb 27 to 29, art 2/2 | May 21 to 23, art 4/26 | Aug 13 to 15, art 7/19 | Nov 19 to 21, art 10/25 |
+| **B** | Monroe/Sky Valley (15,000), North Snohomish County (30,000: Smokey Point, Arlington, Lakewood, Stanwood, Camano), Bothell/Kenmore (15,000) | Apr 9 to 11, art 3/15 | Jul 1 to 3, art 6/7 | Oct 1 to 3, art 9/6 | Jan 16 to 18, art 12/27 |
+
+Some editions cover towns he doesn't serve: Sky Valley (Sultan, Gold Bar,
+Index), Stanwood and Camano, Kenmore. Those homes are paid for and can't book.
+
 ## The plan
 
-One issue, late February or March 2027, in the **Lake Stevens** or
-**Monroe/Sky Valley** edition. Not Snohomish, where the EDDM postcards go,
-so the two tests don't blur together. Not before then: weekday Full Details
-don't fit before dark from November through January, so winter calls would
-mostly land on the 7:00 AM Saturday slot. One issue, no contract, until it
-shows bookings.
+**Lake Stevens, Spring A 2027** (mails about Feb 27, art due about Feb 2).
+One issue, no contract, until it shows bookings.
+
+- **Lake Stevens** is a served town end to end, the cheapest per home (Jim's
+  2024 holiday price: $505 for 20,000, 2.5 cents), and gets no EDDM postcards.
+  Monroe/Sky Valley cost 3.1 cents a home in 2024, and the Sky Valley part
+  is outside the twelve towns.
+- **Late February** because the days are long enough again: a weekday 1:00
+  PM Full Detail finishes about 5:30 PM, before a late-February sunset
+  (around 5:55 PM). The booking calendar decides from the real sunset.
+  November through January, Full Details only fit the 7:00 AM Saturday slot.
+- **Second choice:** Monroe/Sky Valley, Spring B (about Apr 9, art about Mar
+  15). It's the same edition as 2024, so it's a straight rematch with a
+  better ad.
 
 **Count it:** "how'd you hear about me?" on every booking, plus
 **hometownvalues / mail** in Google Analytics. Break-even is about one Full

@@ -592,9 +592,9 @@ blanks for the number, never a printed one. Read its `README.md` first.
 `print/hometown-values/` (not served) holds a quarter-page ad (4.0625 x 4.75
 in, measured off his 2024 proof) for Jim Lee's coupon magazine, built
 2026-10-12. Read its `README.md` first: it has what the 2024 ad got wrong
-(an old number, a typo, "from $99") and the plan (one issue, late February or
-March 2027, the Lake Stevens or Monroe edition, so it doesn't overlap the
-EDDM routes). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
+(it ran in Monroe/Sky Valley, Oct 2024, with an old number, a typo and "from
+$99"), Jim's mailing schedule, and the plan (one issue: Lake Stevens, Spring A
+2027, mailing about Feb 27 with art due about Feb 2). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
 It's one more copy of the facts table: prices, 5.0 across 39, 300+, the
 twelve towns, spigot and outlet. **No offer** unless Mikey picks one
 (`OFFER=` writes a separate `ad-offer.pdf`); the coupon box in
