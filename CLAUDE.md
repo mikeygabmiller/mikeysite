@@ -596,8 +596,10 @@ in, measured off his 2024 proof) for Jim Lee's coupon magazine, built
 $99"), Jim's mailing schedule, and the plan (one issue: Lake Stevens, Spring A
 2027, mailing about Feb 27 with art due about Feb 2). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
 It's one more copy of the facts table: prices, 5.0 across 39, 300+, spigot and
-outlet. It's written for the Lake Stevens edition only (headline, places, "I'm
-in Lake Stevens most weeks"; he's based in Snohomish, so never "based in"). **No offer** unless Mikey picks one
+outlet. It's written for the Lake Stevens edition only (headline, "I'm in Lake
+Stevens most weeks"; he's based in Snohomish, so never "based in"). **Its
+review is an EXAMPLE** (`REVIEW_IS_EXAMPLE`) until Mikey picks a real one; it
+can't go to Jim with the red EXAMPLE tag on it. **No offer** unless Mikey picks one
 (`OFFER=` writes a separate `ad-offer.pdf`); the coupon box in
 `preview-SAMPLE-offer-not-approved.png` is only a sample.
 
