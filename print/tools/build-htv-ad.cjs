@@ -51,8 +51,11 @@ const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
   `@font-face{font-family:'${name}';src:url(${fileUrl(path.join(FS, pkg, 'files', `${pkg}-latin-${weight}-normal.woff2`))}) format('woff2');font-weight:${weight}}`;
 
-const logoSvg = () => fs.readFileSync(path.join(SOCIAL, 'brand', 'logo.svg'), 'utf8')
-  .replace('stroke-width="15"', 'stroke-width="22"')
+// White ad, so the light logo (black MOBILE DETAILING). A coupon magazine is
+// mostly white ads with busy borders; a clean white box with a red headline
+// and one black band at the bottom is what stands out there (and white is what
+// Mikey picked for the call page, 2026-10-04).
+const logoSvg = () => fs.readFileSync(path.join(SOCIAL, 'brand', 'logo-light.svg'), 'utf8')
   .replace('<svg ', '<svg class="logo" ');
 
 const star = '<svg viewBox="0 0 24 24"><path d="M12 1.8l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.9 5.6 21.4 7 14.3l-5.3-5 7.2-.9z"/></svg>';
@@ -63,101 +66,105 @@ const qrSvg = () => QRCode.toString(QR_URL, {
   color: { dark: '#0e0e0f', light: '#ffffff' },
 });
 
+const BAR_H = 1.27; // the black call band across the bottom: 1 in QR plus its frame
+
 const CSS = `
 ${[400, 500, 600, 700, 800].map(w => fontFace('Outfit', 'outfit', w)).join('')}
+${[700, 800].map(w => fontFace('Barlow Condensed', 'barlow-condensed', w)).join('')}
 ${fontFace('Caveat', 'caveat', 700)}
 @page{size:${W}in ${H}in;margin:0}
-:root{--ink:#0e0e0f;--red:#E31924;--gold:#D2AE5E;--muted:rgba(255,255,255,.78)}
+:root{--ink:#0e0e0f;--red:#E31924;--gold:#D2AE5E;--sub:#4a4640;--line:#e3ddd2}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#fff}
 body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;
   -webkit-print-color-adjust:exact;print-color-adjust:exact}
-.ad{position:relative;width:${W}in;height:${H}in;overflow:hidden;background:var(--ink);color:#fff}
-.ad .bg{position:absolute;inset:0;background:radial-gradient(80% 55% at 100% 0%,rgba(227,25,36,.24),transparent 70%)}
-.in{position:absolute;inset:${SAFE}in;display:flex;flex-direction:column;justify-content:space-between}
+.ad{position:relative;width:${W}in;height:${H}in;overflow:hidden;background:#fff;color:var(--ink);border:1.6pt solid var(--ink)}
+.in{position:absolute;left:${SAFE}in;right:${SAFE}in;top:${SAFE}in;bottom:${BAR_H + 0.05}in;display:flex;flex-direction:column;justify-content:space-between}
 .in>*{flex-shrink:0}
-.stars{display:inline-flex;gap:1pt;vertical-align:-1pt}
-.stars svg{width:7pt;height:7pt;fill:var(--gold)}
+.stars{display:inline-flex;gap:.8pt}
+.stars svg{width:7.5pt;height:7.5pt;fill:#E8A317}
 
-.top{display:flex;align-items:center;gap:.1in}
-.logo{flex:none;width:1.62in;height:auto;overflow:visible}
-.top h1{flex:1;font-weight:800;font-size:14pt;line-height:1;letter-spacing:-.02em;text-align:right}
-.top h1 em{font-style:normal;color:var(--red)}
+.top{display:flex;align-items:center;justify-content:space-between}
+.logo{width:1.62in;height:auto;display:block}
+.rate{text-align:center;line-height:1}
+.rate .r1{display:flex;align-items:center;justify-content:center;gap:3pt}
+.rate b{font-weight:800;font-size:15pt;letter-spacing:-.02em}
+.rate .stars{margin-top:0}
+.rate span{display:block;font-weight:600;font-size:6.5pt;color:var(--sub);margin-top:2pt}
+.rate span+span{margin-top:1pt}
 
-.ba{position:relative;display:flex;gap:.025in;height:1.28in;border-radius:4pt;overflow:hidden;background:#fff}
-.has-offer .ba{height:.98in}
-.ba .ph{position:relative;flex:1;overflow:hidden;background:#222}
+h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:25pt;line-height:.9;letter-spacing:.004em}
+h1 em{font-style:normal;color:var(--red);display:block}
+
+.mid{display:flex;gap:.07in;align-items:stretch}
+/* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
+   because cropping them to a strip cuts off the mess, which is the point. */
+.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.56in;border-radius:3pt;overflow:hidden;background:#fff}
+.has-offer .ba{height:1.2in}
+.ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
-.ba .chip{position:absolute;top:.07in;font-weight:800;font-size:6.5pt;letter-spacing:.14em;text-transform:uppercase;padding:2.5pt 5pt 2pt;border-radius:2pt}
-.ba .b .chip{left:.07in;background:rgba(10,10,10,.85)}
-.ba .a .chip{right:.07in;background:var(--red)}
-.ba .cap{position:absolute;left:0;right:0;bottom:0;padding:.2in .08in .04in;text-align:center;
-  background:linear-gradient(transparent,rgba(8,8,8,.9) 60%);font-family:'Caveat';font-weight:700;font-size:11.5pt;line-height:1}
+.ba .chip{position:absolute;top:.05in;font-weight:800;font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;padding:2.5pt 4.5pt 2pt;border-radius:2pt;color:#fff}
+.ba .b .chip{left:.05in;background:rgba(10,10,10,.85)}
+.ba .a .chip{right:.05in;background:var(--red)}
 
-.prices{display:flex;gap:.06in}
-.prices div{flex:1;border:.8pt solid rgba(255,255,255,.22);border-radius:4pt;padding:3pt 0 3.5pt;text-align:center;line-height:1.05}
-.prices span{display:block;font-weight:700;font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.prices b{display:block;font-weight:800;font-size:14pt;letter-spacing:-.01em;margin-top:1pt}
-.prices small{font-weight:500;font-size:6.5pt;color:var(--muted);margin-right:1.5pt}
-.prices .full{border-color:var(--gold);background:rgba(210,174,94,.1)}
-.prices .full span{color:var(--gold)}
+.prices{flex:1;display:flex;flex-direction:column;gap:.045in}
+.prices div{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;line-height:1;border:.9pt solid var(--line);border-radius:3pt}
+.prices span{display:block;font-family:'Barlow Condensed';font-weight:700;font-size:8pt;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
+.prices b{display:block;font-weight:800;font-size:15pt;letter-spacing:-.015em;margin-top:1.5pt}
+.prices small{font-weight:500;font-size:6.5pt;margin-right:1.5pt;color:var(--sub)}
+.prices .full{background:var(--red);border-color:var(--red);color:#fff}
+.prices .full span,.prices .full small{color:rgba(255,255,255,.9)}
 
-.promise{font-family:'Caveat';font-weight:700;font-size:16pt;line-height:1;text-align:center}
-.promise u{text-decoration:none;background:linear-gradient(transparent 78%,rgba(227,25,36,.9) 78%,rgba(227,25,36,.9) 92%,transparent 92%)}
-.proof{font-size:7pt;line-height:1.3;text-align:center;color:var(--muted)}
-.proof b{color:#fff;font-weight:700}
+.fine{font-size:6.5pt;line-height:1.3;color:var(--sub);text-align:center}
+.fine b{color:var(--ink);font-weight:700}
 
-.offer{display:flex;align-items:center;gap:.08in;border:1pt dashed var(--gold);border-radius:4pt;padding:3pt .08in}
-.offer b{flex:none;font-weight:800;font-size:15pt;color:var(--gold);letter-spacing:-.01em}
-.offer span{font-size:7pt;line-height:1.25;color:#fff;font-weight:600}
+.offer{display:flex;align-items:center;gap:.08in;border:1pt dashed var(--ink);border-radius:3pt;padding:2.5pt .08in}
+.offer b{flex:none;font-family:'Barlow Condensed';font-weight:800;font-size:17pt;color:var(--red)}
+.offer span{font-size:7pt;line-height:1.25;font-weight:600}
 
-.cta{display:flex;align-items:center;gap:.1in}
-.qr{flex:none;background:#fff;border-radius:4pt;padding:.045in}
+.bar{position:absolute;left:0;right:0;bottom:0;height:${BAR_H}in;background:var(--ink);color:#fff;
+  display:flex;align-items:center;gap:.11in;padding:0 ${SAFE}in}
+.qr{flex:none;background:#fff;border-radius:3pt;padding:.04in}
 .qr svg{display:block;width:1in;height:1in}
-.cta .txt{flex:1;min-width:0}
-.cta .scan{font-weight:800;font-size:10.5pt;line-height:1.05}
-.cta .sub{font-size:6.8pt;line-height:1.25;color:var(--muted);margin-top:1pt}
-.cta .or{font-size:6.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:3pt}
-.cta .phone{font-weight:800;font-size:16.5pt;line-height:1;letter-spacing:-.01em;margin-top:1pt;white-space:nowrap}
-.cta .url{font-size:7pt;font-weight:600;color:var(--muted);margin-top:1.5pt}
-
-.towns{font-size:6.5pt;line-height:1.3;text-align:center;color:var(--muted)}
-.towns b{color:#fff;font-weight:600}
+.bar .txt{flex:1;min-width:0}
+.bar .call{font-family:'Barlow Condensed';font-weight:700;font-size:8.5pt;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.bar .phone{font-weight:800;font-size:18.5pt;line-height:1;letter-spacing:-.015em;white-space:nowrap;margin-top:1pt}
+.bar .scan{font-size:7pt;line-height:1.25;color:rgba(255,255,255,.82);margin-top:3pt}
+.bar .scan b{color:#fff;font-weight:700}
+.bar .promise{font-family:'Caveat';font-weight:700;font-size:13pt;line-height:1;margin-top:4pt}
+.bar .promise u{text-decoration:none;background:linear-gradient(transparent 76%,rgba(227,25,36,.95) 76%,rgba(227,25,36,.95) 92%,transparent 92%)}
 `;
 
 const html = (qr) => `
 <section class="ad${OFFER_BIG ? ' has-offer' : ''}">
-  <div class="bg"></div>
   <div class="in">
     <div class="top">
       ${logoSvg()}
-      <h1>Your car, detailed<br><em>right here</em> in<br>your driveway.</h1>
+      <div class="rate"><div class="r1"><b>5.0</b>${stars(5)}</div><span>${REVIEWS} Google reviews</span><span>300+ cars since 2021</span></div>
     </div>
-    <div class="ba">
-      <div class="ph b"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}" style="object-position:40% 70%"><span class="chip">Before</span></div>
-      <div class="ph a"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}" style="object-position:40% 70%"><span class="chip">After</span></div>
-      <div class="cap">Same back seat. No judgment, I've seen everything.</div>
-    </div>
-    <div class="prices">
-      <div><span>Exterior</span><b><small>from</small>$199</b></div>
-      <div><span>Interior</span><b><small>from</small>$249</b></div>
-      <div class="full"><span>Full detail</span><b><small>from</small>$369</b></div>
-    </div>
-    <div class="promise"><u>You don't pay until you love it.</u></div>
-    <div class="proof"><b>5.0</b> ${stars(5)} <b>${REVIEWS} Google reviews</b> · <b>300+ cars</b> since 2021 · no deposit<br>
-      You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
-    ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
-    <div class="cta">
-      <div class="qr">${qr}</div>
-      <div class="txt">
-        <div class="scan">Scan for your exact price</div>
-        <div class="sub">About 60 seconds. No phone tag.</div>
-        <div class="or">Or call or text Mikey</div>
-        <div class="phone">${PHONE}</div>
-        <div class="url">${SITE}</div>
+    <h1>Your car, detailed<em>in your driveway.</em></h1>
+    <div class="mid">
+      <div class="ba">
+        <div class="ph b"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}"><span class="chip">Before</span></div>
+        <div class="ph a"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}"><span class="chip">After</span></div>
+      </div>
+      <div class="prices">
+        <div class="full"><span>Full detail</span><b><small>from</small>$369</b></div>
+        <div><span>Interior</span><b><small>from</small>$249</b></div>
+        <div><span>Exterior</span><b><small>from</small>$199</b></div>
       </div>
     </div>
-    <div class="towns">I come to you, same price everywhere, no travel fee:<br><b>${TOWNS.join(' · ')}</b></div>
+    ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
+    <div class="fine">I come to you, same price everywhere, no travel fee:<br><b>${TOWNS.join(' · ')}</b><br>You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
+  </div>
+  <div class="bar">
+    <div class="qr">${qr}</div>
+    <div class="txt">
+      <div class="call">Call or text Mikey</div>
+      <div class="phone">${PHONE}</div>
+      <div class="scan">Or scan for <b>your exact price</b> in about 60 seconds. ${SITE}</div>
+      <div class="promise"><u>You don't pay until you love it.</u></div>
+    </div>
   </div>
 </section>`;
 
@@ -191,9 +198,11 @@ async function checkQr(pngBuf) {
     const out = [], IN = 96;
     const ad = document.querySelector('.ad').getBoundingClientRect();
     const box = { l: ad.left + SAFE * IN, t: ad.top + SAFE * IN, r: ad.left + (W - SAFE) * IN, b: ad.top + (H - SAFE) * IN };
-    document.querySelectorAll('.in *').forEach(el => {
+    document.querySelectorAll('.in *, .bar *').forEach(el => {
       const r = el.getBoundingClientRect();
       if (!r.width) return;
+      // the QR's white frame may sit closer to the band's edge than type does
+      if (el.closest('.qr')) return;
       if (r.left < box.l - .5 || r.top < box.t - .5 || r.right > box.r + .5 || r.bottom > box.b + .5)
         out.push(`<${el.tagName.toLowerCase()} class="${el.className.baseVal ?? el.className}"> outside the safe area`);
       if (el.closest('svg')) return;
@@ -211,7 +220,7 @@ async function checkQr(pngBuf) {
   }, { W, H, SAFE, MIN_PT });
 
   const text = await page.evaluate(() => document.body.innerText);
-  const banned = [[/—|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (he is neither)'],
+  const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (he is neither)'],
     [/lynnwood|edmonds|kenmore/i, 'a town Mikey does not serve'], [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'],
     [/cars a week|limited spots|a few a week/i, 'a retired scarcity claim (CLAUDE.md, 2026-09-29)'],
     [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b|\bour (?:team|crew|detailers)\b/i, 'business "we" (it is one guy)'],
