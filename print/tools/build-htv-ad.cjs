@@ -39,6 +39,13 @@ const REVIEWS = 39; // what the Google profile shows; recheck before sending art
 const QR_URL = 'https://mikeysdetailing.com/?utm_source=hometownvalues&utm_medium=mail#booking';
 const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', 'Marysville',
   'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
+// This is the Lake Stevens edition, so the ad talks to Lake Stevens only (Mikey,
+// 2026-10-12: "make it like I'm local right in Lake Stevens"). The places are
+// the ones his /lake-stevens/ page already names. He's based in Snohomish, so
+// it says he's in Lake Stevens most weeks (true of all twelve towns), never
+// that he lives or is based there.
+const TOWN = 'Lake Stevens';
+const PLACES = 'Frontier Village, Cavalero, downtown, the lake shore';
 
 const W = 4.0625, H = 4.75;
 const SAFE = 0.14;       // magazines trim and register loosely; keep type off the frame
@@ -93,14 +100,14 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;text-ren
 .rate span{display:block;font-weight:600;font-size:6.5pt;color:var(--sub);margin-top:2pt}
 .rate span+span{margin-top:1pt}
 
-h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:25pt;line-height:.9;letter-spacing:.004em}
+h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;font-size:23pt;line-height:.92;letter-spacing:.004em}
 h1 em{font-style:normal;color:var(--red);display:block}
 
 .mid{display:flex;gap:.07in;align-items:stretch}
 /* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
    because cropping them to a strip cuts off the mess, which is the point. */
-.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.56in;border-radius:3pt;overflow:hidden;background:#fff}
-.has-offer .ba{height:1.2in}
+.ba{position:relative;flex:none;display:flex;gap:.025in;height:1.64in;border-radius:3pt;overflow:hidden;background:#fff}
+.has-offer .ba{height:1.28in}
 .ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
 .ba .chip{position:absolute;top:.05in;font-weight:800;font-size:6.5pt;letter-spacing:.12em;text-transform:uppercase;padding:2.5pt 4.5pt 2pt;border-radius:2pt;color:#fff}
@@ -142,7 +149,7 @@ const html = (qr) => `
       ${logoSvg()}
       <div class="rate"><div class="r1"><b>5.0</b>${stars(5)}</div><span>${REVIEWS} Google reviews</span><span>300+ cars since 2021</span></div>
     </div>
-    <h1>Your car, detailed<em>in your driveway.</em></h1>
+    <h1>Your car, detailed in your<em>${TOWN} driveway.</em></h1>
     <div class="mid">
       <div class="ba">
         <div class="ph b"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-before.jpg'))}"><span class="chip">Before</span></div>
@@ -155,7 +162,7 @@ const html = (qr) => `
       </div>
     </div>
     ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
-    <div class="fine">I come to you, same price everywhere, no travel fee:<br><b>${TOWNS.join(' · ')}</b><br>You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
+    <div class="fine"><b>I'm in ${TOWN} most weeks:</b> ${PLACES}. I come to you, at home or work. Same price, no travel fee.<br>You provide an outdoor spigot and outlet. That's how I keep prices down.</div>
   </div>
   <div class="bar">
     <div class="qr">${qr}</div>
@@ -229,8 +236,10 @@ async function checkQr(pngBuf) {
     [/360-799|232-1355/, 'an old phone number'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
-  for (const must of ['spigot', 'outlet', PHONE, '60 seconds', '5.0', `${REVIEWS} Google reviews`, '300+', '$199', '$249', '$369', ...TOWNS])
+  for (const must of ['spigot', 'outlet', PHONE, '60 seconds', '5.0', `${REVIEWS} Google reviews`, '300+', '$199', '$249', '$369', `${TOWN} driveway`, `in ${TOWN} most weeks`, 'no travel fee'])
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
+  // it goes to Lake Stevens homes only; any other town on it is wasted space
+  for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 
   const pdf = path.join(dir, `ad${SUFFIX}.pdf`);
