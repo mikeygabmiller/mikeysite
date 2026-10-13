@@ -196,6 +196,25 @@ shows the designs on a clear background (no black or white box round them),
 and the total is about **$14.70** with the code or **$19.89** without, plus
 tax.
 
+## Car window decals (one sheet): CarStickers
+
+Details: `car-decal/README.md`, "The side windows". The back window decal and
+both side decals are one sheet, cut apart at home: one item costs less than
+three, and CarStickers ships free where Signs.com charges $25 under $99.
+
+| | |
+|---|---|
+| Path | carstickers.com → Custom Stickers → **Custom One-Color Transfer Decals** → Choose Your Design → Upload a print-ready design |
+| Files | `car-decal/print-files/one-sheet-cut.svg` |
+| Options | Standard Vinyl Colors, **White (Most Popular)**, **13 x 20.2 in**, Reverse Cut **No** (it goes on the outside of the glass) |
+| Quantity | 1 |
+
+**Before paying:** the size reads 13.000" x 20.200", the colour is White (not
+Antique White), the preview shows all three pieces with 425-600-7897, and the
+total is about $30.87 (2026-10-07). The cart shows "Picks: 0-20" while the
+sheet has about 40 letter holes, so ask their chat whether that changes the
+price. Free shipping has no tracking.
+
 ## Air fresheners: shape and printer not picked yet
 
 Details: `air-freshener/README.md`, "Getting it made". Two shapes are drawn
@@ -215,3 +234,4 @@ voice), and then they get a section here.
 
 | Date | What | Qty | Printer | Total | Order # | Arrives |
 |---|---|---|---|---|---|---|
+| about 2026-10-07 | Car window decals, one sheet (back window + both sides), white | 1 | CarStickers.com | $30.87 in the cart (final not recorded) | not recorded | arrived 2026-10-13 |
