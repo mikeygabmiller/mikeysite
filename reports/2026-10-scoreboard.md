@@ -133,6 +133,29 @@ the mikeyscrm decision. Windsor stays Google Ads only (free plan, one source).
 
 ---
 
+## Changed on 2026-10-14 (read this before the November comparison)
+
+None of these touched the title test (Everett, Bothell titles and H1s) or the
+how-long page, but they do land inside the Oct 6 to Nov 2 window, so a page
+that moved may owe it to these:
+
+- **Internal links** (#224). The six "unknown to Google" pages now have links
+  from pages Google crawls: the city price pills link Interior, Exterior and
+  Full (Lake Stevens and Mill Creek to their own interior pages); Lake
+  Stevens, Mill Creek and Snohomish footers link their service pages;
+  `/services/` lists all 11 towns (it had 4) and every service page; the
+  homepage's More Detailing Info row adds paint correction, pet hair and
+  near-me. Bothell's pills were left as they were. If the six show
+  impressions in November, this is why; if any is still "unknown" after
+  Oct 21, request indexing again in URL Inspection.
+- **Homepage speed** (#225). The headline no longer fades in. Lighthouse
+  mobile (run locally, because the PageSpeed API was out of quota): score
+  68 to 70 before, 77 to 78 after; LCP 3.2 to 3.5s down to 2.6s. City pages
+  and `/services/` already scored 92.
+- **Link previews** (#225). 28 pages and the call page got `og:image`.
+- **`/services/` answer box** (#226): "What's included in a full detail?",
+  the M5 question, answered on the Full Detail page instead of a new page.
+
 ## Search Console (added 2026-10-08)
 
 Pulled by hand on 2026-10-07 from the only property on the account,
