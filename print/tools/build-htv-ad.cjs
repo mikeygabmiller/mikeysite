@@ -12,10 +12,12 @@
 // off the PDF (it was a quarter page). Jim confirms the real spec before art
 // goes in; change W and H here if his differs.
 //
-// OFFER='$40 off|Any Full Detail. Mention Hometown Values when you book.'
-// puts a coupon box in the review's slot (there's room for one or the other). Off by default: a new offer is
-// Mikey's call (CLAUDE.md, Offers and countdowns), and it writes ad-offer.*
-// so the two versions can't get mixed up.
+// OFFER=rainready puts the Rain-Ready coupon between the photos and the review
+// (Mikey, 2026-10-14, for the holiday issue that mails Nov 17 to 19: same
+// extras and same December 31, 2026 booking date as the hangers and
+// postcards). It writes ad-offer.* so the two versions can't get mixed up, and
+// it refuses to run from January 1, 2027. OFFER='big|small' still takes any
+// other wording, but a new offer is Mikey's call (CLAUDE.md, Offers and countdowns).
 
 const { chromium } = require('playwright');
 const QRCode = require('qrcode');
@@ -45,20 +47,24 @@ const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', '
 // it says he's in Lake Stevens most weeks (true of all twelve towns), never
 // that he lives or is based there.
 const TOWN = 'Lake Stevens';
-// The review slot. Right now it holds an EXAMPLE of the review that would sell
-// best, so Mikey can find the closest real one (2026-10-12). A made-up review
-// can't go to print (FTC rule, 16 CFR 465), so while REVIEW_IS_EXAMPLE is true
-// the ad says EXAMPLE on it and the generator warns. Swap in a real customer's
-// words (trimmed with "...", never reworded), their first name, and set it false.
-const REVIEW = "My kids wrecked the back seat. Mikey came to my driveway, charged exactly what he quoted, and it looked brand new. I didn't even have to be home.";
-const REVIEW_BY = 'First name, Lake Stevens';
-const REVIEW_IS_EXAMPLE = true;
+// The review slot: a real Google review, word for word (trim with "...",
+// never reword). A made-up review can't go to print (FTC rule, 16 CFR 465);
+// if this ever holds a placeholder again, set REVIEW_IS_EXAMPLE true and the
+// ad says EXAMPLE on it. Matt K.'s is the one the site already carries, and
+// "charged exactly what he quoted" answers the biggest fear about someone who
+// comes to your house (2026-10-14). He isn't from Lake Stevens, so no town.
+const REVIEW = "Mikey showed up on time, did exactly what he said, and charged exactly what he quoted. That kind of service is really rare these days.";
+const REVIEW_BY = 'Matt K.';
+const REVIEW_IS_EXAMPLE = false;
 
 const W = 4.0625, H = 4.75;
 const SAFE = 0.14;       // magazines trim and register loosely; keep type off the frame
 const MIN_PT = 6.5;      // nothing smaller survives coupon-magazine printing
 
-const [OFFER_BIG, OFFER_SMALL] = (process.env.OFFER || '').split('|');
+const RAIN_READY = '3 extras FREE|Polish, ceramic wax and RainX free on any Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
+const RR_OVER = new Date() >= new Date('2027-01-01T00:00:00-08:00');
+if (process.env.OFFER === 'rainready' && RR_OVER) throw new Error('Rain-Ready ended December 31, 2026. Build the ad without OFFER.');
+const [OFFER_BIG, OFFER_SMALL] = (process.env.OFFER === 'rainready' ? RAIN_READY : process.env.OFFER || '').split('|');
 const SUFFIX = OFFER_BIG ? '-offer' : '';
 
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
@@ -139,6 +145,15 @@ h1 em{font-style:normal;color:var(--red);display:block}
 .offer{display:flex;align-items:center;gap:.08in;border:1pt dashed var(--ink);border-radius:3pt;padding:2.5pt .08in}
 .offer b{flex:none;font-family:'Barlow Condensed';font-weight:800;font-size:17pt;color:var(--red)}
 .offer span{font-size:7pt;line-height:1.25;font-weight:600}
+/* With the coupon on, the photos give up height so the review still fits */
+.has-offer h1{font-size:21pt}
+.has-offer .ba{height:1.06in}
+.has-offer .prices{gap:.035in}
+.has-offer .prices span{font-size:7.5pt}
+.has-offer .prices b{font-size:13.5pt;margin-top:1pt}
+.has-offer .offer{padding:1.5pt .07in}
+.has-offer .offer b{font-size:15pt}
+.has-offer .offer span{font-size:6.8pt}
 
 .bar{position:absolute;left:0;right:0;bottom:0;height:${BAR_H}in;background:var(--ink);color:#fff;
   display:flex;align-items:center;gap:.11in;padding:0 ${SAFE}in}
@@ -174,7 +189,7 @@ const html = (qr) => `
       </div>
     </div>
     ${OFFER_BIG ? `<div class="offer"><b>${OFFER_BIG}</b><span>${OFFER_SMALL || ''}</span></div>` : ''}
-    ${OFFER_BIG ? '' : `<div class="rev"><div class="q">“${REVIEW}”</div><div class="by">${stars(5)} ${REVIEW_BY} · Google review${REVIEW_IS_EXAMPLE ? ' <i>EXAMPLE: swap in a real one</i>' : ''}</div></div>`}
+    ${`<div class="rev"><div class="q">“${REVIEW}”</div><div class="by">${stars(5)} ${REVIEW_BY} · Google review${REVIEW_IS_EXAMPLE ? ' <i>EXAMPLE: swap in a real one</i>' : ''}</div></div>`}
     <div class="fine">I'm in ${TOWN} most weeks, no travel fee. You provide an outdoor spigot and outlet: that's how I keep prices down.</div>
   </div>
   <div class="bar">
@@ -245,7 +260,8 @@ async function checkQr(pngBuf) {
     [/cars a week|limited spots|a few a week/i, 'a retired scarcity claim (CLAUDE.md, 2026-09-29)'],
     [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b|\bour (?:team|crew|detailers)\b/i, 'business "we" (it is one guy)'],
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day (it will change)'],
-    [/rain-ready|december 31/i, 'the Rain-Ready offer (it ends Dec 31, 2026; this ad runs after)'],
+    // Rain-Ready only on the coupon version, and only until it ends
+    ...(OFFER_BIG && !RR_OVER ? [] : [[/rain-ready|december 31/i, 'the Rain-Ready offer (it ends Dec 31, 2026)']]),
     [/360-799|232-1355/, 'an old phone number'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
@@ -253,7 +269,7 @@ async function checkQr(pngBuf) {
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
   // it goes to Lake Stevens homes only; any other town on it is wasted space
   for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);
-  if (REVIEW_IS_EXAMPLE && !OFFER_BIG) console.warn('  WARN the review is the EXAMPLE, not a real customer. Swap in a real one before this goes to Jim.');
+  if (REVIEW_IS_EXAMPLE) console.warn('  WARN the review is the EXAMPLE, not a real customer. Swap in a real one before this goes to Jim.');
   if (problems.length) { problems.forEach(p => console.error('  FAIL', p)); process.exitCode = 1; }
 
   // CANVA=1: write an HTML version Canva imports as an editable design, the same

@@ -30,8 +30,10 @@ test.
 |---|---|
 | `print-files/ad.pdf` | The ad, 4.0625" x 4.75", vector type. Send this one |
 | `print-files/ad-300dpi.jpg` | The same at 300 dpi, if Jim's designer wants an image |
-| `preview.png` | For looking at |
-| `preview-SAMPLE-offer-not-approved.png` | How a coupon box would look. **A sample, not an offer Mikey has made** |
+| `print-files/ad-offer.pdf` | **The one to send for the holiday issue**: the same ad with the Rain-Ready coupon. Only until Dec 31, 2026 |
+| `print-files/ad-offer-300dpi.jpg` | The same at 300 dpi |
+| `preview.png`, `preview-offer.png` | For looking at |
+| `preview-SAMPLE-offer-not-approved.png` | An older sample coupon ($40 off). **Not an offer Mikey made** |
 
 **Size:** measured off the frame on the 2024 proof (4.06" x 4.75"). No
 bleed, because a quarter page sits in a box on a shared page. **Jim confirms
@@ -71,17 +73,15 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
 - **5.0 and 39 Google reviews** up top beside the logo. Mikey's edit said
   "5-Star rated on Google" instead; the count is back because it's what makes
   a 5.0 believable. He dropped "300+ cars", so it's off.
-- **A review under the photos. Right now it's an EXAMPLE**, written to show
-  the review that would sell best: the mess in the photo, "came to my
-  driveway", "charged exactly what he quoted" (the biggest fear with anyone
-  who comes to your house), the result, not having to be home, and a Lake
-  Stevens name. Mikey is finding the closest real one. A made-up review can't
-  print (FTC rule, 16 CFR 465), so while `REVIEW_IS_EXAMPLE` is true the ad
-  carries a red EXAMPLE tag and the generator warns. Swap in the real words
-  (trim with "...", never reword) and the first name, and set it false. A
-  close candidate already on the site: "Mikey showed up on time, did exactly
-  what he said, and charged exactly what he quoted. That kind of service is
-  really rare these days." With an offer on, the coupon takes this slot.
+- **A real Google review under the photos** (2026-10-14): Matt K.'s
+  "Mikey showed up on time, did exactly what he said, and charged exactly
+  what he quoted. That kind of service is really rare these days." "Charged
+  exactly what he quoted" answers the biggest fear about anyone who comes to
+  your house. It's the wording the site carries; check it word for word
+  against Google before the art goes in (two versions exist on the site, one
+  without "and"). He isn't from Lake Stevens, so no town after his name. A
+  made-up review can't print (FTC rule, 16 CFR 465): if the slot ever holds
+  a placeholder, set `REVIEW_IS_EXAMPLE` true and the ad says EXAMPLE on it.
 - **The black band is the call to action**: the 1 in QR, "Call or text
   Mikey", the phone big, and the guarantee once.
 - **The spigot and outlet line**, with the reason. Every piece of print says
@@ -91,12 +91,16 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   Lake Stevens most weeks". He's based in Snohomish, so never that he lives or
   is based there. The edition only reaches Lake Stevens homes, so no other town
   is on it. A different edition means changing `TOWN` in the generator.
-- **No offer.** Rain-Ready ends December 31, 2026 and this ad runs after it.
-  A new offer is Mikey's call. A coupon box probably pulls better in a coupon
-  magazine; if he picks one, `OFFER='$40 off|Any Full Detail. Mention
-  Hometown Values when you book.' npm run htv` writes `ad-offer.pdf` (the
-  photo gets shorter to make room). The amount and wording there are only
-  the sample.
+- **The Rain-Ready coupon, on `ad-offer.pdf`** (Mikey, 2026-10-14, for the
+  holiday issue): "3 extras FREE: polish, ceramic wax and RainX free on any
+  Full Detail booked by Dec 31, 2026. Mention Hometown Values." Same extras
+  and same booking date as the hangers and postcards, not a new offer. It
+  sits between the photos and the review; the photos and price boxes get a
+  little smaller to make room. `OFFER=rainready npm run htv` builds it, and
+  refuses to from January 1, 2027. `ad.pdf` is the version without it, for
+  any issue after that. Coupon magazines are read for coupons (Jim's CTM
+  example led with "$50 OFF"); the extras list at $60 and cost about $10 of
+  product and 25 minutes a car.
 
 ## The schedule
 
@@ -113,24 +117,39 @@ Index), Stanwood and Camano, Kenmore. Those homes are paid for and can't book.
 
 ## The plan
 
-**Lake Stevens, Spring A 2027** (mails about Feb 27, art due about Feb 2).
-One issue, no contract, until it shows bookings.
+**Lake Stevens, holiday issue (Winter A 2026): mails Nov 17 to 19, art due
+Fri Oct 23**, quarter page, `ad-offer.pdf` (Mikey, 2026-10-14: send it now
+rather than wait for spring). One issue, no contract, until it shows bookings.
 
-- **Lake Stevens** is a served town end to end, the cheapest per home (Jim's
-  2024 holiday price: $505 for 20,000, 2.5 cents), and gets no EDDM postcards.
-  Monroe/Sky Valley cost 3.1 cents a home in 2024, and the Sky Valley part
-  is outside the twelve towns.
-- **Late February** because the days are long enough again: a weekday 1:00
-  PM Full Detail finishes about 5:30 PM, before a late-February sunset
-  (around 5:55 PM). The booking calendar decides from the real sunset.
-  November through January, Full Details only fit the 7:00 AM Saturday slot.
-- **Second choice:** Monroe/Sky Valley, Spring B (about Apr 9, art about Mar
-  15). It's the same edition as 2024, so it's a straight rematch with a
-  better ad.
+**Jim's 2026 rates** (his email of 2026-10-13 and rate cards): a quarter page
+is **$625 one time / $525 each at 4x** in Lake Stevens (20,000 homes) and
+$555 / $455 in Snohomish (15,000). His email quoted the 4x prices, so ask
+whether $525 holds for one issue. Half is due when the space is reserved,
+the rest on proof approval. Custom design is $75 (not needed), web and app
+listing $40.
+
+- **Lake Stevens** over Snohomish: 5,000 more homes for $70 more (3.1 cents
+  a home against 3.7), about 78% owner-occupied and 2.9 people a household,
+  and the ad is already written for it. Both at once is $1,180, and one zone
+  tells as much as two on a first test.
+- **Quarter page** over the others: a half page costs 56% more ($975) for
+  about 8% more recall in the print studies (Newsworks: quarter 52%, half
+  56%, full 66%); a 1/6 ($525) can't hold the photo, prices, coupon and a
+  1 in QR.
+- **The catch:** from Nov 1 a weekday 1:00 PM Full Detail doesn't finish
+  before dark, so Full Details from this ad mostly land on the 7:00 AM
+  Saturday slot until the work lights are ready. Rain-Ready jobs booked by
+  Dec 31 can be done through Jan 31. Interiors and exteriors still fit
+  weekdays.
+- **What it might return** (estimates, nobody publishes a shared-mail rate
+  for a $369 service): 2 jobs weak (1.2x), about 5 realistic (about 3x), 10
+  strong (about 6x). Break-even is 2 Full Details at $625.
+- **Next, if it pays:** the same edition again in Spring A 2027 (2026's
+  spring issue mailed Feb 24 to 26, art 1/30), without the coupon after Dec
+  31, or Monroe/Sky Valley in Cycle B for a rematch with the 2024 edition.
 
 **Count it:** "how'd you hear about me?" on every booking, plus
-**hometownvalues / mail** in Google Analytics. Break-even is about one Full
-Detail.
+**hometownvalues / mail** in Google Analytics.
 
 **Before sending the art:**
 
