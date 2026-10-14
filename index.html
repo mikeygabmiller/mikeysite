@@ -1246,8 +1246,9 @@ header li a[href="#booking"],
   font-size:clamp(2.2rem,6vw,4.8rem);
   line-height:1.05; letter-spacing:-0.02em;
   text-transform:uppercase; margin:0 0 28px; color:#fff;
-  opacity:0; transform:translateY(20px);
-  animation:mhFadeUp .8s ease-out .1s forwards;
+  /* No fade on the headline itself: it's the LCP element, and starting it at
+     opacity 0 held LCP back 2.4s behind the first paint (Lighthouse mobile,
+     2026-10-14, score 67). The red word still pops and the underline sweeps. */
 }
 .mh .mh-headline .accent{
   display:inline-block; color:#C8102E; position:relative;
