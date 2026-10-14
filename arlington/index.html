@@ -56,6 +56,7 @@ h1 .red{color:var(--red)}
 .price-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
 .pill{background:var(--bg-card);border:2px solid var(--border);padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .pill .price{color:var(--red);margin-left:8px}
+.pill.link:hover { border-color: var(--red); cursor: pointer; }
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
 .btn{font-family:inherit;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:1px;padding:18px 32px;border-radius:12px;border:2px solid;cursor:pointer;transition:transform .15s,box-shadow .15s;display:inline-block}
 .btn-primary{background:var(--red);border-color:var(--red);color:white;box-shadow:0 0 30px var(--red-glow)}
@@ -667,9 +668,9 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <p class="hero-sub">Smokey Point to Old Town, I bring the whole setup to your driveway.
       <strong>You don't pay until you love it.</strong></p>
     <div class="price-pills">
-      <div class="pill">Full Detail <span class="price">$369-$449</span></div>
-      <div class="pill">Interior <span class="price">$249-$329</span></div>
-      <div class="pill">Exterior <span class="price">$199-$279</span></div>
+      <a href="/services/" class="pill link">Full Detail <span class="price">$369-$449</span></a>
+      <a href="/services/interior.html" class="pill link">Interior <span class="price">$249-$329</span></a>
+      <a href="/services/exterior.html" class="pill link">Exterior <span class="price">$199-$279</span></a>
     </div>
     <div class="cta-row">
       <a href="#booking" class="btn btn-primary">Get My Instant Quote →</a>
