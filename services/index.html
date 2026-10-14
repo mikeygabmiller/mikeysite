@@ -63,6 +63,13 @@ h1 .red{color:var(--red)}
 .price-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
 .pill{background:var(--bg-card);border:2px solid var(--border);padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .pill .price{color:var(--red);margin-left:8px}
+/* Answer-first block, same as the guides: the page's core answer, self-contained
+   so search and AI assistants can quote it without the rest of the page. */
+.answer-first{background:#141414;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;margin:0 auto;max-width:900px;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;color:#fff;text-transform:none;letter-spacing:0}
+.answer-first p{margin:0;font-size:1.08rem;line-height:1.65;color:#e4e4e4}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 .pill.highlight{background:var(--red);border-color:var(--red);box-shadow:0 0 24px var(--red-glow)}
 .pill.highlight .price{color:white}
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
@@ -499,7 +506,7 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
           "name": "What's included in a full detail?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Inside: a deep vacuum, steam clean, upholstery shampoo, leather cleaning, the dash, console and door panels, air vents, cup holders and door pockets, floor mats and door jambs. Outside: a two-bucket hand wash, wheels and tires, a clay bar, wax or sealant, exterior glass, a headlight wipe-down and the exhaust tips. Then we walk around it together."
+            "text": "A full detail at Mikey's Mobile Detailing in Snohomish, WA is the whole interior and the whole exterior in one visit, in your driveway. Inside: a deep vacuum of the seats, carpets and trunk, steam cleaning, shampoo on fabric seats and carpets, leather cleaned, the dash, console, door panels, vents and cup holders wiped down, and the floor mats pulled and cleaned. Outside: a two-bucket hand wash, wheels and tires, a clay bar, wax or sealant, the glass and the door jambs. It takes 3 to 5 hours and costs $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, plus $30 or $60 if it's really rough. You pay after we walk around it together."
           }
         },
         {
@@ -636,6 +643,15 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   </div>
 </section>
 
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="answer-first">
+      <h2>What's included in a full detail?</h2>
+      <p>A full detail at Mikey's Mobile Detailing in Snohomish, WA is the <strong>whole interior and the whole exterior in one visit</strong>, in your driveway. Inside: a deep vacuum of the seats, carpets and trunk, steam cleaning, shampoo on fabric seats and carpets, leather cleaned, the dash, console, door panels, vents and cup holders wiped down, and the floor mats pulled and cleaned. Outside: a two-bucket hand wash, wheels and tires, a clay bar, wax or sealant, the glass and the door jambs. It takes <strong>3 to 5 hours</strong> and costs <strong>$369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row</strong>, plus $30 or $60 if it's really rough. You pay after we walk around it together.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">What This Is</div>
@@ -656,7 +672,7 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
         Most clients book a full detail when their car is hitting that "I should really do
         something about this" point, kid spilled juice 6 months ago, dog hair has its own zip
         code, the paint hasn't seen wax since the dealership. After a full detail, the
-        recommendation is to maintain it on the <a href="/" style="color:var(--red);text-decoration:underline;">Clean Club</a>
+        recommendation is to maintain it on the <a href="/car-detailing-cost-snohomish-county/" style="color:var(--red);text-decoration:underline;">Clean Club</a>
         recurring plan, where you stay clean year-round at a lower per-visit price.
       </p>
     </div>
@@ -834,7 +850,6 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="section-eyebrow">Common Questions</div>
     <h2>Full Detail <span class="red">FAQ</span></h2>
     <div class="faq">
-      <div class="faq-item"><div class="faq-q">What's included in a full detail?</div><div class="faq-a"><p>Inside: a deep vacuum, steam clean, upholstery shampoo, leather cleaning, the dash, console and door panels, air vents, cup holders and door pockets, floor mats and door jambs. Outside: a two-bucket hand wash, wheels and tires, a clay bar, wax or sealant, exterior glass, a headlight wipe-down and the exhaust tips. Then we walk around it together.</p></div></div>
       <div class="faq-item"><div class="faq-q">What's the difference between a full detail and a wash?</div><div class="faq-a"><p>A wash is a wipe-down of the outside. A full detail is a top-to-bottom restoration, every surface inside and out. It's the difference between brushing your teeth and going to the dentist.</p></div></div>
       <div class="faq-item"><div class="faq-q">Do I need a full detail or just an interior?</div><div class="faq-a"><p>If both sides have issues, interior dust/stains/pet hair AND exterior dull paint/water spots, full detail. If only one side is bad, a single-side service saves you money.</p></div></div>
       <div class="faq-item"><div class="faq-q">How long does a full detail take?</div><div class="faq-a"><p>3-5 hours for a first-time full detail. Less for Clean Club members, because the car never gets that dirty.</p></div></div>
