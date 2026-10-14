@@ -138,6 +138,7 @@ h1 .red { color: var(--red); }
   text-transform: uppercase;
 }
 .pill .price { color: var(--red); margin-left: 8px; }
+.pill.link:hover { border-color: var(--red); cursor: pointer; }
 
 .cta-row {
   display: flex;
@@ -1003,9 +1004,9 @@ footer {
     </p>
 
     <div class="price-pills">
-      <div class="pill">Full Detail <span class="price">$369-$449</span></div>
-      <div class="pill">Interior <span class="price">$249-$329</span></div>
-      <div class="pill">Exterior <span class="price">$199-$279</span></div>
+      <a href="/services/" class="pill link">Full Detail <span class="price">$369-$449</span></a>
+      <a href="/lake-stevens/interior-detail.html" class="pill link">Interior <span class="price">$249-$329</span></a>
+      <a href="/services/exterior.html" class="pill link">Exterior <span class="price">$199-$279</span></a>
     </div>
 
     <div class="cta-row">
@@ -1295,6 +1296,8 @@ footer {
       <a href="/about/">About Mikey</a>
       <a href="/mobile-auto-maintenance/">Auto Maintenance</a>
       <a href="/lake-stevens/">Lake Stevens</a>
+      <a href="/lake-stevens/interior-detail.html">Lake Stevens Interior</a>
+      <a href="/lake-stevens/paint-correction-in-lake-stevens.html">Lake Stevens Paint Correction</a>
       <a href="/mill-creek/">Mill Creek</a>
       <a href="/duvall/">Duvall</a>
       <a href="/monroe/">Monroe</a>
