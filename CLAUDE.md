@@ -410,6 +410,23 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
 - **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
   extend its window, or add a new offer without Mikey saying so.
 
+## Social links in the footer
+
+Every footer has a "Find me on" row (2026-10-14, Mikey's ask): Google,
+Facebook, Instagram, Nextdoor. It's one more pasted copy, so `SOCIAL` in
+`tools/check-site.py` fails any page whose row differs, and the `#business`
+`sameAs` in `tools/build-entity-graph.py` lists the same four. Change all
+three together.
+
+- **Facebook is the Page ID URL** (`facebook.com/1404175872772078`), because
+  the Page's username couldn't be read from a session. When Mikey or Muse
+  confirms the short name, swap it in all three places.
+- **No Yelp** until the listing loses the old (425) 232-1355 number.
+- **Nextdoor is unclaimed** (`outreach/DIRECTORIES.md`); the link still shows
+  his right phone and site.
+- **The Google profile's own social links** (Edit profile, Contact, Social
+  profiles) are a Muse job with Mikey signing in: no connector here edits them.
+
 ## Fleet and dealership emails
 
 Cold emails to businesses with vans, lots and fleets live in

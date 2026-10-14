@@ -479,6 +479,29 @@ for p in pages:
                          r'|<meta property="og:image" content="(https?://(?!mikeysdetailing\.com/)[^"]+)"', src):
         fails.append(f"{p.relative_to(ROOT)}: image served from another site: {(m.group(1) or m.group(2))[:80]}")
 
+# --- social profiles: one footer row, the same four everywhere ----------------
+# Added 2026-10-14 (Mikey: footer links to his profiles). The row is pasted into
+# every footer, so it drifts like everything else here; the #business sameAs in
+# tools/build-entity-graph.py names the same four. No Yelp until its listing
+# loses the old (425) 232-1355 number (outreach/DIRECTORIES.md).
+SOCIAL = ["https://g.page/r/CRCuKQ982VIZEBE",
+          "https://www.facebook.com/1404175872772078",
+          "https://www.instagram.com/mikeysdetailing_sno/",
+          "https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/"]
+for p in pages:
+    src = p.read_text(encoding="utf-8")
+    foot = re.search(r"<footer\b.*?</footer>", src, re.S)
+    if not foot:
+        continue
+    row = re.search(r'<p class="footer-social".*?</p>', foot.group(0), re.S)
+    got = re.findall(r'href="([^"]+)"', row.group(0)) if row else []
+    if got != SOCIAL:
+        fails.append(f"{p.relative_to(ROOT)}: footer \"Find me on\" row is missing or differs from SOCIAL")
+    for m in JSONLD.finditer(src):
+        for node in json.loads(m.group(1)).get("@graph", []):
+            if node.get("@id") == "https://mikeysdetailing.com/#business" and node.get("sameAs") != SOCIAL:
+                fails.append(f"{p.relative_to(ROOT)}: #business sameAs differs from SOCIAL")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:
