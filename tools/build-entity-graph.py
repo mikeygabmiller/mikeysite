@@ -205,10 +205,12 @@ def business_node(reviews, speakable):
             for n, st, lo, hi, _ in CORE_SERVICES
         ],
         # The blog lives at /blog/ since 2026-10-05; the old subdomain redirects there.
-        # Same four profiles as the footer's "Find me on" row (SOCIAL in check-site.py).
+        # Same six profiles as the footer's "Find me on" row (SOCIAL in check-site.py).
         "sameAs": ["https://g.page/r/CRCuKQ982VIZEBE",
+                   "https://www.yelp.com/biz/mikeys-mobile-detailing-snohomish-4",
                    "https://www.facebook.com/1404175872772078",
                    "https://www.instagram.com/mikeysdetailing_sno/",
+                   "https://www.youtube.com/@MikeysDetailing",
                    "https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/"],
     }
     if reviews:

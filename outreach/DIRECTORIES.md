@@ -102,6 +102,29 @@ the page; look at it yourself while you fix it.
 | Facebook | none found | | Only other people's "Mike's Mobile Detailing" pages come up. Make one. |
 | Apple Maps, Bing, Angi, Thumbtack, BBB, Alignable, Yellow Pages, Manta, Hotfrog, chamberofcommerce.com, Waze, Foursquare | none found by web search | | Most of these don't let search engines index every page, so "not found" isn't proof. Every one below starts with "search for yourself first and claim, don't create a duplicate." |
 
+**Re-checked 2026-10-14** (web search for the name, the number, the domain and
+both emails):
+
+- **Yelp: fixed.** Yahoo Local, which copies Yelp, now shows (425) 600-7897
+  and no street address. It's in the site footer now.
+- **Yellow Pages** (https://www.yellowpages.com/snohomish-wa/mip/mikeys-mobile-detailing-580139051)
+  shows **(360) 797-5831**. Claim it ("Suggest an Edit" or yellowpages.com/claim-your-listing)
+  and fix the number before it goes on the site.
+- **Nextdoor has three pages, not one.** `...-snohomish-wa/` is the one with
+  your posts (claim this one). `...-snohomish-wa-mal72x/` shows **(360)
+  797-5831**, the Gmail and **"Lic. WA"** (you're not licensed: get it
+  removed). `/pages/mikeys-auto-detailing-snohomish-wa/` is named "Mikey's
+  Auto Detailing". After claiming the first, report the other two as
+  duplicates.
+- **MapQuest** (https://www.mapquest.com/us/washington/mikeys-mobile-detailing-658701599)
+  still shows the street address and lists Trinity Exterior Cleaning "at this
+  address". It reads from Yelp; claim it to hide the address if it doesn't
+  clear on its own.
+- **YouTube** https://www.youtube.com/@MikeysDetailing is yours (in the footer).
+  Its About text says "we", "showroom-ready", "monthly subscriptions" and
+  headlight restoration, and calls you "Mikey's Auto Detailing": rewrite it
+  from the long block above.
+
 Where the street address came from: Yelp has it, and Yahoo and
 detailerdirectory both copied it. Hiding it on Yelp is the root fix. If it's
 your home, that matters for more than SEO.
