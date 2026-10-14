@@ -15,7 +15,8 @@
     "freshener": "node build-air-freshener.cjs",
     "htv": "node build-htv-ad.cjs",
     "htv-variations": "node build-htv-variations.cjs",
-    "htv-concepts": "node build-htv-concepts.cjs"
+    "htv-concepts": "node build-htv-concepts.cjs",
+    "htv-premium": "node build-htv-premium.cjs"
   },
   "dependencies": {
     "@fontsource/anton": "^5.3.0",
