@@ -593,15 +593,18 @@ blanks for the number, never a printed one. Read its `README.md` first.
 in, measured off his 2024 proof) for Jim Lee's coupon magazine, built
 2026-10-12. Read its `README.md` first: it has what the 2024 ad got wrong
 (it ran in Monroe/Sky Valley, Oct 2024, with an old number, a typo and "from
-$99"), Jim's mailing schedule, and the plan (one issue: Lake Stevens, Spring A
-2027, mailing about Feb 27 with art due about Feb 2). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
+$99"), Jim's 2026 rates and mailing schedule, and the plan (Mikey, 2026-10-14:
+one issue, Lake Stevens holiday issue, mailing Nov 17 to 19 with art due Oct
+23). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
 It's one more copy of the facts table: prices, 5.0 across 39, spigot and
 outlet. It's written for the Lake Stevens edition only (headline, "I'm in Lake
-Stevens most weeks"; he's based in Snohomish, so never "based in"). **Its
-review is an EXAMPLE** (`REVIEW_IS_EXAMPLE`) until Mikey picks a real one; it
-can't go to Jim with the red EXAMPLE tag on it. **No offer** unless Mikey picks one
-(`OFFER=` writes a separate `ad-offer.pdf`); the coupon box in
-`preview-SAMPLE-offer-not-approved.png` is only a sample.
+Stevens most weeks"; he's based in Snohomish, so never "based in"). Its review
+is Matt K.'s real Google review, word for word; never a made-up one
+(`REVIEW_IS_EXAMPLE` marks a placeholder). **The holiday issue carries the
+Rain-Ready coupon** (`OFFER=rainready`, writes `ad-offer.pdf`, refuses to build
+from Jan 1, 2027): same extras and Dec 31 booking date as the hangers. Any
+other offer is Mikey's call; `preview-SAMPLE-offer-not-approved.png` is only a
+sample.
 
 ## EDDM postcard
 
