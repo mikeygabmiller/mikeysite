@@ -146,7 +146,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;-webkit-
 
     // Copy rules, the same list the hanger and the everyday card enforce.
     const text = await page.evaluate(() => document.body.innerText);
-    const banned = [[/—|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (he is neither)'],
+    const banned = [[/\u2014|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured (he is neither)'],
       [/lynnwood|edmonds/i, 'a town Mikey does not serve'], [/\bwe\b|\bour\b/i, 'business "we" (it is one guy: "I")'],
       [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/deposit/i, 'a deposit'],
       [/seamless|elevate|unlock|transform|jaw-dropping/i, 'an agency word']];
