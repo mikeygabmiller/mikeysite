@@ -70,7 +70,7 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   (Mikey's Canva edit), Full Detail in red on top. A coupon magazine is read
   by people comparing prices, so the price is right there, and "from $369"
   filters out the $99 crowd the 2024 ad drew.
-- **5.0 and 39 Google reviews** up top beside the logo. Mikey's edit said
+- **5.0 and 40 Google reviews** up top beside the logo. Mikey's edit said
   "5-Star rated on Google" instead; the count is back because it's what makes
   a 5.0 believable. He dropped "300+ cars", so it's off.
 - **A real Google review under the photos** (2026-10-14): Matt K.'s
