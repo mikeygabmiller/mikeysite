@@ -130,6 +130,8 @@ the six days it existed in this window. The month to watch is October.
 
 **Not done (cut from the brief):** the 4-engine prompt panel, Bing Webmaster,
 the mikeyscrm decision. Windsor stays Google Ads only (free plan, one source).
+**2026-10-15:** Mikey moved Windsor's one source from Google Ads to Search
+Console. The Ads history was pulled first: `reports/2026-10-15-google-ads.md`.
 
 ---
 
