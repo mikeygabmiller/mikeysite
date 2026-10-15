@@ -228,8 +228,9 @@ the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
 
 **The live offer is the Rain-Ready Full Detail,** on the homepage since
 2026-09-28 at Mikey's request. It's the door hanger's version: book a Full
-Detail by **December 31, 2026** and exterior polish, ceramic wax and RainX come
-free (worth $508, from $369). It's the **booking** date that counts: a job
+Detail by **December 31, 2026** and ceramic wax, RainX and RainX Anti-Fog come
+free (worth $508, from $369; Mikey swapped anti-fog in for the exterior polish
+on 2026-10-15, at the same $30, before any offer piece was printed). It's the **booking** date that counts: a job
 booked by Dec 31 can be done as late as **January 31, 2027** (Mikey,
 2026-09-29), because weekday Full Details don't fit before dark in November and
 December and there aren't enough Saturdays to go round. It lives in three places in `index.html`, and

@@ -92,7 +92,7 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
   is based there. The edition only reaches Lake Stevens homes, so no other town
   is on it. A different edition means changing `TOWN` in the generator.
 - **The Rain-Ready coupon, on `ad-offer.pdf`** (Mikey, 2026-10-14, for the
-  holiday issue): "3 extras FREE: polish, ceramic wax and RainX free on any
+  holiday issue): "3 extras FREE: ceramic wax, RainX and anti-fog free on any
   Full Detail booked by Dec 31, 2026. Mention Hometown Values." Same extras
   and same booking date as the hangers and postcards, not a new offer. It
   sits between the photos and the review; the photos and price boxes get a

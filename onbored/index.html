@@ -347,12 +347,12 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   var COND = { 'Pretty Clean':0, 'Needs Work':30, 'War Zone':60 };
   // $270 off, keep 3, $90 each (Mikey, 2026-10-04: $99 for a clean sedan, so saying no feels stupid).
   var CLUB = { off:270, visit:125, keep:3, per:90 };
-  // Rain-Ready: a Full Detail booked by December 31, 2026 gets polish, ceramic
-  // wax and RainX free. Same offer and the same cutoff as RR_END in index.html
+  // Rain-Ready: a Full Detail booked by December 31, 2026 gets ceramic wax,
+  // RainX and RainX Anti-Fog free. Same offer and the same cutoff as RR_END in index.html
   // (midnight Pacific going into January 1). Past it this goes quiet by itself.
   var RR_END = Date.UTC(2027, 0, 1, 8);
   // [the add-on's name in the calculator and on his alert, how it reads here, its price]
-  var RR = [['Exterior Polish', 'exterior polish', 30], ['Ceramic Wax', 'ceramic wax', 20], ['RainX Windows', 'RainX on the glass', 10]];
+  var RR = [['Ceramic Wax', 'ceramic wax', 20], ['RainX Windows', 'RainX on the outside glass', 10], ['RainX Anti-Fog', 'anti-fog on the inside', 30]];
   function rrOn(){ return Date.now() < RR_END; }
 
   var S = { size:'', svc:'', cond:'', plan:'once', opens:null, pick:null, offer:null, step:1, club:null, busy:false };

@@ -97,7 +97,7 @@ const c1 = qr => ({
     <div class="box"><div>Crumbs in the seams</div><div>Dog hair</div><div>Sticky cup holders</div><div>Road grime</div><div>Juice on the seat</div><div>Foggy glass</div></div></div>
   <div class="loc"><b>Remedy:</b> I come to your driveway or work. You provide an outdoor spigot and outlet: that's how I keep prices down. No travel fee.</div>
   <div class="fine"><span>Fine due<small>Full detail. Interior from $249, exterior from $199.</small></span><b>$369</b></div>
-  <div class="cp"><b>Dismissed with this ad:</b> free polish, ceramic wax and RainX ${TERMS}</div>
+  <div class="cp"><b>Dismissed with this ad:</b> free ceramic wax, RainX and anti-fog ${TERMS}</div>
   <div class="bot"><div class="qr">${qr}</div><div><div class="t"><b>Pay after it's done</b></div><div class="p">${PHONE}</div><div class="t">Call or text. Or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
 });
@@ -133,7 +133,7 @@ const c2 = qr => ({
   <div class="body">
     <div class="lead"><b>Lake Stevens, I come to your driveway or work.</b> You provide an outdoor spigot and outlet: that's how I keep prices down. 5.0 on Google across ${REVIEWS} reviews.</div>
     <div class="pr"><div class="f"><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div></div>
-    <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS}</div>
+    <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS}</div>
     <div class="bot"><div class="qr">${qr}</div><div><div class="p">${PHONE}</div><div class="t">Call or text Mikey. Or scan for your exact price in 60 seconds.</div></div></div>
   </div>
 </section>`,
@@ -166,7 +166,7 @@ const c3 = qr => ({
   <div><div class="big"><sup>$</sup>369</div>
   <div class="what">A full detail, inside and out.<br><span>In your driveway. I come to you.</span></div></div>
   <div><div class="rule"></div><div class="row" style="margin-top:3pt"><span>Interior only</span><b>$249</b></div><div class="row"><span>Exterior only</span><b>$199</b></div></div>
-  <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS} You provide an outdoor spigot and outlet.</div>
+  <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS} You provide an outdoor spigot and outlet.</div>
   <div class="bot"><div class="qr">${qr}</div><div>${logo(true)}<div class="p">${PHONE}</div><div class="t">Call or text. Or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
 });
@@ -203,7 +203,7 @@ const c4 = qr => ({
   <div class="gap"></div>
   <div class="say">Lake Stevens: <em>I'll wash it right where it's parked</em></div>
   <div class="menu"><div><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div></div>
-  <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS}</div>
+  <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS}</div>
   <div class="small">5.0 ${stars()} ${REVIEWS} Google reviews. No travel fee. You provide an outdoor spigot and outlet: that's how I keep prices down.</div>
   <div class="bot"><div class="qr">${qr}</div><div><div class="p">${PHONE}</div><div class="t">Call or text Mikey, or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
@@ -245,7 +245,7 @@ const c5 = qr => ({
     <div class="arrow">&rarr;</div>
     <div class="snap b"><div class="ph"><img src="${photo('backseat-after.jpg')}" style="object-position:50% 62%"></div><span>after</span></div></div>
   <div class="note">In your driveway. You just need an outdoor spigot and outlet. <b>Full detail $369</b>, interior $249, exterior $199. No travel fee. 5.0 on Google, ${REVIEWS} reviews.</div>
-  <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS}</div>
+  <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS}</div>
   <div class="bot"><div class="qr">${qr}</div><div><div class="sig">Mikey</div><div class="p">${PHONE}</div><div class="t">Call or text me. Or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
 });
@@ -285,7 +285,7 @@ h1{font-family:'Outfit';font-weight:900;font-size:16pt;line-height:1.02;letter-s
     <div class="list"><div><i>&#10003;</i>Outdoor spigot</div><div><i>&#10003;</i>Power outlet</div><div><i>&#10003;</i>Your keys</div>
       <small>Using yours is how I keep prices down. I'm in Lake Stevens most weeks, no travel fee.</small></div></div>
   <div class="pr"><div><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div></div>
-  <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS}</div>
+  <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS}</div>
   <div class="bot"><div class="qr">${qr}</div><div><div class="p">${PHONE}</div><div class="t">Call or text Mikey. Or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
 });
@@ -327,7 +327,7 @@ td.x{color:#7d89a6}
     <tr><td>Who does it</td><td class="x">A machine</td><td class="m">Same guy every time</td></tr>
     <tr><td>Where you wait</td><td class="x">In line</td><td class="m">At home</td></tr></table>
   <div class="pr"><div class="f"><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div></div>
-  <div class="cp"><b>Free polish, ceramic wax and RainX</b> ${TERMS} In Lake Stevens most weeks. You provide an outdoor spigot and outlet. 5.0 on Google, ${REVIEWS} reviews.</div>
+  <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b> ${TERMS} In Lake Stevens most weeks. You provide an outdoor spigot and outlet. 5.0 on Google, ${REVIEWS} reviews.</div>
   <div class="bot"><div class="qr">${qr}</div><div>${logo(true)}<div class="p">${PHONE}</div><div class="t">Call or text. Or scan for your exact price in 60 seconds.</div></div></div>
 </div></section>`,
 });

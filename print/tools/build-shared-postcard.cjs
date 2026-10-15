@@ -254,7 +254,7 @@ const mikey = q => `
       <div class="name">The Rain-Ready <em>Full Detail</em></div>
       <ul class="stack">
         <li><span>Interior detail</span><i>$249</i></li>
-        <li class="f"><span>Exterior polish</span><i><s>$30</s>Free</i></li>
+        <li class="f"><span>RainX Anti-Fog</span><i><s>$30</s>Free</i></li>
         <li><span>Exterior detail</span><i>$199</i></li>
         <li class="f"><span>Ceramic wax</span><i><s>$20</s>Free</i></li>
         <li><span></span><i></i></li>
@@ -347,7 +347,7 @@ const mikeyT = q => sideT({
   badge: `<div class="box badge rr">3 extras free<small>with a Full Detail booked by Dec 31</small></div>`,
   val: `<div class="top"><div class="big">$369</div><div class="lbl">Rain-Ready Full Detail<br>worth $508 on a sedan</div></div>
       <ul>
-        <li>Interior detail</li><li>Exterior polish, free</li>
+        <li>Interior detail</li><li>RainX Anti-Fog, free</li>
         <li>Exterior detail</li><li>Ceramic wax, free</li>
         <li>Mention this postcard</li><li>RainX on the glass, free</li>
       </ul>

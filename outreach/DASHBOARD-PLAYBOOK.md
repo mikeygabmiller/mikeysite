@@ -53,8 +53,8 @@ Prices are sedan / SUV or pickup / van or 3-row:
 - Exterior Detail: $199 / $239 / $279. Hand wash, decontamination, wheels and tires, glass, door jambs, protection on the paint. About 1 to 2 hours.
 - Interior Detail: $249 / $289 / $329. Full vacuum, carpets and seats, every interior surface wiped down, interior glass, door jambs. About 90 minutes, or 2 to 4 hours with stain extraction or heavy pet hair.
 - Full Detail, inside and out: $369 / $409 / $449. Everything in both, and $79 less than booking them separately. Takes 3 to 5 hours.
-Condition adds $30 (needs work) or $60 (really rough). Add-ons: carpet shampoo $20, exterior polish $30, ceramic wax $20, RainX on the glass $10.
-Rain-Ready offer: book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and RainX come free (worth $508, from $369). A job booked by Dec 31 can be done as late as January 31, 2027.
+Condition adds $30 (needs work) or $60 (really rough). Add-ons: carpet shampoo $20, exterior polish $30, ceramic wax $20, RainX on the glass $10, RainX Anti-Fog (inside glass) $30.
+Rain-Ready offer: book a Full Detail by December 31, 2026 and the ceramic wax, RainX and RainX Anti-Fog come free (worth $508, from $369). A job booked by Dec 31 can be done as late as January 31, 2027.
 Paint correction from $400 (1-step $400+, 2-step $650+, multi-stage $900+), quoted after I see the paint. One-step takes 6 to 8 hours, multi-stage 1 to 2 days.
 Ceramic coating from $500, tiered and quoted per car.
 Pet hair removal: $50 to $80 as an add-on, $120 to $220 on its own.

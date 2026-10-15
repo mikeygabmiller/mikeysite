@@ -136,15 +136,15 @@ Tap Book to see your exact price. The quote takes 60 seconds.
 
 **Photo:** `social/photos/highlander-gloss.jpg` (black Highlander, wet-look
 gloss, plate blurred)
-**Offer title:** `Rain-Ready Full Detail: polish, wax and RainX free`
-(50 characters)
+**Offer title:** `Rain-Ready Full Detail: wax, RainX, anti-fog free`
+(49 characters)
 **Start date:** the day you post it · **End date:** **December 31, 2026**
 **Link to redeem offer:** `https://mikeysdetailing.com/#booking`
 **Coupon code:** leave empty
 **Terms and conditions:**
 
 ```
-Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and RainX on the glass come free. Worth $508, from $369 for a sedan. SUV or pickup +$40, van or 3-row +$80. The booking date is what counts: a Full Detail booked by December 31 can be done as late as January 31, 2027.
+Book a Full Detail by December 31, 2026 and the ceramic wax, RainX on the outside glass and RainX Anti-Fog on the inside come free. Worth $508, from $369 for a sedan. SUV or pickup +$40, van or 3-row +$80. The booking date is what counts: a Full Detail booked by December 31 can be done as late as January 31, 2027.
 ```
 
 **Description:**
@@ -152,18 +152,18 @@ Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and
 ```
 From October to March your car is wet more days than it's dry. So until December 31, every Full Detail I book comes with the three things that help most in the rain, and I don't charge for them.
 
-Polish first. It takes the dull film and light swirls off, so the wax goes onto clean paint instead of sealing the haze in.
+Ceramic wax on the paint. Rain beads and rolls off, and road grime has a harder time sticking between washes.
 
-Ceramic wax on top. Rain beads and rolls off, and road grime has a harder time sticking between washes.
+RainX on the outside glass. Water sheets off the windshield at speed, which you notice the first dark night on I-5 or US-2.
 
-RainX on the glass. Water sheets off the windshield at speed, which you notice the first dark night on I-5 or US-2.
+RainX Anti-Fog on the inside. Wet coats on a cold morning fog the glass from the inside. Anti-fog keeps it clear while the defroster warms up.
 
 All of that rides on a Full Detail, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Booked separately, a sedan's interior, exterior and those three extras would be $508. Worth $508, from $369.
 
 Same price in Everett, Marysville, Mill Creek or Duvall, no travel fee. Pick Full Detail in the quote and the extras go on by themselves.
 ```
 
-*912 characters, 173 words.*
+*945 characters, 177 words.*
 
 ---
 
@@ -305,7 +305,7 @@ because that one is tall and GBP crops posts wide.
 **Terms and conditions:** paste the same terms as post 2:
 
 ```
-Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and RainX on the glass come free. Worth $508, from $369 for a sedan. SUV or pickup +$40, van or 3-row +$80. The booking date is what counts: a Full Detail booked by December 31 can be done as late as January 31, 2027.
+Book a Full Detail by December 31, 2026 and the ceramic wax, RainX on the outside glass and RainX Anti-Fog on the inside come free. Worth $508, from $369 for a sedan. SUV or pickup +$40, van or 3-row +$80. The booking date is what counts: a Full Detail booked by December 31 can be done as late as January 31, 2027.
 ```
 
 **Description:**
@@ -313,18 +313,18 @@ Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and
 ```
 December is the last month of the Rain-Ready Full Detail.
 
-Book a Full Detail by December 31, 2026 and the exterior polish, ceramic wax and RainX come free. Worth $508, from $369.
+Book a Full Detail by December 31, 2026 and the ceramic wax, RainX and RainX Anti-Fog come free. Worth $508, from $369.
 
 It's the booking date that counts, not the day I do it. Short days mean a lot of Full Details land on Saturdays, so if you book in December, the detail itself can happen as late as January 31.
 
-Why these three: the polish takes off the film and swirls the fall left behind. The ceramic wax goes on clean paint so rain beads up and grime slides off. RainX makes water sheet off the windshield, which you'll notice the first time you're on I-5 in the dark.
+Why these three: the ceramic wax makes rain bead up and grime slide off the paint. RainX makes water sheet off the windshield, which you'll notice the first time you're on I-5 in the dark. Anti-fog on the inside keeps the glass from fogging up when everyone climbs in wet.
 
 $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price from Arlington down to Bothell.
 
 Pick Full Detail in the quote and the extras go on by themselves.
 ```
 
-*816 characters, 156 words.*
+*827 characters, 157 words.*
 
 ---
 
@@ -434,7 +434,7 @@ What shows up most in the photos:
 3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.
 4. Clean wheels and tires. They're half of every outside photo.
 
-A Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: exterior polish, ceramic wax and RainX on the glass.
+A Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: ceramic wax, RainX on the outside glass and anti-fog on the inside.
 
 Tap Book to see your exact price.
 ```
@@ -450,7 +450,7 @@ Tap Book to see your exact price.
 ```
 Last week for the Rain-Ready Full Detail: book by Thursday, December 31.
 
-Any Full Detail booked by then comes with three rain-season extras I don't charge for: exterior polish to take the dull film off, ceramic wax so the rain beads up and rolls off, and RainX on the glass. The booking date is what counts, so the detail itself can be as late as January 31.
+Any Full Detail booked by then comes with three rain-season extras I don't charge for: ceramic wax so the rain beads up and rolls off, RainX on the outside glass, and anti-fog on the inside so it doesn't fog up when you climb in wet. The booking date is what counts, so the detail itself can be as late as January 31.
 
 After the holidays is a good time for it anyway. Road trips, wrapping paper, a month of wet boots and crumbs in the back seat. The inside gets the full treatment: vacuum, steam on the seats and carpet, leather cleaned, dash and trim wiped down, door jambs and glass done. Then the outside, with the three extras on top.
 
@@ -615,7 +615,7 @@ Streaky wipers? Most of the time it's the glass, not the blade.
 
 The clocks go back November 1. Do this before the dark, wet drives home on I-5 and US-2.
 
-Book a Full Detail by December 31 and the RainX comes free, with an exterior polish and ceramic wax (the Rain-Ready Full Detail, from $369). Tap Book to see your price.
+Book a Full Detail by December 31 and the RainX comes free, with ceramic wax and anti-fog for the inside of the glass (the Rain-Ready Full Detail, from $369). Tap Book to see your price.
 ```
 
 ---

@@ -157,7 +157,7 @@ const quote = (qrSvg) => `<div class="sheet sign q" id="quote">
     <div><b>Full Detail</b><span>$369–$449</span></div>
   </div>
   <div class="note">Sedan to van or 3-row. How rough it is can add $30 or $60.</div>
-  ${WITH_OFFER ? `<div class="rr"><b>Rain-Ready:</b> book a Full Detail by December 31 and the exterior polish, ceramic wax and RainX are free (worth $508, from $369). Mention Treat Street.</div>` : ''}
+  ${WITH_OFFER ? `<div class="rr"><b>Rain-Ready:</b> book a Full Detail by December 31 and the ceramic wax, RainX and anti-fog are free (worth $508, from $369). Mention Treat Street.</div>` : ''}
   <div class="bottom">
     I come to your driveway. You pay after the work, never a deposit.
     <div class="ph">Call or text ${PHONE}</div>

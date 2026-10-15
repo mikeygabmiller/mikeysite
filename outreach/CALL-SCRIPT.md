@@ -19,8 +19,8 @@ price changes there, it changes here.
   the 3 visits, cancel anytime.
 - Anyone who joined at the first deal ($150 off, keep 2, $75 each) keeps that
   deal. Tools → Clean Club shows each member's own numbers.
-- Rain-Ready still applies: a Full Detail booked by Dec 31 gets polish, ceramic
-  wax and RainX free, club or not.
+- Rain-Ready still applies: a Full Detail booked by Dec 31 gets ceramic wax,
+  RainX and RainX Anti-Fog free, club or not.
 
 ## Before you call
 

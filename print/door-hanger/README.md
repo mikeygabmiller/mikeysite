@@ -22,9 +22,9 @@ hanger's version is its own, laid out as a value stack:
 |---|---|
 | Interior detail | $249 |
 | Exterior detail | $199 |
-| Exterior polish | ~~$30~~ free |
 | Ceramic wax | ~~$20~~ free |
-| RainX on the glass | ~~$10~~ free |
+| RainX on the outside glass | ~~$10~~ free |
+| RainX Anti-Fog inside | ~~$30~~ free |
 | **Worth $508, from $369** | |
 
 Every number is the real price book (sedan base, `PRICING.md`), and the fine
@@ -32,10 +32,10 @@ print on the back says so. Only the three extras are called free: the $79
 Full Detail saves over booking the two apart is there every day of the year,
 so the offer doesn't claim it as limited-time.
 
-**It differs from the postcard and Instagram B07,** which still give carpet
-shampoo instead of polish ($50 of extras). Honor whichever piece the
-customer mentions. Polish is the slow one (the reason it was left out on
-2026-09-25), so it's roughly 30 more minutes per hanger car.
+**It differs from the EDDM postcard,** which gives carpet shampoo instead of
+anti-fog ($50 of extras). Honor whichever piece the customer mentions. Until
+2026-10-15 the third extra was exterior polish; Mikey swapped in RainX
+Anti-Fog (same $30) before any hangers were printed.
 
 Print `front.pdf` + `back.pdf`. The `-no-offer` files stay for any reprint
 after December 31 (the offer box becomes "No deposit / Same guy" plus a

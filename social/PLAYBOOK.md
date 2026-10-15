@@ -102,12 +102,14 @@ how posts go up.
 ## 3. The offer: the Rain-Ready Full Detail
 
 > **Book a Full Detail by December 31, 2026 and three rain-season extras come
-> free:** exterior polish ($30), ceramic wax ($20), RainX on the glass ($10).
+> free:** ceramic wax ($20), RainX on the outside glass ($10), RainX Anti-Fog
+> on the inside ($30).
 > Full detail from $369. In the quote on the site, picking Full Detail puts the
 > three extras on at $0 by themselves; by text, they say "Rain-Ready".
 
 This is the same offer the homepage, the door hanger and the postcard carry
-(Mikey's call on 2026-09-28: polish in, carpet shampoo out, book by Dec 31).
+(Mikey's call on 2026-09-28: polish in, carpet shampoo out, book by Dec 31;
+then on 2026-10-15: anti-fog in, polish out).
 A job booked by December 31 can be done as late as January 31, 2027. The
 first version of this playbook (2026-09-25) had a $50 October-to-March
 version with carpet shampoo and a RAIN READY code word; it was replaced by
@@ -123,7 +125,7 @@ it is December 31.** After that, delete it from anything scheduled.
 
 This is a real promise to real customers, so it's the one thing in here that
 needs your yes. What it costs you: nothing off the full detail price, extra
-time on every offer car (the polish is the slow one), and a little product.
+time on every offer car, and a little product.
 The homepage already makes this promise, so the post only adds reach. If that's not OK, just never post B07. Nothing else depends
 on it.
 
