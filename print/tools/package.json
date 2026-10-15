@@ -1,7 +1,7 @@
 {
   "name": "mikeys-print-tools",
   "private": true,
-  "description": "Renders print pieces (door hangers, EDDM postcard, yard sign, business card, gift card, car window decal, air freshener, Hometown Values magazine ad). Not part of the website build.",
+  "description": "Renders print pieces (door hangers, EDDM postcard, yard sign, business card, gift card, car window decal, air freshener, Hometown Values magazine ad, Treat Street booth signs). Not part of the website build.",
   "scripts": {
     "hanger": "node build-door-hanger.cjs",
     "postcard": "node build-postcard.cjs",
@@ -17,6 +17,7 @@
     "htv-variations": "node build-htv-variations.cjs",
     "htv-concepts": "node build-htv-concepts.cjs",
     "htv-premium": "node build-htv-premium.cjs",
+    "treat-signs": "node build-treat-street.cjs",
     "treat": "node build-treat-street-card.cjs"
   },
   "dependencies": {
