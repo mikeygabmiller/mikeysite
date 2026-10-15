@@ -2,7 +2,7 @@
 
 Macaroni KID's Treat Street at Evergreen Speedway, under the grandstands,
 4 to 7 PM (setup from about 2). Toni Hill runs it; her number on the day is
-206-852-2546. Booth paid Oct 14 ($37.50 returning-vendor rate). Not served
+206-852-2546. Booth: $37.50 returning-vendor rate; $40.99 went to Macaroni KID on Square Oct 14, which looks like that plus a fee. Not served
 (`_config.yml` excludes `print/`).
 
 Three pieces, all on plain letter paper so a home printer or a UPS Store can do
