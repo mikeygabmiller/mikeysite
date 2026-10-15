@@ -7,7 +7,7 @@ Macaroni KID's Treat Street at Evergreen Speedway, under the grandstands,
 
 Three pieces, all on plain letter paper so a home printer or a UPS Store can do
 them the same day. Copy lives in `print/tools/build-treat-street.cjs`
-(`npm run treat-street`); never edit the PDFs.
+(`npm run treat-signs`); never edit the PDFs. The handout card for the same night is `print/treat-street-card/` (`npm run treat`): same QR tag, same offer wording.
 
 | File | What it's for | How many |
 |---|---|---|

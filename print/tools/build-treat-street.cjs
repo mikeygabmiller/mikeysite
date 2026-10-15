@@ -2,7 +2,7 @@
 // Sat Oct 24, 2026). All three print on plain letter paper at home or a UPS
 // Store; white backgrounds so a home printer's ink lasts.
 //
-//   cd print/tools && npm install && npm run treat-street
+//   cd print/tools && npm install && npm run treat-signs
 //
 // Output lands in print/treat-street/:
 //   entry-slips.pdf     four drawing slips per sheet, cut on the dashed lines
