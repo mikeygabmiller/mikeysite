@@ -63,7 +63,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;-webkit-
 `;
 
 const M = 0.18; // one margin for everything, wider than the 0.14 in safe line
-const COUPON = 'Free polish, ceramic wax and RainX with a Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
+const COUPON = 'Free ceramic wax, RainX and anti-fog with a Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
 const FINE = "No travel fee. You provide an outdoor spigot and outlet: that's how I keep prices down.";
 
 // ---------------------------------------------------------------------------

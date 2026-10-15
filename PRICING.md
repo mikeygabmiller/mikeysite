@@ -19,7 +19,7 @@ A quote is **base + size step + condition + add-ons**:
   pickup" and "Van / XL: minivan / 3-row"), so the pages use the same split.
 - **Condition:** +$0 Pretty Clean, +$30 Needs Work, +$60 War Zone.
 - **Add-ons:** carpet shampoo $20, exterior polish $30, ceramic wax $20,
-  RainX $10.
+  RainX $10, RainX Anti-Fog $30 (inside glass; added 2026-10-15).
 
 The published ranges ($199–$279, $249–$329, $369–$449) are base plus size
 only. Condition and add-ons sit on top, which is why the pages say "depending
@@ -32,7 +32,7 @@ and Exterior separately, and the calculator says so.
 |---|---|
 | `index.html`, `var PRICE` and the `data-role="vehicle"` buttons | the quote calculator, the thing that actually quotes |
 | `index.html`, `#allservices` `SVC` / `SIZE` | the "what do you need?" chooser's ballpark |
-| `index.html`, `#rain-ready` | the Rain-Ready value stack ($249 + $199 + $30 + $20 + $10 = $508, from $369), live until December 31, 2026 |
+| `index.html`, `#rain-ready` | the Rain-Ready value stack ($249 + $199 + $20 wax + $10 RainX + $30 anti-fog = $508, from $369), live until December 31, 2026 |
 | every page's JSON-LD | `priceRange`, the `#business` OfferCatalog, per-page `Service` offers |
 | every page's visible copy | pills, FAQ answers (and their JSON-LD twins), meta descriptions |
 | `llms.txt` | what AI assistants quote |
@@ -108,7 +108,7 @@ Decided by Mikey on 2026-09-27 unless marked open:
   - The payback is what makes $99 safe: someone who leaves after the first
     visit pays $99 + $270 = $369, the full price. What it doesn't cover is
     time. A $99 first visit is still a 3 to 5 hour Full Detail (plus the
-    Rain-Ready polish, wax and RainX through Dec 31) in one of his ~7 weekly
+    Rain-Ready wax, RainX and anti-fog through Dec 31) in one of his ~7 weekly
     slots, so the cost of a busy sign-up week is slots, not money.
   - Each club visit also takes a slot at $125, the cheapest one there is (see
     the next line). Past a handful of members, the calendar needs to fit two

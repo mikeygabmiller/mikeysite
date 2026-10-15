@@ -129,7 +129,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;-webkit-
   </div>
   <div class="abs qr txt" style="left:${qrL}in;top:${qrT}in;width:${qrBox}in;height:${qrBox}in;padding:${qrPad}in">${qr}</div>
   <div class="abs qcap txt" style="left:${qrL}in;width:${qrBox}in;top:${qrT + qrBox + 0.04}in"><b>Your price</b><br>in 60 seconds</div>
-  <div class="abs ts txt"><b>From Treat Street?</b> Mention it when you book a Full Detail by Dec 31 and the polish, ceramic wax and RainX are free.</div>
+  <div class="abs ts txt"><b>From Treat Street?</b> Mention it when you book a Full Detail by Dec 31 and the ceramic wax, RainX and anti-fog are free.</div>
 </div>`;
 
   const browser = await chromium.launch();
@@ -151,7 +151,7 @@ body{font-family:'Outfit',sans-serif;-webkit-font-smoothing:antialiased;-webkit-
       [/\b(30|90)[ -]sec/i, 'a quote time other than 60 seconds'], [/deposit/i, 'a deposit'],
       [/seamless|elevate|unlock|transform|jaw-dropping/i, 'an agency word']];
     for (const [re, what] of banned) if (re.test(text)) problems.push(`${name}: copy contains ${what}: "${text.match(re)[0]}"`);
-    if (name === 'back') for (const must of ['Dec 31', 'polish, ceramic wax and RainX', 'Treat Street', PHONE])
+    if (name === 'back') for (const must of ['Dec 31', 'ceramic wax, RainX and anti-fog', 'Treat Street', PHONE])
       if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`back: missing "${must}"`);
 
     // Type at MIN_PT or more, inside the safe area, nothing spilling, nothing overlapping.

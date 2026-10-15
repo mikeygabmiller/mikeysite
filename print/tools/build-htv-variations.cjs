@@ -98,7 +98,7 @@ const v1 = qr => ({
   <div class="top">${logo(false)}<div class="rt"><b>5.0</b> ${stars(5)}<br>${REVIEWS} Google reviews</div></div>
   <div class="kick">Lake Stevens car detailing at your house</div>
   <div class="free">3 EXTRAS FREE</div>
-  <div class="what">Polish, ceramic wax and RainX<small>Free ${COUPON_TERMS} Full Detail from $369, Interior from $249, Exterior from $199.</small></div>
+  <div class="what">Ceramic wax, RainX and anti-fog<small>Free ${COUPON_TERMS} Full Detail from $369, Interior from $249, Exterior from $199.</small></div>
   <div class="mid"><div class="ph"><img src="${BEFORE}"><span class="chip">Before</span></div><div class="ph"><img src="${AFTER}"><span class="chip r">After</span></div>
     <div class="q">"${REVIEW}"<span>${stars(5)} ${REVIEW_BY}, Google review</span></div></div>
   <div class="bot"><div class="qr">${qr}</div><div class="t"><div class="c">Call or text Mikey</div><div class="p">${PHONE}</div>
@@ -145,7 +145,7 @@ const v2 = qr => ({
   <div class="band"><h1>Lake Stevens car detailing<span>I come to your home or work</span></h1></div>
   <div class="body">
     <div class="prices"><div class="f"><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div></div>
-    <div class="cp"><b>3 EXTRAS FREE</b><span>Polish, ceramic wax and RainX ${COUPON_TERMS}</span></div>
+    <div class="cp"><b>3 EXTRAS FREE</b><span>Ceramic wax, RainX and anti-fog ${COUPON_TERMS}</span></div>
     <div class="q">"${REVIEW}" <span>${REVIEW_BY}</span></div>
     <div class="bot"><div class="qr" style="border:1pt solid var(--ink)">${qr}</div><div class="t"><div class="c">Call or text Mikey</div><div class="p">${PHONE}</div>
       <div class="rt">5.0 ${stars(5)} ${REVIEWS} Google reviews</div>
@@ -190,7 +190,7 @@ h1 span{display:block;color:#fff;font-size:14pt;font-weight:700;margin-top:2pt}
   <h1>Lake Stevens car detailing<span>I come to your driveway</span></h1>
   <div class="row"><div class="ph"><img src="${BEFORE}"><span class="chip">Before</span></div><div class="ph"><img src="${AFTER}"><span class="chip r">After</span></div>
     <div class="pr"><div><span>Full detail</span><b>$369</b></div><div><span>Interior</span><b>$249</b></div><div><span>Exterior</span><b>$199</b></div><small>Starting prices for a sedan. Exact price before I start.</small></div></div>
-  <div class="cp"><b>3 extras free</b><span>Polish, ceramic wax and RainX ${COUPON_TERMS}</span></div>
+  <div class="cp"><b>3 extras free</b><span>Ceramic wax, RainX and anti-fog ${COUPON_TERMS}</span></div>
   <div class="q">"${REVIEW}" <span>${REVIEW_BY}, Google</span></div>
   <div class="bot"><div class="qr">${qr}</div><div><div class="c">Call or text Mikey</div><div class="p">${PHONE}</div>
     <div class="s">Or scan for your exact price in 60 seconds. In Lake Stevens most weeks, no travel fee. You provide a spigot and outlet: that's how I keep prices down.</div></div></div>
@@ -237,7 +237,7 @@ const v4 = qr => ({
       <div><b>Interior</b><i>$249</i><small>Full vacuum, steam on seats and carpet, dash, trim, door jambs. About 90 minutes.</small></div>
       <div><b>Exterior</b><i>$199</i><small>Hand wash, wheel deep clean, glass, spray sealant. About 1 to 2 hours.</small></div>
     </div>
-    <div class="cp"><b>Free polish, ceramic wax and RainX</b>${COUPON_TERMS.replace(/^on/, 'On')}</div>
+    <div class="cp"><b>Free ceramic wax, RainX and anti-fog</b>${COUPON_TERMS.replace(/^on/, 'On')}</div>
     <div class="q"><div class="ph"><img src="${BEFORE}" style="object-position:50% 65%"><span class="chip">Before</span></div><p>"${REVIEW}" <span>${REVIEW_BY}, Google review</span></p></div>
     <div class="bot"><div class="qr" style="border:1pt solid var(--ink)">${qr}</div><div>${logo(false)}<div class="p">${PHONE}</div>
       <div class="s">Call, text, or scan for your exact price in 60 seconds. No travel fee. You provide a spigot and outlet: that's how I keep prices down.</div></div></div>
@@ -280,7 +280,7 @@ const v5 = qr => ({
   <div class="note">You don't drive anywhere or wait in a lobby. I bring the tools, you provide an outdoor spigot and outlet (that's how I keep prices down). <b>You get the exact price before I start</b>, and you don't pay until you've walked around the car with me. <b>5.0 on Google across ${REVIEWS} reviews.</b></div>
   <div class="pics"><div class="ph"><img src="${BEFORE}"><span class="chip">Before</span></div><div class="ph"><img src="${AFTER}"><span class="chip r">After</span></div>
     <div class="pr"><div class="f"><span>Full detail from</span><b>$369</b></div><div><span>Interior from</span><b>$249</b></div><div><span>Exterior from</span><b>$199</b></div><div><span>Travel fee</span><b>none</b></div></div></div>
-  <div class="cp"><b>3 extras free:</b> polish, ceramic wax and RainX ${COUPON_TERMS}</div>
+  <div class="cp"><b>3 extras free:</b> ceramic wax, RainX and anti-fog ${COUPON_TERMS}</div>
   <div class="q">"${REVIEW}" ${stars(5)} ${REVIEW_BY}</div>
   <div class="bot"><div class="qr" style="border:1pt solid var(--ink)">${qr}</div><div><div class="sig">Mikey</div><div class="p">${PHONE}</div>
     <div class="s">Call or text me, or scan for your exact price in 60 seconds. I'm in Lake Stevens most weeks.</div></div></div>

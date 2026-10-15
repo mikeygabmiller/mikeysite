@@ -274,7 +274,8 @@ const T = {
 
   // The Rain-Ready Full Detail as the homepage, the hanger and the postcard
   // print it (Mikey, 2026-09-28): book a Full Detail by December 31, 2026 and
-  // polish, ceramic wax and RainX come free. Picking Full Detail in the quote
+  // ceramic wax, RainX and RainX Anti-Fog come free (anti-fog replaced the polish
+  // on 2026-10-15). Picking Full Detail in the quote
   // puts them on by themselves, so there's no code word to type.
   offer: () => `<div class="main offer">
     <div class="eyebrow">Book by December 31</div>
@@ -282,9 +283,9 @@ const T = {
     <div class="lede">Book a full detail and the three<br>things that help most in the rain are free.</div>
     <div class="stack">
       <div class="row base"><span>Full detail, inside and out</span><span class="p">from $369</span></div>
-      <div class="row"><span>Exterior polish</span><span class="p"><s>$30</s><span class="free">FREE</span></span></div>
       <div class="row"><span>Ceramic wax</span><span class="p"><s>$20</s><span class="free">FREE</span></span></div>
       <div class="row"><span>RainX on the glass</span><span class="p"><s>$10</s><span class="free">FREE</span></span></div>
+      <div class="row"><span>RainX Anti-Fog</span><span class="p"><s>$30</s><span class="free">FREE</span></span></div>
       <div class="row tot"><span>Extras on me</span><span class="p">$60</span></div>
     </div>
     <div class="code">Pick <b>Full Detail</b> in the quote. The extras go on by themselves.</div>

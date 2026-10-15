@@ -711,11 +711,11 @@ Save this one.
 The Rain-Ready Full Detail. Book it by December 31.
 
 From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
-Exterior polish ($30)
 Ceramic wax ($20)
-RainX on the glass ($10)
+RainX on the outside glass ($10)
+RainX Anti-Fog on the inside ($30)
 
-Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
+Ceramic wax on the paint, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night. Anti-fog on the inside, so the glass doesn't fog up when everyone climbs in wet.
 
 That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
 
@@ -732,11 +732,11 @@ The quote on my site shows my real open times, so you can grab a day without tex
 The Rain-Ready Full Detail. Book it by December 31.
 
 From October to March your car is wet more days than it's dry. So every Full Detail booked by December 31 gets the three things that help most in the rain, free:
-Exterior polish ($30)
 Ceramic wax ($20)
-RainX on the glass ($10)
+RainX on the outside glass ($10)
+RainX Anti-Fog on the inside ($30)
 
-Polish first, so the wax goes onto clean paint instead of sealing the film in. Ceramic wax on top, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night.
+Ceramic wax on the paint, so rain beads and rolls off. RainX on the windshield, so water sheets off at speed on a dark wet night. Anti-fog on the inside, so the glass doesn't fog up when everyone climbs in wet.
 
 That's on top of the normal full detail (from $369, exact price in 60 seconds). And you don't pay anything until we've walked around the car and you love it.
 
@@ -747,7 +747,7 @@ The quote on my site shows my real open times, so you can grab a day without tex
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Offer graphic: The Rain-Ready Full Detail, book by December 31. Full detail from $369, plus exterior polish ($30), ceramic wax ($20) and RainX on the glass ($10), all free. Pick Full Detail in the quote and the extras go on by themselves. You don't pay until you love it.
+> Offer graphic: The Rain-Ready Full Detail, book by December 31. Full detail from $369, plus ceramic wax ($20), RainX on the outside glass ($10) and RainX Anti-Fog on the inside ($30), all free. Pick Full Detail in the quote and the extras go on by themselves. You don't pay until you love it.
 
 
 ---

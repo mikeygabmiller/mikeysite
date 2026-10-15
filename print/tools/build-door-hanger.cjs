@@ -44,9 +44,9 @@ const TOWNS = ['Snohomish', 'Lake Stevens', 'Everett', 'Monroe', 'Mill Creek', '
   'Bothell', 'Duvall', 'Mukilteo', 'Woodinville', 'Granite Falls', 'Arlington'];
 
 // The hanger's Rain-Ready offer is its own version (README, "The offer"):
-// polish, ceramic wax and RainX free, laid out as a stack against Interior +
-// Exterior booked apart. The postcard and B07 still give carpet shampoo
-// instead of polish. It needs Mikey's yes before it is printed. OFFER=0
+// ceramic wax, RainX and RainX Anti-Fog free (anti-fog replaced the polish on
+// 2026-10-15, Mikey), laid out as a stack against Interior + Exterior booked
+// apart. The EDDM postcard gives carpet shampoo instead of anti-fog. It needs Mikey's yes before it is printed. OFFER=0
 // builds the version without it.
 const WITH_OFFER = process.env.OFFER !== '0';
 
@@ -319,7 +319,7 @@ const frontHtml = (qr) => `
       <ul class="stack">
         <li><span>Interior detail</span><i>$249</i></li>
         <li><span>Exterior detail</span><i>$199</i></li>
-        <li class="f"><span>Exterior polish</span><i><s>$30</s>Free</i></li>
+        <li class="f"><span>RainX Anti-Fog</span><i><s>$30</s>Free</i></li>
         <li class="f"><span>Ceramic wax</span><i><s>$20</s>Free</i></li>
         <li class="f"><span>RainX on the glass</span><i><s>$10</s>Free</i></li>
       </ul>

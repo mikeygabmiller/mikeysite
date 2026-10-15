@@ -61,7 +61,7 @@ const W = 4.0625, H = 4.75;
 const SAFE = 0.14;       // magazines trim and register loosely; keep type off the frame
 const MIN_PT = 6.5;      // nothing smaller survives coupon-magazine printing
 
-const RAIN_READY = '3 extras FREE|Polish, ceramic wax and RainX free on any Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
+const RAIN_READY = '3 extras FREE|Ceramic wax, RainX and anti-fog free on any Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
 const RR_OVER = new Date() >= new Date('2027-01-01T00:00:00-08:00');
 if (process.env.OFFER === 'rainready' && RR_OVER) throw new Error('Rain-Ready ended December 31, 2026. Build the ad without OFFER.');
 const [OFFER_BIG, OFFER_SMALL] = (process.env.OFFER === 'rainready' ? RAIN_READY : process.env.OFFER || '').split('|');

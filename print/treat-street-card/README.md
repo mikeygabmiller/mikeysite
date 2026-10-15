@@ -34,7 +34,7 @@ card handed to strangers, that job is getting them back to you.
   calculator ("Your price in 60 seconds").
 - **The one Treat Street touch:** the orange line along the bottom of the
   back. "From Treat Street? Mention it when you book a Full Detail by Dec 31
-  and the polish, ceramic wax and RainX are free." That's the Rain-Ready
+  and the ceramic wax, RainX and anti-fog are free." That's the Rain-Ready
   offer on the hangers' terms, not a new one. The generator refuses to build
   from January 1, 2027.
 - **The QR** goes to
