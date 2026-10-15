@@ -337,9 +337,11 @@ competes with the first in search.
   2026-10-05 (`reports/2026-10-scoreboard.md`): roll it out to the other city
   pages if they move by the November pull, put it back if they don't.
 - **Search Console's real numbers** start in `reports/2026-10-scoreboard.md`
-  (pulled by hand 2026-10-07; Windsor's free plan allows one source and
-  Google Ads holds it, so GBP, GA4 and Search Console are read by hand). It has the
-  title test's before-picture, the position 5–15 watch list, and six pages
+  (pulled by hand 2026-10-07). Windsor's free plan allows one source: Mikey
+  moved it from Google Ads to Search Console on 2026-10-15, so Search Console
+  is a Windsor pull now and Ads, GBP and GA4 are read by hand. Everything
+  Ads had up to then is in `reports/2026-10-15-google-ads.md`. The
+  scoreboard has the title test's before-picture, the position 5–15 watch list, and six pages
   live since May with no impressions in three months (near-me, pet hair, vs
   car wash, two city interior pages, Monroe ceramic). Read URL Inspection's
   status for those before rewriting them. Semrush got the small towns wrong;
