@@ -34,7 +34,7 @@ const SOCIAL = path.join(ROOT, 'social');
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
 const PHONE = '(425) 600-7897';
 const SITE = 'mikeysdetailing.com';
-const REVIEWS = 39; // what the Google profile shows; recheck before sending art
+const REVIEWS = 40; // what the Google profile shows; recheck before sending art
 // Its own utm_source so Google Analytics keeps the magazine apart from the
 // postcard and the hanger: Reports > Acquisition > Traffic acquisition,
 // "hometownvalues / mail".
