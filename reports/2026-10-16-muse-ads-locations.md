@@ -29,12 +29,14 @@ Why each part:
    | Marysville | 29 min | no, borderline (over 30 with traffic) |
    | Granite Falls | 30 min | no, borderline |
    | Woodinville | 31 min | no |
-   | Bothell | 34 min | no |
+   | Bothell | 34 min | yes, Mikey added it |
    | Mukilteo | 35 min | no |
-   | Mill Creek | 36 min | no |
+   | Mill Creek | 36 min | yes, Mikey added it |
    | Arlington | 42 min | no |
 
-   The website still serves all twelve; only the ads narrow. Sultan (25 min)
+   Mikey then added Bothell and Mill Creek (2026-10-16), over the 30
+   minutes, so the ads cover seven towns. The website still serves all
+   twelve; only the ads narrow. Sultan (25 min)
    is inside the line but isn't a served town, so it stays out. "Presence"
    (people in the place) stays, because a mobile detailer gains nothing from
    a click by someone who only searched about the area.
@@ -85,11 +87,13 @@ locations**.)
 - every excluded location, with its type
 - the "Location options" (Presence, or Presence or interest)
 
-**2. Set the targets to exactly these five.** Mikey wants the ads to reach
-only people within about 30 minutes' drive of him, for now. Search each one
+**2. Set the targets to exactly these seven.** Mikey wants the ads to reach
+only people near him, for now: the towns within about 30 minutes' drive,
+plus Bothell and Mill Creek. Search each one
 and pick the result marked **City** in **Washington, United States**:
 
-`Snohomish` · `Monroe` · `Lake Stevens` · `Everett` · `Duvall`
+`Snohomish` · `Monroe` · `Lake Stevens` · `Everett` · `Duvall` ·
+`Bothell` · `Mill Creek`
 
 - Pick the **Snohomish** that says City, never "Snohomish County".
 - If a town shows no City result, try its ZIP code and write down what you
@@ -99,17 +103,20 @@ and pick the result marked **City** in **Washington, United States**:
   - Lake Stevens 98258
   - Everett 98201, 98203, 98204, 98208
   - Duvall 98019
+  - Bothell 98011, 98012, 98021
+  - Mill Creek 98012
 - If Google says a town's reach is too small to show, add it anyway.
-- After adding the five, **remove every other target**: Snohomish County, a
+- After adding the seven, **remove every other target**: Snohomish County, a
   radius, any other town or ZIP.
-- **Don't add** Marysville, Granite Falls, Woodinville, Bothell, Mukilteo,
-  Mill Creek, Arlington, Sultan, Lynnwood or Edmonds, even if Google suggests
+- **Don't add** Marysville, Granite Falls, Woodinville, Mukilteo,
+  Arlington, Sultan, Lynnwood or Edmonds, even if Google suggests
   them.
 - **Don't type Mikey's home address** anywhere, and don't use a radius.
 
 **3. Exclusions:** leave every existing exclusion as it is (Arlington,
-Bellevue, Marysville, Seattle, Shoreline). None of them overlap the five
-towns. Don't add any.
+Bellevue, Marysville, Seattle, Shoreline). None of them overlap the seven
+towns. Don't add any. If Google won't save because an exclusion overlaps
+a target, stop and report it.
 
 **4. Location options:** keep **"Presence: People in or regularly in your
 targeted locations"**. If it says anything else, change it to that and write
