@@ -165,7 +165,10 @@ taking them.
    customer who clicks for it finds tomorrow at the earliest.
 3. **Conversions → Summary.** Primary should be calls and the quote/booking
    only. `qqc_submission` (the quote calculator, from GA4) is set as secondary
-   right now, so the 2 quotes it saw didn't count. Make it primary. "Local
+   right now. **Leave it secondary** (corrected 2026-10-16): `site-stats.js`
+   already sends every quote to Ads directly (label `13rMCOG9vfQcEKTSz-U-`),
+   so a primary GA4 copy would count each quote twice. Muse's checklist for
+   all of this is `reports/2026-10-16-muse-ads-conversions.md`. "Local
    actions" (directions, other engagements) should stay secondary: they made
    the campaign look like it had 23 more results than it did.
 
