@@ -158,6 +158,83 @@ that moved may owe it to these:
 - **`/services/` answer box** (#226): "What's included in a full detail?",
   the M5 question, answered on the Full Detail page instead of a new page.
 
+## Changed on 2026-10-16 (also inside the November window)
+
+Small, and none touches a title, H1, meta or visible copy on the test pages,
+but listed so November knows:
+
+- **Gallery photos swapped for the blurred copies.** The site served the
+  unblurred originals (`/images/unnamed (N).webp`) while social used the
+  copies `social/tools/prep-photos.cjs` blurs. The plates on the site's
+  copies were already pixelated; the one thing still readable was the house
+  number on the wall behind the blue Subaru. The site now serves the blurred
+  copies under names that say what's in them (`subaru-crosstrek-driveway.webp`
+  and so on); the originals moved to `social/originals/` (not served). The
+  two 101 x 72 px thumbnails stretched to 280 x 200 in the homepage, services
+  and maintenance galleries were replaced by the Jeep Wrangler and the
+  Escalade interior from the album.
+- **Alt text that didn't match the photo.** The maintenance page called
+  detailing photos "New oil filter installed" (the red Volvo outside),
+  "Dashboard warning lights checked" (an Audi e-tron, which has no oil),
+  "Engine bay fluids topped off" (the Lexus, no engine bay in shot) and
+  "Battery test". `/services/` called the back-seat and cargo pairs
+  "exterior paint restored" and "wheels and exterior cleaned". One back-seat
+  pair was labelled "in Duvall", "in Lake Stevens" and "in Mill Creek" on
+  three pages; the town is gone. Each photo now has one description, the same
+  on every page, of what's in it. Pages touched: home, `/services/`,
+  maintenance, Duvall, Lake Stevens, Mill Creek (alt text only).
+- **Blog links.** The five posts linked to almost nothing. Now: the smell
+  post links the pet hair post, the how-often post links the smell post, the
+  headlight post links paint correction ("it's paint correction on
+  plastic"), and the smell, pet hair and coffee posts link the Interior
+  Detail page from their price line.
+
+## Business Profile, pulled from Windsor 2026-10-16
+
+Windsor's one connected source is the **Business Profile**, not Search
+Console (Search Console answers "no accounts configured"). So GBP is the
+Windsor pull for now, and Search Console is back to by hand.
+
+| Month | Impressions | Maps (mobile / desktop) | Search (mobile / desktop) | Calls | Website | Directions |
+|---|---|---|---|---|---|---|
+| Apr | 245 | 42 / 28 | 102 / 73 | 3 | 42 | 24 |
+| May | 198 | 20 / 16 | 106 / 56 | 4 | 35 | 0 |
+| Jun | 176 | 10 / 22 | 88 / 56 | 3 | 29 | 0 |
+| Jul | 189 | 11 / 19 | 106 / 53 | 4 | 12 | 0 |
+| Aug | 343 | 78 / 45 | 164 / 56 | 6 | 30 | 52 |
+| Sep | 589 | 55 / 318 | 165 / 51 | 7 | 23 | 49 |
+| Oct 1 to ~12 | 130 | 9 / 27 | 68 / 26 | 0 | 9 | 17 |
+
+September matches Muse's read (589, 7 calls, 23 clicks). Its jump is almost
+all desktop Maps (318, against 45 in August): one month, so don't build on it
+yet. October is partial and GBP runs days behind; 0 calls in it is not a
+finding until the full month is in.
+
+**What people typed when they found the profile** (unique people a month;
+Google only gives a number above 15, everything else shows as "under 15"):
+
+| Month | Over 15 | Under 15 |
+|---|---|---|
+| Jul | none | auto detailing snohomish, car detailing snohomish, his name |
+| Aug | car wash 18 | car detailing (snohomish / monroe, wa / near me / service), mobile car detailing monroe and snohomish, mobile detailing in monroe wa, mobile detailing near me, car wash in 98296 |
+| Sep | **detailing 141, paint correction 113** | car detailing near me, car detailing snohomish, auto detailers snohomish, car seat cleaning near me, car wash (near me), mobile (auto) detailing (near me), a1 auto detailing near me, his name misspelled ("mikey dowe") |
+
+**Paint correction is the finding.** 113 people found him on "paint
+correction" in September, more than every town search put together, and the
+site's paint correction pages show not one photo of paint work (the county
+page's only image is the logo). Real photos are the next step and they're
+Mikey's: a 50/50 tape line or a before and after under a light, plate and
+house out of shot. The photos already on the site are full details with no
+record of whether paint was corrected, so none of them can be labelled as
+paint correction.
+
+**Categories.** The profile has one category, "Car detailing service", and
+no additional ones. Google allows more. For Muse with Mikey signed in: Edit
+profile → Business category → Add another, type "detail", "ceramic",
+"paint" and "wash", and report the exact names Google offers. Add only one
+that's work he does; a category for work he doesn't do gets a profile shown
+to the wrong people.
+
 ## Search Console (added 2026-10-08)
 
 Pulled by hand on 2026-10-07 from the only property on the account,
