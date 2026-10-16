@@ -226,3 +226,40 @@ day, licensed). Mikey's call.
 **Linked GA4:** one property, "Mikeysdetailing.com" (489075814). The Google
 tag's destinations don't include `G-7L605ZX0RV`, which still receives events
 on the site; not urgent.
+
+## Second Muse run, 2026-10-16: locations, auto-apply, Misconfigured
+
+Ran `reports/2026-10-16-muse-ads-locations.md`.
+
+**Locations.** Before: one target, Snohomish (City, reach 45,000),
+presence only, five city exclusions. After: seven City targets, Snohomish,
+Monroe (by ZIP 98272, no City result), Lake Stevens, Everett, Duvall,
+Bothell, Mill Creek. Presence only, exclusions unchanged. Snohomish alone
+was the Oct 1 collapse: one town of 45,000 people.
+
+**Auto-apply.** All 21 types off (20 were on). Since Sep 1 it had removed a
+broad match keyword (Sep 1, Same Day), switched to Maximize conversions three
+times (last Oct 11) and, on **Sep 5, opted the Search campaign into the
+Display Network**. Turning auto-apply off doesn't undo that: the campaign's
+Networks setting still needs checking (Settings → Networks, untick Display).
+
+**Misconfigured** means no conversion from an ad click in 7 days, which is
+true since Sep 30 and isn't a tag fault (both tags fire, tested 2026-10-16):
+
+- Quote: last tag ping Oct 15, so it's live.
+- Tap-to-call: last ping Oct 3, so nobody tapped call or text on the site
+  from Oct 3 to 16, or no tap reached Google. `site-stats.js` hasn't changed
+  that code since Sep 3. Worth comparing with GA4's `phone_click` for the
+  same days.
+- "Implement in-page code" is Google suggesting the site send customers'
+  phone numbers for enhanced conversions. Not done; it's a privacy call.
+
+Both clear on the first lead from an ad.
+
+**Business profile.** The extra phone (360) 797-5831 is removed, pending
+Google's review. Primary (425) 600-7897 untouched.
+
+**Call assets** on the live campaign: three, all (425) 600-7897, one pending
+review (the one edited earlier the same day, most likely). A fourth,
+4252321355, is disapproved and belongs to the old "Real" campaign. Campaign:
+Enabled, Eligible.
