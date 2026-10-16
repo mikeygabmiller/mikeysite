@@ -18,6 +18,9 @@ const sharp = require('sharp');
 const path = require('path');
 
 const SRC = path.join(__dirname, '..', '..', 'images');
+// The site's first gallery photos, unblurred. Moved out of /images on
+// 2026-10-16 so the site serves only the blurred copies made here.
+const ORIG = path.join(__dirname, '..', 'originals');
 const OUT = path.join(__dirname, '..', 'photos');
 const INBOX = path.join(__dirname, '..', 'inbox');
 const fs = require('fs');
@@ -127,7 +130,7 @@ async function blurBox(img, meta, [x, y, w, h], strong) {
 
 (async () => {
   for (const p of PHOTOS) {
-    const src = p.album ? path.join(INBOX, `${p.album}.jpg`) : path.join(SRC, p.src);
+    const src = p.album ? path.join(INBOX, `${p.album}.jpg`) : path.join(p.src.startsWith('unnamed') ? ORIG : SRC, p.src);
     if (p.album && !fs.existsSync(src)) { console.log(p.out.padEnd(24), 'skipped (original not in social/inbox; run npm run album)'); continue; }
     let img = sharp(src).rotate();
     if (p.crop) img = img.extract(p.crop);

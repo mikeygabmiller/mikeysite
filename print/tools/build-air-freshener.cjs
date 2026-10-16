@@ -38,7 +38,7 @@ const BRAND = path.join(ROOT, 'social', 'brand', 'logo-final');
 const TRUCK_PNG = path.join(BRAND, 'source', 'truck-cutout.png');
 const WORD_PNG = path.join(BRAND, 'transparent-png', 'wordmark-dark.png');
 // The mockup's backdrop: a dashboard from the site's own gallery, blurred out of focus.
-const CAR_PHOTO = path.join(ROOT, 'images', 'unnamed (12).webp');
+const CAR_PHOTO = path.join(ROOT, 'social', 'originals', 'unnamed (12).webp');
 const fileUrl = p => 'file://' + p.split(path.sep).map(encodeURIComponent).join('/').replace(/^%2F/, '/');
 
 // ---- The facts. Every one of these is in the CLAUDE.md facts table. ----
