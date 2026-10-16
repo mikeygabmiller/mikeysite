@@ -9,12 +9,35 @@ session, which records it in the same Ads report.
 Why each part:
 
 1. **Locations.** On Sep 29 the campaign was set to target "Snohomish" and to
-   exclude Marysville and Arlington, two served towns. Impressions fell from
-   about 180 a day to 16 two days later. A county target wouldn't do either:
-   Snohomish County takes in Lynnwood and Edmonds (not served) and leaves out
-   Woodinville and Duvall (King County). So the target is the twelve towns,
-   by name. "Presence" (people in the place) stays, because a mobile detailer
-   gains nothing from a click by someone who only searched about the area.
+   exclude Marysville and Arlington. Impressions fell from about 180 a day to
+   16 two days later. Mikey then set the rule (2026-10-16, "for now"): **ads
+   only within 30 minutes' drive of his home.** Google Ads can't target by
+   drive time, and a mileage circle fits badly here (Mill Creek is 11 miles
+   away in a straight line but 36 minutes by road), so the target is the
+   served towns whose centre is under 30 minutes by road. Drive times are
+   OSRM routing from his home (east of Snohomish town; the street isn't
+   written here because this repo is public), with no traffic, so real
+   afternoon times run a little longer:
+
+   | Town | Drive | In the ads? |
+   |---|---|---|
+   | Monroe | 14 min | yes |
+   | Snohomish | 14 min | yes |
+   | Lake Stevens | 20 min | yes |
+   | Everett | 24 min | yes |
+   | Duvall | 28 min | yes |
+   | Marysville | 29 min | no, borderline (over 30 with traffic) |
+   | Granite Falls | 30 min | no, borderline |
+   | Woodinville | 31 min | no |
+   | Bothell | 34 min | no |
+   | Mukilteo | 35 min | no |
+   | Mill Creek | 36 min | no |
+   | Arlington | 42 min | no |
+
+   The website still serves all twelve; only the ads narrow. Sultan (25 min)
+   is inside the line but isn't a served town, so it stays out. "Presence"
+   (people in the place) stays, because a mobile detailer gains nothing from
+   a click by someone who only searched about the area.
 2. **Auto-apply** was on for 20 of 21 types. It lets Google rewrite the ads
    (which could add "same day" or "licensed", neither true), add broad match
    keywords, move money to Display and change the bidding.
@@ -62,37 +85,31 @@ locations**.)
 - every excluded location, with its type
 - the "Location options" (Presence, or Presence or interest)
 
-**2. Set the targets to exactly these twelve.** Search each one and pick the
-result marked **City** in **Washington, United States**:
+**2. Set the targets to exactly these five.** Mikey wants the ads to reach
+only people within about 30 minutes' drive of him, for now. Search each one
+and pick the result marked **City** in **Washington, United States**:
 
-`Snohomish` · `Lake Stevens` · `Everett` · `Monroe` · `Mill Creek` ·
-`Marysville` · `Bothell` · `Duvall` · `Mukilteo` · `Woodinville` ·
-`Granite Falls` · `Arlington`
+`Snohomish` · `Monroe` · `Lake Stevens` · `Everett` · `Duvall`
 
 - Pick the **Snohomish** that says City, never "Snohomish County".
 - If a town shows no City result, try its ZIP code and write down what you
   used:
   - Snohomish 98290 and 98296
+  - Monroe 98272
   - Lake Stevens 98258
   - Everett 98201, 98203, 98204, 98208
-  - Monroe 98272
-  - Mill Creek 98012
-  - Marysville 98270 and 98271
-  - Bothell 98011, 98012, 98021
   - Duvall 98019
-  - Mukilteo 98275
-  - Woodinville 98072 and 98077
-  - Granite Falls 98252
-  - Arlington 98223
 - If Google says a town's reach is too small to show, add it anyway.
-- After adding the twelve, **remove every other target** (for example
-  Snohomish County, a radius, or a ZIP that isn't on the list above).
-- **Never target Lynnwood, Edmonds, Sultan, or Snohomish County.**
+- After adding the five, **remove every other target**: Snohomish County, a
+  radius, any other town or ZIP.
+- **Don't add** Marysville, Granite Falls, Woodinville, Bothell, Mukilteo,
+  Mill Creek, Arlington, Sultan, Lynnwood or Edmonds, even if Google suggests
+  them.
+- **Don't type Mikey's home address** anywhere, and don't use a radius.
 
-**3. Exclusions:**
-- **Remove** the exclusions for **Marysville** and **Arlington**.
-- **Leave** the exclusions for Bellevue, Seattle and Shoreline as they are.
-- Don't add any new exclusions.
+**3. Exclusions:** leave every existing exclusion as it is (Arlington,
+Bellevue, Marysville, Seattle, Shoreline). None of them overlap the five
+towns. Don't add any.
 
 **4. Location options:** keep **"Presence: People in or regularly in your
 targeted locations"**. If it says anything else, change it to that and write
@@ -152,7 +169,8 @@ exclusions and the location option as they now stand.
 Plain text, in this order:
 
 1. **Locations:** before (targets, exclusions, option) and after, plus
-   anything you used a ZIP code for.
+   anything you used a ZIP code for. If Google shows an estimated reach for
+   the new targets, write it down.
 2. **Auto-apply:** the types that were on, the auto-apply history since
    Sep 1, and confirmation that all 21 are now off.
 3. **Misconfigured:** every message for each of the two actions, and the
