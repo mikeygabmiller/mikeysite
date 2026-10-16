@@ -178,3 +178,51 @@ taking them.
 - Location: Windsor returns no city for any click. Google Ads → Insights →
   Locations has it.
 - Search Console and GBP: those are what Windsor reads next, from the switch.
+
+## What Muse found and fixed, 2026-10-16
+
+Ran `reports/2026-10-16-muse-ads-conversions.md` with Mikey signed in.
+
+**Conversions are right now.** "Site tap-to-call" (`pCPGCP69oO0cEKTSz-U-`,
+Contacts) and "Submit lead form" (`13rMCOG9vfQcEKTSz-U-`, Submit lead forms)
+were already Primary, count One. "Calls from ads (1)" is Primary, One, 60 s.
+GA4 `qqc_submission` is Secondary. Every page-load action is removed.
+
+**Changed:**
+
+- A campaign call asset (added Aug 28) rang **(360) 797-5831**, which isn't
+  Mikey's. Now (425) 600-7897, pending review. The other two call assets
+  already had 600-7897, so some ad callers since Aug 28 reached a stranger.
+- The campaign's goals were campaign-specific with **only** Submit lead
+  forms (set Sep 29), so from Sep 29 it bid on quotes and ignored every call
+  and tap. Now Submit lead forms + Phone call leads + Contacts.
+
+**Couldn't change:** Google locks "Clicks to call", the three "Local
+actions" and the Smart campaign actions as Primary. They sit in goals the
+campaign doesn't use (or only Smart campaigns record), so they don't steer
+its bidding. Keep the campaign on campaign-specific goals for that reason.
+
+**Both website actions show "Misconfigured"** while the tags fire correctly
+(tested 2026-10-16). Enhanced conversions is on ("setup issues detected").
+The exact reason is on each action's Diagnostics tab; not read yet.
+
+**Why Oct 1 fell off (change history, all Sep 29):**
+
+- 9:18 AM: locations went to presence-only, targeting "Snohomish" and
+  excluding Arlington, Bellevue, **Marysville**, Seattle and Shoreline.
+  Arlington and Marysville are served towns. This is the likely cause of
+  180 impressions a day becoming 16.
+- 9:24 AM: goals switched to campaign-specific, Submit lead forms only
+  (learning restart; fixed above).
+- 11:19 AM: the Same Day ad group paused, through Windsor.
+- Five new responsive search ads and ten ad copy edits.
+
+**Auto-apply is on for 20 of 21 recommendation types**, including adding
+broad match keywords, Display Expansion, rewriting ads and switching to
+Maximize clicks. Three have applied, the latest on Oct 11. Recommended: all
+off, because an auto-written ad can claim things the site never may (same
+day, licensed). Mikey's call.
+
+**Linked GA4:** one property, "Mikeysdetailing.com" (489075814). The Google
+tag's destinations don't include `G-7L605ZX0RV`, which still receives events
+on the site; not urgent.
