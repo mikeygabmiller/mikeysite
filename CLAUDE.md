@@ -37,7 +37,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Payment | after the work, never a deposit | a Clean Club card is saved with Stripe, not charged |
 | **Customer provides** | **outdoor water spigot + power outlet** | using theirs is how he keeps prices low. He can bring water and power if there's truly none, "if absolutely necessary" (Mikey, 2026-10-05): copy may say so as the exception, always with that reason, never as the default and never with a price |
 | Licensed / insured | **neither** | Mikey, 2026-10-05. Never claim or hint at either. `outreach/FLEET-EMAILS.md`: no dealership emails until he is |
-| Old phone numbers | **(425) 232-1355** and **360-799-9312** | 232-1355 is still on Yelp and Yahoo (`outreach/DIRECTORIES.md`); 360-799-9312 was on his 2024 Hometown Values ad. Never use either |
+| Old or wrong phone numbers | **(425) 232-1355**, **360-799-9312** and **(360) 797-5831** | 232-1355 is still on Yelp and Yahoo (`outreach/DIRECTORIES.md`); 360-799-9312 was on his 2024 Hometown Values ad; 797-5831 isn't his at all, yet it was on Yellow Pages, Nextdoor, his GBP's additional phone and a Google Ads call asset (that one fixed 2026-10-16). Never use any of them |
 
 Settled by Mikey on 2026-10-05:
 
