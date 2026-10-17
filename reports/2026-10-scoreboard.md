@@ -189,6 +189,54 @@ but listed so November knows:
   plastic"), and the smell, pet hair and coffee posts link the Interior
   Detail page from their price line.
 
+## Changed on 2026-10-17 (also inside the November window)
+
+- **Layout shift fixed on every page.** Lighthouse (mobile, run locally) had
+  Everett at CLS 0.193 and Marysville at 0.123, over Google's 0.1 line: the
+  hero buttons moved when Outfit replaced the wider system font (iPhones show
+  San Francisco first, which is wider). Each page now has an Arial fallback
+  face sized to Outfit, and the same test reads 0.004 on both. LCP that day:
+  homepage 1.9s (SG7's target is under 2.0s), city pages 1.0 to 1.3s. The
+  homepage's weak spot is Total Blocking Time (900ms), almost all GA4/Ads
+  (`gtag.js`, about 500ms) and Clarity (about 340ms), not the site's own code.
+  This site has too little traffic for Chrome's field data, so Google has no
+  Core Web Vitals reading to rank it on either way; the fix is for the people
+  tapping the buttons. Lighthouse also flags `robots.txt` for the
+  `Content-Signal` line: Google ignores lines it doesn't know, so it costs
+  nothing, and the line is deliberate.
+- **`phone_click` now fires on every page.** It was pasted into the homepage
+  and the maintenance page only, so the dashboard's daily recap ("0 phone
+  clicks", "phone_click not firing yet") never saw a call tapped on a city,
+  service or blog page. `generate_lead` already fired everywhere through
+  `site-stats.js`; `phone_click` now rides beside it. Expect the recap's phone
+  column to go up from here. That's counting that was missing, not new calls.
+- **New post, `/blog/how-to-clean-inside-of-windshield/`** (if Mikey okays
+  it this month, see the PR). "how to clean inside of windshield" was 3,600 a
+  month at KD 23 in the October 5 gap report (Big's ranks 53). It links from
+  the headlight and smell posts.
+
+## Business Profile, read 2026-10-17
+
+- **Reviews: 40, one since August 28.** Sixteen in the last twelve months,
+  about 1.3 a month. SG1 wanted 60 by Month 3 (about now) at 1.5 a week. The
+  dashboard's review ask is built and its link is set
+  (`g.page/r/CRCuKQ982VIZEBE/review`, read off the live `/rate` page), so
+  either jobs aren't being marked Won on the board or the ask is switched off
+  in Settings. That's the first thing to check; it's the biggest single lever
+  in GROWTH-PLAN §8.
+- **The `/rate` star page is switched on** (it serves 200, not its "off" 404)
+  in **open** mode: five stars goes to Google, one to four gets a private note
+  first with a "Leave a Google review" link under it. Nothing in the app sends
+  it. Google's rules forbid steering unhappy customers away from reviews; open
+  mode keeps the link there, so it's the safer of the two, but don't text
+  `/rate` in place of the plain review link.
+- **The Oct 19 and Nov 30 Rain-Ready Offer posts still say polish.** Oct 19
+  opens "Polish first..." and Nov 30 says "the exterior polish, ceramic wax and
+  RainX come free". Since 2026-10-15 the offer is ceramic wax, RainX and RainX
+  Anti-Fog. `outreach/GBP-POSTS.md` has the right text for both.
+- **Views, October 1 to 12:** 142 (Windsor shows zeros after the 12th, which is
+  GBP's usual lag, not a drop).
+
 ## Business Profile, pulled from Windsor 2026-10-16
 
 Windsor's one connected source is the **Business Profile**, not Search
