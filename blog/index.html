@@ -25,8 +25,10 @@
 
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Outfit',sans-serif;background:#141414;color:#fff;line-height:1.6;}
+body{font-family:'Outfit','Outfit Fallback',sans-serif;background:#141414;color:#fff;line-height:1.6;}
 .container{max-width:900px;margin:0 auto;padding:0 20px;}
 header{background:#141414;border-bottom:2px solid #C8102E;padding:20px 0;}
 header .container{display:flex;justify-content:space-between;align-items:center;}

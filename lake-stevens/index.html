@@ -45,6 +45,8 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap"></noscript>
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 :root {
   --bg: #141414;
   --bg-card: #1a1a1a;
@@ -57,7 +59,7 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: 'Outfit', 'Outfit Fallback', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;

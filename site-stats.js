@@ -364,6 +364,16 @@ window.MD_STATS = {
           method: method,
           page_path: location.pathname
         });
+        // phone_click is the event the dashboard's daily recap counts. It used
+        // to come from a block pasted into two pages (home and maintenance), so
+        // a call tapped on any city, service or blog page never reached the
+        // recap. Sent from here it covers every page that loads this file.
+        if (method === 'call') {
+          gtag('event', 'phone_click', {
+            phone_number: a.getAttribute('href').replace('tel:', ''),
+            button_location: a.getAttribute('data-location') || (a.textContent || '').trim().slice(0, 50)
+          });
+        }
       }
     } catch (err) { /* ignore */ }
     try {
