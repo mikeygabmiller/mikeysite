@@ -210,8 +210,8 @@ but listed so November knows:
   service or blog page. `generate_lead` already fired everywhere through
   `site-stats.js`; `phone_click` now rides beside it. Expect the recap's phone
   column to go up from here. That's counting that was missing, not new calls.
-- **New post, `/blog/how-to-clean-inside-of-windshield/`** (if Mikey okays
-  it this month, see the PR). "how to clean inside of windshield" was 3,600 a
+- **New post, `/blog/how-to-clean-inside-of-windshield/`** (Mikey's yes on
+  2026-10-17, ahead of the one-page-a-month pace because it's seasonal). "how to clean inside of windshield" was 3,600 a
   month at KD 23 in the October 5 gap report (Big's ranks 53). It links from
   the headlight and smell posts.
 
@@ -234,6 +234,9 @@ but listed so November knows:
   opens "Polish first..." and Nov 30 says "the exterior polish, ceramic wax and
   RainX come free". Since 2026-10-15 the offer is ceramic wax, RainX and RainX
   Anti-Fog. `outreach/GBP-POSTS.md` has the right text for both.
+  Mikey said leave them as they are (asked 2026-10-17), so they go up as
+  scheduled. If a customer asks for the polish off one of those posts, that's
+  where it came from.
 - **Views, October 1 to 12:** 142 (Windsor shows zeros after the 12th, which is
   GBP's usual lag, not a drop).
 
@@ -439,6 +442,11 @@ fine: don't fight it.
 - **RVs.** "rv ceramic coating near me" had 69 impressions at 15.6 and "rv
   detailing near me" 45 at 17.2, on the ceramic page. The site never mentions
   RVs. If you do them, that's worth a section; if you don't, ignore it.
+  **Answered 2026-10-17: yes, RVs and trailers, quoted per job.** Mark
+  Atkinson asked the same week about his polished-aluminum horse trailer. No
+  price for them anywhere until Mikey sets one ("text me photos", like
+  headlights). It's a candidate for a later month's one new page, or a section
+  on the ceramic page.
 - **Water spots in Mill Creek.** 37 impressions at 15.4. Only the Mill Creek
   paint correction page mentions water spots. If it's a real Mill Creek thing
   (sprinklers, hard water), say so and it becomes a line on the Mill Creek page.
