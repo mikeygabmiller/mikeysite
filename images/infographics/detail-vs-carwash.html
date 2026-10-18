@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drive-Thru Car Wash vs. Mobile Detail — Mikey's Mobile Detailing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="_brand.css">
+<style>
+  /* Two things being compared, so two colors — but the column headings name
+     them in words and every cell sits under its own heading, so identity
+     never rests on the color alone. */
+  .cmp{ display: grid; grid-template-columns: 176px 1fr 1fr; }
+  .cmp > div{ padding: 13px 18px; }
+  .cmp .h{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 4px;
+    padding-bottom: 14px;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .cmp .h .sw{
+    width: 14px; height: 14px;
+    border-radius: 4px;
+    flex: none;
+  }
+  .cmp .h.wash .sw{ background: var(--mark-2); }
+  .cmp .h.det  .sw{ background: var(--mark); }
+  .cmp .h small{
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 3px;
+  }
+  .cmp .k{
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gold);
+    align-self: center;
+  }
+  .cmp .c{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .cmp .c b{ display: block; font-size: 21px; font-weight: 800; color: var(--ink); }
+  .cmp .r{ border-top: 1px solid var(--line); }
+  /* the detail column is the one being argued for — a hairline wash, not a
+     louder color, keeps the table honest */
+  .cmp .col-det{ background: rgba(200,16,46,0.055); }
+  .cmp .col-det.first{ border-radius: 14px 14px 0 0; }
+  .cmp .col-det.last{ border-radius: 0 0 14px 14px; }
+
+  .cant{ display: grid; grid-template-columns: 1fr 1fr; gap: 9px 30px; }
+  .cant li{
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink-2);
+  }
+  .cant li .x{
+    flex: none;
+    width: 21px; height: 21px;
+    margin-top: 1px;
+    border-radius: 6px;
+    background: rgba(200,16,46,0.16);
+    border: 1px solid rgba(226,55,68,0.42);
+    color: #ff8a95;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 19px;
+    text-align: center;
+  }
+
+  .when{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .when .box{
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 20px;
+  }
+  .when .box.det{ border-color: rgba(226,55,68,0.34); background: rgba(200,16,46,0.06); }
+  .when .box h3{
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 9px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .when .box h3 .sw{ width: 12px; height: 12px; border-radius: 4px; flex: none; }
+  .when .box.wash h3 .sw{ background: var(--mark-2); }
+  .when .box.det h3 .sw{ background: var(--mark); }
+  .when .box p{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  .combo{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(100deg, rgba(201,162,75,0.13), rgba(201,162,75,0.03));
+  }
+  .combo .tag{
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    white-space: nowrap;
+    padding-right: 20px;
+    border-right: 1px solid var(--gold-line);
+  }
+  .combo p{ font-size: 17px; font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+  .combo p b{ color: var(--ink); font-weight: 800; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header class="mast">
+    <div class="wordmark"><span class="dot"></span> Mikey's Mobile Detailing</div>
+    <div class="mast-right">Straight Talk &middot; Snohomish County</div>
+  </header>
+
+  <div class="head">
+    <span class="eyebrow">Which one do you actually need?</span>
+    <h1>Car Wash or a<br><span class="hl">Real Detail?</span></h1>
+    <p class="dek">A drive-thru takes five minutes. A detail takes hours. I'm not going to pretend a car wash is useless &mdash; <b>here's exactly when one is fine, and when you're wasting your money.</b></p>
+  </div>
+
+  <main class="stack">
+
+  <section class="sec">
+    <div class="card" style="padding: 18px 8px;">
+      <div class="cmp">
+        <div></div>
+        <div class="h wash"><span class="sw"></span><div>Drive-Thru Wash<small>5 minutes, machine</small></div></div>
+        <div class="h det col-det first"><span class="sw"></span><div>Mobile Detail<small>Hours, by hand, at your house</small></div></div>
+
+        <div class="k r">Time</div>
+        <div class="c r"><b>5&ndash;10 min</b>Plus the drive and the line</div>
+        <div class="c r col-det"><b>2&ndash;5 hrs</b>You don't go anywhere</div>
+
+        <div class="k r">Cost</div>
+        <div class="c r"><b>$10&ndash;25</b>Every single time</div>
+        <div class="c r col-det"><b>$160&ndash;379</b>Two to four times a year</div>
+
+        <div class="k r">What it does</div>
+        <div class="c r"><b>Exterior rinse</b>Misses the interior, wheels, deep dirt</div>
+        <div class="c r col-det"><b>Full inside &amp; out</b>Stains, pet hair, oxidation, leather</div>
+
+        <div class="k r">Your paint</div>
+        <div class="c r"><b>Swirl-mark risk</b>Spinning brushes, recycled water</div>
+        <div class="c r col-det"><b>No brushes</b>Hand wash, clay, proper microfiber</div>
+
+        <div class="k r">How often</div>
+        <div class="c r"><b>Weekly is fine</b>It's upkeep, not a reset</div>
+        <div class="c r col-det last"><b>2&ndash;4&times; a year</b>It resets the car</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>Eight things a car wash can't do</h2>
+      <span class="note">No matter how many times you go</span>
+    </div>
+    <ul class="cant">
+      <li><span class="x">&times;</span>Clean your carpets, seats, dash and vents</li>
+      <li><span class="x">&times;</span>Clay off tree sap, tar and rail dust</li>
+      <li><span class="x">&times;</span>Pull pet hair out of the upholstery</li>
+      <li><span class="x">&times;</span>Polish out swirl marks or oxidation</li>
+      <li><span class="x">&times;</span>Lift coffee stains, food spills or odors</li>
+      <li><span class="x">&times;</span>Lay down real wax or sealant protection</li>
+      <li><span class="x">&times;</span>Actually clean your wheels &mdash; those just get rinsed</li>
+      <li><span class="x">&times;</span>Come to your driveway while you stay put</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title"><h2>So which one, today?</h2></div>
+    <div class="when">
+      <div class="box wash">
+        <h3><span class="sw"></span>Run it through the wash when&hellip;</h3>
+        <p>You want salt or mud off the paint fast &middot; you're keeping an already-clean car presentable &middot; it's the in-between week before your next detail.</p>
+      </div>
+      <div class="box det">
+        <h3><span class="sw"></span>Book the detail when&hellip;</h3>
+        <p>The interior needs real work &mdash; kids, pets, job sites &middot; the paint looks dull or feels rough &middot; you're selling or trading it in &middot; it's been 6+ months.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="combo">
+      <div class="tag">The smart combo</div>
+      <p>Most of my <b>Clean Club</b> members do both: a detail every one to three months, and a touchless wash in between when the weather gets it. <b>Best of both worlds, and the car never gets far gone.</b></p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="cta">
+      <div class="phone">(425) 600-7897</div>
+      <div class="site">mikeysdetailing.com<span>Instant price in 60 seconds &mdash; no phone tag</span></div>
+    </div>
+    <div class="proof">
+      <b><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &middot; 40 reviews</b>
+      300+ cars detailed &middot; Snohomish &middot; Monroe &middot; Everett<br>
+      Lake Stevens &middot; Marysville &middot; Mill Creek &middot; Bothell &middot; Duvall
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

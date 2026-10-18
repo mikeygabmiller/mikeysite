@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>What Mobile Detailing Costs in Snohomish County — Mikey's Mobile Detailing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="_brand.css">
+<style>
+  /* Price axis is $0-$400, so every dollar is 0.25% of the track.
+     All three packages happen to span exactly $80, which is why the
+     bars are the same width — that's the story, not a coincidence
+     to hide: the spread is vehicle size, identical across packages. */
+  .gridlines i.g0{ left: 0; }
+  .gridlines i.g1{ left: 25%; }
+  .gridlines i.g2{ left: 50%; }
+  .gridlines i.g3{ left: 75%; }
+  .gridlines i.g4{ left: calc(100% - 1px); }
+  .axis{ grid-template-columns: repeat(4, 1fr) auto; }
+  .axis span:last-child{ text-align: right; }
+
+  .sizes{ grid-template-columns: repeat(3, 1fr); }
+  .bigjobs{ grid-template-columns: repeat(3, 1fr); }
+
+  .club{
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 16px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(100deg, rgba(201,162,75,0.13), rgba(201,162,75,0.03));
+  }
+  .club .price{
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--gold-bright);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .club .price small{ font-size: 17px; font-weight: 700; color: var(--gold); }
+  .club .txt{ font-size: 16px; font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+  .club .txt b{ color: var(--ink); font-weight: 800; display: block; font-size: 19px; margin-bottom: 2px; }
+
+  .promise{
+    display: flex;
+    gap: 26px;
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink-2);
+  }
+  .promise em{
+    font-style: normal;
+    color: var(--red-bright);
+    font-weight: 900;
+    margin-right: 7px;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header class="mast">
+    <div class="wordmark"><span class="dot"></span> Mikey's Mobile Detailing</div>
+    <div class="mast-right">Snohomish County &middot; 2026 Rates</div>
+  </header>
+
+  <div class="head">
+    <span class="eyebrow">Honest Local Pricing</span>
+    <h1>What Detailing<br><span class="hl">Actually Costs</span> Here</h1>
+    <p class="dek">No &ldquo;starting at $99&rdquo; that triples in your driveway. These are the real numbers for real Snohomish County customers &mdash; <b>the quote you get is the price you pay.</b></p>
+  </div>
+
+  <main class="stack">
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>The three packages</h2>
+      <span class="note">Range is vehicle size &mdash; sedan to full-size truck</span>
+    </div>
+    <div class="card">
+      <div class="chart">
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Exterior Detail</div>
+            <div class="sub">Hand wash, wheels, sealant, glass</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i></div>
+            <div class="bar" style="left:40%; width:20%;"></div>
+          </div>
+          <div class="val">$160&ndash;240<small>1&ndash;1.5 hrs</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Interior Detail</div>
+            <div class="sub">Steam, extract, leather, jambs</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i></div>
+            <div class="bar" style="left:50%; width:20%;"></div>
+          </div>
+          <div class="val">$200&ndash;280<small>1.5&ndash;2 hrs</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Full Detail</div>
+            <div class="sub">Inside &amp; out, bumper to bumper</div>
+            <span class="badge">Most Popular &middot; Save $61</span>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i></div>
+            <div class="bar" style="left:74.75%; width:20%;"></div>
+          </div>
+          <div class="val">$299&ndash;379<small>3&ndash;5 hrs</small></div>
+        </div>
+
+      </div>
+      <div class="axis"><span>$0</span><span>$100</span><span>$200</span><span>$300</span><span>$400</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>Full Detail by vehicle size</h2>
+      <span class="note">A Civic and a Suburban are not the same job</span>
+    </div>
+    <div class="tiles sizes">
+      <div class="tile">
+        <div class="k">Small / Sedan</div>
+        <div class="v">$299&ndash;319</div>
+        <div class="d">Civic, Corolla, Accord, Camry, Mazda 3</div>
+      </div>
+      <div class="tile">
+        <div class="k">Medium / SUV</div>
+        <div class="v">$319&ndash;349</div>
+        <div class="d">RAV4, CR-V, Outback, Pilot, mid-size truck</div>
+      </div>
+      <div class="tile">
+        <div class="k">Large / Truck</div>
+        <div class="v">$349&ndash;379</div>
+        <div class="d">F-150, Silverado, Tahoe, 3-row SUV</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>Add only what your car needs</h2>
+      <span class="note">Priced separately &mdash; nothing is bundled in to pad the bill</span>
+    </div>
+    <div class="chips">
+      <div class="chip">Carpet Shampoo <span class="p">+$20</span></div>
+      <div class="chip">Ceramic Wax <span class="p">+$20</span></div>
+      <div class="chip">Exterior Polish <span class="p">+$30</span></div>
+      <div class="chip">RainX Windows <span class="p">+$10</span></div>
+      <div class="chip">Pet Hair Removal <span class="p">$120&ndash;220</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title"><h2>Bigger jobs</h2><span class="note">Quoted after I see the paint</span></div>
+    <div class="tiles bigjobs" style="margin-bottom:13px;">
+      <div class="tile">
+        <div class="k">Paint Correction</div>
+        <div class="v">$300&ndash;700</div>
+        <div class="d">Swirl &amp; oxidation removal &middot; 4&ndash;6 hrs</div>
+      </div>
+      <div class="tile">
+        <div class="k">Ceramic Coating</div>
+        <div class="v">$500&ndash;1,500</div>
+        <div class="d">Years of protection &middot; 4&ndash;8 hrs + cure</div>
+      </div>
+      <div class="tile">
+        <div class="k">Odor &amp; Deep Restore</div>
+        <div class="v">Quoted</div>
+        <div class="d">Smoke, spills, neglected interiors</div>
+      </div>
+    </div>
+    <div class="club">
+      <div class="price">$125<small>/clean</small></div>
+      <div class="txt">
+        <b>Clean Club is the cheapest way to stay detailed.</b>
+        Monthly, bi-monthly or quarterly at a flat rate &mdash; well under a one-off Full Detail, and your car never gets far gone enough to need one.
+      </div>
+    </div>
+    <div class="promise">
+      <span><em>&check;</em>No deposit</span>
+      <span><em>&check;</em>No hidden fees</span>
+      <span><em>&check;</em>I come to your driveway</span>
+      <span><em>&check;</em>You don't pay until you love it</span>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="cta">
+      <div class="phone">(425) 600-7897</div>
+      <div class="site">mikeysdetailing.com<span>Instant price in 60 seconds &mdash; no phone tag</span></div>
+    </div>
+    <div class="proof">
+      <b><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &middot; 40 reviews</b>
+      300+ cars detailed &middot; Snohomish &middot; Monroe &middot; Everett<br>
+      Lake Stevens &middot; Marysville &middot; Mill Creek &middot; Bothell &middot; Duvall
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

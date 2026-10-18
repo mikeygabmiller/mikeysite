@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How Long Car Detailing Takes — Mikey's Mobile Detailing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="_brand.css">
+<style>
+  /* Hours axis is 0-12, so one hour is 8.333% of the track. Every bar is the
+     same measure on the same scale — one hue, no color-by-rank. The pet-hair
+     row is an add-on rather than a job of its own, so it's drawn as an
+     outline: same scale, different kind of thing. */
+  .gridlines i.g0{ left: 0; }
+  .gridlines i.g1{ left: 16.667%; }
+  .gridlines i.g2{ left: 33.333%; }
+  .gridlines i.g3{ left: 50%; }
+  .gridlines i.g4{ left: 66.667%; }
+  .gridlines i.g5{ left: 83.333%; }
+  .gridlines i.g6{ left: calc(100% - 1px); }
+  .axis{ grid-template-columns: repeat(6, 1fr) auto; }
+  .axis span:last-child{ text-align: right; }
+  .row.addon .label .nm{ color: var(--ink-2); }
+  .row .val.soft{ color: var(--ink-2); font-weight: 700; }
+  .grouplab{
+    margin: 12px 0 2px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* ---- three steps ---- */
+  .steps{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .step{
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 18px 15px;
+    overflow: hidden;
+  }
+  .step .n{
+    position: absolute;
+    top: -14px; right: 4px;
+    font-size: 74px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: rgba(255,255,255,0.045);
+    line-height: 1;
+  }
+  .step .chip{
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(200,16,46,0.16);
+    border: 1px solid rgba(226,55,68,0.42);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: #ff8a95;
+    margin-bottom: 10px;
+  }
+  .step h3{
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .step p{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink-2);
+  }
+
+  .clock{ grid-template-columns: repeat(3, 1fr); }
+  .clock .tile .v{ font-size: 22px; }
+
+  .home{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 22px;
+    border-radius: 16px;
+    border: 1px solid var(--gold-line);
+    background: linear-gradient(100deg, rgba(201,162,75,0.13), rgba(201,162,75,0.03));
+  }
+  .home .tag{
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    white-space: nowrap;
+    padding-right: 20px;
+    border-right: 1px solid var(--gold-line);
+  }
+  .home p{ font-size: 17px; font-weight: 500; line-height: 1.4; color: var(--ink-2); }
+  .home p b{ color: var(--ink); font-weight: 800; }
+
+  /* This poster carries a seven-row chart plus three card rows, which is more
+     than the others. Trim the vertical rhythm just here rather than shrinking
+     every poster to fit the tallest one. */
+  .head{ padding: 26px 0 22px; }
+  .stack{ padding-bottom: 14px; gap: 16px; }
+  .row{ padding: 4px 0; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <header class="mast">
+    <div class="wordmark"><span class="dot"></span> Mikey's Mobile Detailing</div>
+    <div class="mast-right">Plan Your Day &middot; Snohomish County</div>
+  </header>
+
+  <div class="head">
+    <span class="eyebrow">Real times from 300+ cars</span>
+    <h1>How Long Does It<br><span class="hl">Actually Take?</span></h1>
+    <p class="dek">Half day, full day, or just run errands? Here's what to plan for on every package &mdash; <b>and no, you don't have to be home for any of it.</b></p>
+  </div>
+
+  <main class="stack">
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>Time on your car</h2>
+      <span class="note">Vehicle size and condition move each one about an hour either way</span>
+    </div>
+    <div class="card">
+      <div class="chart">
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Basic Exterior</div>
+            <div class="sub">Wash, wheels, wax</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:8.333%; width:4.167%;"></div>
+          </div>
+          <div class="val">1&ndash;1.5<small>hours</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Basic Interior</div>
+            <div class="sub">Vacuum, steam, wipe-down</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:12.5%; width:4.167%;"></div>
+          </div>
+          <div class="val">1.5&ndash;2<small>hours</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Full Detail</div>
+            <div class="sub">Interior + exterior, most popular</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:25%; width:16.667%;"></div>
+          </div>
+          <div class="val">3&ndash;5<small>hours</small></div>
+        </div>
+
+        <div class="row addon">
+          <div class="label">
+            <div class="nm">Pet Hair Removal</div>
+            <div class="sub">Add-on &mdash; adds to the job above</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar ghost" style="left:8.333%; width:8.333%;"></div>
+          </div>
+          <div class="val soft">+1&ndash;2<small>hours</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Paint Correction</div>
+            <div class="sub">Single stage</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:33.333%; width:16.667%;"></div>
+          </div>
+          <div class="val">4&ndash;6<small>hours</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Paint Correction</div>
+            <div class="sub">Multi-stage</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:66.667%; width:33.333%;"></div>
+          </div>
+          <div class="val">8&ndash;12<small>hours</small></div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="nm">Ceramic Coating</div>
+            <div class="sub">Plus an overnight cure</div>
+          </div>
+          <div class="track">
+            <div class="gridlines"><i class="g0"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g5"></i><i class="g6"></i></div>
+            <div class="bar" style="left:33.333%; width:33.333%;"></div>
+          </div>
+          <div class="val">4&ndash;8<small>hours + cure</small></div>
+        </div>
+
+      </div>
+      <div class="axis"><span>0 hrs</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12 hrs</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title">
+      <h2>How the day goes</h2>
+      <span class="note">Three steps, no phone tag</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <span class="chip">60 seconds &middot; No deposit</span>
+        <h3>Tell me about your car</h3>
+        <p>Pick your service, drop your address, see the price on screen. I text back to lock in a time.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <span class="chip">I bring everything</span>
+        <h3>Go about your day</h3>
+        <p>I roll up on time with my own water, power and products. Work, errands, back to bed &mdash; your call.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <span class="chip">Pay only if you love it</span>
+        <h3>Open the door and grin</h3>
+        <p>We walk around it together. You don't pay a dime until you're grinning ear to ear.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="sec-title"><h2>What moves the clock</h2></div>
+    <div class="tiles clock">
+      <div class="tile">
+        <div class="k">Vehicle size</div>
+        <div class="v">&plusmn; 1 hour</div>
+        <div class="d">A compact sedan shaves 30&ndash;45 min off a full detail. A three-row SUV adds an hour.</div>
+      </div>
+      <div class="tile">
+        <div class="k">Condition</div>
+        <div class="v">Up to 2&times;</div>
+        <div class="d">A Clean Club sedan is about 2 hrs. The same package on a neglected truck with dog hair is closer to 4.</div>
+      </div>
+      <div class="tile">
+        <div class="k">Add-ons</div>
+        <div class="v">Quoted upfront</div>
+        <div class="d">Pet hair, odor removal, headlights and engine bay each add real time. You'll know before I start.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="home">
+      <div class="tag">You don't have to be home</div>
+      <p>Driveway, parking spot, work lot &mdash; if I can reach the vehicle, you can be anywhere. <b>I text you the moment it's done.</b> And this is Washington: I work under canopies and in garages, and I've never canceled a job over weather.</p>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="cta">
+      <div class="phone">(425) 600-7897</div>
+      <div class="site">mikeysdetailing.com<span>Instant price in 60 seconds &mdash; no phone tag</span></div>
+    </div>
+    <div class="proof">
+      <b><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &middot; 40 reviews</b>
+      300+ cars detailed &middot; Snohomish &middot; Monroe &middot; Everett<br>
+      Lake Stevens &middot; Marysville &middot; Mill Creek &middot; Bothell &middot; Duvall
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
