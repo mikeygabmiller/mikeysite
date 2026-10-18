@@ -240,6 +240,30 @@ but listed so November knows:
 - **Views, October 1 to 12:** 142 (Windsor shows zeros after the 12th, which is
   GBP's usual lag, not a drop).
 
+## What the answer engines' index holds (searched 2026-10-18)
+
+Searched through the web search an AI assistant uses, not Google:
+
+- **Its copy of the homepage is weeks old:** Interior from $200, Exterior
+  from $160, Full from $299 and the old "free exterior wash and wax with an
+  interior" offer, none of which the live page has said since September. It
+  also still lists `blog.mikeysdetailing.com` posts, which 301 since Oct 8.
+  This is where the panel's stale prices come from. Nothing on the site
+  causes it; IndexNow was sent again, and it clears as that index recrawls.
+- **A search for "mikeysdetailing.com" returned no page of the site,** only
+  the Google business page, and the engine's summary of that page was an old
+  snapshot: 29 reviews, "from $200", closed Wednesdays, and the street
+  address. The live page (fetched the same day) is right: 40 reviews, no
+  address, 24/7. Mikey: Google's "Refresh outdated content" tool
+  (search.google.com/search-console/remove-outdated-content) and Bing
+  Webmaster's Content Removal tool ("outdated cache") take a URL you don't
+  own: submit `business.google.com/v/mikeys-mobile-detailing-snohomish/013336338832647006399/a392/_`
+  with the word "Spada".
+- **The GBP has 510 photos.** Photos aren't the gap. Reviews are: L&M Pro
+  Car Detailing (Everett) shows 283 against his 40.
+- Yelp and Reddit refuse every fetcher a session has, so neither can be read
+  from here.
+
 ## Business Profile, pulled from Windsor 2026-10-16
 
 Windsor's one connected source is the **Business Profile**, not Search
