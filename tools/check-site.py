@@ -390,6 +390,11 @@ RETIRED_CLAIMS = [
      "a duration no job has: exterior 1-2 hours, interior about 90 minutes (2-4 with extraction), full 3-5"),
     (re.compile(r"(?=.*\b(?:club|member|recurring)).*?\b(bi-monthly|quarterly)\b", re.I),
      "a Clean Club schedule: it's every 4 or 8 weeks"),
+    # 2026-10-18: nine footers, three CTAs, the homepage hero and the ceramic
+    # meta promised the whole county. Lynnwood and Edmonds are in it and he
+    # said no to both; the area is the twelve towns.
+    (re.compile(r"(?:anywhere in|all of) Snohomish County|most of the county|whole county", re.I),
+     "wider than the twelve towns he serves (Lynnwood and Edmonds are in the county and he doesn't go)"),
 ]
 claim_files = price_files + [ROOT / "outreach/DIRECTORIES.md", ROOT / "outreach/CALL-SCRIPT.md",
                              ROOT / "print/tools/build-business-card.cjs", ROOT / "print/tools/build-yard-sign.cjs",
