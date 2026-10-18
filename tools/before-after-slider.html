@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Before &amp; After Builder</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #0d0f12;
+    --panel: #16191f;
+    --line: #262b34;
+    --text: #f2f4f7;
+    --muted: #98a1b0;
+    --accent: #ffffff;
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 28px 18px 64px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0 0 26px; }
+  .step { color: var(--muted); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10px; }
+
+  .drops { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .drops { grid-template-columns: 1fr; } }
+
+  .drop {
+    position: relative; border: 1px dashed var(--line); border-radius: 14px;
+    background: var(--panel); min-height: 168px; overflow: hidden;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .drop:hover, .drop.over { border-color: #4d94ff; background: #1a1f28; }
+  .drop input { display: none; }
+  .drop .label { padding: 22px; pointer-events: none; }
+  .drop .tag { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .drop .big { font-size: 15px; margin-top: 8px; color: var(--text); }
+  .drop .hint { font-size: 12px; margin-top: 4px; color: var(--muted); }
+  .drop img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .drop .badge {
+    position: absolute; left: 10px; top: 10px; z-index: 2;
+    background: rgba(0,0,0,.66); backdrop-filter: blur(4px);
+    padding: 5px 10px; border-radius: 999px; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .drop .swap {
+    position: absolute; right: 10px; bottom: 10px; z-index: 2;
+    background: rgba(0,0,0,.66); padding: 5px 10px; border-radius: 999px; font-size: 12px;
+  }
+
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 22px; }
+  input[type=text] {
+    flex: 1 1 240px; min-width: 0; background: var(--panel); border: 1px solid var(--line);
+    color: var(--text); border-radius: 10px; padding: 12px 14px; font: inherit; font-size: 15px;
+  }
+  input[type=text]:focus { outline: none; border-color: #4d94ff; }
+  button {
+    border: 0; border-radius: 10px; padding: 13px 22px; font: inherit; font-weight: 600;
+    background: var(--accent); color: #0d0f12; cursor: pointer; transition: opacity .15s, transform .05s;
+  }
+  button:active { transform: translateY(1px); }
+  button[disabled] { opacity: .35; cursor: not-allowed; }
+  .ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); font-weight: 500; }
+  .status { font-size: 13px; color: var(--muted); min-height: 20px; margin-top: 12px; }
+
+  .previewWrap { margin-top: 34px; display: none; }
+  .previewWrap.on { display: block; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 34px 0; }
+
+  /* ---- shared slider styles (mirrored in the exported file) ---- */
+  .ba { position: relative; width: 100%; overflow: hidden; border-radius: 14px;
+        background: #000; user-select: none; -webkit-user-select: none; touch-action: pan-y; cursor: ew-resize; }
+  .ba img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+  .ba .after { width: 100%; display: block; }
+  .ba .beforeClip { position: absolute; inset: 0; width: 50%; overflow: hidden; will-change: width; }
+  .ba .beforeClip img { position: absolute; top: 0; left: 0; height: 100%; max-width: none; }
+  .ba .bar { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; transform: translateX(-1px);
+             box-shadow: 0 0 0 1px rgba(0,0,0,.25); will-change: left; }
+  .ba .knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px;
+              border-radius: 50%; background: #fff; box-shadow: 0 4px 18px rgba(0,0,0,.45);
+              display: flex; align-items: center; justify-content: center; gap: 3px; }
+  .ba .knob svg { display: block; }
+  .ba .cap { position: absolute; bottom: 14px; white-space: nowrap; padding: 7px 13px; border-radius: 999px;
+             background: rgba(0,0,0,.62); color: #fff; font-size: 11px; font-weight: 600;
+             letter-spacing: .16em; text-transform: uppercase; transition: opacity .25s; }
+  .ba .capL { left: 14px; }
+  .ba .capR { right: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Before &amp; After Builder</h1>
+  <p class="sub">Drop the two photos in, hit the button, and you get one file you can text or email. It opens on any phone or computer — no app, no internet.</p>
+
+  <p class="step">Step 1 — the photos</p>
+  <div class="drops">
+    <label class="drop" id="dropBefore">
+      <span class="badge">Before</span>
+      <input type="file" accept="image/*" id="fileBefore">
+      <span class="label">
+        <span class="tag">Before</span>
+        <span class="big">Tap to pick the messy shot</span>
+        <span class="hint">or drag the photo here</span>
+      </span>
+    </label>
+    <label class="drop" id="dropAfter">
+      <span class="badge">After</span>
+      <input type="file" accept="image/*" id="fileAfter">
+      <span class="label">
+        <span class="tag">After</span>
+        <span class="big">Tap to pick the clean shot</span>
+        <span class="hint">or drag the photo here</span>
+      </span>
+    </label>
+  </div>
+  <div class="row">
+    <button class="ghost" id="swapBtn" disabled>Swap before / after</button>
+  </div>
+
+  <div class="previewWrap" id="previewWrap">
+    <hr>
+    <p class="step">Step 2 — check it</p>
+    <div class="ba" id="ba">
+      <img class="after" id="imgAfter" alt="After">
+      <div class="cap capR">After</div>
+      <div class="beforeClip" id="clip">
+        <img id="imgBefore" alt="Before">
+        <div class="cap capL">Before</div>
+      </div>
+      <div class="bar" id="bar"><div class="knob">
+        <svg width="9" height="12" viewBox="0 0 9 12" fill="none"><path d="M7.5 1 2 6l5.5 5" stroke="#0d0f12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="9" height="12" viewBox="0 0 9 12" fill="none"><path d="M1.5 1 7 6l-5.5 5" stroke="#0d0f12" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div></div>
+    </div>
+
+    <hr>
+    <p class="step">Step 3 — make the file</p>
+    <div class="row">
+      <input type="text" id="title" placeholder="Title (optional) — e.g. Bedroom Reset" maxlength="60">
+      <button id="buildBtn">Download the file</button>
+    </div>
+    <div class="status" id="status"></div>
+    <p class="note">
+      The downloaded file has none of this builder in it — just the slider, full screen, with the reveal animation.
+      Everything is baked inside, so it still works with no signal. Send it as an attachment (email or Messages);
+      he taps it and it opens in his browser.
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var MAX_EDGE = 1800;      // longest side of the baked photos
+  var QUALITY  = 0.82;      // jpeg quality
+
+  var state = { before: null, after: null };   // { img: HTMLImageElement }
+
+  var el = function (id) { return document.getElementById(id); };
+  var ba = el("ba"), clip = el("clip"), bar = el("bar");
+  var imgBefore = el("imgBefore"), imgAfter = el("imgAfter");
+  var statusEl = el("status");
+
+  /* ---------------- file intake ---------------- */
+
+  function readFile(file, slot) {
+    if (!file || !/^image\//.test(file.type)) {
+      say("That file isn't a photo my browser can read. JPG or PNG works best — if it's a HEIC from an iPhone, share it once through Messages or Mail and use that copy.");
+      return;
+    }
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      state[slot] = { img: img, url: url };
+      paintDrop(slot, url);
+      refresh();
+    };
+    img.onerror = function () {
+      URL.revokeObjectURL(url);
+      say("Couldn't open that photo. Try a JPG or PNG.");
+    };
+    img.src = url;
+  }
+
+  function paintDrop(slot, url) {
+    var drop = el(slot === "before" ? "dropBefore" : "dropAfter");
+    var old = drop.querySelector("img");
+    if (old) old.remove();
+    var im = document.createElement("img");
+    im.src = url;
+    drop.insertBefore(im, drop.firstChild);
+    var lab = drop.querySelector(".label");
+    if (lab) lab.style.display = "none";
+    var sw = drop.querySelector(".swap");
+    if (!sw) {
+      sw = document.createElement("span");
+      sw.className = "swap";
+      sw.textContent = "Tap to replace";
+      drop.appendChild(sw);
+    }
+  }
+
+  function wireDrop(dropId, inputId, slot) {
+    var drop = el(dropId), input = el(inputId);
+    input.addEventListener("change", function () { readFile(input.files[0], slot); });
+    ["dragenter", "dragover"].forEach(function (t) {
+      drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.add("over"); });
+    });
+    ["dragleave", "drop"].forEach(function (t) {
+      drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove("over"); });
+    });
+    drop.addEventListener("drop", function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (f) readFile(f, slot);
+    });
+  }
+
+  wireDrop("dropBefore", "fileBefore", "before");
+  wireDrop("dropAfter", "fileAfter", "after");
+
+  el("swapBtn").addEventListener("click", function () {
+    var b = state.before, a = state.after;
+    state.before = a; state.after = b;
+    if (state.before) paintDrop("before", state.before.url);
+    if (state.after) paintDrop("after", state.after.url);
+    refresh();
+  });
+
+  function say(msg) { statusEl.textContent = msg || ""; }
+
+  /* ---------------- preview ---------------- */
+
+  function refresh() {
+    el("swapBtn").disabled = !(state.before && state.after);
+    if (!(state.before && state.after)) return;
+    imgAfter.src = state.after.url;
+    imgBefore.src = state.before.url;
+    sizeBefore();
+    el("previewWrap").classList.add("on");
+    setPos(50);
+    say("");
+  }
+
+  // The before photo is sized to the FULL container width so the clip reveals
+  // it in place instead of squeezing it.
+  function sizeBefore() {
+    imgBefore.style.width = ba.clientWidth + "px";
+    imgBefore.style.height = ba.clientHeight + "px";
+    imgBefore.style.objectFit = "cover";
+  }
+  window.addEventListener("resize", sizeBefore);
+  imgAfter.addEventListener("load", sizeBefore);
+
+  var pos = 50;
+  function setPos(p) {
+    pos = Math.max(0, Math.min(100, p));
+    clip.style.width = pos + "%";
+    bar.style.left = pos + "%";
+  }
+
+  function fromEvent(e) {
+    var r = ba.getBoundingClientRect();
+    var x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    setPos((x / r.width) * 100);
+  }
+
+  var dragging = false;
+  ba.addEventListener("pointerdown", function (e) {
+    dragging = true;
+    ba.setPointerCapture(e.pointerId);
+    fromEvent(e);
+  });
+  ba.addEventListener("pointermove", function (e) { if (dragging) fromEvent(e); });
+  ["pointerup", "pointercancel"].forEach(function (t) {
+    ba.addEventListener(t, function () { dragging = false; });
+  });
+
+  /* ---------------- baking ---------------- */
+
+  // Crop both photos to one shared aspect ratio (the after photo's) so the
+  // wipe lines up perfectly, then squeeze them down to a sendable size.
+  function bake(img, targetAspect) {
+    var w = img.naturalWidth, h = img.naturalHeight;
+    var sw = w, sh = h, sx = 0, sy = 0;
+    if (w / h > targetAspect) { sw = Math.round(h * targetAspect); sx = Math.round((w - sw) / 2); }
+    else { sh = Math.round(w / targetAspect); sy = Math.round((h - sh) / 2); }
+
+    var outW = sw, outH = sh;
+    var edge = Math.max(outW, outH);
+    if (edge > MAX_EDGE) {
+      var k = MAX_EDGE / edge;
+      outW = Math.round(outW * k); outH = Math.round(outH * k);
+    }
+    var c = document.createElement("canvas");
+    c.width = outW; c.height = outH;
+    var ctx = c.getContext("2d");
+    ctx.imageSmoothingQuality = "high";
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+    return c.toDataURL("image/jpeg", QUALITY);
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
+
+  el("buildBtn").addEventListener("click", function () {
+    if (!(state.before && state.after)) { say("Add both photos first."); return; }
+    say("Building your file…");
+    var btn = this;
+    btn.disabled = true;
+
+    setTimeout(function () {
+      try {
+        var aspect = state.after.img.naturalWidth / state.after.img.naturalHeight;
+        var afterData = bake(state.after.img, aspect);
+        var beforeData = bake(state.before.img, aspect);
+        var title = (el("title").value || "").trim();
+
+        var html = TEMPLATE
+          .replace("__TITLE_TEXT__", escapeHtml(title))
+          .replace("__TITLE_TAG__", escapeHtml(title || "Before & After"))
+          .replace("__ASPECT__", String(aspect.toFixed(5)))
+          .replace("__BEFORE__", beforeData)
+          .replace("__AFTER__", afterData);
+
+        var blob = new Blob([html], { type: "text/html" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "before-after.html";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+
+        var kb = Math.round(blob.size / 1024);
+        say("Done — before-after.html (" + (kb > 1024 ? (kb / 1024).toFixed(1) + " MB" : kb + " KB") + ") is in your Downloads. Send that file as an attachment.");
+      } catch (err) {
+        say("Something went wrong building the file: " + err.message);
+      }
+      btn.disabled = false;
+    }, 30);
+  });
+
+  /* ---------------- exported page template ---------------- */
+
+  var TEMPLATE = [
+'<!doctype html>',
+'<html lang="en">',
+'<head>',
+'<meta charset="utf-8">',
+'<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">',
+'<title>__TITLE_TAG__<\/title>',
+'<style>',
+'  *,*::before,*::after{box-sizing:border-box}',
+'  html,body{margin:0;height:100%;background:#0b0c0e;color:#fff;',
+'    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;',
+'    -webkit-font-smoothing:antialiased}',
+'  body{display:flex;flex-direction:column;align-items:center;justify-content:center;',
+'    padding:max(18px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom))}',
+'  .stage{width:100%;max-width:min(1100px,calc((100vh - 150px) * var(--ar)))}',
+'  h1{font-size:clamp(17px,4.4vw,24px);font-weight:600;letter-spacing:-.01em;margin:0 0 14px;text-align:center}',
+'  h1:empty{display:none}',
+'  .ba{position:relative;width:100%;aspect-ratio:var(--ar);overflow:hidden;border-radius:16px;background:#000;',
+'    user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y;cursor:ew-resize;',
+'    box-shadow:0 24px 70px rgba(0,0,0,.55)}',
+'  .ba img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}',
+'  .clip{position:absolute;inset:0;width:50%;overflow:hidden;will-change:width}',
+'  .clip img{width:var(--w);max-width:none}',
+'  .bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);',
+'    box-shadow:0 0 0 1px rgba(0,0,0,.28);will-change:left}',
+'  .knob{position:absolute;top:50%;left:50%;width:clamp(42px,9vw,52px);height:clamp(42px,9vw,52px);',
+'    transform:translate(-50%,-50%);border-radius:50%;background:#fff;box-shadow:0 6px 22px rgba(0,0,0,.5);',
+'    display:flex;align-items:center;justify-content:center;gap:3px}',
+'  .knob.pulse{animation:pulse 2.2s ease-in-out 2}',
+'  @keyframes pulse{0%,100%{box-shadow:0 6px 22px rgba(0,0,0,.5)}50%{box-shadow:0 6px 22px rgba(0,0,0,.5),0 0 0 12px rgba(255,255,255,.13)}}',
+'  .cap{position:absolute;bottom:14px;padding:7px 13px;border-radius:999px;background:rgba(0,0,0,.6);white-space:nowrap;',
+'    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);',
+'    font-size:clamp(10px,2.6vw,12px);font-weight:600;letter-spacing:.16em;text-transform:uppercase;transition:opacity .25s}',
+'  .capL{left:14px}.capR{right:14px}',
+'  .hint{margin:14px 0 0;text-align:center;font-size:13px;color:#8b94a3;transition:opacity .4s}',
+'  .hint.gone{opacity:0}',
+'  @media (prefers-reduced-motion:reduce){.knob.pulse{animation:none}}',
+'<\/style>',
+'<\/head>',
+'<body>',
+'<div class="stage" style="--ar:__ASPECT__">',
+'  <h1>__TITLE_TEXT__<\/h1>',
+'  <div class="ba" id="ba">',
+'    <img id="after" src="__AFTER__" alt="After">',
+'    <div class="cap capR">After<\/div>',
+'    <div class="clip" id="clip">',
+'      <img id="before" src="__BEFORE__" alt="Before">',
+'      <div class="cap capL">Before<\/div>',
+'    <\/div>',
+'    <div class="bar" id="bar"><div class="knob pulse" id="knob">',
+'      <svg width="9" height="12" viewBox="0 0 9 12" fill="none"><path d="M7.5 1 2 6l5.5 5" stroke="#0b0c0e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><\/svg>',
+'      <svg width="9" height="12" viewBox="0 0 9 12" fill="none"><path d="M1.5 1 7 6l-5.5 5" stroke="#0b0c0e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><\/svg>',
+'    <\/div><\/div>',
+'  <\/div>',
+'  <p class="hint" id="hint">Drag to see it<\/p>',
+'<\/div>',
+'<script>',
+'(function(){',
+'  var ba=document.getElementById("ba"),clip=document.getElementById("clip"),bar=document.getElementById("bar"),',
+'      before=document.getElementById("before"),knob=document.getElementById("knob"),hint=document.getElementById("hint");',
+'  var pos=100,touched=false;',
+'  function fit(){before.style.setProperty("--w",ba.clientWidth+"px");before.style.width=ba.clientWidth+"px";before.style.height=ba.clientHeight+"px";}',
+'  function set(p){pos=p<0?0:p>100?100:p;clip.style.width=pos+"%";bar.style.left=pos+"%";}',
+'  function at(e){var r=ba.getBoundingClientRect();var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;set(x/r.width*100);}',
+'  var drag=false;',
+'  ba.addEventListener("pointerdown",function(e){drag=true;first();ba.setPointerCapture(e.pointerId);at(e);});',
+'  ba.addEventListener("pointermove",function(e){if(drag){e.preventDefault();at(e);}});',
+'  ["pointerup","pointercancel"].forEach(function(t){ba.addEventListener(t,function(){drag=false;});});',
+'  ba.addEventListener("keydown",function(e){',
+'    if(e.key==="ArrowLeft"){first();set(pos-4);}else if(e.key==="ArrowRight"){first();set(pos+4);}});',
+'  ba.tabIndex=0;',
+'  function first(){if(touched)return;touched=true;knob.classList.remove("pulse");hint.classList.add("gone");cancelAnimationFrame(raf);}',
+'  fit();set(100);',
+'  window.addEventListener("resize",fit);',
+'  var raf,start=null,DUR=1500,DELAY=550;',
+'  function ease(t){return 1-Math.pow(1-t,3);}',
+'  function step(ts){',
+'    if(start===null)start=ts;',
+'    var t=(ts-start-DELAY)/DUR;',
+'    if(t<0){raf=requestAnimationFrame(step);return;}',
+'    if(t>=1){set(50);return;}',
+'    set(100-50*ease(t));',
+'    raf=requestAnimationFrame(step);',
+'  }',
+'  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches){set(50);}',
+'  else{raf=requestAnimationFrame(step);}',
+'  setTimeout(function(){if(!touched)hint.classList.add("gone");},9000);',
+'})();',
+'<\/script>',
+'<\/body>',
+'<\/html>'
+  ].join("\n");
+})();
+</script>
+</body>
+</html>
