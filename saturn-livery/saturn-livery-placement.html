@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saturn SL — Livery Placement Guide</title>
+<style>
+  :root{
+    --f-display:"Bahnschrift","DIN Alternate","Oswald","Arial Narrow Bold","Arial Narrow",system-ui,sans-serif;
+    --f-body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --f-mono:"SF Mono","Cascadia Code","Roboto Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --bg:#131519; --panel:#191c21; --panel2:#20242b; --ink:#e9ebee; --ink2:#aab1bb;
+    --muted:#7c828d; --line:#2a2e35; --accent:#e0322f;
+    --stage-glow:#3a414b; --radius:14px;
+  }
+  @media (prefers-color-scheme: light){
+    :root{--bg:#e7eaee; --panel:#f6f7f9; --panel2:#eceff2; --ink:#181b20; --ink2:#454b54; --muted:#6b727c; --line:#d2d7dd; --accent:#cf2b28;}
+  }
+  :root[data-theme="dark"]{--bg:#131519; --panel:#191c21; --panel2:#20242b; --ink:#e9ebee; --ink2:#aab1bb; --muted:#7c828d; --line:#2a2e35; --accent:#e0322f;}
+  :root[data-theme="light"]{--bg:#e7eaee; --panel:#f6f7f9; --panel2:#eceff2; --ink:#181b20; --ink2:#454b54; --muted:#6b727c; --line:#d2d7dd; --accent:#cf2b28;}
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--f-body); line-height:1.55; -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1120px; margin:0 auto; padding:clamp(20px,4vw,52px) clamp(16px,4vw,38px) 72px;}
+  .eyebrow{font-family:var(--f-mono); font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:26px; height:2px; background:var(--accent);}
+  h1{font-family:var(--f-display); font-weight:700; text-transform:uppercase; font-size:clamp(34px,6vw,60px); line-height:.94; margin:.3em 0 .2em; text-wrap:balance;}
+  h1 .thin{color:var(--ink2); font-weight:400;}
+  .dek{color:var(--ink2); font-size:clamp(15px,1.6vw,17px); max-width:62ch; margin:0 0 6px;} .dek b{color:var(--ink);}
+  .navrow{display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 4px;}
+  .navrow a{font-family:var(--f-mono); font-size:12px; text-decoration:none; color:var(--ink2); border:1px solid var(--line); background:var(--panel); padding:6px 12px; border-radius:999px;}
+  .navrow a:hover{color:var(--ink); border-color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin:44px 0 14px;}
+  .sec-head .idx{font-family:var(--f-mono); font-size:12px; color:var(--accent); letter-spacing:.1em;}
+  .sec-head h2{font-family:var(--f-display); text-transform:uppercase; letter-spacing:.03em; font-size:clamp(18px,2.4vw,23px); font-weight:700; margin:0;}
+  .sec-head .rule{flex:1; height:1px; background:var(--line);}
+
+  .stage{position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line);
+    background:radial-gradient(120% 90% at 50% 4%, var(--stage-glow) 0%, transparent 44%), linear-gradient(#20242b,#15181d 60%,#101216);
+    box-shadow:0 20px 44px -30px rgba(0,0,0,.8); margin-bottom:14px;}
+  .stage svg{display:block; width:100%; height:auto;}
+  .stage .corner{position:absolute; top:13px; left:15px; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.14em; color:#7f8792; text-transform:uppercase;}
+  /* hotspots */
+  .hs{cursor:pointer;}
+  .hs circle{fill:#e0322f; stroke:#fff; stroke-width:1.5; transition:transform .15s ease, filter .15s ease; transform-box:fill-box; transform-origin:center;}
+  .hs text{fill:#fff; font-family:var(--f-mono); font-weight:700; pointer-events:none;}
+  .hs:hover circle, .hs.active circle{filter:drop-shadow(0 0 6px rgba(224,50,47,.9));}
+  .hs.active circle{transform:scale(1.35);}
+  .hs.dim{opacity:.32;}
+
+  .zones{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+  @media (max-width:760px){.zones{grid-template-columns:1fr;}}
+  .zone{text-align:left; display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start;
+    background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; cursor:pointer;
+    font-family:inherit; color:inherit; transition:border-color .15s, background .15s, transform .1s;}
+  .zone:hover, .zone.active{border-color:var(--accent); background:var(--panel2);}
+  .zone.active{box-shadow:0 0 0 1px var(--accent);}
+  .zone .num{font-family:var(--f-mono); font-weight:700; font-size:15px; color:#fff; background:var(--accent);
+    width:30px; height:30px; border-radius:8px; display:grid; place-items:center;}
+  .zone .zname{font-weight:600; font-size:14.5px; color:var(--ink);}
+  .zone .ztags{display:flex; flex-wrap:wrap; gap:6px; margin:7px 0 6px;}
+  .tag{font-family:var(--f-mono); font-size:10px; letter-spacing:.04em; text-transform:uppercase; padding:2px 7px; border-radius:5px;}
+  .tag.paint{background:rgba(110,117,128,.24); color:#c7ccd3;} .tag.vinyl{background:rgba(224,50,47,.16); color:#e0655f;}
+  .tag.liner{background:rgba(120,140,170,.18); color:#93a4bd;} .tag.view{background:var(--panel2); color:var(--muted); border:1px solid var(--line);}
+  .zone .zmeta{font-family:var(--f-mono); font-size:11.5px; color:var(--muted); display:flex; flex-wrap:wrap; gap:4px 14px; margin-bottom:5px;}
+  .zone .zmeta b{color:var(--ink2); font-weight:600;}
+  .zone .znote{font-size:12.5px; color:var(--ink2);}
+  .legendbar{display:flex; flex-wrap:wrap; gap:8px 10px; margin:2px 0 8px; font-family:var(--f-mono); font-size:11px; color:var(--muted);}
+  .legendbar span{display:inline-flex; align-items:center; gap:6px;}
+  .legendbar i{width:11px; height:11px; border-radius:3px; display:inline-block;}
+  footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--line); font-family:var(--f-mono); font-size:11.5px; color:var(--muted); letter-spacing:.05em; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Placement Guide · 14 Zones</div>
+  <h1>Where Everything Goes<br><span class="thin">Saturn SL Livery Map</span></h1>
+  <p class="dek">Tap a number on the car or a card below — they light up together. Fourteen zones, each with its
+    <b>material</b>, rough <b>size</b>, and how it's <b>applied</b>. Paint the big shapes; vinyl only the small stuff.</p>
+  <div class="navrow">
+    <a href="saturn-livery-render.html">↗ Render</a>
+    <a href="saturn-livery-plan.html">↗ Build plan</a>
+    <a href="livery-large-decals.svg">↗ Large decals</a>
+    <a href="livery-small-decals.svg">↗ Small decals</a>
+  </div>
+  <div class="legendbar">
+    <span><i style="background:#6e7580"></i>Gray — paint / keep</span>
+    <span><i style="background:#1b1b1b"></i>Satin black — paint</span>
+    <span><i style="background:#dc2626"></i>Red — vinyl</span>
+    <span><i style="background:#f5f6f7"></i>White — vinyl</span>
+    <span><i style="background:#111"></i>Bed-liner — texture</span>
+  </div>
+
+  <!-- SIDE -->
+  <div class="sec-head"><span class="idx">A</span><h2>Driver Side</h2><span class="rule"></span></div>
+  <div class="stage">
+    <span class="corner">Side · 7 zones</span>
+    <svg id="sideDia" viewBox="0 0 1160 366" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg2" x1="0" y1="46" x2="0" y2="352" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#9ca2ac"/><stop offset="0.33" stop-color="#6e7580"/><stop offset="0.72" stop-color="#5c626c"/><stop offset="1" stop-color="#42474f"/>
+        </linearGradient>
+        <linearGradient id="sat2" x1="0" y1="46" x2="0" y2="330" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#2b2b2e"/><stop offset="1" stop-color="#151516"/>
+        </linearGradient>
+        <linearGradient id="gl2" x1="0" y1="56" x2="0" y2="172" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#39414b"/><stop offset="1" stop-color="#1a1e24"/>
+        </linearGradient>
+        <radialGradient id="ti2" cx="0.5" cy="0.5" r="0.5"><stop offset="0.6" stop-color="#101012"/><stop offset="0.86" stop-color="#161618"/><stop offset="1" stop-color="#050506"/></radialGradient>
+        <radialGradient id="ri2" cx="0.42" cy="0.4" r="0.62"><stop offset="0" stop-color="#3a3d43"/><stop offset="1" stop-color="#141416"/></radialGradient>
+        <radialGradient id="sh2" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#000" stop-opacity="0.45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+        <clipPath id="bc2"><use href="#bp2"/></clipPath>
+      </defs>
+      <ellipse cx="575" cy="352" rx="452" ry="20" fill="url(#sh2)"/>
+      <g id="wf2"><circle cx="240" cy="292" r="68" fill="url(#ti2)"/><circle cx="240" cy="292" r="46" fill="url(#ri2)" stroke="#0c0c0d" stroke-width="3"/><circle cx="240" cy="292" r="13" fill="#8a8f97"/></g>
+      <g id="wr2"><circle cx="800" cy="292" r="68" fill="url(#ti2)"/><circle cx="800" cy="292" r="46" fill="url(#ri2)" stroke="#0c0c0d" stroke-width="3"/><circle cx="800" cy="292" r="13" fill="#8a8f97"/></g>
+      <path id="bp2" fill="url(#bg2)" stroke="#2b3037" stroke-width="1.2" d="M 112 330 C 92 323 82 310 83 295 C 84 267 92 249 110 237 C 168 219 300 201 384 196 C 408 149 460 91 524 61 C 604 59 690 60 762 65 C 806 103 852 153 872 169 C 908 171 938 174 954 178 C 978 186 990 210 992 240 C 993 270 990 298 982 312 C 976 322 968 328 958 330 L 882 330 C 879 286 851 250 800 250 C 749 250 721 286 718 330 L 322 330 C 319 286 291 250 240 250 C 189 250 161 286 158 330 Z"/>
+      <g clip-path="url(#bc2)"><rect x="90" y="300" width="980" height="40" fill="#000" opacity="0.14"/></g>
+      <path fill="url(#sat2)" d="M 384 197 C 408 150 460 92 524 62 C 604 60 690 61 762 66 C 806 104 852 154 874 170 L 856 176 C 834 150 798 108 752 82 C 686 78 604 78 528 82 C 468 112 424 158 400 199 Z"/>
+      <path fill="url(#gl2)" d="M 408 189 C 428 152 466 108 520 86 L 606 86 L 606 189 L 470 189 Z"/>
+      <path fill="url(#gl2)" d="M 620 86 L 726 86 L 726 189 L 620 189 Z"/>
+      <path fill="url(#gl2)" d="M 738 88 L 784 100 L 848 172 L 742 175 Z"/>
+      <path d="M 500 86 L 470 189 L 478 189 L 508 86 Z" fill="#161719"/><rect x="606" y="84" width="14" height="106" fill="#141517"/>
+      <path fill="url(#sat2)" d="M 322 316 L 718 316 L 718 330 L 322 330 Z"/>
+      <path fill="none" stroke="#121212" stroke-width="15" stroke-linecap="round" d="M 882 328 C 879 286 851 250 800 250 C 749 250 721 286 718 328"/>
+      <path fill="none" stroke="#121212" stroke-width="15" stroke-linecap="round" d="M 322 328 C 319 286 291 250 240 250 C 189 250 161 286 158 328"/>
+      <rect x="430" y="216" width="150" height="94" rx="15" fill="#1b1b1b" stroke="#000"/>
+      <text x="505" y="292" font-family="Impact,'Arial Narrow',sans-serif" font-size="90" fill="#f5f6f7" stroke="#dc2626" stroke-width="2.6" paint-order="stroke" text-anchor="middle" letter-spacing="-3">96</text>
+      <text x="520" y="327" font-family="'Arial Narrow',Impact,sans-serif" font-size="11" fill="#c4c8cd" text-anchor="middle" letter-spacing="4" font-weight="bold">SATURN&#160;&#160;SL</text>
+      <g transform="translate(196,236)"><path fill="#dc2626" stroke="#fff" d="M -20 -5 L 5 -5 L 5 -11 L 19 0 L 5 11 L 5 5 L -20 5 Z"/></g>
+      <g transform="translate(922,300)"><path fill="#dc2626" stroke="#fff" stroke-width="1.4" d="M 0 -12 L 12 9 L -12 9 Z"/><path fill="#fff" d="M -1 -5 L -5 3 L 0 3 L -3 8 L 6 -1 L 1 -1 L 4 -5 Z"/></g>
+      <path fill="#c62828" d="M 966 202 C 980 208 989 224 990 244 L 989 262 L 958 262 L 956 204 Z"/>
+      <!-- hotspots -->
+      <g class="hs-layer" font-size="15">
+        <g class="hs" data-z="9"><circle cx="446" cy="230" r="15"/><text x="446" y="235" text-anchor="middle">9</text></g>
+        <g class="hs" data-z="10"><circle cx="408" cy="323" r="15"/><text x="408" y="328" text-anchor="middle">10</text></g>
+        <g class="hs" data-z="11"><circle cx="240" cy="298" r="15"/><text x="240" y="303" text-anchor="middle">11</text></g>
+        <g class="hs" data-z="12"><circle cx="612" cy="334" r="14"/><text x="612" y="339" text-anchor="middle">12</text></g>
+        <g class="hs" data-z="13"><circle cx="196" cy="220" r="15"/><text x="196" y="225" text-anchor="middle">13</text></g>
+        <g class="hs" data-z="14"><circle cx="940" cy="300" r="15"/><text x="940" y="305" text-anchor="middle">14</text></g>
+        <g class="hs" data-z="8"><circle cx="948" cy="205" r="15"/><text x="948" y="210" text-anchor="middle">8</text></g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- TOP -->
+  <div class="sec-head"><span class="idx">B</span><h2>Plan · From Above</h2><span class="rule"></span></div>
+  <div class="stage">
+    <span class="corner">Top · 7 zones</span>
+    <svg id="topDia" viewBox="0 0 1160 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gt2" x1="0" y1="46" x2="0" y2="354" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#565c66"/><stop offset="0.5" stop-color="#7c828d"/><stop offset="1" stop-color="#565c66"/></linearGradient>
+        <linearGradient id="st2" x1="0" y1="60" x2="0" y2="340" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#151516"/><stop offset="0.5" stop-color="#242426"/><stop offset="1" stop-color="#151516"/></linearGradient>
+        <linearGradient id="glt2" x1="0" y1="80" x2="0" y2="320" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#1b2027"/><stop offset="0.5" stop-color="#2b323b"/><stop offset="1" stop-color="#1b2027"/></linearGradient>
+        <linearGradient id="rt2" x1="0" y1="60" x2="0" y2="340" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b41d1d"/><stop offset="0.5" stop-color="#dc2626"/><stop offset="1" stop-color="#b41d1d"/></linearGradient>
+        <radialGradient id="ts2" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#000" stop-opacity="0.4"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+        <clipPath id="btc2"><use href="#btp2"/></clipPath>
+      </defs>
+      <ellipse cx="540" cy="330" rx="470" ry="118" fill="url(#ts2)"/>
+      <rect x="196" y="40" width="88" height="18" rx="6" fill="#141416"/><rect x="196" y="342" width="88" height="18" rx="6" fill="#141416"/>
+      <rect x="756" y="40" width="88" height="18" rx="6" fill="#141416"/><rect x="756" y="342" width="88" height="18" rx="6" fill="#141416"/>
+      <path id="btp2" fill="url(#gt2)" stroke="#2b3037" stroke-width="1.2" d="M 82 200 C 84 150 108 92 150 74 C 210 54 340 48 520 48 C 700 48 820 52 892 66 C 948 92 978 140 986 200 C 978 260 948 308 892 334 C 820 348 700 352 520 352 C 340 352 210 346 150 326 C 108 308 84 250 82 200 Z"/>
+      <g clip-path="url(#btc2)">
+        <path fill="url(#st2)" d="M 360 84 L 178 84 C 162 92 154 130 152 200 C 154 270 162 308 178 316 L 360 316 Z"/>
+        <rect x="236" y="84" width="66" height="232" fill="url(#rt2)"/>
+        <path fill="url(#glt2)" d="M 372 56 L 470 96 L 470 304 L 372 344 Z"/>
+        <rect x="470" y="96" width="256" height="208" fill="url(#st2)"/>
+        <rect x="500" y="96" width="84" height="208" fill="url(#rt2)"/>
+        <text x="652" y="243" font-family="Impact,'Arial Narrow',sans-serif" font-size="118" fill="#f5f6f7" text-anchor="middle" letter-spacing="-5">96</text>
+        <path fill="url(#glt2)" d="M 726 96 L 800 78 L 800 322 L 726 304 Z"/>
+        <path fill="url(#st2)" d="M 800 78 L 900 78 C 916 86 926 122 928 200 C 926 278 916 314 900 322 L 800 322 Z"/>
+        <rect x="840" y="78" width="46" height="244" fill="url(#rt2)"/>
+      </g>
+      <g class="hs-layer" font-size="15">
+        <g class="hs" data-z="1"><circle cx="612" cy="150" r="15"/><text x="612" y="155" text-anchor="middle">1</text></g>
+        <g class="hs" data-z="2"><circle cx="700" cy="255" r="15"/><text x="700" y="260" text-anchor="middle">2</text></g>
+        <g class="hs" data-z="3"><circle cx="542" cy="118" r="15"/><text x="542" y="123" text-anchor="middle">3</text></g>
+        <g class="hs" data-z="4"><circle cx="340" cy="150" r="15"/><text x="340" y="155" text-anchor="middle">4</text></g>
+        <g class="hs" data-z="5"><circle cx="269" cy="118" r="15"/><text x="269" y="123" text-anchor="middle">5</text></g>
+        <g class="hs" data-z="6"><circle cx="900" cy="150" r="15"/><text x="900" y="155" text-anchor="middle">6</text></g>
+        <g class="hs" data-z="7"><circle cx="863" cy="118" r="15"/><text x="863" y="123" text-anchor="middle">7</text></g>
+      </g>
+    </svg>
+  </div>
+
+  <!-- ZONE CARDS -->
+  <div class="sec-head"><span class="idx">C</span><h2>The 14 Zones</h2><span class="rule"></span></div>
+  <div class="zones" id="zoneGrid"></div>
+
+  <footer>
+    <span>Saturn SL · Race Livery · Placement · Rev A</span>
+    <span>7 side · 7 top · 14 total</span>
+  </footer>
+</div>
+
+<script>
+const ZONES = [
+  {n:1, name:"Roof panel", mat:"paint", tags:["Satin black","paint"], size:"Full roof", how:"Mask &amp; spray", view:"Top", note:"Steel panel — clearcoat fails here first. This is the flaw fix and the design in one."},
+  {n:2, name:"Roof number — 96", mat:"vinyl", tags:["White","vinyl"], size:"18–24&Prime;", how:"Sign shop", view:"Top", note:"Matches the door number. Reads from above; orient it to be read from the passenger side."},
+  {n:3, name:"Roof red band", mat:"vinyl", tags:["Red","vinyl"], size:"≈ ⅓ of roof", how:"Sign shop", view:"Top", note:"Chunky transverse band on black only. Sits toward the front of the roof."},
+  {n:4, name:"Hood panel", mat:"paint", tags:["Satin black","paint"], size:"Full hood", how:"Mask &amp; spray", view:"Top", note:"Steel panel. Nose &amp; bumper stay gray — the black is a defined panel, not a wrap."},
+  {n:5, name:"Hood red band", mat:"vinyl", tags:["Red","vinyl"], size:"≈ ⅓ of hood", how:"Cricut / shop", how2:"", view:"Top", note:"Transverse, on the black hood only."},
+  {n:6, name:"Trunk lid", mat:"paint", tags:["Satin black","paint"], size:"Full lid", how:"Mask &amp; spray", view:"Top", note:"Steel panel. Rear bumper stays gray."},
+  {n:7, name:"Trunk red band", mat:"vinyl", tags:["Red","vinyl"], size:"≈ ⅓ of trunk", how:"Cricut", view:"Top", note:"On black only, toward the front edge of the lid."},
+  {n:8, name:"Rear number — 96", mat:"vinyl", tags:["White","vinyl"], size:"8–10&Prime;", how:"Cricut / shop", view:"Side/Rear", note:"Centered on the black trunk face so the car is identified from behind."},
+  {n:9, name:"Front-door number panel", mat:"vinyl", tags:["Black + white + red","panel"], size:"12&Prime; digits", how:"Sign shop", view:"Side", note:"Front door only — the B-pillar kills a centered number. Rounded rectangle, white 96, red keyline."},
+  {n:10, name:"Rockers + wordmark", mat:"paint", tags:["Satin black","paint + vinyl"], size:"Full sill", how:"Paint + Cricut", view:"Side", note:"Painted, not lined — bed-liner won't hold vinyl. White SATURN SL wordmark rides the sill."},
+  {n:11, name:"Wheel arches", mat:"liner", tags:["Bed-liner","texture"], size:"All 4 lips", how:"Roll / spray", view:"Side", note:"Where texture belongs. Mask cleanly to the arch lip."},
+  {n:12, name:"Pinch weld", mat:"liner", tags:["Bed-liner","texture"], size:"Lower sill lip", how:"Roll / spray", view:"Side", note:"Chip &amp; jack protection along the bottom seam."},
+  {n:13, name:"Tow arrows", mat:"vinyl", tags:["Red","vinyl"], size:"≈ 6&Prime;", how:"Cricut", view:"Side", note:"Front &amp; rear. Functional marking — points at the tow/recovery point."},
+  {n:14, name:"Battery cut-off ▲", mat:"vinyl", tags:["Red","vinyl"], size:"≈ 4&Prime;", how:"Cricut", view:"Side", note:"Red triangle marking the master cut-off switch. Safety mark, not decoration."},
+];
+const grid = document.getElementById('zoneGrid');
+ZONES.forEach(z=>{
+  const tagHtml = z.tags.map(t=>{
+    const cls = /red|white/i.test(t)?'vinyl':(/liner|texture/i.test(t)?'liner':(/paint|black/i.test(t)?'paint':'view'));
+    return `<span class="tag ${cls}">${t}</span>`;
+  }).join('');
+  const el = document.createElement('button');
+  el.className='zone'; el.dataset.z=z.n; el.type='button';
+  el.innerHTML = `<span class="num">${z.n}</span><span>
+    <span class="zname">${z.name}</span>
+    <span class="ztags">${tagHtml}<span class="tag view">${z.view}</span></span>
+    <span class="zmeta"><span><b>Size</b> ${z.size}</span><span><b>Apply</b> ${z.how}</span></span>
+    <span class="znote">${z.note}</span></span>`;
+  grid.appendChild(el);
+});
+// bidirectional highlight
+const hotspots = [...document.querySelectorAll('.hs')];
+const cards = [...document.querySelectorAll('.zone')];
+function setActive(z, on){
+  hotspots.forEach(h=>{
+    const match = h.dataset.z===String(z);
+    h.classList.toggle('active', on&&match);
+    h.classList.toggle('dim', on&&!match);
+  });
+  cards.forEach(c=>c.classList.toggle('active', on && c.dataset.z===String(z)));
+}
+function wire(node){
+  const z=node.dataset.z;
+  node.addEventListener('mouseenter',()=>setActive(z,true));
+  node.addEventListener('mouseleave',()=>setActive(z,false));
+  node.addEventListener('focus',()=>setActive(z,true));
+  node.addEventListener('blur',()=>setActive(z,false));
+  node.addEventListener('click',()=>{
+    const card=document.querySelector('.zone[data-z="'+z+'"]');
+    card.scrollIntoView({behavior:'smooth',block:'center'});
+    setActive(z,true); setTimeout(()=>setActive(z,false),1600);
+  });
+}
+[...hotspots,...cards].forEach(wire);
+</script>
+</body>
+</html>
