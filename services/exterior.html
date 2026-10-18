@@ -29,9 +29,11 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap"></noscript>
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 :root { --brand-red: #C8102E; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #141414; color: #ffffff; font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 90px; }
+body { background: #141414; color: #ffffff; font-family: 'Outfit', 'Outfit Fallback', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 90px; }
 a { color: inherit; text-decoration: none; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 

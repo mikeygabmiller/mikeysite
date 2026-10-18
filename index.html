@@ -75,7 +75,9 @@
 </script>
 
 <!-- Lets the sections below the fold skip rendering on a fresh visit. Why, and
-     why only then, is in the OFF-SCREEN SECTIONS comment in the <style> below. -->
+     why only then, is in the OFF-SCREEN SECTIONS comment in the <style>/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
+ below. -->
 <script>
 (function(){
   var d=document.documentElement, nav=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
@@ -223,7 +225,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   background: var(--bg-card);
   color: var(--text-white);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Outfit Fallback', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -600,7 +602,7 @@ header li a[href="#booking"],
 /* =========================================================
    FOOTER
    ========================================================= */
-.site-footer { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
+.site-footer { background: #111; color: #fff; font-family: 'Outfit', 'Outfit Fallback', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
 .footer-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: flex-start; }
 .footer-col { flex: 1 1 200px; min-width: 180px; }
 .footer-col h3 { font-size: 16px; margin-bottom: 10px; }
@@ -1214,7 +1216,7 @@ header li a[href="#booking"],
    its alphas are still what decide how much of the red glow reads, lower the
    .82/.58/.88 values to let more brand colour through. */
 .mh{
-  font-family:'Outfit',sans-serif;
+  font-family:'Outfit','Outfit Fallback',sans-serif;
   text-align:center;
   max-width:1100px;
   margin:0 auto;
@@ -1235,14 +1237,14 @@ header li a[href="#booking"],
 
 /* SEO H1 (small, keyword-focused) */
 .mh-seo-h1{
-  font-family:'Outfit',sans-serif; font-weight:700;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:700;
   font-size:.8rem; letter-spacing:.12em; text-transform:uppercase;
   color:#C8102E; margin:0 0 14px; line-height:1.3;
 }
 
 /* Headline */
 .mh .mh-headline{
-  font-family:'Outfit',sans-serif; font-weight:900;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:900;
   font-size:clamp(2.2rem,6vw,4.8rem);
   line-height:1.05; letter-spacing:-0.02em;
   text-transform:uppercase; margin:0 0 28px; color:#fff;
@@ -1263,7 +1265,7 @@ header li a[href="#booking"],
 
 /* Subhead */
 .mh .subhead{
-  font-family:'Outfit',sans-serif; font-weight:500;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:500;
   font-size:clamp(1.05rem,1.8vw,1.35rem); line-height:1.5;
   color:#d4d4d4; max-width:780px; margin:0 auto 36px;
   opacity:0; transform:translateY(15px);
@@ -1277,7 +1279,7 @@ header li a[href="#booking"],
   opacity:0; animation:mhFadeUp .8s ease-out .9s forwards;
 }
 .mh-cta-primary,.mh-cta-secondary{
-  font-family:'Outfit',sans-serif; font-weight:800;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:800;
   font-size:1rem; text-transform:uppercase; letter-spacing:.5px;
   padding:16px 28px; border-radius:8px; text-decoration:none;
   border:2px solid transparent;
@@ -1337,7 +1339,7 @@ header li a[href="#booking"],
 .mh-guarantee{
   display:inline-flex; align-items:center; gap:8px;
   margin:0 auto 30px; padding:9px 18px;
-  font-family:'Outfit',sans-serif; font-weight:700; font-size:.92rem;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:700; font-size:.92rem;
   color:#f5ecd6; background:rgba(201,162,75,.10);
   border:1.5px solid rgba(201,162,75,.45); border-radius:999px;
   opacity:0; animation:mhFadeUp .8s ease-out .8s forwards;
@@ -1349,7 +1351,7 @@ header li a[href="#booking"],
 
 /* Reassurance microcopy under the CTAs */
 .mh-reassure{
-  font-family:'Outfit',sans-serif; font-size:.85rem; color:#a3a3a3;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-size:.85rem; color:#a3a3a3;
   margin:-16px auto 30px; letter-spacing:.01em;
   opacity:0; animation:mhFadeUp .8s ease-out 1s forwards;
 }
@@ -2849,7 +2851,7 @@ header li a[href="#booking"],
   .grcard-brand svg{ display:block }
   .grcard-body{ display:flex; align-items:center; gap:24px }
   .grcard-score{ text-align:center; flex:none }
-  .grcard-num{ font-family:'Outfit',sans-serif; font-size:46px; font-weight:800; line-height:1; color:#202124 }
+  .grcard-num{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:46px; font-weight:800; line-height:1; color:#202124 }
   .grcard-stars{ color:#fbbc04; font-size:18px; letter-spacing:2px; margin-top:3px }
   .grcard-count{ color:#5f6368; font-size:12.5px; margin-top:5px }
   .grcard-bars{ flex:1; display:grid; gap:6px; min-width:0 }
@@ -2864,10 +2866,10 @@ header li a[href="#booking"],
   .guarbox{ display:flex; align-items:center; gap:22px; background:radial-gradient(120% 120% at 0% 0%, #1d1812, #121110 70%); border:1px solid #2a2520; border-radius:16px; padding:20px 22px; margin-bottom:40px; }
   .guarseal{ width:100px; height:100px; flex:none; border-radius:50%; display:grid; place-content:center; text-align:center; color:#3a2d0e; position:relative; background:radial-gradient(circle at 36% 28%, #f2e2b4, #C9A24B 48%, #8C6D2F); box-shadow:0 14px 30px -12px rgba(201,162,75,.55), inset 0 2px 6px rgba(255,255,255,.55), inset 0 -9px 14px rgba(120,90,30,.5); }
   .guarseal::before{ content:""; position:absolute; inset:8px; border:2px dashed rgba(60,45,14,.4); border-radius:50% }
-  .guarseal-p{ font-family:'Outfit',sans-serif; font-weight:900; font-size:27px; line-height:.9 }
+  .guarseal-p{ font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:900; font-size:27px; line-height:.9 }
   .guarseal-l{ font-size:8px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; margin-top:2px }
   .guartext{ flex:1; min-width:0 }
-  .guartext h3{ font-family:'Outfit',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
+  .guartext h3{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
   .guar-rr{ color:var(--brand-gold) }
   .guartext p{ color:#cdbfa6; font-size:14px; line-height:1.5; margin:8px 0 0 }
 
@@ -2943,7 +2945,7 @@ header li a[href="#booking"],
   #ba-gallery { background: transparent; }
   #ba-gallery {
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     padding: 60px 20px;
   }
   .container { max-width: 1200px; margin: 0 auto; }
@@ -3206,7 +3208,7 @@ header li a[href="#booking"],
   .qcta-inner::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--brand-red,#C8102E),transparent); }
   .qcta-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-red,#C8102E); margin-bottom:16px; }
   .qcta-eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--brand-red,#C8102E); box-shadow:0 0 0 3px rgba(200,16,46,.22); }
-  .qcta h2{ font-family:'Outfit',sans-serif; font-size:clamp(26px,4.8vw,38px); font-weight:900; letter-spacing:-.02em; color:#fff; line-height:1.1; margin:0 0 14px; }
+  .qcta h2{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:clamp(26px,4.8vw,38px); font-weight:900; letter-spacing:-.02em; color:#fff; line-height:1.1; margin:0 0 14px; }
   .qcta h2 em{ color:var(--brand-red,#C8102E); font-style:normal; }
   .qcta-sub{ font-size:16px; line-height:1.55; color:#b0b0b6; margin:0 auto 26px; max-width:470px; }
   .qcta-feats{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 0 30px; }
@@ -3252,7 +3254,7 @@ header li a[href="#booking"],
   }
 
   .stat-number {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 900;
     font-size: 32px;
     color: #fff;
@@ -3271,7 +3273,7 @@ header li a[href="#booking"],
   }
 
   .stat-label {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 11px;
     color: #9ca3af;
@@ -3314,7 +3316,7 @@ header li a[href="#booking"],
   }
 
   .trust-source {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 600;
     font-size: 10.5px;
     letter-spacing: 0.06em;
@@ -3328,7 +3330,7 @@ header li a[href="#booking"],
   }
 
   .trust-quote {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 1.5;
@@ -3359,7 +3361,7 @@ header li a[href="#booking"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 900;
     font-size: 14px;
     color: #fff;
@@ -3367,14 +3369,14 @@ header li a[href="#booking"],
   }
 
   .trust-name {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 14px;
     color: #fff;
   }
 
   .trust-location {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 400;
     font-size: 13px;
     color: #9ca3af;
@@ -3398,7 +3400,7 @@ header li a[href="#booking"],
     border: 2px solid #2a2a2a;
     border-radius: 10px;
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;
@@ -3459,7 +3461,7 @@ header li a[href="#booking"],
      than run as a ticking clock, and everything marked data-rr hides itself on
      January 1 even if nobody takes this section down. -->
 <style>
-  .rr{ background:radial-gradient(110% 70% at 50% 0%, rgba(201,162,75,.16), transparent 60%), #111; border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:clamp(52px,7vw,96px) 16px; color:#fff; font-family:'Outfit',sans-serif }
+  .rr{ background:radial-gradient(110% 70% at 50% 0%, rgba(201,162,75,.16), transparent 60%), #111; border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:clamp(52px,7vw,96px) 16px; color:#fff; font-family:'Outfit','Outfit Fallback',sans-serif }
   .rr *{ box-sizing:border-box }
   .rr-in{ max-width:980px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,56px); align-items:center }
   .rr-when{ display:inline-flex; align-items:center; gap:8px; background:rgba(201,162,75,.14); border:1px solid rgba(201,162,75,.45); color:var(--brand-gold,#C9A24B); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; border-radius:999px }
@@ -3625,7 +3627,7 @@ header li a[href="#booking"],
   /* ---------- Service area section. Tokens match the rest of the page:
        red #C8102E, gold #C9A24B, Outfit, #141414/#1a1a1a surfaces on #2a2a2a lines. ---------- */
   .svcarea{
-    font-family:'Outfit',system-ui,sans-serif; color:#fff; padding:56px 20px;
+    font-family:'Outfit','Outfit Fallback',system-ui,sans-serif; color:#fff; padding:56px 20px;
     border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a;
     background:
       radial-gradient(900px 500px at 78% -10%, rgba(200,16,46,.10), transparent 62%),
@@ -3835,7 +3837,7 @@ header li a[href="#booking"],
   .sa-mapwrap{ margin:0; min-width:0; }
   .sa-mapinner{ position:relative; background:#0f0f10; border:1px solid #2a2a2a; border-radius:16px;
     overflow:hidden; line-height:0; }
-  .sa-map{ display:block; width:100%; height:auto; font-family:'Outfit',system-ui,sans-serif; }
+  .sa-map{ display:block; width:100%; height:auto; font-family:'Outfit','Outfit Fallback',system-ui,sans-serif; }
 
   .sa-water-lbl{ fill:#2c4d5e; font-size:13px; font-weight:800; letter-spacing:3.4px; text-anchor:middle; }
   .sa-rd{ fill:none; stroke:#262626; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
@@ -5557,7 +5559,7 @@ header li a[href="#booking"],
     --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
     --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
     --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
-    position:relative; font-family:'Outfit',system-ui,sans-serif; color:var(--ink); line-height:1.5;
+    position:relative; font-family:'Outfit','Outfit Fallback',system-ui,sans-serif; color:var(--ink); line-height:1.5;
     padding:52px 20px;
     background:
       radial-gradient(1000px 560px at 82% -10%, rgba(200,16,46,.10), transparent 60%),
@@ -5690,7 +5692,7 @@ header li a[href="#booking"],
 <!-- CTA CARD #3, STICKY / COMPACT BOTTOM BAR -->
 <!-- Drop in as floating mobile CTA or inline -->
 <!-- ============================================ -->
-<div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:1px solid #2a2a2a;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:12px;">
+<div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:1px solid #2a2a2a;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit','Outfit Fallback',sans-serif;display:flex;align-items:center;gap:12px;">
   <div style="flex:1;">
     <div style="color:#C8102E;font-size:10px;font-weight:900;letter-spacing:1.2px;margin-bottom:2px;">READY WHEN YOU ARE</div>
     <div style="color:#fff;font-size:16px;font-weight:900;line-height:1.2;">Book your detail today</div>
@@ -5711,7 +5713,7 @@ header li a[href="#booking"],
   /* ===== shared premium backdrop (macro-encapsulation) ===== */
   .hg4 {
     position: relative;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     background:
       radial-gradient(circle at 15% 8%, rgba(200,16,46,0.10) 0%, transparent 42%),
       radial-gradient(circle at 88% 92%, rgba(201,162,75,0.07) 0%, transparent 45%),
@@ -6391,7 +6393,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit','Outfit Fallback',sans-serif; }
   .about-inner{ max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
   .about-photo{ flex:1 1 280px; min-width:260px; display:flex; justify-content:center; }
   .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:1px solid var(--border-dark); box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#1a1a1a; }
@@ -6458,7 +6460,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit','Outfit Fallback',sans-serif; }
   .faq2-inner{ max-width:800px; margin:0 auto; }
   .faq2-eyebrow{ display:inline-block; background:#C8102E; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
   .faq2 h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 28px; }
@@ -6515,7 +6517,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
+  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit','Outfit Fallback',sans-serif; }
   .explore-inner{ max-width:1100px; margin:0 auto; }
   .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#9a9a9a; margin:0 0 14px; }
   .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
@@ -6689,14 +6691,7 @@ header li a[href="#booking"],
   ready(function () {
 
     // ── PHONE CLICKS ──
-    // Catches any tel: link OR element with data-track="phone"
-    document.addEventListener("click", function (e) {
-      var el = e.target.closest('a[href^="tel:"], [data-track="phone"]');
-      if (!el) return;
-      var phone = el.getAttribute("href") ? el.getAttribute("href").replace("tel:", "") : "";
-      var location = el.getAttribute("data-location") || (el.textContent || "").trim().slice(0, 50);
-      fire("phone_click", { phone_number: phone, button_location: location });
-    }, true);
+    // Sent by /site-stats.js now, on every page, so it isn't counted twice here.
 
     // ── QQC FORM SUBMISSIONS ──
     // Method A: form with id="qqc", class "qqc", or data-track="qqc"

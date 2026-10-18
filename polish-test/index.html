@@ -35,11 +35,13 @@
 
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 :root{
   --red:#C8102E; --bg:#08090b; --bg2:#101216; --line:#22262c;
   --ink:#f4f6f8; --dim:#a2abb6; --dimmer:#7a838e;
   --good:#4ade80; --warn:#ffc357; --bad:#ff3b52;
-  --font:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font:'Outfit','Outfit Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}

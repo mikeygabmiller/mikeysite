@@ -62,6 +62,8 @@
 </script>
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 /* =========================================================
    DESIGN TOKENS
    ========================================================= */
@@ -100,7 +102,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   background: var(--bg-card);
   color: var(--text-white);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', 'Outfit Fallback', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -472,7 +474,7 @@ header li a[href="#booking"],
 /* =========================================================
    FOOTER
    ========================================================= */
-.site-footer { background: #111; color: #fff; font-family: 'Outfit', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
+.site-footer { background: #111; color: #fff; font-family: 'Outfit', 'Outfit Fallback', sans-serif; padding: 40px 20px 20px; border-top: 2px solid var(--brand-red); }
 .footer-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; align-items: flex-start; }
 .footer-col { flex: 1 1 200px; min-width: 180px; }
 .footer-col h3 { font-size: 16px; margin-bottom: 10px; }
@@ -1111,7 +1113,7 @@ header li a[href="#booking"],
    (.82/.58/.88) decide how much of the red glow reads; lower them to let more
    brand colour through. */
 .mh{
-  font-family:'Outfit',sans-serif;
+  font-family:'Outfit','Outfit Fallback',sans-serif;
   text-align:center;
   max-width:1100px;
   margin:0 auto;
@@ -1132,14 +1134,14 @@ header li a[href="#booking"],
 
 /* SEO H1 (small, keyword-focused) */
 .mh-seo-h1{
-  font-family:'Outfit',sans-serif; font-weight:700;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:700;
   font-size:.8rem; letter-spacing:.12em; text-transform:uppercase;
   color:#C8102E; margin:0 0 14px; line-height:1.3;
 }
 
 /* Headline */
 .mh .mh-headline{
-  font-family:'Outfit',sans-serif; font-weight:900;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:900;
   font-size:clamp(2.2rem,6vw,4.8rem);
   line-height:1.05; letter-spacing:-0.02em;
   text-transform:uppercase; margin:0 0 28px; color:#fff;
@@ -1159,7 +1161,7 @@ header li a[href="#booking"],
 
 /* Subhead */
 .mh .subhead{
-  font-family:'Outfit',sans-serif; font-weight:500;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:500;
   font-size:clamp(1.05rem,1.8vw,1.35rem); line-height:1.5;
   color:#d4d4d4; max-width:780px; margin:0 auto 36px;
   opacity:0; transform:translateY(15px);
@@ -1173,7 +1175,7 @@ header li a[href="#booking"],
   opacity:0; animation:mhFadeUp .8s ease-out .9s forwards;
 }
 .mh-cta-primary,.mh-cta-secondary{
-  font-family:'Outfit',sans-serif; font-weight:800;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:800;
   font-size:1rem; text-transform:uppercase; letter-spacing:.5px;
   padding:16px 28px; border-radius:8px; text-decoration:none;
   border:2px solid transparent;
@@ -1205,7 +1207,7 @@ header li a[href="#booking"],
 .mh-guarantee{
   display:inline-flex; align-items:center; gap:8px;
   margin:0 auto 30px; padding:9px 18px;
-  font-family:'Outfit',sans-serif; font-weight:700; font-size:.92rem;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:700; font-size:.92rem;
   color:#f5ecd6; background:rgba(201,162,75,.10);
   border:1.5px solid rgba(201,162,75,.45); border-radius:999px;
   opacity:0; animation:mhFadeUp .8s ease-out .8s forwards;
@@ -1217,7 +1219,7 @@ header li a[href="#booking"],
 
 /* Reassurance microcopy under the CTAs */
 .mh-reassure{
-  font-family:'Outfit',sans-serif; font-size:.85rem; color:#a3a3a3;
+  font-family:'Outfit','Outfit Fallback',sans-serif; font-size:.85rem; color:#a3a3a3;
   margin:-16px auto 30px; letter-spacing:.01em;
   opacity:0; animation:mhFadeUp .8s ease-out 1s forwards;
 }
@@ -1339,7 +1341,7 @@ header li a[href="#booking"],
   .grcard-brand svg{ display:block }
   .grcard-body{ display:flex; align-items:center; gap:24px }
   .grcard-score{ text-align:center; flex:none }
-  .grcard-num{ font-family:'Outfit',sans-serif; font-size:46px; font-weight:800; line-height:1; color:#202124 }
+  .grcard-num{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:46px; font-weight:800; line-height:1; color:#202124 }
   .grcard-stars{ color:#fbbc04; font-size:18px; letter-spacing:2px; margin-top:3px }
   .grcard-count{ color:#5f6368; font-size:12.5px; margin-top:5px }
   .grcard-bars{ flex:1; display:grid; gap:6px; min-width:0 }
@@ -1354,10 +1356,10 @@ header li a[href="#booking"],
   .guarbox{ display:flex; align-items:center; gap:22px; background:radial-gradient(120% 120% at 0% 0%, #1d1812, #121110 70%); border:1px solid #2a2520; border-radius:16px; padding:20px 22px; margin-bottom:40px; }
   .guarseal{ width:100px; height:100px; flex:none; border-radius:50%; display:grid; place-content:center; text-align:center; color:#3a2d0e; position:relative; background:radial-gradient(circle at 36% 28%, #f2e2b4, #C9A24B 48%, #8C6D2F); box-shadow:0 14px 30px -12px rgba(201,162,75,.55), inset 0 2px 6px rgba(255,255,255,.55), inset 0 -9px 14px rgba(120,90,30,.5); }
   .guarseal::before{ content:""; position:absolute; inset:8px; border:2px dashed rgba(60,45,14,.4); border-radius:50% }
-  .guarseal-p{ font-family:'Outfit',sans-serif; font-weight:900; font-size:27px; line-height:.9 }
+  .guarseal-p{ font-family:'Outfit','Outfit Fallback',sans-serif; font-weight:900; font-size:27px; line-height:.9 }
   .guarseal-l{ font-size:8px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; margin-top:2px }
   .guartext{ flex:1; min-width:0 }
-  .guartext h3{ font-family:'Outfit',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
+  .guartext h3{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:clamp(20px,4.6vw,26px); font-weight:900; letter-spacing:-.01em; color:#fff; line-height:1.12; margin:0 }
   .guar-rr{ color:var(--brand-gold) }
   .guartext p{ color:#cdbfa6; font-size:14px; line-height:1.5; margin:8px 0 0 }
 
@@ -1469,7 +1471,7 @@ header li a[href="#booking"],
   }
 
   .stat-number {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 900;
     font-size: 32px;
     color: #fff;
@@ -1488,7 +1490,7 @@ header li a[href="#booking"],
   }
 
   .stat-label {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 11px;
     color: #9ca3af;
@@ -1531,7 +1533,7 @@ header li a[href="#booking"],
   }
 
   .trust-source {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 600;
     font-size: 10.5px;
     letter-spacing: 0.06em;
@@ -1545,7 +1547,7 @@ header li a[href="#booking"],
   }
 
   .trust-quote {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 400;
     font-size: 17px;
     line-height: 1.5;
@@ -1576,7 +1578,7 @@ header li a[href="#booking"],
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 900;
     font-size: 14px;
     color: #fff;
@@ -1584,14 +1586,14 @@ header li a[href="#booking"],
   }
 
   .trust-name {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 14px;
     color: #fff;
   }
 
   .trust-location {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 400;
     font-size: 13px;
     color: #9ca3af;
@@ -1615,7 +1617,7 @@ header li a[href="#booking"],
     border: 2px solid #2a2a2a;
     border-radius: 10px;
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     font-weight: 700;
     font-size: 14px;
     text-transform: uppercase;
@@ -1685,7 +1687,7 @@ header li a[href="#booking"],
     --text: #ffffff;
     --muted: #9aa0a6;
     box-sizing: border-box;
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     color: var(--text);
     background:
       radial-gradient(120% 80% at 50% -10%, rgba(200,16,46, 0.28) 0%, rgba(200,16,46, 0.06) 32%, transparent 60%),
@@ -1726,7 +1728,7 @@ header li a[href="#booking"],
     gap: 9px;
     background: var(--red);
     color: #fff;
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 800;
     font-size: clamp(12px, 1.5vw, 15px);
     letter-spacing: 0.14em;
@@ -1750,7 +1752,7 @@ header li a[href="#booking"],
 
   /* ---------- headline ---------- */
   .mko__head {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 900;
     line-height: 0.92;
     letter-spacing: -0.01em;
@@ -1817,14 +1819,14 @@ header li a[href="#booking"],
     font-weight: 600;
   }
   .mko__cell .name {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 800;
     font-size: clamp(17px, 2.3vw, 22px);
     text-transform: uppercase;
     line-height: 1;
   }
   .mko__cell .price {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 800;
     font-size: clamp(15px, 2vw, 18px);
     color: #cfd2d5;
@@ -1843,10 +1845,10 @@ header li a[href="#booking"],
     text-decoration-thickness: 2px;
     font-weight: 700;
     font-size: 15px;
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
   }
   .mko__cell.free-cell .big-free {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 900;
     font-size: clamp(26px, 4vw, 38px);
     color: var(--red);
@@ -1856,7 +1858,7 @@ header li a[href="#booking"],
   }
   .mko__plus {
     align-self: center;
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 900;
     font-size: 30px;
     color: var(--red);
@@ -1866,7 +1868,7 @@ header li a[href="#booking"],
   /* ---------- countdown ---------- */
   .mko__timerwrap { margin: clamp(34px, 5vw, 48px) auto 0; }
   .mko__timerlabel {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.16em;
@@ -1893,7 +1895,7 @@ header li a[href="#booking"],
     box-shadow: 0 14px 34px rgba(0,0,0,0.55);
   }
   .mko__seg .num {
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 900;
     font-size: clamp(30px, 5.4vw, 50px);
     line-height: 1;
@@ -1922,7 +1924,7 @@ header li a[href="#booking"],
     align-items: center;
     justify-content: center;
     gap: 12px;
-    font-family: "Outfit", sans-serif;
+    font-family: "Outfit", "Outfit Fallback", sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -1996,7 +1998,7 @@ header li a[href="#booking"],
   #ba-gallery { background: transparent; }
   #ba-gallery {
     color: #fff;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     padding: 60px 20px;
   }
   .container { max-width: 1200px; margin: 0 auto; }
@@ -3226,7 +3228,7 @@ header li a[href="#booking"],
     --red:#C8102E; --red2:#A00C24; --gold:#C9A24B; --gold2:#E4CD8B;
     --ink:#fff; --muted:#9aa0a6; --line:rgba(255,255,255,.08);
     --card:rgba(17,17,21,.74); --surface2:#1c1c1f; --surface3:#26262a;
-    position:relative; font-family:'Outfit',system-ui,sans-serif; color:var(--ink); line-height:1.5;
+    position:relative; font-family:'Outfit','Outfit Fallback',system-ui,sans-serif; color:var(--ink); line-height:1.5;
     padding:80px 20px;
     background:
       radial-gradient(1000px 560px at 82% -10%, rgba(200,16,46,.10), transparent 60%),
@@ -3632,7 +3634,7 @@ header li a[href="#booking"],
 <!-- CTA CARD #3, STICKY / COMPACT BOTTOM BAR -->
 <!-- Drop in as floating mobile CTA or inline -->
 <!-- ============================================ -->
-<div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:1px solid #2a2a2a;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit',sans-serif;display:flex;align-items:center;gap:12px;">
+<div style="background:linear-gradient(135deg,#1a1a1a 0%,#141414 100%);border:1px solid #2a2a2a;border-radius:14px;padding:16px;max-width:480px;margin:24px auto;font-family:'Outfit','Outfit Fallback',sans-serif;display:flex;align-items:center;gap:12px;">
   <div style="flex:1;">
     <div style="color:#C8102E;font-size:10px;font-weight:900;letter-spacing:1.2px;margin-bottom:2px;">READY WHEN YOU ARE</div>
     <div style="color:#fff;font-size:16px;font-weight:900;line-height:1.2;">Book your service today</div>
@@ -3653,7 +3655,7 @@ header li a[href="#booking"],
   /* ===== shared premium backdrop (macro-encapsulation) ===== */
   .hg4 {
     position: relative;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
     background:
       radial-gradient(circle at 15% 8%, rgba(200,16,46,0.10) 0%, transparent 42%),
       radial-gradient(circle at 88% 92%, rgba(201,162,75,0.07) 0%, transparent 45%),
@@ -4402,7 +4404,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .about-mikey{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); font-family:'Outfit','Outfit Fallback',sans-serif; }
   .about-inner{ max-width:1100px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:40px; }
   .about-photo{ flex:1 1 280px; min-width:260px; display:flex; justify-content:center; }
   .about-photo img{ width:100%; max-width:360px; border-radius:14px; border:1px solid var(--border-dark); box-shadow:0 18px 50px rgba(0,0,0,0.55); background:#1a1a1a; }
@@ -4462,7 +4464,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit',sans-serif; }
+  .faq2{ background:#141414; padding:60px 20px; border-top:1px solid var(--border-dark); border-bottom:1px solid var(--border-dark); font-family:'Outfit','Outfit Fallback',sans-serif; }
   .faq2-inner{ max-width:800px; margin:0 auto; }
   .faq2-eyebrow{ display:inline-block; background:#C8102E; color:#fff; padding:4px 12px; font-weight:900; text-transform:uppercase; letter-spacing:1px; font-size:0.75rem; margin-bottom:16px; }
   .faq2 h2{ font-weight:900; font-size:2.2rem; color:#fff; text-transform:uppercase; letter-spacing:1px; margin:0 0 28px; }
@@ -4496,7 +4498,7 @@ header li a[href="#booking"],
   </div>
 </section>
 <style>
-  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit',sans-serif; }
+  .explore{ background:#141414; padding:32px 20px; border-top:1px solid #2a2a2a; font-family:'Outfit','Outfit Fallback',sans-serif; }
   .explore-inner{ max-width:1100px; margin:0 auto; }
   .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#9a9a9a; margin:0 0 14px; }
   .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
@@ -4658,14 +4660,7 @@ header li a[href="#booking"],
   ready(function () {
 
     // ── PHONE CLICKS ──
-    // Catches any tel: link OR element with data-track="phone"
-    document.addEventListener("click", function (e) {
-      var el = e.target.closest('a[href^="tel:"], [data-track="phone"]');
-      if (!el) return;
-      var phone = el.getAttribute("href") ? el.getAttribute("href").replace("tel:", "") : "";
-      var location = el.getAttribute("data-location") || (el.textContent || "").trim().slice(0, 50);
-      fire("phone_click", { phone_number: phone, button_location: location });
-    }, true);
+    // Sent by /site-stats.js now, on every page, so it isn't counted twice here.
 
     // ── QQC FORM SUBMISSIONS ──
     // Method A: form with id="qqc", class "qqc", or data-track="qqc"
