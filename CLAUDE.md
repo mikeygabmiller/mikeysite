@@ -624,15 +624,21 @@ in, measured off his 2024 proof) for Jim Lee's coupon magazine, built
 $99"), Jim's 2026 rates and mailing schedule, and the plan (Mikey, 2026-10-14:
 one issue, Lake Stevens holiday issue, mailing Nov 17 to 19 with art due Oct
 23). Copy lives in `print/tools/build-htv-ad.cjs` (`npm run htv`).
-It's one more copy of the facts table: prices, 5.0 across 39, spigot and
-outlet. It's written for the Lake Stevens edition only (headline, "I'm in Lake
-Stevens most weeks"; he's based in Snohomish, so never "based in"). Its review
-is Matt K.'s real Google review, word for word; never a made-up one
-(`REVIEW_IS_EXAMPLE` marks a placeholder). **The holiday issue carries the
-Rain-Ready coupon** (`OFFER=rainready`, writes `ad-offer.pdf`, refuses to build
-from Jan 1, 2027): same extras and Dec 31 booking date as the hangers. Any
-other offer is Mikey's call; `preview-SAMPLE-offer-not-approved.png` is only a
-sample.
+It's one more copy of the facts table: prices, the 5.0 rating (no review
+count, Mikey 2026-10-19), "no travel fee". It's the one print piece **without
+the spigot-and-outlet line** (Mikey, 2026-10-19: not on the ad; say it on the
+phone). It's written for the Lake Stevens edition only (headline; he's based
+in Snohomish, so never "based in"). Its quote is Rose's, a customer who said it
+to Mikey and gave her yes (2026-10-19): not a Google review, so never labeled
+one; check it against her message. The "Matt K. · Google review" quote it had
+before isn't among his 40 Google reviews, and the site still carries it
+unlabeled (homepage, city pages): ask Mikey where it came from before relying
+on it. Never a made-up review (`REVIEW_IS_EXAMPLE` marks a placeholder).
+**The holiday issue carries the Rain-Ready offer as a blue receipt**
+(`OFFER=rainready`, writes `ad-offer.pdf`, refuses to build from Jan 1, 2027):
+worth $508 (the homepage's value stack), from $369, same extras and Dec 31
+booking date as the hangers. Any other offer is Mikey's call;
+`preview-SAMPLE-offer-not-approved.png` is only a sample.
 
 ## EDDM postcard
 
