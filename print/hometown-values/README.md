@@ -4,7 +4,7 @@ A quarter-page ad for **Hometown Values Savings Magazine**, the coupon
 magazine Jim Lee mails from Marysville (206-261-0752,
 jim@myhometownvalues.com). Built 2026-10-12.
 
-![the ad](preview.png)
+![the ad](preview-offer.png)
 
 ## History: the 2024 ad
 
@@ -47,60 +47,57 @@ generator's blurry-phone check at this size. Ask Jim not to shrink it.
 
 ## What's on it, and why
 
-- **White, with one black band.** Version 1 was black like the site and Mikey
-  didn't like it (2026-10-12). A coupon magazine is mostly busy ads on white
-  paper, so a clean white box with a big red headline stands out, and white is
-  what he picked for the call page. The thin black frame keeps it from melting
-  into the page.
-- **One big headline**, LAKE STEVENS CAR DETAILING. / I COME TO YOUR HOME OR
-  WORK., in the logo's Barlow Condensed. The second line is Mikey's own (his
-  Canva edit, 2026-10-12); the first puts the reader's town back in, in place
-  of his "Professional", which every competitor says.
+The design is **#5, "big price first"**, picked 2026-10-19 out of five
+layouts of Mikey's own Canva edit (cream, yellow call band) with a blue offer
+box. Earlier rounds (`variations/`, `concepts/`, `premium/`) are kept for
+reference; none of them is the ad.
+
+- **Cream, a yellow call band, and one blue box.** Mikey's Canva edit
+  (2026-10-19) moved the ad from white with a black band to cream with a
+  yellow band. Blue is used once, on the offer, so it's the thing that pops on
+  a page of white coupon ads.
+- **The headline fills the width.** LAKE STEVENS CAR DETAILING. / I COME TO
+  YOUR HOME OR WORK., each line stretched edge to edge (the generator sizes
+  it). Mikey wanted it to pop more.
 - **The back-seat before/after, shown whole.** Picked 2026-10-12 out of every
-  photo in `social/photos/` and `images/`, at Mikey's ask for the highest
-  converting one. There are five real before/after pairs. The back seat
-  (crushed snacks, juice, stained leather) is the one every parent recognizes,
-  and it's the website's lead photo. The RAV4 cargo (mud) is real cleaning but
-  a trunk doesn't sell a detail. The MDX cargo reads as "emptied the trunk".
-  The Focus exterior is 640 px with the after shot from a different angle.
-  The steering wheel's fuzzy cover confuses the before. The photos are
-  portrait, so they sit whole beside the prices: cropping them to a strip cut
-  off the mess, and Mikey called that out.
-- **The three "from" prices**, stacked beside the photo in filled boxes
-  (Mikey's Canva edit), Full Detail in red on top. A coupon magazine is read
-  by people comparing prices, so the price is right there, and "from $369"
-  filters out the $99 crowd the 2024 ad drew.
-- **5.0 and 40 Google reviews** up top beside the logo. Mikey's edit said
-  "5-Star rated on Google" instead; the count is back because it's what makes
-  a 5.0 believable. He dropped "300+ cars", so it's off.
-- **A real Google review under the photos** (2026-10-14): Matt K.'s
-  "Mikey showed up on time, did exactly what he said, and charged exactly
-  what he quoted. That kind of service is really rare these days." "Charged
-  exactly what he quoted" answers the biggest fear about anyone who comes to
-  your house. It's the wording the site carries; check it word for word
-  against Google before the art goes in (two versions exist on the site, one
-  without "and"). He isn't from Lake Stevens, so no town after his name. A
-  made-up review can't print (FTC rule, 16 CFR 465): if the slot ever holds
-  a placeholder, set `REVIEW_IS_EXAMPLE` true and the ad says EXAMPLE on it.
-- **The black band is the call to action**: the 1 in QR, "Call or text
-  Mikey", the phone big, and the guarantee once.
-- **The spigot and outlet line**, with the reason. Every piece of print says
-  who provides water and power.
+  photo in `social/photos/` and `images/`: crushed snacks, juice and stained
+  leather are what every parent recognizes, and it's the website's lead photo.
+  The photos are portrait, so they sit whole beside the offer: cropping them to
+  a strip cut off the mess, and Mikey called that out.
+- **The blue receipt is the price block** (`ad-offer.pdf`). Worth ~~$508~~,
+  **from $369** in big yellow, then the lines that add up to $508: Interior
+  $249, Exterior $199, ceramic wax ~~$20~~, RainX ~~$10~~, anti-fog ~~$30~~,
+  all FREE. That's the homepage's own value stack, so the $508 is the
+  receipt's arithmetic, not a claim; it needs no fine print. "Book a Full
+  Detail by Dec 31. Mention Hometown Values." and the guarantee close it.
+  Mikey worried that showing a price would cost calls (2026-10-19); it stays
+  because a coupon magazine is read by people comparing prices, the QR and the
+  phone give the price anyway, and "from $369" screens out the $99 crowd the
+  2024 ad drew. `ad.pdf`, for any issue after Dec 31, is the same box as a
+  plain price list (Full Detail from $369, Interior $249, Exterior $199).
+- **5.0 and five stars, "Google rating", no count** (Mikey, 2026-10-19).
+- **Rose's words, not a Google review.** "My kids wrecked my back seat. Mikey
+  came to my driveway, charged exactly what he quoted, and it looked brand
+  new. I didn't even have to be home." She said it to Mikey and said yes when
+  he asked to use it (2026-10-19). It isn't one of the 40 on Google, so it's
+  signed "Rose, customer", never "Google review", with no stars she didn't
+  give. Check it word for word against her message before the art goes in,
+  and keep a screenshot of it and her yes. The old quote, "Matt K. · Google
+  review", is gone: none of the 40 Google reviews says it.
+- **No spigot-and-outlet line** (Mikey, 2026-10-19: it doesn't need to be on
+  the ad). Every other print piece carries it; for this one, say it on the
+  phone when they book. "No travel fee" stays, in the yellow band.
+- **The yellow band is the call to action**: the 1 in QR, "Call or text
+  Mikey", the phone big, "your exact price in 60 seconds", the site.
 - **Lake Stevens only** (Mikey, 2026-10-12: "make it like I'm local right in
-  Lake Stevens"). The town leads the headline and the small print says "I'm in
-  Lake Stevens most weeks". He's based in Snohomish, so never that he lives or
-  is based there. The edition only reaches Lake Stevens homes, so no other town
-  is on it. A different edition means changing `TOWN` in the generator.
-- **The Rain-Ready coupon, on `ad-offer.pdf`** (Mikey, 2026-10-14, for the
-  holiday issue): "3 extras FREE: ceramic wax, RainX and anti-fog free on any
-  Full Detail booked by Dec 31, 2026. Mention Hometown Values." Same extras
-  and same booking date as the hangers and postcards, not a new offer. It
-  sits between the photos and the review; the photos and price boxes get a
-  little smaller to make room. `OFFER=rainready npm run htv` builds it, and
-  refuses to from January 1, 2027. `ad.pdf` is the version without it, for
-  any issue after that. Coupon magazines are read for coupons (Jim's CTM
-  example led with "$50 OFF"); the extras list at $60 and cost about $10 of
-  product and 25 minutes a car.
+  Lake Stevens"). The town leads the headline. He's based in Snohomish, so
+  never that he lives or is based there. A different edition means changing
+  `TOWN` in the generator.
+- **The Rain-Ready offer** is the hangers' and postcards' (Mikey, 2026-10-14,
+  for the holiday issue): same extras, same Dec 31, 2026 booking date, not a
+  new offer. `OFFER=rainready npm run htv` builds it, and refuses to from
+  January 1, 2027. Coupon magazines are read for coupons (Jim's CTM example
+  led with "$50 OFF").
 
 ## The schedule
 
@@ -154,8 +151,8 @@ listing $40.
 **Before sending the art:**
 
 1. Jim's spec (size, bleed, PDF or JPG, CMYK).
-2. The review count on Google. If it's moved past 39, change `REVIEWS` and
-   re-run.
+2. Rose's quote, word for word against her message (and a screenshot of her
+   yes). The rating on Google still 5.0.
 3. The prices against `PRICING.md`.
 4. Ask Jim to take down anything of Mikey's old ad in the Hometown Values app
    or website (the 360 number, $99).
@@ -194,7 +191,9 @@ npm run htv
 It fails if anything leaves the safe area, type drops under 6.5 pt, blocks
 touch, the QR stops decoding (sharp, and at 95 dpi blurred), or the copy
 picks up an em dash, "insured" or "licensed", a business "we", a work day,
-Lynnwood, Edmonds or Kenmore, Rain-Ready, an old phone number, a quote time
-other than 60 seconds, or any served town but Lake Stevens, or loses a price,
-the spigot and outlet, or the Lake Stevens lines. Every fact on the ad is one more copy of the table in the
-repo's `CLAUDE.md`.
+Lynnwood, Edmonds or Kenmore, Rain-Ready or $508 on the version without the
+offer, an old phone number, a quote time other than 60 seconds, or any served
+town but Lake Stevens, or loses a price, "no travel fee", the Lake Stevens
+headline, or (on the offer version) $508, Dec 31 and "Mention Hometown
+Values". Every fact on the ad is one more copy of the table in the repo's
+`CLAUDE.md`.
