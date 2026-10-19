@@ -10,6 +10,8 @@
 //   full-48x36.pdf      the whole board as one print; cut at 12 and 36 in
 //                       (where the colours change) and glue a panel to each fold
 //   left-12x36.pdf, center-24x36.pdf, right-12x36.pdf   the same, one per panel
+//   tiled-letter.pdf    the same board on 28 letter pages for any printer:
+//                       trim each on its marks and butt them edge to edge
 //   preview.png
 //
 // It is one more copy of the facts table in CLAUDE.md (phone, 5.0 across 39,
@@ -19,6 +21,7 @@
 
 const { chromium } = require('playwright');
 const fs = require('fs');
+const sharp = require('sharp');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..', '..');
@@ -131,6 +134,52 @@ const board = () => `<div class="board" id="board">
   await page.pdf({ path: path.join(OUT, 'full-48x36.pdf'), width: '48in', height: '36in', printBackground: true });
   const shot = await (await page.$('#board')).screenshot({ type: 'png', scale: 'css' });
   fs.writeFileSync(path.join(OUT, 'preview.png'), shot);
+  // Tiled on letter paper. Columns follow the folds (wings 6 + 6, centre
+  // 8 + 8 + 8) so no page straddles a fold, and rows are 9 in, so every tile
+  // fits a home printer's 8 x 10.5 printable area. 7 x 4 = 28 pages.
+  {
+    const DPI = 150, COLS = [6, 6, 8, 8, 8, 6, 6], ROW = 9, ROWS = 4;
+    const where = (c) => (c < 2 ? 'left wing' : c < 5 ? 'centre' : 'right wing');
+    const big = await browser.newPage({ viewport: { width: 48 * 96, height: 36 * 96 }, deviceScaleFactor: DPI / 96 });
+    const tmp2 = path.join(OUT, '.render-tiles.html');
+    fs.writeFileSync(tmp2, `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${board()}</body></html>`);
+    await big.goto(fileUrl(tmp2));
+    await big.evaluate(() => document.fonts.ready);
+    await big.waitForFunction(() => [...document.images].every((i) => i.complete && i.naturalWidth > 0));
+    fs.unlinkSync(tmp2);
+    const full = await (await big.$('#board')).screenshot({ type: 'png' });
+    await big.close();
+    const pages = [];
+    let x0 = 0;
+    for (let c = 0; c < COLS.length; c++) {
+      for (let r = 0; r < ROWS; r++) {
+        const jpg = await sharp(full).extract({ left: Math.round(x0 * DPI), top: Math.round(r * ROW * DPI), width: Math.round(COLS[c] * DPI), height: Math.round(ROW * DPI) }).jpeg({ quality: 88 }).toBuffer();
+        pages.push({ c, r, w: COLS[c], src: 'data:image/jpeg;base64,' + jpg.toString('base64') });
+      }
+      x0 += COLS[c];
+    }
+    pages.sort((a, b) => a.r - b.r || a.c - b.c);
+    const mark = (x, y, w, h) => `<i style="position:absolute;left:${x}in;top:${y}in;width:${w}in;height:${h}in;background:#000"></i>`;
+    const html = pages.map(({ c, r, w, src }) => {
+      const L = (8.5 - w) / 2, T = 0.75, M = 0.18, G = 0.05, t = 0.01;
+      const corners = [[L, T], [L + w, T], [L, T + ROW], [L + w, T + ROW]].map(([x, y]) =>
+        mark(x - t / 2, y < T + 1 ? y - G - M : y + G, t, M) + mark(x < L + 1 ? x - G - M : x + G, y - t / 2, M, t)).join('');
+      return `<div style="position:relative;width:8.5in;height:11in;overflow:hidden;page-break-after:always">
+        <img src="${src}" style="position:absolute;left:${L}in;top:${T}in;width:${w}in;height:${ROW}in">${corners}
+        <div style="position:absolute;left:0;right:0;top:${T + ROW + 0.3}in;text-align:center;font:600 11pt/1.4 Inter">
+          <b style="font-size:20pt">${'ABCD'[r]}${c + 1}</b><br>Row ${'ABCD'[r]} of 4 (top to bottom), column ${c + 1} of 7 (left to right), ${where(c)}. Trim on the marks.</div></div>`;
+    }).join('');
+    const tp = await browser.newPage();
+    const tmp3 = path.join(OUT, '.render-tiled.html');
+    fs.writeFileSync(tmp3, `<!doctype html><html><head><meta charset="utf-8"><style>${fontFace('Inter', 'inter', 600)}@page{margin:0}*{margin:0;padding:0}</style></head><body>${html}</body></html>`);
+    await tp.goto(fileUrl(tmp3));
+    await tp.evaluate(() => document.fonts.ready);
+    await tp.pdf({ path: path.join(OUT, 'tiled-letter.pdf'), width: '8.5in', height: '11in', printBackground: true });
+    fs.unlinkSync(tmp3);
+    await tp.close();
+    console.log(`  tiled-letter.pdf: ${pages.length} pages`);
+  }
+
   // One panel per file: a window the panel's width, with the board slid left
   // inside it, so each print is exactly that panel and nothing of its neighbour.
   for (const [name, x, w] of [['left-12x36', 0, 12], ['center-24x36', 12, 24], ['right-12x36', 36, 12]]) {

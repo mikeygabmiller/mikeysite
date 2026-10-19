@@ -62,6 +62,15 @@ $508.
   its panel.
 - **Or** print the three panel files (`left-12x36`, `center-24x36`,
   `right-12x36`) and glue one to each panel.
+- **Cheapest, any printer:** `tiled-letter.pdf` is the board on 28 letter
+  pages (7 columns x 4 rows, labelled A1 to D7, no page crosses a fold). Print
+  at 100% ("actual size", not "fit"), trim each page on its corner marks,
+  and glue them edge to edge, row A at the top. About $17 to $21 at a copy
+  counter's color rate, or your own printer (the yellow and black panels use a
+  lot of ink).
+- Prices checked 2026-10-19: a 36 x 48 paper poster runs roughly $45 to $90
+  and usually isn't same-day at Staples or FedEx (3 to 10 days); one UPS
+  Store lists $84 rolled, $144 on foam. A 24 x 36 is often same-day.
 - Tell the shop "print at 100%, no resizing, no white border". The photos are
   900 px wide, so they're soft up close and fine from a few feet; the logo
   and type are sharp.
