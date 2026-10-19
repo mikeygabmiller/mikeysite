@@ -636,8 +636,10 @@ unlabeled (homepage, city pages): ask Mikey where it came from before relying
 on it. Never a made-up review (`REVIEW_IS_EXAMPLE` marks a placeholder).
 **The holiday issue carries the Rain-Ready offer as a blue receipt**
 (`OFFER=rainready`, writes `ad-offer.pdf`, refuses to build from Jan 1, 2027):
-worth $508 (the homepage's value stack), from $369, same extras and Dec 31
-booking date as the hangers. Any other offer is Mikey's call;
+Interior $249 + Exterior $199 = $448, $369 together, extras free ($60),
+total value $508, you pay $369 for a sedan ($409 SUV/pickup, $449 van/3-row),
+same extras and Dec 31 booking date as the hangers. Keep that arithmetic
+visible: a bare "worth $508, from $369" confused readers. Any other offer is Mikey's call;
 `preview-SAMPLE-offer-not-approved.png` is only a sample.
 
 ## EDDM postcard

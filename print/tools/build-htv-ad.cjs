@@ -120,27 +120,31 @@ h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;line-
 h1 .l{display:block;white-space:nowrap}
 h1 .l2{color:var(--red)}
 
-.mid{display:flex;gap:.06in;align-items:stretch;margin-top:5pt}
+.mid{display:flex;gap:.06in;align-items:center;margin-top:5pt}
 /* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
    because cropping them to a strip cuts off the mess, which is the point. */
-.ba{position:relative;flex:none;display:flex;gap:.02in;height:1.4in}
+.ba{position:relative;flex:none;display:flex;gap:.02in;height:1.3in}
 .ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
 .ba .chip{position:absolute;top:.04in;font-weight:800;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;padding:2pt 4pt 1.5pt;border-radius:2pt;color:#fff}
 .ba .b .chip{left:.04in;background:#0e0e0f}
 .ba .a .chip{right:.04in;background:var(--red)}
 
-.rc{flex:1;background:var(--blue);color:#fff;border-radius:4pt;padding:.1in .08in .06in;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3pt}
+.rc{flex:1;background:var(--blue);color:#fff;border-radius:4pt;padding:.1in .07in .05in;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3pt}
 .rc .tag{position:absolute;top:-5.5pt;left:.08in;text-transform:uppercase;background:var(--yel);color:var(--ink);font-family:'Barlow Condensed';font-weight:800;font-size:7.5pt;letter-spacing:.1em;padding:1pt 4pt;border-radius:2pt}
 .rc .sum{text-align:center;line-height:1}
 .rc .w{font-size:8pt;font-weight:600}
-.rc .w s{font-weight:800}
-.rc .y{font-family:'Barlow Condensed';font-weight:800;font-size:30pt;line-height:.9;color:var(--yel);margin-top:1pt}
-.rc .y small{font-size:9pt;color:#fff;margin-right:2pt}
-.rc ul{list-style:none;font-size:6.6pt;line-height:1.3;font-weight:500}
-.rc li{display:flex;justify-content:space-between;border-bottom:.5pt dotted rgba(255,255,255,.4)}
-.rc li s{opacity:.7;margin-right:3pt}
+.rc .y{font-family:'Barlow Condensed';font-weight:800;font-size:25pt;line-height:.9;color:var(--yel)}
+.rc .y small{font-size:9pt;color:#fff;margin-right:3pt;text-transform:uppercase;letter-spacing:.06em}
+.rc .sz{font-size:6.5pt;font-weight:600;line-height:1.25;margin-top:1.5pt}
+.rc .sz span{white-space:nowrap}
+.rc ul{list-style:none;font-size:6.6pt;line-height:1.22;font-weight:500}
+.rc li{display:flex;justify-content:space-between;align-items:flex-end;gap:4pt;padding:1.2pt 0;border-bottom:.5pt dotted rgba(255,255,255,.4)}
+.rc li em{font-style:normal;opacity:.85}
+.rc li .v{flex:none;white-space:nowrap}
+.rc li s{opacity:.7;margin-right:1pt}
 .rc li b{color:var(--yel);font-weight:800}
+.rc li.tot{font-weight:800;border-bottom:none;font-size:7pt}
 .rc .d{font-size:6.6pt;font-weight:700;text-align:center;line-height:1.2}
 .rc .no{font-family:'Caveat';font-weight:700;font-size:9.2pt;line-height:1;color:var(--yel);text-align:center;white-space:nowrap}
 /* without the offer the box is just the price list */
@@ -164,17 +168,26 @@ h1 .l2{color:var(--red)}
 ${process.env.CANVA ? '/* Poppins runs wider and taller than Outfit */ .ba{height:1.28in} .rev .q{font-size:6.8pt} .rc .y{font-size:26pt} .rc ul{line-height:1.18} .mid{margin-top:3pt}' : ''}
 `;
 
+// The receipt adds up in the reader's head (Mikey, 2026-10-19): Interior and
+// Exterior booked apart are $448, together as a Full Detail $369 (that $79
+// is there all year); the three extras are the free part ($60); $448 + $60 is
+// the $508. Nothing on it is crossed out but the $448 it replaces. Then the
+// price for each size, so "from" doesn't read as "it goes up when you call"
+// (condition can still add $30 or $60; the QR gives the exact price).
+const SIZES = '<span>for a sedan</span><br><span>SUV/pickup $409</span> · <span>Van/3-row $449</span>';
 const receipt = () => OFFER_ON ? `
       <div class="rc"><span class="tag">Book by Dec 31</span>
-        <div class="sum"><div class="w">Worth <s>$508</s></div><div class="y"><small>from</small>$369</div></div>
-        <ul><li><span>Interior detail</span><span>$249</span></li><li><span>Exterior detail</span><span>$199</span></li>
-          <li><span>Ceramic wax</span><span><s>$20</s><b>FREE</b></span></li><li><span>RainX outside glass</span><span><s>$10</s><b>FREE</b></span></li>
-          <li><span>RainX anti-fog</span><span><s>$30</s><b>FREE</b></span></li></ul>
-        <div class="d">Book a Full Detail by Dec 31.<br>Mention Hometown Values.</div>
+        <ul>
+          <li><span>Interior $249 + Exterior $199</span><span class="v"><s>$448</s> <b>$369</b></span></li>
+          <li><span>Ceramic wax, RainX glass,<br>RainX anti-fog <em>($60 value)</em></span><span class="v"><b>FREE</b></span></li>
+          <li class="tot"><span>Total value</span><span class="v">$508</span></li>
+        </ul>
+        <div class="sum"><div class="y"><small>You pay</small>$369</div><div class="sz">${SIZES}</div></div>
+        <div class="d">Mention Hometown Values.</div>
         <div class="no">And you don't pay until you love it.</div>
       </div>` : `
       <div class="rc plain">
-        <div class="sum"><div class="w">Full Detail</div><div class="y"><small>from</small>$369</div></div>
+        <div class="sum"><div class="w">Full Detail</div><div class="y">$369</div><div class="sz">${SIZES}</div></div>
         <ul><li><span>Interior from</span><span>$249</span></li><li><span>Exterior from</span><span>$199</span></li></ul>
         <div class="no">You don't pay until you love it.</div>
       </div>`;
@@ -277,7 +290,7 @@ async function checkQr(pngBuf) {
   // Stevens most weeks" off this ad on 2026-10-19 to give the headline and
   // offer the room. Water and power get said on the phone instead.
   for (const must of [PHONE, '60 seconds', '5.0', '$199', '$249', '$369', `${TOWN} car detailing`, 'home or work', 'no travel fee',
-    ...(OFFER_ON ? ['$508', 'Mention Hometown Values', 'Dec 31'] : [])])
+    '$409', '$449', ...(OFFER_ON ? ['$448', '$508', 'Mention Hometown Values', 'Dec 31'] : [])])
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
   // it goes to Lake Stevens homes only; any other town on it is wasted space
   for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);
