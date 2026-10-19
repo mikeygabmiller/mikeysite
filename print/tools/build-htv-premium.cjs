@@ -26,7 +26,7 @@ const photo = n => fileUrl(path.join(SOCIAL, 'photos', n));
 
 // ---- The facts (CLAUDE.md facts table) ----
 const PHONE = '(425) 600-7897';
-const REVIEWS = 39;
+const REVIEWS = 40; // what the Google profile shows (Windsor, 2026-10-19)
 const QR_URL = 'https://mikeysdetailing.com/?utm_source=hometownvalues&utm_medium=mail#booking';
 const REVIEW = 'Mikey showed up on time, did exactly what he said, and charged exactly what he quoted. That kind of service is really rare these days.';
 const TERMS = 'on any Full Detail booked by Dec 31, 2026. Mention Hometown Values.';
