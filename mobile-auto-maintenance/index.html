@@ -3153,7 +3153,9 @@ header li a[href="#booking"],
         fetch(WORKER_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(smsPayload) })
       ]).then(function(results){
         var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
-        var smsOk   = results[1].status==='fulfilled';
+        // A 500 from the worker still fulfils the fetch, so read the status: it
+        // answers 200, or 207 when the lead is in but his alert didn't send.
+        var smsOk   = results[1].status==='fulfilled' && results[1].value && results[1].value.ok;
         if (emailOk || smsOk){
           if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
           goStep(5);

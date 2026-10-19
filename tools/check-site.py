@@ -132,7 +132,9 @@ if stale:
 # Full stop, comma, colon or brackets, whichever the sentence actually wants.
 # This runs over the served files including comments and JS strings, because a
 # rule with no exceptions is the only kind that survives the next edit.
-EM = re.compile(r"&mdash;|&#8212;|&#x2014;|\u2014")
+# The last alternative is the JS escape, written out: a "\u2014" in a script
+# string turned into a dash in the note Mikey got, and slipped past the rest.
+EM = re.compile(r"&mdash;|&#8212;|&#x2014;|\u2014|\\u2014")
 served = [q for q in sorted(ROOT.rglob("*.html")) if q.relative_to(ROOT).parts[0] not in SKIP]
 served += [ROOT / "llms.txt", ROOT / "robots.txt"]
 dashed = []
