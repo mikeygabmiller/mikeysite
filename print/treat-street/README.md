@@ -45,3 +45,23 @@ them the same day. Copy lives in `print/tools/build-treat-street.cjs`
   insured, a quote time other than 60 seconds, pet hair as part of the prize,
   anything that reads like a paid raffle, type under 7 pt, or anything within
   0.3 in of the paper's edge (where home printers can't reach).
+
+## Tri-fold board (`trifold/`)
+
+A standard 36 x 48 in tri-fold (24 in centre, two 12 in wings), raised on a
+crate at the back of the table so it clears the kids' heads and reads from
+30 ft. Three things only: the back-seat before/after (left), the logo, "I come
+to you" and the phone (centre), the Rain-Ready offer as three yellow boxes
+with crossed-out prices (right; the yellow matches the yard sign). Copy lives
+in `print/tools/build-treat-street-trifold.cjs` (`npm run treat-trifold`); it
+refuses to build from Jan 1, 2027 and fails if the freebies stop adding up to
+$508.
+
+- **Easiest:** print `full-48x36.pdf` as one 36 x 48 poster, cut it at 12 in
+  and 36 in (exactly where the colours change), and spray-glue each piece to
+  its panel.
+- **Or** print the three panel files (`left-12x36`, `center-24x36`,
+  `right-12x36`) and glue one to each panel.
+- Tell the shop "print at 100%, no resizing, no white border". The photos are
+  900 px wide, so they're soft up close and fine from a few feet; the logo
+  and type are sharp.
