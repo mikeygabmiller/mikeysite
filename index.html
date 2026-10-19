@@ -1788,7 +1788,7 @@ header li a[href="#booking"],
       <div class="progress-seg" data-seg="4"><i></i></div>
       <div class="progress-seg" data-seg="5"><i></i></div>
     </div>
-    <div class="progress-label" id="qqProgLabel">Step 1 of 4 &middot; Your vehicle</div>
+    <div class="progress-label" id="qqProgLabel">Step 1 of 5 &middot; Your vehicle</div>
   </div>
 
   <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
@@ -1974,6 +1974,10 @@ header li a[href="#booking"],
     #qqcCard .qq-next b{color:var(--text);font-weight:640;}
     #qqcCard .qq-textlink{display:block;width:100%;margin-top:8px;background:none;border:none;color:var(--text-3);font:inherit;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:9px;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-textlink:hover{color:var(--text);}
+    #qqcCard .qq-fullswap{margin-top:16px;padding:14px 16px;border:1px solid rgba(var(--accent-rgb),.45);border-radius:16px;background:rgba(var(--accent-rgb),.08);text-align:center;}
+    #qqcCard .qq-fullswap[hidden]{display:none;}
+    #qqcCard .qq-fullswap p{margin:0 0 10px;font-size:14px;line-height:1.45;color:var(--text);}
+    #qqcCard .qq-fullswap-btn{width:100%;}
     #qqcCard .qq-opens{display:grid;gap:10px;margin-top:4px;}
     #qqcCard .qq-open{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:60px;padding:13px 16px;border:1.5px solid var(--border);border-radius:14px;background:var(--surface-2);color:var(--text);font:inherit;text-align:left;cursor:pointer;transition:border-color .18s,background .18s,transform .12s;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-open:hover,#qqcCard .qq-open:focus-visible{border-color:var(--accent);outline:none;}
@@ -2023,6 +2027,10 @@ header li a[href="#booking"],
       </div>
     </form>
     <div class="qq-error" id="qqError" role="alert" aria-live="assertive"></div>
+    <div class="qq-fullswap" id="qqFullSwap" hidden>
+      <p id="qqFullSwapText"></p>
+      <button type="button" class="btn btn-ghost qq-fullswap-btn" id="qqFullSwapBtn" data-role="swap-full">Switch to Full Detail</button>
+    </div>
     <button type="button" class="qq-edit" data-role="go" data-step="4">&lsaquo; Edit my details</button>
   </div>
 
@@ -2188,6 +2196,13 @@ header li a[href="#booking"],
     return 0;
   }
 
+  // What this exact car would cost as a Full Detail instead: same size, same
+  // condition, same extras, minus the ones Rain-Ready makes free on a Full.
+  function fullAltTotal(){
+    var t = PRICE['Full Detail'] + (S.vehicle ? S.vehicle.value : 0) + (S.condition ? S.condition.value : 0);
+    Object.keys(S.addons).forEach(function(n){ if (!(rrLive() && RR_FREE[n])) t += addonPrice(n); });
+    return t;
+  }
   function $(id){ return document.getElementById(id); }
   function escapeHtml(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function val(id){ var el=$(id); return el ? (el.value||'').trim() : ''; }
@@ -2196,9 +2211,9 @@ header li a[href="#booking"],
   // email, the SMS payload and the breakdown all read one Notes line.
   function collectNotes(){
     var parts = [];
-    var n = val('qqNotes'); if (n) parts.push(n);
+    var n = val('qqNotes'); if (n) parts.push(/[.!?]$/.test(n) ? n : n + '.');
     var a = val('qqAddonNote'); if (a) parts.push('Also wants: ' + a);
-    return parts.join(' \u2014 ');
+    return parts.join(' ');
   }
 
   function liveTotal(){
@@ -2218,7 +2233,7 @@ header li a[href="#booking"],
     if(amt) amt.textContent='$'+liveTotal();
   }
   function setProgress(n){
-    var to = (n >= 4) ? 4 : n;
+    var to = (n >= 5) ? 5 : n;
     var segs = document.querySelectorAll('#qqcCard .progress-seg');
     for (var i=0;i<segs.length;i++){
       var idx = parseInt(segs[i].getAttribute('data-seg'));
@@ -2383,6 +2398,21 @@ header li a[href="#booking"],
     }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
+
+    // Interior + Exterior picked separately costs more than the Full Detail that
+    // is the same work, and step 2's tip is easy to scroll past. Say it once more
+    // here, with this car's real number, before they book the dearer one.
+    var swap = $('qqFullSwap');
+    if (swap){
+      var both = S.services['Interior Detail'] && S.services['Exterior Detail'];
+      var alt = both ? fullAltTotal() : 0;
+      if (both && alt < total){
+        $('qqFullSwapText').textContent = 'A Full Detail is the same inside and out for $' + alt + ', $' + (total - alt) + ' less' +
+          (rrLive() ? ', and the ceramic wax, RainX and anti-fog come free until Dec 31.' : '.');
+        $('qqFullSwapBtn').textContent = 'Switch to Full Detail for $' + alt;
+        swap.hidden = false;
+      } else swap.hidden = true;
+    }
 
     var btn = $('qqSubmitBtn');
     if (btn) btn.innerHTML = 'Lock in $' + total + ' &rarr;';
@@ -2625,6 +2655,16 @@ header li a[href="#booking"],
       if (el.disabled) return;
       calcQuote();
     }
+    else if (role === 'swap-full'){
+      var was = S.total;
+      unselectService('Interior Detail'); unselectService('Exterior Detail');
+      S.services = { 'Full Detail': PRICE['Full Detail'] };
+      var hf = $('qqHeroFull'); if (hf){ hf.classList.add('sel'); hf.setAttribute('aria-pressed', 'true'); }
+      refreshNudge(); refreshContinue();
+      if (typeof gtag === 'function') gtag('event', 'qqc_swap_full', { value: was, currency: 'USD' });
+      if (typeof window.MDTrack === 'function') window.MDTrack('Switched to Full Detail on the price', 'was $' + was);
+      calcQuote();
+    }
     else if (role === 'text-instead'){
       // Back to the price with the phone form open: the old road, one tap away.
       var st5 = $('step5'); if (st5) st5.classList.add('show-form');
@@ -2753,7 +2793,9 @@ header li a[href="#booking"],
         fetch(LEAD_URL, { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(smsPayload) })
       ]).then(function(results){
         var emailOk = results[0].status==='fulfilled' && results[0].value && results[0].value.success;
-        var smsOk   = results[1].status==='fulfilled';
+        // A 500 from the worker still fulfils the fetch, so read the status: it
+        // answers 200, or 207 when the lead is in but his alert didn't send.
+        var smsOk   = results[1].status==='fulfilled' && results[1].value && results[1].value.ok;
         if (emailOk || smsOk){
           if (typeof gtag === 'function') gtag('event', 'qqc_submission', { source: 'qqc_form', value: S.total, currency: 'USD' });
           showSuccess(name, phone);
@@ -2766,9 +2808,9 @@ header li a[href="#booking"],
   function showSuccess(name, phone){
     var box = $('qqSuccessQuote');
     if (box){
-      var svc = Object.keys(S.services)[0] || 'Your detail';
+      var svcs = Object.keys(S.services);
       var extras = Object.keys(S.addons);
-      var line = [svc].concat(extras).join(' + ');
+      var line = (svcs.length ? svcs : ['Your detail']).concat(extras).join(' + ');
       if (S.vehicle && S.vehicle.label) line += ' · ' + S.vehicle.label;
       box.innerHTML = '<span class="sq-amt">$' + S.total + '</span><span class="sq-svc">' + escapeHtml(line) + '</span>';
     }
