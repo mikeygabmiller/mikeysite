@@ -27,27 +27,31 @@ h1{font-family:'Barlow Condensed';font-weight:800;text-transform:uppercase;line-
 h1 .l{display:block;white-space:nowrap}
 h1 .l2{color:var(--red)}
 
-.mid{display:flex;gap:.06in;align-items:stretch;margin-top:5pt}
+.mid{display:flex;gap:.06in;align-items:center;margin-top:5pt}
 /* The back-seat photos are portrait (900 x 1282). Shown whole, side by side,
    because cropping them to a strip cuts off the mess, which is the point. */
-.ba{position:relative;flex:none;display:flex;gap:.02in;height:1.4in}
+.ba{position:relative;flex:none;display:flex;gap:.02in;height:1.3in}
 .ba .ph{position:relative;height:100%;aspect-ratio:900/1282;overflow:hidden;background:#222}
 .ba img{width:100%;height:100%;object-fit:cover;display:block}
 .ba .chip{position:absolute;top:.04in;font-weight:800;font-size:6.5pt;letter-spacing:.1em;text-transform:uppercase;padding:2pt 4pt 1.5pt;border-radius:2pt;color:#fff}
 .ba .b .chip{left:.04in;background:#0e0e0f}
 .ba .a .chip{right:.04in;background:var(--red)}
 
-.rc{flex:1;background:var(--blue);color:#fff;border-radius:4pt;padding:.1in .08in .06in;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3pt}
+.rc{flex:1;background:var(--blue);color:#fff;border-radius:4pt;padding:.1in .07in .05in;position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3pt}
 .rc .tag{position:absolute;top:-5.5pt;left:.08in;text-transform:uppercase;background:var(--yel);color:var(--ink);font-family:'Barlow Condensed';font-weight:800;font-size:7.5pt;letter-spacing:.1em;padding:1pt 4pt;border-radius:2pt}
 .rc .sum{text-align:center;line-height:1}
 .rc .w{font-size:8pt;font-weight:600}
-.rc .w s{font-weight:800}
-.rc .y{font-family:'Barlow Condensed';font-weight:800;font-size:30pt;line-height:.9;color:var(--yel);margin-top:1pt}
-.rc .y small{font-size:9pt;color:#fff;margin-right:2pt}
-.rc ul{list-style:none;font-size:6.6pt;line-height:1.3;font-weight:500}
-.rc li{display:flex;justify-content:space-between;border-bottom:.5pt dotted rgba(255,255,255,.4)}
-.rc li s{opacity:.7;margin-right:3pt}
+.rc .y{font-family:'Barlow Condensed';font-weight:800;font-size:25pt;line-height:.9;color:var(--yel)}
+.rc .y small{font-size:9pt;color:#fff;margin-right:3pt;text-transform:uppercase;letter-spacing:.06em}
+.rc .sz{font-size:6.5pt;font-weight:600;line-height:1.25;margin-top:1.5pt}
+.rc .sz span{white-space:nowrap}
+.rc ul{list-style:none;font-size:6.6pt;line-height:1.22;font-weight:500}
+.rc li{display:flex;justify-content:space-between;align-items:flex-end;gap:4pt;padding:1.2pt 0;border-bottom:.5pt dotted rgba(255,255,255,.4)}
+.rc li em{font-style:normal;opacity:.85}
+.rc li .v{flex:none;white-space:nowrap}
+.rc li s{opacity:.7;margin-right:1pt}
 .rc li b{color:var(--yel);font-weight:800}
+.rc li.tot{font-weight:800;border-bottom:none;font-size:7pt}
 .rc .d{font-size:6.6pt;font-weight:700;text-align:center;line-height:1.2}
 .rc .no{font-family:'Caveat';font-weight:700;font-size:9.2pt;line-height:1;color:var(--yel);text-align:center;white-space:nowrap}
 /* without the offer the box is just the price list */
@@ -83,11 +87,13 @@ h1 .l2{color:var(--red)}
         <div class="ph a" style="width: 86.25px; height: 122.875px; aspect-ratio: auto; flex: 0 0 auto; background-color: rgb(34, 34, 34);"><img src="https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/print/hometown-values/canva/photo-after.jpg" style="width: 86.25px; height: 122.875px;"><span class="chip" style="background-color: rgb(227, 25, 36); font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: 0.866667px; line-height: normal; text-transform: uppercase;">After</span></div>
       </div>
       <div class="rc" style="background-color: rgb(11, 79, 179);"><span class="tag" style="background-color: rgb(255, 206, 0); font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 10px; color: rgb(14, 14, 15); letter-spacing: 1px; line-height: normal; text-transform: uppercase;">Book by Dec 31</span>
-        <div class="sum"><div class="w" style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 10.6667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.6667px; text-transform: none;">Worth <s style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 10.6667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.6667px; text-transform: none;">$508</s></div><div class="y" style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 34.6667px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 31.2px; text-transform: none;"><small style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 12px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 31.2px; text-transform: none;">from</small>$369</div></div>
-        <ul><li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">Interior detail</span><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$249</span></li><li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">Exterior detail</span><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$199</span></li>
-          <li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">Ceramic wax</span><span><s style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$20</s><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.8px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 10.384px; text-transform: none;">FREE</b></span></li><li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">RainX outside glass</span><span><s style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$10</s><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.8px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 10.384px; text-transform: none;">FREE</b></span></li>
-          <li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">RainX anti-fog</span><span><s style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$30</s><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.8px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 10.384px; text-transform: none;">FREE</b></span></li></ul>
-        <div class="d" style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.56px; text-transform: none;">Book a Full Detail by Dec 31.<br>Mention Hometown Values.</div>
+        <ul>
+          <li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">Interior $249 + Exterior $199</span><span class="v"><s style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$448</s> <b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.8px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 10.384px; text-transform: none;">$369</b></span></li>
+          <li><span style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">Ceramic wax, RainX glass,<br>RainX anti-fog <em style="font-family: Poppins, sans-serif; font-weight: 500; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.384px; text-transform: none;">($60 value)</em></span><span class="v"><b style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 8.8px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 10.384px; text-transform: none;">FREE</b></span></li>
+          <li class="tot"><span style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 9.33333px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 11.0133px; text-transform: none;">Total value</span><span class="v" style="font-family: Poppins, sans-serif; font-weight: 800; font-size: 9.33333px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 11.0133px; text-transform: none;">$508</span></li>
+        </ul>
+        <div class="sum"><div class="y" style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 34.6667px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 31.2px; text-transform: none;"><small style="font-family: &quot;Barlow Condensed&quot;; font-weight: 800; font-size: 12px; color: rgb(255, 255, 255); letter-spacing: 0.72px; line-height: 31.2px; text-transform: uppercase;">You pay</small>$369</div><div class="sz" style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.8333px; text-transform: none;"><span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.8333px; text-transform: none;">for a sedan</span><br><span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.8333px; text-transform: none;">SUV/pickup $409</span> · <span style="font-family: Poppins, sans-serif; font-weight: 600; font-size: 8.66667px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.8333px; text-transform: none;">Van/3-row $449</span></div></div>
+        <div class="d" style="font-family: Poppins, sans-serif; font-weight: 700; font-size: 8.8px; color: rgb(255, 255, 255); letter-spacing: normal; line-height: 10.56px; text-transform: none;">Mention Hometown Values.</div>
         <div class="no" style="font-family: Caveat; font-weight: 700; font-size: 12.2667px; color: rgb(255, 206, 0); letter-spacing: normal; line-height: 12.2667px; text-transform: none;">And you don't pay until you love it.</div>
       </div>
     </div>

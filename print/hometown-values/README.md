@@ -64,17 +64,20 @@ reference; none of them is the ad.
   leather are what every parent recognizes, and it's the website's lead photo.
   The photos are portrait, so they sit whole beside the offer: cropping them to
   a strip cut off the mess, and Mikey called that out.
-- **The blue receipt is the price block** (`ad-offer.pdf`). Worth ~~$508~~,
-  **from $369** in big yellow, then the lines that add up to $508: Interior
-  $249, Exterior $199, ceramic wax ~~$20~~, RainX ~~$10~~, anti-fog ~~$30~~,
-  all FREE. That's the homepage's own value stack, so the $508 is the
-  receipt's arithmetic, not a claim; it needs no fine print. "Book a Full
-  Detail by Dec 31. Mention Hometown Values." and the guarantee close it.
-  Mikey worried that showing a price would cost calls (2026-10-19); it stays
-  because a coupon magazine is read by people comparing prices, the QR and the
-  phone give the price anyway, and "from $369" screens out the $99 crowd the
-  2024 ad drew. `ad.pdf`, for any issue after Dec 31, is the same box as a
-  plain price list (Full Detail from $369, Interior $249, Exterior $199).
+- **The blue receipt is the price block** (`ad-offer.pdf`), written so the
+  math adds up in the reader's head (Mikey's review, 2026-10-19: the first
+  version said "Worth ~~$508~~, from $369" and never explained the gap, and a
+  struck-through "worth" reads as "not worth"):
+  Interior $249 + Exterior $199 ~~$448~~ **$369** / Ceramic wax, RainX glass,
+  RainX anti-fog ($60 value) **FREE** / Total value $508 / **YOU PAY $369**
+  for a sedan, SUV/pickup $409, van/3-row $449. The $79 is the Full Detail
+  bundle (there all year); the extras are the free part. The size prices
+  replace "from", which read as "it goes up when you call". Condition can
+  still add $30 or $60; the QR gives the exact price. Mikey worried that
+  showing a price would cost calls (2026-10-19); it stays because a coupon
+  magazine is read by people comparing prices, the QR and the phone give the
+  price anyway, and a real price screens out the $99 crowd the 2024 ad drew.
+  `ad.pdf`, for any issue after Dec 31, is the same box as a plain price list.
 - **5.0 and five stars, "Google rating", no count** (Mikey, 2026-10-19).
 - **Rose's words, not a Google review.** "My kids wrecked my back seat. Mikey
   came to my driveway, charged exactly what he quoted, and it looked brand
