@@ -640,3 +640,68 @@ If you've checked all four and it's still there, that's an Interior Detail. I pu
 
 Tap Book to see your exact price in 60 seconds.
 ```
+
+---
+
+## 21. Week of Oct 25 · Update · Cloudy headlights before the clocks go back
+
+**Goes up:** 2026-10-28
+**Photo:** `social/photos/yukon-white.jpg` (a white Yukon on a driveway after the detail, headlights clear, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+The clocks go back Sunday. If your headlights have gone yellow and cloudy, this is the week you'll notice.
+
+Headlight lenses are plastic with a UV coating on the outside. After a few years of sun and road grit the coating wears off and the plastic itself starts to haze. That haze cuts how far your lights reach, on roads that are dark, wet and full of deer.
+
+1. Look at them in daylight, from the front. Yellow or foggy on the outside can usually be fixed.
+2. Haze or water drops on the inside of the lens can't. The seal has failed, and that's a replacement.
+3. Skip the toothpaste and the spray kits. They look better for a couple of weeks because they don't take the hazed layer off.
+4. Done properly it's wet-sanded, polished and sealed with a UV coat, and it stays clear for one to three years.
+
+Text me a photo of yours (my number is on this profile) and I'll tell you straight whether they're worth restoring or whether replacing them makes more sense.
+```
+
+---
+
+## 22. Week of Oct 25 · Update · Swap your floor mats for the wet season
+
+**Goes up:** 2026-10-30
+**Photo:** `social/photos/etron-dash.jpg` (an Audi interior with rubber all-weather mats, after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+If you still have carpet floor mats in, now's the week to swap them for rubber ones.
+
+From November to March every pair of shoes that gets in your car brings water, mud and sanding grit with it. A carpet mat soaks that up and holds it against the carpet underneath, where it can't dry. That's where the musty smell and the white salt stains come from.
+
+1. Rubber or all-weather mats with a raised lip. The lip is what keeps the puddle on the mat.
+2. Fitted to your car if you can. A loose mat slides around and lets water past the edges.
+3. Never stack a rubber mat on top of a carpet one. It can slide up under the pedals.
+4. Once a week, pull them out, dump them, rinse them with the hose and let them dry before they go back in.
+
+Put the carpet mats away clean and dry for spring. If the carpet under them is already damp or stained, the Interior Detail steams and extracts it instead of just vacuuming, from $249 for a sedan. Same price in Monroe, Duvall, Granite Falls or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 23. Week of Nov 1 · Update · After Halloween: candy, glitter and face paint
+
+**Goes up:** 2026-11-01
+**Photo:** `social/photos/mach-e-interior.jpg` (a Mach-E interior, dash and front seats, after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Back seat full of candy wrappers and costume glitter this morning? Here's what to do before it sets in.
+
+1. Melted chocolate: don't wipe it while it's soft, that spreads it. Hold an ice cube in a bag on it until it hardens, then lift it off with a plastic card. Blot what's left with a damp microfiber.
+2. Hard candy and lollipops stuck to the seat: a little warm water on a towel, held on for a minute, softens the sugar so it lifts instead of tearing the fabric.
+3. Glitter: the vacuum spreads it around. Press packing tape or a lint roller onto the seat first, then vacuum.
+4. Face paint on the seat belt or the headliner: blot with a damp microfiber, never scrub. Rubbing a headliner can pull the fabric loose.
+
+Check under the seats and in the seat back pockets too. That's where the fun size bars end up until the first warm day in spring.
+
+If it's already baked in, that's what my steamer and extractor are for. No judgment at all. I've seen everything. Tap Book to see your exact price in 60 seconds.
+```
