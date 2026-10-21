@@ -87,6 +87,18 @@ A customer holding something with an old price on it gets that price:
 - **Rain-Ready post (B07).** If it went up saying "from $299" before the
   re-render, honor $299 for anyone who books from it, through its window.
 
+## Magazine-only coupon
+
+- **Hometown Values, Lake Stevens holiday issue** (mails Nov 17 to 19, 2026;
+  Mikey, 2026-10-21): **$69 off a Full Detail**, so **$300 sedan / $340 SUV or
+  pickup / $380 van or 3-row**, booked by **December 31, 2026**, for anyone
+  who mentions Hometown Values or books from the ad's QR
+  (`utm_source=hometownvalues`, which the dashboard's journey shows).
+  Condition still rides on top. It replaces the Rain-Ready extras for those
+  customers; it doesn't stack with them. The site, Google and the hangers stay
+  at the price book: the calculator quotes $369, so Mikey takes the $69 off
+  when he confirms. Not a price change: nothing in `PRICE_BOOK` moves.
+
 ## The other price lists
 
 Decided by Mikey on 2026-09-27 unless marked open:

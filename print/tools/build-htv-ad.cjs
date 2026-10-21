@@ -12,12 +12,16 @@
 // off the PDF (it was a quarter page). Jim confirms the real spec before art
 // goes in; change W and H here if his differs.
 //
-// OFFER=rainready turns the blue price box into the Rain-Ready receipt (Mikey,
-// 2026-10-14, for the holiday issue that mails Nov 17 to 19: same extras and
-// same December 31, 2026 booking date as the hangers and postcards, and the
-// same $508 the homepage's value stack adds up to). It writes ad-offer.* so
-// the two versions can't get mixed up, and it refuses to run from January 1,
-// 2027. Any other offer is Mikey's call (CLAUDE.md, Offers and countdowns).
+// OFFER=coupon is the holiday issue's offer (Mikey, 2026-10-21): $69 off a
+// Full Detail with this ad, so $300 sedan / $340 SUV-pickup / $380 van-3-row,
+// booked by December 31, 2026, mentioning Hometown Values. Magazine only: the
+// site, Google and the hangers stay at the price book. Mikey thought $369
+// wouldn't convert from a coupon magazine; this tests it on one issue without
+// cutting his prices everywhere. It replaces the Rain-Ready extras on this ad
+// (don't stack them). It writes ad-offer.*, and refuses to run from January
+// 1, 2027. OFFER=rainready still builds the Rain-Ready receipt he had
+// before, as ad-rainready.*. Any other offer is Mikey's call (CLAUDE.md,
+// Offers and countdowns).
 
 const { chromium } = require('playwright');
 const QRCode = require('qrcode');
@@ -64,10 +68,13 @@ const SAFE = 0.14;       // magazines trim and register loosely; keep type off t
 const MIN_PT = 6.5;      // nothing smaller survives coupon-magazine printing
 
 const RR_OVER = new Date() >= new Date('2027-01-01T00:00:00-08:00');
-if (process.env.OFFER === 'rainready' && RR_OVER) throw new Error('Rain-Ready ended December 31, 2026. Build the ad without OFFER.');
-if (process.env.OFFER && process.env.OFFER !== 'rainready') throw new Error('OFFER takes only rainready; a new offer is Mikey\'s call.');
-const OFFER_ON = process.env.OFFER === 'rainready';
-const SUFFIX = OFFER_ON ? '-offer' : '';
+const OFFER = process.env.OFFER || '';
+if (OFFER && RR_OVER) throw new Error('Both offers ended December 31, 2026. Build the ad without OFFER.');
+if (OFFER && !['coupon', 'rainready'].includes(OFFER)) throw new Error('OFFER takes coupon or rainready; a new offer is Mikey\'s call.');
+const OFFER_ON = !!OFFER;
+const SUFFIX = { coupon: '-offer', rainready: '-rainready' }[OFFER] || '';
+// The coupon, off the price book's Full Detail ($369 / $409 / $449)
+const OFF = 69, FULL = [369, 409, 449], NET = FULL.map(p => p - OFF);
 
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
@@ -148,6 +155,9 @@ h1 .l2{color:var(--red)}
 .rc .d{font-size:6.6pt;font-weight:700;text-align:center;line-height:1.2}
 .rc .no{font-family:'Caveat';font-weight:700;font-size:9.2pt;line-height:1;color:var(--yel);text-align:center;white-space:nowrap}
 /* without the offer the box is just the price list */
+.rc.cp .y{font-size:31pt;text-transform:uppercase;margin:1pt 0}
+.rc.cp ul{font-size:7.6pt;line-height:1.2}
+.rc.cp li b{font-size:9pt}
 .rc.plain .y{font-size:34pt}
 .rc.plain ul{font-size:8pt;line-height:1.5}
 
@@ -175,7 +185,17 @@ ${process.env.CANVA ? '/* Poppins runs wider and taller than Outfit */ .ba{heigh
 // price for each size, so "from" doesn't read as "it goes up when you call"
 // (condition can still add $30 or $60; the QR gives the exact price).
 const SIZES = '<span>for a sedan</span><br><span>SUV/pickup $409</span> · <span>Van/3-row $449</span>';
-const receipt = () => OFFER_ON ? `
+const receipt = () => OFFER === 'coupon' ? `
+      <div class="rc cp"><span class="tag">Book by Dec 31, 2026</span>
+        <div class="sum"><div class="w">With this ad</div><div class="y">$${OFF} off</div><div class="w">any Full Detail, inside and out</div></div>
+        <ul>
+          <li><span>Sedan</span><span class="v"><s>$${FULL[0]}</s> <b>$${NET[0]}</b></span></li>
+          <li><span>SUV or pickup</span><span class="v"><s>$${FULL[1]}</s> <b>$${NET[1]}</b></span></li>
+          <li><span>Van or 3-row</span><span class="v"><s>$${FULL[2]}</s> <b>$${NET[2]}</b></span></li>
+        </ul>
+        <div class="d">Mention Hometown Values.</div>
+        <div class="no">And you don't pay until you love it.</div>
+      </div>` : OFFER === 'rainready' ? `
       <div class="rc"><span class="tag">Book by Dec 31</span>
         <ul>
           <li><span>Interior $249 + Exterior $199</span><span class="v"><s>$448</s> <b>$369</b></span></li>
@@ -213,7 +233,10 @@ const html = (qr) => `
     <div class="txt">
       <div class="call">Call or text Mikey</div>
       <div class="phone">${PHONE}</div>
-      <div class="scan">Or scan for <b>your exact price</b> in 60 seconds.<br><b>${SITE}</b> · No travel fee</div>
+      <div class="scan">${OFFER === 'coupon'
+        // the site's calculator quotes the price book ($369), not the coupon, so the scan line doesn't promise a price
+        ? 'Or scan to <b>book online</b> and mention Hometown Values.'
+        : 'Or scan for <b>your exact price</b> in 60 seconds.'}<br><b>${SITE}</b> · No travel fee</div>
     </div>
   </div>
 </section>`;
@@ -282,15 +305,18 @@ async function checkQr(pngBuf) {
     [/\bwe(?:'re| are| come| bring| detail| offer| serve| have)\b|\bour (?:team|crew|detailers)\b/i, 'business "we" (it is one guy)'],
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day (it will change)'],
     // Rain-Ready only on the coupon version, and only until it ends
-    ...(OFFER_ON && !RR_OVER ? [] : [[/rain-ready|dec(ember)? 31|\$508/i, 'the Rain-Ready offer (it ends Dec 31, 2026)']]),
+    ...(OFFER_ON && !RR_OVER ? [] : [[/rain-ready|dec(ember)? 31|\$508|\$69 off|\$300/i, 'an offer (both end Dec 31, 2026)']]),
+    // the coupon replaces the extras on this ad; never both
+    ...(OFFER === 'coupon' ? [[/rainx|ceramic wax|anti-fog|\$508/i, 'the Rain-Ready extras on the coupon version']] : []),
     [/360-799|232-1355/, 'an old phone number'],
     [/(bring|brings|own)\s+(my own\s+)?(water|power|generator|tank)/i, 'bringing water or power (the customer provides both)']];
   for (const [re, what] of banned) if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
   // Mikey took the spigot-and-outlet line, the review count and "in Lake
   // Stevens most weeks" off this ad on 2026-10-19 to give the headline and
   // offer the room. Water and power get said on the phone instead.
-  for (const must of [PHONE, '60 seconds', '5.0', '$199', '$249', '$369', `${TOWN} car detailing`, 'home or work', 'no travel fee',
-    '$409', '$449', ...(OFFER_ON ? ['$448', '$508', 'Mention Hometown Values', 'Dec 31'] : [])])
+  for (const must of [PHONE, ...(OFFER === 'coupon' ? [] : ['60 seconds']), '5.0', '$369', `${TOWN} car detailing`, 'home or work', 'no travel fee',
+    ...(OFFER === 'coupon' ? ['$69 off', ...FULL.map(p => '$' + p), ...NET.map(p => '$' + p), 'Mention Hometown Values', 'Dec 31, 2026']
+      : ['$199', '$249', '$409', '$449', ...(OFFER === 'rainready' ? ['$448', '$508', 'Mention Hometown Values', 'Dec 31'] : [])])])
     if (!text.toLowerCase().includes(must.toLowerCase())) problems.push(`copy is missing "${must}"`);
   // it goes to Lake Stevens homes only; any other town on it is wasted space
   for (const t of TOWNS) if (t !== TOWN && text.includes(t)) problems.push(`names ${t}, but this ad goes to ${TOWN} homes only`);

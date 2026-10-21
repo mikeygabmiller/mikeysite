@@ -30,7 +30,8 @@ test.
 |---|---|
 | `print-files/ad.pdf` | The ad, 4.0625" x 4.75", vector type. Send this one |
 | `print-files/ad-300dpi.jpg` | The same at 300 dpi, if Jim's designer wants an image |
-| `print-files/ad-offer.pdf` | **The one to send for the holiday issue**: the same ad with the Rain-Ready coupon. Only until Dec 31, 2026 |
+| `print-files/ad-offer.pdf` | **The one to send for the holiday issue**: the $69-off coupon. Only until Dec 31, 2026 |
+| `print-files/ad-rainready.pdf` | The Rain-Ready receipt version it replaced (2026-10-19 to 21). Not for sending |
 | `print-files/ad-offer-300dpi.jpg` | The same at 300 dpi |
 | `preview.png`, `preview-offer.png` | For looking at |
 | `preview-SAMPLE-offer-not-approved.png` | An older sample coupon ($40 off). **Not an offer Mikey made** |
@@ -64,20 +65,30 @@ reference; none of them is the ad.
   leather are what every parent recognizes, and it's the website's lead photo.
   The photos are portrait, so they sit whole beside the offer: cropping them to
   a strip cut off the mess, and Mikey called that out.
-- **The blue receipt is the price block** (`ad-offer.pdf`), written so the
-  math adds up in the reader's head (Mikey's review, 2026-10-19: the first
-  version said "Worth ~~$508~~, from $369" and never explained the gap, and a
-  struck-through "worth" reads as "not worth"):
-  Interior $249 + Exterior $199 ~~$448~~ **$369** / Ceramic wax, RainX glass,
-  RainX anti-fog ($60 value) **FREE** / Total value $508 / **YOU PAY $369**
-  for a sedan, SUV/pickup $409, van/3-row $449. The $79 is the Full Detail
-  bundle (there all year); the extras are the free part. The size prices
-  replace "from", which read as "it goes up when you call". Condition can
-  still add $30 or $60; the QR gives the exact price. Mikey worried that
-  showing a price would cost calls (2026-10-19); it stays because a coupon
-  magazine is read by people comparing prices, the QR and the phone give the
-  price anyway, and a real price screens out the $99 crowd the 2024 ad drew.
-  `ad.pdf`, for any issue after Dec 31, is the same box as a plain price list.
+- **The blue box is a $69-off coupon** (`ad-offer.pdf`; Mikey, 2026-10-21:
+  "$369 is too high, it won't convert"). WITH THIS AD / **$69 OFF** / any
+  Full Detail, inside and out / Sedan ~~$369~~ **$300**, SUV or pickup
+  ~~$409~~ **$340**, Van or 3-row ~~$449~~ **$380** / Mention Hometown Values /
+  the guarantee, under BOOK BY DEC 31, 2026. Magazine only, so the site,
+  Google and the hangers stay at the price book, and anyone who says "$300"
+  came from the ad. It replaces the Rain-Ready extras on this ad (never both:
+  that's a $508 job for $300). It costs $69 a job against about $10 of
+  product for the extras, so break-even on $625 is about 2 to 3 Full Details
+  instead of 2. The site's calculator still quotes $369, so the yellow band
+  says "scan to book online and mention Hometown Values", not "your exact
+  price"; Mikey takes the $69 off when he confirms (PRICING.md, Magazine-only
+  coupon).
+- **Why there's a price at all.** Mikey worried a price would cost calls
+  (2026-10-19). It stays because a coupon magazine is read by people
+  comparing prices, and a real price screens out the $99 crowd the 2024 ad
+  drew. The size prices replace "from", which read as "it goes up when you
+  call". Condition can still add $30 or $60.
+- **The Rain-Ready receipt it replaced** (`OFFER=rainready`, writes
+  `ad-rainready.pdf`): Interior $249 + Exterior $199 ~~$448~~ $369, the
+  extras FREE ($60 value), total value $508, you pay $369. Keep that
+  arithmetic visible if it ever comes back: a bare "worth ~~$508~~, from $369"
+  confused readers. `ad.pdf`, for any issue after Dec 31, is a plain price
+  list.
 - **5.0 and five stars, "Google rating", no count** (Mikey, 2026-10-19).
 - **Rose's words, not a Google review.** "My kids wrecked my back seat. Mikey
   came to my driveway, charged exactly what he quoted, and it looked brand
@@ -98,7 +109,7 @@ reference; none of them is the ad.
   `TOWN` in the generator.
 - **The Rain-Ready offer** is the hangers' and postcards' (Mikey, 2026-10-14,
   for the holiday issue): same extras, same Dec 31, 2026 booking date, not a
-  new offer. `OFFER=rainready npm run htv` builds it, and refuses to from
+  new offer. `OFFER=coupon npm run htv` builds this issue's ad, and refuses to from
   January 1, 2027. Coupon magazines are read for coupons (Jim's CTM example
   led with "$50 OFF").
 

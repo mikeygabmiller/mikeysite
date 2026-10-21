@@ -255,6 +255,10 @@ free 30-point inspection with an oil change booked into a Friday-through-Monday
 slot. Mikey kept it on 2026-10-05. It names its window, which is the rule
 below, and since he never works Sunday there are no Sunday slots to take.
 
+**The Hometown Values ad has its own offer** (Lake Stevens holiday issue,
+Mikey 2026-10-21): $69 off a Full Detail, $300 sedan, booked by Dec 31, 2026,
+for magazine readers only. It doesn't go on the site; see `PRICING.md`.
+
 The old free-exterior Fri-Mon offer is parked whole in
 `_disabled/free-exterior-offer.html`. Keep the rule it taught: **don't write
 copy that implies a one-off deadline** for something that runs every week, the
@@ -634,12 +638,15 @@ one; check it against her message. The "Matt K. · Google review" quote it had
 before isn't among his 40 Google reviews, and the site still carries it
 unlabeled (homepage, city pages): ask Mikey where it came from before relying
 on it. Never a made-up review (`REVIEW_IS_EXAMPLE` marks a placeholder).
-**The holiday issue carries the Rain-Ready offer as a blue receipt**
-(`OFFER=rainready`, writes `ad-offer.pdf`, refuses to build from Jan 1, 2027):
-Interior $249 + Exterior $199 = $448, $369 together, extras free ($60),
-total value $508, you pay $369 for a sedan ($409 SUV/pickup, $449 van/3-row),
-same extras and Dec 31 booking date as the hangers. Keep that arithmetic
-visible: a bare "worth $508, from $369" confused readers. Any other offer is Mikey's call;
+**The holiday issue carries a magazine-only coupon** (Mikey, 2026-10-21:
+$369 "won't convert" there): $69 off a Full Detail, $300 sedan / $340
+SUV-pickup / $380 van-3-row, booked by Dec 31, 2026, mention Hometown Values
+(`OFFER=coupon`, writes `ad-offer.pdf`, refuses to build from Jan 1, 2027).
+It replaces the Rain-Ready extras on this ad, never both, and isn't a price
+change: the site and `PRICE_BOOK` stay at $369, and `PRICING.md` (Magazine-only
+coupon) says who gets $300. The calculator quotes $369, so this version never
+says "your exact price". The Rain-Ready receipt it replaced is
+`OFFER=rainready` (`ad-rainready.pdf`). Any other offer is Mikey's call;
 `preview-SAMPLE-offer-not-approved.png` is only a sample.
 
 ## EDDM postcard
