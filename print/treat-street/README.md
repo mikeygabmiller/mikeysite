@@ -50,12 +50,21 @@ them the same day. Copy lives in `print/tools/build-treat-street.cjs`
 
 A standard 36 x 48 in tri-fold (24 in centre, two 12 in wings), raised on a
 crate at the back of the table so it clears the kids' heads and reads from
-30 ft. Three things only: the back-seat before/after (left), the logo, "I come
-to you" and the phone (centre), the Rain-Ready offer as three yellow boxes
-with crossed-out prices (right; the yellow matches the yard sign). Copy lives
-in `print/tools/build-treat-street-trifold.cjs` (`npm run treat-trifold`); it
-refuses to build from Jan 1, 2027 and fails if the freebies stop adding up to
-$508.
+30 ft. Left wing: the back-seat before/after. Centre: the logo, "I come to
+you", a 5.0 / 40 Google reviews badge and the phone. Right wing (Mikey,
+2026-10-22: reviews for trust, the offer not a whole side): four of his Google
+reviews, word for word, with a small yellow Rain-Ready box under them. Copy
+lives in `print/tools/build-treat-street-trifold.cjs` (`npm run
+treat-trifold`); it refuses to build from Jan 1, 2027 and fails if the
+freebies stop adding up to $508 or a review count other than 40 appears.
+
+- **The reviews** are Matt Miller, Kathryn Miller, Diandra Preza and C Wilson,
+  read off his Business Profile through Windsor on 2026-10-22 (all 40 are five
+  stars). Names are shortened to a last initial. Never put a review on the
+  board that isn't on Google: two on the site's `/reviews/` page don't match
+  any of the 40 (James Bell's isn't there at all, and Pat Job's real review
+  says something different), and neither does the "Matt K." quote. Ask Mikey
+  where those came from before using them anywhere.
 
 - **Easiest:** print `full-48x36.pdf` as one 36 x 48 poster, cut it at 12 in
   and 36 in (exactly where the colours change), and spray-glue each piece to
