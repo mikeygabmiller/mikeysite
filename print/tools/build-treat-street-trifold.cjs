@@ -15,6 +15,9 @@
 //   left-12x36.pdf, center-24x36.pdf, right-12x36.pdf   the same, one per panel
 //   tiled-letter.pdf    the same board on 28 letter pages for any printer:
 //                       trim each on its marks and butt them edge to edge
+//   poster-28x22.pdf    the whole design shrunk to a 22 x 28 poster board
+//                       (58%, a 1/2 in white band top and bottom)
+//   tiled-28x22-letter.pdf   that, on 9 landscape letter pages (3 x 3)
 //   preview.png
 //
 // It is one more copy of the facts table in CLAUDE.md (phone, 5.0 across 40,
@@ -207,6 +210,63 @@ const board = () => `<div class="board" id="board">
     fs.unlinkSync(tmp3);
     await tp.close();
     console.log(`  tiled-letter.pdf: ${pages.length} pages`);
+  }
+
+  // The same design on a 22 x 28 poster board, laid landscape. 48 x 36 is
+  // 4:3 and 28 x 22 isn't, so it shrinks to 28 x 21 (58%) with a half inch
+  // of white top and bottom. Tiled 3 x 3 on landscape letter: each tile is
+  // 9.33 x 7.33 in, inside a home printer's 10.5 x 8 printable area.
+  {
+    const W = 28, H = 22, K = W / 48, DPI = 150, N = 3;
+    const sm = await browser.newPage({ viewport: { width: 48 * 96, height: 36 * 96 }, deviceScaleFactor: (DPI * K) / 96 });
+    const tmp4 = path.join(OUT, '.render-28x22.html');
+    fs.writeFileSync(tmp4, `<!doctype html><html><head><meta charset="utf-8"><style>${CSS}</style></head><body>${board()}</body></html>`);
+    await sm.goto(fileUrl(tmp4));
+    await sm.evaluate(() => document.fonts.ready);
+    await sm.waitForFunction(() => [...document.images].every((i) => i.complete && i.naturalWidth > 0));
+    // The poster itself, as vectors: the board scaled into a 28 x 22 page.
+    await sm.evaluate(({ K, W, H }) => {
+      const b = document.getElementById('board');
+      const pg = document.createElement('div');
+      pg.style.cssText = `position:relative;width:${W}in;height:${H}in;overflow:hidden;background:#fff`;
+      b.style.cssText = `position:absolute;left:0;top:${(H - 36 * K) / 2}in;transform:scale(${K});transform-origin:0 0`;
+      document.body.replaceChildren(pg); pg.appendChild(b);
+    }, { K, W, H });
+    await sm.pdf({ path: path.join(OUT, 'poster-28x22.pdf'), width: `${W}in`, height: `${H}in`, printBackground: true });
+    await sm.goto(fileUrl(tmp4));
+    await sm.evaluate(() => document.fonts.ready);
+    await sm.waitForFunction(() => [...document.images].every((i) => i.complete && i.naturalWidth > 0));
+    const art = await (await sm.$('#board')).screenshot({ type: 'png' });
+    await sm.close();
+    fs.unlinkSync(tmp4);
+    const meta = await sharp(art).metadata();
+    const canvas = await sharp({ create: { width: W * DPI, height: H * DPI, channels: 3, background: '#ffffff' } })
+      .composite([{ input: await sharp(art).resize(W * DPI, Math.round(36 * K * DPI)).toBuffer(), left: 0, top: Math.round(((H - 36 * K) / 2) * DPI) }]).png().toBuffer();
+    const tw = W / N, th = H / N, pages = [];
+    for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+      const jpg = await sharp(canvas).extract({ left: Math.round(c * tw * DPI), top: Math.round(r * th * DPI), width: Math.round(tw * DPI), height: Math.round(th * DPI) }).jpeg({ quality: 90 }).toBuffer();
+      pages.push({ r, c, src: 'data:image/jpeg;base64,' + jpg.toString('base64') });
+    }
+    const mark = (x, y, w, h) => `<i style="position:absolute;left:${x}in;top:${y}in;width:${w}in;height:${h}in;background:#000"></i>`;
+    const L = (11 - tw) / 2, T = 0.35, M = 0.18, G = 0.05, t = 0.01;
+    const html = pages.map(({ r, c, src }) => {
+      const corners = [[L, T], [L + tw, T], [L, T + th], [L + tw, T + th]].map(([x, y]) =>
+        mark(x - t / 2, y < T + 1 ? y - G - M : y + G, t, M) + mark(x < L + 1 ? x - G - M : x + G, y - t / 2, M, t)).join('');
+      return `<div style="position:relative;width:11in;height:8.5in;overflow:hidden;page-break-after:always">
+        <img src="${src}" style="position:absolute;left:${L}in;top:${T}in;width:${tw}in;height:${th}in">${corners}
+        <div style="position:absolute;left:0;right:0;top:${T + th + 0.18}in;text-align:center;font:600 10pt/1.3 Inter">
+          <b style="font-size:16pt">${'ABC'[r]}${c + 1}</b> &nbsp; Row ${'ABC'[r]} of 3 (top to bottom), column ${c + 1} of 3 (left to right). Trim on the marks.</div></div>`;
+    }).join('');
+    const tp = await browser.newPage();
+    const tmp5 = path.join(OUT, '.render-28x22-tiled.html');
+    fs.writeFileSync(tmp5, `<!doctype html><html><head><meta charset="utf-8"><style>${fontFace('Inter', 'inter', 600)}@page{margin:0}*{margin:0;padding:0}</style></head><body>${html}</body></html>`);
+    await tp.goto(fileUrl(tmp5));
+    await tp.evaluate(() => document.fonts.ready);
+    await tp.pdf({ path: path.join(OUT, 'tiled-28x22-letter.pdf'), width: '11in', height: '8.5in', printBackground: true });
+    fs.unlinkSync(tmp5);
+    await tp.close();
+    fs.writeFileSync(path.join(OUT, 'preview-28x22.png'), await sharp(canvas).resize(1400).png().toBuffer());
+    console.log(`  poster-28x22.pdf, tiled-28x22-letter.pdf: ${pages.length} pages (art ${meta.width} px wide)`);
   }
 
   // One panel per file: a window the panel's width, with the board slid left
