@@ -1,8 +1,11 @@
 // Renders the Treat Street tri-fold board: a standard 36 x 48 in board, open
 // flat it is 48 wide, a 24 in centre and two 12 in wings. It stands raised on
-// a crate at the back of the booth, so its job is to be read from 30 ft by
-// people walking past. Three things only, big: a before/after, who and the
-// phone, the live offer.
+// a crate at the back of the booth, so it has to be read from 30 ft by
+// people walking past and then hold them for a minute once they stop:
+//   left wing    the back-seat before/after
+//   centre       the logo, "I come to you", the Google rating, the phone
+//   right wing   three real Google reviews over a small Rain-Ready box
+// (Mikey, 2026-10-22: reviews to build trust, and the offer not a whole side.)
 //
 //   cd print/tools && npm install && npm run treat-trifold
 //
@@ -14,10 +17,15 @@
 //                       trim each on its marks and butt them edge to edge
 //   preview.png
 //
-// It is one more copy of the facts table in CLAUDE.md (phone, 5.0 across 39,
+// It is one more copy of the facts table in CLAUDE.md (phone, 5.0 across 40,
 // 300+ cars) and carries the Rain-Ready offer as it stands since 2026-10-15
 // (ceramic wax $20, RainX $10, RainX Anti-Fog $30, worth $508, from $369, book
 // by Dec 31). It refuses to build from January 1, 2027.
+//
+// The reviews are his Google reviews, word for word, read from the Business
+// Profile through Windsor on 2026-10-22 (all 40, all five stars). Quote them
+// exactly or not at all; a trimmed one says so with "...". Never a review that
+// isn't on Google: the site's reviews page has two that aren't (see README).
 
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -36,10 +44,20 @@ const RR_END = new Date('2027-01-01T00:00:00-08:00');
 const FREEBIES = [['Ceramic wax', 20], ['RainX windshield', 10], ['RainX anti-fog', 30]];
 const WORTH = 508, FROM = 369;
 
-const RED = '#E31924', INK = '#111114', YELLOW = '#FFD100';
+const RATING = '5.0', REVIEWS = 40, CARS = '300+';
+const QUOTES = [
+  ['Matt M.', 'With two kids in car seats, we had things stuck in those seats that were half-eaten and melted! Mikey has provided us with what seems like a brand new vehicle and allowed us to finally see the floor mats!!'],
+  ['Kathryn M.', 'I have two young kids so my car gets quite messy! Very pleased and highly recommend to anyone and everyone!'],
+  ['Diandra P.', 'We recently hired Mikey to detail our car to get it ready for baby #3, and we couldn’t be happier with the results!'],
+  ['C. Wilson', 'Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result.'],
+];
+
+const RED = '#E31924', INK = '#111114', YELLOW = '#FFD100', CREAM = '#F4F1EA', GOLD = '#F5B400';
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
   `@font-face{font-family:'${name}';src:url(${fileUrl(path.join(FS, pkg, 'files', `${pkg}-latin-${weight}-normal.woff2`))}) format('woff2');font-weight:${weight}}`;
+const star = (size, color) => `<svg viewBox="0 0 24 24" style="width:${size};height:${size};display:inline-block"><path fill="${color}" d="M12 1.6l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.7l-6.4 3.5 1.4-7.1-5.3-5 7.2-.9z"/></svg>`;
+const stars = (size, color = GOLD) => `<span class="stars">${star(size, color).repeat(5)}</span>`;
 
 const CSS = `
 ${fontFace('Barlow Condensed', 'barlow-condensed', 800)}
@@ -50,9 +68,10 @@ ${fontFace('Inter', 'inter', 800)}
 html,body{background:#fff}
 .board{position:relative;width:48in;height:36in;display:flex;overflow:hidden}
 .panel{height:36in;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden}
+.stars{display:inline-flex;gap:.06em}
 .l{width:12in;background:${INK};color:#fff;padding:.7in .6in}
-.c{width:24in;background:#fff;color:${INK};padding:1in 1in .9in;justify-content:space-evenly}
-.r{width:12in;background:${YELLOW};color:${INK};padding:.9in .6in .8in;justify-content:space-between}
+.c{width:24in;background:#fff;color:${INK};padding:.9in 1in .9in;justify-content:space-evenly}
+.r{width:12in;background:${CREAM};color:${INK};padding:.75in .55in .6in;justify-content:space-between}
 
 .l h2{font:800 1.5in/1 'Barlow Condensed';text-transform:uppercase;letter-spacing:.01em}
 .ph{position:relative;width:100%;height:13.6in;margin-top:.45in;border-radius:.25in;overflow:hidden}
@@ -62,22 +81,32 @@ html,body{background:#fff}
 .ph.a span{background:${RED};color:#fff}
 .l .cap{margin-top:auto;font:600 .62in/1.25 'Inter'}
 
-.c .logo{width:17in}
-.c .reach{display:flex;flex-direction:column;align-items:center}
+.c .logo{width:15.5in}
 .c .come{font:800 3.8in/1 'Barlow Condensed';text-transform:uppercase;color:${RED};white-space:nowrap}
+.c .rate{display:flex;align-items:center;gap:.45in;background:${INK};color:#fff;border-radius:.4in;padding:.4in .7in}
+.c .rate .big{font:800 2.2in/1 'Barlow Condensed'}
+.c .rate .what{text-align:left;font:800 .72in/1.2 'Inter'}
+.c .rate .what small{display:block;font:600 .55in/1.3 'Inter';color:#cfd0d4}
+.c .reach{display:flex;flex-direction:column;align-items:center}
 .c .call{font:800 .9in/1 'Inter';letter-spacing:.2em;text-transform:uppercase}
-.c .ph2{font:800 3.3in/1 'Barlow Condensed';margin-top:.25in;white-space:nowrap}
-.c .proof{font:600 .78in/1 'Inter';color:#4a4c54;margin-top:.55in;white-space:nowrap}
+.c .ph2{font:800 3.3in/1 'Barlow Condensed';margin-top:.2in;white-space:nowrap}
 
-.r h2{font:800 2.25in/.92 'Barlow Condensed';text-transform:uppercase}
-.r .sub{font:800 .62in/1.3 'Inter';text-transform:uppercase;letter-spacing:.06em}
-.boxes{display:flex;flex-direction:column;gap:.55in;width:100%}
-.box{border:.12in solid ${INK};border-radius:.3in;padding:.5in .2in .55in}
-.box .n{font:800 1.3in/1 'Barlow Condensed';text-transform:uppercase;white-space:nowrap}
-.box .p{font:800 1.05in/1 'Inter';text-decoration:line-through;text-decoration-thickness:.09in;margin-top:.3in}
-.box .f{display:inline-block;font:800 .9in/1 'Inter';letter-spacing:.14em;background:${INK};color:${YELLOW};border-radius:.15in;padding:.2in .45in;margin-top:.3in}
-.r .worth{font:800 .9in/1.15 'Inter'}
-.r .say{font:600 .55in/1.3 'Inter';margin-top:.25in}
+.r h2{font:800 1.25in/1 'Barlow Condensed';text-transform:uppercase}
+.r .hs{margin-top:.2in}
+.quotes{display:flex;flex-direction:column;gap:.3in;width:100%;margin:.35in 0}
+.q{background:#fff;border-radius:.25in;padding:.38in .4in .34in;text-align:left;box-shadow:0 .04in .12in rgba(0,0,0,.12)}
+.q p{font:600 .47in/1.3 'Inter';margin-top:.16in}
+.q .by{font:800 .38in/1 'Inter';margin-top:.2in;color:#4a4c54}
+.rr{width:100%;background:${YELLOW};border:.1in solid ${INK};border-radius:.25in;padding:.35in .4in .32in}
+.rr .t{font:800 .95in/1 'Barlow Condensed';text-transform:uppercase}
+.rr .d{font:800 .36in/1.2 'Inter';text-transform:uppercase;letter-spacing:.06em;margin-top:.12in}
+.rr ul{list-style:none;margin-top:.22in}
+.rr li{display:flex;align-items:center;gap:.18in;font:800 .54in/1 'Inter';padding:.1in 0;border-top:.03in solid rgba(0,0,0,.25)}
+.rr li span{flex:1;text-align:left}
+.rr li s{text-decoration-thickness:.05in}
+.rr li b{background:${INK};color:${YELLOW};font:800 .36in/1 'Inter';letter-spacing:.1em;padding:.08in .16in;border-radius:.08in}
+.rr .w{font:800 .44in/1.25 'Inter';margin-top:.18in}
+.rr .say{font:600 .34in/1.3 'Inter';margin-top:.06in}
 `;
 
 const board = () => `<div class="board" id="board">
@@ -90,16 +119,15 @@ const board = () => `<div class="board" id="board">
   <div class="panel c">
     <img class="logo" src="${fileUrl(path.join(BRAND, 'transparent-png', 'stacked-light.png'))}">
     <div class="come">I come to you</div>
-    <div class="reach"><div class="call">Call or text</div>
-    <div class="ph2">${PHONE}</div>
-    <div class="proof">5.0 on Google · 300+ cars detailed</div></div>
+    <div class="rate"><div class="big">${RATING}</div>${stars('1.05in')}<div class="what">${REVIEWS} Google reviews<small>${CARS} cars detailed since 2021</small></div></div>
+    <div class="reach"><div class="call">Call or text</div><div class="ph2">${PHONE}</div></div>
   </div>
   <div class="panel r">
-    <div><h2>Rain-Ready<br>Full Detail</h2>
-    <div class="sub" style="margin-top:.4in">Free with any Full Detail<br>Book by Dec 31</div></div>
-    <div class="boxes">${FREEBIES.map(([n, p]) => `<div class="box"><div class="n">${n}</div><div class="p">$${p}</div><div class="f">FREE</div></div>`).join('')}</div>
-    <div><div class="worth">Worth $${WORTH}.<br>From $${FROM}.</div>
-    <div class="say">Say "Treat Street" when you book.</div></div>
+    <div><h2>Don't take my<br>word for it</h2><div class="hs">${stars('.6in')}</div></div>
+    <div class="quotes">${QUOTES.map(([who, q]) => `<div class="q">${stars('.42in')}<p>"${q}"</p><div class="by">${who} · Google review</div></div>`).join('')}</div>
+    <div class="rr"><div class="t">Rain-Ready Full Detail</div><div class="d">Free with any Full Detail · book by Dec 31</div>
+      <ul>${FREEBIES.map(([n, p]) => `<li><span>${n}</span><s>$${p}</s><b>FREE</b></li>`).join('')}</ul>
+      <div class="w">Worth $${WORTH}. From $${FROM}.</div><div class="say">Say "Treat Street" when you book.</div></div>
   </div>
 </div>`;
 
@@ -117,9 +145,10 @@ const board = () => `<div class="board" id="board">
   fs.unlinkSync(tmp);
 
   const problems = [];
-  const text = (await page.evaluate(() => document.body.innerText)).replace(/ /g, ' ');
+  // Mikey's own words only: the customers' quotes are theirs, "we" and all.
+  const text = (await page.evaluate(() => { const b = document.body.cloneNode(true); b.querySelectorAll('.q p').forEach((n) => n.remove()); document.documentElement.appendChild(b); const t = b.innerText; b.remove(); return t; })).replace(/\u00a0/g, ' ');
   for (const [re, what] of [[/—|&mdash;/, 'an em dash'], [/insur|licens/i, 'licensed/insured'], [/lynnwood|edmonds/i, 'a town he does not serve'],
-    [/\bwe\b|\bour\b/i, 'business "we"'], [/\b4\d reviews\b|41/, 'a review count other than the facts table'], [/polish/i, 'exterior polish (no longer in the offer)']])
+    [/\bwe\b|\bour\b/i, 'business "we"'], [/\b(?!40\b)\d+ (Google )?reviews\b/i, 'a review count other than the facts table (40)'], [/polish/i, 'exterior polish (no longer in the offer)']])
     if (re.test(text)) problems.push(`copy contains ${what}: "${text.match(re)[0]}"`);
   // Nothing may overflow its panel, and no line may be wider than its panel.
   const spill = await page.evaluate(() => [...document.querySelectorAll('.panel')].flatMap((p) => {
