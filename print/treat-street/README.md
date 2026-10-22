@@ -89,3 +89,31 @@ freebies stop adding up to $508 or a review count other than 40 appears.
 - Tell the shop "print at 100%, no resizing, no white border". The photos are
   900 px wide, so they're soft up close and fine from a few feet; the logo
   and type are sharp.
+
+## The Stage-It board (`stageit/`), the one Mikey bought
+
+A Royal Brites Stage-It display board (item 27146, 2026-10-22): white
+corrugated tri-fold, 44 x 37 in open, a 22 in centre and two 11 in wings, a
+pop-out arched header on top of the centre and a shelf across its bottom.
+Copy lives in `print/tools/build-treat-street-stageit.cjs` (`npm run
+treat-stageit`). Same facts, reviews, offer and checks as the tri-fold above.
+
+- **Header:** the logo on black. **Centre:** "I come to you", the back-seat
+  before/after, the 5.0 / 40 Google reviews badge, the phone; its bottom
+  stays clear because the shelf sits across it. **Left wing:** four Google
+  reviews. **Right wing:** "See your price in 60 seconds" with a big QR
+  (`utm_source=treatstreet`) and the small Rain-Ready box. **Shelf edge:**
+  "Win a free interior detail · enter at the table".
+- **The header and shelf sizes are estimates** (Royal Brites doesn't publish
+  them): header 22 x 6.5 in, shelf edge 22 x 3 in. Every piece prints 0.4 in
+  oversize all round with nothing important near its edge, so it's glued on
+  and trimmed to the board's own edge with a box cutter. If the real board is
+  far off, measure it and change `PIECES`.
+- **Print it:** `PRINT-ME-letter.pdf`, 42 plain letter pages for a normal
+  printer, all portrait: page 1 is a map of where every page goes (H, L, C,
+  R, S plus row-column), then the tiles with trim marks, then a QR patch for
+  if the glued-up QR won't scan (it crosses a seam). Print at 100% / Actual
+  size. About $25 to $32 at a copy counter's color rate.
+- **Or at a print shop:** `poster-1-center-24x36.pdf` and
+  `poster-2-wings-shelf-24x36.pdf` (24 x 36 is often same-day), plus the
+  header from `pieces/` or the letter file's H pages.
