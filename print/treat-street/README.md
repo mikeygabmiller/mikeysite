@@ -77,6 +77,12 @@ freebies stop adding up to $508 or a review count other than 40 appears.
   and glue them edge to edge, row A at the top. About $17 to $21 at a copy
   counter's color rate, or your own printer (the yellow and black panels use a
   lot of ink).
+- **On a 22 x 28 poster board** (laid sideways): `poster-28x22.pdf` is the
+  same design at 58% (48 x 36 is 4:3, 28 x 22 isn't, so there's a half inch
+  of white top and bottom), and `tiled-28x22-letter.pdf` is it on 9
+  landscape letter pages, A1 to C3. At that size the phone number is about
+  1.3 in tall (readable to roughly 13 ft instead of 23) and the reviews are
+  about 20 pt, so they're read at the table, not from the aisle.
 - Prices checked 2026-10-19: a 36 x 48 paper poster runs roughly $45 to $90
   and usually isn't same-day at Staples or FedEx (3 to 10 days); one UPS
   Store lists $84 rolled, $144 on foam. A 24 x 36 is often same-day.
