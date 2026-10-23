@@ -180,7 +180,7 @@ const PIECE_HTML = (qrSvg) => ({
     <div class="rr"><div class="t">Rain-Ready Full Detail</div><div class="d">Free with any Full Detail · book by Dec 31</div>
       <ul>${FREEBIES.map(([n, p]) => `<li><span>${n}</span><s>$${p}</s><b>FREE</b></li>`).join('')}</ul>
       <div class="w">Full Detail from $${FROM}.</div><div class="say">Say "Treat Street" when you book.</div></div>`),
-  shelf: piece('shelf', `<div class="t">Win a free <em>interior detail</em></div><div class="t" style="font-size:.72in">· enter at the table</div>`),
+  shelf: piece('shelf', `<div class="t">Win a <em>LEGO set</em></div><div class="t" style="font-size:.72in">· enter at the table</div>`),
 });
 
 (async () => {

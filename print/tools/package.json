@@ -20,7 +20,8 @@
     "treat-signs": "node build-treat-street.cjs",
     "treat": "node build-treat-street-card.cjs",
     "treat-trifold": "node build-treat-street-trifold.cjs",
-    "treat-stageit": "node build-treat-street-stageit.cjs"
+    "treat-stageit": "node build-treat-street-stageit.cjs",
+    "treat-lego": "node build-treat-street-lego.cjs"
   },
   "dependencies": {
     "@fontsource/anton": "^5.3.0",
