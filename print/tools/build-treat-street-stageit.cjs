@@ -32,8 +32,9 @@
 //
 // One more copy of the facts table in CLAUDE.md: the phone, 5.0 across 40,
 // 300+ cars since 2021, 60 seconds, and the Rain-Ready offer as it stands
-// since 2026-10-15 (wax $20, RainX $10, anti-fog $30, worth $508, from $369,
-// book by Dec 31). It refuses to build from January 1, 2027. The reviews are
+// as his Canva quote sign prints it (2026-10-22: wax $20, rain repellent $15,
+// anti-fog $15, from $369, book by Dec 31; the site still says $10 and $30, so
+// no "worth" total here until those agree). It refuses to build from January 1, 2027. The reviews are
 // his Google reviews word for word, read off the Business Profile through
 // Windsor on 2026-10-22; never one that isn't on Google (see the README).
 
@@ -64,8 +65,8 @@ const PIECES = {
 const PHONE = '(425) 600-7897';
 const QR_URL = 'https://mikeysdetailing.com/?utm_source=treatstreet&utm_medium=event#booking';
 const RR_END = new Date('2027-01-01T00:00:00-08:00');
-const FREEBIES = [['Ceramic wax', 20], ['RainX windshield', 10], ['RainX anti-fog', 30]];
-const WORTH = 508, FROM = 369;
+const FREEBIES = [['Ceramic wax', 20], ['Windshield rain repellent', 15], ['Windshield anti-fog', 15]];
+const FROM = 369;
 const RATING = '5.0', REVIEWS = 40, CARS = '300+';
 const QUOTES = [
   ['Matt M.', 'With two kids in car seats, we had things stuck in those seats that were half-eaten and melted! Mikey has provided us with what seems like a brand new vehicle and allowed us to finally see the floor mats!!'],
@@ -178,13 +179,12 @@ const PIECE_HTML = (qrSvg) => ({
     <div style="display:flex;flex-direction:column;align-items:center"><div class="qr" id="qr">${qrSvg}</div><div class="scan">Scan for my instant quote</div></div>
     <div class="rr"><div class="t">Rain-Ready Full Detail</div><div class="d">Free with any Full Detail · book by Dec 31</div>
       <ul>${FREEBIES.map(([n, p]) => `<li><span>${n}</span><s>$${p}</s><b>FREE</b></li>`).join('')}</ul>
-      <div class="w">Worth $${WORTH}. From $${FROM}.</div><div class="say">Say "Treat Street" when you book.</div></div>`),
+      <div class="w">Full Detail from $${FROM}.</div><div class="say">Say "Treat Street" when you book.</div></div>`),
   shelf: piece('shelf', `<div class="t">Win a free <em>interior detail</em></div><div class="t" style="font-size:.72in">· enter at the table</div>`),
 });
 
 (async () => {
   if (Date.now() >= RR_END.getTime()) { console.error('  x Rain-Ready ended Dec 31, 2026: this board carries it, so it is not built.'); process.exit(1); }
-  if (FREEBIES.reduce((s, [, p]) => s + p, 0) + 249 + 199 !== WORTH) { console.error('  x the freebies no longer add up to $' + WORTH + ' (PRICING.md)'); process.exit(1); }
   fs.mkdirSync(path.join(OUT, 'pieces'), { recursive: true });
   const qrSvg = await QRCode.toString(QR_URL, { type: 'svg', errorCorrectionLevel: 'M', margin: 0, color: { dark: '#0e0e0f', light: '#ffffff' } });
   const P = PIECE_HTML(qrSvg);

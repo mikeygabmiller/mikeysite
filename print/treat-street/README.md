@@ -96,7 +96,11 @@ A Royal Brites Stage-It display board (item 27146, 2026-10-22): white
 corrugated tri-fold, 44 x 37 in open, a 22 in centre and two 11 in wings, a
 pop-out arched header on top of the centre and a shelf across its bottom.
 Copy lives in `print/tools/build-treat-street-stageit.cjs` (`npm run
-treat-stageit`). Same facts, reviews, offer and checks as the tri-fold above.
+treat-stageit`). Same facts and reviews as the tri-fold above. Its Rain-Ready
+box follows Mikey's Canva quote sign (2026-10-22): ceramic wax $20, windshield
+rain repellent $15, windshield anti-fog $15, all free with a Full Detail from
+$369, and no "worth" total. The site's price book still says $10 and $30
+(worth $508); ask Mikey which is right before printing either again.
 
 - **Header:** the logo on black. **Centre:** "I come to you", the back-seat
   before/after, the 5.0 / 40 Google reviews badge, the phone; its bottom
