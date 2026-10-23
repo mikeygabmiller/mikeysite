@@ -15,7 +15,21 @@ them the same day. Copy lives in `print/tools/build-treat-street.cjs`
 | `giveaway-sign.pdf` | "Win a free interior detail", on an easel at the parent end of the table | 1 (cardstock) |
 | `quote-sign.pdf` | QR to the quote calculator, the price ranges, the Rain-Ready offer | 1 (cardstock) |
 
-## The drawing (Mikey's call, 2026-10-15)
+## The drawing is a LEGO set now (Mikey, 2026-10-23)
+
+He dropped the free interior detail ("I don't think it'll be worth it") for a
+LEGO set from Fred Meyer, and the slip per person for one sign-up sheet with
+many lines. `print/tools/build-treat-street-lego.cjs` (`npm run treat-lego`)
+writes `lego/entry-sheet.pdf` (black and white, 18 numbered lines, a
+"Sheet #" blank, the text-me box per line) and `lego/lego-sign.pdf` (colour,
+for the left wing under his Canva quote sign). Same terms as before: free, no
+purchase, one line per household, a grown-up fills it in, drawn Monday Oct 26,
+48 hours to reply or he draws again. No prize value, since the set isn't
+bought. The Stage-It shelf strip now says "Win a LEGO set". `entry-slips.pdf`,
+`giveaway-sign.pdf` and his Canva slips and giveaway sign are the old prize:
+don't print them.
+
+## The old drawing (Mikey's call, 2026-10-15, replaced above)
 
 - **Prize:** one Interior Detail, any size and any condition (worth up to
   $389: $329 van plus $60 War Zone). Add-ons like pet hair and carpet shampoo
@@ -107,7 +121,7 @@ $369, and no "worth" total. The site's price book still says $10 and $30
   stays clear because the shelf sits across it. **Left wing:** four Google
   reviews. **Right wing:** "See your price in 60 seconds" with a big QR
   (`utm_source=treatstreet`) and the small Rain-Ready box. **Shelf edge:**
-  "Win a free interior detail · enter at the table".
+  "Win a LEGO set · enter at the table".
 - **The header and shelf sizes are estimates** (Royal Brites doesn't publish
   them): header 22 x 6.5 in, shelf edge 22 x 3 in. Every piece prints 0.4 in
   oversize all round with nothing important near its edge, so it's glued on
