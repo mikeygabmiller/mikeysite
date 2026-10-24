@@ -1316,6 +1316,12 @@ header li a[href="#booking"],
 }
 .mh-rr[hidden]{ display:none; }
 .mh-rr:hover{ border-color:var(--brand-gold); color:#fff; }
+/* The $50 weekend deal (2026-10-24, Mikey). Same chip, red tag, so it reads
+   as a second thing and not part of Rain-Ready. Shown by the calculator script
+   until DEAL_END and never after. */
+.mh-deal{ background:rgba(226,35,26,.12); border-color:rgba(226,35,26,.5); }
+.mh-deal:hover{ border-color:#e2231a; }
+.mh-deal .mh-rr-tag{ background:#e2231a; color:#fff; }
 .mh-rr-tag{ background:var(--brand-gold); color:#2a1e02; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px; }
 
 /* Pricing pills */
@@ -1426,6 +1432,8 @@ header li a[href="#booking"],
             <span class="mh-proof-val">300+</span>&nbsp;cars detailed
           </div>
         </div>
+
+        <a class="mh-rr mh-deal" href="#booking" data-deal hidden><span class="mh-rr-tag">$50 off</span>Any detail you quote here by Sunday, Oct 25. I take it off your price for you &rarr;</a>
 
         <a class="mh-rr" href="#rain-ready" data-rr hidden><span class="mh-rr-tag">Rain-Ready</span>Free ceramic wax, RainX &amp; anti-fog with a Full Detail, until Dec 31 &rarr;</a>
 
@@ -1676,6 +1684,13 @@ header li a[href="#booking"],
 #qqcCard .amount.lit { animation: qqcAmountPop .45s cubic-bezier(.34,1.5,.64,1); }
 @keyframes qqcAmountPop { 0% { transform: scale(.88); } 100% { transform: scale(1); } }
 #qqcCard .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 13px; }
+#qqcCard .qq-dealbar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 9px; margin: 0 0 14px; padding: 9px 12px; border-radius: 12px; background: rgba(var(--accent-rgb), .12); border: 1px solid rgba(var(--accent-rgb), .4); font-size: 13.5px; font-weight: 600; color: var(--text); text-align: center; line-height: 1.35; }
+#qqcCard .qq-dealbar[hidden], #qqcCard .qq-deal[hidden] { display: none; }
+#qqcCard .qq-deal-tag { background: var(--accent); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+#qqcCard .qq-deal { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 2px 0 0; }
+#qqcCard .qq-deal s { font-size: 22px; font-weight: 650; color: var(--text-3); font-variant-numeric: tabular-nums; }
+#qqcCard .amount-sub.is-deal b { color: var(--accent); }
+#qqcCard .inc-row.is-deal .inc-name, #qqcCard .inc-row.is-deal .inc-price { color: var(--accent); font-weight: 700; }
 #qqcCard .breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 14px; }
 #qqcCard .bd-head { font-size: 12px; font-weight: 640; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); padding: 8px 0 4px; }
 #qqcCard .inc-row { display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: 15px; font-weight: 520; }
@@ -1790,6 +1805,8 @@ header li a[href="#booking"],
     </div>
     <div class="progress-label" id="qqProgLabel">Step 1 of 5 &middot; Your vehicle</div>
   </div>
+
+  <div class="qq-dealbar" data-deal hidden><span class="qq-deal-tag">$50 off</span><span>Taken off your price automatically. Ends Sunday, Oct 25 at midnight.</span></div>
 
   <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
 
@@ -1998,8 +2015,9 @@ header li a[href="#booking"],
   </style>
   <div class="step" id="step5">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
+    <div class="qq-deal" id="qqDeal" hidden><span class="qq-deal-tag">$50 off applied</span><s id="qqWas"></s></div>
     <div class="amount" id="qqAmount">$0</div>
-    <p class="amount-sub">No hidden fees. Pay when the job's done.</p>
+    <p class="amount-sub" id="qqAmountSub">No hidden fees. Pay when the job's done.</p>
     <div class="breakdown" id="qqBreakdown"></div>
     <div class="qq-bookcta" id="qqBookCta">
       <button type="button" class="btn btn-primary qq-send-btn" id="qqPickTime">Pick my time &rarr;</button>
@@ -2168,6 +2186,23 @@ header li a[href="#booking"],
   ];
   function condValue(){ return S.condition ? S.condition.value : -1; }
 
+  // The $50 weekend deal (Mikey, 2026-10-24: "automatically applied", shown on
+  // the price, "live at least for today"). $50 off any detail quoted here before
+  // midnight Pacific going into Monday, Oct 26 (07:00 UTC, PDT), on top of
+  // Rain-Ready. It comes off the total, so the button, the text, the email and
+  // the booking all carry the lower number, and a "$50 off" line rides in the
+  // items so Mikey sees why. Past DEAL_END it goes quiet on its own; take the
+  // code out after that. To end it early or run it longer, change DEAL_END and
+  // the "Oct 25" in the three data-deal lines.
+  var DEAL_OFF = 50;
+  var DEAL_END = Date.UTC(2026, 9, 26, 7);
+  var DEAL_ITEM = '$' + DEAL_OFF + ' off, online deal (ends Oct 25)';
+  function dealLive(){ return Date.now() < DEAL_END; }
+  (function(){
+    var on = dealLive(), els = document.querySelectorAll('[data-deal]');
+    for (var i=0;i<els.length;i++) els[i].hidden = !on;
+  })();
+
   // The Rain-Ready Full Detail: book a Full Detail by December 31, 2026 and the
   // ceramic wax, RainX and RainX Anti-Fog come free (anti-fog took the polish's
   // place on 2026-10-15, Mikey). Same stack as the door hanger. The
@@ -2201,6 +2236,7 @@ header li a[href="#booking"],
   function fullAltTotal(){
     var t = PRICE['Full Detail'] + (S.vehicle ? S.vehicle.value : 0) + (S.condition ? S.condition.value : 0);
     Object.keys(S.addons).forEach(function(n){ if (!(rrLive() && RR_FREE[n])) t += addonPrice(n); });
+    if (dealLive()) t -= DEAL_OFF;
     return t;
   }
   function $(id){ return document.getElementById(id); }
@@ -2222,6 +2258,7 @@ header li a[href="#booking"],
     var ak=Object.keys(S.addons); for(var j=0;j<ak.length;j++) t+=S.addons[ak[j]];
     if(S.vehicle) t+=S.vehicle.value;
     if(S.condition) t+=S.condition.value;
+    if(sk.length && dealLive()) t-=DEAL_OFF;
     return t;
   }
   function refreshTicker(){
@@ -2367,6 +2404,8 @@ header li a[href="#booking"],
     var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j] + (S.addons[ak[j]] === 0 ? ' (free, Rain-Ready)' : '')); }
     if (S.vehicle) total += S.vehicle.value;
     if (S.condition) total += S.condition.value;
+    var deal = dealLive() && sk.length > 0, was = total;
+    if (deal){ total -= DEAL_OFF; items.push(DEAL_ITEM); }
     S.notes = collectNotes();
     S.total = total; S.items = items;
 
@@ -2396,8 +2435,22 @@ header li a[href="#booking"],
               (free ? '<span class="inc-ctxline">Rain-Ready, until Dec 31</span>' : '') + '</span>' +
               '<span class="inc-price">' + (free ? '<s>$' + addonPrice(ak2[m]) + '</s> Free' : '+$' + S.addons[ak2[m]]) + '</span></div>';
     }
+    if (deal){
+      html += '<div class="inc-row is-deal"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">$' + DEAL_OFF + ' off' +
+              '<span class="inc-ctxline">Online deal, ends Sunday, Oct 25</span></span><span class="inc-price">&minus;$' + DEAL_OFF + '</span></div>';
+    }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
+
+    // Say it where the number is, so nobody has to find it in the breakdown.
+    var dl = $('qqDeal'), sub = $('qqAmountSub');
+    if (dl){ dl.hidden = !deal; $('qqWas').textContent = '$' + was; }
+    if (sub){
+      sub.classList.toggle('is-deal', deal);
+      sub.innerHTML = deal
+        ? '<b>You save $' + DEAL_OFF + '.</b> It\u2019s already off. Pay when the job\u2019s done.'
+        : 'No hidden fees. Pay when the job\u2019s done.';
+    }
 
     // Interior + Exterior picked separately costs more than the Full Detail that
     // is the same work, and step 2's tip is easy to scroll past. Say it once more
@@ -2549,6 +2602,7 @@ header li a[href="#booking"],
     var errBox = $('qqBookError'); errBox.style.display = 'none';
     var consentEl = $('qqBConsentText');
     var extras = Object.keys(S.addons).map(function(n){ return n + (S.addons[n] === 0 ? ' (free, Rain-Ready)' : ''); });
+    if (S.items.indexOf(DEAL_ITEM) >= 0) extras.push(DEAL_ITEM);
     if (S.services['Interior Detail'] && S.services['Exterior Detail']) extras.unshift('Booked as Interior + Exterior');
     var payload = {
       service: bkService(), size: bkSize(), sizeLabel: S.vehicle ? S.vehicle.label : '', vehicle: ymm, condition: cond,
