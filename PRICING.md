@@ -99,6 +99,18 @@ A customer holding something with an old price on it gets that price:
   at the price book: the calculator quotes $369, so Mikey takes the $69 off
   when he confirms. Not a price change: nothing in `PRICE_BOOK` moves.
 
+## The $50 weekend deal (website only)
+
+- **$50 off any detail quoted in the homepage calculator** from Sat Oct 24
+  until midnight Pacific going into Mon Oct 26, 2026 (Mikey, 2026-10-24: "live
+  at least for today"). Taken off automatically: the price screen shows the
+  full price struck through, "$50 off applied", and a "$50 off" line, and the
+  text, email and booking all carry the lower number plus "$50 off, online deal
+  (ends Oct 25)" in the items. It stacks with the Rain-Ready extras. A quote
+  saved before the end is held 30 days like any other, so honor it at the price
+  it says. Not a price change: `PRICE_BOOK` doesn't move. `DEAL_END` in
+  `index.html` switches it off; take the code out after that.
+
 ## The other price lists
 
 Decided by Mikey on 2026-09-27 unless marked open:

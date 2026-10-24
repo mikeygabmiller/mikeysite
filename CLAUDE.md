@@ -250,6 +250,14 @@ Don't widen it, extend the window or swap the extras without Mikey; it's
 the same promise the hangers and postcards make. After January 1 take the
 dormant code out rather than leaving it.
 
+**The $50 weekend deal** (Mikey, 2026-10-24): $50 off any detail quoted in
+the homepage calculator until midnight Pacific going into Mon Oct 26, 2026,
+taken off automatically and stacked with Rain-Ready. `DEAL_OFF` / `DEAL_END`
+in `index.html` (the calculator script also shows the `data-deal` hero chip
+and card bar), and `PRICING.md` has what it promised. It switches off on its
+own; extend it only with Mikey, and change the "Oct 25" in the `data-deal`
+lines with `DEAL_END`.
+
 **The maintenance page has its own offer** (`/mobile-auto-maintenance/`): a
 free 30-point inspection with an oil change booked into a Friday-through-Monday
 slot. Mikey kept it on 2026-10-05. It names its window, which is the rule
