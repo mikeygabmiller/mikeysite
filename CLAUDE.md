@@ -274,7 +274,7 @@ second visit makes a real deadline look fake. Name the window instead.
 
 ## City pages
 
-Eleven of them (every served town but Granite Falls), plus service pages nested under some cities. They share process
+Twelve of them, one for every served town, plus service pages nested under some cities. They share process
 steps, FAQ answers, pricing and footers — that's correct and it's what keeps the
 facts consistent. What must be **unique** per city is the intro prose and the
 neighborhood sections.
@@ -287,15 +287,12 @@ schedules in Everett; HOA rules in Mill Creek; gravel roads in Duvall.
 Keep city pages **900+ words**. Everett is the biggest market and was the
 shortest page on the site.
 
-**Granite Falls is written and parked** at `_disabled/granite-falls/index.html`
-(2026-10-02), because the growth plan paces city pages at 1 to 2 a month and
-Woodinville and Arlington went live that day. Put it up in November: move it
-to `granite-falls/index.html`, set `p:'/granite-falls/'` on its `TOWNS` entry,
-turn its homepage chip into a link, add it to the About list, the Lake Stevens
-and Arlington footers, `sitemap.xml` and `llms.txt`, add it to `PAGE_SERVICE`
-in `tools/build-entity-graph.py` and run that with `--apply` (it writes the
-page's Service node), re-read it against the facts table, then run
-`check-site.py`.
+**Granite Falls went up in November 2026,** the last of the twelve. It was
+written on 2026-10-02 and parked a month to keep to the growth plan's pace of 1
+to 2 city pages a month. While parked it missed three weeks of template changes
+(link-preview image, the Outfit fallback font, linked price pills, sized
+images, `h3` step titles); those were ported in the same PR, so check a parked
+page against a live sibling before it goes up, not just against the facts.
 
 ## The blog (`/blog/`)
 

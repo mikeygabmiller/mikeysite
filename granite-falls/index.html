@@ -20,6 +20,11 @@
 <meta property="og:title" content="Mobile Detailing Granite Falls, WA | Mikey's Mobile Detailing">
 <meta property="og:description" content="I come to your Granite Falls driveway. Trail mud, gravel dust, bugs and the hiking dog handled. 300+ cars, 5.0 across 40 reviews.">
 <meta property="og:url" content="https://mikeysdetailing.com/granite-falls/">
+<meta property="og:image" content="https://mikeysdetailing.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mikey's Mobile Detailing logo: a red 4x4 in soap foam beside MIKEY'S, MOBILE DETAILING.">
+<meta name="twitter:card" content="summary_large_image">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
@@ -37,9 +42,11 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap"></noscript>
 
 <style>
+/* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
+@font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
 :root{--bg:#141414;--bg-card:#1a1a1a;--red:#C8102E;--red-glow:rgba(200,16,46,.4);--gold:#C9A24B;--text:#fff;--text-muted:#a3a3a3;--border:#2a2a2a}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{font-family:'Outfit','Outfit Fallback',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 header{padding:20px 0;border-bottom:2px solid var(--border);position:sticky;top:0;background:rgba(20,20,20,.95);backdrop-filter:blur(8px);z-index:100}
@@ -56,6 +63,7 @@ h1 .red{color:var(--red)}
 .price-pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
 .pill{background:var(--bg-card);border:2px solid var(--border);padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .pill .price{color:var(--red);margin-left:8px}
+.pill.link:hover { border-color: var(--red); cursor: pointer; }
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px}
 .btn{font-family:inherit;font-weight:800;font-size:16px;text-transform:uppercase;letter-spacing:1px;padding:18px 32px;border-radius:12px;border:2px solid;cursor:pointer;transition:transform .15s,box-shadow .15s;display:inline-block}
 .btn-primary{background:var(--red);border-color:var(--red);color:white;box-shadow:0 0 30px var(--red-glow)}
@@ -84,7 +92,7 @@ h2 .red{color:var(--red)}
 .process{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:step}
 .step{background:var(--bg-card);border:2px solid var(--border);border-radius:12px;padding:28px 22px;position:relative;counter-increment:step}
 .step::before{content:counter(step);position:absolute;top:-16px;left:22px;background:var(--red);color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;box-shadow:0 0 20px var(--red-glow)}
-.step h4{font-size:17px;font-weight:800;margin:12px 0 8px}.step p{color:var(--text-muted);font-size:14px}
+.step h3{font-size:17px;font-weight:800;margin:12px 0 8px}.step p{color:var(--text-muted);font-size:14px}
 .testimonial{background:var(--bg-card);border:2px solid var(--border);border-left:4px solid var(--red);border-radius:14px;padding:36px 32px;max-width:720px;margin:0 auto}
 .testimonial p{font-size:19px;font-style:italic;color:var(--text);margin-bottom:20px;line-height:1.6}
 .testimonial .author{display:flex;justify-content:space-between;align-items:center;font-size:14px}
@@ -416,7 +424,12 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
         }
       ],
       "sameAs": [
-        "https://g.page/r/CRCuKQ982VIZEBE"
+        "https://g.page/r/CRCuKQ982VIZEBE",
+        "https://www.yelp.com/biz/mikeys-mobile-detailing-snohomish-4",
+        "https://www.facebook.com/1404175872772078",
+        "https://www.instagram.com/mikeysdetailing_sno/",
+        "https://www.youtube.com/@MikeysDetailing",
+        "https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/"
       ],
       "review": [
         {
@@ -662,9 +675,9 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <p class="hero-sub">Downtown to the Mountain Loop, I bring the whole setup to your driveway.
       <strong>You don't pay until you love it.</strong></p>
     <div class="price-pills">
-      <div class="pill">Full Detail <span class="price">$369-$449</span></div>
-      <div class="pill">Interior <span class="price">$249-$329</span></div>
-      <div class="pill">Exterior <span class="price">$199-$279</span></div>
+      <a href="/services/" class="pill link">Full Detail <span class="price">$369-$449</span></a>
+      <a href="/services/interior.html" class="pill link">Interior <span class="price">$249-$329</span></a>
+      <a href="/services/exterior.html" class="pill link">Exterior <span class="price">$199-$279</span></a>
     </div>
     <div class="cta-row">
       <a href="#booking" class="btn btn-primary">Get My Instant Quote →</a>
@@ -791,10 +804,10 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <h2>Booked in <span class="red">Under 2 Minutes</span></h2>
     <p class="section-sub">No phone tag, no quote-request runaround.</p>
     <div class="process">
-      <div class="step"><h4>Get Your Quote</h4><p>Use the instant quote tool. Tell me your vehicle and condition, get an exact price in 60 seconds.</p></div>
-      <div class="step"><h4>Pick a Day</h4><p>Tell me which days suit your driveway and I'll send you the next openings.</p></div>
-      <div class="step"><h4>I Show Up</h4><p>I arrive on time with everything I need. An outdoor spigot and a power outlet is all I ask.</p></div>
-      <div class="step"><h4>Walk Around. Pay.</h4><p>Inspect the car. If you're happy, you pay. If not, I keep working.</p></div>
+      <div class="step"><h3>Get Your Quote</h3><p>Use the instant quote tool. Tell me your vehicle and condition, get an exact price in 60 seconds.</p></div>
+      <div class="step"><h3>Pick a Day</h3><p>Tell me which days suit your driveway and I'll send you the next openings.</p></div>
+      <div class="step"><h3>I Show Up</h3><p>I arrive on time with everything I need. An outdoor spigot and a power outlet is all I ask.</p></div>
+      <div class="step"><h3>Walk Around. Pay.</h3><p>Inspect the car. If you're happy, you pay. If not, I keep working.</p></div>
     </div>
   </div>
 </section>
@@ -807,22 +820,22 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="ba-grid">
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/ba_2.jpg" alt="Dirty back seats before an interior detail" loading="lazy"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/ba_1.jpg" alt="Clean back seats after an interior detail" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="540" height="769" src="/images/ba_2-540.jpg" alt="Dirty back seats before an interior detail" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img width="540" height="769" src="/images/ba_1-540.jpg" alt="Clean back seats after an interior detail" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Interior deep clean: seats &amp; carpets</div>
       </div>
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" loading="lazy"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/ba_3.jpg" alt="Clean cargo area after detailing" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="540" height="422" src="/images/ba_4-540.jpg" alt="Dirty cargo area before detailing" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img width="540" height="422" src="/images/ba_3-540.jpg" alt="Clean cargo area after detailing" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Cargo area reset: vacuum &amp; steam</div>
       </div>
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/focus-before.webp" alt="Dull car exterior before detailing" loading="lazy" onerror="this.closest('.ba-pair').style.display='none'"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/focus-after.webp" alt="Glossy car exterior after decontamination and sealant" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="360" height="270" src="/images/focus-before-360.webp" alt="Dull car exterior before detailing" loading="lazy" onerror="this.closest('.ba-pair').style.display='none'"></figure>
+          <figure><span class="ba-tag after">After</span><img width="360" height="480" src="/images/focus-after-360.webp" alt="Glossy car exterior after decontamination and sealant" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Exterior wash, decon &amp; sealant</div>
       </div>
