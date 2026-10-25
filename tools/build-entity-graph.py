@@ -96,6 +96,7 @@ PAGE_SERVICE = {
     "mukilteo/index.html":             ("Mukilteo",    "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "woodinville/index.html":          ("Woodinville", "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "arlington/index.html":            ("Arlington",   "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
+    "granite-falls/index.html":        ("Granite Falls", "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "mobile-car-detailing-near-me/index.html": (None,  "Mobile Car Detailing", "Mobile Car Detailing", 199, 449),
     "paint-correction-snohomish-county/index.html": (None,"Paint Correction",  "Paint Correction",     400, 1200),
     "ceramic-coating-snohomish-county/index.html": (None,"Ceramic Coating",    "Ceramic Coating",      500, None),
