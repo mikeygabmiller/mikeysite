@@ -146,7 +146,12 @@ goes up in November.
   for that page is labels, names and focus only. It's one screen with no
   menu, so nothing is lost; adding it is Mikey's call.
 
-**Still not done:**
-
-- `heading-order` on 25 pages: a heading level skipped (an h4 after an h2).
-  Changing heading levels changes how they look, so it wants a look at each.
+**Done 2026-10-25:** `heading-order` on 25 pages (28 headings). The "how it
+works" step titles were `h4` straight after an `h2`; they're `h3` now, with
+`.step h3` carrying the old `.step h4` style. Same for the footers of the two
+`/services/` detail pages and the three article pages, and the maintenance
+hero's "Done right, or you don't pay" line, an `h3` with no `h2` above it, is
+a styled `<p>` now (it's a tagline, not a section). axe: 0 `heading-order` on
+46 pages. Full-page screenshots of 30 pages at 390 and 1280, before and after:
+58 of 60 identical pixel for pixel; the other 2 are the maintenance page's
+live countdown clock.
