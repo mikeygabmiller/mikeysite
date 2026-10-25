@@ -445,8 +445,10 @@ for p in pages:
                          r"|meticulous\w*|showroom[- ](?:shine|clean|finish|ready|quality)|bumper[- ]to[- ]bumper perfection)\b|\b(?:it'?s|is|isn['’]t) not just\b|\bnot just\b",
                          text, re.I):
         fails.append(f"{rel}: agency word \"{m.group(0)}\"")
-    for m in re.finditer(r"<(?:a|button)\b[^>]*>\s*(Get Your[^<]{0,30})", src):
-        fails.append(f"{rel}: button says \"{m.group(1).strip()}\", buttons say \"Get My\"")
+    # "Book Your" too: the phone QA (2026-10-06) found five footers saying
+    # "Book Your Detail Today" that the "Get Your" check let through.
+    for m in re.finditer(r"<(?:a|button)\b[^>]*>\s*((?:Get|Book) Your[^<]{0,30})", src):
+        fails.append(f"{rel}: button says \"{m.group(1).strip()}\", buttons say \"Get My\" / \"Book My\"")
 
 # Meta descriptions over 155 characters get cut by Google.
 for p in pages:

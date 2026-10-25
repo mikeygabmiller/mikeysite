@@ -148,11 +148,13 @@ and the hero is a CSS gradient with no image to prioritise.
   spacing in footers and headers. Worth doing as its own change.
 - **Copy I noticed and didn't touch** (the brief said no copy changes):
   - `/about/`: "Every quote is exact before I show up. the calculator on the
-    homepage..." (lower-case "the" after a full stop).
+    homepage..." (lower-case "the" after a full stop). **Fixed 2026-10-25** (a colon).
   - Footer buttons say "Book Your Detail Today" (homepage) and "Book Your
     Service Today" (maintenance page). CLAUDE.md's voice rule is first-person
     buttons ("Get My", not "Get Your"); `check-site.py` only catches "Get
-    Your".
+    Your". **Fixed 2026-10-25:** "Book My Detail Today", "Book My
+    Service Today", and `check-site.py` now catches "Book Your" on a button
+    too.
   - "41+ Reviews" (city page heroes) and "41+ five-star reviews" (maintenance
     page). The facts table says 41.
   - The homepage footer's blurb lists seven towns "and nearby areas";
