@@ -41,7 +41,7 @@ the quote calculator, it isn't in this plan.
 | G4 | ~~`robots.txt` is 4 lines, no AI-crawler declarations~~ | — | ✅ **Done** |
 | G5 | ~~No `llms.txt`~~ | — | ✅ **Done** |
 | G6 | `site-stats.js` **rewrites JSON-LD client-side** | Most AI crawlers don't run JavaScript. The HTML fallbacks (currently `40`) are what they actually read — they must never go stale. | ✅ Documented in the file + the weekly checklist |
-| G7 | Only **8 cities** in `areaServed`; 7 more mapped but unbuilt | Every unbuilt city is a Map Pack you're not in | Phase 4 |
+| G7 | Only **8 cities** in `areaServed`; 7 more mapped but unbuilt | Every unbuilt city is an organic and AI result you're not in. (Not a Map Pack: for a business with a hidden address the pack follows the pin, not the pages, `reports/2026-10-27-rnd-map-pack.md`) | Phase 4 |
 | G8 | **Zero off-site presence** (no Reddit, Nextdoor, or directory footprint in evidence) | Community platforms account for ~52% of AI citations — you're invisible in the biggest AI source pool | Phase 5 |
 | G9 | No AI-visibility measurement of any kind | You cannot improve what you don't score | Phase 0 |
 
@@ -90,7 +90,7 @@ Framed the SMART way: **S**pecific · **M**easurable · **A**chievable · **R**e
 | ID | SMART goal | Deadline |
 |---|---|---|
 | **SG1** | Grow from **40 → 120 Google reviews** by averaging **1.5 new reviews/week**, tracked weekly. Milestones: 60 by M3 · 80 by M6 · 120 by M12. | 2027-08-01 |
-| **SG2** | Rank in the **Map Pack top 3** for "mobile detailing near me" from **8 of 12** geo-grid points across the service area (measured monthly with a grid tracker). | Month 9 |
+| **SG2** | *Reset 2026-10-27 (`reports/2026-10-27-rnd-map-pack.md`: 0 of 21 points in the top 3 that day; top-3 winners sat a median 2 mi from the searcher and almost all show an address, which his hidden one can't).* Map Pack **top 3** at the points around his base (Snohomish east, Machias), **top 10** in downtown Snohomish and Lake Stevens, and **top 3 on searches that name a town** ("mobile detailing snohomish", 2nd on 2026-10-27). The other nine towns are a city-page, organic and Ads job. Measured monthly with the report's 21-point grid. | Month 9 |
 | **SG3** | Get named by **AI assistants in ≥ 60% of a fixed 25-prompt panel** (baseline it in Week 2; expect a near-zero start). Milestones: 20% by M3 · 40% by M6 · 60% by M12. | Month 12 |
 | **SG4** | Publish **about 1 answer-layer post a week** (raised from 1 page a month on 2026-10-27, Mikey's call) and **1–2 city pages a month**, each with unique local research, full schema, and 2+ internal inbound links. **Never bulk-publish city pages.** | Weekly / monthly |
 | **SG5** | Consolidate the blog to **`mikeysdetailing.com/blog/`** with 301s, and self-host every brand image, eliminating all third-party image dependencies. | Month 2 |
@@ -228,17 +228,22 @@ what AI assistants read when answering "who's the best detailer near me."
    **2 hours after** a job is marked complete, text the `g.page/r/CRCuKQ982VIZEBE` link.
    Two hours beats immediately — the car has dried, they've shown a family member, the
    feeling has set. **This one automation is most of SG1.**
-2. **Coach the review content.** Ask them to mention **city + service**:
-   *"interior detail in Lake Stevens."* Reviews containing a city name are a genuine local
-   relevance signal, and they're what AI engines quote back when asked about that city.
-3. **Reply to every review within 24 hours**, using the service and city naturally in the
-   reply. Owner responses are a ranking signal and they're indexed text.
-4. **GBP post 1×/week.** Rotate: a before/after, a seasonal tip, an offer, a city callout.
+2. ~~**Coach the review content.** Ask them to mention city + service.~~ **Dropped
+   2026-10-27:** Google's review policy says a business "should not ... request that
+   specific content be included" in a review (`reports/2026-10-27-rnd-map-pack.md` section 6). Ask for an honest
+   review and nothing more.
+3. **Reply to every review within 24 hours**, written for that customer, not for keywords.
+   Keywords in replies rank #182 of Whitespark's 2026 factors; replies matter because
+   customers read them (BrightLocal 2026: half are put off by generic ones).
+4. **GBP posts** (four a week, automated since 2026-10-09). For customers only: posts
+   showed no measured ranking effect (Sterling Sky 2021; Whitespark #148), so don't add
+   more for ranking.
 5. **Photos 2×/week, geotagged**, named descriptively (`interior-detail-lake-stevens-suv.jpg`)
    — not `IMG_4471.jpg`.
-6. **Seed GBP Q&A with your own top 10 FAQs**, answered by you as the owner. This is
-   literally an AI-readable FAQ sitting on the highest-authority page about your business.
-7. **Complete every GBP field**: all services with descriptions + prices, all attributes
+6. ~~**Seed GBP Q&A.**~~ **Gone:** Google removed Q&A from Maps from December 2025 in
+   favour of an AI "Ask" button (`reports/2026-10-27-rnd-map-pack.md` section 4).
+7. **Complete every GBP field**: all services with descriptions + prices (Google's
+   predefined services first: Sterling Sky's test saw those move rankings), all attributes
    (mobile, appointment required, LGBTQ+ friendly, etc.), full service-area city list.
 8. **Confirm the primary category is `Car Detailing Service`** and add every relevant
    secondary. Primary category is the single most powerful GBP lever — a wrong one caps
@@ -278,7 +283,7 @@ written and indexed, so this is the cheapest AIEO win available. Reformat, don't
 
 ### ▸ Phase 4 — Geographic expansion (Month 4–9) · *1–2 cities/month, never more*
 
-Each new city page is a new Map Pack you can appear in. But **bulk-publishing near-duplicate
+Each new city page is a new organic and AI result you can appear in (not a Map Pack: see SG2). But **bulk-publishing near-duplicate
 city pages is how sites get flagged as doorway spam** — pace it, and make each one genuinely
 local. If you can't write 200 words about a city that only someone who's worked there could
 write, don't publish it yet.
@@ -300,9 +305,9 @@ write, don't publish it yet.
 inbound links from 2–3 neighbor city footers + the homepage list · a sitemap entry · the
 city added to homepage `areaServed`.
 
-**Also:** add a **geo-grid rank check** to the monthly routine — 12 points across the
-service area, checking Map Pack position for "mobile detailing near me." That's how SG2
-gets measured, and it tells you exactly which city to build next.
+**Also:** a monthly **geo-grid rank check**: the 21 points and four searches in
+`reports/2026-10-27-rnd-map-pack.md` section 7. That's how SG2 gets measured. It doesn't pick the next city: the
+grid shows proximity decides the pack, so city pages are chosen on organic demand.
 
 **Done when:** 7 new city pages live, `areaServed` at 15 cities, geo grid tracked monthly.
 
@@ -410,17 +415,17 @@ The plan above is the map. **This is the part you actually run.** ~3 hours/week.
 - [ ] **Review asks fired** on every completed job (automated after Phase 2 — just verify)
 - [ ] **1 GBP post**
 - [ ] **2 geotagged photos** uploaded, descriptively named
-- [ ] **Reply to every new review** within 24h, naming city + service
+- [ ] **Reply to every new review** within 24h, written for that customer
 - [ ] **30 min off-site**: one genuinely helpful Reddit/Nextdoor/FB answer
 - [ ] If `reviewCount` changed → **bump `site-stats.js` AND the hardcoded HTML values**
 
 ### Every month (~3 hrs, 1st of the month)
 - [ ] **Log M1–M5** in the tracking sheet
 - [ ] **Run the 25-prompt panel** (§6) and log it
-- [ ] **Geo-grid check**, 12 points
+- [ ] **Geo-grid check**, the 21 points in `reports/2026-10-27-rnd-map-pack.md`
 - [ ] **Ship the month's one page** (SG4)
 - [ ] **PageSpeed check** on homepage + 2 city pages
-- [ ] **Read GSC Queries**: any keyword at position 5–15 is a page one edit away from page one
+- [ ] **Read GSC Queries** at position 5–15, ranked by buying intent times ticket, not by position: an informational query at position 1 still books almost nothing (`reports/2026-10-27-rnd-money-map.md`)
 
 ### Every quarter (~2 hrs)
 - [ ] Compare the quarter's numbers against the checkpoint targets in §3
@@ -435,7 +440,7 @@ The plan above is the map. **This is the part you actually run.** ~3 hours/week.
 Ranked strictly by lead impact per hour. If a week collapses, protect the top of this list.
 
 1. **The review automation** (Phase 2, #1) — one build, permanent compounding. Do it first.
-2. **GBP weekly cadence** — posts, photos, Q&A, replies. Half of local ranking weight.
+2. **GBP basics**: replies, predefined services, accurate categories. (Posts and photos are for customers, not ranking; Q&A is gone. See Phase 2.)
 3. **The entity `@graph` + self-hosted images** (Phase 1) — one-time code, fixes real
    fragility, unlocks AIEO.
 4. **Answer-first reformat of the 4 existing guides** — cheapest AIEO win on the site.
@@ -450,7 +455,7 @@ Ranked strictly by lead impact per hour. If a week collapses, protect the top of
 
 | Risk | Reality | Mitigation |
 |---|---|---|
-| **Proximity caps you** | You can't rank in the Map Pack 25 miles from your base, no matter how good you are. This is the hard ceiling on SG2. | City pages + service-area settings capture the classic-organic and AI paths that *aren't* proximity-bound |
+| **Proximity caps you** | The cap is closer than 25 miles: on 2026-10-27 top-3 winners sat a median 2 mi from the searcher, 90% within 4.7 mi, and almost all show an address (`reports/2026-10-27-rnd-map-pack.md`). This is the hard ceiling on SG2. | City pages + service-area settings capture the classic-organic and AI paths that *aren't* proximity-bound |
 | **AIEO is young and shifts fast** | Anyone selling certainty about AI citations is guessing. The tactics here are the durable ones (entity clarity, fact density, corroboration) precisely because they're also just good SEO. | Re-run the panel monthly; let evidence steer |
 | **Doorway-page penalty** | Mass-published thin city pages are an actual, common penalty. | Hard cap: 1–2/month, each genuinely local |
 | **Review gating is against Google's TOS** | Never filter for positive reviews only. Ask everyone. | Ask all customers; a 4.9 with 120 reviews outperforms a 5.0 with 40 |
