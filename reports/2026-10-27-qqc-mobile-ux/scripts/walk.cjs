@@ -8,7 +8,10 @@ const path = require('path');
 const OUT = process.argv[2];
 const ONLY = process.argv[3] || 'all';
 fs.mkdirSync(OUT, { recursive: true });
-const URL0 = 'https://mikeysdetailing.com/';
+// QQC_URL points it at a local copy (python3 -m http.server) to check a change
+// before it merges; reads from that host are allowed, writes still blocked.
+const URL0 = process.env.QQC_URL || 'https://mikeysdetailing.com/';
+const HOST0 = new URL(URL0).hostname;
 const results = {};
 const blocked = [];
 const allowed = [];
@@ -24,7 +27,7 @@ const AND_UA = 'Mozilla/5.0 (Linux; Android 13; SM-A136U) AppleWebKit/537.36 (KH
 
 function isAllowed(u, method) {
   const url = new URL(u);
-  if (url.hostname === 'mikeysdetailing.com' || url.hostname === 'www.mikeysdetailing.com') return method === 'GET';
+  if (url.hostname === 'mikeysdetailing.com' || url.hostname === 'www.mikeysdetailing.com' || url.hostname === HOST0) return method === 'GET';
   if (/fonts\.(googleapis|gstatic)\.com$/.test(url.hostname)) return true;
   if (url.hostname === 'texting.mikeysdetailingsnohomish.workers.dev') return method === 'GET' && url.pathname === '/api/next-openings';
   if (u.startsWith('data:')) return true;
@@ -192,6 +195,11 @@ async function walk(browser, key, variant = 'full') {
   R.steps.s5form.tiny = await tapTargets(page);
   R.steps.s5form.focused = await page.evaluate(() => document.activeElement.id);
   R.shots.push(await shot(page, `${pre}-12-text-instead-form`));
+  // What step 8's fields carried back (F8), then empty the form: the name is
+  // optional now, so a carried-back number would make this "empty" submit a
+  // real send (the route blocks it anyway).
+  R.steps.s5form.carried = await page.evaluate(() => ({ name: document.getElementById('qqName').value, phone: document.getElementById('qqPhone').value }));
+  await page.fill('#qqName', ''); await page.fill('#qqPhone', '');
   await page.evaluate(() => { document.getElementById('qqName').blur(); });
   await page.click('#qqSubmitBtn'); await sleep(500);
   R.steps.s5form.afterEmpty = await page.evaluate(() => ({ focused: document.activeElement.id, bad: [...document.querySelectorAll('#qqForm .field.bad')].map(f => f.id) }));
@@ -202,7 +210,7 @@ async function walk(browser, key, variant = 'full') {
 }
 
 (async () => {
-  const browser = await chromium.launch({ proxy: { server: process.env.HTTPS_PROXY || 'http://127.0.0.1:36143' } });
+  const browser = await chromium.launch({ proxy: { server: process.env.HTTPS_PROXY || 'http://127.0.0.1:36143', bypass: 'localhost,127.0.0.1' } });
   try {
     if (ONLY === 'all' || ONLY === 'walk') {
       for (const k of ['se', 'ip14', 'android', 'desk']) results['walk_' + k] = await walk(browser, k, 'full');

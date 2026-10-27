@@ -196,7 +196,7 @@ details**, not calls:
 | **Realistic** | **3** | **~29** | **~$11,600** | **~$124** | **~3.2x** |
 | Strong | 6 | ~58 | ~$23,200 | ~$62 | ~6.4x |
 
-What the table leaves out: repeat business (C. Wilson has booked four times),
+What the table leaves out: repeat business (C. W. has booked four times),
 referrals, and the second car in the same driveway. Those are all upside. It
 also leaves out your time: 29 jobs is 29 days of work you'd be doing either
 way if the week isn't already full.
@@ -260,7 +260,7 @@ the guarantee once, and the offer. Differences for the mail:
   hanger you hang by hand.
 - **The spigot and outlet** are on the back in Mikey's intro. Every piece of
   print says who provides water and power.
-- **Two reviews on the back.** Angela for the owner of a babied car, C. Wilson
+- **Two reviews on the back.** Angela for the owner of a babied car, C. W.
   (four bookings) for "will he still be good the second time".
 
 ## Changing it

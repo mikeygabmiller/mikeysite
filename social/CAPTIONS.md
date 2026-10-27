@@ -1031,7 +1031,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 **Instagram**
 
 ```
-"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result."
+"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏"
 
 Repeat customers are the whole business when it's one guy. If I get it right the first time, you call me the second time.
 
@@ -1043,7 +1043,7 @@ Exact price for your car in 60 seconds, link in bio.
 **Facebook**
 
 ```
-"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result."
+"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏"
 
 Repeat customers are the whole business when it's one guy. If I get it right the first time, you call me the second time.
 
@@ -1052,7 +1052,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Five-star customer review: Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!
+> Five-star customer review: Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend
 
 ### B03 · Review: never been detailed
 

@@ -608,9 +608,9 @@ ${Q}
   },
   {
     id: 'B02', week: 'bank', pillar: 'Trust', title: 'Review: 4 times now',
-    slides: [{ t: 'review', quote: 'Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!' }],
-    alt: 'Five-star customer review: Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!',
-    ig: `"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result."
+    slides: [{ t: 'review', quote: 'Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend' }],
+    alt: 'Five-star customer review: Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend',
+    ig: `"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏"
 
 Repeat customers are the whole business when it's one guy. If I get it right the first time, you call me the second time.
 
