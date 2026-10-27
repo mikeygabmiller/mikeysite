@@ -2090,7 +2090,7 @@ header li a[href="#booking"],
         </div>
         <!-- One tap opens their own messages app with the quote filled in. They
              send it, so it's a conversation they started: nothing goes out from
-             here. Phones only (qqSmsShow); an sms: link does nothing on a laptop. -->
+             here. Phones only (shown in attach()); an sms: link does nothing on a laptop. -->
         <div class="qq-smsme" id="qqSmsMe" hidden>
           <span class="qq-sms-or">or send it yourself</span>
           <a class="btn qq-sms-btn" id="qqSmsLink" href="sms:+14256007897">Send it from my phone</a>
@@ -2503,7 +2503,7 @@ header li a[href="#booking"],
     $('qqBreakdown').innerHTML = html;
     var paidN = ak2.filter(function(n){ return S.addons[n] > 0; });
     $('qqSumLine').textContent = sk2.concat(paidN).join(' + ') + (context.length ? ' · ' + context.join(' · ') : '') +
-      (freeN.length ? ' · Rain-Ready extras free' : '');
+      (freeN.length ? ' · Rain\u2011Ready extras free' : '');
 
     // Interior + Exterior picked separately costs more than the Full Detail that
     // is the same work, and step 2's tip is easy to scroll past. Say it once more

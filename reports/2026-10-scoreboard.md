@@ -19,6 +19,8 @@ Search Console itself, pulled by hand on 2026-10-07 (see
 The only connected Windsor source is Google Ads (account 862-091-0274). Nothing
 above was estimated: a blank means there was no data.
 
+**Quote calculator fixes shipped 2026-10-27** (one batch, so M3 has one date to compare 4 weeks before and after: steps 2 to 4 and the hero button on screen on phones, size-priced step 2 cards, the guarantee and three facts at the price, name optional and "Send it from my phone" on the text-me form, rating and a review at the price on phones, $50 deal code removed; reports `2026-10-27-qqc-*.md`).
+
 **Semrush, written before Search Console came in (it got the small towns and
 the traffic wrong, see below):** 78 organic
 keywords, about 22 visits a month estimated. 1 keyword in the top 3 (the brand
