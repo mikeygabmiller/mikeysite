@@ -72,7 +72,7 @@ lives in `print/tools/build-treat-street-trifold.cjs` (`npm run
 treat-trifold`); it refuses to build from Jan 1, 2027 and fails if the
 freebies stop adding up to $508 or a review count other than 40 appears.
 
-- **The reviews** are Matt Miller, Kathryn Miller, Diandra Preza and C Wilson,
+- **The reviews** are Matt Miller, Kathryn Miller, Diandra Preza and C Wilson (credited C. W., as `/reviews/` does),
   read off his Business Profile through Windsor on 2026-10-22 (all 40 are five
   stars). Names are shortened to a last initial. Never put a review on the
   board that isn't on Google: two on the site's `/reviews/` page don't match

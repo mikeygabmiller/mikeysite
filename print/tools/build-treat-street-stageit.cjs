@@ -72,7 +72,7 @@ const QUOTES = [
   ['Matt M.', 'With two kids in car seats, we had things stuck in those seats that were half-eaten and melted! Mikey has provided us with what seems like a brand new vehicle and allowed us to finally see the floor mats!!'],
   ['Kathryn M.', 'I have two young kids so my car gets quite messy! Very pleased and highly recommend to anyone and everyone!'],
   ['Diandra P.', 'We recently hired Mikey to detail our car to get it ready for baby #3, and we couldn’t be happier with the results!'],
-  ['C. Wilson', 'Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result.'],
+  ['C. W.', 'Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend'],
 ];
 
 const RED = '#E31924', INK = '#111114', YELLOW = '#FFD100', CREAM = '#F4F1EA', GOLD = '#F5B400';

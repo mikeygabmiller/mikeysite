@@ -284,8 +284,8 @@ const backHtml = (qr) => `
     <div class="rev">
       <div class="q">&ldquo;</div>
       <div>
-        <p>Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result.</p>
-        <div class="by">${stars(5)} C. Wilson, Snohomish · Google review</div>
+        <p>Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend</p>
+        <div class="by">${stars(5)} C. W. · Google review</div>
       </div>
     </div>
     <div class="sec"><h3>How it works</h3>

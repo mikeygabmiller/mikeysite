@@ -108,8 +108,8 @@ A customer holding something with an old price on it gets that price:
   text, email and booking all carry the lower number plus "$50 off, online deal
   (ends Oct 25)" in the items. It stacks with the Rain-Ready extras. A quote
   saved before the end is held 30 days like any other, so honor it at the price
-  it says. Not a price change: `PRICE_BOOK` doesn't move. `DEAL_END` in
-  `index.html` switches it off; take the code out after that.
+  it says. Not a price change: `PRICE_BOOK` doesn't move. It ended on time,
+  and the code came out of `index.html` on 2026-10-27.
 
 ## The other price lists
 

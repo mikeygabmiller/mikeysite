@@ -231,7 +231,9 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-main { padding-top: 70px; }
+/* No main { padding-top } here: body's padding already clears the fixed header,
+   and clearing it twice put an empty 70px band over the hero and pushed "Get My
+   Instant Quote" off the first screen on an iPhone SE and an 800px laptop. */
 
 .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; width: 100%; }
 section { padding: 100px 0; width: 100%; }
@@ -955,9 +957,9 @@ header li a[href="#booking"],
           },
           "author": {
             "@type": "Person",
-            "name": "C Wilson"
+            "name": "C. W."
           },
-          "reviewBody": "Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon. 10/10 would recommend!"
+          "reviewBody": "Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏"
         },
         {
           "@type": "Review",
@@ -1194,11 +1196,14 @@ header li a[href="#booking"],
 <!-- HERO -->
 <style>
 .mh-hero{
-  min-height:100vh;
+  /* One screen below the fixed header (body's padding-top), not one screen
+     plus the header: centred in a box 90px taller than the window, the quote
+     button sat under the fold on an 800px laptop. */
+  min-height:calc(100vh - 90px);
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:90px 20px 70px;
+  padding:32px 20px 70px;
   position:relative;
   background:
     linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.58) 42%, rgba(10,10,10,.88) 100%),
@@ -1316,12 +1321,6 @@ header li a[href="#booking"],
 }
 .mh-rr[hidden]{ display:none; }
 .mh-rr:hover{ border-color:var(--brand-gold); color:#fff; }
-/* The $50 weekend deal (2026-10-24, Mikey). Same chip, red tag, so it reads
-   as a second thing and not part of Rain-Ready. Shown by the calculator script
-   until DEAL_END and never after. */
-.mh-deal{ background:rgba(226,35,26,.12); border-color:rgba(226,35,26,.5); }
-.mh-deal:hover{ border-color:#e2231a; }
-.mh-deal .mh-rr-tag{ background:#e2231a; color:#fff; }
 .mh-rr-tag{ background:var(--brand-gold); color:#2a1e02; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px; }
 
 /* Pricing pills */
@@ -1383,7 +1382,7 @@ header li a[href="#booking"],
 @media (max-width:640px){
   .mh-hero{
     min-height:auto;
-    padding:40px 16px 5px;
+    padding:24px 16px 5px;
   }
   .mh-proof{ gap:10px; margin-bottom:18px; }
   .mh-proof-item{ font-size:12px; }
@@ -1432,8 +1431,6 @@ header li a[href="#booking"],
             <span class="mh-proof-val">300+</span>&nbsp;cars detailed
           </div>
         </div>
-
-        <a class="mh-rr mh-deal" href="#booking" data-deal hidden><span class="mh-rr-tag">$50 off</span>Any detail you quote here by Sunday, Oct 25. I take it off your price for you &rarr;</a>
 
         <a class="mh-rr" href="#rain-ready" data-rr hidden><span class="mh-rr-tag">Rain-Ready</span>Free ceramic wax, RainX &amp; anti-fog with a Full Detail, until Dec 31 &rarr;</a>
 
@@ -1544,8 +1541,8 @@ header li a[href="#booking"],
           <span class="qa-rmeta"><strong data-md-rating>5.0</strong> on Google, <span data-md-reviews="{n}">40</span> reviews</span>
         </div>
         <figure class="qa-review">
-          <blockquote>"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!"</blockquote>
-          <figcaption>C Wilson, Snohomish WA</figcaption>
+          <blockquote>"Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏"</blockquote>
+          <figcaption>C. W.</figcaption>
         </figure>
       </aside>
       <div class="qqc-card-col">
@@ -1563,7 +1560,10 @@ header li a[href="#booking"],
   max-width: 480px; margin: 0 auto;
   background: var(--surface); color: var(--text);
   border-radius: 28px; border: 1px solid var(--border); box-shadow: var(--shadow);
-  padding: 30px 26px 26px; overflow: hidden;
+  /* clip, not just hidden: a hidden box can still be scrolled sideways inside
+     itself (the glow overhangs it by ~70px), and once that cut off the card's
+     right edge. hidden stays as the fallback for older Safari. */
+  padding: 30px 26px 26px; overflow: hidden; overflow: clip;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em; box-sizing: border-box;
 }
@@ -1621,7 +1621,7 @@ header li a[href="#booking"],
 #qqcCard .hero-info { flex: 1; min-width: 0; }
 #qqcCard .hero-info .t { display: block; font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 #qqcCard .hero-info .d { display: block; font-size: 13px; color: var(--text-2); margin-top: 2px; }
-#qqcCard .hero-info .save { display: inline-block; margin-top: 7px; font-size: 11px; font-weight: 680; color: var(--accent); background: rgba(var(--accent-rgb), .14); padding: 3px 9px; border-radius: 980px; }
+#qqcCard .hero-info .save { display: block; margin-top: 6px; font-size: 12px; font-weight: 680; line-height: 1.3; color: var(--accent); }
 #qqcCard .hero-price { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; flex-shrink: 0; }
 #qqcCard .hero-price .amt { font-weight: 800; font-size: 25px; letter-spacing: -0.03em; }
 #qqcCard .hero .badge { position: static; opacity: .3; transform: scale(1); width: 24px; height: 24px; background: transparent; border: 2px solid var(--border-2); color: var(--accent); }
@@ -1679,18 +1679,23 @@ header li a[href="#booking"],
 #qqcCard .btn-ghost { background: transparent; color: var(--text-2); flex: 0 0 auto; width: auto; padding: 15px 18px; }
 #qqcCard .btn-ghost:hover { color: var(--text); background: var(--surface-2); }
 #qqcCard .nav .btn-primary { flex: 1; }
+/* Steps 2 to 4 are taller than an iPhone SE or a 360px Android even with the
+   masthead folded away, so on phones their Back / Continue row sticks to the
+   bottom of the screen until the step's own end scrolls up to meet it. Needs
+   the card's overflow:clip: overflow:hidden would make the card the sticky
+   container and the row would never pin (older Safari gets the plain row). */
+@media (max-width: 600px) {
+  #qqcCard #step2 .nav, #qqcCard #step3 .nav, #qqcCard #step4 .nav {
+    position: sticky; bottom: 0; z-index: 2;
+    padding: 14px 0 calc(10px + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(to bottom, rgba(28,28,30,0), var(--surface) 14px);
+  }
+}
 
 #qqcCard .amount { text-align: center; font-size: 64px; font-weight: 700; letter-spacing: -0.04em; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
 #qqcCard .amount.lit { animation: qqcAmountPop .45s cubic-bezier(.34,1.5,.64,1); }
 @keyframes qqcAmountPop { 0% { transform: scale(.88); } 100% { transform: scale(1); } }
 #qqcCard .amount-sub { text-align: center; font-size: 13.5px; color: var(--text-3); margin: 0 0 13px; }
-#qqcCard .qq-dealbar { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 9px; margin: 0 0 14px; padding: 9px 12px; border-radius: 12px; background: rgba(var(--accent-rgb), .12); border: 1px solid rgba(var(--accent-rgb), .4); font-size: 13.5px; font-weight: 600; color: var(--text); text-align: center; line-height: 1.35; }
-#qqcCard .qq-dealbar[hidden], #qqcCard .qq-deal[hidden] { display: none; }
-#qqcCard .qq-deal-tag { background: var(--accent); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
-#qqcCard .qq-deal { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 2px 0 0; }
-#qqcCard .qq-deal s { font-size: 22px; font-weight: 650; color: var(--text-3); font-variant-numeric: tabular-nums; }
-#qqcCard .amount-sub.is-deal b { color: var(--accent); }
-#qqcCard .inc-row.is-deal .inc-name, #qqcCard .inc-row.is-deal .inc-price { color: var(--accent); font-weight: 700; }
 #qqcCard .breakdown { background: var(--surface-2); border: 1px solid var(--border); border-radius: 18px; padding: 8px 16px 14px; margin-bottom: 14px; }
 #qqcCard .bd-head { font-size: 12px; font-weight: 640; text-transform: uppercase; letter-spacing: .04em; color: var(--text-3); padding: 8px 0 4px; }
 #qqcCard .inc-row { display: flex; align-items: center; gap: 11px; padding: 9px 0; font-size: 15px; font-weight: 520; }
@@ -1711,9 +1716,9 @@ header li a[href="#booking"],
 #qqcCard .field .msg { font-size: 12px; color: var(--accent); margin: 5px 4px 0; display: none; }
 #qqcCard .field.bad .msg { display: block; }
 /* Required-field highlight: only Name + Phone need filling, so make that obvious */
-#qqcCard #qqfName input, #qqcCard #qqfPhone input { border-color: var(--accent); background: rgba(var(--accent-rgb), .06); }
-#qqcCard #qqfName input:focus, #qqcCard #qqfPhone input:focus { background: var(--surface-2); }
-#qqcCard #qqfName::after, #qqcCard #qqfPhone::after { content: "Required"; position: absolute; top: -8px; right: 12px; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; line-height: 1.5; pointer-events: none; z-index: 1; }
+/* The text-me fields are drawn like step 8's: red only after a send that's
+   missing something (.bad / .err). Red borders and REQUIRED badges before
+   anyone had typed read as "you already did this wrong". */
 #qqcCard .consent { font-size: 11.5px; color: var(--text-3); line-height: 1.45; margin: 14px 2px 16px; text-align: center; }
 /* Masthead collapse: from step 2 on, the brand/title/subhead/star row stop
    earning their ~200px and start pushing each step's button off the screen. */
@@ -1726,16 +1731,15 @@ header li a[href="#booking"],
 
 #qqcCard .hero-info .rr-line { display: block; margin-top: 6px; font-size: 12px; font-weight: 640; color: var(--gold); }
 #qqcCard .hero-info .rr-line[hidden] { display: none; }
-#qqcCard .chip.is-free { cursor: default; border-color: rgba(216,178,92,.6); background: rgba(216,178,92,.08); }
-#qqcCard .chip.is-free .ic-mini { background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); }
-#qqcCard .chip.is-free .cp s, #qqcCard .inc-row.is-free .inc-price s { opacity: .6; margin-right: 3px; }
-#qqcCard .chip .free-tag { position: absolute; top: -8px; right: 10px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; }
+#qqcCard .inc-row.is-free .inc-price s { opacity: .6; margin-right: 3px; }
 #qqcCard .inc-row.is-free .inc-price { color: var(--gold); }
 #qqcCard .save-tip { display: none; margin: 12px 2px 0; font-size: 13px; font-weight: 640; color: var(--accent); }
 
 /* Compact optional extras on step 3 */
 #qqcCard .duo-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 9px; }
-@media (max-width: 380px) { #qqcCard .duo-fields { grid-template-columns: 1fr; } }
+/* Side by side down to 340px: at 375 each box is 143px, same as on a 390 phone,
+   and stacking them is what pushed step 3's Continue off an iPhone SE. */
+@media (max-width: 340px) { #qqcCard .duo-fields { grid-template-columns: 1fr; } }
 #qqcCard .trust { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 14px; }
 #qqcCard .trust span { display: inline-flex; align-items: center; gap: 5px; }
 #qqcCard .trust svg { width: 13px; height: 13px; color: var(--success); }
@@ -1769,8 +1773,11 @@ header li a[href="#booking"],
 @media (max-width: 380px) {
   #qqcCard { padding: 26px 18px 22px; }
   #qqcCard h2.qq-h { font-size: 26px; }
+  #qqcCard .sub { margin-bottom: 16px; }
+  #qqcCard .progress { margin-bottom: 20px; }
   #qqcCard .amount { font-size: 54px; }
-  #qqcCard .duo { grid-template-columns: 1fr; }
+  /* .duo (Interior / Exterior) stays two across: at 375 each card is 142px, the
+     same as on a 390 phone, and stacking them cost 150px and step 2's Continue. */
 }
 @media (prefers-reduced-motion: reduce) {
   #qqcCard *, #qqcCard *::before, #qqcCard *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
@@ -1805,8 +1812,6 @@ header li a[href="#booking"],
     </div>
     <div class="progress-label" id="qqProgLabel">Step 1 of 5 &middot; Your vehicle</div>
   </div>
-
-  <div class="qq-dealbar" data-deal hidden><span class="qq-deal-tag">$50 off</span><span>Taken off your price automatically. Ends Sunday, Oct 25 at midnight.</span></div>
 
   <div class="qq-ticker" id="qqTicker"><span class="qq-ticker-label">Running total</span><span class="qq-ticker-amount" id="qqTickerAmt">$0</span></div>
 
@@ -1899,10 +1904,10 @@ header li a[href="#booking"],
     <label class="notes-label" for="qqYmm">A couple of details <span>(optional, but they speed things up)</span></label>
     <div class="duo-fields">
       <div class="field">
-        <input type="text" id="qqYmm" placeholder="Year, make &amp; model" autocomplete="off" />
+        <input type="text" id="qqYmm" placeholder="Year &amp; model" aria-label="Year, make and model" autocomplete="off" />
       </div>
       <div class="field">
-        <input type="text" id="qqLocation" placeholder="City or ZIP" autocomplete="address-level2" />
+        <input type="text" id="qqLocation" placeholder="City or ZIP" aria-label="City or ZIP" autocomplete="address-level2" />
       </div>
     </div>
     <label class="notes-label" for="qqNotes">Anything specific I should know? <span>(optional)</span></label>
@@ -1942,10 +1947,18 @@ header li a[href="#booking"],
     #qqcCard .addon-more { margin: 16px 2px 0; }
     #qqcCard .addon-more label { display: block; font-size: 13px; font-weight: 580; color: var(--text-2); margin-bottom: 7px; }
     #qqcCard .addon-more label span { color: var(--text-3); font-weight: 400; }
+    /* The Rain-Ready extras are one line, not three chips. They're locked on, so
+       a chip each was about 400px of phone for no decision, and it put "See my
+       quote" below the screen even on an iPhone 14. The price screen still
+       names them, and S.addons still carries all three to Mikey's text. */
+    #qqcCard .addon-free { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 14px; padding: 11px 13px; border-radius: 14px; border: 1px solid rgba(216,178,92,.6); background: rgba(216,178,92,.08); font-size: 13.5px; font-weight: 600; line-height: 1.4; color: var(--text); }
+    #qqcCard .addon-free[hidden] { display: none; }
+    #qqcCard .addon-free .free-tag { flex-shrink: 0; margin-top: 1px; background: linear-gradient(135deg, var(--gold), #a9802c); color: var(--gold-ink); font-size: 9.5px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 3px 7px; border-radius: 999px; }
   </style>
   <div class="step" id="step4">
     <h3 class="q-title">Want anything extra?</h3>
     <p class="q-hint" id="qqAddonHint">Totally optional. Skip straight to your price if not.</p>
+    <p class="addon-free" id="qqAddonFree" hidden><span class="free-tag">Free</span><span>On me with a Full Detail until Dec 31: ceramic wax, RainX and anti-fog.</span></p>
     <div class="addon-grid" id="qqAddons"></div>
     <p class="addon-why" id="qqAddonWhy"></p>
     <div class="addon-more">
@@ -1972,12 +1985,17 @@ header li a[href="#booking"],
        disclosure has to sit immediately above it and stay visible, do not collapse
        this into a toggle or move it below the fold. */
     #qqcCard .qq-consent{font-size:11.5px;line-height:1.5;color:#8e8e93;margin:2px 2px 11px;}
-    #qqcCard .qq-consent a{color:#b0b0b6;text-decoration:underline;text-underline-offset:2px;}
+    #qqcCard .qq-consent a{color:#b0b0b6;text-decoration:underline;text-underline-offset:2px;padding:6px 0;}
     #qqcCard .qq-send-btn{width:100%;min-height:54px;font-size:17px;font-weight:700;}
     #qqcCard .qq-reassure{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;font-size:12px;color:var(--text-3);margin-top:11px;}
     #qqcCard .qq-reassure span{display:inline-flex;align-items:center;gap:5px;}
-    #qqcCard .qq-reassure svg{width:13px;height:13px;color:var(--success);}
-    #qqcCard .qq-edit{display:block;width:100%;margin-top:14px;background:none;border:none;color:var(--text-3);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
+    #qqcCard .qq-reassure svg{width:13px;height:13px;color:var(--success);flex-shrink:0;}
+    #qqcCard .qq-smsme{margin-top:16px;text-align:center;}
+    #qqcCard .qq-smsme[hidden]{display:none;}
+    #qqcCard .qq-sms-or{display:block;font-size:12.5px;color:var(--text-3);margin-bottom:8px;}
+    #qqcCard .qq-sms-btn{min-height:50px;background:transparent;color:var(--text);border:1.5px solid var(--border-2);text-decoration:none;font-size:16px;}
+    #qqcCard .qq-sms-btn:hover{border-color:var(--text-2);}
+    #qqcCard .qq-edit{display:block;width:100%;min-height:44px;margin-top:14px;background:none;border:none;color:var(--text-3);font-size:13.5px;font-weight:600;cursor:pointer;padding:8px;font-family:inherit;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-edit:hover{color:var(--text);}
     /* Online booking, the second road off the price. The phone form is still
        here and is what shows if the calendar can't be reached; when it can,
@@ -1987,9 +2005,17 @@ header li a[href="#booking"],
     #qqcCard #step5.has-booking #qqForm{display:none;}
     #qqcCard #step5.has-booking.show-form #qqForm{display:grid;}
     #qqcCard #step5.has-booking.show-form .qq-bookcta{display:none;}
+    /* Chosen "Text me this quote instead": they read the breakdown one tap ago,
+       so a one-line summary stands in for it and the send button lands on the
+       screen. With the calendar down the form is the first price screen and
+       keeps the full breakdown. */
+    #qqcCard .qq-sumline{display:none;text-align:center;font-size:13.5px;line-height:1.45;color:var(--text-2);margin:-4px 0 14px;}
+    #qqcCard #step5.has-booking.show-form .qq-sumline{display:block;}
+    #qqcCard #step5.has-booking.show-form #qqBreakdown,
+    #qqcCard #step5.has-booking.show-form #qqFullSwap{display:none;}
     #qqcCard .qq-next{font-size:13.5px;color:var(--text-3);text-align:center;margin:10px 0 0;}
     #qqcCard .qq-next b{color:var(--text);font-weight:640;}
-    #qqcCard .qq-textlink{display:block;width:100%;margin-top:8px;background:none;border:none;color:var(--text-3);font:inherit;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:9px;-webkit-tap-highlight-color:transparent;}
+    #qqcCard .qq-textlink{display:block;width:100%;min-height:44px;margin-top:8px;background:none;border:none;color:var(--text-3);font:inherit;font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:9px;-webkit-tap-highlight-color:transparent;}
     #qqcCard .qq-textlink:hover{color:var(--text);}
     #qqcCard .qq-fullswap{margin-top:16px;padding:14px 16px;border:1px solid rgba(var(--accent-rgb),.45);border-radius:16px;background:rgba(var(--accent-rgb),.08);text-align:center;}
     #qqcCard .qq-fullswap[hidden]{display:none;}
@@ -2005,32 +2031,51 @@ header li a[href="#booking"],
     #qqcCard .qq-opens-more{display:none;margin-top:10px;}
     #qqcCard .qq-opens-more.on{display:grid;}
     #qqcCard .qq-opens-msg{font-size:13.5px;color:var(--text-2);background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:12px;}
-    #qqcCard .qq-booksum{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;padding:13px 16px;margin:2px 0 14px;}
+    #qqcCard .qq-booksum{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;padding:11px 16px;margin:2px 0 10px;}
+    #qqcCard .qq-booksum .bs-rr{font-size:12.5px;color:var(--gold);margin-top:2px;}
     #qqcCard .qq-booksum .bw{font-size:17px;font-weight:700;}
     #qqcCard .qq-booksum .bs{font-size:13.5px;color:var(--text-3);margin-top:3px;}
     #qqcCard .field select{width:100%;font:inherit;font-size:16px;background:var(--surface-2);color:var(--text);border:1.5px solid var(--border);border-radius:13px;padding:12px 16px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--text-3) 50%),linear-gradient(135deg,var(--text-3) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat;}
     #qqcCard .field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(var(--accent-rgb),.16);}
     #qqcCard .field select.err{border-color:var(--accent);}
+    /* Rating and one real review at the price, on phones. Desktop has them in
+       the side panel; below 980px that panel is gone, and phones are most of
+       the traffic. Under the buttons, never between the price and them. */
+    #qqcCard .qq-proof{margin:18px 0 0;padding:14px 16px;border:1px solid var(--border);border-radius:16px;background:var(--surface-2);}
+    #qqcCard .qq-proof-top{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:13px;color:var(--text-2);}
+    #qqcCard .qq-proof-top .st{color:var(--gold);letter-spacing:1px;}
+    #qqcCard .qq-proof-top strong{color:var(--text);font-weight:700;}
+    #qqcCard .qq-proof blockquote{margin:9px 0 0;font-size:14px;line-height:1.5;color:var(--text);font-style:italic;}
+    #qqcCard .qq-proof figcaption{margin-top:7px;font-size:12.5px;font-weight:600;color:var(--text-3);}
+    @media (min-width:980px){ #qqcCard .qq-proof{display:none;} }
     #qqcCard .qq-street-hint{font-size:12.5px;color:var(--text-3);margin:-3px 4px 2px;line-height:1.45;}
   </style>
   <div class="step" id="step5">
     <h3 class="q-title" style="text-align:center;">Your estimate</h3>
-    <div class="qq-deal" id="qqDeal" hidden><span class="qq-deal-tag">$50 off applied</span><s id="qqWas"></s></div>
     <div class="amount" id="qqAmount">$0</div>
-    <p class="amount-sub" id="qqAmountSub">No hidden fees. Pay when the job's done.</p>
+    <!-- Guarantee, place 2 of 4 (CLAUDE.md): here, where people hesitate, not on
+         the success screen after they've decided. -->
+    <p class="amount-sub" id="qqAmountSub">No hidden fees. You don&rsquo;t pay until you love it.</p>
+    <p class="qq-sumline" id="qqSumLine"></p>
     <div class="breakdown" id="qqBreakdown"></div>
     <div class="qq-bookcta" id="qqBookCta">
       <button type="button" class="btn btn-primary qq-send-btn" id="qqPickTime">Pick my time &rarr;</button>
       <p class="qq-next" id="qqNextLine"></p>
+      <div class="qq-reassure">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Just me, every time</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay after the work, no deposit</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You provide an outdoor spigot and an outlet</span>
+      </div>
       <button type="button" class="qq-textlink" data-role="text-instead">Not ready? Text me this quote instead</button>
     </div>
     <form class="form" id="qqForm" novalidate>
+      <!-- Only the number is required: the worker's /submit takes a lead with no
+           name, and the first text asks for it. -->
       <div class="field" id="qqfName">
-        <input type="text" id="qqName" placeholder="Your name" autocomplete="name" aria-required="true" />
-        <span class="msg">Please enter your name.</span>
+        <input type="text" id="qqName" placeholder="Your name (optional)" aria-label="Your name (optional)" autocomplete="name" enterkeyhint="next" />
       </div>
       <div class="field" id="qqfPhone">
-        <input type="tel" id="qqPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
+        <input type="tel" id="qqPhone" placeholder="Your cell, so I can text you" aria-label="Your cell number" autocomplete="tel" inputmode="tel" enterkeyhint="send" aria-required="true" />
         <span class="msg">Enter a valid phone number so I can text you.</span>
       </div>
       <input type="text" id="qqCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
@@ -2038,9 +2083,17 @@ header li a[href="#booking"],
         <p class="qq-consent" id="qqConsentText">By tapping below you agree to receive text messages about your quote and appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
         <button class="btn btn-primary qq-send-btn" type="submit" id="qqSubmitBtn">Lock in my price &rarr;</button>
         <div class="qq-reassure">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Just me, every time</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay after the work, no deposit</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Price held 30 days</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You provide an outdoor spigot and an outlet</span>
+        </div>
+        <!-- One tap opens their own messages app with the quote filled in. They
+             send it, so it's a conversation they started: nothing goes out from
+             here. Phones only (qqSmsShow); an sms: link does nothing on a laptop. -->
+        <div class="qq-smsme" id="qqSmsMe" hidden>
+          <span class="qq-sms-or">or send it yourself</span>
+          <a class="btn qq-sms-btn" id="qqSmsLink" href="sms:+14256007897">Send it from my phone</a>
         </div>
       </div>
     </form>
@@ -2049,6 +2102,13 @@ header li a[href="#booking"],
       <p id="qqFullSwapText"></p>
       <button type="button" class="btn btn-ghost qq-fullswap-btn" id="qqFullSwapBtn" data-role="swap-full">Switch to Full Detail</button>
     </div>
+    <!-- A real Google review, word for word from /reviews/, credited the way
+         that page credits it. Change it only to another one copied from there. -->
+    <figure class="qq-proof">
+      <div class="qq-proof-top"><span class="st" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span><strong data-md-rating>5.0</strong> on Google &middot; <span data-md-reviews="{n}">40</span> reviews</span></div>
+      <blockquote>&ldquo;Mikey was very punctual and informative about the work involved and was clear on process and pricing. He did a great job!&rdquo;</blockquote>
+      <figcaption>Vijay M. &middot; Google review</figcaption>
+    </figure>
     <button type="button" class="qq-edit" data-role="go" data-step="4">&lsaquo; Edit my details</button>
   </div>
 
@@ -2080,15 +2140,15 @@ header li a[href="#booking"],
     <div class="qq-booksum" id="qqBookSum"></div>
     <form class="form" id="qqBookForm" novalidate>
       <div class="field" id="qqbfName">
-        <input type="text" id="qqBName" placeholder="Your name" autocomplete="name" aria-required="true" />
+        <input type="text" id="qqBName" placeholder="Your name" aria-label="Your name" autocomplete="name" enterkeyhint="next" aria-required="true" />
         <span class="msg">Please enter your name.</span>
       </div>
       <div class="field" id="qqbfPhone">
-        <input type="tel" id="qqBPhone" placeholder="Phone number" autocomplete="tel" inputmode="tel" aria-required="true" />
+        <input type="tel" id="qqBPhone" placeholder="Phone number" aria-label="Phone number" autocomplete="tel" inputmode="tel" enterkeyhint="next" aria-required="true" />
         <span class="msg">Enter a valid phone number so I can text you the confirmation.</span>
       </div>
       <div class="field" id="qqbfTown">
-        <select id="qqBTown" aria-required="true" aria-label="Town">
+        <select id="qqBTown" aria-required="true" aria-label="Town" autocomplete="address-level2">
           <option value="">Which town?</option>
           <option>Snohomish</option><option>Lake Stevens</option><option>Everett</option><option>Monroe</option>
           <option>Mill Creek</option><option>Marysville</option><option>Bothell</option><option>Duvall</option>
@@ -2098,11 +2158,11 @@ header li a[href="#booking"],
         <span class="msg">Pick your town so I know where I&rsquo;m headed.</span>
       </div>
       <div class="field" id="qqbfOther" style="display:none;">
-        <input type="text" id="qqBOther" placeholder="Which town?" autocomplete="address-level2" />
+        <input type="text" id="qqBOther" placeholder="Which town?" aria-label="Which town" autocomplete="address-level2" enterkeyhint="next" />
         <span class="msg">Tell me the town.</span>
       </div>
       <div class="field" id="qqbfStreet">
-        <input type="text" id="qqBStreet" placeholder="Street address" autocomplete="street-address" aria-required="true" />
+        <input type="text" id="qqBStreet" placeholder="Street address" aria-label="Street address" autocomplete="street-address" enterkeyhint="send" aria-required="true" />
         <span class="msg">Your street is enough if you&rsquo;d rather not give the number yet.</span>
       </div>
       <p class="qq-street-hint">Rather not give the house number yet? Just the street or the nearest cross street is fine. I&rsquo;ll get the rest by text.</p>
@@ -2111,9 +2171,10 @@ header li a[href="#booking"],
         <p class="qq-consent" id="qqBConsentText">By tapping below you agree to receive text messages about your appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
         <button class="btn btn-primary qq-send-btn" type="submit" id="qqBookBtn">Book it &rarr;</button>
         <div class="qq-reassure">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No deposit</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay when complete</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Just me, every time</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay after the work, no deposit</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Price held 30 days</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> You provide an outdoor spigot and an outlet</span>
         </div>
       </div>
     </form>
@@ -2130,8 +2191,10 @@ header li a[href="#booking"],
            it vanished behind a form; seeing it confirmed is what makes the text
            they're about to get feel expected rather than cold. -->
       <div class="qq-success-quote" id="qqSuccessQuote"></div>
-      <p id="qqSuccessTime">Mikey will text you ASAP to confirm the price and help get you on his schedule.</p>
-      <p style="color:#9a9aa2;font-size:0.9rem;">No deposit, and you don't pay until you love it.</p>
+      <!-- The worker sends the first text 2 to 4 minutes after a send, and holds
+           anything between 11 PM and 5 AM until 5 (firstReachoutAt). -->
+      <p id="qqSuccessTime">I&rsquo;ll text you in a few minutes. If it&rsquo;s late at night, first thing in the morning.</p>
+      <p style="color:#9a9aa2;font-size:0.9rem;">No deposit. You pay when the job&rsquo;s done.</p>
       <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
     </div>
@@ -2162,8 +2225,10 @@ header li a[href="#booking"],
     // Not "Step 5 of 5", that reads as finished, and people stopped on the quote
     // thinking they were done when there was still a name, a number and a button.
     5: 'Almost done · Your quote',
-    7: 'Last step · Pick your time',
-    8: 'Last step · Lock it in'
+    // "Last step" once. It used to be on 7 and 8, and the second one read as a
+    // broken promise right before the screen that asks for a number and street.
+    7: 'Almost done · Pick your time',
+    8: 'Last step · Where I\u2019m headed'
   };
   // The add-on menu. `fits` is which services an add-on can apply to at all, // ceramic wax on an interior-only detail was quotable before this, and produced
   // prices Mikey had to walk back. `rec` decides whether it gets the Recommended
@@ -2186,23 +2251,6 @@ header li a[href="#booking"],
   ];
   function condValue(){ return S.condition ? S.condition.value : -1; }
 
-  // The $50 weekend deal (Mikey, 2026-10-24: "automatically applied", shown on
-  // the price, "live at least for today"). $50 off any detail quoted here before
-  // midnight Pacific going into Monday, Oct 26 (07:00 UTC, PDT), on top of
-  // Rain-Ready. It comes off the total, so the button, the text, the email and
-  // the booking all carry the lower number, and a "$50 off" line rides in the
-  // items so Mikey sees why. Past DEAL_END it goes quiet on its own; take the
-  // code out after that. To end it early or run it longer, change DEAL_END and
-  // the "Oct 25" in the three data-deal lines.
-  var DEAL_OFF = 50;
-  var DEAL_END = Date.UTC(2026, 9, 26, 7);
-  var DEAL_ITEM = '$' + DEAL_OFF + ' off, online deal (ends Oct 25)';
-  function dealLive(){ return Date.now() < DEAL_END; }
-  (function(){
-    var on = dealLive(), els = document.querySelectorAll('[data-deal]');
-    for (var i=0;i<els.length;i++) els[i].hidden = !on;
-  })();
-
   // The Rain-Ready Full Detail: book a Full Detail by December 31, 2026 and the
   // ceramic wax, RainX and RainX Anti-Fog come free (anti-fog took the polish's
   // place on 2026-10-15, Mikey). Same stack as the door hanger. The
@@ -2213,6 +2261,8 @@ header li a[href="#booking"],
   // January visitor never sees a deal that has already ended.
   var RR_END = Date.UTC(2027, 0, 1, 8);
   var RR_FREE = { 'Ceramic Wax':1, 'RainX Windows':1, 'RainX Anti-Fog':1 };
+  // How the one free-extras row on the price screen names them.
+  var RR_SHORT = { 'Ceramic Wax':'Ceramic wax', 'RainX Windows':'RainX', 'RainX Anti-Fog':'anti-fog' };
   function rrLive(){ return Date.now() < RR_END; }
   function rrOn(){ return rrLive() && !!S.services['Full Detail']; }
   // Called before anything reads S.addons. Switching from Full Detail to an
@@ -2236,7 +2286,6 @@ header li a[href="#booking"],
   function fullAltTotal(){
     var t = PRICE['Full Detail'] + (S.vehicle ? S.vehicle.value : 0) + (S.condition ? S.condition.value : 0);
     Object.keys(S.addons).forEach(function(n){ if (!(rrLive() && RR_FREE[n])) t += addonPrice(n); });
-    if (dealLive()) t -= DEAL_OFF;
     return t;
   }
   function $(id){ return document.getElementById(id); }
@@ -2258,7 +2307,6 @@ header li a[href="#booking"],
     var ak=Object.keys(S.addons); for(var j=0;j<ak.length;j++) t+=S.addons[ak[j]];
     if(S.vehicle) t+=S.vehicle.value;
     if(S.condition) t+=S.condition.value;
-    if(sk.length && dealLive()) t-=DEAL_OFF;
     return t;
   }
   function refreshTicker(){
@@ -2288,6 +2336,7 @@ header li a[href="#booking"],
     // Built on entry, not on load: it depends on the service and the condition,
     // both of which are chosen after this markup would otherwise have rendered.
     if (n === 4) renderAddons();
+    if (n === 2) refreshCardPrices();
     var t = $('step'+n); if (t) t.classList.add('show');
     setProgress(n);
     // The masthead (logo, "Quick Quote", subhead, star row) is worth ~200px and is
@@ -2352,17 +2401,12 @@ header li a[href="#booking"],
 
     var recs = [];
     var html = '';
+    // The free extras are the one gold line above the grid, not chips: they're
+    // on and can't be tapped off (nobody turns down free wax on purpose, and a
+    // tap that did it by accident would cost them).
+    var freeLine = $('qqAddonFree'); if (freeLine) freeLine.hidden = !rr;
     list.forEach(function(a){
-      // A free extra is shown ticked and can't be tapped off. Nobody turns down
-      // free wax on purpose, and a tap that did it by accident would cost them.
-      if (rr && RR_FREE[a.name]){
-        html += '<div class="chip sel is-free" data-role="addon-free" data-name="' + a.name + '" aria-disabled="true">' +
-                '<span class="free-tag">Free</span>' +
-                '<span class="ic-mini"><svg class="ic"><use href="#' + a.icon + '"/></svg></span>' +
-                '<span class="ctext"><span class="ct">' + a.name + '</span><span class="cp"><s>$' + a.price + '</s> Rain-Ready</span></span>' +
-                '</div>';
-        return;
-      }
+      if (rr && RR_FREE[a.name]) return;
       var isRec = a.rec(), on = S.addons[a.name] !== undefined;
       if (isRec && a.why) recs.push(a.why);
       html += '<div class="chip' + (on?' sel':'') + (isRec?' is-rec':'') + '" data-role="addon" data-name="' + a.name +
@@ -2378,7 +2422,7 @@ header li a[href="#booking"],
     if (hint){
       var svc = Object.keys(S.services)[0] || 'your detail';
       hint.textContent = rr
-        ? 'Rain-Ready: ceramic wax, RainX and anti-fog are on me until December 31. Anything else is optional.'
+        ? 'Totally optional. Skip straight to your price if not.'
         : list.length
         ? ('These pair with the ' + svc + '. Totally optional. Skip straight to your price if not.')
         : 'Nothing to add here. Straight to your price.';
@@ -2389,6 +2433,19 @@ header li a[href="#booking"],
         ? ('Flagged for you because ' + recs.join(', and ') + '.')
         : '';
       why.style.display = recs.length ? 'block' : 'none';
+    }
+  }
+  // Step 2's cards say what each service costs for the size picked one tap
+  // earlier. They used to print the sedan's $369 / $249 / $199 to everyone, so
+  // the first thing a van owner saw was the running total jumping $80 past the
+  // card. Display only: the size was always in the total. Condition isn't asked
+  // yet, so it stays out.
+  function refreshCardPrices(){
+    var add = S.vehicle ? S.vehicle.value : 0;
+    var nodes = document.querySelectorAll('#services [data-name]');
+    for (var i=0;i<nodes.length;i++){
+      var amt = nodes[i].querySelector('.amt, .price');
+      if (amt) amt.textContent = '$' + (PRICE[nodes[i].getAttribute('data-name')] + add);
     }
   }
   function refreshContinue(){ $('qqNext2').disabled = Object.keys(S.services).length === 0; }
@@ -2404,8 +2461,6 @@ header li a[href="#booking"],
     var ak = Object.keys(S.addons); for (var j=0;j<ak.length;j++){ total += S.addons[ak[j]]; items.push(ak[j] + (S.addons[ak[j]] === 0 ? ' (free, Rain-Ready)' : '')); }
     if (S.vehicle) total += S.vehicle.value;
     if (S.condition) total += S.condition.value;
-    var deal = dealLive() && sk.length > 0, was = total;
-    if (deal){ total -= DEAL_OFF; items.push(DEAL_ITEM); }
     S.notes = collectNotes();
     S.total = total; S.items = items;
 
@@ -2428,29 +2483,27 @@ header li a[href="#booking"],
               (k===0 && context.length ? '<span class="inc-ctxline">'+escapeHtml(context.join(' · '))+'</span>' : '') +
               '</span><span class="inc-price">$'+linePrice+'</span></div>';
     }
-    var ak2=Object.keys(S.addons);
+    // The free Rain-Ready extras are one row here, not three: three rows pushed
+    // the text form's button off every screen, a laptop's included. Only the
+    // screen folds them; S.items still names each one "(free, Rain-Ready)" for
+    // Mikey's text and email.
+    var ak2=Object.keys(S.addons), freeN=[], freeWas=0;
     for(var m=0;m<ak2.length;m++){
-      var free = S.addons[ak2[m]] === 0;
-      html += '<div class="inc-row' + (free ? ' is-free' : '') + '"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] +
-              (free ? '<span class="inc-ctxline">Rain-Ready, until Dec 31</span>' : '') + '</span>' +
-              '<span class="inc-price">' + (free ? '<s>$' + addonPrice(ak2[m]) + '</s> Free' : '+$' + S.addons[ak2[m]]) + '</span></div>';
+      if (S.addons[ak2[m]] === 0){ freeN.push(RR_SHORT[ak2[m]] || ak2[m]); freeWas += addonPrice(ak2[m]); continue; }
+      html += '<div class="inc-row"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' + ak2[m] + '</span>' +
+              '<span class="inc-price">+$' + S.addons[ak2[m]] + '</span></div>';
     }
-    if (deal){
-      html += '<div class="inc-row is-deal"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">$' + DEAL_OFF + ' off' +
-              '<span class="inc-ctxline">Online deal, ends Sunday, Oct 25</span></span><span class="inc-price">&minus;$' + DEAL_OFF + '</span></div>';
+    if (freeN.length){
+      html += '<div class="inc-row is-free"><span class="inc-check">'+CHECK_SVG+'</span><span class="inc-name">' +
+              escapeHtml(freeN.join(', ')) +
+              '<span class="inc-ctxline">Rain-Ready, book by Dec 31</span></span>' +
+              '<span class="inc-price"><s>$' + freeWas + '</s> Free</span></div>';
     }
     if (S.notes) html += '<div class="inc-note"><b>Your note</b>' + escapeHtml(S.notes) + '</div>';
     $('qqBreakdown').innerHTML = html;
-
-    // Say it where the number is, so nobody has to find it in the breakdown.
-    var dl = $('qqDeal'), sub = $('qqAmountSub');
-    if (dl){ dl.hidden = !deal; $('qqWas').textContent = '$' + was; }
-    if (sub){
-      sub.classList.toggle('is-deal', deal);
-      sub.innerHTML = deal
-        ? '<b>You save $' + DEAL_OFF + '.</b> It\u2019s already off. Pay when the job\u2019s done.'
-        : 'No hidden fees. Pay when the job\u2019s done.';
-    }
+    var paidN = ak2.filter(function(n){ return S.addons[n] > 0; });
+    $('qqSumLine').textContent = sk2.concat(paidN).join(' + ') + (context.length ? ' · ' + context.join(' · ') : '') +
+      (freeN.length ? ' · Rain-Ready extras free' : '');
 
     // Interior + Exterior picked separately costs more than the Full Detail that
     // is the same work, and step 2's tip is easy to scroll past. Say it once more
@@ -2469,6 +2522,15 @@ header li a[href="#booking"],
 
     var btn = $('qqSubmitBtn');
     if (btn) btn.innerHTML = 'Lock in $' + total + ' &rarr;';
+    // "Send it from my phone": their messages app, his number, this quote in
+    // their words. They press Send, so it's a text they started.
+    var sms = $('qqSmsLink');
+    if (sms){
+      var paid = Object.keys(S.addons).filter(function(n){ return S.addons[n] > 0; });
+      var car = [S.vehicle && S.vehicle.label, S.condition && S.condition.label].filter(Boolean).join(', ');
+      sms.href = 'sms:+14256007897?&body=' + encodeURIComponent('Hi Mikey, I got a quote on your site: $' + total + ' for ' +
+        Object.keys(S.services).concat(paid).join(' + ') + (car ? ', ' + car : '') + '. Can you fit me in?');
+    }
 
     if (typeof gtag === 'function') gtag('event', 'qqc_quote', { value: total, currency: 'USD', services: Object.keys(S.services).join(', ') });
     // The dashboard starts a two-minute clock on this one. Everybody who stops
@@ -2562,8 +2624,11 @@ header li a[href="#booking"],
     var o = (BK.opens || [])[+i]; if (!o) return;
     BK.pick = o;
     var svc = Object.keys(S.services).join(' + ') || 'Your detail';
+    // The free extras are why a lot of people picked the Full Detail, so they
+    // stay in view right up to the Book button.
     $('qqBookSum').innerHTML = '<div class="bw">' + escapeHtml(o.label + ' at ' + o.time) + '</div>' +
-      '<div class="bs">' + escapeHtml(svc + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') + ' · $' + S.total) + '</div>';
+      '<div class="bs">' + escapeHtml(svc + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') + ' · $' + S.total) + '</div>' +
+      (rrOn() ? '<div class="bs bs-rr">+ ceramic wax, RainX, anti-fog: free</div>' : '');
     // No arrow: "Book Thu, Oct 1 at 1:00 PM" already fills a phone-width button.
     $('qqBookBtn').textContent = 'Book ' + o.label + ' at ' + o.time;
     // Carry over anything they already typed, and the town from step 3.
@@ -2602,7 +2667,6 @@ header li a[href="#booking"],
     var errBox = $('qqBookError'); errBox.style.display = 'none';
     var consentEl = $('qqBConsentText');
     var extras = Object.keys(S.addons).map(function(n){ return n + (S.addons[n] === 0 ? ' (free, Rain-Ready)' : ''); });
-    if (S.items.indexOf(DEAL_ITEM) >= 0) extras.push(DEAL_ITEM);
     if (S.services['Interior Detail'] && S.services['Exterior Detail']) extras.unshift('Booked as Interior + Exterior');
     var payload = {
       service: bkService(), size: bkSize(), sizeLabel: S.vehicle ? S.vehicle.label : '', vehicle: ymm, condition: cond,
@@ -2722,6 +2786,10 @@ header li a[href="#booking"],
     else if (role === 'text-instead'){
       // Back to the price with the phone form open: the old road, one tap away.
       var st5 = $('step5'); if (st5) st5.classList.add('show-form');
+      // Whatever they typed on step 8 comes with them, the way it goes the
+      // other way in bkPickTime.
+      if (!val('qqName') && val('qqBName')) $('qqName').value = val('qqBName');
+      if (!val('qqPhone') && val('qqBPhone')) $('qqPhone').value = val('qqBPhone');
       goStep(5);
       if (typeof window.MDTrack === 'function') window.MDTrack('Chose text instead of booking', '$' + S.total);
       setTimeout(function(){ var n = $('qqName'); if (n) n.focus(); }, 350);
@@ -2743,6 +2811,13 @@ header li a[href="#booking"],
 
     var pick = $('qqPickTime');
     if (pick) pick.addEventListener('click', function(){ bkShowTimes(); }, false);
+    // Phones only: on a laptop an sms: link opens nothing useful, if anything.
+    var smsMe = $('qqSmsMe'), smsLink = $('qqSmsLink');
+    if (smsMe && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) smsMe.hidden = false;
+    if (smsLink) smsLink.addEventListener('click', function(){
+      if (typeof gtag === 'function') gtag('event', 'qqc_sms_self', { value: S.total, currency: 'USD' });
+      if (typeof window.MDTrack === 'function') window.MDTrack('Texted the quote from their phone', '$' + S.total);
+    }, false);
     var more = $('qqMoreTimes');
     if (more) more.addEventListener('click', function(){ $('qqOpensMore').classList.add('on'); more.style.display = 'none'; }, false);
     card.addEventListener('click', function(e){
@@ -2765,14 +2840,14 @@ header li a[href="#booking"],
       // Honeypot: bots fill this hidden field - silently "succeed" without sending.
       var hp = $('qqCompany'); if (hp && hp.value) { goStep(6); return; }
 
-      var nW = $('qqfName'), nE = $('qqName');
+      // The name is optional: the worker takes a number on its own and the first
+      // text asks for the name. Only the phone can stop a send.
+      var nE = $('qqName');
       var pW = $('qqfPhone'), pE = $('qqPhone');
-      var ok = true;
-      if (!nE.value.trim()){ nW.classList.add('bad'); nE.classList.add('err'); ok=false; } else { nW.classList.remove('bad'); nE.classList.remove('err'); }
       var phone = (pE.value || '').trim();
       var digits = phone.replace(/\D/g,'');
-      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); ok=false; } else { pW.classList.remove('bad'); pE.classList.remove('err'); }
-      if (!ok){ (nW.classList.contains('bad')?nE:pE).focus(); return; }
+      if (digits.length < 10){ pW.classList.add('bad'); pE.classList.add('err'); pE.focus(); return; }
+      pW.classList.remove('bad'); pE.classList.remove('err');
 
       var name = nE.value.trim();
       var ymm = val('qqYmm');
@@ -2785,7 +2860,7 @@ header li a[href="#booking"],
       var errBox = $('qqError'); if (errBox) errBox.style.display = 'none';
       var btn = $('qqSubmitBtn'); if (btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
 
-      var msgBody = 'New Quote from QQC\n---\nName: ' + name + '\nPhone: ' + phone +
+      var msgBody = 'New Quote from QQC\n---\nName: ' + (name || '(not given)') + '\nPhone: ' + phone +
         (location ? '\nLocation: ' + location : '') +
         '\nQuote: $' + S.total + '\nVehicle: ' + vehicleLine + '\nCondition: ' + cond +
         '\nServices: ' + S.items.join(', ') + (notes ? '\nNotes: ' + notes : '');
@@ -2803,9 +2878,9 @@ header li a[href="#booking"],
 
       var fd = new FormData();
       fd.append('access_key', 'aa7076da-8d1c-427b-979f-03c238686a8e');
-      fd.append('subject', 'New Quote: $' + S.total + ', ' + name);
+      fd.append('subject', 'New Quote: $' + S.total + ', ' + (name || phone));
       fd.append('from_name', 'Mikeys QQC');
-      fd.append('name', name);
+      fd.append('name', name || '(not given)');
       fd.append('phone', phone);
       if (location) fd.append('location', location);
       if (notes) fd.append('notes', notes);
@@ -3008,12 +3083,11 @@ header li a[href="#booking"],
         <span class="trust-source">Google review</span>
       </div>
       <blockquote class="trust-quote">
-        &ldquo;<b>Mikey has done my car 4 times now</b> and each time was amazing, quick, thorough, and a fabulous result. 10/10 would recommend!&rdquo;
+        &ldquo;<b>Mikey has done my car 4 times now</b> and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend👏&rdquo;
       </blockquote>
       <figcaption class="trust-attribution">
         <span class="trust-avatar">C</span>
-        <span class="trust-name">C Wilson</span>
-        <span class="trust-location">Snohomish, WA</span>
+        <span class="trust-name">C. W.</span>
       </figcaption>
     </figure>
 

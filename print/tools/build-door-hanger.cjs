@@ -107,7 +107,7 @@ const COMPACT_CSS = `
 .offer .stack{gap:1.4pt}.offer .stack li{font-size:6.9pt;padding-bottom:1.1pt;gap:3pt}.offer .stack s{margin-right:2pt}
 .offer .code{font-size:6.6pt;margin-top:3pt}
 .plain{margin-top:.1in;padding:.07in .1in}.plain b{font-size:10pt}.plain span{font-size:6.8pt}
-.frev{margin-top:.08in}.frev p{font-size:8pt}.frev .by{font-size:6.4pt}
+.frev{margin-top:.08in}.frev p{font-size:7.2pt}.frev .by{font-size:6.4pt}
 .cta{gap:.1in}
 .qr{padding:.06in}.qr svg{width:1.2in;height:1.2in}
 .cta .scan{font-size:11pt}.cta .scan-sub{font-size:6.8pt}
@@ -330,8 +330,8 @@ const frontHtml = (qr) => `
       <div><b>Same guy.</b><span>It's just me. No crew, no strangers.</span></div>
     </div>
     <div class="frev">
-      <p>&ldquo;Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result.&rdquo;</p>
-      <div class="by">${stars(5)} C. Wilson, Snohomish</div>
+      <p>&ldquo;Mikey has done my car 4 times now and each time was amazing, quick, thorough, and a fabulous result. I will be returning to him soon and plan on using his services far into the future. 10/10 would recommend&rdquo;</p>
+      <div class="by">${stars(5)} C. W.</div>
     </div>`}
     <div class="cta">
       <div class="qr">${qr}</div>
