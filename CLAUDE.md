@@ -274,7 +274,7 @@ second visit makes a real deadline look fake. Name the window instead.
 
 ## City pages
 
-Eleven of them (every served town but Granite Falls), plus service pages nested under some cities. They share process
+Twelve of them, one for every served town, plus service pages nested under some cities. They share process
 steps, FAQ answers, pricing and footers — that's correct and it's what keeps the
 facts consistent. What must be **unique** per city is the intro prose and the
 neighborhood sections.
@@ -287,15 +287,13 @@ schedules in Everett; HOA rules in Mill Creek; gravel roads in Duvall.
 Keep city pages **900+ words**. Everett is the biggest market and was the
 shortest page on the site.
 
-**Granite Falls is written and parked** at `_disabled/granite-falls/index.html`
-(2026-10-02), because the growth plan paces city pages at 1 to 2 a month and
-Woodinville and Arlington went live that day. Put it up in November: move it
-to `granite-falls/index.html`, set `p:'/granite-falls/'` on its `TOWNS` entry,
-turn its homepage chip into a link, add it to the About list, the Lake Stevens
-and Arlington footers, `sitemap.xml` and `llms.txt`, add it to `PAGE_SERVICE`
-in `tools/build-entity-graph.py` and run that with `--apply` (it writes the
+**Granite Falls went live 2026-10-27** (Mikey: ship it now, not November).
+Adding a town page is the same steps it took: set `p:` on its `TOWNS` entry,
+turn its homepage chip into a link, add it to the About list, two neighbours'
+footers, `sitemap.xml` and `llms.txt`, add it to `PAGE_SERVICE` in
+`tools/build-entity-graph.py` and run that with `--apply` (it writes the
 page's Service node), re-read it against the facts table, then run
-`check-site.py`.
+`check-site.py`. City pages stay at 1 to 2 a month.
 
 ## The blog (`/blog/`)
 
@@ -320,8 +318,18 @@ competes with the first in search.
 - **Headlight restoration and odor removal have no published price.** The posts
   say "text me a photo" and he quotes it. The old blog's $75 and $80–120 were
   never in the price book; don't print a price until Mikey sets one.
-- These moved; they weren't new pages. New posts follow GROWTH-PLAN.md's pace
-  of one new page a month.
+- These moved; they weren't new pages.
+- **About one new post a week** (Mikey, 2026-10-27: "keep scaling SEO"). The
+  one-a-month cap was there to stop city pages looking like doorway spam, and
+  a how-to post carries no such risk. City pages stay at 1 to 2 a month. Each
+  post answers a question people search, links to the money page it feeds
+  (paint correction, interior, ceramic), gets a link from that page back, and
+  is written from what Mikey actually does: no invented stories, no price he
+  hasn't set. First one: `can-scratches-be-buffed-out` (feeds paint
+  correction, which 113 people searched his profile for in September). Next
+  in line: freshening a car interior, RV and trailer detailing (yes on
+  2026-10-17, quoted per job, no price), then the Phase 3 queue in
+  GROWTH-PLAN.md.
 - **Fixed 2026-10-08 (Mikey's yes):** `blog.mikeysdetailing.com` now 301s
   every old post to its new home (deployed to `mikeysqqc` through the Netlify
   connector), `mikeysquote.netlify.app` 301s to `/#booking`, and MyQqc's

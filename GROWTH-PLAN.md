@@ -92,7 +92,7 @@ Framed the SMART way: **S**pecific · **M**easurable · **A**chievable · **R**e
 | **SG1** | Grow from **40 → 120 Google reviews** by averaging **1.5 new reviews/week**, tracked weekly. Milestones: 60 by M3 · 80 by M6 · 120 by M12. | 2027-08-01 |
 | **SG2** | Rank in the **Map Pack top 3** for "mobile detailing near me" from **8 of 12** geo-grid points across the service area (measured monthly with a grid tracker). | Month 9 |
 | **SG3** | Get named by **AI assistants in ≥ 60% of a fixed 25-prompt panel** (baseline it in Week 2; expect a near-zero start). Milestones: 20% by M3 · 40% by M6 · 60% by M12. | Month 12 |
-| **SG4** | Publish **1 answer-layer page or 1 city page per month, 12 total**, each with unique local research, full schema, and 2+ internal inbound links. **Never bulk-publish.** | Monthly |
+| **SG4** | Publish **about 1 answer-layer post a week** (raised from 1 page a month on 2026-10-27, Mikey's call) and **1–2 city pages a month**, each with unique local research, full schema, and 2+ internal inbound links. **Never bulk-publish city pages.** | Weekly / monthly |
 | **SG5** | Consolidate the blog to **`mikeysdetailing.com/blog/`** with 301s, and self-host every brand image, eliminating all third-party image dependencies. | Month 2 |
 | **SG6** | Reach **NAP-consistent listings on 15 directories** (Yelp, Apple Maps, Bing Places, Nextdoor, Facebook, Angi, Thumbtack, BBB, Alignable, Yellow Pages, Manta, Hotfrog, Chamber of Commerce, Waze, Foursquare). | Month 6 |
 | **SG7** | Keep **LCP < 2.0s and INP < 200ms** on mobile for the homepage and all city pages, verified monthly in PageSpeed Insights. | Ongoing |
