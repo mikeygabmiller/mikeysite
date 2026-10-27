@@ -1,0 +1,429 @@
+{
+  "back": {
+    "urlAfterHero": "https://mikeysdetailing.com/#booking",
+    "before": "step4",
+    "afterBack1": {
+      "url": "https://mikeysdetailing.com/",
+      "step": "step4",
+      "scrollY": 341
+    },
+    "afterBack2": {
+      "url": "https://mikeysdetailing.com/mobile-detailing-everett-wa/"
+    }
+  },
+  "refresh": {
+    "step": "step1",
+    "ymmKept": "",
+    "vehicleSel": 0,
+    "scrollY": 994
+  },
+  "openings_down": {
+    "ms": 4209,
+    "s5": {
+      "booking": false,
+      "formShown": true,
+      "submitText": "Lock in $399 →"
+    },
+    "later": null
+  },
+  "openings_empty": {
+    "ms": 4190,
+    "s5": {
+      "booking": false,
+      "formShown": true,
+      "submitText": "Lock in $399 →"
+    },
+    "later": null
+  },
+  "openings_http500": {
+    "ms": 4352,
+    "s5": {
+      "booking": false,
+      "formShown": true,
+      "submitText": "Lock in $399 →"
+    },
+    "later": null
+  },
+  "openings_slow6s": {
+    "ms": 11354,
+    "s5": {
+      "booking": false,
+      "formShown": true,
+      "submitText": "Lock in $399 →"
+    },
+    "later": {
+      "booking": false
+    }
+  },
+  "perf_slow3g": {
+    "calcReadyMs": 1612,
+    "loadMs": 5692,
+    "perf": {
+      "paint": [
+        [
+          "first-paint",
+          748
+        ],
+        [
+          "first-contentful-paint",
+          876
+        ]
+      ],
+      "lcp": 876,
+      "dcl": 5397,
+      "load": 5690,
+      "htmlBytes": 97700,
+      "htmlDecoded": 364330
+    },
+    "totalBytes": 543139,
+    "byType": {
+      "stylesheet": 7956,
+      "script": 20012,
+      "image": 118496,
+      "font": 32228,
+      "document": 364330,
+      "fetch": 117
+    },
+    "top": [
+      [
+        364330,
+        "https://mikeysdetailing.com/"
+      ],
+      [
+        58518,
+        "https://mikeysdetailing.com/images/steering-wheel-before-after.webp"
+      ],
+      [
+        40294,
+        "https://mikeysdetailing.com/images/backseat-before-after.webp"
+      ],
+      [
+        32228,
+        "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2"
+      ],
+      [
+        20012,
+        "https://mikeysdetailing.com/site-stats.js"
+      ],
+      [
+        19684,
+        "https://mikeysdetailing.com/images/logo-header.webp"
+      ],
+      [
+        7956,
+        "https://fonts.googleapis.com/css2"
+      ],
+      [
+        117,
+        "https://texting.mikeysdetailingsnohomish.workers.dev/api/next-openings"
+      ]
+    ]
+  },
+  "perf_fast3g": {
+    "calcReadyMs": 587,
+    "loadMs": 1101,
+    "perf": {
+      "paint": [
+        [
+          "first-paint",
+          360
+        ],
+        [
+          "first-contentful-paint",
+          436
+        ]
+      ],
+      "lcp": 436,
+      "dcl": 988,
+      "load": 1097,
+      "htmlBytes": 97700,
+      "htmlDecoded": 364330
+    },
+    "totalBytes": 444327,
+    "byType": {
+      "stylesheet": 7956,
+      "image": 19684,
+      "document": 364330,
+      "script": 20012,
+      "font": 32228,
+      "fetch": 117
+    },
+    "top": [
+      [
+        364330,
+        "https://mikeysdetailing.com/"
+      ],
+      [
+        32228,
+        "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2"
+      ],
+      [
+        20012,
+        "https://mikeysdetailing.com/site-stats.js"
+      ],
+      [
+        19684,
+        "https://mikeysdetailing.com/images/logo-header.webp"
+      ],
+      [
+        7956,
+        "https://fonts.googleapis.com/css2"
+      ],
+      [
+        117,
+        "https://texting.mikeysdetailingsnohomish.workers.dev/api/next-openings"
+      ]
+    ]
+  },
+  "perf_none": {
+    "calcReadyMs": 325,
+    "loadMs": 483,
+    "perf": {
+      "paint": [
+        [
+          "first-paint",
+          224
+        ],
+        [
+          "first-contentful-paint",
+          224
+        ]
+      ],
+      "lcp": 224,
+      "dcl": 413,
+      "load": 481,
+      "htmlBytes": 97700,
+      "htmlDecoded": 364330
+    },
+    "totalBytes": 543139,
+    "byType": {
+      "document": 364330,
+      "stylesheet": 7956,
+      "image": 118496,
+      "script": 20012,
+      "font": 32228,
+      "fetch": 117
+    },
+    "top": [
+      [
+        364330,
+        "https://mikeysdetailing.com/"
+      ],
+      [
+        58518,
+        "https://mikeysdetailing.com/images/steering-wheel-before-after.webp"
+      ],
+      [
+        40294,
+        "https://mikeysdetailing.com/images/backseat-before-after.webp"
+      ],
+      [
+        32228,
+        "https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtqUYLknw.woff2"
+      ],
+      [
+        20012,
+        "https://mikeysdetailing.com/site-stats.js"
+      ],
+      [
+        19684,
+        "https://mikeysdetailing.com/images/logo-header.webp"
+      ],
+      [
+        7956,
+        "https://fonts.googleapis.com/css2"
+      ],
+      [
+        117,
+        "https://texting.mikeysdetailingsnohomish.workers.dev/api/next-openings"
+      ]
+    ]
+  },
+  "fields": [
+    {
+      "id": "qqYmm",
+      "type": "text",
+      "name": "",
+      "autocomplete": "off",
+      "inputmode": null,
+      "label": true,
+      "placeholder": "Year, make & model",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqLocation",
+      "type": "text",
+      "name": "",
+      "autocomplete": "address-level2",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "City or ZIP",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqNotes",
+      "type": "textarea",
+      "name": "",
+      "autocomplete": null,
+      "inputmode": null,
+      "label": true,
+      "placeholder": "Tree sap, bug splatter, mold, pet hair, deep stains, scratches… anything at all",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqAddonNote",
+      "type": "text",
+      "name": "",
+      "autocomplete": "off",
+      "inputmode": null,
+      "label": true,
+      "placeholder": "Headliner, engine bay, ozone treatment…",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqName",
+      "type": "text",
+      "name": "",
+      "autocomplete": "name",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "Your name",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqPhone",
+      "type": "tel",
+      "name": "",
+      "autocomplete": "tel",
+      "inputmode": "tel",
+      "label": false,
+      "placeholder": "Phone number",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqCompany",
+      "type": "text",
+      "name": "company",
+      "autocomplete": "off",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "",
+      "enterkeyhint": null,
+      "fontSize": "13.3333px"
+    },
+    {
+      "id": "qqBName",
+      "type": "text",
+      "name": "",
+      "autocomplete": "name",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "Your name",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqBPhone",
+      "type": "tel",
+      "name": "",
+      "autocomplete": "tel",
+      "inputmode": "tel",
+      "label": false,
+      "placeholder": "Phone number",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqBTown",
+      "type": "select-one",
+      "name": "",
+      "autocomplete": null,
+      "inputmode": null,
+      "label": true,
+      "placeholder": "",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqBOther",
+      "type": "text",
+      "name": "",
+      "autocomplete": "address-level2",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "Which town?",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqBStreet",
+      "type": "text",
+      "name": "",
+      "autocomplete": "street-address",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "Street address",
+      "enterkeyhint": null,
+      "fontSize": "16px"
+    },
+    {
+      "id": "qqBCompany",
+      "type": "text",
+      "name": "company",
+      "autocomplete": "off",
+      "inputmode": null,
+      "label": false,
+      "placeholder": "",
+      "enterkeyhint": null,
+      "fontSize": "13.3333px"
+    }
+  ],
+  "kbd": {
+    "visibleAboveKeyboard": 367,
+    "focusedFieldBottom": 308,
+    "bookBtnTop": 655,
+    "bookBtnHiddenByKeyboard": true
+  },
+  "storage": [
+    "md_vid"
+  ],
+  "vanCards": {
+    "full": "$369",
+    "int": "$249",
+    "ext": "$199"
+  },
+  "vanTickerAfterInterior": "$329",
+  "vanSaveTip": "Switch to Full Detail and save $79, and the Rain-Ready ceramic wax, RainX and anti-fog come free.",
+  "vanBothPrice": {
+    "amt": "$528",
+    "swap": "A Full Detail is the same inside and out for $449, $79 less, and the ceramic wax, RainX and anti-fog come free until Dec 31.",
+    "swapTop": 575,
+    "vh": 667
+  },
+  "extAddons": [
+    "Exterior Polish+$30",
+    "RecommendedCeramic Wax+$20",
+    "RainX Windows+$10"
+  ],
+  "extPrice": "$199",
+  "sticky": {
+    "visibleAt": 2500
+  },
+  "stickyLands": {
+    "cardTop": 194,
+    "firstTileBottom": 676,
+    "vh": 667
+  },
+  "_blocked": [
+    "GET https://www.googletagmanager.com/gtag/js",
+    "GET https://www.clarity.ms/tag/xlwzu2qrko",
+    "GET https://texting.mikeysdetailingsnohomish.workers.dev/px",
+    "POST https://texting.mikeysdetailingsnohomish.workers.dev/px/e"
+  ]
+}
