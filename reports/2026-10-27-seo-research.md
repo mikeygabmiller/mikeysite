@@ -135,8 +135,8 @@ local condition, links to the page it feeds, and gets a link back from it.
 | # | Post | Feeds | Why this one |
 |---|---|---|---|
 | 1 | ~~Can a scratch be buffed out?~~ | paint correction | live 2026-10-27 |
-| 2 | Tree sap off paint without hurting it | exterior, paint correction | firs everywhere he works; Slide In and Big's rank on it |
-| 3 | Cleaning up after kids: car seats, crumbs, melted snacks | interior | two reviews (Matt Miller, Kathryn Miller) |
+| 2 | ~~Tree sap off paint without hurting it~~ (live 2026-10-27) | exterior, paint correction | firs everywhere he works; Slide In and Big's rank on it |
+| 3 | ~~Cleaning up after kids: car seats, crumbs, melted snacks~~ (live 2026-10-27) | interior | two reviews (Matt Miller, Kathryn Miller) |
 | 4 | Getting a smell out after someone's been sick in the car | interior | Teresa Hekker's review; high-intent search |
 | 5 | Is detailing a car before you sell it worth it? | full detail | Marissa Jones's review |
 | 6 | Water spots: why they etch, what takes them off | paint correction | "water spot removal mill creek" in Search Console |
