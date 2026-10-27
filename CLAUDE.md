@@ -133,6 +133,19 @@ on 2026-09-29 because his real week holds about 7, and 7 reads as part-time.
 Not "limited spots" or "a few a week" either. Write the element's fallback text
 so it stands on its own when the calendar can't be reached.
 
+## Reviews and testimonials
+
+**Every quote on the site is a real review, word for word.** On 2026-10-27
+`/reviews/` turned out to carry a quote that wasn't on Google ("James Bell"),
+one rewritten under a real reviewer's name (Pat Job) and two with words added
+(Flon R, Angela). It now lists all 38 written Google reviews in full, newest
+first, first name and last initial, with the month. A new review goes on the
+top the same way. Never shorten one into words they didn't say, add a town
+they didn't name, or put a quote under "Google review" that isn't on Google
+(the FTC's 2024 fake-review rule covers all of that). The one punctuation
+change allowed is the house em dash rule. "Matt K." (homepage, maintenance,
+eight city pages) is still waiting on Mikey to say where it came from.
+
 ## Online booking
 
 Back on 2026-09-29, rebuilt so it can't cost a lead. The quote calculator shows
@@ -326,10 +339,9 @@ competes with the first in search.
   (paint correction, interior, ceramic), gets a link from that page back, and
   is written from what Mikey actually does: no invented stories, no price he
   hasn't set. First one: `can-scratches-be-buffed-out` (feeds paint
-  correction, which 113 people searched his profile for in September). Next
-  in line: freshening a car interior, RV and trailer detailing (yes on
-  2026-10-17, quoted per job, no price), then the Phase 3 queue in
-  GROWTH-PLAN.md.
+  correction, which 113 people searched his profile for in September). The
+  queue, with why each one, is section 6 of
+  `reports/2026-10-27-seo-research.md`; cross each off there as it ships.
 - **Fixed 2026-10-08 (Mikey's yes):** `blog.mikeysdetailing.com` now 301s
   every old post to its new home (deployed to `mikeysqqc` through the Netlify
   connector), `mikeysquote.netlify.app` 301s to `/#booking`, and MyQqc's
