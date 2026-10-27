@@ -294,6 +294,8 @@ Google only gives a number above 15, everything else shows as "under 15"):
 | Aug | car wash 18 | car detailing (snohomish / monroe, wa / near me / service), mobile car detailing monroe and snohomish, mobile detailing in monroe wa, mobile detailing near me, car wash in 98296 |
 | Sep | **detailing 141, paint correction 113** | car detailing near me, car detailing snohomish, auto detailers snohomish, car seat cleaning near me, car wash (near me), mobile (auto) detailing (near me), a1 auto detailing near me, his name misspelled ("mikey dowe") |
 
+*(2026-10-27: probably not 113 people. 253 of September's 318 desktop Maps views came on Sep 22 and 23, with no calls or clicks; see `reports/2026-10-27-rnd-money-map.md` section 5.)*
+
 **Paint correction is the finding.** 113 people found him on "paint
 correction" in September, more than every town search put together, and the
 site's paint correction pages show not one photo of paint work (the county

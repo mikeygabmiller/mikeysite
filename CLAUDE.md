@@ -337,7 +337,9 @@ competes with the first in search.
   (paint correction, interior, ceramic), gets a link from that page back, and
   is written from what Mikey actually does: no invented stories, no price he
   hasn't set. First one: `can-scratches-be-buffed-out` (feeds paint
-  correction, which 113 people searched his profile for in September). The
+  correction; the "113 searched his profile for it in September" behind that choice
+  looks like two days of automated or desktop checking, Sep 22 and 23, per
+  `reports/2026-10-27-rnd-money-map.md` section 5, so don't lean on it). The
   queue, with why each one, is section 6 of
   `reports/2026-10-27-seo-research.md`; cross each off there as it ships.
 - **Fixed 2026-10-08 (Mikey's yes):** `blog.mikeysdetailing.com` now 301s
