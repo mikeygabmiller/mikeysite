@@ -947,6 +947,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-11-04",
+    "id": "GBP24",
+    "title": "Brake dust on wet wheels",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Wheels look dull and brown by November? That's brake dust, and the rain makes it worse.\n\nBrake dust is tiny bits of metal and pad. Wet roads mix it with grime into a paste that bakes onto the wheel every time the brakes heat up. Leave it all winter and it starts to stain the finish.\n\n1. Only clean them when they're cool to the touch. Cleaner on a hot wheel dries into spots.\n2. A wheel cleaner that's safe for your finish, not a household degreaser.\n3. A soft brush for the barrel and between the spokes, and a separate mitt that never touches the paint.\n4. Rinse the wheel well too. That's where the grit sits.\n\nEvery Exterior Detail I do includes a deep clean of the wheels and tires: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. Same price in Monroe, Lake Stevens or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/rav4-red.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-11-05",
     "id": "P14",
@@ -1007,6 +1020,19 @@
     "gbp": null
   },
   {
+    "kind": "gbp",
+    "date": "2026-11-06",
+    "id": "GBP25",
+    "title": "The steering wheel is the dirtiest thing you touch",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "That shine on your steering wheel isn't gloss. It's hand oil, lotion and whatever was on your fingers.\n\nA leather or rubber wheel should look matte. When it turns shiny and slick, that's a layer of buildup, and the same thing is on the shifter, the door pulls and the window switches.\n\n1. Spray an interior cleaner onto a microfiber towel, not onto the wheel. You don't want it running into the switches or the airbag cover.\n2. A soft brush for the stitching and the grip ridges, then wipe it off with a clean towel.\n3. Skip the dressing. It makes the wheel slippery in your hands.\n4. Do the shifter, the door pulls and the switches while the towel's out.\n\nIt takes five minutes. The Interior Detail gets every one of those spots, plus the seats, carpet and glass: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, in Everett, Mill Creek or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/steering-wheel-before-after.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
     "kind": "social",
     "date": "2026-11-08",
     "id": "P07",
@@ -1065,6 +1091,19 @@
       }
     ],
     "gbp": null
+  },
+  {
+    "kind": "gbp",
+    "date": "2026-11-08",
+    "id": "GBP26",
+    "title": "The crumb cave under the car seat",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Parents: the crumbs under the car seat. Here's how to clean that spot without messing up the install.\n\n1. Only take the car seat out if you can put it back the way its manual says. Not sure it's back in right? A certified car seat tech can check it for you.\n2. Crevice tool along every seam and under the buckle pad. That's where the crackers and the cereal end up.\n3. Straps: read the manual first. Many makers say surface-clean them with mild soap and water, and never soak, bleach or machine-wash them, because that can weaken them.\n4. Vacuum the dent in the car's seat cushion underneath. Before adding a protector mat under the car seat, check its manual: some makers don't allow one.\n\nIf the back seat is past a quick vacuum, the Interior Detail covers it, from $249 for a sedan. Same price in Marysville, Arlington or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/4runner-white.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
   },
   {
     "kind": "social",
