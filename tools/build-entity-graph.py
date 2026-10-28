@@ -144,7 +144,10 @@ def area_served():
 
 def business_node(reviews, speakable):
     node = {
-        "@type": ["LocalBusiness", "AutoDetailing"],
+        # "AutoDetailing" was here until 2026-10-28; it isn't a schema.org type
+        # (schema.org/AutoDetailing is a 404) and validators flag it. AutoWash is
+        # the closest real one, under AutomotiveBusiness under LocalBusiness.
+        "@type": ["AutomotiveBusiness", "AutoWash"],
         "@id": BIZ_ID,
         "name": "Mikey's Mobile Detailing",
         "legalName": "Mikey's Mobile Detailing",
@@ -363,7 +366,7 @@ def rebuild(rels, html):
             faq = d
         elif t == "BreadcrumbList":
             breadcrumb = d
-        elif ts & {"LocalBusiness", "AutoDetailing", "AutoRepair"}:
+        elif ts & {"LocalBusiness", "AutomotiveBusiness", "AutoWash", "AutoDetailing", "AutoRepair"}:
             reviews = d.get("review") or reviews
             speakable = d.get("speakable") or speakable
         elif not ts & {"Person", "WebSite", "WebPage", "Service"}:

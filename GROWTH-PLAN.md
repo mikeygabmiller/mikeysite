@@ -301,7 +301,7 @@ write, don't publish it yet.
 | 7 | **Granite Falls** | 98252 | 48.0832, -121.9676 | Mountain Loop, trail mud, lifted trucks |
 
 **Every city page needs, without exception:** unique 400+ word local body · full entity
-`@graph` incl. `AutoDetailing` + FAQ + Breadcrumb · a **real photo taken in that city** ·
+`@graph` incl. `AutomotiveBusiness` + `AutoWash` (not `AutoDetailing`, which isn't a schema.org type) + FAQ + Breadcrumb · a **real photo taken in that city** ·
 inbound links from 2–3 neighbor city footers + the homepage list · a sitemap entry · the
 city added to homepage `areaServed`.
 

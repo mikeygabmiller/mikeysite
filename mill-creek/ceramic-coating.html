@@ -155,6 +155,12 @@ h2 .red{color:var(--red)}
 footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;color:var(--text-muted);font-size:14px}
 .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
 .footer-links a:hover{color:var(--red)}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -173,8 +179,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -533,6 +539,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does ceramic coating in Mill Creek, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, detailing since 2021, and I prep and coat cars in Mill Creek driveways. Ceramic coating starts at $500 and is quoted per car, because the paint has to be cleaned and often corrected before a coating goes on. Tell me about your HOA's driveway rules and your parking setup when you ask for a quote, and I'll plan the appointment around them."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you apply ceramic coating in Mill Creek?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -656,7 +670,16 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 <div class="price-pills"><div class="pill">Elite <span class="price">$1,300+</span></div><div class="pill">Pro <span class="price">$850+</span></div><div class="pill">Standard <span class="price">$500+</span></div></div>
 <div class="cta-row"><a href="#booking" class="btn btn-primary">Get My Coating Quote →</a><a href="#areas" class="btn btn-secondary">See Service Area</a></div>
 <div class="stats"><div class="stat"><div class="stat-num">5.0</div><div class="stat-label">Google Rating</div></div><div class="stat"><div class="stat-num">40</div><div class="stat-label">Reviews</div></div><div class="stat"><div class="stat-num">300+</div><div class="stat-label">Cars Detailed</div></div><div class="stat"><div class="stat-num">2021</div><div class="stat-label">Detailing Since</div></div></div>
-</div></section><section><div class="container"><div class="section-eyebrow">Why Mill Creek</div><h2>A Coating Job Starts <span class="red">with the Setup</span></h2><div class="intro-prose">
+</div></section>
+
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does ceramic coating in Mill Creek, WA?</h2>
+      <p>I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, detailing since 2021, and I prep and coat cars in Mill Creek driveways. Ceramic coating starts at <strong>$500</strong> and is quoted per car, because the paint has to be cleaned and often corrected before a coating goes on. Tell me about your HOA's driveway rules and your parking setup when you ask for a quote, and I'll plan the appointment around them.</p>
+    </div>
+  </div>
+</section><section><div class="container"><div class="section-eyebrow">Why Mill Creek</div><h2>A Coating Job Starts <span class="red">with the Setup</span></h2><div class="intro-prose">
 <p>In Mill Creek, the first question about a driveway coating job is often the driveway itself. Your HOA may have rules about where work can happen, how long a vehicle can stay parked, or water use. I want those details up front so we can plan an appointment that works at your property.</p>
 <p>If you split your week between Town Center errands and the Bothell-Everett Highway, keeping a daily driver clean is enough work already. Ceramic coating can make routine washing easier. It goes over prepared paint, so I start by looking at the finish and explaining whether cleaning alone is enough or whether correction is worth doing first.</p>
 <p>I'm <strong>Mikey</strong>, based in Snohomish and detailing since 2021. I come to Mill Creek with my equipment. <strong>You provide an outdoor water spigot and a power outlet.</strong> Send me your parking setup along with the vehicle details, and I can check the space and talk through a coating quote before we book.</p></div></div></section>

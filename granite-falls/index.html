@@ -20,6 +20,11 @@
 <meta property="og:title" content="Mobile Detailing Granite Falls, WA | Mikey's Mobile Detailing">
 <meta property="og:description" content="I come to your Granite Falls driveway. Trail mud, gravel dust, bugs and the hiking dog handled. 300+ cars, 5.0 across 40 reviews.">
 <meta property="og:url" content="https://mikeysdetailing.com/granite-falls/">
+<meta property="og:image" content="https://mikeysdetailing.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mikey's Mobile Detailing logo: a red 4x4 in soap foam beside MIKEY'S, MOBILE DETAILING.">
+<meta name="twitter:card" content="summary_large_image">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9WMXW2MF5"></script>
 <script>
@@ -84,7 +89,7 @@ h2 .red{color:var(--red)}
 .process{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;counter-reset:step}
 .step{background:var(--bg-card);border:2px solid var(--border);border-radius:12px;padding:28px 22px;position:relative;counter-increment:step}
 .step::before{content:counter(step);position:absolute;top:-16px;left:22px;background:var(--red);color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;box-shadow:0 0 20px var(--red-glow)}
-.step h4{font-size:17px;font-weight:800;margin:12px 0 8px}.step p{color:var(--text-muted);font-size:14px}
+.step h3{font-size:17px;font-weight:800;margin:12px 0 8px}.step p{color:var(--text-muted);font-size:14px}
 .testimonial{background:var(--bg-card);border:2px solid var(--border);border-left:4px solid var(--red);border-radius:14px;padding:36px 32px;max-width:720px;margin:0 auto}
 .testimonial p{font-size:19px;font-style:italic;color:var(--text);margin-bottom:20px;line-height:1.6}
 .testimonial .author{display:flex;justify-content:space-between;align-items:center;font-size:14px}
@@ -146,6 +151,12 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 .sticky-cta-book{flex:1 1 56%;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;padding:8px 14px;box-shadow:0 6px 18px var(--red-glow)}
 @media(max-width:768px){.sticky-cta-bar{display:flex}body{padding-bottom:76px}}
 @media(prefers-reduced-motion:reduce){.sticky-cta-bar{transition:opacity .2s,visibility .2s;transform:none}}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <style>.skip-nav{position:absolute;top:-100px;left:16px;background:#c8102e;color:#fff;padding:8px 16px;font-size:14px;font-weight:700;border-radius:4px;z-index:99999;text-decoration:none}.skip-nav:focus{top:8px;outline:3px solid #fff;outline-offset:2px}</style>
@@ -156,8 +167,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -538,6 +549,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does mobile car detailing in Granite Falls, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish. Granite Falls is about 22 minutes up SR-9 and SR-92, and I'm there most weeks, downtown to the start of the Mountain Loop. Trail mud ground into carpet is most of what I see here. Exterior is $199–$279, Interior $249–$329 and a Full Detail $369–$449 by vehicle size, the same as in Snohomish with no travel fee. You pay after we walk around it together."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you come to all of Granite Falls?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -685,6 +704,15 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   </div>
 </section>
 
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does mobile car detailing in Granite Falls, WA?</h2>
+      <p>I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish. Granite Falls is about 22 minutes up SR-9 and SR-92, and I'm there most weeks, downtown to the start of the Mountain Loop. Trail mud ground into carpet is most of what I see here. Exterior is <strong>$199–$279</strong>, Interior <strong>$249–$329</strong> and a Full Detail <strong>$369–$449</strong> by vehicle size, the same as in Snohomish with no travel fee. You pay after we walk around it together.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">Why Granite Falls</div>
@@ -797,10 +825,10 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <h2>Booked in <span class="red">Under 2 Minutes</span></h2>
     <p class="section-sub">No phone tag, no quote-request runaround.</p>
     <div class="process">
-      <div class="step"><h4>Get Your Quote</h4><p>Use the instant quote tool. Tell me your vehicle and condition, get an exact price in 60 seconds.</p></div>
-      <div class="step"><h4>Pick a Day</h4><p>Tell me which days suit your driveway and I'll send you the next openings.</p></div>
-      <div class="step"><h4>I Show Up</h4><p>I arrive on time with everything I need. An outdoor spigot and a power outlet is all I ask.</p></div>
-      <div class="step"><h4>Walk Around. Pay.</h4><p>Inspect the car. If you're happy, you pay. If not, I keep working.</p></div>
+      <div class="step"><h3>Get Your Quote</h3><p>Use the instant quote tool. Tell me your vehicle and condition, get an exact price in 60 seconds.</p></div>
+      <div class="step"><h3>Pick a Day</h3><p>Tell me which days suit your driveway and I'll send you the next openings.</p></div>
+      <div class="step"><h3>I Show Up</h3><p>I arrive on time with everything I need. An outdoor spigot and a power outlet is all I ask.</p></div>
+      <div class="step"><h3>Walk Around. Pay.</h3><p>Inspect the car. If you're happy, you pay. If not, I keep working.</p></div>
     </div>
   </div>
 </section>
@@ -813,22 +841,22 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="ba-grid">
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/ba_2.jpg" alt="Dirty back seats before an interior detail" loading="lazy"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/ba_1.jpg" alt="Clean back seats after an interior detail" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="540" height="769" src="/images/ba_2-540.jpg" alt="Dirty back seats before an interior detail" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img width="540" height="769" src="/images/ba_1-540.jpg" alt="Clean back seats after an interior detail" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Interior deep clean: seats &amp; carpets</div>
       </div>
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/ba_4.jpg" alt="Dirty cargo area before detailing" loading="lazy"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/ba_3.jpg" alt="Clean cargo area after detailing" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="540" height="422" src="/images/ba_4-540.jpg" alt="Dirty cargo area before detailing" loading="lazy"></figure>
+          <figure><span class="ba-tag after">After</span><img width="540" height="422" src="/images/ba_3-540.jpg" alt="Clean cargo area after detailing" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Cargo area reset: vacuum &amp; steam</div>
       </div>
       <div class="ba-pair">
         <div class="ba-imgs">
-          <figure><span class="ba-tag before">Before</span><img src="/images/focus-before.webp" alt="Dull car exterior before detailing" loading="lazy" onerror="this.closest('.ba-pair').style.display='none'"></figure>
-          <figure><span class="ba-tag after">After</span><img src="/images/focus-after.webp" alt="Glossy car exterior after decontamination and sealant" loading="lazy"></figure>
+          <figure><span class="ba-tag before">Before</span><img width="360" height="270" src="/images/focus-before-360.webp" alt="Dull car exterior before detailing" loading="lazy" onerror="this.closest('.ba-pair').style.display='none'"></figure>
+          <figure><span class="ba-tag after">After</span><img width="360" height="480" src="/images/focus-after-360.webp" alt="Glossy car exterior after decontamination and sealant" loading="lazy"></figure>
         </div>
         <div class="ba-cap">Exterior wash, decon &amp; sealant</div>
       </div>

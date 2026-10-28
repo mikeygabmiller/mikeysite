@@ -95,7 +95,7 @@ unique (neighborhoods, roads, landmarks, local pain points).
 | Woodinville | 98072 | 47.7543, -122.1635 | King | Wine country, estates, premium detailing demand |
 | Granite Falls | 98252 | 48.0832, -121.9676 | Snohomish | Mountain Loop, trucks, mud/trail dirt |
 
-Each page needs: unique AutoDetailing + FAQ + BreadcrumbList schema, GA4, the
+Each page needs: unique AutomotiveBusiness + FAQ + BreadcrumbList schema, GA4, the
 `#booking` iframe, a real photo, inbound links from 2–3 neighbor footers + the
 homepage city list, and a sitemap entry.
 
