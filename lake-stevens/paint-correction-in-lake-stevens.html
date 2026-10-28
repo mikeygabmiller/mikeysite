@@ -155,6 +155,12 @@ h2 .red{color:var(--red)}
 footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;color:var(--text-muted);font-size:14px}
 .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
 .footer-links a:hover{color:var(--red)}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -173,8 +179,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -533,6 +539,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does paint correction in Lake Stevens, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, about 12 minutes from Lake Stevens, and I machine-polish swirls, light scratches and hard water spots out of the clear coat in your driveway. A 1-Step starts at $400 and takes 6 to 8 hours. A 2-Step from $650 or a Multi-Stage from $900 takes one to two days. Each is quoted per car after I look at the paint."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you do paint correction in Lake Stevens, WA?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -663,13 +677,22 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   </div>
 </section>
 
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does paint correction in Lake Stevens, WA?</h2>
+      <p>I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, about 12 minutes from Lake Stevens, and I machine-polish swirls, light scratches and hard water spots out of the clear coat in your driveway. A 1-Step starts at <strong>$400</strong> and takes 6 to 8 hours. A 2-Step from <strong>$650</strong> or a Multi-Stage from <strong>$900</strong> takes one to two days. Each is quoted per car after I look at the paint.</p>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="container">
     <div class="section-eyebrow">Why Lake Stevens</div>
     <h2>Polishing Away <span class="red">Lake Life</span> Scratches</h2>
     <div class="intro-prose">
       <p>Lake Stevens cars catch hell. You've got pollen dumps every spring from the Cascade foothills rubbing into your clear coat, hard well-water spots from sprinklers running through July, and micro-scratches from kids, gear, and boat trailers. The local environment grinds that clear coat down. Your paint is working overtime.</p>
-      <p>Most detail shops want you to drop your car off in Everett for two days just to get a proper polish. I'm <strong>Mikey</strong>, I bring the shop to your driveway. Full mobile machine polishing setup, done in one day so you can keep your routine. You don't hand over a dollar until the paint shines and you see the gloss in person.</p>
+      <p>Most detail shops want you to drop your car off in Everett for two days just to get a proper polish. I'm <strong>Mikey</strong>, I bring the shop to your driveway. Full mobile machine polishing setup. A 1-Step takes 6 to 8 hours, so it's done the same day; a 2-Step or Multi-Stage can run into a second day, and the car stays in your driveway the whole time. You don't hand over a dollar until the paint shines and you see the gloss in person.</p>
       <p>Lake Stevens is core territory for me, Frontier Village to Machias to Hartford, I'm in and out of these neighborhoods constantly. That means faster scheduling, no travel surcharge, and a correction job done by someone who actually lives in Snohomish County. <strong>Over 300 cars in 5+ years. If it got scratched around here, I've corrected it.</strong></p>
     </div>
   </div>
@@ -753,8 +776,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 <section>
   <div class="container">
     <div class="section-eyebrow">How It Works</div>
-    <h2>Corrected in <span class="red">One Day</span></h2>
-    <p class="section-sub">No drop-off. No two-day shop stay. Booked in under 2 minutes.</p>
+    <h2>Corrected in <span class="red">Your Driveway</span></h2>
+    <p class="section-sub">No drop-off and no shop stay. The car never leaves your driveway.</p>
     <div class="process">
       <div class="step"><h3>Get Your Quote</h3><p>Hit the quote tool. Tell me your vehicle and which tier, real price in 60 seconds.</p></div>
       <div class="step"><h3>Pick a Day</h3><p>Tell me which days suit you and I'll send you the next openings.</p></div>
@@ -808,13 +831,13 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="related">
       <h3>Related Services & Areas</h3>
       <ul>
-        <li><a href="/ceramic-coating-snohomish-county/">Ceramic coating in Lake Stevens</a></li>
-        <li><a href="/services/exterior.html">Exterior detail packages</a></li>
-        <li><a href="/snohomish/truck-detailing.html">Truck detailing</a></li>
-        <li><a href="/snohomish/paint-correction.html">Paint correction in Snohomish</a></li>
-        <li><a href="/paint-correction-snohomish-county/">Paint correction in Monroe</a></li>
+        <li><a href="/paint-correction-snohomish-county/">Paint correction: 1-Step, 2-Step, Multi-Stage</a></li>
+        <li><a href="/ceramic-coating-snohomish-county/">Ceramic coating (after correction)</a></li>
+        <li><a href="/blog/can-scratches-be-buffed-out/">Can a scratch be buffed out?</a></li>
+        <li><a href="/blog/how-to-get-tree-sap-off-a-car/">Tree sap off paint, safely</a></li>
         <li><a href="/mill-creek/paint-correction-in-mill-creek.html">Paint correction in Mill Creek</a></li>
-        <li><a href="/paint-correction-snohomish-county/">Paint correction in Duvall</a></li>
+        <li><a href="/snohomish/paint-correction.html">Paint correction in Snohomish</a></li>
+        <li><a href="/lake-stevens/interior-detail.html">Interior detail in Lake Stevens</a></li>
         <li><a href="/lake-stevens/">All services in Lake Stevens</a></li>
       </ul>
     </div>

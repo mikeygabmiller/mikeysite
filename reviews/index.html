@@ -20,6 +20,7 @@
 <meta property="og:url" content="https://mikeysdetailing.com/reviews/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://mikeysdetailing.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <meta name="geo.placename" content="Snohomish">
 <meta name="geo.region" content="US-WA">
@@ -438,6 +439,12 @@
     .reviews-hero { padding: 50px 16px 40px; }
     .cta-block { padding: 40px 20px; }
   }
+.answer-section{padding:8px 20px 0}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -474,8 +481,8 @@
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -822,6 +829,26 @@
         }
       ],
       "@id": "https://mikeysdetailing.com/reviews/#breadcrumb"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What do customers say about Mikey's Mobile Detailing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mikey's Mobile Detailing (that's me, Mikey, in Snohomish, WA) is rated 5.0 on Google across 40 reviews, and every written one is on this page, word for word. What people mention most: I show up on time, I explain the job and the price before I start, and the price is fair. Kids' car seats with melted snacks, a whole cup of soda in a footwell and a car someone got sick in all came out clean. Several are repeat customers, and a few book me every month."
+          }
+        }
+      ],
+      "@id": "https://mikeysdetailing.com/reviews/#faq",
+      "isPartOf": {
+        "@id": "https://mikeysdetailing.com/reviews/#webpage"
+      },
+      "about": {
+        "@id": "https://mikeysdetailing.com/#business"
+      }
     }
   ]
 }
@@ -884,6 +911,13 @@
         <span class="stat-num">5+</span>
         <div class="stat-label">Years</div>
       </div>
+    </div>
+  </section>
+
+  <section class="answer-section">
+    <div class="answer-first">
+      <h2>What do customers say about Mikey's Mobile Detailing?</h2>
+      <p>Mikey's Mobile Detailing (that's me, Mikey, in Snohomish, WA) is rated <strong>5.0 on Google across <span data-md-reviews="{n}">40</span> reviews</strong>, and every written one is on this page, word for word. What people mention most: I show up on time, I explain the job and the price before I start, and the price is fair. Kids' car seats with melted snacks, a whole cup of soda in a footwell and a car someone got sick in all came out clean. Several are repeat customers, and a few book me every month.</p>
     </div>
   </section>
 

@@ -217,6 +217,24 @@ but listed so November knows:
   month at KD 23 in the October 5 gap report (Big's ranks 53). It links from
   the headlight and smell posts.
 
+## Changed on 2026-10-28 (also inside the November window)
+
+Page audit; details in `reports/2026-10-28-page-audit.md`. None of it touched
+a title, H1 or meta description, and nothing visible changed on `/everett/`,
+`/bothell/`, `/mill-creek/`, `/how-long-does-car-detailing-take/` or
+`/ceramic-coating-snohomish-county/` (the pages November reads). Every page's
+JSON-LD did change in one place: the business `@type` went from
+`["LocalBusiness", "AutoDetailing"]` (not a real type) to
+`["AutomotiveBusiness", "AutoWash"]`, which is why every sitemap date moved.
+
+- **Answer boxes on 22 pages**: nine town pages (not Everett, Bothell or Mill
+  Creek), ten town-service pages, `/services/interior.html`,
+  `/services/exterior.html` and `/reviews/`. If the Mill Creek interior, Lake
+  Stevens interior or Monroe ceramic page shows impressions for the first
+  time in November, the links below are as likely a cause as the boxes.
+- **Related links rewritten** on seven town-service pages: no more "Truck
+  detailing in Monroe" pointing at the Snohomish truck page.
+
 ## Business Profile, read 2026-10-17
 
 - **Reviews: 40, one since August 28.** Sixteen in the last twelve months,

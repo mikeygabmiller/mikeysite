@@ -155,6 +155,12 @@ h2 .red{color:var(--red)}
 footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;color:var(--text-muted);font-size:14px}
 .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
 .footer-links a:hover{color:var(--red)}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -173,8 +179,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -533,6 +539,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does mobile truck detailing in Snohomish, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, of Mikey's Mobile Detailing, and Snohomish is my home base. I detail pickups in your driveway or at the job site if there's a spigot and an outlet. A pickup is priced at the SUV size: Exterior $239, Interior $289, Full Detail $409, plus $30 or $60 if it's been living on farm roads or a job site. A Full Detail takes 3 to 5 hours, and you pay after it's done."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you detail trucks in Snohomish, WA?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -659,6 +673,15 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Reviews</div></div>
       <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Cars Detailed</div></div>
       <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Exp</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does mobile truck detailing in Snohomish, WA?</h2>
+      <p>I do. I'm Mikey, of Mikey's Mobile Detailing, and Snohomish is my home base. I detail pickups in your driveway or at the job site if there's a spigot and an outlet. A pickup is priced at the SUV size: Exterior <strong>$239</strong>, Interior <strong>$289</strong>, Full Detail <strong>$409</strong>, plus $30 or $60 if it's been living on farm roads or a job site. A Full Detail takes 3 to 5 hours, and you pay after it's done.</p>
     </div>
   </div>
 </section>
@@ -806,13 +829,13 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
     <div class="related">
       <h3>Related Services & Areas</h3>
       <ul>
-        <li><a href="/ceramic-coating-snohomish-county/">Ceramic coating in Snohomish</a></li>
+        <li><a href="/services/interior.html">Interior Detail</a></li>
+        <li><a href="/services/exterior.html">Exterior Detail</a></li>
+        <li><a href="/ceramic-coating-snohomish-county/">Ceramic coating</a></li>
         <li><a href="/snohomish/paint-correction.html">Paint correction in Snohomish</a></li>
-        <li><a href="/services/exterior.html">Exterior detail packages</a></li>
-        <li><a href="/snohomish/truck-detailing.html">Truck detailing in Monroe</a></li>
-        <li><a href="/snohomish/truck-detailing.html">Truck detailing in Mill Creek</a></li>
-        <li><a href="/snohomish/truck-detailing.html">Truck detailing in Lake Stevens</a></li>
-        <li><a href="/snohomish/truck-detailing.html">Truck detailing in Duvall</a></li>
+        <li><a href="/pet-hair-removal-car-detailing/">Pet hair removal</a></li>
+        <li><a href="/blog/how-to-get-tree-sap-off-a-car/">Tree sap off paint, safely</a></li>
+        <li><a href="/car-detailing-cost-snohomish-county/">What detailing costs in Snohomish County</a></li>
         <li><a href="/snohomish/">All services in Snohomish</a></li>
       </ul>
     </div>

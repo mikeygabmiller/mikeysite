@@ -154,6 +154,12 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 .sticky-cta-book{flex:1 1 56%;display:flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;font-weight:800;font-size:15px;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;padding:8px 14px;box-shadow:0 6px 18px var(--red-glow)}
 @media(max-width:768px){.sticky-cta-bar{display:flex}body{padding-bottom:76px}}
 @media(prefers-reduced-motion:reduce){.sticky-cta-bar{transition:opacity .2s,visibility .2s;transform:none}}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <style>.skip-nav{position:absolute;top:-100px;left:16px;background:#c8102e;color:#fff;padding:8px 16px;font-size:14px;font-weight:700;border-radius:4px;z-index:99999;text-decoration:none}.skip-nav:focus{top:8px;outline:3px solid #fff;outline-offset:2px}</style>
@@ -164,8 +170,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -546,6 +552,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does mobile car detailing in Mukilteo, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, owner of Mikey's Mobile Detailing in Snohomish, about 22 minutes away, and I'm in Mukilteo most weeks, Old Town to Harbour Pointe. Cars parked near Possession Sound pick up a salt film the rain doesn't rinse off, and the decontamination step in an Exterior Detail is what takes it off. Exterior is $199–$279, Interior $249–$329 and a Full Detail $369–$449 by vehicle size, with no travel fee. You pay after we walk around the car."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you come to all of Mukilteo?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -681,6 +695,15 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Reviews</div></div>
       <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Cars Detailed</div></div>
       <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Exp</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does mobile car detailing in Mukilteo, WA?</h2>
+      <p>I do. I'm Mikey, owner of Mikey's Mobile Detailing in Snohomish, about 22 minutes away, and I'm in Mukilteo most weeks, Old Town to Harbour Pointe. Cars parked near Possession Sound pick up a salt film the rain doesn't rinse off, and the decontamination step in an Exterior Detail is what takes it off. Exterior is <strong>$199–$279</strong>, Interior <strong>$249–$329</strong> and a Full Detail <strong>$369–$449</strong> by vehicle size, with no travel fee. You pay after we walk around the car.</p>
     </div>
   </div>
 </section>

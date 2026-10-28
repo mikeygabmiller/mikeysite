@@ -108,6 +108,12 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
 .footer-links a:hover{color:var(--red)}
 .intro-prose{max-width:760px;margin:0 auto;font-size:17px;color:var(--text-muted);line-height:1.75}
 .intro-prose p{margin-bottom:18px}.intro-prose strong{color:var(--text)}
+.answer-section{padding:44px 0 0;border-top:none}
+.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
+.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
+.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+.answer-first p strong{color:#fff}
+@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -126,8 +132,8 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
   "@graph": [
     {
       "@type": [
-        "LocalBusiness",
-        "AutoDetailing"
+        "AutomotiveBusiness",
+        "AutoWash"
       ],
       "@id": "https://mikeysdetailing.com/#business",
       "name": "Mikey's Mobile Detailing",
@@ -480,6 +486,14 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "Who does mobile car detailing in Snohomish, WA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I do. I'm Mikey, owner of Mikey's Mobile Detailing, and Snohomish is my home base, so in town I'm usually a few minutes from your driveway, from downtown out to the river valley and the farm roads. Exterior is $199–$279, Interior $249–$329 and a Full Detail $369–$449, depending on the size of the vehicle. A Full Detail takes 3 to 5 hours. You provide an outdoor spigot and an outlet, and you pay after we walk around the car together."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Do you do mobile detailing in Snohomish, WA?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -606,6 +620,15 @@ footer{border-top:2px solid var(--border);padding:40px 0 30px;text-align:center;
       <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Reviews</div></div>
       <div class="stat"><div class="stat-num">300+</div><div class="stat-label">Cars Detailed</div></div>
       <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Years Exp</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="answer-section">
+  <div class="container">
+    <div class="answer-first">
+      <h2>Who does mobile car detailing in Snohomish, WA?</h2>
+      <p>I do. I'm Mikey, owner of Mikey's Mobile Detailing, and Snohomish is my home base, so in town I'm usually a few minutes from your driveway, from downtown out to the river valley and the farm roads. Exterior is <strong>$199–$279</strong>, Interior <strong>$249–$329</strong> and a Full Detail <strong>$369–$449</strong>, depending on the size of the vehicle. A Full Detail takes 3 to 5 hours. You provide an outdoor spigot and an outlet, and you pay after we walk around the car together.</p>
     </div>
   </div>
 </section>
