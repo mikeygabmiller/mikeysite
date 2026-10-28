@@ -705,3 +705,70 @@ Check under the seats and in the seat back pockets too. That's where the fun siz
 
 If it's already baked in, that's what my steamer and extractor are for. No judgment at all. I've seen everything. Tap Book to see your exact price in 60 seconds.
 ```
+
+---
+
+## 24. Week of Nov 1 · Update · Brake dust on wet wheels
+
+**Goes up:** 2026-11-04
+**Photo:** `social/photos/rav4-red.jpg` (a red RAV4 on a wet gravel driveway, front wheel up close, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Wheels look dull and brown by November? That's brake dust, and the rain makes it worse.
+
+Brake dust is tiny bits of metal and pad. Wet roads mix it with grime into a paste that bakes onto the wheel every time the brakes heat up. Leave it all winter and it starts to stain the finish.
+
+1. Only clean them when they're cool to the touch. Cleaner on a hot wheel dries into spots.
+2. A wheel cleaner that's safe for your finish, not a household degreaser.
+3. A soft brush for the barrel and between the spokes, and a separate mitt that never touches the paint.
+4. Rinse the wheel well too. That's where the grit sits.
+
+Every Exterior Detail I do includes a deep clean of the wheels and tires: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. Same price in Monroe, Lake Stevens or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 25. Week of Nov 1 · Update · The steering wheel is the dirtiest thing you touch
+
+**Goes up:** 2026-11-06
+**Photo:** `social/photos/steering-wheel-before-after.jpg` (the same Honda steering wheel before and after the detail, side by side)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+That shine on your steering wheel isn't gloss. It's hand oil, lotion and whatever was on your fingers.
+
+A leather or rubber wheel should look matte. When it turns shiny and slick, that's a layer of buildup, and the same thing is on the shifter, the door pulls and the window switches.
+
+1. Spray an interior cleaner onto a microfiber towel, not onto the wheel. You don't want it running into the switches or the airbag cover.
+2. A soft brush for the stitching and the grip ridges, then wipe it off with a clean towel.
+3. Skip the dressing. It makes the wheel slippery in your hands.
+4. Do the shifter, the door pulls and the switches while the towel's out.
+
+It takes five minutes. The Interior Detail gets every one of those spots, plus the seats, carpet and glass: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, in Everett, Mill Creek or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 26. Week of Nov 8 · Update · The crumb cave under the car seat
+
+**Goes up:** 2026-11-08
+**Photo:** `social/photos/4runner-white.jpg` (a white 4Runner on a driveway after the detail, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Parents: the crumbs under the car seat. Here's how to clean that spot without messing up the install.
+
+1. Only take the car seat out if you can put it back the way its manual says. Not sure it's back in right? A certified car seat tech can check it for you.
+2. Crevice tool along every seam and under the buckle pad. That's where the crackers and the cereal end up.
+3. Straps: read the manual first. Many makers say surface-clean them with mild soap and water, and never soak, bleach or machine-wash them, because that can weaken them.
+4. Vacuum the dent in the car's seat cushion underneath. Before adding a protector mat under the car seat, check its manual: some makers don't allow one.
+
+If the back seat is past a quick vacuum, the Interior Detail covers it, from $249 for a sedan. Same price in Marysville, Arlington or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
