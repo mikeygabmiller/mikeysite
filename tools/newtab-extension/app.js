@@ -1,17 +1,19 @@
 // Mikey's New Tab. Everything here runs in his browser: notes, settings and
 // cached forecasts live in this extension's localStorage and go nowhere else.
 // The only network calls are the National Weather Service (public, no key),
-// the dashboard's public /api/next-openings (the same one the website uses),
-// Google's favicon service for the link icons, and the Google Calendar embed.
+// the dashboard (its public /api/next-openings, the same one the website uses,
+// and the follow-up list, read with his own dashboard login), and Google's
+// favicon service for the link icons.
 
 var TZ = 'America/Los_Angeles';
 var BASE = { lat: 47.9129, lng: -122.0982 }; // Snohomish, WA 98290
 var NWS_HOURLY = 'https://api.weather.gov/gridpoints/SEW/135,81/forecast/hourly';
 var NWS_DAILY = 'https://api.weather.gov/gridpoints/SEW/135,81/forecast';
-var OPENINGS = 'https://texting.mikeysdetailingsnohomish.workers.dev/api/next-openings';
+var DASH = 'https://texting.mikeysdetailingsnohomish.workers.dev/';
+var OPENINGS = DASH + 'api/next-openings';
 
 var DEFAULT_LINKS = [
-  ['Dashboard', 'https://texting.mikeysdetailingsnohomish.workers.dev/'],
+  ['Dashboard', DASH],
   ['Google Business', 'https://business.google.com/'],
   ['Google Ads', 'https://ads.google.com/'],
   ['Search Console', 'https://search.google.com/search-console'],
@@ -269,28 +271,96 @@ function start() {
     });
   });
 
-  // ---- calendar --------------------------------------------------------------
-  function drawCal() {
-    var box = $('cal');
-    box.textContent = '';
-    var ids = String(load('calId', '')).split(',').map(function (s) { return s.trim(); }).filter(Boolean);
-    if (!ids.length) {
-      box.appendChild(el('p', 'setup', 'Add your Google Calendar to see your bookings here.'));
-      var b = el('button', 'primary', 'Set it up');
-      b.type = 'button';
-      b.onclick = openSettings;
-      box.appendChild(b);
-      return;
-    }
-    var url = 'https://calendar.google.com/calendar/embed?mode=AGENDA&ctz=' + encodeURIComponent(TZ) +
-      '&showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&showNav=1&showDate=0' +
-      ids.map(function (id) { return '&src=' + encodeURIComponent(id); }).join('');
-    var f = document.createElement('iframe');
-    f.src = url;
-    f.title = 'Google Calendar';
-    box.appendChild(f);
+  // ---- follow-ups -----------------------------------------------------------
+  // The dashboard's own list (GET /api/threads), read with his dashboard login:
+  // the extension's host permission lets the sign-in cookie ride along, so
+  // nothing new is stored here and nothing in the dashboard changed. Two kinds:
+  // his own "remind me" dates, and the follow-ups the dashboard says are due.
+  // Read only. Opening one takes him to that chat in the dashboard. Not cached:
+  // customer names and numbers stay out of this browser's storage.
+  function ago(ms) {
+    var m = Math.round(Math.abs(ms) / 6e4);
+    if (m < 60) return m + ' min';
+    var h = Math.round(m / 60);
+    if (h < 24) return h + ' hr';
+    var d = Math.round(h / 24);
+    return d + (d === 1 ? ' day' : ' days');
   }
-  drawCal();
+  function when(at, now) {
+    if (!at) return '';
+    if (at <= now) return 'due ' + ago(now - at) + ' ago';
+    var day = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'short', month: 'short', day: 'numeric' }).format(new Date(at));
+    return day + ', ' + fmtTime(new Date(at));
+  }
+  function who(t) {
+    if (t.name) return t.name;
+    var d = String(t.phone || '').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+    return d.length === 10 ? '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6) : (t.phone || 'Unknown');
+  }
+  var URGENT = { high: 0, normal: 1, low: 2 };
+  function drawFollowups(threads) {
+    var now = Date.now();
+    var live = threads.filter(function (t) { return !t.archived; });
+    var due = [];
+    var soon = [];
+    live.forEach(function (t) {
+      if (t.reminderAt && t.reminderAt <= now) {
+        due.push({ t: t, kind: 'Reminder', note: t.reminderNote, at: t.reminderAt, rank: -1 });
+      } else if (t.reminderAt && t.reminderAt - now < 7 * 864e5) {
+        soon.push({ t: t, kind: 'Reminder', note: t.reminderNote, at: t.reminderAt });
+      }
+      if (t.followupDue && t.fu) {
+        due.push({ t: t, kind: t.fu.reason || 'Follow-up', note: t.fu.draft, at: t.fu.dueAt, rank: URGENT[t.fu.urgency] == null ? 1 : URGENT[t.fu.urgency], urgent: t.fu.urgency === 'high' });
+      }
+    });
+    due.sort(function (a, b) { return a.rank - b.rank || (a.at || 0) - (b.at || 0); });
+    soon.sort(function (a, b) { return a.at - b.at; });
+
+    var box = $('followups');
+    box.textContent = '';
+    $('fuCount').textContent = due.length ? String(due.length) : '';
+    if (!due.length) box.appendChild(el('p', 'muted', 'Nothing due. You\'re caught up.'));
+    due.forEach(function (x) { box.appendChild(row(x, now, false)); });
+    if (soon.length) {
+      box.appendChild(el('h3', null, 'Reminders this week'));
+      soon.forEach(function (x) { box.appendChild(row(x, now, true)); });
+    }
+  }
+  function row(x, now, later) {
+    var a = el('a', 'fu' + (x.urgent ? ' urgent' : '') + (later ? ' later' : ''));
+    a.href = DASH + '?c=' + encodeURIComponent(x.t.phone);
+    var top = el('div', 'fu-top');
+    top.appendChild(el('span', 'fu-name', who(x.t)));
+    top.appendChild(el('span', 'fu-when', when(x.at, now)));
+    a.appendChild(top);
+    a.appendChild(el('div', 'fu-kind', x.kind + (x.t.vehicleLabel ? ' · ' + x.t.vehicleLabel : '') + (x.t.city ? ' · ' + x.t.city : '')));
+    if (x.note) a.appendChild(el('div', 'fu-note', x.note));
+    return a;
+  }
+  function loadFollowups() {
+    fetch(DASH + 'api/threads', { credentials: 'include', cache: 'no-store' })
+      .then(function (r) {
+        if (r.status === 401) throw new Error('signin');
+        if (!r.ok) throw new Error('http');
+        return r.json();
+      })
+      .then(function (j) { drawFollowups((j && j.threads) || []); })
+      .catch(function (e) {
+        var box = $('followups');
+        box.textContent = '';
+        $('fuCount').textContent = '';
+        if (e && e.message === 'signin') {
+          box.appendChild(el('p', 'muted', 'Sign in to your dashboard in this Chrome once and your follow-ups show up here.'));
+          var b = el('a', 'btn primary', 'Sign in to the dashboard');
+          b.href = DASH;
+          box.appendChild(b);
+        } else {
+          box.appendChild(el('p', 'muted', "Couldn't reach your dashboard. Try again in a minute."));
+        }
+      });
+  }
+  loadFollowups();
+  setInterval(loadFollowups, 2 * 6e4);
 
   // ---- links -----------------------------------------------------------------
   function getLinks() { return load('links', DEFAULT_LINKS); }
@@ -355,17 +425,14 @@ function start() {
     }).filter(Boolean);
   }
   function openSettings() {
-    $('calId').value = load('calId', '');
     $('linkText').value = linksToText(getLinks());
     $('settings').showModal();
   }
   $('gear').onclick = openSettings;
   $('resetLinks').onclick = function () { $('linkText').value = linksToText(DEFAULT_LINKS); };
   $('saveSettings').onclick = function () {
-    save('calId', $('calId').value.trim());
     var parsed = textToLinks($('linkText').value);
     save('links', parsed.length ? parsed : DEFAULT_LINKS);
-    drawCal();
     drawLinks();
   };
 }

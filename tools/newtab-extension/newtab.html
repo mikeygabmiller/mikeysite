@@ -39,12 +39,12 @@
     <p class="fine">Live from the same calendar the website books into. Never same day; tomorrow closes at 9 PM.</p>
   </section>
 
-  <section class="card calendar">
+  <section class="card follow">
     <div class="card-head">
-      <h2>Calendar</h2>
-      <a href="https://calendar.google.com/calendar/r/agenda" target="_blank" rel="noopener">Open</a>
+      <h2>Follow-ups <span id="fuCount" class="count"></span></h2>
+      <a href="https://texting.mikeysdetailingsnohomish.workers.dev/" target="_blank" rel="noopener">Dashboard</a>
     </div>
-    <div id="cal" class="cal"></div>
+    <div id="followups" class="fu-list"><p class="muted">Loading from your dashboard...</p></div>
   </section>
 
   <section class="card links">
@@ -67,10 +67,6 @@
 <dialog id="settings">
   <form method="dialog" class="settings">
     <h2>Settings</h2>
-
-    <label for="calId">Google Calendar to show</label>
-    <input id="calId" type="text" placeholder="your Gmail address, or a calendar ID">
-    <p class="fine">Find it in Google Calendar: Settings, click the calendar on the left, "Integrate calendar", Calendar ID. Your main calendar's ID is your Gmail address. Put more than one with commas between. Saved on this computer only.</p>
 
     <label for="linkText">Links (one per line: Name | address)</label>
     <textarea id="linkText" rows="12"></textarea>
