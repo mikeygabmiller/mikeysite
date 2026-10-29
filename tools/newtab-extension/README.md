@@ -12,7 +12,10 @@ A new tab page built for the business, not for an office. Every new tab shows:
 - **Open times customers see**: the next four openings for Exterior, Interior
   and Full Detail (SUV size), from the dashboard's public `/api/next-openings`,
   the same answer the website's calculator gives.
-- **Calendar**: your Google Calendar's agenda, once you add its ID in Settings.
+- **Follow-ups**: what the dashboard says is due (reply owed, quote
+  follow-ups, review asks), plus your own "remind me" dates, due ones first
+  and the rest of this week under them. Tap one to open that chat in the
+  dashboard. Refreshes every 2 minutes. Read only: nothing is sent from here.
 - **Go to**: one-tap links (dashboard, Google Business, Ads, Search Console,
   Analytics, Stripe, Gmail, Calendar, Photos, Make, the site, GitHub, Claude).
   Edit them in Settings.
@@ -22,10 +25,13 @@ A new tab page built for the business, not for an office. Every new tab shows:
 
 ## What it can see
 
-No permissions. It can't read other tabs, your Gmail or anything you browse.
-Notes and settings stay in this browser on this computer (they don't sync to
-your phone or another computer). The calendar ID is typed in Settings, never
-stored in this repo, which is public.
+One permission: your dashboard's address
+(`texting.mikeysdetailingsnohomish.workers.dev`), so Chrome sends your
+dashboard sign-in along when it asks for the follow-up list. Chrome shows it
+as "Read and change your data on texting.mikeysdetailingsnohomish.workers.dev".
+It only ever reads the list. It can't read other tabs, your Gmail or anything
+you browse. The follow-up list isn't saved anywhere; notes and settings stay
+in this browser on this computer (they don't sync to your phone).
 
 ## Install (one time, about 2 minutes)
 
@@ -37,11 +43,8 @@ stored in this repo, which is public.
 4. Click **Load unpacked** and pick the `newtab-extension` folder (the one with
    `manifest.json` in it).
 5. Open a new tab. If Chrome asks "Change back to Google?", click **Keep it**.
-6. Click **Settings** (top right of the page), paste your calendar ID, Save.
-
-Your main Google Calendar's ID is your Gmail address. Another calendar's ID is
-in Google Calendar: Settings, click the calendar on the left, "Integrate
-calendar", Calendar ID. Put more than one with commas between.
+6. If the Follow-ups card says to sign in, click **Sign in to the dashboard**
+   and sign in once. The sign-in lasts 90 days; after that it asks again.
 
 ## Updating it
 
@@ -49,9 +52,10 @@ Replace the files in the folder with the new ones, then on
 `chrome://extensions` click the circular arrow on "Mikey's New Tab". Notes and
 settings are kept.
 
-## Not checked yet
+## Checked
 
-- **A private calendar in the embed.** Tested with a public calendar
-  (2026-10-29), which works. Your own calendar should show as long as you're
-  signed in to Google in that Chrome; if it says you don't have permission,
-  use the Open link on the card instead.
+On 2026-10-29 in a test Chrome: the dashboard sign-in cookie is sent with the
+follow-up request, the signed-out message shows without it, and sample
+follow-ups draw and link to `?c=<phone>`, which opens that chat. Not yet
+seen against the live list with a real sign-in; if the card looks wrong once
+you're signed in, say so.
