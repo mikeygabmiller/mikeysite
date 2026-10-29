@@ -2,13 +2,17 @@
 
 A new tab page built for the business, not for an office. Every new tab shows:
 
-- **Snohomish weather**: chance of rain by the hour (next 13 hours, or tomorrow
-  7 AM to 7 PM after 5 PM), the temperature (32° and below in blue), and the
-  next four days. Hours after dark are faded. From the National Weather Service
-  (public, free, no account).
-- **Sunset, dark and light left today**, plus tomorrow's sunset, and a warning
-  the week before the clocks change. Worked out on the computer, no network.
-  Checked against sunrise-sunset.org on 2026-10-29: within a minute.
+- **Sunset, big, at the top of the weather card**: today's sunset, when it's
+  dark, how much light is left, tomorrow's sunset, and a warning the week
+  before the clocks change. After dark it shows tomorrow's. Worked out on the
+  computer, no network. Checked against sunrise-sunset.org on 2026-10-29:
+  within a minute.
+- **Rain in one sentence** ("Some chance of rain from 5 PM (up to 28%)"), then
+  each hour: the chance of rain (blue from 20%, solid blue from 50%) and the
+  temperature (32° and below in blue). The sunset hour is marked in orange and
+  hours after dark are faded. Next 13 hours, or tomorrow 7 AM to 7 PM after
+  5 PM. Then the next four days. From the National Weather Service (public,
+  free, no account).
 - **Open times customers see**: the next four openings for Exterior, Interior
   and Full Detail (SUV size), from the dashboard's public `/api/next-openings`,
   the same answer the website's calculator gives.
@@ -16,11 +20,12 @@ A new tab page built for the business, not for an office. Every new tab shows:
   follow-ups, review asks), plus your own "remind me" dates, due ones first
   and the rest of this week under them. Tap one to open that chat in the
   dashboard. Refreshes every 2 minutes. Read only: nothing is sent from here.
-- **Go to**: one-tap links (dashboard, Google Business, Ads, Search Console,
+- **Links bar right under the search box**, so it's on screen without
+  scrolling even on a small laptop: one-tap links (dashboard, Google Business, Ads, Search Console,
   Analytics, Stripe, Gmail, Calendar, Photos, Make, the site, GitHub, Claude).
   Edit them in Settings.
-- **Copy to text a customer**: the quote calculator, the call page and the
-  Google review link, one tap each.
+- **Copy for a text** (end of the links bar): the quote calculator, the call
+  page and the Google review link, one tap each.
 - **Notes**: saves as you type.
 
 ## What it can see

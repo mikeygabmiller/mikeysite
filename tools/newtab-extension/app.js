@@ -92,6 +92,9 @@ function fmtTime(date) {
 function fmtHour(date) {
   return new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric' }).format(date).replace(' ', '').toLowerCase();
 }
+function fmtHourLong(date) {
+  return new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric' }).format(date);
+}
 function offsetOf(date) {
   return new Intl.DateTimeFormat('en-US', { timeZone: TZ, timeZoneName: 'shortOffset' })
     .formatToParts(date).filter(function (p) { return p.type === 'timeZoneName'; })[0].value;
@@ -141,23 +144,36 @@ function start() {
   setInterval(tick, 15e3);
 
   // ---- sun -----------------------------------------------------------------
+  // The biggest thing on the card, because every job has to finish before
+  // dark. After dark it switches to tomorrow's.
+  function hm(ms) {
+    var m = Math.round(ms / 6e4);
+    return (m >= 60 ? Math.floor(m / 60) + ' h ' : '') + (m % 60) + ' min';
+  }
   function drawSun() {
     var now = new Date();
     var today = sunFor(now);
     var tomorrow = sunFor(new Date(now.getTime() + 864e5));
     var box = $('sun');
     box.textContent = '';
-    function item(label, value) {
-      var d = el('div');
-      d.appendChild(el('span', 'lbl', label));
-      d.appendChild(el('b', null, value));
-      box.appendChild(d);
+    var afterDark = now >= today.dark;
+    var main = afterDark ? tomorrow : today;
+    var hero = el('div', 'sun-hero');
+    hero.appendChild(el('div', 'sun-lbl', afterDark ? 'Sunset tomorrow' : 'Sunset today'));
+    hero.appendChild(el('div', 'sun-big', fmtTime(main.sunset)));
+    box.appendChild(hero);
+    var side = el('div', 'sun-side');
+    side.appendChild(el('div', 'sun-line', 'Dark by ' + fmtTime(main.dark)));
+    if (!afterDark) {
+      var left = el('div', 'sun-line');
+      left.appendChild(el('b', null, hm(today.dark - now)));
+      left.appendChild(document.createTextNode(' of light left'));
+      side.appendChild(left);
+      side.appendChild(el('div', 'sun-line muted', 'Tomorrow: ' + fmtTime(tomorrow.sunset)));
+    } else {
+      side.appendChild(el('div', 'sun-line muted', 'Sunrise ' + fmtTime(tomorrow.sunrise)));
     }
-    item('Sunset today', fmtTime(today.sunset));
-    item('Dark', fmtTime(today.dark));
-    var left = (today.dark - now) / 36e5;
-    item('Light left', left <= 0 ? 'none' : (left >= 1 ? Math.floor(left) + ' h ' : '') + Math.round((left % 1) * 60) + ' min');
-    item('Sunset tomorrow', fmtTime(tomorrow.sunset));
+    box.appendChild(side);
 
     // Warn the week before the clocks change: sunset jumps an hour.
     for (var k = 1; k <= 7; k++) {
@@ -177,13 +193,29 @@ function start() {
 
   // ---- hourly rain -----------------------------------------------------------
   // Before 5 PM: the next 13 hours from now. After: tomorrow 7 AM to 7 PM, the
-  // hours his jobs run in.
+  // hours his jobs run in. One plain sentence on top, then the hours, with the
+  // sunset hour marked and the hours after dark faded.
+  function popOf(p) { return (p.probabilityOfPrecipitation && p.probabilityOfPrecipitation.value) || 0; }
+  function rainSentence(list) {
+    var max = 0;
+    list.forEach(function (p) { max = Math.max(max, popOf(p)); });
+    var likely = list.filter(function (p) { return popOf(p) >= 50; })[0];
+    var maybe = list.filter(function (p) { return popOf(p) >= 20; })[0];
+    var out;
+    if (likely) out = { cls: 'wet', text: 'Rain likely from ' + fmtHourLong(new Date(likely.startTime)) + ' (up to ' + max + '%).' };
+    else if (maybe) out = { cls: 'maybe', text: 'Some chance of rain from ' + fmtHourLong(new Date(maybe.startTime)) + ' (up to ' + max + '%).' };
+    else out = { cls: 'dry', text: 'Looks dry. No hour above ' + max + '% chance of rain.' };
+    var cold = list.filter(function (p) { return p.temperature <= 32; })[0];
+    if (cold) out.text += ' Freezing (32° or colder) from ' + fmtHourLong(new Date(cold.startTime)) + '.';
+    return out;
+  }
   function drawHourly(data) {
     var periods = (data && data.properties && data.properties.periods) || [];
     var now = new Date();
+    var later = hourOf(now) >= 17;
     var list;
-    if (hourOf(now) < 17) {
-      list = periods.slice(0, 13);
+    if (!later) {
+      list = periods.filter(function (p) { return new Date(p.endTime) > now; }).slice(0, 13);
     } else {
       var tmr = ymd(new Date(now.getTime() + 864e5)).join('-');
       list = periods.filter(function (p) {
@@ -192,25 +224,26 @@ function start() {
       });
     }
     var box = $('hourly');
+    var sum = $('rainSum');
     box.textContent = '';
+    sum.textContent = '';
     if (!list.length) { box.appendChild(el('p', 'muted', 'No hourly forecast right now.')); return; }
-    var lbl = el('div', 'muted small', hourOf(now) < 17 ? 'Next 13 hours, chance of rain' : 'Tomorrow 7 AM to 7 PM, chance of rain');
-    lbl.style.gridColumn = '1 / -1';
-    box.appendChild(lbl);
+    var r = rainSentence(list);
+    sum.className = 'rain-sum ' + r.cls;
+    sum.appendChild(el('span', 'when', later ? 'Tomorrow 7 AM to 7 PM' : 'Next 13 hours'));
+    sum.appendChild(el('span', null, r.text));
     list.forEach(function (p) {
       var d = new Date(p.startTime);
-      var pop = (p.probabilityOfPrecipitation && p.probabilityOfPrecipitation.value) || 0;
+      var end = new Date(p.endTime);
+      var pop = popOf(p);
       var s = sunFor(d);
-      var col = el('div', 'hr' + (d >= s.dark || d < s.sunrise ? ' dark' : ''));
+      var isSunset = s.sunset >= d && s.sunset < end;
+      var col = el('div', 'hr' + (d >= s.dark || end <= s.sunrise ? ' dark' : '') + (isSunset ? ' sunset' : ''));
       col.title = p.shortForecast + ', ' + p.windSpeed + ' ' + p.windDirection;
-      col.appendChild(el('div', 'pct', pop + '%'));
-      var wrap = el('div', 'bar-wrap');
-      var bar = el('div', 'bar');
-      bar.style.height = Math.max(2, pop) + '%';
-      wrap.appendChild(bar);
-      col.appendChild(wrap);
-      col.appendChild(el('div', 't' + (p.temperature <= 32 ? ' cold' : ''), p.temperature + '°'));
       col.appendChild(el('div', 'h', fmtHour(d)));
+      col.appendChild(el('div', 'pill ' + (pop >= 50 ? 'wet' : pop >= 20 ? 'maybe' : 'dry'), pop + '%'));
+      col.appendChild(el('div', 't' + (p.temperature <= 32 ? ' cold' : ''), p.temperature + '°'));
+      col.appendChild(el('div', 'tag', isSunset ? 'sunset ' + fmtTime(s.sunset).replace(' PM', '').replace(' AM', '') : ''));
       box.appendChild(col);
     });
   }
@@ -234,7 +267,7 @@ function start() {
       d.appendChild(el('div', 'n', p.name));
       var pop = (p.probabilityOfPrecipitation && p.probabilityOfPrecipitation.value) || 0;
       var line = el('div');
-      line.appendChild(el('span', 'p', pop + '% rain'));
+      line.appendChild(el('span', 'p ' + (pop >= 50 ? 'wet' : pop >= 20 ? 'maybe' : 'dry'), pop + '% rain'));
       line.appendChild(document.createTextNode(' · ' + p.temperature + '°'));
       d.appendChild(line);
       d.appendChild(el('div', 'f', p.shortForecast));
