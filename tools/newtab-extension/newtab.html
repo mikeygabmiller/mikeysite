@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>New Tab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="when">
+    <div id="clock" class="clock">--:--</div>
+    <div id="today" class="today"></div>
+  </div>
+  <form class="search" action="https://www.google.com/search" method="get">
+    <input name="q" type="search" placeholder="Search Google" autocomplete="off" autofocus>
+  </form>
+  <button id="gear" class="gear" type="button" title="Settings">Settings</button>
+</header>
+
+<main class="grid">
+
+  <section class="card weather">
+    <div class="card-head">
+      <h2>Snohomish weather</h2>
+      <a href="https://forecast.weather.gov/MapClick.php?lat=47.9129&lon=-122.0982" target="_blank" rel="noopener">NWS</a>
+    </div>
+    <div id="sun" class="sun"></div>
+    <div id="hourly" class="hourly"><p class="muted">Loading the hourly forecast...</p></div>
+    <div id="days" class="days"></div>
+  </section>
+
+  <section class="card openings">
+    <div class="card-head">
+      <h2>Open times customers see</h2>
+      <a href="https://mikeysdetailing.com/#booking" target="_blank" rel="noopener">Calculator</a>
+    </div>
+    <div id="openings" class="open-cols"><p class="muted">Loading your calendar...</p></div>
+    <p class="fine">Live from the same calendar the website books into. Never same day; tomorrow closes at 9 PM.</p>
+  </section>
+
+  <section class="card calendar">
+    <div class="card-head">
+      <h2>Calendar</h2>
+      <a href="https://calendar.google.com/calendar/r/agenda" target="_blank" rel="noopener">Open</a>
+    </div>
+    <div id="cal" class="cal"></div>
+  </section>
+
+  <section class="card links">
+    <div class="card-head"><h2>Go to</h2></div>
+    <div id="links" class="link-grid"></div>
+    <h3>Copy to text a customer</h3>
+    <div id="copies" class="copy-row"></div>
+  </section>
+
+  <section class="card notes">
+    <div class="card-head">
+      <h2>Notes</h2>
+      <span id="saved" class="muted small"></span>
+    </div>
+    <textarea id="notes" spellcheck="true" placeholder="Callbacks, supplies to grab, anything. Saves as you type, on this computer only."></textarea>
+  </section>
+
+</main>
+
+<dialog id="settings">
+  <form method="dialog" class="settings">
+    <h2>Settings</h2>
+
+    <label for="calId">Google Calendar to show</label>
+    <input id="calId" type="text" placeholder="your Gmail address, or a calendar ID">
+    <p class="fine">Find it in Google Calendar: Settings, click the calendar on the left, "Integrate calendar", Calendar ID. Your main calendar's ID is your Gmail address. Put more than one with commas between. Saved on this computer only.</p>
+
+    <label for="linkText">Links (one per line: Name | address)</label>
+    <textarea id="linkText" rows="12"></textarea>
+
+    <div class="settings-buttons">
+      <button id="resetLinks" type="button" class="ghost">Put the default links back</button>
+      <span class="spacer"></span>
+      <button value="cancel" class="ghost">Cancel</button>
+      <button id="saveSettings" value="save" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
