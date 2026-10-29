@@ -9,6 +9,8 @@
   --rain: #4c9be8;
   --cold: #8fd3ff;
   --warn: #f2b33d;
+  --sun: #ff9f43;
+  --sun-soft: rgba(255, 159, 67, .14);
 }
 @media (prefers-color-scheme: light) {
   :root {
@@ -21,6 +23,8 @@
     --rain: #1f6fc4;
     --cold: #1a7fb8;
     --warn: #a86a00;
+    --sun: #c25e00;
+    --sun-soft: rgba(194, 94, 0, .10);
   }
 }
 
@@ -40,8 +44,8 @@ h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: v
 .fine { color: var(--muted); font-size: 12px; margin: 10px 0 0; }
 
 /* Top bar */
-.top { display: flex; align-items: center; gap: 24px; max-width: 1500px; margin: 0 auto 18px; }
-.clock { font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.top { display: flex; align-items: center; gap: 24px; max-width: 1500px; margin: 0 auto 14px; }
+.clock { font-size: 34px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
 .today { color: var(--muted); margin-top: 4px; }
 .search { flex: 1; }
 .search input {
@@ -53,25 +57,31 @@ h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: v
 .gear { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 8px 12px; cursor: pointer; font: inherit; }
 .gear:hover { color: var(--text); border-color: var(--muted); }
 
+/* Links, right under the search bar so they're always on screen */
+.linkbar { max-width: 1500px; margin: 0 auto 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.linkbar .link-grid { display: flex; flex-wrap: wrap; gap: 6px; flex: 1 1 600px; }
+.copy-wrap { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.copy-lbl { color: var(--muted); font-size: 12px; }
+.copy-row button { border-radius: 999px; padding: 6px 11px; font-size: 13px; background: var(--card); }
+
 /* Layout */
 .grid {
   max-width: 1500px; margin: 0 auto;
   display: grid; gap: 16px;
-  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr;
   grid-template-areas:
-    "weather openings follow"
-    "links   links    notes";
+    "weather follow openings"
+    "notes   notes  notes";
 }
 .weather  { grid-area: weather; }
 .openings { grid-area: openings; }
 .follow   { grid-area: follow; }
-.links    { grid-area: links; }
 .notes    { grid-area: notes; }
 @media (max-width: 1100px) {
-  .grid { grid-template-columns: 1fr 1fr; grid-template-areas: "weather weather" "openings follow" "links links" "notes notes"; }
+  .grid { grid-template-columns: 1fr 1fr; grid-template-areas: "weather weather" "follow openings" "notes notes"; }
 }
 @media (max-width: 700px) {
-  .grid { grid-template-columns: 1fr; grid-template-areas: "weather" "follow" "openings" "links" "notes"; }
+  .grid { grid-template-columns: 1fr; grid-template-areas: "weather" "follow" "openings" "notes"; }
   .top { flex-wrap: wrap; }
 }
 
@@ -81,23 +91,36 @@ h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: v
 .card-head a:hover { color: var(--text); text-decoration: underline; }
 
 /* Weather */
-.sun { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 12px; }
-.sun b { font-size: 18px; }
-.sun .lbl { color: var(--muted); font-size: 12px; display: block; }
-.sun .note { flex-basis: 100%; color: var(--warn); font-size: 13px; }
-.hourly { display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px; align-items: end; }
-.hr { text-align: center; font-size: 12px; }
-.hr .bar-wrap { height: 54px; display: flex; align-items: flex-end; justify-content: center; }
-.hr .bar { width: 70%; background: var(--rain); border-radius: 3px 3px 0 0; min-height: 2px; opacity: .85; }
-.hr .pct { color: var(--rain); font-weight: 600; }
-.hr .t { font-weight: 600; }
+.sun { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; background: var(--sun-soft); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; }
+.sun-lbl { color: var(--sun); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.sun-big { color: var(--sun); font-size: 44px; font-weight: 800; line-height: 1.05; letter-spacing: -.02em; }
+.sun-side { font-size: 16px; line-height: 1.5; }
+.sun-side b { font-weight: 700; }
+.sun .note { flex-basis: 100%; color: var(--warn); font-size: 13px; font-weight: 600; }
+
+.rain-sum { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+.rain-sum .when { display: block; color: var(--muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+.rain-sum.wet { color: var(--rain); }
+
+.hourly { display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 4px; }
+.hr { text-align: center; padding: 6px 0 4px; border-radius: 8px; }
+.hr .h { color: var(--muted); font-size: 12px; font-weight: 600; }
+.hr .pill { margin: 5px 2px; padding: 4px 0; border-radius: 6px; font-size: 13px; font-weight: 700; }
+.pill.dry { color: var(--muted); }
+.pill.maybe { background: rgba(76, 155, 232, .22); color: var(--rain); }
+.pill.wet { background: var(--rain); color: #fff; }
+.hr .t { font-size: 15px; font-weight: 700; }
 .hr .t.cold { color: var(--cold); }
-.hr .h { color: var(--muted); }
-.hr.dark { opacity: .45; }
+.hr .tag { height: 14px; font-size: 10px; font-weight: 700; color: var(--sun); white-space: nowrap; }
+.hr.sunset { background: var(--sun-soft); box-shadow: inset 0 -3px 0 var(--sun); }
+.hr.dark { opacity: .4; }
+
 .days { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
-.day { font-size: 13px; }
-.day .n { font-weight: 600; }
-.day .p { color: var(--rain); font-weight: 600; }
+.day { font-size: 14px; }
+.day .n { font-weight: 700; }
+.day .p { font-weight: 700; }
+.day .p.dry { color: var(--muted); }
+.day .p.maybe, .day .p.wet { color: var(--rain); }
 .day .f { color: var(--muted); font-size: 12px; }
 
 /* Openings */
@@ -128,10 +151,9 @@ h3 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: v
 .btn.primary { background: var(--red); color: #fff; }
 
 /* Links */
-.link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .link-grid a {
   display: flex; align-items: center; gap: 8px;
-  padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+  padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: 13px;
   text-decoration: none; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .link-grid a:hover { border-color: var(--red); background: var(--red-soft); }
@@ -147,7 +169,7 @@ button.copied { border-color: #2e9e5b; color: #2e9e5b; }
 /* Notes */
 .notes { display: flex; flex-direction: column; }
 .notes textarea {
-  flex: 1; min-height: 200px; width: 100%; resize: vertical;
+  flex: 1; min-height: 120px; width: 100%; resize: vertical;
   background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 10px;
   padding: 10px 12px; font: inherit; outline: none;
 }

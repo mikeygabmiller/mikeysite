@@ -18,6 +18,14 @@
   <button id="gear" class="gear" type="button" title="Settings">Settings</button>
 </header>
 
+<nav class="linkbar">
+  <div id="links" class="link-grid"></div>
+  <div class="copy-wrap">
+    <span class="copy-lbl">Copy for a text:</span>
+    <div id="copies" class="copy-row"></div>
+  </div>
+</nav>
+
 <main class="grid">
 
   <section class="card weather">
@@ -26,6 +34,7 @@
       <a href="https://forecast.weather.gov/MapClick.php?lat=47.9129&lon=-122.0982" target="_blank" rel="noopener">NWS</a>
     </div>
     <div id="sun" class="sun"></div>
+    <div id="rainSum" class="rain-sum"></div>
     <div id="hourly" class="hourly"><p class="muted">Loading the hourly forecast...</p></div>
     <div id="days" class="days"></div>
   </section>
@@ -47,12 +56,6 @@
     <div id="followups" class="fu-list"><p class="muted">Loading from your dashboard...</p></div>
   </section>
 
-  <section class="card links">
-    <div class="card-head"><h2>Go to</h2></div>
-    <div id="links" class="link-grid"></div>
-    <h3>Copy to text a customer</h3>
-    <div id="copies" class="copy-row"></div>
-  </section>
 
   <section class="card notes">
     <div class="card-head">
