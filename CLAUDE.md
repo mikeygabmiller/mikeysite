@@ -263,6 +263,19 @@ Don't widen it, extend the window or swap the extras without Mikey; it's
 the same promise the hangers and postcards make. After January 1 take the
 dormant code out rather than leaving it.
 
+**The switch-off is tested** (2026-11-03): `node tools/rain-ready-switchoff-test.cjs`
+(serve the repo on :8766 first) fakes the browser clock at 11:59 PM Dec 31
+and 12:01 AM Jan 1 and drives a sedan Full Detail to the price screen. Both
+passed: extras free before, gone after, $369 either way. Rerun it after any
+change to the calculator before January. The January cleanup, once it's past:
+the `.mh-rr` chip and its CSS, the `#rain-ready` section and its script, the
+`content-visibility` line for it, `RR_END` / `RR_FREE` / `rrLive` / `rrOn` /
+`syncRainReady` and every branch on them in the calculator (the "(free,
+Rain-Ready)" labels and the one-line extras row), the `rain_ready` prefill
+button handler, `RR`/`RR_END` and the extras row in `onbored/index.html`, and
+this test file. `PRICING.md` keeps what the offer promised, for quotes saved
+before the end.
+
 **The $50 weekend deal** (Mikey, 2026-10-24) ended at midnight Pacific going
 into Mon Oct 26, 2026, and its code (`DEAL_OFF` / `DEAL_END`, the `data-deal`
 hero chip and card bar) was taken out of `index.html` on 2026-10-27.
