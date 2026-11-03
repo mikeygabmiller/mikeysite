@@ -439,6 +439,14 @@ RETIRED_CLAIMS = [
     # said no to both; the area is the twelve towns.
     (re.compile(r"(?:anywhere in|all of) Snohomish County|most of the county|whole county", re.I),
      "wider than the twelve towns he serves (Lynnwood and Edmonds are in the county and he doesn't go)"),
+    # 2026-11-03: the homepage said he's in all twelve towns "every week" (the
+    # facts table says most weeks; his week holds about 7 jobs), and the city
+    # service template carried tallies nobody kept: "most ... jobs start here",
+    # "dozens of ... HOAs", "one of my busiest zip codes", "pays for itself".
+    (re.compile(r"(?:Arlington|towns?|I'?m in|I am|Mikey is in) every week", re.I),
+     "more than the facts table: he's in the twelve towns most weeks"),
+    (re.compile(r"jobs start here|dozens of [\w ]{0,20}(?:HOAs|customers|clients|jobs)|busiest zip|most of my [\w ]{0,20}(?:clients|customers|members)|pays for itself", re.I),
+     "a tally or payoff nobody kept: say what happens, not how often it happens to him"),
 ]
 claim_files = price_files + [ROOT / "outreach/DIRECTORIES.md", ROOT / "outreach/CALL-SCRIPT.md",
                              ROOT / "print/tools/build-business-card.cjs", ROOT / "print/tools/build-yard-sign.cjs",
