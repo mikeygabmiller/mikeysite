@@ -61,6 +61,40 @@ last year). GROWTH-PLAN SG1 wanted 1.5 a week. The question from
 dashboard's review ask actually going out after each job (jobs marked Won,
 the ask switched on in Settings)?
 
+## Why reviews are slow: the dashboard texts, read 2026-11-03
+
+Mikey gave the session his dashboard login to read every conversation
+(read-only: `?peek=1`, which leaves unread badges alone; checked before and
+after). No names or numbers go in this file; the repo is public.
+
+- **146 conversations since June 21, 1,508 messages. Only 6 are marked
+  "won".** The dashboard's review ask only fires for "won" customers, so it
+  has barely run. Most finished jobs stay "new".
+- **13 finished jobs since July never got the review link.** Most of those
+  customers said something like "looks fantastic" in the same thread. The link
+  went out 9 times in all, nearly always typed by hand.
+- **Two hand-typed asks said "5-star"** ("as long as it is 5 stars"). Google's
+  policy forbids asking for positive reviews specifically. The dashboard's own
+  wording is fine; only typed ones did it.
+- The fix for the code side is twillowdashbored PR #235 (waiting on Mikey).
+  The fix that works today is tapping Done on the Jobs board: its "all
+  finished" text carries the link.
+
+Other things the texts showed:
+
+- **Reply speed:** median 61 minutes to a personal reply; a quarter of new
+  leads wait over 4 hours. One same-day lead was gone in 33 minutes.
+- **What people ask before booking:** when he can come (52 of 162 questions),
+  price (24), what's included (24), water/power/being home (9), how to pay (9),
+  how long (8). How to pay isn't answered anywhere on the site.
+- **Hand quotes drift from the price book:** a sedan Full Detail at $260, SUV
+  interiors at $250 and $270 (book: $289), and two prices set after the job
+  ("I'd say $350 would be fair"). The site promises an exact price up front.
+- **Payment friction:** Zelle goes to (425) 232-1355, the old number the facts
+  table says never to publish, and two customers couldn't find it; Venmo goes
+  to a personal account under another name, which two customers asked about.
+- A ceramic lead from North Bend said they found him on ChatGPT.
+
 ## Fixed alongside this pull (2026-11-03)
 
 - **Angela's quote on the door hanger, the EDDM postcard, the shared postcard
