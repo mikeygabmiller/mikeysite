@@ -5,7 +5,8 @@ from pathlib import Path
 from html.parser import HTMLParser
 
 ROOT = Path("/home/user/mikeysite")
-SKIP = {"mockups", "systems", "_disabled", "social", "print", "tools"}  # _disabled/ is parked code, not served
+SKIP = {"mockups", "systems", "_disabled", "social", "print", "tools", "drafts"}  # _disabled/ is parked code, not served
+# drafts/ holds blog posts written ahead (not served, see _config.yml); each is checked when it moves into blog/
 # tools/ is excluded in _config.yml too; tools/blog-redirect/ is deployed to the old
 # blog subdomain on Netlify, not to this site.
 # social/ is the Instagram/Facebook kit, excluded in _config.yml. Its npm install
