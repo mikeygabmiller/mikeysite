@@ -138,11 +138,11 @@ local condition, links to the page it feeds, and gets a link back from it.
 | 2 | ~~Tree sap off paint without hurting it~~ (live 2026-10-27) | exterior, paint correction | firs everywhere he works; Slide In and Big's rank on it |
 | 3 | ~~Cleaning up after kids: car seats, crumbs, melted snacks~~ (live 2026-10-27) | interior | two reviews (Matt Miller, Kathryn Miller) |
 | 4 | Getting a smell out after someone's been sick in the car | interior | Teresa Hekker's review; high-intent search |
-| 5 | Is detailing a car before you sell it worth it? | full detail | Marissa Jones's review |
+| 5 | Is detailing a car before you sell it worth it? (written 2026-11-03, in `drafts/`, publish Nov 24) | full detail | Marissa Jones's review |
 | 6 | ~~Water spots: why they etch, what takes them off~~ (live 2026-11-03) | paint correction | "water spot removal mill creek" in Search Console |
-| 7 | RV and travel trailer detailing | quote by photo | Mikey's yes 2026-10-17; Jason Brandvold's review; no price |
+| 7 | RV and travel trailer detailing (written 2026-11-03, in `drafts/`, publish Nov 10) | quote by photo | Mikey's yes 2026-10-17; Jason Brandvold's review; no price |
 | 8 | Damp carpet and the musty smell (rainy season) | interior | Nov–Mar; ask Mikey first whether he does mold before the word goes in |
-| 9 | How to pick a mobile detailer | homepage | AI panel prompt 23; honest checklist, nothing about insurance |
+| 9 | How to pick a mobile detailer (written 2026-11-03, in `drafts/`, publish Nov 17) | homepage | AI panel prompt 23; honest checklist, nothing about insurance |
 | 10 | Wax, sealant or ceramic in Washington rain | ceramic | after the Nov 4 read (ceramic page is in the title test) |
 
 ## 7. Local links and mentions (slow, but they last)
