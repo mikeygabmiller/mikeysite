@@ -76,6 +76,12 @@ after). No names or numbers go in this file; the repo is public.
 - **Two hand-typed asks said "5-star"** ("as long as it is 5 stars"). Google's
   policy forbids asking for positive reviews specifically. The dashboard's own
   wording is fine; only typed ones did it.
+- **The review ask is switched off** in the dashboard's settings
+  (`say.reviewAsk: false`, read 2026-11-03). That turns off both the
+  follow-up ask and the link at the end of the Jobs board's "all finished"
+  text, so the link only ever went out when Mikey typed it. This is the main
+  cause, and it's one switch in his Settings; turning it on is his call
+  because it adds the link to texts customers get.
 - The fix for the code side is twillowdashbored PR #235 (waiting on Mikey).
   The fix that works today is tapping Done on the Jobs board: its "all
   finished" text carries the link.
