@@ -738,9 +738,9 @@ ${Q}
   },
   {
     id: 'B13', week: 'bank', pillar: 'Trust', title: 'Review: truck before selling',
-    slides: [{ t: 'review', quote: 'We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles.' }],
-    alt: 'Five-star customer review: We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles.',
-    ig: `"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+    slides: [{ t: 'review', quote: 'We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!' }],
+    alt: 'Five-star customer review: We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!',
+    ig: `"We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!"
 
 Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
 

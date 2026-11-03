@@ -1332,7 +1332,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 **Instagram**
 
 ```
-"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+"We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!"
 
 Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
 
@@ -1344,7 +1344,7 @@ Exact price for your car in 60 seconds, link in bio.
 **Facebook**
 
 ```
-"We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles."
+"We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!"
 
 Selling a car? A detail before you list it is money well spent. A clean car photographs better, shows better, and tells a buyer it was looked after.
 
@@ -1353,7 +1353,7 @@ Exact price for your car in 60 seconds: mikeysdetailing.com
 
 **Alt text** (Instagram: Advanced settings → Accessibility)
 
-> Five-star customer review: We first hired Mikey to detail our truck before selling it. He did a great job so we had him come back for our other 3 vehicles.
+> Five-star customer review: We first hired Mikey a few months ago to detail our truck before selling it. He did a great job so we had him come back and detail the inside and outside of our other 3 vehicles. Great work!
 
 ### B14 · Driveway or garage
 
