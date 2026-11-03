@@ -1074,7 +1074,7 @@ header li a[href="#booking"],
           "name": "Do you come to my town?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington every week, and there's no travel charge anywhere I go. Check your ZIP here and you'll know in two seconds."
+            "text": "If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington most weeks, and there's no travel charge anywhere I go. Check your ZIP here and you'll know in two seconds."
           }
         },
         {
@@ -4356,7 +4356,7 @@ header li a[href="#booking"],
         </div>
         <figcaption class="sa-legend">
           <span class="sa-key sa-key--core"><i></i> Ten miles or less</span>
-          <span class="sa-key sa-key--zone"><i></i> Where I am every week</span>
+          <span class="sa-key sa-key--zone"><i></i> Where I am most weeks</span>
           <span class="sa-key sa-key--ask"><i></i> Ask me. I often say yes</span>
           <span class="sa-key sa-key--you"><i></i> Where you asked about</span>
         </figcaption>
@@ -4366,7 +4366,7 @@ header li a[href="#booking"],
 
     <!-- ---------- the towns, spelled out (also the accessible version of the map) ---------- -->
     <div class="sa-towns">
-      <h3 class="sa-towns-h">Towns I'm in every week</h3>
+      <h3 class="sa-towns-h">Towns I'm in most weeks</h3>
       <ul class="sa-chips">
         <li><a href="/snohomish/">Snohomish</a></li>
         <li><a href="/lake-stevens/">Lake Stevens</a></li>
@@ -4748,7 +4748,7 @@ header li a[href="#booking"],
     return { kind:'unknown', zip: zip || '', typed:typed };
   }
 
-  /* Closest town Mikey is in every week. Measured straight-line from the customer,
+  /* Closest town Mikey is in most weeks. Measured straight-line from the customer,
      and only ever used to decide whether the "park it there" option is worth
      showing, the mileage is never printed, because a straight line across Puget
      Sound is a ferry ride and telling someone in Clinton that Mukilteo is four
@@ -4884,11 +4884,11 @@ header li a[href="#booking"],
     if (!near || near.dist < 1) return '';
     var close = near.dist <= 30, body;
     if (close) {
-      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. If the car sits anywhere ' +
+      body = 'Closest town I\'m in most weeks is <b>' + esc(near.town.n) + '</b>. If the car sits anywhere ' +
              'in my area during the day, that\'s an ordinary job for me. Your work lot, a parent\'s ' +
              'driveway, a friend\'s place, all the same to me.';
     } else {
-      body = 'Closest town I\'m in every week is <b>' + esc(near.town.n) + '</b>. That\'s a haul from you, ' +
+      body = 'Closest town I\'m in most weeks is <b>' + esc(near.town.n) + '</b>. That\'s a haul from you, ' +
              'no getting around it. But if the car is ever up this way for a day, for work or family or ' +
              'a trip north, I can do it while it\'s here.';
     }
@@ -6595,7 +6595,7 @@ header li a[href="#booking"],
     </details>
     <details class="faq2-item">
       <summary>Do you come to my town?</summary>
-      <p>If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington every week, and there's no travel charge anywhere I go. <a href="#service-area">Check your ZIP here</a> and you'll know in two seconds.</p>
+      <p>If you're in Snohomish County or just over the line, almost certainly. I'm in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington most weeks, and there's no travel charge anywhere I go. <a href="#service-area">Check your ZIP here</a> and you'll know in two seconds.</p>
     </details>
     <details class="faq2-item">
       <summary>Do I need to provide water or power?</summary>
