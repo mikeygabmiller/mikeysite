@@ -339,8 +339,8 @@ const mikeyT = q => sideT({
     <div class="pr a"><img src="${fileUrl(path.join(SOCIAL, 'photos', 'backseat-after.jpg'))}"><span>After</span></div></div>
   <div class="box note">Same back seat. No judgment, I've seen everything.</div>`,
   brand: `${logoSvg()}<i>Snohomish, WA</i>`,
-  label: `<div class="box quote"><p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p>
-    <div class="by">${stars(5)} ANGELA, SNOHOMISH</div></div>`,
+  label: `<div class="box quote"><p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task.</p>
+    <div class="by">${stars(5)} ANGELA · GOOGLE REVIEW</div></div>`,
   chip: 'Mobile detailing · Snohomish',
   h1: 'Your car, detailed<br><em>in your driveway.</em>',
   sub: 'No dropping it off, no waiting room. I bring every product and tool and do the whole car right there. All I need from you is an outdoor spigot and an outlet.',
