@@ -166,7 +166,7 @@ def business_node(reviews, speakable):
         "email": "book@mikeysdetailing.com",
         "priceRange": "$199-$449",
         "currenciesAccepted": "USD",
-        "paymentAccepted": "Cash, Credit Card, Debit Card",
+        "paymentAccepted": "Cash, Check, Venmo, Zelle",
         "foundingDate": "2021",
         "founder": {"@id": PERSON_ID},
         "employee": {"@id": PERSON_ID},
