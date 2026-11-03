@@ -296,7 +296,7 @@ const frontHtml = (qr) => `
 <section class="page front">
   <div class="page-bg"></div>
   <div class="band">
-    <div class="side l"><b>5.0</b>${stars(5)}<span>40 Google reviews</span></div>
+    <div class="side l"><b>5.0</b>${stars(5)}<span>41 Google reviews</span></div>
     <div class="side r"><b>300+</b><span>cars detailed<br>since 2021</span></div>
   </div>
   <div class="trim"><div class="safe">
@@ -364,8 +364,8 @@ const backHtml = (qr) => `
     <div class="rev">
       <div class="q">&ldquo;</div>
       <div>
-        <p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.</p>
-        <div class="by">${stars(5)} Angela, Snohomish · Google review</div>
+        <p>As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task.</p>
+        <div class="by">${stars(5)} Angela · Google review</div>
       </div>
     </div>
 

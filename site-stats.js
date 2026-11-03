@@ -17,7 +17,7 @@
    have an out-of-date review count. See GROWTH-PLAN.md §1 (G6).
    ============================================================ */
 window.MD_STATS = {
-  reviewCount: 40,    // ← number of Google reviews   (update this one!)
+  reviewCount: 41,    // ← number of Google reviews   (update this one!)
   rating: "5.0",      // ← average star rating
   carsDetailed: 300   // ← cars detailed
 };

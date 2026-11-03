@@ -582,7 +582,7 @@ Save this for the first frost. Has a door ever beaten you?
 
 This one means a lot, because those are the three things I actually control: when I show up, what I do, and what I charge. No upsells, no surprise add-ons at the end.
 
-5.0 across 40 Google reviews so far. Thank you to everyone who took the time.
+5.0 across 41 Google reviews so far. Thank you to everyone who took the time.
 
 ${Q}
 
@@ -632,8 +632,8 @@ Never had yours done? ${Q}
   },
   {
     id: 'B04', week: 'bank', pillar: 'Trust', title: 'Review: protective of their car',
-    slides: [{ t: 'review', quote: 'As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.' }],
-    alt: 'Five-star customer review: As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task. Incredible attention to detail.',
+    slides: [{ t: 'review', quote: 'As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task.' }],
+    alt: 'Five-star customer review: As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task.',
     ig: `"As someone who is very protective over their car, I was absolutely amazed at how Mike handled such a detailed task."
 
 Particular about your car? Good. Tell me what you care about before I start, and that's where I'll spend the extra time.
