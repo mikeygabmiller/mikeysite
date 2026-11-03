@@ -274,6 +274,47 @@ else:
         for d in off[:12]:
             fails.append(f"    {d}")
 
+# --- every quote is a real review, word for word ------------------------------
+# CLAUDE.md "Reviews and testimonials". On 2026-11-03 five service pages had a
+# "Real Review" box with an invented customer ("Mark R.", "near Cavalero Hill")
+# and the print pieces had words added to Angela's. So every testimonial box,
+# blockquote and JSON-LD reviewBody on a served page has to appear, word for
+# word (case and punctuation aside), in one of the reviews on /reviews/, which
+# is the copy of the Google profile. A quote waiting on Mikey goes in PENDING
+# with why; take it out when he answers.
+PENDING = {
+    # "Matt K.": not one of the Google reviews. Mikey to say where it came from
+    # (asked again 2026-11-03). If it isn't a real customer, it comes off.
+    "mikey showed up on time did exactly what he said",
+}
+def _qnorm(t):
+    t = _html.unescape(t).lower().replace("\u2019", "'")
+    t = re.sub(r"[^a-z0-9 ]", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+_rv = (ROOT / "reviews/index.html").read_text(encoding="utf-8")
+_real = [_qnorm(re.sub(r"<[^>]+>", " ", m.group(1)))
+         for m in re.finditer(r'<div class="rv-text">(.*?)</div>', _rv, re.S)]
+if len(_real) < 30:
+    fails.append(f"/reviews/: only {len(_real)} reviews found, the quote check can't trust it")
+_unreal = []
+for q in served:
+    if not q.exists() or q.suffix != ".html" or q == ROOT / "reviews/index.html":
+        continue
+    txt = q.read_text(encoding="utf-8")
+    found = [json.loads('"' + m.group(1) + '"') for m in re.finditer(r'"reviewBody":\s*"((?:[^"\\]|\\.)*)"', txt)]
+    found += [re.sub(r"<[^>]+>", "", m.group(1)) for m in re.finditer(
+        r'class="(?:testimonial|review-card|t-quote|quote)[^"]*"[^>]*>\s*(?:<[^>]+>\s*)*?<p>(.*?)</p>', txt, re.S)]
+    found += [re.sub(r"<[^>]+>", " ", m.group(1)) for m in re.finditer(r"<blockquote[^>]*>(.*?)</blockquote>", txt, re.S)]
+    for f in found:
+        n = _qnorm(f)
+        if len(n) < 15 or any(n.startswith(k) for k in PENDING):
+            continue
+        if not any(n in r for r in _real):
+            _unreal.append(f"{q.relative_to(ROOT)}: {f.strip()[:70]}")
+if _unreal:
+    fails.append(f"quote that isn't a Google review word for word ({len(_unreal)}), see CLAUDE.md Reviews:")
+    fails += [f"    {u}" for u in _unreal[:10]]
+
 # --- the schema generator reproduces every page ------------------------------
 # tools/build-entity-graph.py writes each page's JSON-LD from the page itself
 # (title, meta description, FAQ, breadcrumb) and its own tables (the business

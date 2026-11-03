@@ -145,6 +145,12 @@ they didn't name, or put a quote under "Google review" that isn't on Google
 (the FTC's 2024 fake-review rule covers all of that). The one punctuation
 change allowed is the house em dash rule. "Matt K." (homepage, maintenance,
 eight city pages) is still waiting on Mikey to say where it came from.
+On 2026-11-03 five more turned up: a "Real Review" box on the Lake Stevens,
+Mill Creek and Snohomish paint correction pages, Monroe ceramic and
+Snohomish truck, each an invented customer ("Mark R.", "near Cavalero
+Hill"). They now carry real Google reviews, and `check-site.py` fails on any
+testimonial, blockquote or `reviewBody` that isn't on `/reviews/` word for
+word. "Matt K." is its one `PENDING` exception, until Mikey answers.
 
 ## Online booking
 
