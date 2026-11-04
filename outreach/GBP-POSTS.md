@@ -772,3 +772,70 @@ If the back seat is past a quick vacuum, the Interior Detail covers it, from $24
 
 Tap Book to see your exact price in 60 seconds.
 ```
+
+---
+
+## 27. Week of Nov 8 · Update · Open the door and look down
+
+**Goes up:** 2026-11-11
+**Photo:** `social/photos/wrangler-red.jpg` (a red Jeep Wrangler on a driveway with both doors open, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Open your car door and look down at the sill. That gray paste is what a month of wet shoes leaves behind.
+
+The door jambs never see a car wash. Water runs off the roof into them, grit rides in on every shoe, and it sits there against the paint and the rubber seals all winter.
+
+1. Wipe the sills and jambs with a damp microfiber once a week, then dry them. Two minutes a car.
+2. Look along the bottom edge of each door. There are small drain holes there, and fall leaves plug them.
+3. Clear them with a soft plastic pick or a pipe cleaner, never a screwdriver. Water that can't drain out sits inside the door.
+4. Wipe the rubber seals too. Grit on a seal wears it every time the door closes.
+
+Door jambs are part of every Full Detail I do, along with the glass and the wheels: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in Duvall, Woodinville or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 28. Week of Nov 8 · Update · Washer fluid before the first freeze
+
+**Goes up:** 2026-11-13
+**Photo:** `social/photos/grand-cherokee-black.jpg` (a black Grand Cherokee on a driveway after the detail, windshield and hood in the sun, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Still running summer washer fluid? Swap it before the first frost.
+
+Summer bug wash and plain water can freeze in the reservoir and the lines on a cold night. Then the morning you need it most, on a salty, sanded road with the sun low in your eyes, nothing comes out.
+
+1. Run the reservoir low, then top it up with a winter fluid. The jug says what temperature it's good to.
+2. Check the wiper blades while the hood is up. A torn edge smears instead of clearing.
+3. Frosty morning? Run the defrost and use a plastic scraper. Never hot water on cold glass. A small chip can turn into a crack.
+4. Keep a microfiber towel in the door pocket for the inside of the glass.
+
+Clean glass clears faster in any weather. I clean the outside glass on every Exterior Detail, from $199 for a sedan, and the inside too on a Full Detail, from $369. Same price in Arlington, Marysville or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 29. Week of Nov 15 · Update · Before family piles in for Thanksgiving
+
+**Goes up:** 2026-11-15
+**Photo:** `social/photos/lexus-suv-white.jpg` (a white Lexus SUV on a driveway with the driver's door open, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Picking up family for Thanksgiving? Here's the 20 minute version I'd do the weekend before.
+
+1. Empty it first. Trunk, door pockets, under the seats. You'll need the trunk for the bags and the pies anyway.
+2. Vacuum the back seat and the floor where people's feet go. That's what a passenger sees.
+3. Wipe the seat belt buckles, the door handles and the cup holders. Those are the sticky spots people actually touch.
+4. Clean the inside of the windows. With a full car the glass fogs fast, and a clean windshield clears quicker.
+
+If it needs more than 20 minutes, that's a Full Detail, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Booked by December 31, it comes with ceramic wax, RainX and RainX Anti-Fog free (the Rain-Ready Full Detail). Same price in Mukilteo, Bothell or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
