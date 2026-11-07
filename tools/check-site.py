@@ -564,6 +564,28 @@ for p in pages:
             if node.get("@id") == "https://mikeysdetailing.com/#business" and node.get("sameAs") != SOCIAL:
                 fails.append(f"{p.relative_to(ROOT)}: #business sameAs differs from SOCIAL")
 
+# --- one site header ------------------------------------------------------------
+# Added 2026-11-07 (Mikey: one header on every page). 44 pages carry a copy of
+# tools/site-header/header.html, written by tools/site-header.py; the homepage,
+# About, Reviews, Maintenance and the legal pages keep their own #mikeyHeader.
+# A page with neither, or a copy that differs from the template, fails here.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("site_header", ROOT / "tools" / "site-header.py")
+site_header = _ilu.module_from_spec(_spec); _spec.loader.exec_module(site_header)
+for p in pages:
+    if p.relative_to(ROOT).parts[0] in site_header.SKIP_DIRS:
+        continue
+    src = p.read_text(encoding="utf-8")
+    if 'id="mikeyHeader"' in src and site_header.START not in src:
+        continue
+    want = site_header.expected(src)
+    if want is None:
+        if re.search(r'<meta name="robots" content="[^"]*noindex', src) or "http-equiv=\"refresh\"" in src:
+            continue
+        fails.append(f"{p.relative_to(ROOT)}: no site header (neither #mikeyHeader nor tools/site-header.py's block)")
+    elif want != src:
+        fails.append(f"{p.relative_to(ROOT)}: site header differs from tools/site-header/header.html, run tools/site-header.py --apply")
+
 # --- report -----------------------------------------------------------------
 print("=" * 72)
 if fails:

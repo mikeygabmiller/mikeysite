@@ -472,6 +472,21 @@ rhythm, the caption shape, the photo privacy rules and the Rain-Ready offer.
 - **The Rain-Ready offer (B07) is a promise to customers.** Don't widen it,
   extend its window, or add a new offer without Mikey saying so.
 
+## The site header
+
+One header on every page (Mikey, 2026-11-07): the truck logo, a menu, a red
+call button on phones. Until then 41 pages (every city page, every blog post,
+Services, the guides) showed a text "Mikey's." with no menu at all, and three
+had a two-row header. The template is `tools/site-header/header.html`;
+`python3 tools/site-header.py --apply` writes it into every served page
+between its markers, and `check-site.py` fails on a page whose copy differs.
+Change the menu there, never in a page. The homepage, About, Reviews,
+Maintenance, the legal pages and `sms-opt-in` keep their own `#mikeyHeader`
+(the homepage's links are in-page anchors and its hero is sized around it);
+the call page (`/onbored/`) stays without one on purpose. A new page gets the
+header by running the script after the page exists (start it with the old
+text-logo header, or paste the markers).
+
 ## Social links in the footer
 
 Every footer has a "Find me on" row (2026-10-14, Mikey's ask): Google, Yelp,
@@ -734,6 +749,18 @@ Chrome or the desktop app), never from a cloud session.
 draft PR.** Unless he says otherwise, finish the job: open the PR, mark it ready,
 merge it, and confirm the change is actually serving on mikeysdetailing.com
 before reporting done. Don't stop at "pushed" and wait to be asked.
+
+**Show Mikey a before and after for anything a visitor can see** (Mikey,
+2026-11-07: "in all changes to the site from now on, if they are visual,
+display a before and after for me to see"). Screenshot the live version and
+your version at the same spot, side by side with BEFORE and AFTER labels, at
+phone width (390px, plus 360px if it's tight) and at laptop width if the
+change shows there. Serve `origin/main` from a `git worktree` on a second port
+for the before. Look at the images yourself first, then send them with
+SendUserFile. Copy-only and schema-only changes don't need one.
+The images are for him to see, **not a gate**: send them, then merge and
+confirm it's live as usual (Mikey, 2026-11-07, after a session held a PR
+for his yes: "I thought I made a rule that you merge all changes instantly").
 
 That only works if the checks below are genuinely run first — merging fast and
 verifying nothing is how a wrong price or a town he doesn't serve ends up in
