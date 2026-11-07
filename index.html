@@ -1313,15 +1313,43 @@ header li a[href="#booking"],
    card promised them. Hidden in the markup; the Rain-Ready script shows it
    until December 31 and never after. */
 .mh-rr{
-  display:inline-flex; align-items:center; gap:9px; flex-wrap:wrap; justify-content:center;
-  max-width:100%; margin:0 auto 14px; padding:7px 14px 7px 7px; border-radius:999px;
-  background:rgba(201,162,75,.12); border:1px solid rgba(201,162,75,.45);
-  color:#f1f1f1; font-size:.86rem; font-weight:600; line-height:1.3; text-decoration:none; text-align:center;
+  position:relative; display:flex; align-items:center; gap:14px;
+  width:100%; max-width:540px; margin:0 auto 20px; padding:13px 16px 13px 13px;
+  border-radius:18px; text-align:left; text-decoration:none; color:#f4f4f4; overflow:hidden;
+  background:
+    linear-gradient(115deg, rgba(201,162,75,.20) 0%, rgba(201,162,75,.07) 45%, rgba(255,255,255,.02) 100%),
+    #17140d;
+  border:1px solid rgba(201,162,75,.42);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 10px 30px -14px rgba(201,162,75,.45);
+  transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
   opacity:0; animation:mhFadeUp .8s ease-out .2s forwards;
 }
+/* Faint rain streaks on the right edge. Decoration only, under the text. */
+.mh-rr::before{
+  content:""; position:absolute; inset:0 0 0 auto; width:46%; pointer-events:none;
+  background:repeating-linear-gradient(105deg, transparent 0 9px, rgba(201,162,75,.07) 9px 10px);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 70%); mask-image:linear-gradient(90deg, transparent, #000 70%);
+}
 .mh-rr[hidden]{ display:none; }
-.mh-rr:hover{ border-color:var(--brand-gold); color:#fff; }
-.mh-rr-tag{ background:var(--brand-gold); color:#2a1e02; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:4px 9px; border-radius:999px; }
+.mh-rr:hover{ border-color:var(--brand-gold); transform:translateY(-1px); box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 14px 34px -14px rgba(201,162,75,.6); }
+.mh-rr:focus-visible{ outline:2px solid var(--brand-gold); outline-offset:3px; }
+.mh-rr-icon{
+  position:relative; flex:none; display:grid; place-items:center; width:44px; height:44px; border-radius:13px;
+  background:linear-gradient(160deg, #E4CD8B, var(--brand-gold) 60%, #a8853a); color:#241a03;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45), 0 4px 12px -4px rgba(201,162,75,.7);
+}
+.mh-rr-body{ position:relative; flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
+.mh-rr-top{ display:flex; align-items:center; flex-wrap:wrap; gap:4px 8px; font-size:.68rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; line-height:1.2; }
+.mh-rr-tag{ color:var(--brand-gold); }
+.mh-rr-when{ color:#b9b3a3; font-weight:700; }
+.mh-rr-when::before{ content:""; display:inline-block; width:4px; height:4px; border-radius:50%; background:rgba(201,162,75,.6); margin-right:8px; vertical-align:2px; }
+.mh-rr-main{ font-size:.95rem; font-weight:600; line-height:1.35; color:#fff; }
+.mh-rr-go{
+  position:relative; flex:none; display:grid; place-items:center; width:30px; height:30px; border-radius:50%;
+  border:1px solid rgba(201,162,75,.5); color:var(--brand-gold); transition:transform .2s ease, background .2s ease;
+}
+.mh-rr-nw{ white-space:nowrap; }
+.mh-rr:hover .mh-rr-go{ transform:translateX(3px); background:rgba(201,162,75,.14); }
 
 /* Pricing pills */
 .mh-prices{
@@ -1354,13 +1382,6 @@ header li a[href="#booking"],
 /* Secondary CTA inline phone icon */
 .mh-cta-secondary svg{ vertical-align:-3px; margin-right:7px; }
 
-/* Reassurance microcopy under the CTAs */
-.mh-reassure{
-  font-family:'Outfit','Outfit Fallback',sans-serif; font-size:.85rem; color:#a3a3a3;
-  margin:-16px auto 30px; letter-spacing:.01em;
-  opacity:0; animation:mhFadeUp .8s ease-out 1s forwards;
-}
-
 /* Animations */
 @keyframes mhFadeUp{ to{ opacity:1; transform:translateY(0); } }
 @keyframes mhPopIn{
@@ -1372,7 +1393,7 @@ header li a[href="#booking"],
 
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce){
-  .mh-proof,.mh .mh-headline,.mh .mh-headline .accent,.mh .subhead,.mh-guarantee,.mh-ctas,.mh-reassure,.mh-prices,.mh .mh-headline .accent::after{
+  .mh-proof,.mh .mh-headline,.mh .mh-headline .accent,.mh .subhead,.mh-guarantee,.mh-ctas,.mh-rr,.mh-prices,.mh .mh-headline .accent::after{
     animation:none; opacity:1; transform:none; width:100%;
   }
 }
@@ -1403,7 +1424,12 @@ header li a[href="#booking"],
   .mh-pill{ font-size:.85rem; padding:8px 14px; }
   .mh-google{ font-size:12px; }
   .mh-guarantee{ font-size:.82rem; padding:8px 14px; margin-bottom:20px; }
-  .mh-reassure{ font-size:.78rem; margin:-8px auto 20px; }
+  .mh-rr{ gap:12px; padding:11px 12px 11px 11px; border-radius:16px; margin-bottom:22px; }
+  .mh-rr-icon{ width:38px; height:38px; border-radius:11px; }
+  .mh-rr-main{ font-size:.9rem; }
+  .mh-rr-top{ flex-direction:column; align-items:flex-start; gap:3px; }
+  .mh-rr-when::before{ display:none; }
+  .mh-rr-go{ width:28px; height:28px; }
 }
 </style>
 
@@ -1432,7 +1458,14 @@ header li a[href="#booking"],
           </div>
         </div>
 
-        <a class="mh-rr" href="#rain-ready" data-rr hidden><span class="mh-rr-tag">Rain-Ready</span>Free ceramic wax, RainX &amp; anti-fog with a Full Detail, until Dec 31 &rarr;</a>
+        <a class="mh-rr" href="#rain-ready" data-rr hidden>
+          <span class="mh-rr-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7S5.5 9.6 5.5 14.2a6.5 6.5 0 0 0 13 0C18.5 9.6 12 2.7 12 2.7Z"/><path d="M9 14.6a3 3 0 0 0 3 3"/></svg></span>
+          <span class="mh-rr-body">
+            <span class="mh-rr-top"><span class="mh-rr-tag">Rain-Ready</span><span class="mh-rr-when">Until Dec 31<span data-rr-days></span></span></span>
+            <span class="mh-rr-main">Free ceramic wax, RainX &amp; <span class="mh-rr-nw">anti-fog</span> with a Full Detail</span>
+          </span>
+          <span class="mh-rr-go" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
 
         <div class="mh-headline">
           A Spotless Car, Inside &amp; Out.<br><span class="accent">I Come To You.</span>
@@ -1458,8 +1491,6 @@ header li a[href="#booking"],
           <a class="mh-cta-primary" href="#booking">Get My Instant Quote →</a>
           <a class="mh-cta-secondary" href="tel:+14256007897"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.21z"/></svg>(425) 600-7897</a>
         </div>
-
-        <p class="mh-reassure">Free 60-second quote &middot; No obligation &middot; Call or text anytime</p>
 
         <div class="mh-prices" aria-label="Service pricing">
           <div class="mh-pill">
@@ -3713,6 +3744,8 @@ header li a[href="#booking"],
   // spinning on a deadline three months out would read as a gimmick.
   var days = Math.ceil(left / 86400000), el = document.getElementById('rrDays');
   if (el) el.textContent = days === 1 ? '· last day' : '· ' + days + ' days left';
+  var hd = document.querySelectorAll('[data-rr-days]');
+  for (var j=0;j<hd.length;j++) hd[j].textContent = days === 1 ? ' · last day' : ' · ' + days + ' days left';
   var btn = document.getElementById('rrStart');
   if (btn) btn.addEventListener('click', function(e){
     if (window.MikeyQQC && window.MikeyQQC.startFull){ e.preventDefault(); window.MikeyQQC.startFull(); }
