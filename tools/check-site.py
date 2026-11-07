@@ -589,6 +589,15 @@ for p in pages:
     elif want != src:
         fails.append(f"{p.relative_to(ROOT)}: site header differs from tools/site-header/header.html, run tools/site-header.py --apply")
 
+# --- payment methods ------------------------------------------------------------
+# Added 2026-11-07: the homepage FAQ said "I take cash, card, and the usual apps"
+# after the facts table had been corrected to cash, check, Venmo or Zelle, no
+# cards (checked 2026-11-03 against his texts and the dashboard).
+for p in pages:
+    for m_ in re.finditer(r"(?i)\b(?:cash,? (?:credit )?cards?\b|take (?:credit )?cards\b(?! ?\?)|apple pay|cash, card)", p.read_text(encoding="utf-8")):
+        fails.append(f"{p.relative_to(ROOT)}: says he takes cards ({m_.group(0)!r}); it's cash, check, Venmo or Zelle")
+        break
+
 # --- links into the homepage land on something ---------------------------------
 # Added 2026-11-07: nine "/#contact" links (the ceramic page's two Get My Quote
 # buttons among them) and three each of "/#guarantee" and "/#faq" pointed at
