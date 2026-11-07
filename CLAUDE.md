@@ -758,6 +758,9 @@ phone width (390px, plus 360px if it's tight) and at laptop width if the
 change shows there. Serve `origin/main` from a `git worktree` on a second port
 for the before. Look at the images yourself first, then send them with
 SendUserFile. Copy-only and schema-only changes don't need one.
+The images are for him to see, **not a gate**: send them, then merge and
+confirm it's live as usual (Mikey, 2026-11-07, after a session held a PR
+for his yes: "I thought I made a rule that you merge all changes instantly").
 
 That only works if the checks below are genuinely run first — merging fast and
 verifying nothing is how a wrong price or a town he doesn't serve ends up in
