@@ -735,6 +735,15 @@ draft PR.** Unless he says otherwise, finish the job: open the PR, mark it ready
 merge it, and confirm the change is actually serving on mikeysdetailing.com
 before reporting done. Don't stop at "pushed" and wait to be asked.
 
+**Show Mikey a before and after for anything a visitor can see** (Mikey,
+2026-11-07: "in all changes to the site from now on, if they are visual,
+display a before and after for me to see"). Screenshot the live version and
+your version at the same spot, side by side with BEFORE and AFTER labels, at
+phone width (390px, plus 360px if it's tight) and at laptop width if the
+change shows there. Serve `origin/main` from a `git worktree` on a second port
+for the before. Look at the images yourself first, then send them with
+SendUserFile. Copy-only and schema-only changes don't need one.
+
 That only works if the checks below are genuinely run first — merging fast and
 verifying nothing is how a wrong price or a town he doesn't serve ends up in
 front of a customer. Fast is the default; careless isn't.
