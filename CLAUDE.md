@@ -497,7 +497,15 @@ about it being mobile and more about their cars being protected and easier to
 wash and wash less"). So the headline is the benefit, "Protect the Paint for
 Years. Wash It Less. Ceramic Coating.", and coming to them is a supporting
 line, not the pitch. Same for any coating copy: posts, ads, the GBP service.
-Still waiting on Mikey: real Pro and Elite job times, whether Elite's "annual
+**It has its own quote calculator** (`#ccq`, 2026-11-07, Mikey: "a version of
+the QQC"): size, tier, paint condition, then the tier's "from" price and the
+lead form. It posts to the same `/submit` as the homepage with **no `total`**,
+on purpose: the dashboard's first text reads a total back as the quote ("$850
+for the..."), and a coating is quoted per car. Without one it reads "I got your
+quote for the 2019 Toyota Tacoma - Pro ceramic coating." (checked against the
+live branch's `quoteOpener`). Never send a total from it until Mikey sets real
+per-size coating prices. The tier cards' buttons pre-pick the tier
+(`data-ccq-tier`). Still waiting on Mikey: real Pro and Elite job times, whether Elite's "annual
 maintenance check" is real, the "trucks and SUVs 15-25% more" rule, and tier
 prices set from his hours and product cost (`PRICING.md`).
 

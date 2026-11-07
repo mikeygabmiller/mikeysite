@@ -227,6 +227,60 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
 .cc-sticky .call svg{width:18px;height:18px;color:var(--red)}
 .cc-sticky .text{background:var(--red);text-transform:uppercase;letter-spacing:.04em;box-shadow:0 6px 18px var(--glow)}
 
+/* ceramic quote (the page's QQC) */
+#quote{scroll-margin-top:72px}
+.ccq-card{max-width:620px;margin:28px auto 0;text-align:left;background:#121212;border:1.5px solid #2a2a2a;border-radius:20px;padding:24px 22px 20px;position:relative}
+.ccq-prog{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.ccq-prog span{height:4px;border-radius:4px;background:#2a2a2a;transition:background .3s}
+.ccq-prog span.on{background:var(--red)}
+.ccq-stepno{color:#8f8f8f;font-size:.82rem;margin:10px 0 4px}
+.ccq-step{display:none}
+.ccq-step.on{display:block;animation:ccqIn .25s ease}
+@keyframes ccqIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.ccq-q{font-size:1.35rem;font-weight:800;margin:6px 0 14px}
+.ccq-opts{display:grid;gap:10px}
+.ccq-opts.three{grid-template-columns:repeat(3,1fr)}
+.ccq-opt{font:inherit;color:#fff;text-align:left;cursor:pointer;background:#1b1b1b;border:1.5px solid #2e2e2e;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:3px;transition:border-color .2s,background .2s,transform .15s}
+.ccq-opts.three .ccq-opt{align-items:center;text-align:center;padding:16px 8px}
+.ccq-opt b{font-weight:800;font-size:1rem}
+.ccq-opt small{color:#9a9a9a;font-size:.82rem;line-height:1.35}
+.ccq-opt.row{flex-direction:row;align-items:center;justify-content:space-between;gap:14px}
+.ccq-opt.row span{display:flex;flex-direction:column;gap:3px}
+.ccq-opt em{font-style:normal;font-weight:900;color:var(--gold2);white-space:nowrap}
+.ccq-opt.ghost{background:transparent;border-style:dashed}
+.ccq-opt:hover{border-color:rgba(200,16,46,.6);transform:translateY(-1px)}
+.ccq-opt.sel{border-color:var(--red);background:rgba(200,16,46,.1)}
+.ccq-opt:focus-visible,.ccq-back:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.ccq-sum{color:#cfcfcf;font-weight:700;font-size:.92rem;margin-top:6px}
+.ccq-price{font-size:3rem;font-weight:900;letter-spacing:-1px;line-height:1.05;margin:6px 0}
+.ccq-price small{font-size:1rem;font-weight:600;color:#9a9a9a;margin-right:6px;letter-spacing:0}
+.ccq-pnote{color:#bdbdbd;font-size:.95rem;line-height:1.6;margin-bottom:16px}
+.ccq-pnote b{color:#fff}
+.ccq-form{display:grid;gap:12px}
+.ccq-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ccq-f{display:grid;gap:6px;font-size:.85rem;font-weight:700;color:#d6d6d6}
+.ccq-f i{font-style:normal;font-weight:500;color:#8a8a8a}
+.ccq-f input{font:inherit;font-size:16px;color:#fff;background:#1b1b1b;border:1.5px solid #2e2e2e;border-radius:12px;padding:13px 14px;width:100%}
+.ccq-f input:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(200,16,46,.16)}
+.qq-consent{color:#8a8a8a;font-size:.76rem;line-height:1.5}
+.qq-consent a{color:#bdbdbd}
+.ccq-send{width:100%}
+.ccq-send[disabled]{opacity:.7;cursor:wait}
+.ccq-err{color:#ff8a9a;font-size:.88rem}
+.ccq-err:empty{display:none}
+.ccq-err a{color:#fff}
+.ccq-alt{text-align:center;color:#8f8f8f;font-size:.86rem}
+.ccq-alt a{color:#ddd}
+.ccq-back{margin-top:14px;background:none;border:0;color:#9a9a9a;font:inherit;font-size:.88rem;cursor:pointer;padding:6px 0}
+.ccq-back:hover{color:#fff}
+.ccq-done-ic{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(74,222,128,.12);color:#4ade80;margin:8px 0 4px}
+.ccq-done-ic svg{width:28px;height:28px}
+@media (max-width:560px){
+  .ccq-card{padding:20px 16px 16px}
+  .ccq-opts.three{grid-template-columns:1fr}
+  .ccq-opts.three .ccq-opt{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;padding:14px}
+  .ccq-two{grid-template-columns:1fr}
+}
 @media (max-width:1020px){
   .cc-why{grid-template-columns:repeat(2,1fr)}
   .cc-steps{grid-template-columns:repeat(2,1fr)}
@@ -873,10 +927,10 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
       <div class="cc-headline">Protect the Paint for&nbsp;Years. Wash&nbsp;It&nbsp;Less. <span>Ceramic Coating.</span></div>
       <p class="cc-lede">A coating bonds to your clear coat, so dirt and water slide off. The car stays cleaner between washes and rinses clean, for 2 to 7 years. I do it in your driveway, Arlington down to Bothell.</p>
       <div class="cc-ctas">
-        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Me Your Car</a>
+        <a class="cc-btn cc-btn-red" href="#quote">Get My Coating Quote &rarr;</a>
         <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
       </div>
-      <p class="cc-note">Send the year, make and model and a couple of photos of the paint. I text back a real number for the tier you want, and you pay after the work, never a deposit.</p>
+      <p class="cc-note">Three taps and your number, then I text you back. You pay after the work, never a deposit.</p>
       <div class="cc-pills" aria-label="Coating prices">
         <div class="cc-pill"><span>Standard</span><b><i>from</i>$500</b></div>
         <div class="cc-pill"><span>Pro</span><b><i>from</i>$850</b></div>
@@ -952,7 +1006,7 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Wheel face coating</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Glass coating</li>
         </ul>
-        <a class="cc-btn cc-btn-line" href="sms:+14256007897?&amp;body=Standard%20ceramic%20coating%20quote%3A%20">Text Me About Standard</a>
+        <a class="cc-btn cc-btn-line" href="#quote" data-ccq-tier="Standard">Quote Me Standard</a>
       </article>
       <article class="cc-tier mid">
         <div class="cc-tier-name">Pro</div>
@@ -966,7 +1020,7 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Trim + plastics coating</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Headlight coating</li>
         </ul>
-        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Pro%20ceramic%20coating%20quote%3A%20">Text Me About Pro</a>
+        <a class="cc-btn cc-btn-red" href="#quote" data-ccq-tier="Pro">Quote Me Pro</a>
       </article>
       <article class="cc-tier">
         <div class="cc-tier-name">Elite</div>
@@ -980,7 +1034,7 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full vehicle coverage</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Annual maintenance check</li>
         </ul>
-        <a class="cc-btn cc-btn-line" href="sms:+14256007897?&amp;body=Elite%20ceramic%20coating%20quote%3A%20">Text Me About Elite</a>
+        <a class="cc-btn cc-btn-line" href="#quote" data-ccq-tier="Elite">Quote Me Elite</a>
       </article>
     </div>
     <p class="cc-fine">Pricing varies by vehicle size and condition. Trucks and SUVs typically run 15&ndash;25% more. The final price comes after I've looked at the paint in person.</p>
@@ -1186,14 +1240,71 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
 
 <section class="cc-sec" id="quote">
   <div class="cc-wrap">
-    <div class="cc-final">
-      <span class="cc-eyebrow">Quoted from your photos</span>
+    <div class="cc-final ccq" id="ccq">
+      <span class="cc-eyebrow">Ceramic quote</span>
       <h2 class="cc-h2">Get a Real Number for <em class="nw">Your Car</em></h2>
-      <p class="cc-sub" style="margin:0 auto">A coating is quoted per car, so the 60-second calculator can't price one. Text me the year, make and model and a couple of photos of the paint, and I'll text back a real number for the tier you want.</p>
-      <div class="cc-ctas">
-        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Me Your Car</a>
-        <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
+      <p class="cc-sub" style="margin:0 auto">Three taps and your number. I text you back from (425) 600-7897, and you can send photos of the paint right in that thread.</p>
+
+      <div class="ccq-card">
+        <div class="ccq-prog" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p class="ccq-stepno" id="ccqStepNo">Step 1 of 4</p>
+
+        <div class="ccq-step on" data-step="1">
+          <h3 class="ccq-q">What are we coating?</h3>
+          <div class="ccq-opts three" role="group" aria-label="Vehicle size">
+            <button type="button" class="ccq-opt" data-k="size" data-v="Sedan"><b>Sedan</b><small>Compact / coupe</small></button>
+            <button type="button" class="ccq-opt" data-k="size" data-v="SUV / Truck"><b>SUV / Truck</b><small>Crossover / pickup</small></button>
+            <button type="button" class="ccq-opt" data-k="size" data-v="Van / XL"><b>Van / XL</b><small>Minivan / 3-row</small></button>
+          </div>
+        </div>
+
+        <div class="ccq-step" data-step="2">
+          <h3 class="ccq-q">Which tier?</h3>
+          <div class="ccq-opts" role="group" aria-label="Coating tier">
+            <button type="button" class="ccq-opt row" data-k="tier" data-v="Standard"><span><b>Standard</b><small>2&ndash;3 years &middot; for paint that's already clean</small></span><em>from $500</em></button>
+            <button type="button" class="ccq-opt row" data-k="tier" data-v="Pro"><span><b>Pro</b><small>3&ndash;5 years &middot; paint correction included</small></span><em>from $850</em></button>
+            <button type="button" class="ccq-opt row" data-k="tier" data-v="Elite"><span><b>Elite</b><small>5&ndash;7 years &middot; multi-step correction</small></span><em>from $1,300</em></button>
+            <button type="button" class="ccq-opt row ghost" data-k="tier" data-v="Not sure"><span><b>Not sure yet</b><small>I'll tell you which one fits from your photos</small></span></button>
+          </div>
+        </div>
+
+        <div class="ccq-step" data-step="3">
+          <h3 class="ccq-q">How's the paint right now?</h3>
+          <div class="ccq-opts" role="group" aria-label="Paint condition">
+            <button type="button" class="ccq-opt row" data-k="paint" data-v="New or close to it"><span><b>New or close to it</b><small>No swirls you can see in the sun</small></span></button>
+            <button type="button" class="ccq-opt row" data-k="paint" data-v="Some swirls or water spots"><span><b>Some swirls or water spots</b><small>A daily driver that's been through the car wash</small></span></button>
+            <button type="button" class="ccq-opt row" data-k="paint" data-v="Dull, scratched or faded"><span><b>Dull, scratched or faded</b><small>No judgment, I've seen everything</small></span></button>
+          </div>
+        </div>
+
+        <div class="ccq-step" data-step="4">
+          <p class="ccq-sum" id="ccqSum"></p>
+          <div class="ccq-price" id="ccqPrice"></div>
+          <p class="ccq-pnote" id="ccqPnote"></p>
+          <form class="ccq-form" id="ccqForm" novalidate>
+            <label class="ccq-f"><span>Year, make and model</span><input type="text" id="ccqCar" placeholder="e.g. 2021 Toyota RAV4" autocomplete="off" enterkeyhint="next"></label>
+            <div class="ccq-two">
+              <label class="ccq-f"><span>Your name <i>(optional)</i></span><input type="text" id="ccqName" autocomplete="name" enterkeyhint="next"></label>
+              <label class="ccq-f"><span>Town <i>(optional)</i></span><input type="text" id="ccqTown" autocomplete="address-level2" enterkeyhint="next"></label>
+            </div>
+            <label class="ccq-f"><span>Your cell, so I can text you</span><input type="tel" id="ccqPhone" inputmode="tel" autocomplete="tel" enterkeyhint="send" aria-required="true"></label>
+            <p class="ccq-err" id="ccqErr" role="alert" aria-live="assertive"></p>
+            <input type="text" id="ccqHp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+            <p class="qq-consent" id="ccqConsent">By tapping below you agree to receive text messages about your quote and appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
+            <button type="submit" class="cc-btn cc-btn-red ccq-send" id="ccqSend">Text Me My Quote &rarr;</button>
+            <p class="ccq-alt">Rather just send photos? <a href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20">Text me at (425) 600-7897</a></p>
+          </form>
+        </div>
+
+        <div class="ccq-step" data-step="5">
+          <div class="ccq-done-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3 class="ccq-q" id="ccqDoneH">Got it.</h3>
+          <p class="ccq-pnote">I'll text you from <b>(425) 600-7897</b>. Reply to that text with a couple of photos of the paint, in the sun if you can, and I'll come back with your exact number.</p>
+        </div>
+
+        <button type="button" class="ccq-back" id="ccqBack" hidden>&larr; Back</button>
       </div>
+
       <ul class="cc-checks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pay after the work</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No deposit</li>
@@ -1203,6 +1314,91 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
     </div>
   </div>
 </section>
+<script>
+/* Ceramic quote (2026-11-07, Mikey: a version of the QQC for this page).
+   Coatings are quoted per car, so this never computes a price: it shows the
+   tier's "from" figure and sends the lead to the same /submit as the homepage
+   with NO total. The dashboard's first text reads a total back as the quote
+   ("$850 for the..."), so leaving it off is what keeps that text honest:
+   "I got your quote for the 2019 Tacoma - Pro ceramic coating." */
+(function(){
+  var root=document.getElementById('ccq'); if(!root) return;
+  var FROM={Standard:500,Pro:850,Elite:1300};
+  var S={size:'',tier:'',paint:''}, step=1, hist=[];
+  var steps=root.querySelectorAll('.ccq-step'), bars=root.querySelectorAll('.ccq-prog span');
+  var $=function(id){return document.getElementById(id);};
+  function next(){ if(!S.size) return 1; if(!S.tier) return 2; if(!S.paint) return 3; return 4; }
+  function show(n, push){
+    if(push && n!==step) hist.push(step);
+    step=n;
+    for(var i=0;i<steps.length;i++) steps[i].classList.toggle('on', +steps[i].getAttribute('data-step')===n);
+    for(var j=0;j<bars.length;j++) bars[j].classList.toggle('on', j<Math.min(n,4));
+    $('ccqStepNo').textContent = n<5 ? 'Step '+n+' of 4' : 'Sent';
+    $('ccqBack').hidden = !(hist.length && n<5);
+    root.querySelectorAll('.ccq-opt').forEach(function(b){ b.classList.toggle('sel', S[b.getAttribute('data-k')]===b.getAttribute('data-v')); });
+    if(n===4) fill();
+  }
+  function tierName(){ return S.tier==='Not sure' ? 'Ceramic coating, tier not picked yet' : S.tier+' ceramic coating'; }
+  function fill(){
+    $('ccqSum').textContent = tierName()+' · '+S.size+' · '+S.paint;
+    if(S.tier==='Not sure'){
+      $('ccqPrice').innerHTML='<small>from</small>$500';
+      $('ccqPnote').textContent="Standard starts at $500, Pro at $850 and Elite at $1,300. I'll tell you which one fits from your photos, and you pay after the work, never a deposit.";
+    } else {
+      $('ccqPrice').innerHTML='<small>from</small>$'+FROM[S.tier].toLocaleString('en-US');
+      $('ccqPnote').textContent="That's where "+S.tier+" starts. Bigger vehicles and paint that needs more correction cost more, so I'll text you the exact number, and you pay after the work, never a deposit.";
+    }
+  }
+  root.addEventListener('click',function(e){
+    var b=e.target.closest('.ccq-opt'); if(!b) return;
+    S[b.getAttribute('data-k')]=b.getAttribute('data-v');
+    if(typeof gtag==='function') gtag('event','ceramic_quote_step',{step:b.getAttribute('data-k'),value:b.getAttribute('data-v')});
+    show(next(), true);
+  });
+  $('ccqBack').addEventListener('click',function(){ var p=hist.pop(); if(p) show(p,false); });
+  // The tier cards and the hero send people here with a tier already picked.
+  document.querySelectorAll('[data-ccq-tier]').forEach(function(a){
+    a.addEventListener('click',function(){ S.tier=a.getAttribute('data-ccq-tier'); hist=[]; show(next(), false); });
+  });
+  $('ccqForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var err=$('ccqErr'); err.textContent='';
+    if($('ccqHp').value){ show(5,false); return; }
+    var phone=$('ccqPhone').value.trim(), d=phone.replace(/\D/g,'').slice(-10);
+    if(d.length!==10){ err.textContent='Enter a valid cell number so I can text you.'; $('ccqPhone').focus(); return; }
+    var name=$('ccqName').value.trim(), car=$('ccqCar').value.trim(), town=$('ccqTown').value.trim();
+    var btn=$('ccqSend'); btn.disabled=true; btn.textContent='Sending…';
+    var vehicle = car ? car+' ('+S.size+')' : S.size;
+    var services = tierName();
+    var payload={ name:name, phone:'+1'+d, email:'', location:town, vehicle:vehicle, condition:S.paint, services:services,
+      notes:'', smsConsent:true, type:'quote',
+      consent:{ text:($('ccqConsent').textContent||'').replace(/\s+/g,' ').trim(), at:new Date().toISOString(), source:'ceramic_quote', page:location.href },
+      vid: window.MD_VID || '' };
+    var fd=new FormData();
+    fd.append('access_key','aa7076da-8d1c-427b-979f-03c238686a8e');
+    fd.append('subject','New Ceramic Quote: '+(S.tier==='Not sure'?'tier not picked':S.tier)+', '+(name||phone));
+    fd.append('from_name','Mikeys Ceramic Quote');
+    fd.append('name',name||'(not given)'); fd.append('phone',phone);
+    if(town) fd.append('location',town);
+    fd.append('message',[services,'Vehicle: '+vehicle,'Paint: '+S.paint,'Shown: '+(S.tier==='Not sure'?'from $500':'from $'+FROM[S.tier])].join('\n'));
+    Promise.allSettled([
+      fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}),
+      fetch('https://texting.mikeysdetailingsnohomish.workers.dev/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json();})
+    ]).then(function(rs){
+      var ok=(rs[0].status==='fulfilled'&&rs[0].value&&rs[0].value.success)||(rs[1].status==='fulfilled'&&rs[1].value&&rs[1].value.ok);
+      if(ok){
+        if(typeof gtag==='function') gtag('event','ceramic_quote_submission',{tier:S.tier,size:S.size});
+        $('ccqDoneH').textContent = name ? 'Got it, '+name.split(' ')[0]+'.' : 'Got it.';
+        show(5,false);
+      } else {
+        btn.disabled=false; btn.textContent='Text Me My Quote →';
+        err.innerHTML='That didn’t go through. <a href="sms:+14256007897">Text me at (425) 600-7897</a> instead.';
+      }
+    });
+  });
+  show(1,false);
+})();
+</script>
 
 <footer>
   <p class="ft-name">Mikey's Mobile Detailing</p>
@@ -1221,7 +1417,7 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
 
 <div class="cc-sticky" id="ccSticky" aria-label="Call or text Mikey">
   <a class="call" href="tel:+14256007897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(425) 600-7897</a>
-  <a class="text" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20">Text Me Your Car</a>
+  <a class="text" href="#quote">Get My Quote</a>
 </div>
 <script>
 (function(){
