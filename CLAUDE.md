@@ -487,6 +487,20 @@ the call page (`/onbored/`) stays without one on purpose. A new page gets the
 header by running the script after the page exists (start it with the old
 text-logo header, or paste the markers).
 
+## The ceramic coating page
+
+Rebuilt 2026-11-07 to the homepage's standard (Mikey: "as well built as my home
+page"). Its own CSS (`.cc-*`), real photos of his work captioned as his work,
+never as coatings (no coating photos yet: ask him for beading or 50/50 shots).
+**Lead with what coating buyers want** (Mikey, 2026-11-07: customers "care less
+about it being mobile and more about their cars being protected and easier to
+wash and wash less"). So the headline is the benefit, "Protect the Paint for
+Years. Wash It Less. Ceramic Coating.", and coming to them is a supporting
+line, not the pitch. Same for any coating copy: posts, ads, the GBP service.
+Still waiting on Mikey: real Pro and Elite job times, whether Elite's "annual
+maintenance check" is real, the "trucks and SUVs 15-25% more" rule, and tier
+prices set from his hours and product cost (`PRICING.md`).
+
 ## Social links in the footer
 
 Every footer has a "Find me on" row (2026-10-14, Mikey's ask): Google, Yelp,
