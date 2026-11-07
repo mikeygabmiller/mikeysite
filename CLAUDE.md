@@ -504,7 +504,10 @@ on purpose: the dashboard's first text reads a total back as the quote ("$850
 for the..."), and a coating is quoted per car. Without one it reads "I got your
 quote for the 2019 Toyota Tacoma - Pro ceramic coating." (checked against the
 live branch's `quoteOpener`). Never send a total from it until Mikey sets real
-per-size coating prices. The tier cards' buttons pre-pick the tier
+per-size coating prices. **It sends `smsConsent:false`, so no automatic text
+goes to a ceramic lead** (Mikey, 2026-11-07: "don't have an auto text
+triggered yet"): he gets the alert and texts them himself. Ask him before
+turning it on. The tier cards' buttons pre-pick the tier
 (`data-ccq-tier`). Still waiting on Mikey: real Pro and Elite job times, whether Elite's "annual
 maintenance check" is real, the "trucks and SUVs 15-25% more" rule, and tier
 prices set from his hours and product cost (`PRICING.md`).

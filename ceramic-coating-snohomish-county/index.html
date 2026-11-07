@@ -1371,7 +1371,11 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
     var vehicle = car ? car+' ('+S.size+')' : S.size;
     var services = tierName();
     var payload={ name:name, phone:'+1'+d, email:'', location:town, vehicle:vehicle, condition:S.paint, services:services,
-      notes:'', smsConsent:true, type:'quote',
+      notes:'',
+      // false on purpose (Mikey, 2026-11-07: no auto text for ceramic yet). The
+      // dashboard only schedules its first automatic text when this is true; the
+      // lead, his alert and the email still go through, and he texts them himself.
+      smsConsent:false, type:'quote',
       consent:{ text:($('ccqConsent').textContent||'').replace(/\s+/g,' ').trim(), at:new Date().toISOString(), source:'ceramic_quote', page:location.href },
       vid: window.MD_VID || '' };
     var fd=new FormData();
