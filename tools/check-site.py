@@ -282,6 +282,9 @@ else:
 # word (case and punctuation aside), in one of the reviews on /reviews/, which
 # is the copy of the Google profile. A quote waiting on Mikey goes in PENDING
 # with why; take it out when he answers.
+# 2026-11-07: class="review" added. The ceramic coating page had two invented
+# customers ("Daily Driver, Lake Stevens", "SUV Owner, Monroe") in div.review
+# boxes, which the list above didn't look at.
 PENDING = {
     # "Matt K.": not one of the Google reviews. Mikey to say where it came from
     # (asked again 2026-11-03). If it isn't a real customer, it comes off.
@@ -303,7 +306,7 @@ for q in served:
     txt = q.read_text(encoding="utf-8")
     found = [json.loads('"' + m.group(1) + '"') for m in re.finditer(r'"reviewBody":\s*"((?:[^"\\]|\\.)*)"', txt)]
     found += [re.sub(r"<[^>]+>", "", m.group(1)) for m in re.finditer(
-        r'class="(?:testimonial|review-card|t-quote|quote)[^"]*"[^>]*>\s*(?:<[^>]+>\s*)*?<p>(.*?)</p>', txt, re.S)]
+        r'class="(?:(?:testimonial|review-card|t-quote|quote)[^"]*|review(?:\s[^"]*)?)"[^>]*>\s*(?:<[^>]+>[^<a-zA-Z]*)*?<p>(.*?)</p>', txt, re.S)]
     found += [re.sub(r"<[^>]+>", " ", m.group(1)) for m in re.finditer(r"<blockquote[^>]*>(.*?)</blockquote>", txt, re.S)]
     for f in found:
         n = _qnorm(f)
@@ -585,6 +588,16 @@ for p in pages:
         fails.append(f"{p.relative_to(ROOT)}: no site header (neither #mikeyHeader nor tools/site-header.py's block)")
     elif want != src:
         fails.append(f"{p.relative_to(ROOT)}: site header differs from tools/site-header/header.html, run tools/site-header.py --apply")
+
+# --- links into the homepage land on something ---------------------------------
+# Added 2026-11-07: nine "/#contact" links (the ceramic page's two Get My Quote
+# buttons among them) and three each of "/#guarantee" and "/#faq" pointed at
+# ids the homepage doesn't have, so they dropped people at the top of it.
+_home_ids = set(re.findall(r'\bid="([^"]+)"', (ROOT / "index.html").read_text(encoding="utf-8")))
+for p in pages:
+    for a_ in sorted(set(re.findall(r'href="/#([^"]+)"', p.read_text(encoding="utf-8")))):
+        if a_ not in _home_ids:
+            fails.append(f"{p.relative_to(ROOT)}: links to /#{a_}, which isn't an id on the homepage")
 
 # --- report -----------------------------------------------------------------
 print("=" * 72)
