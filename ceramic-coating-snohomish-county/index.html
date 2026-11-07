@@ -30,95 +30,233 @@
 
 
 <style>
+/* Ceramic coating page, rebuilt 2026-11-07 (Mikey: "as well built as my home
+   page"). Same design language as the homepage: proof row, big headline,
+   eyebrow pills, gradient cards, red for what to tap, gold for the details. */
 /* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
 @font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Outfit','Outfit Fallback',sans-serif;background:#141414;color:#fff;line-height:1.6;}
-.container{max-width:900px;margin:0 auto;padding:0 20px;}
-header{background:#141414;border-bottom:2px solid #C8102E;padding:20px 0;}
-header .container{display:flex;justify-content:space-between;align-items:center;}
-.logo{font-weight:900;font-size:1.4rem;text-transform:uppercase;letter-spacing:1px;color:#fff;text-decoration:none;}
-.logo span{color:#C8102E;}
-nav a{color:#fff;text-decoration:none;font-weight:700;margin-left:24px;text-transform:uppercase;font-size:0.9rem;letter-spacing:1px;}
-nav a:hover{color:#C8102E;}
-.hero{padding:80px 0 40px;border-bottom:2px solid #C8102E;}
-h1{font-weight:900;font-size:2.8rem;text-transform:uppercase;letter-spacing:1px;line-height:1.1;margin-bottom:20px;}
-h1 span{color:#C8102E;}
-.lede{font-size:1.2rem;color:#ccc;max-width:700px;margin-bottom:24px;}
-.hero-cta{display:inline-block;font-weight:900;background:#C8102E;color:#fff;padding:16px 32px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #C8102E;box-shadow:0 0 20px rgba(200,16,46,0.4);font-size:1rem;}
-.hero-cta:hover{background:#fff;color:#C8102E;}
-.cc-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.cta-section .cc-ctas{justify-content:center;margin-top:20px}
-.cta-section .cc-ctas .btn{margin-top:0}
-.cc-call{display:inline-block;font-weight:900;color:#fff;padding:14px 28px;border:2px solid rgba(255,255,255,.75);text-decoration:none;letter-spacing:.5px;font-size:1rem;white-space:nowrap}
-.cc-call:hover{background:#fff;color:#141414}
-.cc-note{margin-top:14px;color:#aaa;font-size:.92rem;max-width:520px}
-main{padding:60px 0;}
-h2{font-weight:900;font-size:1.8rem;text-transform:uppercase;letter-spacing:1px;margin:40px 0 20px;border-left:4px solid #C8102E;padding-left:16px;}
-h3{font-weight:900;font-size:1.3rem;margin:24px 0 12px;color:#fff;}
-p{margin-bottom:16px;color:#ddd;}
-.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0;}
-.tier{background:#1c1c1c;border:2px solid #C8102E;padding:24px;text-align:center;}
-.tier h3{color:#C8102E;text-transform:uppercase;letter-spacing:1px;font-size:1rem;margin:0 0 8px;}
-.tier .price{font-weight:900;font-size:1.6rem;color:#fff;margin-bottom:8px;display:block;}
-.tier .duration{font-size:0.85rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;display:block;}
-.tier ul{list-style:none;padding:0;margin:0;text-align:left;}
-.tier li{padding:6px 0;border-bottom:1px solid #333;color:#ddd;font-size:0.9rem;}
-.tier li:last-child{border-bottom:none;}
-.callout{background:#1c1c1c;border:2px solid #C8102E;padding:24px;margin:30px 0;box-shadow:0 0 20px rgba(200,16,46,0.2);}
-.callout strong{color:#C8102E;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;display:block;margin-bottom:8px;}
-.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0;}
-.benefit{background:#1c1c1c;border:2px solid #333;padding:20px;border-left:4px solid #C8102E;}
-.benefit strong{display:block;color:#C8102E;text-transform:uppercase;letter-spacing:1px;font-size:0.85rem;margin-bottom:8px;}
-.benefit p{margin:0;font-size:0.95rem;}
-.review-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0;}
-.review{background:#1c1c1c;border:2px solid #C8102E;padding:20px;}
-.stars{color:#C8102E;font-weight:900;margin-bottom:8px;}
-.review p{font-style:italic;font-size:0.95rem;margin-bottom:8px;}
-.review .name{font-weight:900;text-transform:uppercase;font-size:0.85rem;color:#888;letter-spacing:1px;}
-.cta-section{background:#1c1c1c;padding:60px 20px;text-align:center;border-top:2px solid #C8102E;border-bottom:2px solid #C8102E;margin-top:60px;}
-.cta-section h2{border:none;padding:0;justify-content:center;text-align:center;}
-.btn{display:inline-block;font-weight:900;background:#C8102E;color:#fff;padding:16px 32px;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #C8102E;box-shadow:0 0 20px rgba(200,16,46,0.4);font-size:1rem;margin-top:20px;}
-.btn:hover{background:#fff;color:#C8102E;}
-.related-links{background:#1c1c1c;border:2px solid #333;padding:24px;margin:30px 0;}
-.related-links strong{color:#C8102E;text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;display:block;margin-bottom:12px;}
-.related-links a{color:#fff;text-decoration:none;display:block;padding:8px 0;border-bottom:1px solid #333;font-weight:700;}
-.related-links a:hover{color:#C8102E;}
-.related-links a:last-child{border-bottom:none;}
-footer{background:#0a0a0a;padding:40px 0;text-align:center;color:#888;font-size:0.9rem;}
-footer a{color:#C8102E;text-decoration:none;}
-ul{margin:16px 0 16px 24px;color:#ddd;}
-li{margin-bottom:8px;}
-@media(max-width:640px){h1{font-size:2rem;}h2{font-size:1.4rem;}.hero{padding:50px 0 30px;}.tier-grid{grid-template-columns:1fr;}.benefits-grid{grid-template-columns:1fr;}.review-grid{grid-template-columns:1fr;}nav a{margin-left:14px;font-size:0.8rem;}.logo{font-size:1.1rem;}}
+:root{--red:#C8102E;--red2:#A00C24;--glow:rgba(200,16,46,.42);--gold:#C9A24B;--gold2:#E4CD8B;
+  --bg:#111;--s1:#171717;--s2:#1d1d1d;--line:rgba(255,255,255,.08);--muted:#a9a9a9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Outfit Fallback',sans-serif;background:var(--bg);color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.cc-wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.cc-sec{padding:76px 0}
+.cc-sec.alt{background:linear-gradient(180deg,#141414,#101010);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cc-center{text-align:center}
+.cc-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid rgba(200,16,46,.35);
+  background:rgba(200,16,46,.08);color:var(--red);font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.cc-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.cc-h2{font-size:clamp(2rem,5vw,3.3rem);font-weight:900;line-height:1.02;letter-spacing:-1.2px;text-transform:uppercase;margin:16px 0 14px}
+.cc-h2 em.nw{white-space:nowrap}
+.cc-h2 em{font-style:italic;color:var(--red);text-shadow:0 0 34px var(--glow)}
+.cc-sub{color:var(--muted);font-size:clamp(1rem,1.6vw,1.15rem);max-width:640px;line-height:1.65}
+.cc-center .cc-sub{margin:0 auto}
+.cc-sub strong{color:#fff}
 
-/* Answer-first: the direct answer, near the top, that stands on its own. */
-.answer-first {
-  background: #141414;
-  border: 1px solid #2a2a2a;
-  border-left: 4px solid #C8102E;
-  border-radius: 0 12px 12px 0;
-  padding: 24px 28px;
-  margin: 0 0 32px;
+/* buttons */
+.cc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 30px;border-radius:12px;
+  font-weight:800;font-size:.98rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .15s,background .2s,border-color .2s,box-shadow .2s}
+.cc-btn svg{width:19px;height:19px;flex:none}
+.cc-btn-red{background:var(--red);color:#fff;box-shadow:0 10px 28px -8px var(--glow)}
+.cc-btn-red:hover{background:var(--red2);transform:translateY(-2px)}
+.cc-btn-line{border:2px solid rgba(255,255,255,.8);color:#fff;letter-spacing:.02em}
+.cc-btn-line:hover{background:#fff;color:#141414}
+.cc-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* hero */
+.cc-hero{position:relative;padding:56px 0 64px;overflow:hidden;
+  background:radial-gradient(900px 480px at 85% 10%,rgba(200,16,46,.16),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(201,162,75,.08),transparent 60%),#0f0f0f;
+  border-bottom:1px solid var(--line)}
+.cc-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cc-seo-h1{font-size:.8rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.cc-proof{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:#cfcfcf;font-size:.92rem;margin-bottom:18px}
+.cc-proof b{color:#fff;font-weight:800}
+.cc-proof .st{color:var(--gold);letter-spacing:2px}
+.cc-proof .dot{width:4px;height:4px;border-radius:50%;background:#555}
+.cc-headline{font-size:clamp(2.6rem,6.2vw,4.6rem);font-weight:900;line-height:.98;letter-spacing:-2px;text-transform:uppercase}
+.cc-headline span{display:block;color:var(--red);text-shadow:0 0 40px var(--glow)}
+.cc-lede{color:#d2d2d2;font-size:clamp(1.02rem,1.6vw,1.18rem);line-height:1.65;margin:20px 0 26px;max-width:560px}
+.cc-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.cc-note{color:#9a9a9a;font-size:.9rem;margin-top:14px;max-width:520px}
+.cc-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cc-pill{display:flex;align-items:baseline;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid #2c2c2c;background:rgba(255,255,255,.03)}
+.cc-pill span{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}
+.cc-pill b{font-size:1.05rem;font-weight:900}
+.cc-pill b i{font-style:normal;font-size:.7rem;font-weight:600;color:#9a9a9a;margin-right:3px}
+.cc-photo{position:relative;margin:0;border-radius:22px;overflow:hidden;border:1px solid #2a2a2a;box-shadow:0 30px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(201,162,75,.12)}
+.cc-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.cc-photo figcaption{position:absolute;left:12px;right:12px;bottom:12px;padding:10px 14px;border-radius:12px;background:rgba(10,10,10,.78);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:.86rem;color:#e6e6e6;border:1px solid rgba(255,255,255,.08)}
+.cc-photo figcaption b{color:var(--gold2)}
+
+/* answer box */
+.answer-first{max-width:860px;margin:0 auto;background:linear-gradient(180deg,#1a1a1a,#141414);border:1px solid #2a2a2a;border-left:4px solid var(--red);
+  border-radius:0 18px 18px 0;padding:26px 30px}
+.answer-first h2{font-size:1.2rem;line-height:1.35;margin:0 0 10px}
+.answer-first p{font-size:1.06rem;line-height:1.7;color:#e2e2e2}
+.answer-first p strong{color:#fff}
+
+/* why here */
+.cc-why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.cc-card{position:relative;background:linear-gradient(180deg,#1b1b1b,#121212);border:1.5px solid #262626;border-radius:20px;padding:24px 22px;
+  transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden}
+.cc-card:hover{transform:translateY(-5px);border-color:rgba(200,16,46,.55);box-shadow:0 24px 46px -20px var(--glow)}
+.cc-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#e01a36,var(--red2));
+  box-shadow:0 10px 22px -6px var(--glow);transform:rotate(-5deg);margin-bottom:16px;color:#fff}
+.cc-icon svg{width:26px;height:26px}
+.cc-card h3{font-size:1.12rem;font-weight:800;margin-bottom:6px}
+.cc-card p{color:var(--muted);font-size:.95rem;line-height:1.6}
+
+/* tiers */
+.cc-tiers{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:16px;margin-top:40px;align-items:stretch}
+.cc-tier{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#1c1c1c,#131313);border:1.5px solid #282828;border-radius:22px;padding:28px 24px 24px}
+.cc-tier.mid{border-color:rgba(201,162,75,.55);box-shadow:0 30px 60px -30px rgba(201,162,75,.35)}
+.cc-tier-name{font-size:.8rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.cc-tier.mid .cc-tier-name{color:var(--gold)}
+.cc-tier-chip{align-self:flex-start;margin-top:10px;padding:4px 11px;border-radius:999px;font-size:.72rem;font-weight:700;color:#cfcfcf;background:rgba(255,255,255,.05);border:1px solid #2e2e2e}
+.cc-tier-price{font-size:2.6rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-top:18px}
+.cc-tier-price small{font-size:.9rem;font-weight:600;color:#9a9a9a;margin-right:5px;letter-spacing:0}
+.cc-tier-years{color:var(--gold2);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+.cc-tier ul{list-style:none;margin:20px 0 22px;padding:18px 0 0;border-top:1px solid #2a2a2a;display:grid;gap:10px;flex:1}
+.cc-tier li{display:flex;gap:10px;align-items:flex-start;color:#dedede;font-size:.96rem;line-height:1.45}
+.cc-tier li svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--gold)}
+.cc-tier .cc-btn{width:100%;min-height:50px;font-size:.88rem}
+.cc-fine{color:#8d8d8d;font-size:.88rem;text-align:center;margin-top:20px}
+
+/* does / doesn't */
+.cc-honest{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.cc-list{background:linear-gradient(180deg,#1b1b1b,#131313);border:1.5px solid #262626;border-radius:22px;padding:28px}
+.cc-list h3{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:800;margin-bottom:16px}
+.cc-list ul{list-style:none;display:grid;gap:12px}
+.cc-list li{display:flex;gap:12px;color:#d6d6d6;line-height:1.5}
+.cc-list li svg{flex:none;width:20px;height:20px;margin-top:2px}
+.cc-list.yes li svg{color:#4ade80}
+.cc-list.no li svg{color:var(--red)}
+.cc-list li b{color:#fff}
+
+/* gallery */
+.cc-gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:36px}
+.cc-gallery figure{position:relative;margin:0;border-radius:18px;overflow:hidden;border:1px solid #262626;background:#1a1a1a}
+.cc-gallery figure:first-child{grid-row:span 2}
+.cc-gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.cc-gallery figure:first-child img{aspect-ratio:auto;min-height:100%}
+.cc-gallery figcaption{position:absolute;left:10px;bottom:10px;padding:6px 11px;border-radius:999px;background:rgba(10,10,10,.75);font-size:.8rem;font-weight:600;color:#eee}
+
+/* process */
+.cc-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px;counter-reset:s}
+.cc-step{position:relative;background:linear-gradient(180deg,#1b1b1b,#121212);border:1.5px solid #262626;border-radius:20px;padding:26px 20px 22px;overflow:hidden}
+.cc-step .num{position:absolute;top:-18px;right:-4px;font-size:112px;font-weight:900;font-style:italic;color:rgba(255,255,255,.035);line-height:1;pointer-events:none}
+.cc-step .cc-icon{width:48px;height:48px;margin-bottom:14px}
+.cc-step .cc-icon svg{width:24px;height:24px}
+.cc-step .node{position:absolute;top:18px;left:56px;width:24px;height:24px;border-radius:50%;background:#0c0c0c;border:1.5px solid var(--gold);color:var(--gold2);
+  font-size:11px;font-weight:900;display:grid;place-items:center}
+.cc-step .chip{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,16,46,.1);
+  border:1px solid rgba(200,16,46,.28);border-radius:6px;padding:3px 8px;margin-bottom:10px}
+.cc-step h3{font-size:1.05rem;font-weight:800;margin-bottom:6px;line-height:1.25}
+.cc-step p{color:var(--muted);font-size:.9rem;line-height:1.55}
+
+/* reviews */
+.cc-reviews{display:grid;grid-template-columns:.8fr 1fr 1fr;gap:16px;margin-top:36px;align-items:stretch}
+.cc-gcard{background:#fff;color:#1f1f1f;border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.cc-gcard .g{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:#444;font-size:.95rem}
+.cc-gcard .big{font-size:3.2rem;font-weight:900;line-height:1;margin:12px 0 4px;color:#111}
+.cc-gcard .st{color:#FBBC05;font-size:1.3rem;letter-spacing:3px}
+.cc-gcard .ct{color:#666;font-size:.9rem;margin-top:4px}
+.cc-gcard a{margin-top:14px;color:#1a73e8;font-weight:700;text-decoration:none;font-size:.92rem}
+.review{margin:0;position:relative;background:linear-gradient(180deg,#1b1b1b,#141414);border:1.5px solid #282828;border-left:3px solid var(--red);border-radius:20px;padding:26px}
+.review .stars{color:var(--gold);letter-spacing:3px;margin-bottom:10px}
+.review p{font-size:1.04rem;line-height:1.6;color:#eee}
+.review figcaption{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid #2a2a2a;font-weight:700;font-size:.92rem}
+.review figcaption .av{width:32px;height:32px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-weight:900}
+.review figcaption small{color:#8f8f8f;font-weight:600;margin-left:auto;letter-spacing:.08em;text-transform:uppercase;font-size:.7rem}
+.cc-rnote{color:#8d8d8d;font-size:.88rem;text-align:center;margin-top:18px}
+.cc-rnote a{color:#ddd}
+
+/* area */
+.cc-area{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.cc-towns{display:flex;flex-wrap:wrap;gap:10px}
+.cc-towns a{padding:10px 16px;border-radius:999px;border:1px solid #2e2e2e;background:#181818;text-decoration:none;font-weight:600;font-size:.95rem;transition:border-color .2s,color .2s}
+.cc-towns a:hover{border-color:var(--red);color:#fff}
+.cc-area-facts{list-style:none;display:grid;gap:10px;margin-top:22px}
+.cc-area-facts li{display:flex;gap:10px;color:#d6d6d6}
+.cc-area-facts svg{width:20px;height:20px;color:#4ade80;flex:none;margin-top:2px}
+.cc-area-facts a{color:#fff}
+
+/* faq */
+.cc-faq{max-width:860px;margin:36px auto 0;display:grid;gap:12px}
+.faq2-item{background:#181818;border:1.5px solid #262626;border-radius:16px;overflow:hidden;transition:border-color .2s}
+.faq2-item[open]{border-color:rgba(200,16,46,.5)}
+.faq2-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-weight:800;font-size:1.05rem}
+.faq2-item summary::-webkit-details-marker{display:none}
+.faq2-item summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(200,16,46,.12);color:var(--red);font-size:1.3rem;font-weight:700;transition:transform .25s}
+.faq2-item[open] summary::after{transform:rotate(45deg)}
+.faq2-item p{padding:0 22px 20px;color:#cfcfcf;line-height:1.7}
+.faq2-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+
+/* related */
+.cc-related{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.cc-related a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border-radius:16px;background:#181818;border:1.5px solid #262626;
+  text-decoration:none;font-weight:700;transition:border-color .2s,transform .2s}
+.cc-related a:hover{border-color:var(--red);transform:translateY(-2px)}
+.cc-related a span{color:var(--red)}
+
+/* final cta */
+.cc-final{position:relative;max-width:900px;margin:0 auto;text-align:center;padding:48px 32px;border-radius:26px;overflow:hidden;
+  background:radial-gradient(600px 300px at 50% 0%,rgba(200,16,46,.22),transparent 70%),linear-gradient(180deg,#1c1c1c,#121212);border:1.5px solid #2c2c2c}
+.cc-final::before{content:"";position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+.cc-final .cc-ctas{justify-content:center;margin-top:26px}
+.cc-checks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px;list-style:none}
+.cc-checks li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid #2c2c2c;font-size:.88rem;font-weight:600;color:#dcdcdc}
+.cc-checks svg{width:16px;height:16px;color:#4ade80}
+
+/* footer */
+footer{background:#0a0a0a;padding:40px 20px 30px;text-align:center;color:#8a8a8a;font-size:.9rem;border-top:2px solid var(--red)}
+footer a{color:var(--red);text-decoration:none}
+footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
+
+/* sticky bar on phones, after the hero */
+.cc-sticky{position:fixed;left:0;right:0;bottom:0;z-index:9998;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(12,12,14,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(0,0,0,.5);
+  transform:translateY(140%);transition:transform .35s cubic-bezier(.16,.84,.44,1)}
+.cc-sticky.on{transform:none}
+.cc-sticky a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:12px;font-weight:800;text-decoration:none;font-size:.95rem}
+.cc-sticky .call{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);white-space:nowrap}
+.cc-sticky .call svg{width:18px;height:18px;color:var(--red)}
+.cc-sticky .text{background:var(--red);text-transform:uppercase;letter-spacing:.04em;box-shadow:0 6px 18px var(--glow)}
+
+@media (max-width:1020px){
+  .cc-why{grid-template-columns:repeat(2,1fr)}
+  .cc-steps{grid-template-columns:repeat(2,1fr)}
+  .cc-steps .cc-step:last-child{grid-column:span 2}
+  .cc-reviews{grid-template-columns:1fr 1fr}
+  .cc-reviews .cc-gcard{grid-column:span 2}
 }
-.answer-first h2 {
-  font-size: 1.15rem;
-  line-height: 1.35;
-  margin: 0 0 12px;
-  color: #fff;
-  text-transform: none;
-  letter-spacing: 0;
+@media (max-width:860px){
+  .cc-sec{padding:56px 0}
+  .cc-hero{padding:34px 0 46px}
+  .cc-hero-grid{grid-template-columns:1fr;gap:30px}
+  .cc-tiers,.cc-honest,.cc-area,.cc-related{grid-template-columns:1fr}
+  .cc-gallery{grid-template-columns:1fr 1fr}
+  .cc-gallery figure:first-child{grid-column:span 2;grid-row:auto}
+  .cc-gallery figure:first-child img{aspect-ratio:4/3}
+  .cc-sticky{display:flex}
+  body{padding-bottom:84px}
 }
-.answer-first p {
-  margin: 0;
-  font-size: 1.08rem;
-  line-height: 1.65;
-  color: #e4e4e4;
+@media (max-width:560px){
+  .cc-wrap{padding:0 16px}
+  .cc-ctas .cc-btn{width:100%}
+  .cc-why,.cc-steps,.cc-reviews{grid-template-columns:1fr}
+  .cc-steps .cc-step:last-child,.cc-reviews .cc-gcard{grid-column:auto}
+  .cc-headline{letter-spacing:-1.2px}
+  .answer-first{padding:20px}
+  .answer-first p{font-size:1rem}
+  .cc-final{padding:36px 20px}
+  .cc-list{padding:22px}
 }
-.answer-first p strong { color: #fff; }
-@media (max-width: 600px) {
-  .answer-first { padding: 20px; }
-  .answer-first p { font-size: 1rem; }
-}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -534,7 +672,7 @@ li{margin-bottom:8px;}
           "name": "How long does the application take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "4-8 hours for the coating itself. With paint correction included, plan a full day. Vehicle stays put for 24 hours after to cure."
+            "text": "The coating itself takes 4 to 8 hours. Pro and Elite add paint correction first, and a one-step correction alone is 6 to 8 hours, so plan on more than a day for those. I'll give you the exact days when I quote. The car stays put for 24 hours after to cure."
           }
         },
         {
@@ -550,7 +688,7 @@ li{margin-bottom:8px;}
           "name": "What if it rains?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Application happens in your garage or under coverage. The 24-hour cure window also needs dry shelter. We'll plan around weather when we book."
+            "text": "Application happens in your garage or under cover. The 24-hour cure window also needs dry shelter, so I plan around the weather when you book."
           }
         },
         {
@@ -558,7 +696,7 @@ li{margin-bottom:8px;}
           "name": "Can you coat a brand-new car?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, and it's the ideal time. Brand-new paint with no swirl marks gets the cleanest coating result. Many customers schedule with their dealership delivery date."
+            "text": "Yes, and it's the ideal time. Brand-new paint with no swirl marks gets the cleanest coating result, so book it for soon after you pick the car up."
           }
         },
         {
@@ -721,218 +859,355 @@ li{margin-bottom:8px;}
 </script>
 <!-- /site-header -->
 
-<section class="hero">
-  <div class="container">
-    <h1 id="main-content">Mobile Ceramic Coating in <span>Snohomish County</span></h1>
-    <p class="lede">Multi-year paint protection applied in your driveway, in all twelve towns I serve, Arlington down to Bothell. 5.0 across 41 Google reviews, 300+ cars detailed.</p>
-    <div class="cc-ctas">
-      <a href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20" class="hero-cta">Text Me Your Car →</a>
-      <a href="tel:+14256007897" class="cc-call">(425) 600-7897</a>
+<section class="cc-hero" aria-labelledby="main-content">
+  <div class="cc-wrap cc-hero-grid">
+    <div>
+      <h1 class="cc-seo-h1" id="main-content">Mobile Ceramic Coating in Snohomish County</h1>
+      <div class="cc-proof" role="list" aria-label="Google rating">
+        <span role="listitem"><span class="st" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b data-md-rating>5.0</b> on Google</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span role="listitem"><b data-md-reviews="{n}">41</b> reviews</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span role="listitem"><b>300+</b> cars detailed</span>
+      </div>
+      <div class="cc-headline">Paint That Sheds the Rain. <span>I Come To You.</span></div>
+      <p class="cc-lede">A ceramic coating bonds to your clear coat and lasts 2 to 7 years, depending on the tier. I do the whole job in your driveway or garage, in twelve towns from Arlington down to Bothell.</p>
+      <div class="cc-ctas">
+        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Me Your Car</a>
+        <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
+      </div>
+      <p class="cc-note">Send the year, make and model and a couple of photos of the paint. I text back a real number for the tier you want, and you pay after the work, never a deposit.</p>
+      <div class="cc-pills" aria-label="Coating prices">
+        <div class="cc-pill"><span>Standard</span><b><i>from</i>$500</b></div>
+        <div class="cc-pill"><span>Pro</span><b><i>from</i>$850</b></div>
+        <div class="cc-pill"><span>Elite</span><b><i>from</i>$1,300</b></div>
+      </div>
     </div>
-    <p class="cc-note">Year, make, model and a couple of photos of the paint. I text back a real number for the tier you want.</p>
+    <figure class="cc-photo">
+      <picture>
+        <source media="(max-width:640px)" srcset="/images/grand-cherokee-black-640.webp">
+        <img src="/images/grand-cherokee-black-1200.webp" width="1200" height="900" alt="A black Jeep Grand Cherokee with glossy paint in its owner's driveway after Mikey's work" fetchpriority="high" decoding="async">
+      </picture>
+      <figcaption>Black paint shows every swirl. <b>This Grand Cherokee is one of mine.</b></figcaption>
+    </figure>
   </div>
 </section>
 
-<main class="container">
+<main>
 
-  <div class="answer-first">
-    <h2>What does mobile ceramic coating cost in Snohomish County?</h2>
-    <p>At Mikey's Mobile Detailing, ceramic coating starts at <strong>$500</strong>: Standard from $500, Pro from $850, Elite from $1,300, quoted per car on its size and paint. It lasts 2 to 7 years depending on the tier. I apply it in your driveway or garage, from Arlington down to Woodinville, and you pay after the work, never a deposit.</p>
+<section class="cc-sec" style="padding-bottom:0">
+  <div class="cc-wrap">
+    <div class="answer-first">
+      <h2>What does mobile ceramic coating cost in Snohomish County?</h2>
+      <p>At Mikey's Mobile Detailing, ceramic coating starts at <strong>$500</strong>: Standard from $500, Pro from $850, Elite from $1,300, quoted per car on its size and paint. It lasts 2 to 7 years depending on the tier. I apply it in your driveway or garage, from Arlington down to Woodinville, and you pay after the work, never a deposit.</p>
+    </div>
   </div>
+</section>
 
-  <p>Ceramic coating is the strongest paint protection you can put on a daily driver. It bonds to your clear coat at a chemical level, making water bead off, dirt wipe away, and your paint stay glossy for years. I apply professional-grade coatings mobile across Snohomish County, no shop appointment, no driving anywhere. I come to you.</p>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">The PNW problem</span>
+    <h2 class="cc-h2">Why Coat a Car <em>Here</em></h2>
+    <p class="cc-sub">If you live around here, you already know what your car deals with. Bare paint takes a beating, and <strong>waxing every 3 months barely keeps up.</strong> One coating protects it for 2 to 7 years.</p>
+    <div class="cc-why" style="text-align:left">
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.6A5 5 0 0 0 18 7h-1.3A8 8 0 1 0 4 15.3"/><path d="M16 14v6M8 14v6M12 16v6"/></svg></div>
+        <h3>Months of rain</h3>
+        <p>Water beads up and rolls off coated paint, taking the dirt with it, so the car stays cleaner between washes.</p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9"/></svg></div>
+        <h3>Winter road grime</h3>
+        <p>Road salt and spray bond to bare clear coat. On a coating, grime releases with a rinse instead of a scrub.</p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.2-6"/></svg></div>
+        <h3>Sap, pollen, droppings</h3>
+        <p>Bird droppings and tree sap wipe away instead of etching in, which is what ruins a clear coat over a spring.</p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg></div>
+        <h3>Summer UV</h3>
+        <p>A coating blocks the UV that fades and oxidizes paint, so the color stays deep, not chalky.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-  <h2>Why Ceramic Coating in the PNW?</h2>
-  <p>If you live around here, you already know what your car deals with. Months of rain. Road salt every winter. Tree sap and pollen in spring. UV beating down all summer. Bare paint takes a beating, and waxing every 3 months barely keeps up.</p>
+<section class="cc-sec alt" id="tiers">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Three tiers</span>
+    <h2 class="cc-h2">Pick How Long It <em>Lasts</em></h2>
+    <p class="cc-sub">Every tier starts with a full decontamination. The difference is how much correction goes on before the coating, and how many years you get.</p>
+    <div class="cc-tiers" style="text-align:left">
+      <article class="cc-tier">
+        <div class="cc-tier-name">Standard</div>
+        <div class="cc-tier-chip">For paint that's already clean</div>
+        <div class="cc-tier-price"><small>from</small>$500</div>
+        <div class="cc-tier-years">2&ndash;3 year protection</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Decontamination wash</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Iron remover + clay bar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Single-layer ceramic</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Wheel face coating</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Glass coating</li>
+        </ul>
+        <a class="cc-btn cc-btn-line" href="sms:+14256007897?&amp;body=Standard%20ceramic%20coating%20quote%3A%20">Text Me About Standard</a>
+      </article>
+      <article class="cc-tier mid">
+        <div class="cc-tier-name">Pro</div>
+        <div class="cc-tier-chip">Paint correction included</div>
+        <div class="cc-tier-price"><small>from</small>$850</div>
+        <div class="cc-tier-years">3&ndash;5 year protection</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Standard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>1-step paint correction</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Two-layer ceramic</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Trim + plastics coating</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Headlight coating</li>
+        </ul>
+        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Pro%20ceramic%20coating%20quote%3A%20">Text Me About Pro</a>
+      </article>
+      <article class="cc-tier">
+        <div class="cc-tier-name">Elite</div>
+        <div class="cc-tier-chip">Multi-step correction</div>
+        <div class="cc-tier-price"><small>from</small>$1,300</div>
+        <div class="cc-tier-years">5&ndash;7 year protection</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Everything in Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Multi-step correction</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Premium ceramic coating</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Full vehicle coverage</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Annual maintenance check</li>
+        </ul>
+        <a class="cc-btn cc-btn-line" href="sms:+14256007897?&amp;body=Elite%20ceramic%20coating%20quote%3A%20">Text Me About Elite</a>
+      </article>
+    </div>
+    <p class="cc-fine">Pricing varies by vehicle size and condition. Trucks and SUVs typically run 15&ndash;25% more. The final price comes after I've looked at the paint in person.</p>
+  </div>
+</section>
 
-  <p>Ceramic coating solves this. One application protects your paint for 2-7 years depending on the tier. Water sheets off. Bird droppings and sap wipe away instead of etching in. Your car stays cleaner between washes, and when you do wash it, dirt comes off way easier.</p>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Honest take</span>
+    <h2 class="cc-h2">It's Not a <em>Magic Shield</em></h2>
+    <p class="cc-sub">A coating is the strongest paint protection you can put on a daily driver. Here's what it does and what it doesn't, before you spend the money.</p>
+    <div class="cc-honest" style="text-align:left">
+      <div class="cc-list yes">
+        <h3>What a coating does</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Sheds water and dirt.</b> Water beads and rolls off, and grime releases with a rinse.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Resists chemicals and UV.</b> Droppings, sap, salt and bug splatter can't bond the same way, and color doesn't fade.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Makes washing easier.</b> Less scrubbing means less risk of swirl marks.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Keeps the gloss for years,</b> not weeks like wax, and a well-kept car shows better at trade-in.</span></li>
+        </ul>
+      </div>
+      <div class="cc-list no">
+        <h3>What it doesn't</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Stop rock chips.</b> Rocks still chip a coated car.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Survive brush washes.</b> Automatic brushes still scratch, and they wear a coating down.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Hide swirls.</b> It locks in whatever is on the paint, which is why correction comes first on Pro and Elite.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg><span><b>Wash itself.</b> It still needs a hand wash with pH-neutral soap. It just comes clean faster.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h2>Coating Tiers I Offer</h2>
+<section class="cc-sec alt">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">The work</span>
+    <h2 class="cc-h2">Paint I've <em>Worked On</em></h2>
+    <p class="cc-sub">Real cars in real driveways. Dark paint shows every flaw, which is why the prep matters more than the bottle.</p>
+    <div class="cc-gallery">
+      <figure>
+        <img src="/images/mach-e-black-1200.webp" srcset="/images/mach-e-black-640.webp 640w, /images/mach-e-black-1200.webp 1200w" sizes="(max-width:860px) 100vw, 520px" width="1200" height="818" alt="Front of a black Ford Mustang Mach-E with reflections in the paint" loading="lazy" decoding="async">
+        <figcaption>Mustang Mach-E</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/legacy-blue-640.webp" width="640" height="401" alt="Front corner of a blue Subaru Legacy with glossy paint" loading="lazy" decoding="async">
+        <figcaption>Subaru Legacy</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/audi-r8-driveway.webp" width="680" height="510" alt="A green Audi R8 in a gravel driveway" loading="lazy" decoding="async">
+        <figcaption>Audi R8</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/grand-cherokee-black-640.webp" width="640" height="480" alt="Front of a black Jeep Grand Cherokee in a driveway" loading="lazy" decoding="async">
+        <figcaption>Jeep Grand Cherokee</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/toyota-highlander-driveway.webp" width="680" height="510" alt="A black Toyota Highlander in a driveway with the pressure washer hose beside it" loading="lazy" decoding="async">
+        <figcaption>Toyota Highlander</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-  <div class="tier-grid">
-    <div class="tier">
-      <h3>Standard</h3>
-      <span class="price">From $500</span>
-      <span class="duration">2-3 Year Protection</span>
-      <ul>
-        <li>Decontamination wash</li>
-        <li>Iron remover + clay bar</li>
-        <li>Single-layer ceramic</li>
-        <li>Wheel face coating</li>
-        <li>Glass coating</li>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">How it goes</span>
+    <h2 class="cc-h2">Five Steps. <em>One Driveway.</em></h2>
+    <p class="cc-sub">The coating goes on last. Most of the job is getting the paint clean enough for it to bond.</p>
+    <div class="cc-steps" style="text-align:left">
+      <article class="cc-step"><div class="num" aria-hidden="true">01</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.8 4-4 0-1.2-.6-2.3-1.7-3.2S7.3 6.6 7 5c-.3 1.6-1.2 3.1-2.3 4.1S3 11.1 3 12.3c0 2.2 1.8 4 4 4z"/><path d="M12.6 6.6A11 11 0 0 0 14 3c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a7 7 0 0 1-11.9 5"/></svg></div><span class="node" aria-hidden="true">1</span>
+        <span class="chip">Every tier</span><h3>Decontamination wash</h3>
+        <p>Two-bucket hand wash, iron remover to dissolve embedded brake dust, clay bar to pull out anything still stuck.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">02</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div><span class="node" aria-hidden="true">2</span>
+        <span class="chip">Pro and Elite</span><h3>Paint correction</h3>
+        <p>I remove swirl marks, light scratches and oxidation. A coating locks in whatever is on the paint, so this step matters.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">03</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h.01M7 5h.01M11 7h.01M3 7h.01M7 9h.01M3 11h.01"/><rect x="15" y="5" width="4" height="4"/><path d="m19 9 2 2v10c0 .6-.4 1-1 1h-6c-.6 0-1-.4-1-1V11l2-2"/></svg></div><span class="node" aria-hidden="true">3</span>
+        <span class="chip">Every tier</span><h3>Surface prep</h3>
+        <p>A panel wipe-down with isopropyl strips any leftover oils or polish. The coating needs bare, clean clear coat to bond.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">04</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><span class="node" aria-hidden="true">4</span>
+        <span class="chip">24-hour cure</span><h3>Coating, panel by panel</h3>
+        <p>Applied with an applicator and microfiber. It cures over 24 hours, so the car stays dry in a garage or under cover overnight.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">05</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><span class="node" aria-hidden="true">5</span>
+        <span class="chip">Yours to keep up</span><h3>Aftercare plan</h3>
+        <p>I walk you through it: hand wash with pH-neutral soap, no automatic brush washes, a maintenance spray every 6 months.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="cc-sec alt">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Reviews</span>
+    <h2 class="cc-h2">From My <em>Google Reviews</em></h2>
+    <div class="cc-reviews" style="text-align:left">
+      <div class="cc-gcard">
+        <div class="g"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>Google Reviews</div>
+        <div class="big" data-md-rating>5.0</div>
+        <div class="st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="ct"><span data-md-reviews="{n}">41</span> reviews</div>
+        <a href="/reviews/">Read every one &rarr;</a>
+      </div>
+      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;Excellent attention to detail, they did a wonderful job. It was clear they cared about their customers and it didn&rsquo;t go unnoticed. Thanks again!&rdquo;</p>
+        <figcaption><span class="av" aria-hidden="true">B</span>Bradley J.<small>Google review</small></figcaption></figure>
+      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;10/10 experience my car looks brand new!.&rdquo;</p>
+        <figcaption><span class="av" aria-hidden="true">B</span>Brittany H.<small>Google review</small></figcaption></figure>
+    </div>
+    <p class="cc-rnote">Copied word for word from my Google profile. <a href="/reviews/">Read all <span data-md-reviews="{n}">41</span></a>.</p>
+  </div>
+</section>
+
+<section class="cc-sec">
+  <div class="cc-wrap cc-area">
+    <div>
+      <span class="cc-eyebrow">Where I coat</span>
+      <h2 class="cc-h2">Twelve Towns, <em>Same Price</em></h2>
+      <p class="cc-sub">I do ceramic coatings in your driveway or garage in all twelve towns I serve.</p>
+      <ul class="cc-area-facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same price in every one of them, no travel fee.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Somewhere close by that isn't on the list? Text me and ask.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>In Monroe or Mill Creek? I wrote those up on their own: <a href="/monroe/ceramic-coating.html">ceramic coating in Monroe</a> and <a href="/mill-creek/ceramic-coating.html">ceramic coating in Mill Creek</a>.</span></li>
       </ul>
     </div>
-    <div class="tier">
-      <h3>Pro</h3>
-      <span class="price">From $850</span>
-      <span class="duration">3-5 Year Protection</span>
-      <ul>
-        <li>Everything in Standard</li>
-        <li>1-step paint correction</li>
-        <li>Two-layer ceramic</li>
-        <li>Trim + plastics coating</li>
-        <li>Headlight coating</li>
-      </ul>
+    <nav class="cc-towns" aria-label="Towns I serve">
+      <a href="/snohomish/">Snohomish</a>
+      <a href="/lake-stevens/">Lake Stevens</a>
+      <a href="/everett/">Everett</a>
+      <a href="/monroe/">Monroe</a>
+      <a href="/mill-creek/">Mill Creek</a>
+      <a href="/marysville/">Marysville</a>
+      <a href="/bothell/">Bothell</a>
+      <a href="/duvall/">Duvall</a>
+      <a href="/mukilteo/">Mukilteo</a>
+      <a href="/woodinville/">Woodinville</a>
+      <a href="/granite-falls/">Granite Falls</a>
+      <a href="/arlington/">Arlington</a>
+    </nav>
+  </div>
+</section>
+
+<section class="cc-sec alt" id="faq">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Common questions</span>
+    <h2 class="cc-h2">Before You <em>Book</em></h2>
+    <div class="cc-faq" style="text-align:left">
+      <details class="faq2-item">
+        <summary>How long does ceramic coating last?</summary>
+        <p>Two to seven years, depending on the tier. Careful hand washes and staying out of automatic brush washes are what get a coating to the long end.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Is ceramic coating worth it in the Pacific Northwest?</summary>
+        <p>Yes, especially here. Constant rain, road salt, sap and pollen all bond to bare paint. A coating makes water bead off and lets that contamination wipe away, which matters more in our wet climate than in a dry one.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do I need paint correction before ceramic coating?</summary>
+        <p>Almost always. A coating locks in whatever is on the paint, so swirl marks, oxidation or contamination get sealed in for years. Correcting first means the coating goes on clean paint.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Can ceramic coating be applied at my home?</summary>
+        <p>Yes. I apply coatings in driveways, garages and covered carports across Snohomish County. The car has to stay dry for 24 hours after, so a garage is best, but a covered driveway works too.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>How long does the application take?</summary>
+        <p>The coating itself takes 4 to 8 hours. Pro and Elite add paint correction first, and a one-step correction alone is 6 to 8 hours, so plan on more than a day for those. I'll give you the exact days when I quote. The car stays put for 24 hours after to cure.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do I need to be home?</summary>
+        <p>You need to be home at the start to confirm the work and at the end to walk through aftercare. In between, you're free.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>What if it rains?</summary>
+        <p>Application happens in your garage or under cover. The 24-hour cure window also needs dry shelter, so I plan around the weather when you book.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Can you coat a brand-new car?</summary>
+        <p>Yes, and it's the ideal time. Brand-new paint with no swirl marks gets the cleanest coating result, so book it for soon after you pick the car up.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>What about wheels and glass?</summary>
+        <p>Wheel face coating and glass coating are included starting at the Standard tier. Brake dust wipes off coated wheels way easier, and rain sheets off coated windshields without needing wipers as much.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do you detail or coat RVs and trailers?</summary>
+        <p>Yes, RVs, travel trailers and horse trailers, quoted per job. Size, the shape it's in and what it's made of (gelcoat, painted or polished aluminum) change the work too much for one price, so text me a few photos at (425) 600-7897 and tell me what you want done, and I'll give you a real number.</p>
+      </details>
     </div>
-    <div class="tier">
-      <h3>Elite</h3>
-      <span class="price">From $1,300</span>
-      <span class="duration">5-7 Year Protection</span>
-      <ul>
-        <li>Everything in Pro</li>
-        <li>Multi-step correction</li>
-        <li>Premium ceramic coating</li>
-        <li>Full vehicle coverage</li>
-        <li>Annual maintenance check</li>
-      </ul>
+    <div class="cc-related" style="text-align:left">
+      <a href="/paint-correction-snohomish-county/">Paint correction <span>&rarr;</span></a>
+      <a href="/blog/can-scratches-be-buffed-out/">Can a scratch be buffed out? <span>&rarr;</span></a>
+      <a href="/mobile-car-detailing-near-me/">Mobile car detailing <span>&rarr;</span></a>
+      <a href="/best-time-to-detail-car-washington/">Best time to detail here <span>&rarr;</span></a>
+      <a href="/how-long-does-car-detailing-take/">How long detailing takes <span>&rarr;</span></a>
+      <a href="/reviews/">All my reviews <span>&rarr;</span></a>
     </div>
   </div>
-
-  <p style="font-size:0.9rem;color:#888;text-align:center;">Pricing varies by vehicle size and condition. Trucks and SUVs typically run 15-25% more. Final quote after vehicle inspection.</p>
-
-  <h2>What You Actually Get</h2>
-
-  <div class="benefits-grid">
-    <div class="benefit">
-      <strong>Hydrophobic Surface</strong>
-      <p>Water beads up and rolls off, taking dirt with it. Your car stays cleaner between washes.</p>
-    </div>
-    <div class="benefit">
-      <strong>UV Protection</strong>
-      <p>Coating blocks UV that fades and oxidizes paint. Your color stays deep, not chalky.</p>
-    </div>
-    <div class="benefit">
-      <strong>Chemical Resistance</strong>
-      <p>Bird droppings, sap, road salt, and bug splatter can't bond to coated paint the same way.</p>
-    </div>
-    <div class="benefit">
-      <strong>Easier Washing</strong>
-      <p>Dirt and grime release with a rinse. No more scrubbing, less risk of swirl marks.</p>
-    </div>
-    <div class="benefit">
-      <strong>Long-Term Gloss</strong>
-      <p>Paint stays looking deep and wet for years, not weeks like wax.</p>
-    </div>
-    <div class="benefit">
-      <strong>Resale Value</strong>
-      <p>A coated, well-maintained car shows better and sells for more when you trade in.</p>
-    </div>
-  </div>
-
-  <h2>The Process</h2>
-
-  <h3>Step 1, Decontamination Wash</h3>
-  <p>Two-bucket hand wash, iron remover to dissolve embedded brake dust, clay bar to pull out anything still stuck. Paint has to be perfectly clean before correction.</p>
-
-  <h3>Step 2, Paint Correction</h3>
-  <p>This is where I remove swirl marks, light scratches, and oxidation. Coating locks in whatever is on the paint, so this step matters. Skip it and you're sealing in flaws for 5 years.</p>
-
-  <h3>Step 3, Surface Prep</h3>
-  <p>Panel wipe-down with isopropyl to strip any residual oils or polishing compounds. The coating needs bare, clean clear coat to bond.</p>
-
-  <h3>Step 4, Coating Application</h3>
-  <p>Applied panel by panel with applicator and microfiber. Cures over 24 hours. Vehicle needs to stay dry during the cure window, garage or covered space required overnight.</p>
-
-  <h3>Step 5, Aftercare Plan</h3>
-  <p>I walk you through how to maintain it. Hand wash with pH-neutral soap, no automatic brush washes, top up with maintenance spray every 6 months. Coating lasts way longer when it's cared for right.</p>
-
-  <div class="callout">
-    <strong>Honest Take</strong>
-    Ceramic coating isn't a magic shield. Rocks still chip, brushes still scratch. What it does is protect against chemical and UV damage, make washing way easier, and keep your paint looking new for years instead of months. For a daily driver in the PNW, it's one of the best investments you can make.
-  </div>
-
-  <h2>From My Google Reviews</h2>
-
-  <div class="review-grid">
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"Excellent attention to detail, they did a wonderful job. It was clear they cared about their customers and it didn&rsquo;t go unnoticed. Thanks again!"</p>
-      <span class="name">Bradley J. &middot; Google review</span>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>"10/10 experience my car looks brand new!."</p>
-      <span class="name">Brittany H. &middot; Google review</span>
-    </div>
-  </div>
-  <p style="font-size:0.85rem;color:#888;text-align:center;">Copied word for word from my Google profile. <a href="/reviews/" style="color:#ccc;">Read all 41</a>.</p>
-
-  <h2>Service Area</h2>
-  <p>I do ceramic coatings in your driveway or garage in all twelve towns I serve:</p>
-  <ul>
-    <li><a href="/snohomish/" style="color:inherit;">Snohomish</a></li>
-    <li><a href="/lake-stevens/" style="color:inherit;">Lake Stevens</a></li>
-    <li><a href="/everett/" style="color:inherit;">Everett</a></li>
-    <li><a href="/monroe/" style="color:inherit;">Monroe</a></li>
-    <li><a href="/mill-creek/" style="color:inherit;">Mill Creek</a></li>
-    <li><a href="/marysville/" style="color:inherit;">Marysville</a></li>
-    <li><a href="/bothell/" style="color:inherit;">Bothell</a></li>
-    <li><a href="/duvall/" style="color:inherit;">Duvall</a></li>
-    <li><a href="/mukilteo/" style="color:inherit;">Mukilteo</a></li>
-    <li><a href="/woodinville/" style="color:inherit;">Woodinville</a></li>
-    <li><a href="/granite-falls/" style="color:inherit;">Granite Falls</a></li>
-    <li><a href="/arlington/" style="color:inherit;">Arlington</a></li>
-  </ul>
-  <p>Same price in every one of them, no travel fee. Somewhere close by that isn't on the list? Text me and ask.</p>
-  <p>In Monroe or Mill Creek? I wrote those up on their own: <a href="/monroe/ceramic-coating.html">ceramic coating in Monroe</a> and <a href="/mill-creek/ceramic-coating.html">ceramic coating in Mill Creek</a>.</p>
-
-  <h2>Common Questions</h2>
-
-  <h3>How long does ceramic coating last?</h3>
-  <p>Two to seven years, depending on the tier. Careful hand washes and staying out of automatic brush washes are what get a coating to the long end.</p>
-
-  <h3>Is ceramic coating worth it in the Pacific Northwest?</h3>
-  <p>Yes, especially here. Constant rain, road salt, sap and pollen all bond to bare paint. A coating makes water bead off and lets that contamination wipe away, which matters more in our wet climate than in a dry one.</p>
-
-  <h3>Do I need paint correction before ceramic coating?</h3>
-  <p>Almost always. A coating locks in whatever is on the paint, so swirl marks, oxidation or contamination get sealed in for years. Correcting first means the coating goes on clean paint.</p>
-
-  <h3>Can ceramic coating be applied at my home?</h3>
-  <p>Yes. I apply coatings in driveways, garages and covered carports across Snohomish County. The car has to stay dry for 24 hours after, so a garage is best, but a covered driveway works too.</p>
-
-  <h3>How long does the application take?</h3>
-  <p>4-8 hours for the coating itself. With paint correction included, plan a full day. Vehicle stays put for 24 hours after to cure.</p>
-
-  <h3>Do I need to be home?</h3>
-  <p>You need to be home at the start to confirm the work and at the end to walk through aftercare. In between, you're free.</p>
-
-  <h3>What if it rains?</h3>
-  <p>Application happens in your garage or under coverage. The 24-hour cure window also needs dry shelter. We'll plan around weather when we book.</p>
-
-  <h3>Can you coat a brand-new car?</h3>
-  <p>Yes, and it's the ideal time. Brand-new paint with no swirl marks gets the cleanest coating result. Many customers schedule with their dealership delivery date.</p>
-
-  <h3>What about wheels and glass?</h3>
-  <p>Wheel face coating and glass coating are included starting at the Standard tier. Brake dust wipes off coated wheels way easier, and rain sheets off coated windshields without needing wipers as much.</p>
-
-  <h3>Do you detail or coat RVs and trailers?</h3>
-  <p>Yes, RVs, travel trailers and horse trailers, quoted per job. Size, the shape it's in and what it's made of (gelcoat, painted or polished aluminum) change the work too much for one price, so text me a few photos at (425) 600-7897 and tell me what you want done, and I'll give you a real number.</p>
-
-  <div class="related-links">
-    <strong>Related Services</strong>
-    <a href="/paint-correction-snohomish-county/">Paint Correction →</a>
-    <a href="/mobile-car-detailing-near-me/">Mobile Car Detailing Near Me →</a>
-    <a href="/best-time-to-detail-car-washington/">Best Time to Detail in Washington →</a>
-    <a href="/how-long-does-car-detailing-take/">How Long Does Detailing Take? →</a>
-  </div>
+</section>
 
 </main>
 
-<section class="cta-section">
-  <div class="container">
-    <h2>Get Your Ceramic Coating Quote</h2>
-    <p style="color:#ccc;max-width:600px;margin:0 auto;">A coating is quoted per car, so the 60-second calculator can't price one. Text me the year, make and model and a couple of photos of the paint, and I'll text back a real number for the tier you want.</p>
-    <div class="cc-ctas">
-      <a href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20" class="btn">Text Me Your Car →</a>
-      <a href="tel:+14256007897" class="cc-call">(425) 600-7897</a>
+<section class="cc-sec" id="quote">
+  <div class="cc-wrap">
+    <div class="cc-final">
+      <span class="cc-eyebrow">Quoted from your photos</span>
+      <h2 class="cc-h2">Get a Real Number for <em class="nw">Your Car</em></h2>
+      <p class="cc-sub" style="margin:0 auto">A coating is quoted per car, so the 60-second calculator can't price one. Text me the year, make and model and a couple of photos of the paint, and I'll text back a real number for the tier you want.</p>
+      <div class="cc-ctas">
+        <a class="cc-btn cc-btn-red" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Text Me Your Car</a>
+        <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
+      </div>
+      <ul class="cc-checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pay after the work</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No deposit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your driveway or garage</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same detailer every time</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container">
-    <p>Mikey's Mobile Detailing, Serving Snohomish, Monroe, Lake Stevens, Everett, Marysville, Duvall.</p>
-    <p style="margin-top:8px;"><a href="/">Back to home</a></p>
+  <p class="ft-name">Mikey's Mobile Detailing</p>
+  <p>Ceramic coating, paint correction and detailing in twelve towns, Arlington down to Bothell. Based in Snohomish, WA.</p>
+  <p style="margin-top:8px;"><a href="/">Back to home</a></p>
   <!-- SOCIAL: same row on every page; tools/check-site.py checks it -->
   <p class="footer-social" style="margin:20px auto 6px;text-align:center;font-size:13.5px;line-height:2.2;">Find me on
     <a href="https://g.page/r/CRCuKQ982VIZEBE" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>Google</a>
@@ -942,8 +1217,20 @@ li{margin-bottom:8px;}
     <a href="https://www.youtube.com/@MikeysDetailing" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>YouTube</a>
     <a href="https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M12 3 2 11h3v10h5v-6h4v6h5V11h3z"/></svg>Nextdoor</a>
   </p>
-  </div>
 </footer>
+
+<div class="cc-sticky" id="ccSticky" aria-label="Call or text Mikey">
+  <a class="call" href="tel:+14256007897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(425) 600-7897</a>
+  <a class="text" href="sms:+14256007897?&amp;body=Ceramic%20coating%20quote%3A%20">Text Me Your Car</a>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('ccSticky'), hero=document.querySelector('.cc-hero');
+  if(!bar||!hero||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(e){ bar.classList.toggle('on', !e[0].isIntersecting); }).observe(hero);
+})();
+</script>
+
 
 </body>
 </html>
