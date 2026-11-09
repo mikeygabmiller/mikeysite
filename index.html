@@ -181,7 +181,7 @@ html.cv #beforeafter { content-visibility:auto; contain-intrinsic-size:auto 1310
 html.cv #rain-ready { content-visibility:auto; contain-intrinsic-size:auto 1240px; }
 html.cv main > .hg4 { content-visibility:auto; contain-intrinsic-size:auto 1580px; }
 html.cv #service-area { content-visibility:auto; contain-intrinsic-size:auto 2070px; }
-html.cv #allservices { content-visibility:auto; contain-intrinsic-size:auto 2350px; }
+html.cv #allservices { content-visibility:auto; contain-intrinsic-size:auto 1740px; }
 html.cv #about { content-visibility:auto; contain-intrinsic-size:auto 1080px; }
 html.cv #qanda { content-visibility:auto; contain-intrinsic-size:auto 1100px; }
 html.cv .qcta { content-visibility:auto; contain-intrinsic-size:auto 790px; }
@@ -614,6 +614,7 @@ header li a[href="#booking"],
 .footer-col ul { list-style: none; }
 .footer-col ul a:hover { color: var(--brand-red); }
 .footer-col ul li { margin-bottom: 2px; }
+@media (max-width:900px){ .footer-col ul{ columns:2; column-gap:20px; } .footer-col li{ break-inside:avoid; } .footer-col li a{ display:inline-block; padding:11px 0; } #hamburgerBtn{ min-width:44px; min-height:44px; margin:-8px 0; justify-content:center; align-items:center; } }
 .footer-col .footer-cta, .footer-cta { display: inline-block; padding: 11px 22px; background: var(--brand-red); color: #fff; font-weight: 800; border-radius: 8px; text-decoration: none; box-shadow: 0 0 12px rgba(200,16,46,0.5); transition: transform .15s; font-size: 13.5px; }
 .footer-cta:hover { transform: translateY(-2px); }
 .footer-copy { margin-top: 24px; text-align: center; color: #8a8a8a; font-size: 12px; }
@@ -1428,6 +1429,14 @@ header li a[href="#booking"],
   .mh-rr-icon{ width:38px; height:38px; border-radius:11px; }
   .mh-rr-main{ font-size:.9rem; }
   .mh-rr-top{ flex-direction:column; align-items:flex-start; gap:3px; }
+  /* Short phones (640 to 700 tall): the quote button was landing under the
+     fold. The town link is also in the menu, so it gives up its row here. */
+  @media (max-height:700px){
+    .mh-arearow{ display:none; }
+    .mh .subhead{ margin-bottom:12px; }
+    .mh-rr{ margin-bottom:14px; }
+    .mh-guarantee{ margin-bottom:14px; }
+  }
   .mh-rr-when::before{ display:none; }
   .mh-rr-go{ width:28px; height:28px; }
 }
@@ -3122,6 +3131,40 @@ header li a[href="#booking"],
       </figcaption>
     </figure>
 
+    <!-- More Google reviews: each one word for word from /reviews/ -->
+    <div class="trust-more" aria-label="More Google reviews" tabindex="0">
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Amazing job! Mikey is very professional and thorough. I have two young kids so my car gets quite messy! Very pleased and highly recommend to anyone and everyone!&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Kathryn M.</span><span class="trust-mdate">May 2026</span></figcaption>
+      </figure>
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Mikey was great to work with. My car looks better than ever. I got an interior and exterior detail. And it was the best! My favorite mobile detailer in snohomish for sure. (I&#x27;ve tried a lot) I definitely will be hiring Mikey again.&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Mary M.</span><span class="trust-mdate">October 2025</span></figcaption>
+      </figure>
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Mikey was prompt, hardworking, professional, and a good communicator. Will certainly use him again for future detailing!&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Ben G.</span><span class="trust-mdate">February 2026</span></figcaption>
+      </figure>
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Mike did an excellent job on our older car! We have to keep it outdoors, so it had gathered quite a bit of dirt. After his careful work it looks almost like new again! Recommended service by a very nice young man!&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Debra H.</span><span class="trust-mdate">September 2025</span></figcaption>
+      </figure>
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Great service that came right to my house and affordable price!&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Cana C.</span><span class="trust-mdate">July 2025</span></figcaption>
+      </figure>
+      <figure class="trust-mini">
+        <div class="trust-rtop"><span class="trust-stars" aria-label="Rated 5 out of 5">★★★★★</span><span class="trust-source">Google review</span></div>
+        <blockquote class="trust-mq">&ldquo;Mikey did a wonderful job detailing our CRV and we plan to use his services again in the future!&rdquo;</blockquote>
+        <figcaption class="trust-mcap"><span class="trust-name">Ruth H.</span><span class="trust-mdate">May 2026</span></figcaption>
+      </figure>
+    </div>
+
     <!-- Recent work strip -->
     <div class="trust-work" aria-label="Recent detailing work">
       <img width="800" height="518" src="/images/backseat-before-after.webp" alt="Back seat before and after an interior detail: crumbs, wrappers and a spill, then clean leather" loading="lazy" onerror="this.style.display='none';">
@@ -3129,7 +3172,7 @@ header li a[href="#booking"],
     </div>
 
     <!-- All reviews CTA -->
-    <a href="/reviews" class="trust-cta">
+    <a href="/reviews/" class="trust-cta">
       Read all reviews
       <span class="trust-cta-arrow">→</span>
     </a>
@@ -3295,6 +3338,7 @@ header li a[href="#booking"],
 
   @media (min-width: 900px) {
     .slider-grid { grid-template-columns: 1fr 1fr; }
+    #beforeafter .slider { aspect-ratio: 4 / 5 !important; }
   }
 
 </style>
@@ -3409,7 +3453,7 @@ header li a[href="#booking"],
   .qcta-inner::before{ content:""; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--brand-red,#C8102E),transparent); }
   .qcta-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--brand-red,#C8102E); margin-bottom:16px; }
   .qcta-eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--brand-red,#C8102E); box-shadow:0 0 0 3px rgba(200,16,46,.22); }
-  .qcta h2{ font-family:'Outfit','Outfit Fallback',sans-serif; font-size:clamp(26px,4.8vw,38px); font-weight:900; letter-spacing:-.02em; color:#fff; line-height:1.1; margin:0 0 14px; }
+  .qcta h2{ text-transform:uppercase; font-family:'Outfit','Outfit Fallback',sans-serif; font-size:clamp(26px,4.8vw,38px); font-weight:900; letter-spacing:-.02em; color:#fff; line-height:1.1; margin:0 0 14px; }
   .qcta h2 em{ color:var(--brand-red,#C8102E); font-style:normal; }
   .qcta-sub{ font-size:16px; line-height:1.55; color:#b0b0b6; margin:0 auto 26px; max-width:470px; }
   .qcta-feats{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 0 30px; }
@@ -3490,6 +3534,20 @@ header li a[href="#booking"],
   }
 
   /* Hero review */
+  /* More reviews: a two-up grid on a laptop, a sideways swipe on a phone so
+     six reviews cost one card of height */
+  .trust-more{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0 0 4px; }
+  .trust-mini{ margin:0; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:12px; padding:16px 18px 14px; display:flex; flex-direction:column; }
+  .trust-mini .trust-rtop{ margin-bottom:10px; }
+  .trust-mq{ margin:0 0 12px; font-size:.95rem; line-height:1.55; color:#e6e6e6; flex:1; }
+  .trust-mcap{ display:flex; align-items:baseline; justify-content:space-between; gap:10px; }
+  .trust-mdate{ font-size:.78rem; color:#9a9a9a; }
+  @media (max-width:640px){
+    .trust-more{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px; margin:0 -20px 4px; padding:0 20px 10px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+    .trust-more::-webkit-scrollbar{ display:none; }
+    .trust-mini{ flex:0 0 84%; scroll-snap-align:center; }
+  }
+
   .trust-review {
     background: #1a1a1a;
     border: 2px solid #2a2a2a;
@@ -3692,7 +3750,7 @@ header li a[href="#booking"],
   .rr-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px }
   .rr-alt{ margin:12px 0 0; text-align:center; font-size:14px; color:#9aa0a6 }
   .rr-alt a{ color:#fff; font-weight:600 }
-  .rr-fine{ margin:16px 0 0; font-size:12.5px; line-height:1.55; color:#8a8f94 }
+  .rr-fine{ margin:16px 0 0; font-size:13.5px; line-height:1.6; color:#a9aeb3 }
   @media (max-width:820px){ .rr-in{ grid-template-columns:1fr } .rr-card{ max-width:520px; width:100% } }
 </style>
 
@@ -3902,7 +3960,7 @@ header li a[href="#booking"],
   .sa-quick-h{ display:block; font-size:.7rem; font-weight:800; letter-spacing:1.4px;
     text-transform:uppercase; color:#7f7f7f; margin-bottom:10px; }
   .sa-quick-row{ display:flex; flex-wrap:wrap; gap:7px; }
-  .sa-quick-row button{ background:#202020; border:1px solid #2f2f2f; border-radius:999px;
+  .sa-quick-row button{ min-height:44px; background:#202020; border:1px solid #2f2f2f; border-radius:999px;
     color:#cfcfcf; font-family:inherit; font-size:.82rem; font-weight:700; padding:7px 13px;
     cursor:pointer; transition:border-color .15s ease, color .15s ease, background .15s ease; }
   .sa-quick-row button:hover,.sa-quick-row button:focus-visible{ border-color:#C8102E; color:#fff; background:#221616; }
@@ -4021,7 +4079,7 @@ header li a[href="#booking"],
   .sa-chips-row{ display:flex; flex-wrap:wrap; gap:7px; }
   .sa-chip{ flex:0 1 auto; background:#141414; border:1.5px solid #333; border-radius:999px;
     color:#cfcfcf; font-family:inherit; font-size:.84rem; font-weight:700; line-height:1.2;
-    padding:9px 14px; min-height:40px; cursor:pointer;
+    padding:9px 14px; min-height:44px; cursor:pointer;
     transition:border-color .15s ease, background .15s ease, color .15s ease; }
   .sa-chip:hover{ border-color:#5a5a5a; color:#fff; }
   .sa-chip[aria-pressed="true"]{ background:rgba(200,16,46,.16); border-color:#C8102E; color:#fff; }
@@ -4034,6 +4092,7 @@ header li a[href="#booking"],
   @media (max-width:560px){
     .sa-wait-row{ grid-template-columns:1fr; }
     .sa-chip{ padding:9px 12px; font-size:.82rem; }
+    #service-area .sa-chip{ min-height:44px; }
   }
 
   /* ---------- the map ---------- */
@@ -4107,7 +4166,7 @@ header li a[href="#booking"],
   .sa-towns-h{ font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:1.6px;
     color:#9a9a9a; margin:0 0 14px; }
   .sa-chips{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px 10px; justify-content:center; }
-  .sa-chips a,.sa-chips span{ display:inline-block; padding:9px 16px; background:#1a1a1a;
+  .sa-chips a,.sa-chips span{ display:inline-flex; align-items:center; min-height:44px; padding:9px 16px; background:#1a1a1a;
     border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:.88rem; font-weight:700;
     text-decoration:none; transition:border-color .15s ease, color .15s ease, background .15s ease; }
   .sa-chips a:hover,.sa-chips a:focus-visible{ border-color:#C8102E; color:#fff; background:#1f1414; }
@@ -5429,113 +5488,8 @@ header li a[href="#booking"],
     <div class="sec-head">
       <span class="eyebrow">Mikey's Mobile Detailing</span>
       <h2>What I <em>Do</em></h2>
-      <p class="sub">Not sure which service is right for you? Answer a few questions and I'll point you in the right direction. No pressure, no forms.</p>
+      <p class="sub">Three services. The price on each card is for a sedan, and the quote calculator gives you the exact number for your car.</p>
     </div>
-
-    <!-- CONCIERGE -->
-    <div class="acard feature concierge" id="cc">
-      <div class="cc-head">
-        <div class="cc-icon"><svg class="ic"><use href="#sv-wand"/></svg></div>
-        <div><div class="t">Not sure what you need? Let me help.</div><div class="s">Answer 3 quick questions and I'll tell you exactly which service fits your situation.</div></div>
-        <div class="cc-prog" id="ccProg"><i class="on"></i><i></i><i></i></div>
-      </div>
-
-      <div class="cc-stage">
-        <!-- Q1: NEED -->
-        <div class="cc-q show" id="ccQ1">
-          <div class="cc-qt">What's bothering you most about your car right now?</div>
-          <div class="cc-qh">Be honest. This is how I figure out what you actually need.</div>
-          <div class="cc-opts">
-            <button class="cc-opt" data-q="need" data-val="interior" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-armchair"/></svg></span><span><span class="ot">The inside</span><span class="od">Smell, stains, seats, carpet</span></span>
-            </button>
-            <button class="cc-opt" data-q="need" data-val="exterior" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-carfront"/></svg></span><span><span class="ot">The outside</span><span class="od">Dirt, dull paint, grimy wheels</span></span>
-            </button>
-            <button class="cc-opt" data-q="need" data-val="full" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-sparkles"/></svg></span><span><span class="ot">Honestly, both</span><span class="od">The whole thing needs a reset</span></span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Q2: SIZE -->
-        <div class="cc-q" id="ccQ2">
-          <div class="cc-qt">What kind of vehicle are we working with?</div>
-          <div class="cc-qh">Bigger vehicles take more time and product, so I want your estimate to be accurate.</div>
-          <div class="cc-opts">
-            <button class="cc-opt" data-q="size" data-val="sedan" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-car"/></svg></span><span><span class="ot">Car or coupe</span><span class="od">Sedan, hatchback, sports car</span></span>
-            </button>
-            <button class="cc-opt" data-q="size" data-val="suv" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-truck"/></svg></span><span><span class="ot">SUV or truck</span><span class="od">Mid-size, pickup, crossover</span></span>
-            </button>
-            <button class="cc-opt" data-q="size" data-val="van" type="button">
-              <span class="cc-tile"><svg class="ic"><use href="#sv-bus"/></svg></span><span><span class="ot">Van or XL</span><span class="od">Minivan, full-size, 3-row SUV</span></span>
-            </button>
-          </div>
-          <div class="cc-nav"><button class="cc-back" data-back="1" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button></div>
-        </div>
-
-        <!-- Q3: CONDITION + NOTE -->
-        <div class="cc-q" id="ccQ3">
-          <div class="cc-qt">How would you describe the condition?</div>
-          <div class="cc-qh">No judgment at all. I've seen everything. This just helps me show up ready.</div>
-          <div class="cc-opts">
-            <button class="cc-opt" data-q="cond" data-val="clean" type="button">
-              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
-              <span class="cc-tile"><svg class="ic"><use href="#sv-clean"/></svg></span><span><span class="ot">Pretty well kept</span><span class="od">Just needs a good refresh</span></span>
-            </button>
-            <button class="cc-opt" data-q="cond" data-val="work" type="button">
-              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
-              <span class="cc-tile"><svg class="ic"><use href="#sv-work"/></svg></span><span><span class="ot">Overdue for a clean</span><span class="od">Been a while, needs real work</span></span>
-            </button>
-            <button class="cc-opt" data-q="cond" data-val="rough" type="button">
-              <span class="tick"><svg class="ic"><use href="#sv-ck"/></svg></span>
-              <span class="cc-tile"><svg class="ic"><use href="#sv-rough"/></svg></span><span><span class="ot">Pretty rough</span><span class="od">Deep clean, it's a project</span></span>
-            </button>
-          </div>
-
-          <div class="cc-note-wrap">
-            <label class="cc-note-label" for="ccNote"><svg class="ic"><use href="#sv-pencil"/></svg> Anything specific going on? <span>(optional but helpful)</span></label>
-            <textarea class="cc-note" id="ccNote" placeholder="Pet hair, mold, deep stains, tree sap, kids destroyed it… whatever it is, tell me and I'll make sure the right service covers it."></textarea>
-            <div class="cc-note-hint"><svg class="ic"><use href="#sv-ck"/></svg> I personally read every one of these before I reach out.</div>
-          </div>
-
-          <div class="cc-nav">
-            <button class="cc-back" data-back="2" type="button"><svg class="ic"><use href="#sv-back"/></svg> Back</button>
-            <button class="cta" id="ccSee" type="button" disabled>Show me what I need &rarr;</button>
-          </div>
-        </div>
-
-        <!-- RESULT -->
-        <div class="cc-result" id="ccResult">
-          <div class="cc-reco-top"><span class="pill"><svg class="ic ck"><use href="#sv-ck"/></svg> Here's what I'd recommend</span><span class="cc-reco-lead" id="ccLead"></span></div>
-          <div class="cc-reco">
-            <div class="cc-reco-main">
-              <div class="cc-reco-tile" id="ccTile"><svg class="ic"><use href="#sv-sparkles"/></svg></div>
-              <div>
-                <div class="cc-reco-name" id="ccName">Full Detail</div>
-                <div class="cc-reco-tag" id="ccTag">Inside &amp; out, bumper to bumper</div>
-              </div>
-              <div class="cc-reco-pricewrap">
-                <div class="cc-reco-price" id="ccPrice"></div>
-                <div class="cc-reco-est" id="ccEst"></div>
-              </div>
-            </div>
-            <ul class="cc-reco-feat" id="ccFeat"></ul>
-            <div class="cc-reco-note" id="ccNoteEcho" style="display:none"><b>Your note</b><span id="ccNoteEchoText"></span></div>
-            <div class="cc-reco-cta">
-              <button class="cta" id="ccBook" type="button">Book this service &rarr;</button>
-              <a class="cta ghost" href="#allservices-browse">Browse all services &darr;</a>
-            </div>
-          </div>
-          <button class="cc-retake" id="ccRetake" type="button"><svg class="ic"><use href="#sv-redo"/></svg> Start over</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- BROWSE -->
-    <div class="browse-div" id="allservices-browse">Or browse all services</div>
 
     <div class="cards">
       <!-- INTERIOR -->
@@ -5599,86 +5553,11 @@ header li a[href="#booking"],
   (function () {
     var root = document.getElementById('allservices');
     if (!root) return;
-    var SVC = {
-      interior: { label: 'Interior', base: 249, icon: 'sv-armchair', tag: 'Inside-only deep clean',
-        feats: ['Full vacuum + crevice detail', 'Steam seats & carpet', 'Leather cleaned', 'Door jambs wiped down'] },
-      exterior: { label: 'Exterior', base: 199, icon: 'sv-carfront', tag: 'Outside-only wash & protect',
-        feats: ['Hand wash, dry & wheels', 'Tire & wheel deep clean', 'Exterior windows cleaned', 'Spray sealant protection'] },
-      full: { label: 'Full Detail', base: 369, icon: 'sv-sparkles', tag: 'Inside & out, bumper to bumper',
-        feats: ['Everything inside & out', 'Same-day turnaround', 'No hidden fees', 'Door jambs, glass and wheels included'] }
-    };
-    var SIZE = { sedan: { label: 'sedan', add: 0 }, suv: { label: 'SUV/truck', add: 40 }, van: { label: 'van/XL', add: 80 } };
-    var COND = { clean: { label: 'clean', add: 0 }, work: { label: 'well-used', add: 30 }, rough: { label: 'rough', add: 60 } };
-    var LEAD = {
-      interior: "Sounds like an interior detail is exactly what you need. I'll have it smelling and feeling brand new.",
-      exterior: "An exterior detail is the move. I'll get that paint popping and those wheels clean.",
-      full: "Honestly? A full detail is going to make the biggest difference. Inside and out, one visit, done right."
-    };
-
-    var pick = { need: null, size: null, cond: null };
-    function $(id) { return document.getElementById(id); }
-    function esc(s) { return s.replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
-
-    var qEls = { 1: $('ccQ1'), 2: $('ccQ2'), 3: $('ccQ3') };
-    function showStep(n) {
-      $('ccResult').classList.remove('show');
-      for (var i = 1; i <= 3; i++) qEls[i].classList.toggle('show', i === n);
-      var p = $('ccProg').children;
-      for (var j = 0; j < 3; j++) p[j].classList.toggle('on', j < n);
-    }
-    function estimate() { return SVC[pick.need].base + SIZE[pick.size].add + COND[pick.cond].add; }
-    function showResult() {
-      var s = SVC[pick.need], total = estimate();
-      $('ccLead').textContent = LEAD[pick.need];
-      $('ccTile').querySelector('use').setAttribute('href', '#' + s.icon);
-      $('ccName').textContent = s.label;
-      $('ccTag').textContent = s.tag;
-      $('ccPrice').textContent = '$' + total;
-      $('ccEst').textContent = 'Ballpark for your ' + SIZE[pick.size].label + ' · I\'ll confirm the exact price when we talk.';
-      var fl = ''; for (var i = 0; i < s.feats.length; i++) fl += '<li><svg class="ic ck"><use href="#sv-ck"/></svg>' + s.feats[i] + '</li>';
-      $('ccFeat').innerHTML = fl;
-      var note = $('ccNote').value.trim();
-      if (note) { $('ccNoteEchoText').innerHTML = esc(note); $('ccNoteEcho').style.display = 'block'; }
-      else { $('ccNoteEcho').style.display = 'none'; }
-      var p = $('ccProg').children; for (var k = 0; k < 3; k++) p[k].classList.add('on');
-      for (var m = 1; m <= 3; m++) qEls[m].classList.remove('show');
-      $('ccResult').classList.add('show');
-    }
     function handoff(opts) {
       if (window.MikeyQQC && typeof window.MikeyQQC.book === 'function') window.MikeyQQC.book(opts);
       else { var b = document.getElementById('booking'); if (b) b.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }
 
-    root.addEventListener('click', function (e) {
-      var opt = e.target.closest('.cc-opt');
-      if (opt) {
-        var q = opt.getAttribute('data-q'), v = opt.getAttribute('data-val');
-        if (q === 'need') { pick.need = v; setTimeout(function () { showStep(2); }, 180); }
-        else if (q === 'size') { pick.size = v; setTimeout(function () { showStep(3); }, 180); }
-        else if (q === 'cond') {
-          pick.cond = v;
-          var sibs = opt.parentNode.querySelectorAll('.cc-opt');
-          for (var i = 0; i < sibs.length; i++) sibs[i].classList.remove('sel');
-          opt.classList.add('sel');
-          $('ccSee').disabled = false;
-        }
-        return;
-      }
-      var back = e.target.closest('[data-back]');
-      if (back) { showStep(parseInt(back.getAttribute('data-back'), 10)); }
-    });
-
-    $('ccSee').addEventListener('click', function () { if (!pick.cond) return; showResult(); });
-    $('ccRetake').addEventListener('click', function () {
-      pick = { need: null, size: null, cond: null };
-      $('ccNote').value = '';
-      $('ccSee').disabled = true;
-      var sels = root.querySelectorAll('#ccQ3 .cc-opt.sel'); for (var i = 0; i < sels.length; i++) sels[i].classList.remove('sel');
-      showStep(1);
-    });
-    $('ccBook').addEventListener('click', function () {
-      handoff({ service: pick.need, vehicle: pick.size, condition: pick.cond, note: $('ccNote').value.trim() });
-    });
     root.querySelectorAll('[data-book]').forEach(function (b) {
       b.addEventListener('click', function () { handoff({ service: b.getAttribute('data-book') }); });
     });
@@ -5714,7 +5593,7 @@ header li a[href="#booking"],
   </style>
   <div style="text-align:center;margin-bottom:28px;">
     <div style="font-size:12px;font-weight:700;color:#C8102E;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;">The Work</div>
-    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
+    <h2 style="font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;color:#fff;text-transform:uppercase;">More Real Cars. <span style="color:#C8102E;">Real Results.</span></h2>
   </div>
   <div class="hp-gallery-strip" style="position:relative;">
     <div class="hp-gallery-track">
@@ -5752,7 +5631,7 @@ header li a[href="#booking"],
       
       
 <!-- ============================================================
-     MIKEY'S DETAILING, SERVICES SECTION (concierge + cards)
+     MIKEY'S DETAILING, SERVICES SECTION (cards)
      Self-contained, scoped to .svc2. Lucide icons (ISC license).
      "Book" buttons call window.MikeyQQC.book() to prefill the QQC.
      ============================================================ -->
@@ -5775,7 +5654,7 @@ header li a[href="#booking"],
 
   .svc2 .sec-head{ text-align:center; margin-bottom:22px }
   .svc2 .eyebrow{ display:inline-block; font-size:12px; font-weight:800; letter-spacing:.18em; text-transform:uppercase; color:var(--red) }
-  .svc2 .sec-head h2{ font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin:10px 0 0; line-height:1.02 }
+  .svc2 .sec-head h2{ text-transform:uppercase; font-size:clamp(32px,6vw,52px); font-weight:900; letter-spacing:-.025em; margin:10px 0 0; line-height:1.02 }
   .svc2 .sec-head h2 em{ color:var(--red); font-style:normal }
   .svc2 .sec-head .sub{ color:#cfcfd2; font-size:clamp(15px,2.2vw,18px); margin:12px auto 0; max-width:600px; font-weight:500 }
 
@@ -5804,60 +5683,8 @@ header li a[href="#booking"],
   .svc2 .pill{ display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#1a1205; background:linear-gradient(135deg,var(--gold2),var(--gold)); padding:6px 13px; border-radius:99px; white-space:nowrap }
   .svc2 .pill .ck{ stroke:#1a1205; width:12px; height:12px }
 
-  /* concierge */
-  .svc2 .concierge{ padding:26px 30px 24px; margin-bottom:24px }
-  .svc2 .cc-head{ display:flex; align-items:center; gap:14px; margin-bottom:18px }
-  .svc2 .cc-icon{ width:48px; height:48px; border-radius:14px; flex:none; display:grid; place-items:center; color:#fff;
-    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 8px 20px -8px rgba(200,16,46,.7) }
-  .svc2 .cc-icon svg{ width:26px; height:26px }
-  .svc2 .cc-head .t{ font-size:17px; font-weight:800; letter-spacing:-.01em } .svc2 .cc-head .s{ font-size:12.5px; color:var(--muted); margin-top:1px }
-  .svc2 .cc-prog{ margin-left:auto; display:flex; gap:6px } .svc2 .cc-prog i{ width:22px; height:4px; border-radius:99px; background:#34343a; transition:background .3s } .svc2 .cc-prog i.on{ background:linear-gradient(90deg,var(--red),var(--gold)) }
-  .svc2 .cc-stage{ min-height:188px }
-  .svc2 .cc-q{ display:none } .svc2 .cc-q.show{ display:block; animation:svfade .4s cubic-bezier(.22,1,.36,1) both }
-  @keyframes svfade{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
-  .svc2 .cc-qt{ font-size:21px; font-weight:800; letter-spacing:-.01em; margin-bottom:5px } .svc2 .cc-qh{ font-size:13.5px; color:var(--muted); margin-bottom:18px }
-  .svc2 .cc-opts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px }
-  .svc2 .cc-opt{ position:relative; text-align:left; cursor:pointer; font-family:inherit; color:var(--ink);
-    background:var(--surface2); border:1.5px solid var(--line); border-radius:16px; padding:16px;
-    transition:border-color .2s, background .2s, transform .15s; display:flex; gap:14px; align-items:center }
-  .svc2 .cc-opt:hover{ border-color:var(--red); transform:translateY(-2px); background:rgba(200,16,46,.06) }
-  .svc2 .cc-opt:focus-visible{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.2) }
-  .svc2 .cc-opt.sel{ border-color:var(--red); background:rgba(200,16,46,.1) }
-  .svc2 .cc-tile{ width:46px; height:46px; border-radius:13px; flex:none; display:grid; place-items:center; color:var(--muted);
-    background:linear-gradient(140deg,var(--surface3),var(--surface2)); transition:background .25s, color .25s, transform .3s cubic-bezier(.34,1.4,.64,1) }
-  .svc2 .cc-tile svg{ width:26px; height:26px }
-  .svc2 .cc-opt:hover .cc-tile, .svc2 .cc-opt.sel .cc-tile{ background:linear-gradient(140deg,var(--red),var(--red2)); color:#fff; transform:scale(1.06) }
-  .svc2 .cc-opt .ot{ font-size:15px; font-weight:800; display:block; letter-spacing:-.01em } .svc2 .cc-opt .od{ font-size:12px; color:var(--muted); display:block; margin-top:2px }
-  .svc2 .cc-opt .tick{ position:absolute; top:10px; right:10px; width:20px; height:20px; border-radius:50%; background:var(--red); display:grid; place-items:center; opacity:0; transform:scale(.5); transition:opacity .2s, transform .25s cubic-bezier(.34,1.5,.64,1) } .svc2 .cc-opt .tick svg{ width:12px; height:12px; stroke:#fff } .svc2 .cc-opt.sel .tick{ opacity:1; transform:scale(1) }
-  .svc2 .cc-note-wrap{ margin-top:18px }
-  .svc2 .cc-note-label{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#e3e3e5; margin-bottom:9px } .svc2 .cc-note-label span{ color:var(--muted); font-weight:500 } .svc2 .cc-note-label svg{ width:16px; height:16px; stroke:var(--gold) }
-  .svc2 .cc-note{ width:100%; min-height:64px; resize:vertical; font-family:inherit; font-size:13.5px; color:var(--ink); line-height:1.5;
-    background:var(--surface2); border:1.5px solid var(--line); border-radius:13px; padding:13px 14px; transition:border-color .2s }
-  .svc2 .cc-note::placeholder{ color:#6e6e76 } .svc2 .cc-note:focus{ outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(200,16,46,.14) }
-  .svc2 .cc-note-hint{ font-size:11.5px; color:var(--muted); margin-top:8px; display:flex; align-items:center; gap:6px } .svc2 .cc-note-hint svg{ width:13px; height:13px; stroke:var(--gold) }
-  .svc2 .cc-nav{ display:flex; align-items:center; gap:12px; margin-top:20px }
-  .svc2 .cc-back{ display:inline-flex; align-items:center; gap:6px; background:none; border:none; color:var(--muted); font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; padding:8px 4px } .svc2 .cc-back:hover{ color:#fff } .svc2 .cc-back svg{ width:16px; height:16px; stroke:currentColor }
-  .svc2 .cc-nav .cta{ margin-left:auto }
-  .svc2 .cc-result{ display:none } .svc2 .cc-result.show{ display:block; animation:svfade .45s cubic-bezier(.22,1,.36,1) both }
-  .svc2 .cc-reco-top{ display:flex; align-items:center; gap:12px; margin-bottom:16px; flex-wrap:wrap }
-  .svc2 .cc-reco-lead{ font-size:13.5px; color:#cfcfd2 }
-  .svc2 .cc-reco{ background:linear-gradient(150deg, rgba(200,16,46,.12), rgba(17,17,21,.4) 70%); border:1px solid rgba(200,16,46,.32); border-radius:18px; padding:24px }
-  .svc2 .cc-reco-main{ display:flex; gap:18px; align-items:flex-start }
-  .svc2 .cc-reco-tile{ width:60px; height:60px; border-radius:16px; flex:none; display:grid; place-items:center; color:#fff;
-    background:linear-gradient(140deg,var(--red),var(--red2)); box-shadow:0 10px 24px -10px rgba(200,16,46,.7) }
-  .svc2 .cc-reco-tile svg{ width:34px; height:34px }
-  .svc2 .cc-reco-name{ font-size:26px; font-weight:900; letter-spacing:-.02em; line-height:1.05 } .svc2 .cc-reco-tag{ color:var(--muted); font-size:13px; margin-top:3px }
-  .svc2 .cc-reco-pricewrap{ margin-left:auto; text-align:right; flex:none }
-  .svc2 .cc-reco-price{ font-size:32px; font-weight:900; letter-spacing:-.02em; line-height:1 }
-  .svc2 .cc-reco-est{ font-size:12px; color:var(--gold2); margin-top:6px; max-width:180px; margin-left:auto }
-  .svc2 .cc-reco-feat{ list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:20px 0 0 } .svc2 .cc-reco-feat li{ font-size:13px; display:flex; gap:9px; color:#dcdcde; line-height:1.35 }
-  .svc2 .cc-reco-note{ margin-top:18px; padding:13px 15px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid var(--line); font-size:13px; color:#dcdcde; line-height:1.5 } .svc2 .cc-reco-note b{ display:block; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--gold2); margin-bottom:4px }
-  .svc2 .cc-reco-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:20px } .svc2 .cc-reco-cta .cta{ flex:1; min-width:180px }
-  .svc2 .cc-retake{ display:inline-flex; align-items:center; gap:7px; margin-top:18px; background:none; border:none; color:var(--muted); font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit } .svc2 .cc-retake:hover{ color:#fff } .svc2 .cc-retake svg{ width:14px; height:14px; stroke:currentColor }
 
   /* browse cards */
-  .svc2 .browse-div{ display:flex; align-items:center; gap:18px; margin:6px 2px 18px; color:var(--muted); font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase }
-  .svc2 .browse-div::before, .svc2 .browse-div::after{ content:""; flex:1; height:1px; background:var(--line) }
   .svc2 .cards{ display:grid; grid-template-columns:1fr 1.12fr 1fr; gap:14px; align-items:stretch }
   .svc2 .cards .acard{ padding:28px 22px 20px; display:flex; flex-direction:column }
   /* The Most Popular badge sits at top:15px; without room it covered the "Full Detail"
@@ -5882,11 +5709,8 @@ header li a[href="#booking"],
   .svc2 .quote p{ font-size:14.5px; color:#e3e3e5; line-height:1.55 } .svc2 .quote cite{ display:block; font-style:normal; color:var(--muted); font-size:12.5px; margin-top:7px } .svc2 .quote cite b{ color:#fff } .svc2 .quote .s{ color:var(--gold) }
 
   @media (max-width:860px){ .svc2 .cards{ grid-template-columns:1fr } .svc2 .cards .feature{ order:-1 } .svc2 .cards .acard:not(.feature){ padding-top:28px } }
-  @media (max-width:620px){ .svc2 .cc-opts{ grid-template-columns:1fr } }
   @media (max-width:560px){
-    .svc2{ padding:36px 16px } .svc2 .concierge{ padding:18px 18px }
-    .svc2 .cc-reco-main{ flex-wrap:wrap } .svc2 .cc-reco-pricewrap{ margin-left:0; text-align:left; width:100% } .svc2 .cc-reco-est{ margin-left:0; max-width:none }
-    .svc2 .cc-reco-feat{ grid-template-columns:1fr }
+    .svc2{ padding:36px 16px }
   }
   @media (prefers-reduced-motion:reduce){ .svc2 *{ animation:none !important } }
 </style>
@@ -6727,7 +6551,7 @@ header li a[href="#booking"],
   .explore-inner{ max-width:1100px; margin:0 auto; }
   .explore-title{ font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:1.5px; color:#9a9a9a; margin:0 0 14px; }
   .explore-links{ display:flex; flex-wrap:wrap; gap:8px 10px; }
-  .explore-links a{ display:inline-block; padding:8px 14px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:0.85rem; font-weight:600; text-decoration:none; transition:border-color .15s ease, color .15s ease; }
+  .explore-links a{ display:inline-flex; align-items:center; min-height:44px; padding:8px 14px; background:#1a1a1a; border:1px solid #2a2a2a; border-radius:999px; color:#ccc; font-size:0.85rem; font-weight:600; text-decoration:none; transition:border-color .15s ease, color .15s ease; }
   .explore-links a:hover{ border-color:#C8102E; color:#fff; }
 </style>
 </main>
