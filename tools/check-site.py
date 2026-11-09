@@ -176,21 +176,13 @@ if steps != SIZE_STEPS:
 for name, v in PRICE_BOOK.items():
     if f'data-name="{name}" data-value="{v}"' not in home:
         fails.append(f"quote calculator card for {name} does not carry data-value={v}")
-# The "#allservices" chooser is a second, separate estimator. It sat at
-# $130/$160/$260 with +20/+40 sizes until 2026-09-27, below even the old book.
-m = re.search(r'<section id="allservices".*?var SVC = \{(.*?)\};\s*var SIZE = \{(.*?)\};', home, re.S)
-if not m:
-    fails.append("#allservices chooser: could not find its SVC / SIZE tables")
-else:
-    bases = dict(re.findall(r"label: '([^']+)', base: (\d+)", m.group(1)))
-    want_b = {"Interior": str(PRICE_BOOK["Interior Detail"]),
-              "Exterior": str(PRICE_BOOK["Exterior Detail"]),
-              "Full Detail": str(PRICE_BOOK["Full Detail"])}
-    if bases != want_b:
-        fails.append(f"#allservices chooser bases {bases} != price book {want_b}")
-    adds = [int(a) for a in re.findall(r"add: (\d+)", m.group(2))]
-    if adds != SIZE_STEPS:
-        fails.append(f"#allservices chooser size steps {adds} != {SIZE_STEPS}")
+# The "#allservices" chooser was a second, separate estimator (a three-question
+# quiz with its own SVC / SIZE price tables). It sat at $130/$160/$260 with
+# +20/+40 sizes until 2026-09-27, below even the old book. Mikey had it taken
+# out on 2026-11-09 (it repeated the quote calculator), so the rule is now that
+# it stays out: a second estimator is a second copy of the price book to drift.
+if re.search(r'<section id="allservices".*?var SVC = \{', home, re.S):
+    fails.append("#allservices has an estimator of its own again: the quote calculator is the only one")
 
 want = {n: (str(v), str(v + SIZE_STEPS[-1])) for n, v in PRICE_BOOK.items()}
 for fp in biz_fingerprints:
