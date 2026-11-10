@@ -835,6 +835,43 @@ whole sitemap) so Bing, which ChatGPT search and Copilot read, recrawls them.
 The 32-character `.txt` at the site root is its key: public by design, don't
 delete it.
 
+## Tracking (who clicked what, where, when)
+
+All of it is one file, `site-stats.js`, loaded by every served page (the three
+legal pages joined on 2026-11-10; `/onboard/` is only a redirect). Never add
+tracking to a page: change it there.
+
+- **What goes where.** Each visitor gets a random id in their own browser. A
+  landing, every section scrolled to, every click, every form step and the
+  exit go to the dashboard (`/px/e`), which shows one person's path in Grow →
+  Journey and ties it to their name only when they send a form. The same
+  clicks go to GA4 as `site_click` (`click_label`, `click_where`,
+  `click_href`, `click_kind`) and first touches of a typing box as
+  `site_field`, for totals across everyone. Clarity records sessions and
+  heatmaps on its own.
+- **Since 2026-11-10 (Mikey: "everything tracked, who clicked what where
+  when")** a click's detail starts with where it was: `in <section>, N% down`.
+  FAQ opens, dropdowns, tick boxes, the first touch of each typing box and
+  taps on a photo or heading that does nothing (five a page) are recorded
+  too, and the ceramic calculator sends its steps (`Ceramic quote: ...`).
+- **Never what someone typed.** A typing box sends its label, once. Keep it
+  that way.
+- **Two labels belong to the homepage calculator:** `Quote form, step N` and
+  `Saw their quote`. The dashboard starts its "saw the price and left" watch
+  on them, so no other form may send a label that starts like either.
+- **The dashboard's limits:** label 60 characters, detail 80, the last 250
+  steps per visitor, kept 45 days, kinds `v s c f x` only (`PX_EVENT_KINDS`).
+  A new kind is dropped until the worker learns it.
+- **Still to do:** `site_click`'s four fields only show in GA4 reports after
+  they're registered as custom dimensions (Admin → Custom definitions), which
+  is Mikey's step. The privacy policy still says analytics is GA4 only and
+  "never linked to your identity"; it doesn't mention Clarity or the Journey.
+  Ask Mikey before rewording a legal page.
+- **Test it** by serving the repo under the real hostname in Playwright (the
+  tracker only sends on `mikeysdetailing.com`) and reading the batches. A
+  keepalive fetch and a beacon don't show up in Playwright's request routing:
+  stub `Navigator.prototype.sendBeacon` and read the blob.
+
 ## The dashboard (its own repo, its own live branch)
 
 Mikey's texting dashboard (texts, calls, bookings, reminders, Clean Club

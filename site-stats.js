@@ -105,6 +105,13 @@ window.MD_STATS = {
    of them. Mark anything by hand with data-track="Some name" when
    the automatic label reads badly.
 
+   Since 2026-11-10 (Mikey: "everything tracked, who clicked what
+   where when") a click also says WHERE it was (the section and how
+   far down the page), and FAQ opens, dropdowns, tick boxes, the
+   first touch of each typing box and taps on photos or headings
+   that do nothing are recorded too. Never what someone typed. Each
+   click is mirrored to GA4 as `site_click` for the totals.
+
    Nothing in this block may ever throw into the page. A detailing
    site that won't load because analytics broke is a catastrophe;
    missing analytics is a Tuesday.
@@ -162,8 +169,15 @@ window.MD_STATS = {
     if (kind === 'c' || kind === 'f') schedule(1200);
     else schedule(8000);
   }
+  // A sooner deadline replaces a later one. It used to keep whichever timer was
+  // already running, so a tap in the first 8 seconds waited behind the landing's
+  // slow timer instead of going out in 1.2.
+  var dueAt = 0;
   function schedule(ms) {
-    if (timer) return;
+    var due = Date.now() + ms;
+    if (timer && dueAt <= due) return;
+    if (timer) clearTimeout(timer);
+    dueAt = due;
     timer = setTimeout(function () { timer = null; flush(false); }, ms);
   }
   function flush(final) {
@@ -202,32 +216,153 @@ window.MD_STATS = {
       var t = document.getElementById(by.split(/\s+/)[0]);
       if (t && t.textContent.trim()) return t.textContent.trim();
     }
-    var txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
+    // innerText first: it puts a space where the page puts a line break, so a
+    // two-line button reads "Sedan Compact / coupe", not "SedanCompact / coupe".
+    var txt = (el.innerText || el.textContent || '').replace(/\s+/g, ' ').trim();
     if (txt) return txt.slice(0, 60);
     var h = el.querySelector && el.querySelector('h1,h2,h3');
     if (h && h.textContent.trim()) return h.textContent.trim().slice(0, 60);
     return el.id || el.className || '';
   }
 
+  // ---- where on the page a thing is ----------------------------------------
+  // "Get My Instant Quote" is on the homepage six times. Without this, six
+  // different buttons were one line in the Journey and there was no telling
+  // the hero's from the footer's. Every click now says which part of the page
+  // it was in and how far down that is.
+  function whereOf(el) {
+    try {
+      var name = '';
+      if (el.closest('footer')) name = 'Footer';
+      else if (el.closest('header')) name = 'Top menu';
+      else {
+        var s = el.closest('[data-track-section],section,dialog,[role="dialog"],nav,aside,main > div[id]');
+        if (s) {
+          name = s.getAttribute('data-track-section') || s.getAttribute('data-track') ||
+                 s.getAttribute('aria-label') || '';
+          if (!name) {
+            var by = s.getAttribute('aria-labelledby');
+            var t = by && document.getElementById(by.split(/\s+/)[0]);
+            if (t) name = t.textContent;
+          }
+          if (!name) { var h = s.querySelector('h1,h2,h3'); if (h) name = h.textContent; }
+          if (!name) name = s.id || '';
+        }
+      }
+      name = String(name).replace(/\s+/g, ' ').trim().slice(0, 28);
+      var r = el.getBoundingClientRect();
+      var full = document.documentElement.scrollHeight || 1;
+      var pct = Math.max(0, Math.min(100, Math.round(((r.top + (window.scrollY || window.pageYOffset || 0)) / full) * 100)));
+      return (name ? 'in ' + name + ', ' : '') + pct + '% down';
+    } catch (e) { return ''; }
+  }
+
+  // Every click also goes to Google Analytics as `site_click`. The Journey
+  // keeps one person's path for 45 days; GA4 keeps the totals (how many people
+  // pushed this button, on which page) for as long as the property does.
+  function ga(name, params) {
+    try { if (LIVE && typeof window.gtag === 'function') window.gtag('event', name, params); } catch (e) {}
+  }
+
+  // What a form field is called. Its label, never what was typed into it.
+  function fieldName(el) {
+    var n = '';
+    try {
+      if (el.id) {
+        var esc = window.CSS && CSS.escape ? CSS.escape(el.id) : el.id;
+        var lab = document.querySelector('label[for="' + esc + '"]');
+        if (lab) n = lab.textContent;
+      }
+      if (!n) { var wrap = el.closest('label'); if (wrap) n = wrap.textContent; }
+    } catch (e) { /* fall through to the attributes */ }
+    n = n || el.getAttribute('aria-label') || el.getAttribute('placeholder') || el.name || el.id || el.type || 'a box';
+    return String(n).replace(/\s+/g, ' ').trim().slice(0, 44);
+  }
+
   // ---- clicks --------------------------------------------------------------
   // Delegated and capturing, so it still records when the handler on the button
   // stops propagation or navigates away.
-  var lastClick = '', lastClickAt = 0;
+  var CLICKABLE = 'a,button,[role="button"],[role="tab"],.btn,input[type="submit"],[data-track],summary,.faq-q,[onclick]';
+  var lastClick = '', lastClickAt = 0, deadTaps = 0;
   document.addEventListener('click', function (ev) {
     try {
-      var el = ev.target && ev.target.closest &&
-        ev.target.closest('a,button,[role="button"],.btn,input[type="submit"],[data-track]');
-      if (!el) return;
+      var tg = ev.target;
+      if (!tg || !tg.closest) return;
+      var el = tg.closest(CLICKABLE);
+      if (!el) {
+        // A tap on a photo or a heading that does nothing. Worth knowing: it
+        // means someone expected it to open. Five a page, so scrolling thumbs
+        // can't fill the timeline.
+        var dead = tg.closest('img,picture,h1,h2,h3');
+        if (!dead || deadTaps >= 5 || tg.closest('label,input,select,textarea')) return;
+        deadTaps++;
+        var img = dead.tagName === 'PICTURE' ? dead.querySelector('img') : dead;
+        var dn = dead.tagName === 'IMG' || dead.tagName === 'PICTURE'
+          ? 'Photo: ' + ((img && img.getAttribute('alt')) || 'no description')
+          : 'Heading: ' + (dead.textContent || '');
+        dn = dn.replace(/\s+/g, ' ').trim().slice(0, 44) + ' (not a button)';
+        var dw = whereOf(dead);
+        push('c', dn, dw);
+        ga('site_click', { click_label: dn, click_where: dw, click_kind: 'dead_tap' });
+        return;
+      }
       var name = labelFor(el) || 'Button';
-      // A double-tap is one intent, not two.
-      if (name === lastClick && Date.now() - lastClickAt < 1000) return;
-      lastClick = name; lastClickAt = Date.now();
+      var where = whereOf(el);
+      // A double-tap is one intent, not two. Keyed on the place as well as the
+      // name, so the same words in two parts of the page stay two clicks.
+      var sig = name + '|' + where;
+      if (sig === lastClick && Date.now() - lastClickAt < 1000) return;
+      lastClick = sig; lastClickAt = Date.now();
       var href = el.getAttribute('href') || '';
       var what = /^tel:/i.test(href) ? 'Tapped to CALL'
                : /^sms:/i.test(href) ? 'Tapped to TEXT'
                : /^mailto:/i.test(href) ? 'Tapped to email' : '';
-      push('c', what || name, what ? name : href);
+      // The place goes first: the worker keeps 80 characters, and a long link
+      // is the part that can lose its tail.
+      push('c', what || name, where + (what ? ' · ' + name : (href ? ' · ' + href : '')));
+      ga('site_click', { click_label: (what || name).slice(0, 100), click_where: where,
+        click_href: href.slice(0, 100), click_kind: what ? 'contact' : (href ? 'link' : 'button') });
     } catch (e) { /* a click must never fail because of tracking */ }
+  }, true);
+
+  // ---- choices and form fields --------------------------------------------
+  // A dropdown, a tick box and a radio button say what was picked. A typing box
+  // only says that someone started on it, once: what they typed stays theirs
+  // until they send the form.
+  document.addEventListener('change', function (ev) {
+    try {
+      var el = ev.target;
+      if (!el || !el.tagName) return;
+      var label = '';
+      if (el.tagName === 'SELECT') {
+        var o = el.options[el.selectedIndex];
+        label = 'Picked: ' + ((o && o.text) || '');
+      } else if (el.type === 'checkbox') {
+        label = (el.checked ? 'Ticked: ' : 'Unticked: ') + fieldName(el);
+      } else if (el.type === 'radio') {
+        label = 'Picked: ' + fieldName(el);
+      } else return;
+      var w = whereOf(el);
+      push('c', label, w + (el.tagName === 'SELECT' ? ' · ' + fieldName(el) : ''));
+      ga('site_click', { click_label: label.slice(0, 100), click_where: w, click_kind: 'choice' });
+    } catch (e) { /* ignore */ }
+  }, true);
+
+  var touched = {};
+  document.addEventListener('focusin', function (ev) {
+    try {
+      var el = ev.target;
+      if (!el || !el.tagName) return;
+      var typing = el.tagName === 'TEXTAREA' ||
+        (el.tagName === 'INPUT' && !/^(submit|button|checkbox|radio|hidden|file|image|reset)$/i.test(el.type || ''));
+      if (!typing) return;
+      var n = fieldName(el);
+      if (touched[n]) return;
+      touched[n] = 1;
+      var w = whereOf(el);
+      push('f', 'Started typing: ' + n, w);
+      ga('site_field', { field_name: n, click_where: w });
+    } catch (e) { /* ignore */ }
   }, true);
 
   // ---- which parts of the page they actually reached -----------------------

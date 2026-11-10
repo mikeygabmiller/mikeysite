@@ -1353,6 +1353,12 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
     var b=e.target.closest('.ccq-opt'); if(!b) return;
     S[b.getAttribute('data-k')]=b.getAttribute('data-v');
     if(typeof gtag==='function') gtag('event','ceramic_quote_step',{step:b.getAttribute('data-k'),value:b.getAttribute('data-v')});
+    // Not worded "Quote form, step N" or "Saw their quote": the dashboard reads
+    // those two as the homepage calculator and starts its own follow-up on them.
+    if(typeof window.MDTrack==='function'){
+      window.MDTrack('Ceramic quote: picked '+b.getAttribute('data-k'), b.getAttribute('data-v'));
+      if(next()===4) window.MDTrack('Ceramic quote: saw the starting price', S.tier+' · '+S.size+' · '+S.paint);
+    }
     show(next(), true);
   });
   $('ccqBack').addEventListener('click',function(){ var p=hist.pop(); if(p) show(p,false); });
@@ -1392,6 +1398,7 @@ footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
       var ok=(rs[0].status==='fulfilled'&&rs[0].value&&rs[0].value.success)||(rs[1].status==='fulfilled'&&rs[1].value&&rs[1].value.ok);
       if(ok){
         if(typeof gtag==='function') gtag('event','ceramic_quote_submission',{tier:S.tier,size:S.size});
+        if(typeof window.MDTrack==='function') window.MDTrack('Ceramic quote SENT', S.tier+' · '+S.size+' · '+S.paint);
         $('ccqDoneH').textContent = name ? 'Got it, '+name.split(' ')[0]+'.' : 'Got it.';
         show(5,false);
       } else {
