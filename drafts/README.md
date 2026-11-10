@@ -15,7 +15,6 @@ the facts table before publishing: a price or a fact may have changed since.
 
 | Publish on | Post | Feeds | Why now |
 |---|---|---|---|
-| Mon Nov 10 | `rv-travel-trailer-detailing` (queue #7) | ceramic page's RV answer | trailers go into winter storage now; Mikey's yes 2026-10-17; quoted from photos, no price |
 | Mon Nov 17 | `how-to-pick-a-mobile-detailer` (queue #9) | homepage, `/services/` | AI panel prompt 23; nothing about insurance |
 | Mon Nov 24 | `detailing-a-car-before-selling-it` (queue #5) | `/services/` (Full Detail) | Marissa J.'s review; no promised dollar figure |
 | Mon Dec 1 | `how-to-get-vomit-smell-out-of-car` (queue #4) | `/services/interior.html` | Teresa H.'s review; high-intent search; no new price |
@@ -33,18 +32,14 @@ Replace `SLUG` with the folder name, then:
    section, top) and `sitemap.xml` (above the newest post). The lines are
    below.
 4. Add the link back from the page it feeds (below).
-5. `python3 tools/build-entity-graph.py --apply`, then
+5. `python3 tools/site-header.py --apply` (the drafts were written before the shared header, 2026-11-07),
+   `python3 tools/build-entity-graph.py --apply`, then
    `python3 tools/sitemap-lastmod.py --apply`, then
    `python3 tools/check-site.py` until it says PASS.
 6. Cross it off in section 6 of `reports/2026-10-27-seo-research.md`.
 7. Merge, wait for it to serve, then `python3 tools/indexnow.py /blog/SLUG/ /blog/`.
 
-### rv-travel-trailer-detailing
-
-- `blog/index.html`: `<li><a href="/blog/rv-travel-trailer-detailing/">RV and Travel Trailer Detailing</a><p>Gelcoat, chalky oxidation, black streaks, getting one ready for winter storage, and a real price from photos.</p></li>`
-- `llms.txt`: `- [RV and travel trailer detailing](https://mikeysdetailing.com/blog/rv-travel-trailer-detailing/): gelcoat, oxidation, black streaks, winter storage; RVs, travel trailers and horse trailers quoted per job from photos.`
-- `sitemap.xml`: `<url><loc>https://mikeysdetailing.com/blog/rv-travel-trailer-detailing/</loc><lastmod>YYYY-MM-DD</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`
-- Link back: in the ceramic page's RV answer (`ceramic-coating-snohomish-county/index.html`, "Yes, RVs, travel trailers and horse trailers"), add after its last sentence: ` <a href="/blog/rv-travel-trailer-detailing/" style="color:var(--red);">What to know about detailing one.</a>` That's a visible FAQ answer, so the generator rewrites the FAQ schema in step 5.
+The RV post went live 2026-11-10.
 
 ### how-to-pick-a-mobile-detailer
 
