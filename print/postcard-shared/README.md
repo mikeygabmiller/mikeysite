@@ -66,7 +66,7 @@ QR codes (both decode out of the finished image, sharp and blurred, every run):
 **Mikey:** the facts table in the repo's `CLAUDE.md`. Back-seat before/after,
 "You don't pay until you love it", the Rain-Ready Full Detail (book by Dec 31,
 2026, work can run to Jan 31, 2027; ceramic wax, RainX and anti-fog free, worth
-$508, from $369), the three prices, 5.0 across 41 reviews, 300+ cars, since
+$508, from $369), the three prices, 5.0 across 42 reviews, 300+ cars, since
 2021, spigot and outlet, the twelve towns. Nothing about being insured.
 
 **Louis:** only what Trinity's own `CLAUDE.md` lists as established, plus the
