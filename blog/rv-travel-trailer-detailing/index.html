@@ -493,8 +493,8 @@ main.container{padding-top:32px;padding-bottom:40px;}
       "@id": "https://mikeysdetailing.com/blog/rv-travel-trailer-detailing/#article",
       "headline": "RV and Travel Trailer Detailing in Snohomish County",
       "description": "RV and travel trailer detailing near Snohomish, WA: gelcoat, chalky oxidation, black streaks, winter storage, and how to get a real price from photos.",
-      "datePublished": "2026-11-03",
-      "dateModified": "2026-11-03",
+      "datePublished": "2026-11-10",
+      "dateModified": "2026-11-10",
       "author": {
         "@id": "https://mikeysdetailing.com/#mikey"
       },
@@ -514,17 +514,109 @@ main.container{padding-top:32px;padding-bottom:40px;}
 <body>
 <a class="skip-nav" href="#main-content">Skip to main content</a>
 
-<header>
-  <div class="container">
-    <a href="/" class="logo">Mikey's<span>.</span></a>
-    <a href="tel:+14256007897" aria-label="Call or text Mikey at (425) 600-7897" style="margin-left:auto;margin-right:22px;font-weight:800;font-size:15px;color:#C8102E;white-space:nowrap;">&#128222; (425)&nbsp;600-7897</a>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/#services">Services</a>
-      <a href="/#contact">Book</a>
+<!-- site-header: written by tools/site-header.py from tools/site-header/header.html. Edit that file and rerun; don't edit here. -->
+<style>
+/* The site header (2026-11-07, Mikey: one header on every page). Same look as
+   the homepage's #mikeyHeader, but namespaced (#siteHeader, .sh-*) so it can
+   drop into a page whose own CSS styles bare header, nav, ul, li and a: every
+   property the header depends on is set here, so those can't leak in.
+   Written into each page by tools/site-header.py; edit this file, not a page. */
+#siteHeader{position:sticky;top:0;left:0;right:0;z-index:9999;margin:0;padding:0;border:0;
+  border-bottom:1px solid rgba(255,255,255,.08);background:rgba(12,12,12,.92);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.5);
+  font-family:'Outfit','Outfit Fallback',system-ui,sans-serif;color:#fff;text-align:left}
+#siteHeader *{box-sizing:border-box}
+#siteHeader .sh-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  max-width:1200px;margin:0 auto;padding:14px 40px}
+#siteHeader a{text-decoration:none;margin:0}
+#siteHeader ul,#siteHeader li{list-style:none;margin:0;padding:0;color:inherit}
+#siteHeader .sh-logo{display:block;flex:none;line-height:0}
+#siteHeader .sh-logo img{display:block;height:50px;width:auto;max-width:none;transition:opacity .2s ease}
+#siteHeader .sh-logo:hover img{opacity:.85}
+#siteHeader .sh-links{display:flex;align-items:center;gap:4px}
+#siteHeader .sh-links a{position:relative;display:inline-block;padding:10px 14px;color:rgba(255,255,255,.85);
+  font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color .25s ease}
+#siteHeader .sh-links a::before{content:"";position:absolute;bottom:4px;left:50%;width:0;height:2px;background:#C8102E;
+  transition:width .25s ease,left .25s ease}
+#siteHeader .sh-links a:hover{color:#fff}
+#siteHeader .sh-links a:hover::before{width:70%;left:15%}
+#siteHeader .sh-links a.sh-tel{color:#fff;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+#siteHeader .sh-links a.sh-tel::before{display:none}
+#siteHeader .sh-links a.sh-book{margin-left:8px;padding:11px 22px;border-radius:6px;background:#C8102E;color:#fff;
+  font-weight:800;font-size:.8rem;letter-spacing:.12em;transition:background .2s ease}
+#siteHeader .sh-links a.sh-book::before{display:none}
+#siteHeader .sh-links a.sh-book:hover{background:#A00C24}
+#siteHeader a:focus-visible,#siteHeader button:focus-visible{outline:2px solid #C8102E;outline-offset:3px;border-radius:4px}
+#siteHeader .sh-right{display:none;align-items:center;gap:6px}
+#siteHeader .sh-call{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#C8102E;color:#fff}
+#siteHeader .sh-call svg{width:19px;height:19px}
+#siteHeader .sh-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin:0;padding:9px;
+  background:none;border:0;border-radius:8px;cursor:pointer;color:#fff}
+#siteHeader .sh-btn span{display:block;width:26px;height:2px;border-radius:2px;background:#fff;transition:transform .3s ease,opacity .3s ease,background .3s ease}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#C8102E}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#C8102E}
+#siteHeader .sh-menu{position:absolute;top:100%;left:0;right:0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+  background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 18px 30px rgba(0,0,0,.55);
+  transition:max-height .35s ease,opacity .25s ease,visibility 0s linear .35s}
+#siteHeader .sh-menu.open{max-height:80vh;overflow-y:auto;opacity:1;visibility:visible;transition:max-height .35s ease,opacity .25s ease}
+#siteHeader .sh-menu li{border-bottom:1px solid rgba(255,255,255,.06)}
+#siteHeader .sh-menu li:last-child{border-bottom:0}
+#siteHeader .sh-menu a{display:block;padding:17px 24px;color:#fff;font-size:.95rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;transition:background .2s,color .2s,padding-left .2s}
+#siteHeader .sh-menu a:hover{background:rgba(200,16,46,.1);color:#C8102E;padding-left:32px}
+#siteHeader .sh-menu a.sh-book{color:#C8102E;font-weight:800}
+#siteHeader .sh-menu a.sh-tel{letter-spacing:.02em;text-transform:none;color:#d7d7d7}
+@media (max-width:1020px){#siteHeader .sh-links a{padding:10px 9px;font-size:.76rem;letter-spacing:.05em}}
+@media (max-width:860px){
+  #siteHeader .sh-bar{padding:10px 16px}
+  #siteHeader .sh-logo img{height:38px}
+  #siteHeader .sh-links{display:none}
+  #siteHeader .sh-right{display:flex}
+}
+</style>
+<header id="siteHeader">
+  <div class="sh-bar">
+    <a class="sh-logo" href="/" aria-label="Mikey's Mobile Detailing, home">
+      <img width="405" height="116" src="/images/logo-header.webp" alt="Mikey's Mobile Detailing logo" decoding="async" fetchpriority="high">
+    </a>
+    <nav class="sh-links" aria-label="Main">
+      <a href="/#allservices">Services</a>
+      <a href="/#service-area">Areas</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about/">About</a>
+      <a class="sh-tel" href="tel:+14256007897">(425) 600-7897</a>
+      <a class="sh-book" href="/#booking">Book Now</a>
     </nav>
+    <div class="sh-right">
+      <a class="sh-call" href="tel:+14256007897" aria-label="Call or text Mikey at (425) 600-7897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <button class="sh-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="shMenu"><span></span><span></span><span></span></button>
+    </div>
+    <ul class="sh-menu" id="shMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/#service-area">Areas Served</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a class="sh-tel" href="tel:+14256007897">Call or text (425) 600-7897</a></li>
+      <li><a class="sh-book" href="/#booking">Book Now</a></li>
+    </ul>
   </div>
 </header>
+<script>
+(function(){
+  var h=document.getElementById('siteHeader'); if(!h) return;
+  var btn=h.querySelector('.sh-btn'), menu=h.querySelector('.sh-menu');
+  function set(open){ menu.classList.toggle('open',open); btn.setAttribute('aria-expanded',open?'true':'false'); btn.setAttribute('aria-label',open?'Close menu':'Open menu'); }
+  btn.addEventListener('click',function(e){ e.stopPropagation(); set(!menu.classList.contains('open')); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+  document.addEventListener('click',function(e){ if(!h.contains(e.target)) set(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&menu.classList.contains('open')){ set(false); btn.focus(); } });
+})();
+</script>
+<!-- /site-header -->
 
 <section class="hero">
   <div class="container">
