@@ -64,7 +64,7 @@ Left off, and the generator fails if they come back:
 |---|---|
 | Prices | 500 cards sit in wallets and drawers for years and can't follow a price change. Same rule as the yard sign. |
 | The Rain-Ready offer | It ends December 31, 2026. These cards last longer than that. |
-| "41 reviews" | The count will grow; the card won't. |
+| "42 reviews" | The count will grow; the card won't. |
 | Licensed / insured | Still unconfirmed (CLAUDE.md). |
 | Lynnwood, Edmonds | He doesn't serve them. Only the twelve towns. |
 

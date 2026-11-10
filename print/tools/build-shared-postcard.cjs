@@ -238,7 +238,7 @@ const mikey = q => `
     <div><div class="promise"><u>You don't pay until you love it.</u></div>
       <div class="grt">We walk around it together and I fix anything you point at. <b>Free comeback</b> if you spot something the next day. <b>Every penny back</b> if you're still not happy.</div></div>
     <div class="stats">
-      <div><b>5.0 ${stars(5)}</b><span>41 Google reviews</span></div>
+      <div><b>5.0 ${stars(5)}</b><span>42 Google reviews</span></div>
       <div><b>300+</b><span>cars detailed</span></div>
       <div><b>2021</b><span>detailing since</span></div>
     </div>
@@ -352,7 +352,7 @@ const mikeyT = q => sideT({
         <li>Mention this postcard</li><li>RainX on the glass, free</li>
       </ul>
       <div class="rates">SUV or pickup +$40, van or 3-row +$80. Book by December 31, 2026 and I can do the work as late as January 31, 2027. $508 is a sedan's Interior and Exterior booked apart, plus the three extras.</div>`,
-  trust: `<div><div class="rate"><b>5.0</b>${stars(5)}</div><p>41 Google reviews</p></div>
+  trust: `<div><div class="rate"><b>5.0</b>${stars(5)}</div><p>42 Google reviews</p></div>
       <div class="t"><b>You don't pay until you love it.</b>We walk around the car together first. Anything you point at, I fix right there.</div>
       <div class="t"><b>One guy, every car.</b>300+ cars since 2021. The person who texts you back is the one in your driveway.</div>`,
   cta: `<div class="qr">${q}</div>
@@ -436,7 +436,7 @@ async function checkQr(el, want, label) {
     [/monday|tuesday|wednesday|thursday|friday|saturday|sunday/i, 'a named work day'], [/\$(160|200|240|280|299|339|379)\b/, 'a retired price'],
     [/cars a week|limited spots|a few a week/i, 'a retired scarcity claim'], [/tank|generator|bring (my|the) own water/i, 'water or power he brings']];
   for (const [re, what] of banned) if (re.test(mk)) problems.push(`Mikey's side: ${what}: "${mk.match(re)[0]}"`);
-  for (const m of ['spigot', 'outlet', MK_PHONE, '60 seconds', '41 Google reviews', '300+', '2021', 'December 31, 2026', '$369', '$508', ...(MATCHED ? [] : TOWNS)])
+  for (const m of ['spigot', 'outlet', MK_PHONE, '60 seconds', '42 Google reviews', '300+', '2021', 'December 31, 2026', '$369', '$508', ...(MATCHED ? [] : TOWNS)])
     if (!mk.toLowerCase().includes(m.toLowerCase())) problems.push(`Mikey's side is missing "${m}"`);
   // Trinity's side: established facts only (Trinity CLAUDE.md, rule 2).
   for (const [re, what] of [[/timer/i, 'timers (known false)'], [/hundreds|\d{3,}\+? (homes|customers|houses)/i, 'a customer count (unverified)'],

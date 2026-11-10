@@ -27,7 +27,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Exterior detail takes | **about 1–2 hours** | set 2026-10-05 to match the calendar's 2 hr plan (pages had said 1–1.5 and 1.5–2.5); Mikey to confirm |
 | Clean Club visit takes | **unconfirmed** | Mikey wasn't sure (2026-10-05). Copy says a club visit takes less than a first detail, never a number |
 | Cars detailed | **300+** | |
-| Google rating | **5.0 across 41 reviews** | what the public profile shows (41 on 2026-11-03: Brittany H. on Oct 30 made it 39 written plus 2 star-only; Muse read 40 on 2026-10-08). `site-stats.js` first, then every hard-coded copy; `check-site.py` finds them |
+| Google rating | **5.0 across 42 reviews** | what the Business Profile API shows (42 on 2026-11-10: John P. on Nov 3 made it 40 written plus 2 star-only; 41 on 2026-11-03 with Brittany H.; Muse read 40 on 2026-10-08). `site-stats.js` first, then every hard-coded copy; `check-site.py` finds them |
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
@@ -139,7 +139,7 @@ so it stands on its own when the calendar can't be reached.
 `/reviews/` turned out to carry a quote that wasn't on Google ("James Bell"),
 one rewritten under a real reviewer's name (Pat Job) and two with words added
 (Flon R, Angela). It now lists all 38 written Google reviews in full, newest
-first, first name and last initial, with the month (39 since Brittany H., 2026-11-03). A new review goes on the
+first, first name and last initial, with the month (40 since John P., 2026-11-10). A new review goes on the
 top the same way. Never shorten one into words they didn't say, add a town
 they didn't name, or put a quote under "Google review" that isn't on Google
 (the FTC's 2024 fake-review rule covers all of that). The one punctuation
@@ -584,7 +584,7 @@ excludes `print/`). Read its `README.md` before changing anything: it has the
 ordering steps, the distribution rules and why each section is there.
 
 - **A hanger is one more copy of the facts table.** Prices, 60 seconds, 300+,
-  5.0 across 39, the phone, the twelve towns, spigot and outlet: a fact change
+  5.0 and the review count, the phone, the twelve towns, spigot and outlet: a fact change
   lands there too. Edit `print/tools/build-door-hanger.cjs`, then
   `npm run hanger` (and `OFFER=0 npm run hanger`) in `print/tools`.
 - **It prints the Rain-Ready offer** with its own terms: book a Full Detail by
@@ -728,7 +728,7 @@ phone). It's written for the Lake Stevens edition only (headline; he's based
 in Snohomish, so never "based in"). Its quote is Rose's, a customer who said it
 to Mikey and gave her yes (2026-10-19): not a Google review, so never labeled
 one; check it against her message. The "Matt K. · Google review" quote it had
-before isn't among his 41 Google reviews, and the site still carries it
+before isn't among his 42 Google reviews, and the site still carries it
 unlabeled (homepage, city pages): ask Mikey where it came from before relying
 on it. Never a made-up review (`REVIEW_IS_EXAMPLE` marks a placeholder).
 **The holiday issue carries a magazine-only coupon** (Mikey, 2026-10-21:
