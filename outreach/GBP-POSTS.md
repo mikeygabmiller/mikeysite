@@ -839,3 +839,72 @@ If it needs more than 20 minutes, that's a Full Detail, inside and out: $369 for
 
 Tap Book to see your exact price in 60 seconds.
 ```
+
+---
+
+## 30. Week of Nov 15 · Update · What a ceramic coating actually does in the rain
+
+**Goes up:** 2026-11-18
+**Photo:** `social/photos/mach-e-black.jpg` (a black Mustang Mach-E on a driveway after the detail, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+People ask me what a ceramic coating actually does. Here's the honest version for a car that lives in Snohomish County rain.
+
+1. Water beads up and runs off instead of sitting flat on the paint. Road film has a harder time sticking, so the car stays cleaner longer and you wash it less.
+2. When you do wash it, the dirt lets go easier. Less scrubbing means fewer swirls.
+3. It does not make the paint scratch-proof, and it won't stop rock chips. Automatic brushes still scratch it.
+4. Most of the job is the prep. The paint gets fully decontaminated first, and corrected first if it has swirls, because a coating locks in whatever is under it.
+
+It still needs a hand wash with a pH-neutral soap. It just comes clean faster, and it lasts years, not weeks like a wax.
+
+Ceramic coating starts at $500, and I quote it for your exact car once I've seen the paint. Same price in Mill Creek, Bothell or anywhere else I go.
+
+Tap Book to get started.
+```
+
+---
+
+## 31. Week of Nov 15 · Update · Leather seats in the cold
+
+**Goes up:** 2026-11-20
+**Photo:** `social/photos/etron-interior.jpg` (an Audi interior with cream leather seats after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Leather seats take a beating in a wet Snohomish County winter, and most of it is from wet coats and the heater.
+
+Wet jeans and coats leave water rings and grit on the seat. Then the heater and the seat heaters dry it out. Light leather shows it first, as gray creases where you slide in and out.
+
+1. Wipe the seats down with a dry microfiber after a soaking day, before the water dries into a ring.
+2. Clean before you condition. Conditioner on dirty leather seals the dirt in.
+3. Use a leather cleaner and a soft brush on the seams and the side bolster you slide across, then wipe it off.
+4. Condition lightly. Too much leaves the seat slick and greasy.
+
+That's the order I follow on every Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row. Same price in Lake Stevens, Granite Falls or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 32. Week of Nov 22 · Update · Spilled milk in the trunk
+
+**Goes up:** 2026-11-22
+**Photo:** `social/photos/rav4-cargo-before-after.jpg` (a RAV4 cargo area before and after the detail, side by side)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Big grocery run this week? Put a bin in the trunk. Spilled milk is one of the worst smells I get called for.
+
+Milk soaks down through the carpet into the padding underneath. It smells fine for a day, then it sours, and a warm car on a sunny afternoon makes it worse.
+
+1. Get to it the same day. Blot up everything you can with towels. Don't rub.
+2. Lift the cargo floor panel if it comes up. Milk runs under it.
+3. Blot with a little cold water, never hot. Heat sets the protein.
+4. Leave the trunk open to dry in the garage. A carpet that stays damp keeps the smell.
+
+If it already smells, a surface wipe won't touch it. The milk is in the padding, and that takes an extractor. That's part of the Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, trunk included. Same price in Everett, Monroe or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
