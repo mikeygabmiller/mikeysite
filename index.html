@@ -2160,7 +2160,7 @@ header li a[href="#booking"],
        thought about. -->
   <div class="step" id="step7">
     <h3 class="q-title">Pick a time</h3>
-    <p class="q-hint" id="qqTimeHint">I come to you. Tap one and it&rsquo;s yours.</p>
+    <p class="q-hint" id="qqTimeHint">I come to you. Tap the time you want and I&rsquo;ll hold it while I text you to confirm.</p>
     <div class="qq-opens-msg" id="qqOpensMsg" style="display:none;"></div>
     <div class="qq-opens" id="qqOpens"></div>
     <div class="qq-opens qq-opens-more" id="qqOpensMore"></div>
@@ -2171,12 +2171,15 @@ header li a[href="#booking"],
     </div>
   </div>
 
-  <!-- STEP 8: LOCK IT IN
-       Name, number, where. The street can be just the street: people who don't
+  <!-- STEP 8: HOLD THIS TIME
+       A request, not a confirmed booking (Mikey, 2026-11-13): nearly everyone
+       who sees a price picks a time, and often he can't do that exact one, so
+       the time is held and he texts them himself before anything is set.
+       Nothing texts them automatically. Name, number, where. The street can be just the street: people who don't
        want to hand a stranger their house number yet still get to book, and
        Mikey's alert tells him to ask for it. -->
   <div class="step" id="step8">
-    <h3 class="q-title">Lock it in</h3>
+    <h3 class="q-title">Hold this time</h3>
     <div class="qq-booksum" id="qqBookSum"></div>
     <form class="form" id="qqBookForm" novalidate>
       <div class="field" id="qqbfName">
@@ -2209,7 +2212,7 @@ header li a[href="#booking"],
       <input type="text" id="qqBCompany" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
       <div class="qq-send">
         <p class="qq-consent" id="qqBConsentText">By tapping below you agree to receive text messages about your appointment from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
-        <button class="btn btn-primary qq-send-btn" type="submit" id="qqBookBtn">Book it &rarr;</button>
+        <button class="btn btn-primary qq-send-btn" type="submit" id="qqBookBtn">Request this time &rarr;</button>
         <div class="qq-reassure">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Just me, every time</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Pay after the work, no deposit</span>
@@ -2670,7 +2673,7 @@ header li a[href="#booking"],
       '<div class="bs">' + escapeHtml(svc + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '') + ' · $' + S.total) + '</div>' +
       (rrOn() ? '<div class="bs bs-rr">+ ceramic wax, RainX, anti-fog: free</div>' : '');
     // No arrow: "Book Thu, Oct 1 at 1:00 PM" already fills a phone-width button.
-    $('qqBookBtn').textContent = 'Book ' + o.label + ' at ' + o.time;
+    $('qqBookBtn').textContent = 'Request ' + o.label + ' at ' + o.time;
     // Carry over anything they already typed, and the town from step 3.
     if (!val('qqBName') && val('qqName')) $('qqBName').value = val('qqName');
     if (!val('qqBPhone') && val('qqPhone')) $('qqBPhone').value = val('qqPhone');
@@ -2703,7 +2706,7 @@ header li a[href="#booking"],
     var name = val('qqBName'), phoneE164 = '+1' + digits.slice(-10);
     var ymm = val('qqYmm'), city = bkTown(), street = val('qqBStreet');
     var cond = (S.condition && S.condition.label) ? S.condition.label : '';
-    var btn = $('qqBookBtn'); btn.disabled = true; btn.textContent = 'Booking…';
+    var btn = $('qqBookBtn'); btn.disabled = true; btn.textContent = 'Sending…';
     var errBox = $('qqBookError'); errBox.style.display = 'none';
     var consentEl = $('qqBConsentText');
     var extras = Object.keys(S.addons).map(function(n){ return n + (S.addons[n] === 0 ? ' (free, Rain-Ready)' : ''); });
@@ -2719,7 +2722,7 @@ header li a[href="#booking"],
     };
     var when = o.label + ' at ' + o.time;
     function fail(){
-      btn.disabled = false; btn.textContent = 'Book ' + when;
+      btn.disabled = false; btn.textContent = 'Request ' + when;
       var body = "Hi Mikey! I'd like to book " + when + ".\nName: " + name + "\nWhere: " + street + ', ' + city +
         '\nQuote: $' + S.total + ' (' + Object.keys(S.services).join(' + ') + (S.vehicle ? ', ' + S.vehicle.label : '') + ')';
       errBox.innerHTML = "<p>That didn’t go through, but your time isn’t lost. Tap below to send it straight to me by text and I’ll lock you in.</p>" +
@@ -2753,12 +2756,18 @@ header li a[href="#booking"],
       var line = Object.keys(S.services).join(' + ') + (S.vehicle && S.vehicle.label ? ' · ' + S.vehicle.label : '');
       box.innerHTML = '<span class="sq-amt">$' + S.total + '</span><span class="sq-svc">' + escapeHtml((when ? when + ' · ' : '') + line) + '</span>';
     }
-    var h = $('qqSuccessHead'); if (h) h.textContent = instant ? 'You’re booked!' : 'Request sent!';
+    // 'confirmed' only comes back if Mikey switches automatic texts back on in
+    // his dashboard (Bookings → Settings). Since 2026-11-13 a booking is held
+    // as a request and he texts them first himself, so the words say exactly
+    // that: the time is held, nothing's set until he texts.
+    var h = $('qqSuccessHead'); if (h) h.textContent = instant ? 'You’re booked!' : 'Your time’s held!';
     var p = $('qqSuccessTime');
     if (p) p.textContent = instant
       ? 'It’s on my schedule. I just texted you the confirmation, and I’ll send a reminder the day before. All I need there is an outdoor spigot and an outlet I can reach.'
-      : (city ? city + ' is a little outside my usual towns, so I’ll check the drive and text you to confirm, usually the same day.'
-              : 'I’ll text you to confirm, usually the same day.');
+      // Only a town typed under "Somewhere else" is outside his twelve; the
+      // dropdown's towns are all his, so they never hear that line.
+      : (city && $('qqBTown') && $('qqBTown').value === 'other' ? city + ' is a little outside my usual towns, so I’m holding ' + (when || 'that time') + ' while I check the drive. I’ll text you myself to confirm, usually the same day.'
+              : 'I’m holding ' + (when || 'that time') + ' for you. I’ll text you myself to confirm it, usually the same day. If that time doesn’t work on my end, I’ll text you one that does.');
     goStep(6);
   }
   function animateAmount(target){
