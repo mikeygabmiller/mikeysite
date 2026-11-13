@@ -1789,6 +1789,8 @@ header li a[href="#booking"],
 #qqcCard .qq-error a { display: inline-block; background: var(--accent); color: #fff; padding: 13px 20px; border-radius: 9px; font-weight: 800; font-size: 14.5px; text-decoration: none; }
 
 #qqcCard .success { text-align: center; padding: 18px 0 8px; }
+#qqcCard .qq-another { display:block; width:100%; min-height:50px; margin:4px 0 16px; background:transparent; color:var(--text); border:1.5px solid var(--border-2); font-size:16px; font-weight:700; }
+#qqcCard .qq-another:hover { border-color:var(--text-2); }
 #qqcCard .success .ring { position: relative; width: 78px; height: 78px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(140deg, #38c46a, var(--success)); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 32px -8px var(--success); animation: qqcRingPop .55s cubic-bezier(.34,1.56,.64,1) both; }
 #qqcCard .success .ring svg { width: 40px; height: 40px; color: #fff; position: relative; z-index: 1; }
 #qqcCard .success .ring::before, #qqcCard .success .ring::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--success); animation: qqcRipple 1.9s ease-out infinite; }
@@ -2237,6 +2239,11 @@ header li a[href="#booking"],
       <!-- The worker sends the first text 2 to 4 minutes after a send, and holds
            anything between 11 PM and 5 AM until 5 (firstReachoutAt). -->
       <p id="qqSuccessTime">I&rsquo;ll text you in a few minutes. If it&rsquo;s late at night, first thing in the morning.</p>
+      <!-- A second car (Mikey, 2026-11-13). The calculator prices one car, and
+           before this the only way to book another was to reload the page and
+           type everything again. This starts over at the car, keeps their name,
+           number and address, and tells Mikey the two go together. -->
+      <button type="button" class="btn qq-another" id="qqAnotherCar">+ Add another car</button>
       <p style="color:#9a9aa2;font-size:0.9rem;">No deposit. You pay when the job&rsquo;s done.</p>
       <p style="margin-top:10px;">In a hurry? <a class="call" href="tel:+14256007897">Call or text (425) 600-7897</a></p>
       <p class="sig">Mikey</p>
@@ -2337,8 +2344,16 @@ header li a[href="#booking"],
   // Two boxes, one note. Step 3 asks what's wrong with the car; step 4 catches the
   // extra that isn't on the menu. Both have to land in the same place, because the
   // email, the SMS payload and the breakdown all read one Notes line.
+  // Cars already sent in this visit, one line each, so a second car's request
+  // tells Mikey it goes with the first (same person, maybe the same day).
+  var CARS_DONE = [];
+  function carLine(when){
+    return Object.keys(S.services).join(' + ') + (S.vehicle && S.vehicle.label ? ', ' + S.vehicle.label : '') +
+      (val('qqYmm') ? ' (' + val('qqYmm') + ')' : '') + ', $' + S.total + (when ? ', ' + when : '');
+  }
   function collectNotes(){
     var parts = [];
+    if (CARS_DONE.length) parts.push('Car ' + (CARS_DONE.length + 1) + ' for the same person. Already sent: ' + CARS_DONE.join('; ') + '.');
     var n = val('qqNotes'); if (n) parts.push(/[.!?]$/.test(n) ? n : n + '.');
     var a = val('qqAddonNote'); if (a) parts.push('Also wants: ' + a);
     return parts.join(' ');
@@ -2750,6 +2765,7 @@ header li a[href="#booking"],
       .catch(fail);
   }
   function bkBooked(status, when, city){
+    CARS_DONE.push(carLine(when ? 'held for ' + when : ''));
     var instant = status === 'confirmed';
     var box = $('qqSuccessQuote');
     if (box){
@@ -2983,7 +2999,13 @@ header li a[href="#booking"],
     return true;
   }
 
+  // The done screen's words as the page shipped them, for the phone form. A
+  // booking rewrites them, so a second car sent by text has to put them back.
+  var SUCCESS_HEAD = ($('qqSuccessHead') || {}).textContent || '', SUCCESS_TIME = ($('qqSuccessTime') || {}).textContent || '';
   function showSuccess(name, phone){
+    CARS_DONE.push(carLine('quote by text'));
+    var sh = $('qqSuccessHead'); if (sh && SUCCESS_HEAD) sh.textContent = SUCCESS_HEAD;
+    var stm = $('qqSuccessTime'); if (stm && SUCCESS_TIME) stm.textContent = SUCCESS_TIME;
     var box = $('qqSuccessQuote');
     if (box){
       var svcs = Object.keys(S.services);
@@ -2994,6 +3016,25 @@ header li a[href="#booking"],
     }
     goStep(6);
   }
+
+  // Back to the car question for the next car. Name, phone, town and street
+  // stay where they were typed (steps 5 and 8 read them), the car, the
+  // service, the condition and the notes start clean, and the openings are
+  // asked for again because the time just held is no longer open.
+  function anotherCar(){
+    S.vehicle = null; S.condition = null; S.services = {}; S.addons = {}; S.notes = ''; S.total = 0; S.items = [];
+    deselect('step1', '.choice'); deselect('services', '[data-role="service"]'); deselect('step3', '.choice');
+    ['qqYmm', 'qqNotes', 'qqAddonNote'].forEach(function(id){ var e = $(id); if (e) e.value = ''; });
+    var n3 = $('qqNext3'); if (n3) n3.disabled = true;
+    refreshNudge(); refreshContinue();
+    BK.key = ''; BK.opens = null; BK.pick = null; BK.pending = null;
+    var st5 = $('step5'); if (st5) st5.classList.remove('show-form');
+    var bb = $('qqBookBtn'); if (bb) bb.disabled = false;
+    var sb = $('qqSubmitBtn'); if (sb) sb.disabled = false;
+    if (typeof window.MDTrack === 'function') window.MDTrack('Added another car', 'car ' + (CARS_DONE.length + 1));
+    goStep(1);
+  }
+  var another = $('qqAnotherCar'); if (another) another.addEventListener('click', anotherCar, false);
 
   // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
   // window.MikeyQQC.book({ service:'full'|'interior'|'exterior', vehicle:'sedan'|'suv'|'van', condition:'clean'|'work'|'rough', note:'...' })

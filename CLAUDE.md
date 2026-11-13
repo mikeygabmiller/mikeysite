@@ -183,6 +183,13 @@ exactly as before.
   text at once: he's on the phone with them. The "Text me this quote
   instead" form still gets its automatic first text; ask him before changing
   that.
+- **More than one car** (Mikey, 2026-11-13): the done screen has "+ Add
+  another car". It starts the calculator over at the car, keeps their name,
+  phone, town and street, asks the calendar again (the time just held is
+  gone), and the next request's notes start "Car 2 for the same person.
+  Already sent: ..." so he sees they go together. Each car is its own
+  request at its own price; he sorts out the timing by text. No two-car
+  slot: two Full Details is about 9 hours, which no slot of his holds.
 - **A street without a house number is allowed.** His alert tells him to ask.
 - Anything on his Google Calendar blocks a time. That's his off switch.
 
