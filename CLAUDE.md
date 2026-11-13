@@ -169,8 +169,20 @@ exactly as before.
   drop out after the clocks go back on Nov 1 until his work lights are ready;
   that's a checkbox in Bookings → Settings.
 - **Never same day.** Tomorrow's times close at 9 PM tonight.
-- **Instant confirm only in the twelve towns.** They get his confirm text and
-  both reminders at once. Anywhere else is a request he confirms himself.
+- **A booking is a held request, and nothing texts them** (Mikey,
+  2026-11-13: nearly everyone who gets a quote picks a time, often one he
+  can't do, and he wants to text them first himself). The time they pick is
+  held so nobody else takes it; step 8 says "Hold this time" / "Request ..."
+  and the success screen "I'm holding [time] for you. I'll text you myself
+  to confirm." His alert and the Bookings card say they haven't been texted.
+  Tapping Confirm in Bookings sends the confirm text and reminders; Decline
+  frees the time with no text. The old way (instant confirm plus a confirm
+  text in the twelve towns, a "got your request" text elsewhere) is the
+  "Text website bookings automatically" box in Bookings → Settings
+  (`webAutoText`, off). The call page's Clean Club sign-ups still confirm and
+  text at once: he's on the phone with them. The "Text me this quote
+  instead" form still gets its automatic first text; ask him before changing
+  that.
 - **A street without a house number is allowed.** His alert tells him to ask.
 - Anything on his Google Calendar blocks a time. That's his off switch.
 
