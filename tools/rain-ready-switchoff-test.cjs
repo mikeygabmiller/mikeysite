@@ -4,10 +4,11 @@
 //   python3 -m http.server 8766   (from the repo root, in another terminal)
 //   node tools/rain-ready-switchoff-test.cjs
 //
-// Passes when, at 11:59 PM Dec 31, the hero chip and #rain-ready section show
-// and a sedan Full Detail quotes $369 with the three extras free; and at
-// 12:01 AM Jan 1 the chip and section are gone and the same quote is $369 with
-// no extras. First run 2026-11-03: pass. After January 1 the dormant code
+// Passes when, at 11:59 PM Dec 31, the #rain-ready section shows and a sedan
+// Full Detail quotes $369 with the three extras free; and at 12:01 AM Jan 1
+// the section is gone and the same quote is $369 with no extras. First run
+// 2026-11-03: pass. The hero chip it also checked came off the homepage on
+// 2026-11-14 (Mikey: take the offer off the first screen). After January 1 the dormant code
 // comes out (CLAUDE.md, Offers and countdowns) and this file goes with it.
 const { chromium } = require('playwright');
 const BASE = process.env.BASE || 'http://localhost:8766';
@@ -25,7 +26,7 @@ const BASE = process.env.BASE || 'http://localhost:8766';
     await p.clock.runFor(1500);
     const shown = await p.evaluate(() => {
       const vis = el => !!el && !el.hidden && getComputedStyle(el).display !== 'none';
-      return { chip: vis(document.querySelector('.mh-rr')), section: vis(document.querySelector('#rain-ready')) };
+      return { section: vis(document.querySelector('#rain-ready')) };
     });
     const click = async sel => { await p.evaluate(s => { const e = document.querySelector(s); e.scrollIntoView(); e.click(); }, sel); await p.clock.runFor(400); };
     for (const sel of ['[data-role="vehicle"][data-value="0"]', '#qqHeroFull', '#qqNext2',
@@ -34,9 +35,9 @@ const BASE = process.env.BASE || 'http://localhost:8766';
     const quote = await p.evaluate(() => document.body.innerText.replace(/\s+/g, ' '));
     const price = (quote.match(/Your estimate \$(\d+)/) || [])[1];
     const extras = /Rain-Ready, book by Dec 31/.test(quote);
-    const ok = shown.chip === live && shown.section === live && extras === live && price === '369';
+    const ok = shown.section === live && extras === live && price === '369';
     if (!ok) bad++;
-    console.log(`${ok ? 'ok  ' : 'FAIL'} ${label}: chip ${shown.chip}, section ${shown.section}, extras on quote ${extras}, price $${price}`);
+    console.log(`${ok ? 'ok  ' : 'FAIL'} ${label}: section ${shown.section}, extras on quote ${extras}, price $${price}`);
     await ctx.close();
   }
   await b.close();

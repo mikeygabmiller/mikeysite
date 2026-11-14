@@ -272,14 +272,20 @@ free (worth $508, from $369; Mikey swapped anti-fog in for the exterior polish
 on 2026-10-15, at the same $30, before any offer piece was printed). It's the **booking** date that counts: a job
 booked by Dec 31 can be done as late as **January 31, 2027** (Mikey,
 2026-09-29), because weekday Full Details don't fit before dark in November and
-December and there aren't enough Saturdays to go round. It lives in three places in `index.html`, and
-all three switch off on their own at midnight Pacific going into January 1:
+December and there aren't enough Saturdays to go round. It lives in two places in `index.html`, and
+both switch off on their own at midnight Pacific going into January 1:
 
-1. the gold chip above the hero headline (`.mh-rr`)
-2. the `#rain-ready` section after Before & After, with its value stack
-3. the quote calculator: `RR_END` / `RR_FREE`, which put the three extras on
+1. the `#rain-ready` section after Before & After, with its value stack
+2. the quote calculator: `RR_END` / `RR_FREE`, which put the three extras on
    any Full Detail at $0 and label them "(free, Rain-Ready)" in the text and
    email Mikey gets
+
+**Not on the first screen** (Mikey, 2026-11-14: "remove the offer from the
+screen"). The gold Rain-Ready card above the hero headline (`.mh-rr`) came
+out so the headline is the first big thing a visitor sees. Hanger and
+postcard QR codes land on `#booking`, past the hero, where the calculator's
+own line still shows the offer, so scanners lose nothing. Ask him before
+putting an offer back above the headline.
 
 The section's script holds its own copy of the end date. Change one, change
 both. The call page (`onbored/index.html`) has a third copy, `RR_END`, for
@@ -293,7 +299,7 @@ dormant code out rather than leaving it.
 and 12:01 AM Jan 1 and drives a sedan Full Detail to the price screen. Both
 passed: extras free before, gone after, $369 either way. Rerun it after any
 change to the calculator before January. The January cleanup, once it's past:
-the `.mh-rr` chip and its CSS, the `#rain-ready` section and its script, the
+the `#rain-ready` section and its script, the
 `content-visibility` line for it, `RR_END` / `RR_FREE` / `rrLive` / `rrOn` /
 `syncRainReady` and every branch on them in the calculator (the "(free,
 Rain-Ready)" labels and the one-line extras row), the `rain_ready` prefill
