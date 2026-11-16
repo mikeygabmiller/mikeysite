@@ -908,3 +908,74 @@ If it already smells, a surface wipe won't touch it. The milk is in the padding,
 
 Tap Book to see your exact price in 60 seconds.
 ```
+
+---
+
+## 33. Week of Nov 22 · Update · Bringing the dog to Thanksgiving
+
+**Goes up:** 2026-11-25
+**Photo:** `social/photos/lexus-interior.jpg` (a Lexus interior after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+Post 17 (Oct 21) said much the same and Google rejected it without saying why.
+This one is reworded from scratch, with a different photo and no town list in
+the opening, so if it's rejected too, the subject itself is the likely cause.
+
+```
+Driving the dog to Thanksgiving? Here's how to get the hair out of the carpet afterward without fighting the vacuum.
+
+Dog hair weaves itself into car carpet, so a vacuum alone mostly slides over it.
+
+1. Put on a rubber dish glove, or grab a rubber pet brush.
+2. Drag it across the carpet in short strokes, all in one direction. The hair rolls up into clumps on top.
+3. Vacuum the clumps. Most of it comes up in one pass.
+4. For next time, a washable blanket or a seat cover in the back catches most of it before it reaches the carpet.
+
+Heavy shedders are why some interiors take me 2 to 4 hours instead of about 90 minutes. The Interior Detail is $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row, and if the hair adds anything I tell you before I start.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 34. Week of Nov 22 · Update · Bringing the Christmas tree home
+
+**Goes up:** 2026-11-27
+**Photo:** `social/photos/silverado-gray.jpg` (a gray Silverado on a gravel drive under the firs, after the detail, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Picking up the Christmas tree this weekend? A few minutes of prep saves the roof and the back seat.
+
+1. Put an old blanket or a tarp down first, on the roof or in the truck bed. Bark and needles scratch, and fresh sap sticks to whatever it touches.
+2. Ask the lot to net or bale it. A netted tree sheds less and fits through the door.
+3. A roof rack or a truck bed is the safe way to carry it. Rope pulled tight through closed doors can crush the rubber seals, and that's where leaks start.
+4. Got sap on the paint? Don't scrape it. Hold a microfiber soaked in rubbing alcohol on it for a minute, lift it off gently, then wash the spot and put a little spray wax back on.
+5. Needles in the carpet: pull them out by hand or with a lint roller first. A vacuum can push them deeper into the weave.
+
+If the car came home sappier than the tree, that's an Exterior Detail: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. A lot of sap can add time, and I tell you that when I quote it. Same price in Granite Falls, Lake Stevens or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 35. Week of Nov 29 · Update · Carsick on the drive home
+
+**Goes up:** 2026-11-29
+**Photo:** `social/photos/corolla-interior.jpg` (a Corolla interior after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Long drive home from Thanksgiving and someone got carsick? It happens. No judgment at all, I've seen everything. Here's what to do the same day.
+
+1. Windows down, gloves on. Lift the solids with a piece of cardboard. Wiping spreads it into the carpet.
+2. Blot what's left with paper towels until they come up dry. Don't rub.
+3. Use an enzyme cleaner, the pet odor kind. It breaks down what causes the smell instead of covering it.
+4. Check the places people miss: the seat belt and buckle, the gap beside the seat, the seat tracks and under the floor mat.
+5. Let it dry completely. Skip the air freshener, it just mixes with the smell.
+
+If the smell comes back on the first warm day or when the heater runs, it soaked into the padding under the carpet, and only hot water extraction reaches it. That's part of the Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row. Same price in Woodinville, Mukilteo or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
