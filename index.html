@@ -2991,6 +2991,32 @@ header li a[href="#booking"],
       if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: 'Full Detail', source: 'rain_ready' });
       goStep(S.vehicle ? 2 : 1);
     },
+    // A service page's "pick your size" buttons land here (2026-11-16):
+    // /?quote=interior&size=suv#booking. The service and the size are already
+    // chosen on that page, so the calculator opens at the next question it
+    // still needs (condition), never at a price: condition and extras change
+    // the number, and the price screen is the only place a price is worked out.
+    start: function (o) {
+      o = o || {};
+      var svcMap = { full: 'Full Detail', interior: 'Interior Detail', exterior: 'Exterior Detail' };
+      var name = svcMap[o.service];
+      if (!name || !PRICE[name]) return;
+      deselect('services', '.hero'); deselect('services', '.svc-card');
+      S.services = {}; S.services[name] = PRICE[name];
+      var node = name === 'Full Detail' ? $('qqHeroFull') : document.querySelector('#services [data-name="' + name + '"]');
+      if (node){ node.classList.add('sel'); node.setAttribute('aria-pressed', 'true'); }
+      var vMap = { sedan: 0, suv: 40, van: 80 };
+      if (o.vehicle in vMap){
+        var vn = document.querySelector('#step1 .choice[data-value="' + vMap[o.vehicle] + '"]');
+        if (vn){
+          deselect('step1', '.choice'); vn.classList.add('sel'); vn.setAttribute('aria-pressed', 'true');
+          S.vehicle = { value: vMap[o.vehicle], label: vn.getAttribute('data-label') };
+        }
+      }
+      refreshNudge(); refreshContinue(); refreshTicker();
+      if (typeof gtag === 'function') gtag('event', 'qqc_prefill', { service: name, source: o.source || 'service_page' });
+      goStep(S.vehicle ? 3 : 1);
+    },
     book: function (o) {
       o = o || {};
       var svcMap = { full: 'Full Detail', interior: 'Interior Detail', exterior: 'Exterior Detail' };
@@ -3035,6 +3061,12 @@ header li a[href="#booking"],
     var delays = [100,300,600,1000,2000], di = 0;
     (function retry(){ if (di>=delays.length) return; setTimeout(function(){ if(!attach()){ di++; retry(); } }, delays[di]); })();
   }
+
+  // ?quote=interior|exterior|full (&size=sedan|suv|van): see MikeyQQC.start.
+  try {
+    var qp = new URLSearchParams(location.search), qs = qp.get('quote');
+    if (qs) setTimeout(function(){ window.MikeyQQC.start({ service: qs, vehicle: qp.get('size') || '' }); }, 350);
+  } catch (e) {}
 })();
 </script>
       </div><!-- /qqc-card-col -->
