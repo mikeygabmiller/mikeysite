@@ -5,11 +5,20 @@ goal. Not served (`reports/` is excluded).
 
 ## What the earlier session left
 
-Session `session_01VBLgm628cFEcWxoCmAnVFs` (competitor research, started an
-interior page with a shared page builder) **pushed nothing**. Checked
-2026-11-16 at 11:42 AM Pacific: no branch mentions interior or a page
-builder, no open PR for it, and no `tools/` script builds a service page. Its
-work is gone; start fresh.
+Session `session_01VBLgm628cFEcWxoCmAnVFs` (scheduled overnight run, Nov 10
+to 11) **did build pages, but GitHub refused every push**: it was started
+without this repository attached, so the git proxy answered 403 ("not in this
+session's authorized repository set"). It committed locally on
+`claude/night-03-exterior-page`, `claude/night-04-reports` and
+`claude/night-05-paint-correction`, with generator scripts for interior,
+exterior and paint correction, then packed the night-* branches into
+`mikeysite-night.bundle` (1.5 MB, Nov 10 22:22 UTC) and sent it to Mikey as a
+file in that session's chat. The paint correction branch was committed after
+that bundle, so it is probably not in it. The container itself is gone.
+
+To recover: download the bundle from that session's chat, attach it to a new
+session, then `git fetch mikeysite-night.bundle 'refs/heads/*:refs/heads/*'`,
+re-check every page against CLAUDE.md (main has moved a week since), and push.
 
 ## What the repo actually has
 
