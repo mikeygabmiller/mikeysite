@@ -14,150 +14,319 @@
 <title>Interior Car Detailing in Snohomish, WA | Mikey's Mobile Detailing</title>
 <meta name="description" content="Mobile interior car detailing in Snohomish, WA. Vacuum, steam clean, leather, dashboard. From $249, I come to your driveway. Get a quote.">
 <link rel="canonical" href="https://mikeysdetailing.com/services/interior.html">
-
 <meta property="og:title" content="Interior Car Detailing in Snohomish, WA | Mikey's Mobile Detailing">
-<meta property="og:description" content="Inside-only deep clean. I come to your driveway in Snohomish. From $249.">
+<meta property="og:description" content="Inside-only deep clean in your driveway. Sedan $249, SUV or pickup $289, van or 3-row $329. Twelve towns around Snohomish.">
 <meta property="og:url" content="https://mikeysdetailing.com/services/interior.html">
-<meta property="og:type" content="website">
 <meta property="og:image" content="https://mikeysdetailing.com/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mikey's Mobile Detailing logo: a red 4x4 in soap foam beside MIKEY'S, MOBILE DETAILING.">
 <meta name="twitter:card" content="summary_large_image">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap"></noscript>
+<meta property="og:type" content="website">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap"></noscript>
 
 <style>
+/* Interior Detail page, rebuilt 2026-11-16 to the ceramic page's standard: real photos of his own jobs, price by size up top, and its own way into the quote calculator (the size picker) */
 /* Arial sized to Outfit's width and line height, so text doesn't jump when the web font arrives */
 @font-face{font-family:'Outfit Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:97.5%;ascent-override:102.56%;descent-override:26.67%;line-gap-override:0%}
-:root { --brand-red: #C8102E; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #141414; color: #ffffff; font-family: 'Outfit', 'Outfit Fallback', -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 400; line-height: 1.6; -webkit-font-smoothing: antialiased; padding-top: 90px; }
-a { color: inherit; text-decoration: none; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+:root{--red:#C8102E;--red2:#A00C24;--glow:rgba(200,16,46,.42);--gold:#C9A24B;--gold2:#E4CD8B;
+  --bg:#111;--s1:#171717;--s2:#1d1d1d;--line:rgba(255,255,255,.08);--muted:#a9a9a9}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit','Outfit Fallback',sans-serif;background:var(--bg);color:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.cc-wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.cc-sec{padding:76px 0}
+.cc-sec.alt{background:linear-gradient(180deg,#141414,#101010);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cc-center{text-align:center}
+.cc-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;border:1px solid rgba(200,16,46,.35);
+  background:rgba(200,16,46,.08);color:var(--red);font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase}
+.cc-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+.cc-h2{font-size:clamp(2rem,5vw,3.3rem);font-weight:900;line-height:1.02;letter-spacing:-1.2px;text-transform:uppercase;margin:16px 0 14px}
+.cc-h2 em.nw{white-space:nowrap}
+.cc-h2 em{font-style:italic;color:var(--red);text-shadow:0 0 34px var(--glow)}
+.cc-sub{color:var(--muted);font-size:clamp(1rem,1.6vw,1.15rem);max-width:640px;line-height:1.65}
+.cc-center .cc-sub{margin:0 auto}
+.cc-sub strong{color:#fff}
 
-/* HEADER */
-#mikeyHeader { position: fixed; top: 0; left: 0; right: 0; width: 100%; background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='140' viewBox='0 0 80 140'><path d='M40 0 L80 23 L80 70 L40 93 L0 70 L0 23 Z M40 47 L80 70 L80 117 L40 140 L0 117 L0 70 Z' fill='none' stroke='%23dc2626' stroke-width='1' opacity='0.18'/></svg>"), repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 3px), repeating-linear-gradient(-45deg, rgba(0,0,0,0.4) 0px, rgba(0,0,0,0.4) 1px, transparent 1px, transparent 3px), linear-gradient(180deg, rgba(22,22,22,0.92) 0%, rgba(10,10,10,0.92) 100%); background-size: 80px 140px, auto, auto, auto; z-index: 9999; backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); box-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(200,16,46,0.1); transition: padding 0.3s ease, box-shadow 0.3s ease; }
-#mikeyHeader::before, #mikeyHeader::after { content: ''; position: absolute; width: 24px; height: 24px; pointer-events: none; z-index: 2; }
-#mikeyHeader::before { top: 8px; left: 8px; border-top: 2px solid var(--brand-red); border-left: 2px solid var(--brand-red); box-shadow: -1px -1px 8px rgba(200,16,46,0.4); }
-#mikeyHeader::after { top: 8px; right: 8px; border-top: 2px solid var(--brand-red); border-right: 2px solid var(--brand-red); box-shadow: 1px -1px 8px rgba(200,16,46,0.4); }
-#mikeyHeader nav::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,16,46,0.6), transparent); animation: scanline 4s linear infinite; pointer-events: none; z-index: 1; }
-@keyframes scanline { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(80px); opacity: 0; } }
-#mikeyHeader > .pulse-line { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent 0%, rgba(200,16,46,0.3) 30%, rgba(200,16,46,1) 50%, rgba(200,16,46,0.3) 70%, transparent 100%); background-size: 200% 100%; animation: pulseSlide 3s ease-in-out infinite; z-index: 2; }
-@keyframes pulseSlide { 0% { background-position: 200% 0; } 100% { background-position: -100% 0; } }
-#mikeyHeader > .scroll-progress { position: absolute; bottom: -2px; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, #C8102E, #E23744, #C8102E); box-shadow: 0 0 12px rgba(200,16,46,0.8); transition: width 0.1s ease-out; z-index: 3; }
-#mikeyHeader nav { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 40px; color: white; position: relative; transition: padding 0.3s ease; }
-#mikeyHeader.shrunk { box-shadow: 0 2px 30px rgba(0,0,0,0.9), 0 0 50px rgba(200,16,46,0.15); }
-#mikeyHeader.shrunk nav { padding: 6px 40px; }
-#mikeyHeader.shrunk img { height: 38px; }
-#mikeyHeader img { height: 50px; width: auto; display: block; cursor: pointer; filter: drop-shadow(0 0 8px rgba(200,16,46,0.3)); transition: filter 0.3s ease, height 0.3s ease; }
-#mikeyHeader img:hover { filter: drop-shadow(0 0 14px rgba(200,16,46,0.7)); }
-#desktopMenu { list-style: none; display: flex; gap: 4px; align-items: center; margin: 0; padding: 0; }
-#desktopMenu a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 16px; position: relative; transition: color 0.25s ease; display: inline-block; }
-#desktopMenu a:not([href*="booking"])::before { content: ''; position: absolute; bottom: 4px; left: 50%; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--brand-red), transparent); transition: width 0.35s ease, left 0.35s ease; }
-#desktopMenu a:not([href*="booking"])::after { content: ''; position: absolute; top: 4px; right: 6px; width: 6px; height: 6px; border-top: 1px solid var(--brand-red); border-right: 1px solid var(--brand-red); opacity: 0; transform: translate(-4px, 4px); transition: opacity 0.25s ease, transform 0.25s ease; }
-#desktopMenu a:not([href*="booking"]):hover { color: #fff; text-shadow: 0 0 12px rgba(200,16,46,0.5); }
-#desktopMenu a:not([href*="booking"]):hover::before { width: 70%; left: 15%; }
-#desktopMenu a:not([href*="booking"]):hover::after { opacity: 1; transform: translate(0,0); }
-#desktopMenu a[href*="booking"] { display: inline-block; padding: 11px 22px; margin-left: 10px; background: linear-gradient(135deg, #C8102E 0%, #A00C24 50%, #C8102E 100%); color: #fff !important; font-weight: 800; font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; position: relative; overflow: hidden; box-shadow: 0 4px 14px rgba(200,16,46,0.4), 0 0 0 1px rgba(200,16,46,0.3), inset 0 1px 0 rgba(255,255,255,0.2); transition: transform 0.2s ease, box-shadow 0.3s ease; }
-#desktopMenu a[href*="booking"]::after { content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); animation: bookShine 3.5s infinite; }
-@keyframes bookShine { 0% { left: -75%; } 25% { left: 125%; } 100% { left: 125%; } }
-#desktopMenu a[href*="booking"]:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(200,16,46,0.6), 0 0 0 1px rgba(200,16,46,0.5), inset 0 1px 0 rgba(255,255,255,0.3); }
-#hamburgerBtn { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 10001; background: none; border: none; padding: 6px; }
-#hamburgerBtn span { width: 26px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s ease; display: block; box-shadow: 0 0 4px rgba(200,16,46,0.4); }
-#hamburgerBtn.active span:nth-child(1) { transform: rotate(45deg) translateY(8px); background: var(--brand-red); }
-#hamburgerBtn.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-#hamburgerBtn.active span:nth-child(3) { transform: rotate(-45deg) translateY(-8px); background: var(--brand-red); }
-#mobileMenu { list-style: none; position: absolute; top: 100%; left: 0; width: 100%; background: linear-gradient(rgba(10,10,10,0.98), rgba(10,10,10,0.98)), #0a0a0a; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.3s ease; border-top: 1px solid rgba(200,16,46,0.2); margin: 0; padding: 0; }
-#mobileMenu.open { max-height: 600px; opacity: 1; }
-#mobileMenu li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.06); }
-#mobileMenu li:last-child { border-bottom: none; }
-#mobileMenu a { color: white; text-decoration: none; padding: 18px 24px; display: block; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, padding-left 0.2s, color 0.2s; position: relative; }
-#mobileMenu a::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: var(--brand-red); transition: width 0.2s ease; }
-#mobileMenu a:hover { background: rgba(200,16,46,0.1); padding-left: 34px; color: var(--brand-red); }
-#mobileMenu a:hover::before { width: 3px; }
-@media (max-width: 768px) {
-  body { padding-top: 70px; }
-  #desktopMenu { display: none !important; }
-  #hamburgerBtn { display: flex !important; }
-  #mikeyHeader img { height: 38px; }
-  #mikeyHeader nav { padding: 10px 16px; }
-  #mikeyHeader::before, #mikeyHeader::after { width: 16px; height: 16px; top: 5px; }
-  #mikeyHeader::before { left: 5px; }
-  #mikeyHeader::after { right: 5px; }
-}
+/* buttons */
+.cc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 30px;border-radius:12px;
+  font-weight:800;font-size:.98rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:transform .15s,background .2s,border-color .2s,box-shadow .2s}
+.cc-btn svg{width:19px;height:19px;flex:none}
+.cc-btn-red{background:var(--red);color:#fff;box-shadow:0 10px 28px -8px var(--glow)}
+.cc-btn-red:hover{background:var(--red2);transform:translateY(-2px)}
+.cc-btn-line{border:2px solid rgba(255,255,255,.8);color:#fff;letter-spacing:.02em}
+.cc-btn-line:hover{background:#fff;color:#141414}
+.cc-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 
-/* PAGE */
-.hero { padding: 80px 0 60px; border-bottom: 2px solid #2a2a2a; }
-.eyebrow { color: #C8102E; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
-h1 { font-weight: 900; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -1.5px; margin-bottom: 20px; }
-h1 em { color: #C8102E; font-style: normal; }
-.hero-sub { font-size: 18px; max-width: 600px; margin-bottom: 28px; color: #cccccc; }
-.price-tag { display: inline-block; border: 2px solid #C8102E; padding: 10px 18px; font-weight: 900; font-size: 18px; margin-bottom: 32px; }
-.price-tag span { color: #C8102E; }
-.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn { display: inline-block; padding: 16px 28px; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid #C8102E; background: #C8102E; color: #fff; transition: all 0.15s ease; cursor: pointer; }
-.btn:hover { background: transparent; color: #C8102E; }
-.btn-outline { background: transparent; color: #fff; border-color: #fff; }
-.btn-outline:hover { border-color: #C8102E; color: #C8102E; background: transparent; }
-.image-slot { margin-top: 48px; border: 2px solid #2a2a2a; aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #444; font-weight: 700; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
-section.content-section { padding: 72px 0; border-bottom: 2px solid #2a2a2a; }
-h2 { font-weight: 900; font-size: clamp(32px, 4vw, 44px); letter-spacing: -1px; margin-bottom: 16px; line-height: 1.1; }
-h2 em { color: #C8102E; font-style: normal; }
-.section-intro { font-size: 17px; color: #cccccc; max-width: 650px; margin-bottom: 40px; }
-.section-intro a { color: #C8102E; font-weight: 700; }
-.checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.check-item { border: 2px solid #2a2a2a; padding: 20px 22px; display: flex; align-items: flex-start; gap: 14px; transition: border-color 0.15s ease; }
-.check-item:hover { border-color: #C8102E; }
-.check-icon { color: #C8102E; font-weight: 900; font-size: 18px; flex-shrink: 0; line-height: 1.4; }
-.check-text { font-weight: 600; font-size: 15px; }
-.check-text small { display: block; font-weight: 400; font-size: 13px; color: #999; margin-top: 4px; }
-.time-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.time-card { border: 2px solid #2a2a2a; padding: 24px; }
-.time-card .vehicle { color: #C8102E; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.time-card .duration { font-weight: 900; font-size: 32px; letter-spacing: -1px; }
-.time-card .note { font-size: 14px; color: #999; margin-top: 6px; }
-.price-push { border: 2px solid #C8102E; padding: 36px; text-align: center; background: #1a0a0a; }
-.price-push h3 { font-weight: 900; font-size: 28px; margin-bottom: 12px; letter-spacing: -0.5px; }
-.price-push p { color: #cccccc; margin-bottom: 20px; }
-.price-push p a { color: #C8102E; font-weight: 700; }
-.price-range { font-weight: 900; font-size: 48px; color: #C8102E; margin: 16px 0 8px; letter-spacing: -2px; }
-.price-range-note { color: #999; font-size: 14px; margin-bottom: 24px; }
-.faq-item { border-bottom: 2px solid #2a2a2a; padding: 24px 0; }
-.faq-item:last-child { border-bottom: none; }
-.faq-q { font-weight: 900; font-size: 19px; margin-bottom: 10px; letter-spacing: -0.3px; }
-.faq-q::before { content: "Q. "; color: #C8102E; }
-.faq-a { color: #cccccc; font-size: 16px; }
-.faq-a a { color: #C8102E; font-weight: 700; }
-.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-.link-card { border: 2px solid #2a2a2a; padding: 24px; display: block; transition: border-color 0.15s ease, transform 0.15s ease; }
-.link-card:hover { border-color: #C8102E; transform: translateY(-2px); }
-.link-card .label { color: #C8102E; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
-.link-card .title { font-weight: 900; font-size: 18px; margin-bottom: 8px; letter-spacing: -0.3px; }
-.link-card .desc { color: #999; font-size: 14px; line-height: 1.5; }
-.link-card .arrow { color: #C8102E; font-weight: 900; margin-top: 12px; font-size: 14px; }
+/* hero */
+.cc-hero{position:relative;padding:56px 0 64px;overflow:hidden;
+  background:radial-gradient(900px 480px at 85% 10%,rgba(200,16,46,.16),transparent 60%),radial-gradient(700px 420px at 0% 100%,rgba(201,162,75,.08),transparent 60%),#0f0f0f;
+  border-bottom:1px solid var(--line)}
+.cc-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.cc-seo-h1{font-size:.8rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+.cc-proof{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:#cfcfcf;font-size:.92rem;margin-bottom:18px}
+.cc-proof b{color:#fff;font-weight:800}
+.cc-proof .st{color:var(--gold);letter-spacing:2px}
+.cc-proof .dot{width:4px;height:4px;border-radius:50%;background:#555}
+.cc-headline{font-size:clamp(2.2rem,5.2vw,3.9rem);font-weight:900;line-height:.98;letter-spacing:-2px;text-transform:uppercase}
+.cc-headline span{display:block;color:var(--red);text-shadow:0 0 40px var(--glow)}
+.cc-lede{color:#d2d2d2;font-size:clamp(1.02rem,1.6vw,1.18rem);line-height:1.65;margin:20px 0 26px;max-width:560px}
+.cc-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.cc-note{color:#9a9a9a;font-size:.9rem;margin-top:14px;max-width:520px}
+.cc-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cc-pill{display:flex;align-items:baseline;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid #2c2c2c;background:rgba(255,255,255,.03)}
+.cc-pill span{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a}
+.cc-pill b{font-size:1.05rem;font-weight:900}
+.cc-pill b i{font-style:normal;font-size:.7rem;font-weight:600;color:#9a9a9a;margin-right:3px}
+.cc-photo{position:relative;margin:0;border-radius:22px;overflow:hidden;border:1px solid #2a2a2a;box-shadow:0 30px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(201,162,75,.12)}
+.cc-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.cc-photo figcaption{position:absolute;left:12px;right:12px;bottom:12px;padding:10px 14px;border-radius:12px;background:rgba(10,10,10,.78);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:.86rem;color:#e6e6e6;border:1px solid rgba(255,255,255,.08)}
+.cc-photo figcaption b{color:var(--gold2)}
 
-/* FOOTER */
-footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px solid #2a2a2a; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-@media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
-.footer-col h3 { font-weight: 900; font-size: 16px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
-.footer-col p { color: #999; font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
-.footer-col ul { list-style: none; padding: 0; }
-.footer-col li { margin-bottom: 8px; }
-.footer-col a { color: #999; font-size: 14px; transition: color 0.15s ease; }
-.footer-col a:hover { color: #C8102E; }
-.footer-cta { display: inline-block; margin-top: 12px; padding: 12px 22px; background: #C8102E; color: #fff !important; font-weight: 900; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; border: 2px solid #C8102E; transition: all 0.15s ease; }
-.footer-cta:hover { background: transparent; color: #C8102E !important; }
-.footer-bottom { border-top: 1px solid #2a2a2a; padding-top: 24px; text-align: center; color: #8a8a8a; font-size: 13px; }
-.answer-section{padding:44px 0 0;border-top:none}
-.answer-first{background:#1a1a1a;border:1px solid #2a2a2a;border-left:4px solid #C8102E;border-radius:0 12px 12px 0;padding:24px 28px;max-width:860px;margin:0 auto;text-align:left}
-.answer-first h2{font-size:1.15rem;line-height:1.35;margin:0 0 12px;text-align:left;letter-spacing:0}
-.answer-first p{font-size:1.05rem;line-height:1.65;color:#e4e4e4;margin:0}
+/* answer box */
+.answer-first{max-width:860px;margin:0 auto;background:linear-gradient(180deg,#1a1a1a,#141414);border:1px solid #2a2a2a;border-left:4px solid var(--red);
+  border-radius:0 18px 18px 0;padding:26px 30px}
+.answer-first h2{font-size:1.2rem;line-height:1.35;margin:0 0 10px}
+.answer-first p{font-size:1.06rem;line-height:1.7;color:#e2e2e2}
 .answer-first p strong{color:#fff}
-@media (max-width:600px){.answer-first{padding:20px}.answer-first p{font-size:1rem}}
+
+/* why here */
+.cc-why{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.cc-card{position:relative;background:linear-gradient(180deg,#1b1b1b,#121212);border:1.5px solid #262626;border-radius:20px;padding:24px 22px;
+  transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden}
+.cc-card:hover{transform:translateY(-5px);border-color:rgba(200,16,46,.55);box-shadow:0 24px 46px -20px var(--glow)}
+.cc-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#e01a36,var(--red2));
+  box-shadow:0 10px 22px -6px var(--glow);transform:rotate(-5deg);margin-bottom:16px;color:#fff}
+.cc-icon svg{width:26px;height:26px}
+.cc-card h3{font-size:1.12rem;font-weight:800;margin-bottom:6px}
+.cc-card p{color:var(--muted);font-size:.95rem;line-height:1.6}
+
+/* tiers */
+.cc-tiers{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:16px;margin-top:40px;align-items:stretch}
+.cc-tier{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,#1c1c1c,#131313);border:1.5px solid #282828;border-radius:22px;padding:28px 24px 24px}
+.cc-tier.mid{border-color:rgba(201,162,75,.55);box-shadow:0 30px 60px -30px rgba(201,162,75,.35)}
+.cc-tier-name{font-size:.8rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.cc-tier.mid .cc-tier-name{color:var(--gold)}
+.cc-tier-chip{align-self:flex-start;margin-top:10px;padding:4px 11px;border-radius:999px;font-size:.72rem;font-weight:700;color:#cfcfcf;background:rgba(255,255,255,.05);border:1px solid #2e2e2e}
+.cc-tier-price{font-size:2.6rem;font-weight:900;letter-spacing:-1px;line-height:1;margin-top:18px}
+.cc-tier-price small{font-size:.9rem;font-weight:600;color:#9a9a9a;margin-right:5px;letter-spacing:0}
+.cc-tier-years{color:var(--gold2);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+.cc-tier ul{list-style:none;margin:20px 0 22px;padding:18px 0 0;border-top:1px solid #2a2a2a;display:grid;gap:10px;flex:1}
+.cc-tier li{display:flex;gap:10px;align-items:flex-start;color:#dedede;font-size:.96rem;line-height:1.45}
+.cc-tier li svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--gold)}
+.cc-tier .cc-btn{width:100%;min-height:50px;font-size:.88rem}
+.cc-fine{color:#8d8d8d;font-size:.88rem;text-align:center;margin-top:20px}
+
+/* does / doesn't */
+.cc-honest{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.cc-list{background:linear-gradient(180deg,#1b1b1b,#131313);border:1.5px solid #262626;border-radius:22px;padding:28px}
+.cc-list h3{display:flex;align-items:center;gap:10px;font-size:1.15rem;font-weight:800;margin-bottom:16px}
+.cc-list ul{list-style:none;display:grid;gap:12px}
+.cc-list li{display:flex;gap:12px;color:#d6d6d6;line-height:1.5}
+.cc-list li svg{flex:none;width:20px;height:20px;margin-top:2px}
+.cc-list.yes li svg{color:#4ade80}
+.cc-list.no li svg{color:var(--red)}
+.cc-list li b{color:#fff}
+
+/* gallery */
+.cc-gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:36px}
+.cc-gallery figure{position:relative;margin:0;border-radius:18px;overflow:hidden;border:1px solid #262626;background:#1a1a1a}
+.cc-gallery figure:first-child{grid-row:span 2}
+.cc-gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+.cc-gallery figure:first-child img{aspect-ratio:auto;min-height:100%}
+.cc-gallery figcaption{position:absolute;left:10px;bottom:10px;padding:6px 11px;border-radius:999px;background:rgba(10,10,10,.75);font-size:.8rem;font-weight:600;color:#eee}
+
+/* process */
+.cc-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px;counter-reset:s}
+.cc-step{position:relative;background:linear-gradient(180deg,#1b1b1b,#121212);border:1.5px solid #262626;border-radius:20px;padding:26px 20px 22px;overflow:hidden}
+.cc-step .num{position:absolute;top:-18px;right:-4px;font-size:112px;font-weight:900;font-style:italic;color:rgba(255,255,255,.035);line-height:1;pointer-events:none}
+.cc-step .cc-icon{width:48px;height:48px;margin-bottom:14px}
+.cc-step .cc-icon svg{width:24px;height:24px}
+.cc-step .node{position:absolute;top:18px;left:56px;width:24px;height:24px;border-radius:50%;background:#0c0c0c;border:1.5px solid var(--gold);color:var(--gold2);
+  font-size:11px;font-weight:900;display:grid;place-items:center}
+.cc-step .chip{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(200,16,46,.1);
+  border:1px solid rgba(200,16,46,.28);border-radius:6px;padding:3px 8px;margin-bottom:10px}
+.cc-step h3{font-size:1.05rem;font-weight:800;margin-bottom:6px;line-height:1.25}
+.cc-step p{color:var(--muted);font-size:.9rem;line-height:1.55}
+
+/* reviews */
+.cc-reviews{display:grid;grid-template-columns:.8fr 1fr 1fr;gap:16px;margin-top:36px;align-items:stretch}
+.cc-gcard{background:#fff;color:#1f1f1f;border-radius:20px;padding:26px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.cc-gcard .g{display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;color:#444;font-size:.95rem}
+.cc-gcard .big{font-size:3.2rem;font-weight:900;line-height:1;margin:12px 0 4px;color:#111}
+.cc-gcard .st{color:#FBBC05;font-size:1.3rem;letter-spacing:3px}
+.cc-gcard .ct{color:#666;font-size:.9rem;margin-top:4px}
+.cc-gcard a{margin-top:14px;color:#1a73e8;font-weight:700;text-decoration:none;font-size:.92rem}
+.review{margin:0;position:relative;background:linear-gradient(180deg,#1b1b1b,#141414);border:1.5px solid #282828;border-left:3px solid var(--red);border-radius:20px;padding:26px}
+.review .stars{color:var(--gold);letter-spacing:3px;margin-bottom:10px}
+.review p{font-size:1.04rem;line-height:1.6;color:#eee}
+.review figcaption{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid #2a2a2a;font-weight:700;font-size:.92rem}
+.review figcaption .av{width:32px;height:32px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-weight:900}
+.review figcaption small{color:#8f8f8f;font-weight:600;margin-left:auto;letter-spacing:.08em;text-transform:uppercase;font-size:.7rem}
+.cc-rnote{color:#8d8d8d;font-size:.88rem;text-align:center;margin-top:18px}
+.cc-rnote a{color:#ddd}
+
+/* area */
+.cc-area{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.cc-towns{display:flex;flex-wrap:wrap;gap:10px}
+.cc-towns a{padding:10px 16px;border-radius:999px;border:1px solid #2e2e2e;background:#181818;text-decoration:none;font-weight:600;font-size:.95rem;transition:border-color .2s,color .2s}
+.cc-towns a:hover{border-color:var(--red);color:#fff}
+.cc-area-facts{list-style:none;display:grid;gap:10px;margin-top:22px}
+.cc-area-facts li{display:flex;gap:10px;color:#d6d6d6}
+.cc-area-facts svg{width:20px;height:20px;color:#4ade80;flex:none;margin-top:2px}
+.cc-area-facts a{color:#fff}
+
+/* faq */
+.cc-faq{max-width:860px;margin:36px auto 0;display:grid;gap:12px}
+.faq2-item{background:#181818;border:1.5px solid #262626;border-radius:16px;overflow:hidden;transition:border-color .2s}
+.faq2-item[open]{border-color:rgba(200,16,46,.5)}
+.faq2-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 22px;font-weight:800;font-size:1.05rem}
+.faq2-item summary::-webkit-details-marker{display:none}
+.faq2-item summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(200,16,46,.12);color:var(--red);font-size:1.3rem;font-weight:700;transition:transform .25s}
+.faq2-item[open] summary::after{transform:rotate(45deg)}
+.faq2-item p{padding:0 22px 20px;color:#cfcfcf;line-height:1.7}
+.faq2-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+
+/* related */
+.cc-related{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.cc-related a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 20px;border-radius:16px;background:#181818;border:1.5px solid #262626;
+  text-decoration:none;font-weight:700;transition:border-color .2s,transform .2s}
+.cc-related a:hover{border-color:var(--red);transform:translateY(-2px)}
+.cc-related a span{color:var(--red)}
+
+/* final cta */
+.cc-final{position:relative;max-width:900px;margin:0 auto;text-align:center;padding:48px 32px;border-radius:26px;overflow:hidden;
+  background:radial-gradient(600px 300px at 50% 0%,rgba(200,16,46,.22),transparent 70%),linear-gradient(180deg,#1c1c1c,#121212);border:1.5px solid #2c2c2c}
+.cc-final::before{content:"";position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent)}
+.cc-final .cc-ctas{justify-content:center;margin-top:26px}
+.cc-checks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px;list-style:none}
+.cc-checks li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid #2c2c2c;font-size:.88rem;font-weight:600;color:#dcdcdc}
+.cc-checks svg{width:16px;height:16px;color:#4ade80}
+
+/* footer */
+footer{background:#0a0a0a;padding:40px 20px 30px;text-align:center;color:#8a8a8a;font-size:.9rem;border-top:2px solid var(--red)}
+footer a{color:var(--red);text-decoration:none}
+footer .ft-name{color:#ddd;font-weight:700;margin-bottom:6px}
+
+/* sticky bar on phones, after the hero */
+.cc-sticky{position:fixed;left:0;right:0;bottom:0;z-index:9998;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(12,12,14,.96);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -8px 28px rgba(0,0,0,.5);
+  transform:translateY(140%);transition:transform .35s cubic-bezier(.16,.84,.44,1)}
+.cc-sticky.on{transform:none}
+.cc-sticky a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:12px;font-weight:800;text-decoration:none;font-size:.95rem}
+.cc-sticky .call{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);white-space:nowrap}
+.cc-sticky .call svg{width:18px;height:18px;color:var(--red)}
+.cc-sticky .text{background:var(--red);text-transform:uppercase;letter-spacing:.04em;box-shadow:0 6px 18px var(--glow)}
+
+@media (max-width:1020px){
+  .cc-why{grid-template-columns:repeat(2,1fr)}
+  .cc-steps{grid-template-columns:repeat(2,1fr)}
+  .cc-steps .cc-step:last-child{grid-column:span 2}
+  .cc-reviews{grid-template-columns:1fr 1fr}
+  .cc-reviews .cc-gcard{grid-column:span 2}
+}
+@media (max-width:860px){
+  .cc-sec{padding:56px 0}
+  .cc-hero{padding:34px 0 46px}
+  .cc-hero-grid{grid-template-columns:1fr;gap:30px}
+  .cc-tiers,.cc-honest,.cc-area,.cc-related{grid-template-columns:1fr}
+  .cc-gallery{grid-template-columns:1fr 1fr}
+  .cc-gallery figure:first-child{grid-column:span 2;grid-row:auto}
+  .cc-gallery figure:first-child img{aspect-ratio:4/3}
+  .cc-sticky{display:flex}
+  body{padding-bottom:84px}
+}
+@media (max-width:560px){
+  .cc-wrap{padding:0 16px}
+  .cc-ctas .cc-btn{width:100%}
+  .cc-why,.cc-steps,.cc-reviews{grid-template-columns:1fr}
+  .cc-steps .cc-step:last-child,.cc-reviews .cc-gcard{grid-column:auto}
+  .cc-headline{letter-spacing:-1.2px}
+  .answer-first{padding:20px}
+  .answer-first p{font-size:1rem}
+  .cc-final{padding:36px 20px}
+  .cc-list{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* size picker: the page's way into the quote calculator. Each card is a link
+   that opens the homepage calculator with the service and size already picked
+   (MikeyQQC.start in index.html). The prices here are the price book's, in
+   plain text, so check-site.py reads them like any other copy. */
+#booking{scroll-margin-top:72px}
+.sp{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:30px auto 0}
+.sp a{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:26px 16px 22px;border-radius:20px;text-decoration:none;text-align:center;
+  background:linear-gradient(180deg,#1c1c1c,#131313);border:1.5px solid #2c2c2c;transition:transform .2s,border-color .2s,box-shadow .2s}
+.sp a:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 24px 46px -20px var(--glow)}
+.sp a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.sp .sz{font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.sp .eg{color:#9a9a9a;font-size:.86rem}
+.sp .pr{font-size:2.7rem;font-weight:900;letter-spacing:-1px;line-height:1.1;margin:8px 0 10px}
+.sp .go{display:inline-flex;align-items:center;justify-content:center;min-height:46px;width:100%;border-radius:11px;background:var(--red);color:#fff;font-weight:800;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase}
+.sp-fine{max-width:700px;margin:20px auto 0;color:#a9a9a9;font-size:.95rem;line-height:1.65;text-align:center}
+.sp-fine b{color:#fff}
+.sp-fine a{color:#fff}
+/* what's included */
+.incl{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px;text-align:left}
+.incl li{list-style:none;display:flex;gap:12px;padding:16px 18px;border-radius:16px;background:linear-gradient(180deg,#1b1b1b,#131313);border:1.5px solid #262626;line-height:1.45}
+.incl svg{flex:none;width:20px;height:20px;margin-top:3px;color:#4ade80}
+.incl b{display:block;color:#fff;font-weight:800}
+.incl span span{color:var(--muted);font-size:.93rem}
+.extras{max-width:860px;margin:26px auto 0;text-align:left;border:1.5px solid #262626;border-radius:18px;overflow:hidden}
+.extras h3{padding:16px 20px;font-size:1rem;font-weight:800;background:#181818;border-bottom:1px solid #262626}
+.extras li{list-style:none;display:flex;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid #222;color:#d6d6d6}
+.extras li:last-child{border-bottom:0}
+.extras li b{color:var(--gold2);white-space:nowrap}
+.extras li small{display:block;color:#8f8f8f;font-size:.86rem}
+.extras a{color:#fff}
+/* before and after pairs */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px;align-items:start}
+.ba figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid #262626;background:#151515}
+.ba .pair{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:#000}
+.ba .pair div{position:relative}
+.ba .pair img,.ba .one img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+.ba .one img{aspect-ratio:auto;height:auto}
+.ba .pair span{position:absolute;left:8px;top:8px;padding:4px 10px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:rgba(10,10,10,.8);color:#fff}
+.ba .pair div+div span{background:var(--red)}
+.ba figcaption{padding:12px 16px;font-size:.92rem;color:#d6d6d6;text-align:left}
+.ba figcaption b{color:#fff}
+/* time cards */
+.times{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;max-width:860px;margin:34px auto 0;text-align:left}
+.times div{padding:22px;border-radius:18px;background:linear-gradient(180deg,#1b1b1b,#131313);border:1.5px solid #262626}
+.times span{font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+.times b{display:block;font-size:1.7rem;font-weight:900;margin:6px 0 4px}
+.times p{color:var(--muted);font-size:.93rem;line-height:1.55}
+/* plain table */
+.tbl{width:100%;max-width:860px;margin:30px auto 0;border-collapse:collapse;text-align:left;font-size:.98rem}
+.tbl th,.tbl td{padding:14px 16px;border-bottom:1px solid #262626}
+.tbl thead th{font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--red);border-bottom:2px solid #333}
+.tbl td b{color:#fff}
+.tbl td.n{font-weight:900;color:var(--gold2);white-space:nowrap}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.prose{max-width:760px;margin:0 auto;text-align:left}
+.prose p{color:#d2d2d2;font-size:1.05rem;line-height:1.75;margin-top:16px}
+.prose p a,.cc-sub a,.cc-card a,.incl a,.times a{color:#fff}
+.prose h3{font-size:1.25rem;font-weight:800;margin-top:30px}
+.cc-steps.four{grid-template-columns:repeat(4,1fr)}
+.cc-why.three{grid-template-columns:repeat(3,1fr)}
+.cc-card a.more{display:inline-block;margin-top:10px;color:var(--red);font-weight:700;text-decoration:none;font-size:.92rem}
+.upd{color:#8d8d8d;font-size:.86rem;margin-top:14px}
+@media (max-width:1020px){.cc-steps.four{grid-template-columns:repeat(2,1fr)}.cc-steps.four .cc-step:last-child{grid-column:auto}.cc-why.three{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.ba{grid-template-columns:1fr}}
+@media (max-width:560px){
+  .sp{grid-template-columns:1fr}
+  .sp a{flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:center;text-align:left;padding:18px}
+  .sp .sz{flex:1 1 60%}.sp .eg{order:3;flex:1 1 60%}.sp .pr{order:2;margin:0;font-size:2.1rem}.sp .go{order:4;margin-top:12px}
+  .incl{grid-template-columns:1fr}
+  .cc-steps.four,.cc-why.three{grid-template-columns:1fr}
+  .extras li{flex-direction:row}
+  .tbl th,.tbl td{padding:12px 10px}
+}
 </style>
   <script src="/site-stats.js" defer></script>
 <!-- Google Analytics (GA4) -->
@@ -547,7 +716,7 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
           "name": "How much does interior car detailing cost in Snohomish?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Interior detailing in Snohomish runs $249-$329 depending on vehicle size. Sedans land near the low end, SUVs and trucks near the top. Use the quote calculator on the homepage for an exact price, or see the full pricing breakdown."
+            "text": "An Interior Detail is $249 for a sedan, $289 for an SUV or pickup and $329 for a van or 3-row. A car that needs work adds $30 and a war zone adds $60. Pick your size on this page and the calculator gives you the exact number, or see the full pricing breakdown."
           }
         },
         {
@@ -564,6 +733,14 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Nope. As long as I have access to the car and a spot to park, you can be at work or running errands. I'll text when I'm done and we'll do the walkthrough then."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you need water and power for an interior?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I need an outdoor water spigot and a power outlet I can reach. Using yours is how I keep my prices where they are. If you really don't have one, tell me when you book: I can bring water and power if I have to."
           }
         },
         {
@@ -592,10 +769,26 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
         },
         {
           "@type": "Question",
-          "name": "What areas around Snohomish do you cover?",
+          "name": "Someone got sick in the car. Can you deal with that?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "I'm based in Snohomish and work in Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington, with no travel fee anywhere in that area. Not sure if I cover yours? Give me a call."
+            "text": "Yes. Blot up what you can, keep the windows cracked and text me. The smell lives in the carpet and the padding under it, so that is where the work goes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When and how do I pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You pay when I'm done and you're happy with it, not before. I take cash, check, Venmo or Zelle. No cards right now."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if it rains?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This is the PNW, so I work around the weather all the time. If it's pouring I'll reach out to reschedule. A lot of the work is interior or done under cover anyway."
           }
         },
         {
@@ -603,7 +796,7 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
           "name": "What if I'm not happy with the result?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We do a walkthrough together when I'm done. Anything off gets fixed on the spot. Notice something later? I come back free. Still not 100%? Full refund. I don't leave until you love it."
+            "text": "We do a walkthrough together when I'm done. Anything off gets fixed on the spot. Notice something later? I come back free. Still not 100%? Full refund."
           }
         }
       ],
@@ -645,217 +838,456 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
 }
 </script>
 </head>
-<body id="top">
+<body>
 <a class="skip-nav" href="#main-content">Skip to main content</a>
 
-<header id="mikeyHeader">
-  <nav>
-    <a href="https://mikeysdetailing.com/" aria-label="Home">
-      <img width="405" height="116" src="/images/logo-header.webp" alt="Mikey's Mobile Detailing logo">
+<!-- site-header: written by tools/site-header.py from tools/site-header/header.html. Edit that file and rerun; don't edit here. -->
+<style>
+/* The site header (2026-11-07, Mikey: one header on every page). Same look as
+   the homepage's #mikeyHeader, but namespaced (#siteHeader, .sh-*) so it can
+   drop into a page whose own CSS styles bare header, nav, ul, li and a: every
+   property the header depends on is set here, so those can't leak in.
+   Written into each page by tools/site-header.py; edit this file, not a page. */
+#siteHeader{position:sticky;top:0;left:0;right:0;z-index:9999;margin:0;padding:0;border:0;
+  border-bottom:1px solid rgba(255,255,255,.08);background:rgba(12,12,12,.92);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 2px 16px rgba(0,0,0,.5);
+  font-family:'Outfit','Outfit Fallback',system-ui,sans-serif;color:#fff;text-align:left}
+#siteHeader *{box-sizing:border-box}
+#siteHeader .sh-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  max-width:1200px;margin:0 auto;padding:14px 40px}
+#siteHeader a{text-decoration:none;margin:0}
+#siteHeader ul,#siteHeader li{list-style:none;margin:0;padding:0;color:inherit}
+#siteHeader .sh-logo{display:block;flex:none;line-height:0}
+#siteHeader .sh-logo img{display:block;height:50px;width:auto;max-width:none;transition:opacity .2s ease}
+#siteHeader .sh-logo:hover img{opacity:.85}
+#siteHeader .sh-links{display:flex;align-items:center;gap:4px}
+#siteHeader .sh-links a{position:relative;display:inline-block;padding:10px 14px;color:rgba(255,255,255,.85);
+  font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:color .25s ease}
+#siteHeader .sh-links a::before{content:"";position:absolute;bottom:4px;left:50%;width:0;height:2px;background:#C8102E;
+  transition:width .25s ease,left .25s ease}
+#siteHeader .sh-links a:hover{color:#fff}
+#siteHeader .sh-links a:hover::before{width:70%;left:15%}
+#siteHeader .sh-links a.sh-tel{color:#fff;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+#siteHeader .sh-links a.sh-tel::before{display:none}
+#siteHeader .sh-links a.sh-book{margin-left:8px;padding:11px 22px;border-radius:6px;background:#C8102E;color:#fff;
+  font-weight:800;font-size:.8rem;letter-spacing:.12em;transition:background .2s ease}
+#siteHeader .sh-links a.sh-book::before{display:none}
+#siteHeader .sh-links a.sh-book:hover{background:#A00C24}
+#siteHeader a:focus-visible,#siteHeader button:focus-visible{outline:2px solid #C8102E;outline-offset:3px;border-radius:4px}
+#siteHeader .sh-right{display:none;align-items:center;gap:6px}
+#siteHeader .sh-call{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:#C8102E;color:#fff}
+#siteHeader .sh-call svg{width:19px;height:19px}
+#siteHeader .sh-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin:0;padding:9px;
+  background:none;border:0;border-radius:8px;cursor:pointer;color:#fff}
+#siteHeader .sh-btn span{display:block;width:26px;height:2px;border-radius:2px;background:#fff;transition:transform .3s ease,opacity .3s ease,background .3s ease}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#C8102E}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(2){opacity:0}
+#siteHeader .sh-btn[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#C8102E}
+#siteHeader .sh-menu{position:absolute;top:100%;left:0;right:0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;
+  background:#0a0a0a;border-top:1px solid rgba(255,255,255,.08);box-shadow:0 18px 30px rgba(0,0,0,.55);
+  transition:max-height .35s ease,opacity .25s ease,visibility 0s linear .35s}
+#siteHeader .sh-menu.open{max-height:80vh;overflow-y:auto;opacity:1;visibility:visible;transition:max-height .35s ease,opacity .25s ease}
+#siteHeader .sh-menu li{border-bottom:1px solid rgba(255,255,255,.06)}
+#siteHeader .sh-menu li:last-child{border-bottom:0}
+#siteHeader .sh-menu a{display:block;padding:17px 24px;color:#fff;font-size:.95rem;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;transition:background .2s,color .2s,padding-left .2s}
+#siteHeader .sh-menu a:hover{background:rgba(200,16,46,.1);color:#C8102E;padding-left:32px}
+#siteHeader .sh-menu a.sh-book{color:#C8102E;font-weight:800}
+#siteHeader .sh-menu a.sh-tel{letter-spacing:.02em;text-transform:none;color:#d7d7d7}
+@media (max-width:1020px){#siteHeader .sh-links a{padding:10px 9px;font-size:.76rem;letter-spacing:.05em}}
+@media (max-width:860px){
+  #siteHeader .sh-bar{padding:10px 16px}
+  #siteHeader .sh-logo img{height:38px}
+  #siteHeader .sh-links{display:none}
+  #siteHeader .sh-right{display:flex}
+}
+</style>
+<header id="siteHeader">
+  <div class="sh-bar">
+    <a class="sh-logo" href="/" aria-label="Mikey's Mobile Detailing, home">
+      <img width="405" height="116" src="/images/logo-header.webp" alt="Mikey's Mobile Detailing logo" decoding="async" fetchpriority="high">
     </a>
-    <ul id="desktopMenu">
-      <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
-      <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
-      <li><a href="https://mikeysdetailing.com/#about">About</a></li>
-      <li><a href="https://mikeysdetailing.com/#beforeafter">Before/After</a></li>
-      <li><a href="https://mikeysdetailing.com/#booking">BOOK NOW</a></li>
-    </ul>
-    <button id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul id="mobileMenu">
-      <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
-      <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
-      <li><a href="https://mikeysdetailing.com/#about">About</a></li>
-      <li><a href="https://mikeysdetailing.com/#qanda">FAQ</a></li>
-      <li><a href="https://mikeysdetailing.com/#booking">Book Now</a></li>
-    </ul>
-    <div class="pulse-line"></div>
-    <div class="scroll-progress"></div>
-  </nav>
-</header>
-<main id="main-content">
-
-<section class="hero">
-  <div class="container">
-    <div class="eyebrow">Snohomish, WA · Mobile Service</div>
-    <h1>Interior Car Detailing <em>In Snohomish.</em></h1>
-    <p class="hero-sub">Inside-only deep clean, full vacuum, steam, leather, dashboard. I come to your driveway. You don't pay until you love it.</p>
-    <div class="price-tag">From <span>$249</span> · Most cars $249-$329</div>
-    <div class="cta-row">
-      <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Instant Quote →</a>
-      <a href="#included" class="btn btn-outline">See What's Included</a>
+    <nav class="sh-links" aria-label="Main">
+      <a href="/#allservices">Services</a>
+      <a href="/#service-area">Areas</a>
+      <a href="/reviews/">Reviews</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about/">About</a>
+      <a class="sh-tel" href="tel:+14256007897">(425) 600-7897</a>
+      <a class="sh-book" href="#booking">Book Now</a>
+    </nav>
+    <div class="sh-right">
+      <a class="sh-call" href="tel:+14256007897" aria-label="Call or text Mikey at (425) 600-7897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <button class="sh-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="shMenu"><span></span><span></span><span></span></button>
     </div>
-    <div class="image-slot"><img src="/images/volvo-interior.webp" alt="Volvo XC40 interior: dash, center console, floor mats and front seats" width="1000" height="750" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+    <ul class="sh-menu" id="shMenu">
+      <li><a href="/#allservices">Services</a></li>
+      <li><a href="/#service-area">Areas Served</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/#qanda">FAQ</a></li>
+      <li><a class="sh-tel" href="tel:+14256007897">Call or text (425) 600-7897</a></li>
+      <li><a class="sh-book" href="#booking">Book Now</a></li>
+    </ul>
+  </div>
+</header>
+<script>
+(function(){
+  var h=document.getElementById('siteHeader'); if(!h) return;
+  var btn=h.querySelector('.sh-btn'), menu=h.querySelector('.sh-menu');
+  function set(open){ menu.classList.toggle('open',open); btn.setAttribute('aria-expanded',open?'true':'false'); btn.setAttribute('aria-label',open?'Close menu':'Open menu'); }
+  btn.addEventListener('click',function(e){ e.stopPropagation(); set(!menu.classList.contains('open')); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) set(false); });
+  document.addEventListener('click',function(e){ if(!h.contains(e.target)) set(false); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&menu.classList.contains('open')){ set(false); btn.focus(); } });
+})();
+</script>
+<!-- /site-header -->
+
+<section class="cc-hero" aria-labelledby="main-content">
+  <div class="cc-wrap cc-hero-grid">
+    <div>
+      <h1 class="cc-seo-h1" id="main-content">Mobile Interior Car Detailing in Snohomish County</h1>
+      <div class="cc-proof" role="list" aria-label="Google rating">
+        <span role="listitem"><span class="st" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b data-md-rating>5.0</b> on Google</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span role="listitem"><b data-md-reviews="{n}">42</b> reviews</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span role="listitem"><b>300+</b> cars detailed</span>
+      </div>
+      <div class="cc-headline">Crumbs, Stains, Dog&nbsp;Hair. Out of Your&nbsp;Car. <span>Interior Detail.</span></div>
+      <p class="cc-lede">I vacuum every crevice, steam the seats and carpet, and clean the leather, dash, vents and cup holders, in your driveway. Most cars take about 90 minutes. Twelve towns, Arlington down to Bothell.</p>
+      <div class="cc-ctas">
+        <a class="cc-btn cc-btn-red" href="#booking">Get My Exact Price &rarr;</a>
+        <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
+      </div>
+      <p class="cc-note">Pick your size, answer two questions, and the calculator shows your price in 60 seconds. You pay after the work, never a deposit.</p>
+      <div class="cc-pills" aria-label="Interior Detail prices">
+        <div class="cc-pill"><span>Sedan</span><b>$249</b></div>
+        <div class="cc-pill"><span>SUV or pickup</span><b>$289</b></div>
+        <div class="cc-pill"><span>Van or 3-row</span><b>$329</b></div>
+      </div>
+    </div>
+    <figure class="cc-photo">
+      <picture>
+        <source media="(max-width:640px)" srcset="/images/job-lexus-interior-640.webp">
+        <img src="/images/job-lexus-interior-1200.webp" width="1200" height="900" alt="Tan leather seats, console and dash of a Lexus SUV after Mikey's interior detail" fetchpriority="high" decoding="async">
+      </picture>
+      <figcaption>Tan leather shows everything. <b>This Lexus is one of mine.</b></figcaption>
+    </figure>
   </div>
 </section>
 
-<section class="answer-section">
-  <div class="container">
+<main>
+
+<section class="cc-sec" style="padding-bottom:0">
+  <div class="cc-wrap">
     <div class="answer-first">
       <h2>Who does interior car detailing in Snohomish County?</h2>
       <p>I do. I'm Mikey, of Mikey's Mobile Detailing in Snohomish, WA, and I clean interiors in your driveway in twelve towns from Arlington to Woodinville. An Interior Detail is <strong>$249</strong> for a sedan, <strong>$289</strong> for an SUV or pickup and <strong>$329</strong> for a van or 3-row: vacuum, steam on the seats and carpet, leather, dash and trim, and door jambs. It takes about 90 minutes, or 2 to 4 hours with extraction or pet hair.</p>
     </div>
   </div>
 </section>
-
-<section class="content-section" id="included">
-  <div class="container">
-    <h2>What's <em>Included.</em></h2>
-    <p class="section-intro">Same checklist every time. No upsells mid-job, no surprise fees. Everything below is in the base price.</p>
-    <div class="checklist">
-      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Full vacuum + crevice detail<small>Seats, carpets, cracks, under the seats, trunk.</small></div></div>
-      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Steam clean seats &amp; carpet<small>Lifts ground-in dirt regular vacuums miss.</small></div></div>
-      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Leather cleaned<small>Wiped down, dirt and grime lifted from the surface.</small></div></div>
-      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Dashboard &amp; trim wiped down<small>Cleaned of dust and grime, no greasy residue.</small></div></div>
-      <div class="check-item"><div class="check-icon">✓</div><div class="check-text">Door jambs wiped down<small>The dirty edge you see when the door opens, gone.</small></div></div>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">What's in it</span>
+    <h2 class="cc-h2">Same Checklist, <em>Every Car</em></h2>
+    <p class="cc-sub">Everything below is in the price. Nothing gets added halfway through the job.</p>
+    <ul class="incl">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Full vacuum, every crevice</b><span>Seats, carpets, under the seats, the cracks beside them, and the trunk.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Steam on the seats and carpet</b><span>Lifts the ground-in dirt a vacuum leaves behind. I match the heat to the material.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Leather cleaned</b><span>Dirt and grime lifted off the surface, seams included.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Dash, console and door panels</b><span>Wiped clean of dust and grime, with no greasy film left on them.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Vents, cup holders and door pockets</b><span>Where the dust and the sticky stuff actually collect.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Floor mats pulled and cleaned</b><span>Out of the car, cleaned, dried and put back.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Inside glass</b><span>Windshield, windows and mirrors, without the haze.</span></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Door jambs</b><span>The dirty edge you see every time the door opens.</span></span></li>
+    </ul>
+    <div class="extras">
+      <h3>Extras, only if you want them</h3>
+      <ul>
+        <li><span>Carpet shampoo<small>For carpets that have taken the worst of it.</small></span><b>$20</b></li>
+        <li><span>RainX Anti-Fog on the inside glass<small>Helps the windshield stay clear on wet mornings.</small></span><b>$30</b></li>
+        <li><span><a href="/pet-hair-removal-car-detailing/">Heavy pet hair removal</a><small>For hair that has woven itself into the carpet and seats.</small></span><b>$50 to $80</b></li>
+      </ul>
     </div>
   </div>
 </section>
-
-<section class="content-section">
-  <div class="container">
-    <h2>How Long It <em>Takes.</em></h2>
-    <p class="section-intro">Real numbers based on what I see day to day in Snohomish. Heavier messes, pet hair, or smoker cars push the high end. <a href="https://mikeysdetailing.com/how-long-does-car-detailing-take/">See the full time breakdown →</a></p>
-    <div class="time-grid">
-      <div class="time-card"><div class="vehicle">Basic Interior</div><div class="duration">About 90 min</div><div class="note">Most cars in normal day-to-day shape.</div></div>
-      <div class="time-card"><div class="vehicle">Extraction or Pet Hair</div><div class="duration">2-4 hrs</div><div class="note">Stains pulled from the carpet, embedded pet hair, kid spills, smoker cars.</div></div>
+<section class="cc-sec alt" id="booking">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Your price</span>
+    <h2 class="cc-h2">Pick Your Size. <em>See Your Price.</em></h2>
+    <p class="cc-sub">Tap your vehicle. The calculator opens with the Interior Detail already picked, asks what shape the car is in, and shows your exact price.</p>
+    <div class="sp">
+      <a href="/?quote=interior&amp;size=sedan#booking"><span class="sz">Sedan</span><span class="eg">Compact or coupe</span><span class="pr">$249</span><span class="go">Get My Exact Price &rarr;</span></a>
+      <a href="/?quote=interior&amp;size=suv#booking"><span class="sz">SUV or pickup</span><span class="eg">Crossover or truck</span><span class="pr">$289</span><span class="go">Get My Exact Price &rarr;</span></a>
+      <a href="/?quote=interior&amp;size=van#booking"><span class="sz">Van or 3-row</span><span class="eg">Minivan or XL SUV</span><span class="pr">$329</span><span class="go">Get My Exact Price &rarr;</span></a>
     </div>
-    <p class="section-intro" style="margin-top:20px">Spilled coffee this morning? Here's <a href="https://mikeysdetailing.com/blog/how-to-get-coffee-stains-out-of-car-seats/">what to do before it sets</a>. A smell that keeps coming back has a source, and <a href="https://mikeysdetailing.com/blog/why-your-car-smells-bad/">this is how I track it down</a>. Kids in car seats? Here's <a href="https://mikeysdetailing.com/blog/how-to-clean-a-car-after-kids/">how to clean up after them</a>, and what's safe on the seat itself.</p>
+    <p class="sp-fine">A car that <b>needs work</b> adds $30 and a <b>war zone</b> adds $60. No judgment at all, I've seen everything. After the price you can pick a time online or have me text you the quote. Outside needs it too? A <a href="/services/">Full Detail</a> is $369 to $449, which is $79 less than booking the two separately.</p>
   </div>
 </section>
-
-<section class="content-section">
-  <div class="container">
-    <div class="price-push">
-      <h3>Interior Detail Pricing</h3>
-      <p>Pricing scales with vehicle size and condition.</p>
-      <div class="price-range">$249-$329</div>
-      <p class="price-range-note">Sedans on the low end, full-size trucks on the high end. See the <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/">full Snohomish County pricing breakdown</a>.</p>
-      <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Exact Quote →</a>
-    </div>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="container">
-    <h2>Common <em>Questions.</em></h2>
-    <div class="faq-item"><div class="faq-q">How much does interior car detailing cost in Snohomish?</div><div class="faq-a">Interior detailing in Snohomish runs $249-$329 depending on vehicle size. Sedans land near the low end, SUVs and trucks near the top. Use the quote calculator on the homepage for an exact price, or see the <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/">full pricing breakdown</a>.</div></div>
-    <div class="faq-item"><div class="faq-q">How long does an interior detail take?</div><div class="faq-a">A basic interior takes about 90 minutes. Stain extraction, heavy pet hair, kid messes or a smoker's car take it to 2-4 hours. <a href="https://mikeysdetailing.com/how-long-does-car-detailing-take/">See the full time breakdown</a>.</div></div>
-    <div class="faq-item"><div class="faq-q">Do I need to be home during the service?</div><div class="faq-a">Nope. As long as I have access to the car and a spot to park, you can be at work or running errands. I'll text when I'm done and we'll do the walkthrough then.</div></div>
-    <div class="faq-item"><div class="faq-q">Should I empty my car before you arrive?</div><div class="faq-a">Yes, please pull personal items, papers, child seats if possible, and anything in the trunk or glove box. The more I can reach, the better the result.</div></div>
-    <div class="faq-item"><div class="faq-q">Will steam cleaning damage my upholstery or leather?</div><div class="faq-a">No. I match the heat and pressure to the material. Steam is actually gentler than chemical shampoos on most fabrics, and it kills bacteria and odors at the source.</div></div>
-    <div class="faq-item"><div class="faq-q">Do you remove pet hair?</div><div class="faq-a">Standard vacuuming pulls most surface hair. For heavily embedded pet hair, I offer a dedicated pet hair removal add-on with rubber brushes and compressed air.</div></div>
-    <div class="faq-item"><div class="faq-q">What areas around Snohomish do you cover?</div><div class="faq-a">I'm based in Snohomish and work in <a href="/snohomish/">Snohomish</a>, <a href="/lake-stevens/">Lake Stevens</a>, <a href="/everett/">Everett</a>, <a href="/monroe/">Monroe</a>, <a href="/mill-creek/">Mill Creek</a>, <a href="/marysville/">Marysville</a>, <a href="/bothell/">Bothell</a>, <a href="/duvall/">Duvall</a>, <a href="/mukilteo/">Mukilteo</a>, <a href="/woodinville/">Woodinville</a>, Granite Falls and <a href="/arlington/">Arlington</a>, with no travel fee anywhere in that area. Not sure if I cover yours? <a href="tel:+14256007897">Give me a call.</a></div></div>
-    <div class="faq-item"><div class="faq-q">What if I'm not happy with the result?</div><div class="faq-a">We do a walkthrough together when I'm done. Anything off gets fixed on the spot. Notice something later? I come back free. Still not 100%? Full refund. I don't leave until you love it.</div></div>
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="container">
-    <h2>Keep <em>Exploring.</em></h2>
-    <p class="section-intro">Related services, areas, and guides to help you pick the right package.</p>
-    <div class="link-grid">
-      <a href="https://mikeysdetailing.com/#booking" class="link-card">
-        <div class="label">Pair It Up</div>
-        <div class="title">Full Detail Package</div>
-        <div class="desc">Interior + exterior together. Saves $79 vs. booking separately. From $369.</div>
-        <div class="arrow">View full detail →</div>
-      </a>
-      <a href="/services/exterior.html" class="link-card">
-        <div class="label">Outside Only</div>
-        <div class="title">Exterior Detailing</div>
-        <div class="desc">Hand wash, wheel deep clean, sealant protection. From $199.</div>
-        <div class="arrow">See exterior page →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/ceramic-coating-snohomish-county/" class="link-card">
-        <div class="label">Long-Term Protection</div>
-        <div class="title">Ceramic Coating</div>
-        <div class="desc">Multi-year paint protection. Water beads, dirt wipes off. From $500.</div>
-        <div class="arrow">See ceramic packages →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/snohomish/truck-detailing.html" class="link-card">
-        <div class="label">Built For Trucks</div>
-        <div class="title">Truck Detailing</div>
-        <div class="desc">F-150s, Silverados, Rams, Tundras. Bed cleanouts, mud, full interior.</div>
-        <div class="arrow">See truck packages →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/car-detailing-cost-snohomish-county/" class="link-card">
-        <div class="label">Pricing Guide</div>
-        <div class="title">What Detailing Costs</div>
-        <div class="desc">Real local pricing by package. No bait-and-switch.</div>
-        <div class="arrow">See full pricing →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/mobile-detailing-vs-car-wash/" class="link-card">
-        <div class="label">Decide What You Need</div>
-        <div class="title">Detail vs. Car Wash</div>
-        <div class="desc">Honest comparison. Sometimes a wash is fine, sometimes it's not.</div>
-        <div class="arrow">Read comparison →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/lake-stevens" class="link-card">
-        <div class="label">Service Area</div>
-        <div class="title">Lake Stevens</div>
-        <div class="desc">Mobile detailing in Lake Stevens, I come to your driveway.</div>
-        <div class="arrow">See Lake Stevens →</div>
-      </a>
-      <a href="https://mikeysdetailing.com/monroe" class="link-card">
-        <div class="label">Service Area</div>
-        <div class="title">Monroe</div>
-        <div class="desc">Mobile detailing in Monroe, driveway service, no shop trip.</div>
-        <div class="arrow">See Monroe →</div>
-      </a>
-      <a href="/blog/" class="link-card">
-        <div class="label">Reading</div>
-        <div class="title">Car Care Blog</div>
-        <div class="desc">PNW-specific detailing tips. Rain, sap, pollen, handled.</div>
-        <div class="arrow">Read the blog →</div>
-      </a>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Before and after</span>
+    <h2 class="cc-h2">Same Car, <em>Same Angle</em></h2>
+    <p class="cc-sub">My own jobs, shot before I started and after I finished.</p>
+    <div class="ba">
+      <figure>
+        <div class="pair">
+          <div><img src="/images/job-backseat-before-640.webp" width="640" height="912" alt="Back seat of an Acura MDX before an interior detail, with crumbs, wrappers and a dried spill on the leather" loading="lazy" decoding="async"><span>Before</span></div>
+          <div><img src="/images/job-backseat-after-640.webp" width="640" height="912" alt="The same Acura MDX back seat after the interior detail, clean black leather and clear floor" loading="lazy" decoding="async"><span>After</span></div>
+        </div>
+        <figcaption><b>Acura MDX, back seat.</b> Crumbs, wrappers and a dried spill across the leather.</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <div><img src="/images/job-cargo-before-640.webp" width="640" height="485" style="aspect-ratio:4/3" alt="Cargo area of an Acura MDX before cleaning, full of bags, boxes and loose trash" loading="lazy" decoding="async"><span>Before</span></div>
+          <div><img src="/images/job-cargo-after-640.webp" width="640" height="485" style="aspect-ratio:4/3" alt="The same Acura MDX cargo area after cleaning, empty with a clean rubber mat" loading="lazy" decoding="async"><span>After</span></div>
+        </div>
+        <figcaption><b>Same MDX, cargo area.</b> Emptied, vacuumed, mat cleaned.</figcaption>
+      </figure>
+      <figure class="one">
+        <img src="/images/job-steering-wheel-before-after-640.webp" srcset="/images/job-steering-wheel-before-after-640.webp 640w, /images/job-steering-wheel-before-after-1200.webp 1200w" sizes="(max-width:860px) 100vw, 540px" width="1200" height="883" alt="A Honda steering wheel side by side: covered in spots of mold on the left, clean on the right" loading="lazy" decoding="async">
+        <figcaption><b>Honda steering wheel.</b> Left is how I found it, right is how I left it.</figcaption>
+      </figure>
+      <figure class="one">
+        <img src="/images/job-rav4-cargo-before-after-640.webp" srcset="/images/job-rav4-cargo-before-after-640.webp 640w, /images/job-rav4-cargo-before-after-1200.webp 1200w" sizes="(max-width:860px) 100vw, 540px" width="1200" height="557" alt="Toyota RAV4 cargo mat side by side: caked in dried mud on the left, clean black rubber on the right" loading="lazy" decoding="async">
+        <figcaption><b>Toyota RAV4, cargo mat.</b> Dried mud on the left, the same mat on the right.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
-
-<section class="content-section" style="border-bottom:none;">
-  <div class="container" style="text-align:center;">
-    <h2>Ready For A <em>Spotless Interior?</em></h2>
-    <p class="section-intro" style="margin: 0 auto 32px;">Book online in about 60 seconds. I bring every tool and product; all I need from you is a water spigot and an outlet. You don't pay until you're happy with the result.</p>
-    <a href="https://mikeysdetailing.com/#booking" class="btn">Get My Instant Quote →</a>
+<section class="cc-sec alt">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">What I get called for</span>
+    <h2 class="cc-h2">The Mess Is <em>Usually One of These</em></h2>
+    <p class="cc-sub">If yours is on this list, here is what I'd do about it, and what you can do tonight before I get there.</p>
+    <div class="cc-why" style="text-align:left">
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3"/></svg></div>
+        <h3>Kids and car seats</h3>
+        <p>Crumbs in the seat cracks, melted snacks, the milk smell. <a class="more" href="/blog/how-to-clean-a-car-after-kids/">Cleaning up after kids &rarr;</a></p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 12c-3 0-5 2.5-5 5 0 1.7 1.3 2.5 2.5 2.5 1 0 1.7-.5 2.5-.5s1.5.5 2.5.5c1.2 0 2.5-.8 2.5-2.5 0-2.5-2-5-5-5z"/></svg></div>
+        <h3>Dog hair</h3>
+        <p>Short hair weaves into carpet and a vacuum alone won't pull it. <a class="more" href="/pet-hair-removal-car-detailing/">Pet hair removal &rarr;</a></p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h12v6a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2v3M12 2v3"/></svg></div>
+        <h3>Coffee and spills</h3>
+        <p>Blot it, don't scrub it. What you do in the first hour matters most. <a class="more" href="/blog/how-to-get-coffee-stains-out-of-car-seats/">Coffee stains &rarr;</a></p>
+      </article>
+      <article class="cc-card">
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3"/><path d="M3 12h15a3 3 0 1 1-3 3"/><path d="M3 16h7"/></svg></div>
+        <h3>A smell that keeps coming back</h3>
+        <p>A smell has a source. Covering it doesn't last; finding it does. <a class="more" href="/blog/why-your-car-smells-bad/">Why your car smells &rarr;</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">How long</span>
+    <h2 class="cc-h2">About <em>90 Minutes</em> for Most Cars</h2>
+    <p class="cc-sub">I give you a clear time window when we confirm. You don't have to be home for any of it.</p>
+    <div class="times">
+      <div><span>Basic interior</span><b>About 90 min</b><p>Most cars in normal day-to-day shape.</p></div>
+      <div><span>Extraction or pet hair</span><b>2&ndash;4 hrs</b><p>Stains pulled from the carpet, embedded pet hair, kid spills, a smoker's car.</p></div>
+    </div>
+    <p class="cc-fine"><a href="/how-long-does-car-detailing-take/" style="color:#ddd">How long every kind of detail takes</a></p>
+  </div>
+</section>
+<section class="cc-sec alt">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">The day of</span>
+    <h2 class="cc-h2">How It <em>Goes</em></h2>
+    <p class="cc-sub">No shop, no drop-off, no waiting room.</p>
+    <div class="cc-steps four" style="text-align:left">
+      <article class="cc-step"><div class="num" aria-hidden="true">01</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></div><span class="node" aria-hidden="true">1</span>
+        <span class="chip">60 seconds</span><h3>Get your price</h3>
+        <p>Pick your size above and answer two questions. The number you see is the number you pay.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">02</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div><span class="node" aria-hidden="true">2</span>
+        <span class="chip">Online</span><h3>Pick a time</h3>
+        <p>The calculator shows my real openings: weekday afternoons and Saturdays. Or have me text you the quote.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">03</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0z"/><path d="M12 18v4"/></svg></div><span class="node" aria-hidden="true">3</span>
+        <span class="chip">At your place</span><h3>I pull up</h3>
+        <p>I bring the tools and products. All I need from you is an outdoor spigot and a power outlet I can reach.</p></article>
+      <article class="cc-step"><div class="num" aria-hidden="true">04</div>
+        <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M16 15h2"/></svg></div><span class="node" aria-hidden="true">4</span>
+        <span class="chip">After the work</span><h3>Walk around, then pay</h3>
+        <p>We look it over together and I fix anything you point at. Then cash, check, Venmo or Zelle.</p></article>
+    </div>
+  </div>
+</section>
+<section class="cc-sec">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Reviews</span>
+    <h2 class="cc-h2">From My <em>Google Reviews</em></h2>
+    <div class="cc-reviews" style="text-align:left">
+      <div class="cc-gcard">
+        <div class="g"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.46 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>Google Reviews</div>
+        <div class="big" data-md-rating>5.0</div>
+        <div class="st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="ct"><span data-md-reviews="{n}">42</span> reviews</div>
+        <a href="/reviews/">Read every one &rarr;</a>
+      </div>
+      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;Mikey&rsquo;s Mobile Detailing was exactly what we needed and above and beyond what we were expecting!! With two kids in car seats, we had things stuck in those seats that were half-eaten and melted! Mikey has provided us with what seems like a brand new vehicle and allowed us to finally see the floor mats!! I whole-heartedly recommend him for any of your detailing needs!!&rdquo;</p>
+        <figcaption><span class="av" aria-hidden="true">M</span>Matt M.<small>Google review</small></figcaption></figure>
+      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;Amazing job! Mikey is very professional and thorough. I have two young kids so my car gets quite messy! Very pleased and highly recommend to anyone and everyone!&rdquo;</p>
+        <figcaption><span class="av" aria-hidden="true">K</span>Kathryn M.<small>Google review</small></figcaption></figure>
+    </div>
+    <p class="cc-rnote">Copied word for word from my Google profile. <a href="/reviews/">Read all <span data-md-reviews="{n}">42</span></a>.</p>
+  </div>
+</section>
+<section class="cc-sec alt">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">The work</span>
+    <h2 class="cc-h2">Interiors I've <em>Cleaned</em></h2>
+    <p class="cc-sub">Real cars in real driveways, photographed when I finished.</p>
+    <div class="cc-gallery">
+      <figure>
+        <img src="/images/job-etron-dash-1200.webp" srcset="/images/job-etron-dash-640.webp 640w, /images/job-etron-dash-1200.webp 1200w" sizes="(max-width:860px) 100vw, 520px" width="1200" height="900" alt="Audi e-tron dash, console and cream cloth seats after an interior detail" loading="lazy" decoding="async">
+        <figcaption>Audi e-tron</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/job-escalade-interior-640.webp" width="640" height="480" alt="Cadillac Escalade steering wheel, curved dash screen and tan quilted leather after an interior detail" loading="lazy" decoding="async">
+        <figcaption>Cadillac Escalade</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/job-volvo-interior-640.webp" width="640" height="480" alt="Volvo XC40 dash, console and floor mats after an interior detail" loading="lazy" decoding="async">
+        <figcaption>Volvo XC40</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/job-corolla-interior-640.webp" width="640" height="480" alt="Toyota Corolla dash and front seats with red and black seat covers after an interior detail" loading="lazy" decoding="async">
+        <figcaption>Toyota Corolla</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/job-wrangler-interior-640.webp" width="640" height="480" alt="Jeep Wrangler steering wheel, dash and rubber floor mat after an interior detail" loading="lazy" decoding="async">
+        <figcaption>Jeep Wrangler</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section class="cc-sec">
+  <div class="cc-wrap cc-area">
+    <div>
+      <span class="cc-eyebrow">Where I work</span>
+      <h2 class="cc-h2">Twelve Towns, <em>Same Price</em></h2>
+      <p class="cc-sub">I detail interiors at homes and workplaces in all twelve towns I serve.</p>
+      <ul class="cc-area-facts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Same price in every one of them, no travel fee.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Somewhere close by that isn't on the list? Text me and ask.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>I wrote these up on their own: <a href="/everett/interior.html">Everett</a>, <a href="/lake-stevens/interior-detail.html">Lake Stevens</a> and <a href="/mill-creek/interior-detail.html">Mill Creek</a> interiors.</span></li>
+      </ul>
+    </div>
+    <nav class="cc-towns" aria-label="Towns I serve">
+      <a href="/snohomish/">Snohomish</a>
+      <a href="/lake-stevens/">Lake Stevens</a>
+      <a href="/everett/">Everett</a>
+      <a href="/monroe/">Monroe</a>
+      <a href="/mill-creek/">Mill Creek</a>
+      <a href="/marysville/">Marysville</a>
+      <a href="/bothell/">Bothell</a>
+      <a href="/duvall/">Duvall</a>
+      <a href="/mukilteo/">Mukilteo</a>
+      <a href="/woodinville/">Woodinville</a>
+      <a href="/granite-falls/">Granite Falls</a>
+      <a href="/arlington/">Arlington</a>
+    </nav>
+  </div>
+</section>
+<section class="cc-sec alt" id="faq">
+  <div class="cc-wrap cc-center">
+    <span class="cc-eyebrow">Common questions</span>
+    <h2 class="cc-h2">Before You <em>Book</em></h2>
+    <div class="cc-faq" style="text-align:left">
+      <details class="faq2-item">
+        <summary>How much does interior car detailing cost in Snohomish?</summary>
+        <p>An Interior Detail is $249 for a sedan, $289 for an SUV or pickup and $329 for a van or 3-row. A car that needs work adds $30 and a war zone adds $60. Pick your size on this page and the calculator gives you the exact number, or see the <a href="/car-detailing-cost-snohomish-county/" style="color:var(--red);">full pricing breakdown</a>.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>How long does an interior detail take?</summary>
+        <p>A basic interior takes about 90 minutes. Stain extraction, heavy pet hair, kid messes or a smoker's car take it to 2-4 hours. <a href="/how-long-does-car-detailing-take/" style="color:var(--red);">See the full time breakdown</a>.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do I need to be home during the service?</summary>
+        <p>Nope. As long as I have access to the car and a spot to park, you can be at work or running errands. I'll text when I'm done and we'll do the walkthrough then.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do you need water and power for an interior?</summary>
+        <p>Yes. I need an outdoor water spigot and a power outlet I can reach. Using yours is how I keep my prices where they are. If you really don't have one, tell me when you book: I can bring water and power if I have to.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Should I empty my car before you arrive?</summary>
+        <p>Yes, please pull personal items, papers, child seats if possible, and anything in the trunk or glove box. The more I can reach, the better the result.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Will steam cleaning damage my upholstery or leather?</summary>
+        <p>No. I match the heat and pressure to the material. Steam is actually gentler than chemical shampoos on most fabrics, and it kills bacteria and odors at the source.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Do you remove pet hair?</summary>
+        <p>Standard vacuuming pulls most surface hair. For heavily embedded pet hair, I offer a dedicated <a href="/pet-hair-removal-car-detailing/" style="color:var(--red);">pet hair removal</a> add-on with rubber brushes and compressed air.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>Someone got sick in the car. Can you deal with that?</summary>
+        <p>Yes. Blot up what you can, keep the windows cracked and text me. The smell lives in the carpet and the padding under it, so that is where the work goes.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>When and how do I pay?</summary>
+        <p>You pay when I'm done and you're happy with it, not before. I take cash, check, Venmo or Zelle. No cards right now.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>What if it rains?</summary>
+        <p>This is the PNW, so I work around the weather all the time. If it's pouring I'll reach out to reschedule. A lot of the work is interior or done under cover anyway.</p>
+      </details>
+      <details class="faq2-item">
+        <summary>What if I'm not happy with the result?</summary>
+        <p>We do a walkthrough together when I'm done. Anything off gets fixed on the spot. Notice something later? I come back free. Still not 100%? Full refund.</p>
+      </details>
+    </div>
+    <div class="cc-related" style="text-align:left">
+      <a href="/services/">Full Detail, inside and out <span>&rarr;</span></a>
+      <a href="/services/exterior.html">Exterior Detail <span>&rarr;</span></a>
+      <a href="/pet-hair-removal-car-detailing/">Pet hair removal <span>&rarr;</span></a>
+      <a href="/blog/how-to-clean-inside-of-windshield/">Cleaning the inside of a windshield <span>&rarr;</span></a>
+      <a href="/car-detailing-cost-snohomish-county/">What detailing costs here <span>&rarr;</span></a>
+      <a href="/reviews/">All my reviews <span>&rarr;</span></a>
+    </div>
   </div>
 </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3>Mikey's Mobile Detailing</h3>
-        <p>Professional mobile car detailing in Snohomish County, serving Snohomish, Lake Stevens, Everett, Monroe, Mill Creek, Marysville, Bothell, Duvall, Mukilteo, Woodinville, Granite Falls and Arlington.</p>
-        <a href="https://mikeysdetailing.com/#booking" class="footer-cta">Book My Detail →</a>
+<section class="cc-sec">
+  <div class="cc-wrap">
+    <div class="cc-final">
+      <span class="cc-eyebrow">Interior Detail</span>
+      <h2 class="cc-h2">Ready When <em class="nw">You Are</em></h2>
+      <p class="cc-sub" style="margin:0 auto">Pick your size and see your exact price in 60 seconds. Then pick a time online, or have me text you the quote.</p>
+      <div class="cc-ctas">
+        <a class="cc-btn cc-btn-red" href="#booking">Get My Exact Price &rarr;</a>
+        <a class="cc-btn cc-btn-line" href="tel:+14256007897">(425) 600-7897</a>
       </div>
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="https://mikeysdetailing.com/#allservices">Services</a></li>
-          <li><a href="https://mikeysdetailing.com/#booking">Book Now</a></li>
-          <li><a href="https://mikeysdetailing.com/#qanda">FAQ</a></li>
-          <li><a href="https://mikeysdetailing.com/reviews/">Reviews</a></li>
-          <li><a href="https://mikeysdetailing.com/#about">About</a></li>
-          <li><a href="/blog/">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h3>Service Areas</h3>
-        <ul>
-          <li><a href="https://mikeysdetailing.com/monroe">Monroe</a></li>
-          <li><a href="https://mikeysdetailing.com/lake-stevens">Lake Stevens</a></li>
-          <li><a href="https://mikeysdetailing.com/mill-creek">Mill Creek</a></li>
-          <li><a href="https://mikeysdetailing.com/duvall">Duvall</a></li>
-          <li><a href="tel:+14256007897">(425) 600-7897</a></li>
-          <li><a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a></li>
-        </ul>
-      </div>
+      <ul class="cc-checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pay after the work</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No deposit</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Your driveway</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Same detailer every time</li>
+      </ul>
     </div>
-    <!-- SOCIAL: same row on every page; tools/check-site.py checks it -->
+  </div>
+</section>
+<footer>
+  <p class="ft-name">Mikey's Mobile Detailing</p>
+  <p>Interior, exterior and full detailing in twelve towns, Arlington down to Bothell. Based in Snohomish, WA.</p>
+  <p style="margin-top:8px;"><a href="/">Back to home</a></p>
+  <!-- SOCIAL: same row on every page; tools/check-site.py checks it -->
   <p class="footer-social" style="margin:20px auto 6px;text-align:center;font-size:13.5px;line-height:2.2;">Find me on
     <a href="https://g.page/r/CRCuKQ982VIZEBE" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>Google</a>
     <a href="https://www.yelp.com/biz/mikeys-mobile-detailing-snohomish-4" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4z"/></svg>Yelp</a>
@@ -864,35 +1296,18 @@ footer.site-footer { background: #0a0a0a; padding: 60px 0 30px; border-top: 2px 
     <a href="https://www.youtube.com/@MikeysDetailing" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg>YouTube</a>
     <a href="https://nextdoor.com/pages/mikeys-mobile-detailing-snohomish-snohomish-wa/" target="_blank" rel="noopener me" style="display:inline-block;margin:0 9px;white-space:nowrap;"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false" style="vertical-align:-3px;margin-right:5px;" fill="currentColor"><path d="M12 3 2 11h3v10h5v-6h4v6h5V11h3z"/></svg>Nextdoor</a>
   </p>
-  <div class="footer-bottom">
-      © 2026 Mikey's Mobile Detailing, Snohomish, WA. All rights reserved.
-    </div>
-  </div>
 </footer>
 
+<div class="cc-sticky" id="ccSticky" aria-label="Call or text Mikey">
+  <a class="call" href="tel:+14256007897"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(425) 600-7897</a>
+  <a class="text" href="#booking">Get My Price</a>
+</div>
 <script>
-  const hamburger = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', hamburger.classList.contains('active'));
-  });
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-  const header = document.getElementById('mikeyHeader');
-  const progress = header.querySelector('.scroll-progress');
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    header.classList.toggle('shrunk', scrolled > 60);
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.width = ((scrolled / total) * 100) + '%';
-  });
+(function(){
+  var bar=document.getElementById('ccSticky'), hero=document.querySelector('.cc-hero');
+  if(!bar||!hero||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(e){ bar.classList.toggle('on', !e[0].isIntersecting); }).observe(hero);
+})();
 </script>
 
 </body>

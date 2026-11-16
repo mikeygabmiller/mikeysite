@@ -513,6 +513,24 @@ the call page (`/onbored/`) stays without one on purpose. A new page gets the
 header by running the script after the page exists (start it with the old
 text-logo header, or paste the markers).
 
+## The service pages (interior first)
+
+`/services/interior.html` was rebuilt 2026-11-16 to the ceramic page's
+standard: his own job photos (`images/job-*.webp`, made from
+`social/photos/`, which are already cleared and blurred), price by size up
+top, real reviews, and a **size picker** that opens the homepage calculator
+with the service and size already picked: `/?quote=interior&size=suv#booking`
+(`MikeyQQC.start` in `index.html`; `quote` is interior, exterior or full,
+`size` is sedan, suv or van). It lands on the condition question, never on a
+price: the price screen is the only place a price is worked out. The page is
+written by `python3 tools/page-gen/interior.py` on top of
+`tools/page-gen/lib.py`, which lifts the shared CSS, tracking and footer from
+the ceramic page. The output is plain HTML and can be hand-edited, but then
+change the script too or the next run undoes it. Exterior, Full Detail and
+paint correction are next, the same way (`reports/2026-11-16-money-pages-handoff.md`).
+What a basic interior includes is the list the old page already promised;
+ask Mikey before adding to it.
+
 ## The ceramic coating page
 
 Rebuilt 2026-11-07 to the homepage's standard (Mikey: "as well built as my home

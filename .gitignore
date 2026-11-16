@@ -13,3 +13,4 @@ print/yard-signs/check/
 
 # album originals (plates, house numbers, location data): never commit
 social/inbox/
+__pycache__/
