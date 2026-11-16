@@ -12,7 +12,7 @@ read by hand. Blank means not pulled yet, never estimated.
 | M1 | GBP: impressions, calls, website clicks, directions | **325 impressions, 4 calls, 29 website clicks, 26 direction requests** (Oct 1 to 30, Windsor, pulled 2026-11-03) |
 | M2 | Search Console 28-day impressions, clicks, avg. position | not pulled yet: by hand (Search Console → Performance, last 28 days, web) |
 | M3 | Quote-calculator starts → completions | not pulled yet: by hand (GA4), and the first full 4 weeks after the 2026-10-27 calculator batch end Nov 24 |
-| M4 | Review count + reviews added this month | **5.0 across 41** (public profile and API agree, 2026-11-03). **2 added in October**: Bradley J. (Oct 10) and Brittany H. (Oct 30) |
+| M4 | Review count + reviews added this month | **5.0 across 44 on 2026-11-16** (3 added Nov 3 to 10, see below). On 2026-11-03: **5.0 across 41** (public profile and API agree, 2026-11-03). **2 added in October**: Bradley J. (Oct 10) and Brittany H. (Oct 30) |
 | M5 | AI citation rate | not run yet |
 
 ## M1: the Business Profile, October in full
@@ -60,6 +60,46 @@ last year). GROWTH-PLAN SG1 wanted 1.5 a week. The question from
 `reports/2026-10-27-seo-research.md` section 1 still stands: is the
 dashboard's review ask actually going out after each job (jobs marked Won,
 the ask switched on in Settings)?
+
+## Reviews since the last pull (2026-11-16)
+
+Pulled through Windsor (Business Profile API) on 2026-11-10 and 2026-11-16.
+**44 now, all five stars: 42 written, 2 star-only.**
+
+| Date | Reviewer (as on /reviews/) | On the site |
+|---|---|---|
+| Nov 3 | John P. | 2026-11-10 |
+| Nov 10 | Bryan | 2026-11-16 |
+| Nov 10 | Yanai K. | 2026-11-16 |
+
+**Three in two weeks**, against about 1.3 a month for the year before. That
+fits the review ask being switched on or sent by hand since the 2026-11-03
+read; check the dashboard (`say.reviewAsk`) before crediting it.
+
+What they say, for copy: two of the three name **coming to them** as the
+reason ("convenient that he came to me", "having him come to me made
+everything so convenient"), John P. says he'll book **every month** (the
+Clean Club pitch, in a customer's words), and Yanai names the town ("Mikey's
+in Snohomish"). None mention price, which is what the October panel said
+customers compare first.
+
+### Four reviews have no reply yet
+
+Brittany H. (Oct 30), John P. (Nov 3), Bryan (Nov 10), Yanai K. (Nov 10).
+Every review before them has one. Drafts below, in his voice, one or two lines
+each, naming the work and the town only where the review did. Replying posts
+under Mikey's name, so it's his yes first: he can paste these on the profile,
+or say "post the replies" and a session posts them through Windsor
+(`reply_review`).
+
+- **Brittany H.:** "Thank you Brittany! Glad it came out feeling brand new. -Mikey"
+- **John P.:** "Thanks John! It was great working on both of them. Text me
+  when you want to set up every four weeks and I'll get you on the calendar.
+  -Mikey"
+- **Bryan:** "Thanks Bryan! Glad the little stuff got noticed, that's the part
+  I care about most. Text me anytime. -Mikey"
+- **Yanai K.:** "Thank you Yanai! That means a lot. See you for the next one.
+  -Mikey"
 
 ## Why reviews are slow: the dashboard texts, read 2026-11-03
 

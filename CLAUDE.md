@@ -27,7 +27,7 @@ pages disagreeing is a promise he can't keep on one of them.
 | Exterior detail takes | **about 1–2 hours** | set 2026-10-05 to match the calendar's 2 hr plan (pages had said 1–1.5 and 1.5–2.5); Mikey to confirm |
 | Clean Club visit takes | **unconfirmed** | Mikey wasn't sure (2026-10-05). Copy says a club visit takes less than a first detail, never a number |
 | Cars detailed | **300+** | |
-| Google rating | **5.0 across 42 reviews** | what the Business Profile API shows (42 on 2026-11-10: John P. on Nov 3 made it 40 written plus 2 star-only; 41 on 2026-11-03 with Brittany H.; Muse read 40 on 2026-10-08). `site-stats.js` first, then every hard-coded copy; `check-site.py` finds them |
+| Google rating | **5.0 across 44 reviews** | what the Business Profile API shows (44 on 2026-11-16: Bryan and Yanai K. on Nov 10 made it 42 written plus 2 star-only; 42 on 2026-11-10 with John P.; 41 on 2026-11-03 with Brittany H.; Muse read 40 on 2026-10-08). `site-stats.js` first, then every hard-coded copy; `check-site.py` finds them |
 | Detailing since | **2021** | |
 | Base / radius | **Snohomish, WA 98290**, ~25 miles | |
 | Phone | **(425) 600-7897** | |
@@ -139,7 +139,7 @@ so it stands on its own when the calendar can't be reached.
 `/reviews/` turned out to carry a quote that wasn't on Google ("James Bell"),
 one rewritten under a real reviewer's name (Pat Job) and two with words added
 (Flon R, Angela). It now lists all 38 written Google reviews in full, newest
-first, first name and last initial, with the month (40 since John P., 2026-11-10). A new review goes on the
+first, first name and last initial, with the month (42 since Bryan and Yanai K., 2026-11-16). A new review goes on the
 top the same way. Never shorten one into words they didn't say, add a town
 they didn't name, or put a quote under "Google review" that isn't on Google
 (the FTC's 2024 fake-review rule covers all of that). The one punctuation
@@ -297,7 +297,10 @@ dormant code out rather than leaving it.
 **The switch-off is tested** (2026-11-03): `node tools/rain-ready-switchoff-test.cjs`
 (serve the repo on :8766 first) fakes the browser clock at 11:59 PM Dec 31
 and 12:01 AM Jan 1 and drives a sedan Full Detail to the price screen. Both
-passed: extras free before, gone after, $369 either way. Rerun it after any
+passed: extras free before, gone after, $369 either way. Rerun on
+2026-11-16 after the held-request, add-another-car and first-screen changes
+(PRs 308 to 310): both passed again. Run it with `NODE_PATH=$(npm root -g)`
+when no local Playwright is installed. Rerun it after any
 change to the calculator before January. The January cleanup, once it's past:
 the `#rain-ready` section and its script, the
 `content-visibility` line for it, `RR_END` / `RR_FREE` / `rrLive` / `rrOn` /
@@ -771,7 +774,7 @@ phone). It's written for the Lake Stevens edition only (headline; he's based
 in Snohomish, so never "based in"). Its quote is Rose's, a customer who said it
 to Mikey and gave her yes (2026-10-19): not a Google review, so never labeled
 one; check it against her message. The "Matt K. · Google review" quote it had
-before isn't among his 42 Google reviews, and the site still carries it
+before isn't among his 44 Google reviews, and the site still carries it
 unlabeled (homepage, city pages): ask Mikey where it came from before relying
 on it. Never a made-up review (`REVIEW_IS_EXAMPLE` marks a placeholder).
 **The holiday issue carries a magazine-only coupon** (Mikey, 2026-10-21:

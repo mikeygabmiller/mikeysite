@@ -137,7 +137,7 @@ def proof():
     return ('<div class="cc-proof" role="list" aria-label="Google rating">\n'
             '        <span role="listitem"><span class="st" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <b data-md-rating>5.0</b> on Google</span>\n'
             '        <span class="dot" aria-hidden="true"></span>\n'
-            '        <span role="listitem"><b data-md-reviews="{n}">42</b> reviews</span>\n'
+            '        <span role="listitem"><b data-md-reviews="{n}">44</b> reviews</span>\n'
             '        <span class="dot" aria-hidden="true"></span>\n'
             '        <span role="listitem"><b>300+</b> cars detailed</span>\n'
             '      </div>')
@@ -172,11 +172,11 @@ def reviews(revs, h2='From My <em>Google Reviews</em>'):
     s = head2('Reviews', h2) + '\n    <div class="cc-reviews" style="text-align:left">\n'
     s += ('      <div class="cc-gcard">\n        <div class="g">%sGoogle Reviews</div>\n        <div class="big" data-md-rating>5.0</div>\n'
           '        <div class="st" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n'
-          '        <div class="ct"><span data-md-reviews="{n}">42</span> reviews</div>\n        <a href="/reviews/">Read every one &rarr;</a>\n      </div>\n' % GOOGLE_G)
+          '        <div class="ct"><span data-md-reviews="{n}">44</span> reviews</div>\n        <a href="/reviews/">Read every one &rarr;</a>\n      </div>\n' % GOOGLE_G)
     for name, text in revs:
         s += ('      <figure class="review"><div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>&ldquo;%s&rdquo;</p>\n'
               '        <figcaption><span class="av" aria-hidden="true">%s</span>%s<small>Google review</small></figcaption></figure>\n' % (text, name[0], name))
-    s += '    </div>\n    <p class="cc-rnote">Copied word for word from my Google profile. <a href="/reviews/">Read all <span data-md-reviews="{n}">42</span></a>.</p>'
+    s += '    </div>\n    <p class="cc-rnote">Copied word for word from my Google profile. <a href="/reviews/">Read all <span data-md-reviews="{n}">44</span></a>.</p>'
     return s
 
 TOWNS = [('snohomish','Snohomish'),('lake-stevens','Lake Stevens'),('everett','Everett'),('monroe','Monroe'),('mill-creek','Mill Creek'),
