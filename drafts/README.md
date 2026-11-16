@@ -15,7 +15,6 @@ the facts table before publishing: a price or a fact may have changed since.
 
 | Publish on | Post | Feeds | Why now |
 |---|---|---|---|
-| Mon Nov 17 | `how-to-pick-a-mobile-detailer` (queue #9) | homepage, `/services/` | AI panel prompt 23; nothing about insurance |
 | Mon Nov 24 | `detailing-a-car-before-selling-it` (queue #5) | `/services/` (Full Detail) | Marissa J.'s review; no promised dollar figure |
 | Mon Dec 1 | `how-to-get-vomit-smell-out-of-car` (queue #4) | `/services/interior.html` | Teresa H.'s review; high-intent search; no new price |
 | Mon Dec 8 | `wax-vs-sealant-vs-ceramic-coating` (queue #10) | ceramic page | rainy season; only the ceramic page's own tiers and years; read the ceramic page's Search Console numbers before adding the link back |
@@ -39,14 +38,7 @@ Replace `SLUG` with the folder name, then:
 6. Cross it off in section 6 of `reports/2026-10-27-seo-research.md`.
 7. Merge, wait for it to serve, then `python3 tools/indexnow.py /blog/SLUG/ /blog/`.
 
-The RV post went live 2026-11-10.
-
-### how-to-pick-a-mobile-detailer
-
-- `blog/index.html`: `<li><a href="/blog/how-to-pick-a-mobile-detailer/">How to Pick a Mobile Detailer</a><p>Eight things to check before anyone works on your car in your driveway, and the red flags.</p></li>`
-- `llms.txt`: `- [How to pick a mobile detailer](https://mikeysdetailing.com/blog/how-to-pick-a-mobile-detailer/): exact price before they come, written reviews, their own photos, who shows up, when you pay, red flags.`
-- `sitemap.xml`: same shape as above.
-- Link back: `/services/` is the safe place (the homepage has its own rules about what goes where). A line under its intro: `<p>Comparing detailers? <a href="/blog/how-to-pick-a-mobile-detailer/">Here's the checklist I'd use</a>, on me too.</p>`
+The RV post went live 2026-11-10, how to pick a detailer 2026-11-16.
 
 ### detailing-a-car-before-selling-it
 

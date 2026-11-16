@@ -389,8 +389,8 @@ competes with the first in search.
 - **Posts written ahead wait in `drafts/`** (not served, skipped by
   check-site). `drafts/README.md` has the publish order (one a week), the
   steps and the exact lines for the index, `llms.txt`, the sitemap and the
-  link back. The RV post went live 2026-11-10. Waiting: how to pick a detailer
-  (Nov 17), detailing before you sell (Nov 24), vomit smell (Dec 1), wax vs
+  link back. The RV post went live 2026-11-10, how to pick a detailer
+  2026-11-16. Waiting: detailing before you sell (Nov 24), vomit smell (Dec 1), wax vs
   sealant vs ceramic (Dec 8).
 - **Fixed 2026-10-08 (Mikey's yes):** `blog.mikeysdetailing.com` now 301s
   every old post to its new home (deployed to `mikeysqqc` through the Netlify
