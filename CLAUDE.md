@@ -297,7 +297,10 @@ dormant code out rather than leaving it.
 **The switch-off is tested** (2026-11-03): `node tools/rain-ready-switchoff-test.cjs`
 (serve the repo on :8766 first) fakes the browser clock at 11:59 PM Dec 31
 and 12:01 AM Jan 1 and drives a sedan Full Detail to the price screen. Both
-passed: extras free before, gone after, $369 either way. Rerun it after any
+passed: extras free before, gone after, $369 either way. Rerun on
+2026-11-16 after the held-request, add-another-car and first-screen changes
+(PRs 308 to 310): both passed again. Run it with `NODE_PATH=$(npm root -g)`
+when no local Playwright is installed. Rerun it after any
 change to the calculator before January. The January cleanup, once it's past:
 the `#rain-ready` section and its script, the
 `content-visibility` line for it, `RR_END` / `RR_FREE` / `rrLive` / `rrOn` /
