@@ -10,6 +10,16 @@
 //                                         sheet with crop marks; the back is
 //                                         the whole card on its own (logo,
 //                                         blanks, how to use it, the terms)
+//   print-files/letter/fold.pdf           front and back side by side on one
+//                                         11 x 8.5 sheet, printed one side
+//                                         only: cut on the marks, fold on the
+//                                         middle marks, and it's a two-sided
+//                                         5 x 7 card from a home printer
+//
+// One card already filled in (a door prize, a gift handed over today):
+//   FILL_OUT=/some/dir/card.pdf AMOUNT=100 FROM="Mikey's Mobile Detailing" [FOR=...] npm run gift
+// writes only that card's fold sheet, with the blanks filled in handwriting,
+// to FILL_OUT. The card number stays blank: it comes from the dashboard.
 //   preview-front.png, preview-back.png, preview-two-up.png, mockup.png
 //
 // Read print/gift-card/README.md before changing copy. A gift card is one more
@@ -55,7 +65,10 @@ const PW = W + 2 * BLEED, PH = H + 2 * BLEED;
 const DPI = 300;
 const RED = '#E31924', INK = '#141418', CREAM = '#FBF8F1', BLACK = '#0E0E10';
 const QR_IN = 0.88, QR_QUIET = 4;
-const MIN_PT = 7;                      // the printers' floor for type (business-card/RESEARCH.md)
+const MIN_PT = 7;
+const FILL_OUT = process.env.FILL_OUT || '';
+const FILL = { for: process.env.FOR || '', from: process.env.FROM || '', amount: process.env.AMOUNT || '' };
+if (FILL.amount && !/^\d+$/.test(FILL.amount)) { console.error('AMOUNT is whole dollars, digits only (e.g. AMOUNT=100)'); process.exit(1); }                      // the printers' floor for type (business-card/RESEARCH.md)
 
 const FS = path.join(__dirname, 'node_modules', '@fontsource');
 const fontFace = (name, pkg, weight) =>
@@ -99,6 +112,9 @@ html,body{background:#fff}
 .f .u{flex:1;border-bottom:1.3px solid ${INK};height:.3in}
 .f .u.amt{position:relative}
 .f .u.amt:before{content:"$";position:absolute;left:0;bottom:.03in;font:800 15pt/1 'Inter'}
+.f .u{position:relative}
+.f .u .hw{position:absolute;left:.06in;bottom:.01in;font:700 17pt/1 'Caveat';color:#1b2a6b;white-space:nowrap}
+.f .u.amt .hw{left:.26in}
 .f .boxes{display:flex;gap:.045in;align-items:center}
 .f .boxes i{display:block;width:.27in;height:.34in;border:1.3px solid ${INK};border-radius:.04in;background:#fff}
 .f .boxes b{font:800 14pt/1 'Inter';margin:0 .03in}
@@ -113,6 +129,8 @@ html,body{background:#fff}
 .qr .cap{font:600 7.4pt/1.25 'Inter';color:#4a4c54;margin-top:.04in}
 .terms{margin-top:auto;padding:0 .12in .02in;font:400 7.4pt/1.42 'Inter';color:#6b6d75;align-self:stretch}
 
+/* letter sheet: front and back side by side, to fold */
+.fold .half{position:absolute;overflow:hidden}
 /* letter sheet: two backs, landscape, with crop marks */
 .sheet{position:relative;width:11in;height:8.5in;background:#fff;overflow:hidden}
 .sheet .slot{position:absolute;top:${(8.5 - H) / 2 - BLEED}in;width:${PW}in;height:${PH}in;overflow:hidden}
@@ -131,23 +149,25 @@ const front = () => `<div class="page front" id="front">
   <div class="foot">I come to you · Snohomish County</div>
 </div>`;
 
-const back = (qrSvg, id) => `<div class="page back" id="${id}">
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const hw = (t) => (t ? `<span class="hw">${esc(t)}</span>` : '');
+const back = (qrSvg, id, fill = {}) => `<div class="page back" id="${id}">
   <div class="border"></div>
   <div class="safe">
     <img class="logo" src="${fileUrl(path.join(BRAND, 'transparent-png', 'horizontal-light.png'))}">
     <div class="kind">Gift Card</div>
     <div class="fields">
-      <div class="f"><span class="l">For</span><span class="u"></span></div>
-      <div class="f"><span class="l">From</span><span class="u"></span></div>
-      <div class="f"><span class="l">Amount</span><span class="u amt"></span></div>
+      <div class="f"><span class="l">For</span><span class="u">${hw(fill.for)}</span></div>
+      <div class="f"><span class="l">From</span><span class="u">${hw(fill.from)}</span></div>
+      <div class="f"><span class="l">Amount</span><span class="u amt">${hw(fill.amount)}</span></div>
       <div class="f"><span class="l">Card number</span><span class="boxes"><i></i><i></i><i></i><i></i><b>-</b><i></i><i></i><i></i><i></i></span></div>
     </div>
-    <div class="how"><b>To use it:</b> text me at <b>${PHONE}</b> with the card number and we'll find a day. I come to your driveway; all I need is an outdoor spigot and a power outlet. When the job's done, the card comes off the price. Good toward any detail I do: interior, exterior, full detail, ceramic coating or paint correction.</div>
+    <div class="how"><b>To use it:</b> text me the card number at <b>${PHONE}</b> and we'll find a day. I come to you, and all I need is an outdoor spigot and a power outlet. Use it on any detail I do: interior, exterior, full detail, ceramic coating or paint correction. When I'm done, I take the card's amount off your total.</div>
     <div class="row">
-      <div class="towns"><b>Where I come to</b>${TOWNS.map((t) => t.replace(/ /g, '\u00a0')).join(' · ')}</div>
-      <div class="qr"><div class="code">${qrSvg}</div><div class="cap">What each detail includes</div></div>
+      <div class="towns"><b>Towns I cover</b>${TOWNS.map((t) => t.replace(/ /g, '\u00a0')).join(' · ')}</div>
+      <div class="qr"><div class="code">${qrSvg}</div><div class="cap">Scan for your price</div></div>
     </div>
-    <div class="terms">Never expires. No fees. If the job costs less than the card, the rest stays on it for next time, and anything under $5 is yours in cash if you'd rather. Lost it? Text me; I keep a record of every card. Mikey's Mobile Detailing · ${SITE}</div>
+    <div class="terms">Never expires. No fees. If the job costs less than the card, the rest stays on it for next time, and anything under $5 is yours in cash if you'd rather. Lost it? Text me. I keep a record of every card. Mikey's Mobile Detailing · ${SITE}</div>
   </div>
 </div>`;
 
@@ -169,6 +189,34 @@ const twoUp = (qrSvg) => {
   // Each slot shows the trimmed card only (the bleed is cut off by the slot).
   const slot = (x, id) => `<div class="slot" style="left:${x}in;top:${top}in;width:${W}in;height:${H}in"><div style="position:absolute;left:-${BLEED}in;top:-${BLEED}in">${back(qrSvg, id)}</div></div>`;
   return `<div class="sheet" id="sheet">${slot(left, 'b1')}${slot(left + W + gap, 'b2')}${marks}</div>`;
+};
+
+// Front on the right half, back on the left, meeting at the fold. Printed on
+// one side and folded with the print outside, the right half is the cover and
+// the left half the back, both upright. Each half keeps its bleed on the three
+// outer edges (so a slightly-off cut still shows ink, not white), crop marks sit
+// in the margin, and short fold marks above and below the middle.
+const foldSheet = (qrSvg, fill) => {
+  const left = (11 - 2 * W) / 2, top = (8.5 - H) / 2, mid = left + W;
+  const L = 0.22, off = 0.16, T = 0.01;
+  let marks = '';
+  for (const x of [left, left + 2 * W]) {
+    marks += `<div class="crop" style="left:${x - T / 2}in;top:${top - off - L}in;width:${T}in;height:${L}in"></div>`;
+    marks += `<div class="crop" style="left:${x - T / 2}in;top:${top + H + off}in;width:${T}in;height:${L}in"></div>`;
+  }
+  for (const y of [top, top + H]) {
+    marks += `<div class="crop" style="left:${left - off - L}in;top:${y - T / 2}in;width:${L}in;height:${T}in"></div>`;
+    marks += `<div class="crop" style="left:${left + 2 * W + off}in;top:${y - T / 2}in;width:${L}in;height:${T}in"></div>`;
+  }
+  // Fold marks: dashed, so they read differently from the cut marks.
+  for (const y of [top - off - L, top + H + off])
+    marks += `<div style="position:absolute;left:${mid - T / 2}in;top:${y}in;width:0;height:${L}in;border-left:1px dashed #000"></div>`;
+  // Back: bleed on the left, top and bottom; cut flush at the fold.
+  const backHalf = `<div class="half" style="left:${left - BLEED}in;top:${top - BLEED}in;width:${W + BLEED}in;height:${PH}in"><div style="position:absolute;left:0;top:0">${back(qrSvg, 'fb', fill)}</div></div>`;
+  // Front: flush at the fold, bleed on the right, top and bottom.
+  const frontHalf = `<div class="half" style="left:${mid}in;top:${top - BLEED}in;width:${W + BLEED}in;height:${PH}in"><div style="position:absolute;left:-${BLEED}in;top:0">${front()}</div></div>`;
+  const note = `<div style="position:absolute;left:0;right:0;bottom:.12in;text-align:center;font:400 7.5pt/1 'Inter';color:#888">Print at Actual size / 100%, one side, on cardstock. Cut on the solid marks, fold on the dashed ones, print outside.</div>`;
+  return `<div class="sheet fold" id="sheet">${backHalf}${frontHalf}${marks}${note}</div>`;
 };
 
 (async () => {
@@ -229,6 +277,19 @@ const twoUp = (qrSvg) => {
     if (spill > 1) problems.push(`${label}: copy spills ${spill}px past the bottom of the safe area`);
   };
 
+  if (FILL_OUT) {
+    await page.setViewportSize({ width: Math.ceil(11 * 96), height: Math.ceil(8.5 * 96) });
+    await render(foldSheet(qrSvg, FILL), 'fill');
+    await checkCopy('back (filled)');
+    fs.mkdirSync(path.dirname(path.resolve(FILL_OUT)), { recursive: true });
+    await page.pdf({ path: FILL_OUT, width: '11in', height: '8.5in', printBackground: true });
+    await (await page.$('#sheet')).screenshot({ path: FILL_OUT.replace(/\.pdf$/i, '') + '-preview.png', type: 'png' });
+    await browser.close();
+    if (problems.length) { problems.forEach((p) => console.error('  FAIL', p)); process.exit(1); }
+    console.log(`wrote ${FILL_OUT}`);
+    return;
+  }
+
   // ---- front ----
   await page.setViewportSize({ width: Math.ceil(PW * 96), height: Math.ceil(PH * 96) });
   await render(front(), 'front');
@@ -258,12 +319,19 @@ const twoUp = (qrSvg) => {
   const sheetPng = await (await page.$('#sheet')).screenshot({ type: 'png' });
   await page.pdf({ path: path.join(OUT, 'print-files', 'letter', 'two-up.pdf'), width: '11in', height: '8.5in', printBackground: true });
 
+  // ---- fold sheet (front + back, one side, fold in half) ----
+  await render(foldSheet(qrSvg, {}), 'fold');
+  await checkCopy('back (fold)');
+  const foldPng = await (await page.$('#sheet')).screenshot({ type: 'png' });
+  await page.pdf({ path: path.join(OUT, 'print-files', 'letter', 'fold.pdf'), width: '11in', height: '8.5in', printBackground: true });
+
   // ---- previews ----
   const b = Math.round(BLEED * DPI);
   const trim = (buf) => sharp(buf).extract({ left: b, top: b, width: W * DPI, height: H * DPI });
   await trim(frontPng).resize({ width: 900 }).toFile(path.join(OUT, 'preview-front.png'));
   await trim(backPng).resize({ width: 900 }).toFile(path.join(OUT, 'preview-back.png'));
   await sharp(sheetPng).resize({ width: 1650 }).toFile(path.join(OUT, 'preview-two-up.png'));
+  await sharp(foldPng).resize({ width: 1650 }).toFile(path.join(OUT, 'preview-fold.png'));
   // Front and back side by side, at the size they'd sit on a table.
   const fr = await trim(frontPng).resize({ width: 520 }).png().toBuffer();
   const bk = await trim(backPng).resize({ width: 520 }).png().toBuffer();
@@ -274,5 +342,5 @@ const twoUp = (qrSvg) => {
 
   if (problems.length) { problems.forEach((p) => console.error('  FAIL', p)); process.exit(1); }
   console.log('  copy, type sizes and safe area ok');
-  console.log('wrote print-files/5x7/front.pdf, back.pdf, print-files/letter/two-up.pdf and the previews');
+  console.log('wrote print-files/5x7/front.pdf, back.pdf, print-files/letter/two-up.pdf, fold.pdf and the previews');
 })().catch((e) => { console.error(e); process.exit(1); });

@@ -58,6 +58,7 @@ card. The redeem screen says the same thing.
 |---|---|
 | `print-files/5x7/front.pdf`, `back.pdf` | a printer: 5 x 7 + 0.125 in bleed each side |
 | `print-files/letter/two-up.pdf` | home or a UPS Store: two finished backs on letter, landscape, with crop marks |
+| `print-files/letter/fold.pdf` | home printer, one side: front and back side by side; cut on the solid marks, fold on the dashed ones (print outside) for a two-sided 5 x 7 |
 | `preview-*.png`, `mockup.png` | looking at |
 
 Rebuild after any change: `cd print/tools && npm install && npm run gift`.
@@ -68,6 +69,14 @@ legal terms is missing; or if the QR stops decoding. Look at the previews
 anyway.
 
 ## Getting them made
+
+**Same day, front and back:** print `print-files/letter/fold.pdf` on letter
+cardstock at **Actual size / 100%**, one side only. Cut on the solid marks,
+fold on the dashed ones with the print outside. Made for the Engage door
+prize (2026-11-17). For one card already filled in by hand-style type:
+`FILL_OUT=/path/card.pdf AMOUNT=100 FROM="Mikey's Mobile Detailing" npm run gift`
+(add `FOR=` if you know the name). The card number stays blank: write in the
+one the dashboard gives you.
 
 **This week, no order:** print `print-files/letter/two-up.pdf` on letter
 cardstock (65 to 110 lb cover, matte or uncoated so a pen writes on it) at
