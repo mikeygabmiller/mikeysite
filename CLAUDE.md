@@ -559,6 +559,41 @@ turning it on. The tier cards' buttons pre-pick the tier
 maintenance check" is real, the "trucks and SUVs 15-25% more" rule, and tier
 prices set from his hours and product cost (`PRICING.md`).
 
+## Drafting a text for Mikey to send a customer
+
+When Mikey asks "what should I tell this client", the answer ends with the
+text itself **in its own plain code block**, nothing else inside it, so he
+can tap copy and paste it into Google Voice (Mikey, 2026-11-22: "give for me
+to copy and paste and keep doing that from now on"). Advice and warnings go
+outside the box, never in it.
+
+Write it the way he actually texts. Read from 298 texts he typed himself in
+his 60 latest chats (2026-11-22), and the dashboard's voice stats over 630:
+
+- **Short.** A typical text of his is about 83 characters and two sentences.
+  A first draft four times that long read as "not me" to him.
+- **No explaining.** He says what he'll do ("I can definitely get in there
+  and work on those stains"), never the chemistry of why it's stuck.
+- **When he can't promise a result,** his own lines are "I can't guarantee
+  how much will come up, but you will definitely see a difference" and "I
+  can't guarantee how many of the stains I can get out, but I can sure as
+  heck try." Use that shape, not "I'll be straight with you".
+- **His words:** "definitely", "swing by", "for ya", "Any chance you can...",
+  "I'll know for sure by EOD tomorrow", "Hey, it's Mikey." Emoji are rare
+  (about 3 in 100 texts), mostly 😅. "No judgment, I've seen it all."
+- **Not his:** "Good news:", "Just flagging", "I'll be straight with you",
+  "the standard I hold myself to", lecture-length apologies. Some long
+  apology texts in his threads came from the dashboard's Polish button; don't
+  copy them as his voice.
+- **End on a question** that moves the job forward (which service, a day,
+  photos), the way his do.
+- Same facts table and no em dashes as everything else. Don't put a price in
+  a text he hasn't set; say so outside the box and let him fill it in.
+
+Reading his texts: `GET /api/thread?phone=...&peek=1` on the dashboard host
+(the `peek=1` matters: without it, reading clears unread on his phone). Only
+`kind: 'manual'` messages without `by` are ones he typed.
+
 ## Social links in the footer
 
 Every footer has a "Find me on" row (2026-10-14, Mikey's ask): Google, Yelp,
