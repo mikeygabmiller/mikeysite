@@ -578,9 +578,12 @@ his 60 latest chats (2026-11-22), and the dashboard's voice stats over 630:
   how much will come up, but you will definitely see a difference" and "I
   can't guarantee how many of the stains I can get out, but I can sure as
   heck try." Use that shape, not "I'll be straight with you".
-- **His words:** "definitely", "swing by", "for ya", "Any chance you can...",
+- **His words:** "definitely", "swing by", "Any chance you can...",
   "I'll know for sure by EOD tomorrow", "Hey, it's Mikey." Emoji are rare
   (about 3 in 100 texts), mostly 😅. "No judgment, I've seen it all."
+- **"You", never "ya"** (Mikey, 2026-11-22: he changed "for ya" to "for
+  you" in a draft and asked for it to stick), even though "ya" turns up in
+  his old texts.
 - **Not his:** "Good news:", "Just flagging", "I'll be straight with you",
   "the standard I hold myself to", lecture-length apologies. Some long
   apology texts in his threads came from the dashboard's Polish button; don't
