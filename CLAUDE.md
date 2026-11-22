@@ -588,14 +588,49 @@ his 60 latest chats (2026-11-22), and the dashboard's voice stats over 630:
   "the standard I hold myself to", lecture-length apologies. Some long
   apology texts in his threads came from the dashboard's Polish button; don't
   copy them as his voice.
-- **End on a question** that moves the job forward (which service, a day,
-  photos), the way his do.
+- **End on one question** that moves the job forward (which service, a day,
+  photos), the way his do. **Only one question per text** (Mikey,
+  2026-11-22: he cut the second question out of two drafts in a row). If
+  you still need something else, like their town, say so outside the box
+  and it goes in the next text.
 - Same facts table and no em dashes as everything else. Don't put a price in
   a text he hasn't set; say so outside the box and let him fill it in.
 
 Reading his texts: `GET /api/thread?phone=...&peek=1` on the dashboard host
 (the `peek=1` matters: without it, reading clears unread on his phone). Only
 `kind: 'manual'` messages without `by` are ones he typed.
+
+**Sending one he's approved:** `POST /api/send` with `{"phone","body"}`
+on the dashboard host. It goes out from his number and lands in the thread
+as his own text. Only after he says "send" to that exact wording.
+
+## The Sunday week ahead
+
+Mikey, 2026-11-22: "I want to do this every Sunday." A scheduled task
+("Sunday week ahead") starts a fresh session at about 6 AM Pacific every
+Sunday and does this. Anyone he asks for "my week" does the same:
+
+1. **Read only non-archived chats.** `GET /api/threads` (rows with
+   `archived` true are filed; skip them), then each one with
+   `/api/thread?phone=...&peek=1`. Read the actual texts: a job agreed by
+   text often isn't in Bookings and the thread's `appointmentAt` can be weeks
+   stale (Don Granston's still said Oct 20 when he was booked for Nov 27).
+2. **Cross-check** `GET /api/bookings` (confirmed and pending, Mon to Sun),
+   his Google Calendar for the week, and what the website is still offering
+   (`/api/next-openings?service=full&size=sedan`, and `interior`). A job
+   agreed in texts but missing from the calendar means the site can book over
+   it: say so. So does a calendar entry on a different day from the texts.
+3. **Weather** (api.weather.gov for the job's town) for any ceramic coating
+   or outdoor job with no garage. A coating needs dry hours after it goes on.
+4. **What he gets, and nothing else:** a table of the week by day (who,
+   what, time, where, price if set), then "Needs your attention" (missing
+   time or address, calendar conflicts, rain, unpaid), then one draft per
+   person who needs a text, each in its own code block, written to the rules
+   above. No marketing, SEO or anything outside his week (his words: "don't
+   bring up any other crap").
+5. **Never send on its own.** He reads it when he's ready and says "send"
+   per text. If he opens it hours later, re-read the chats first: it's a
+   6 AM snapshot.
 
 ## Social links in the footer
 
