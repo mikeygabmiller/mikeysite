@@ -581,6 +581,11 @@ his 60 latest chats (2026-11-22), and the dashboard's voice stats over 630:
 - **His words:** "definitely", "swing by", "Any chance you can...",
   "I'll know for sure by EOD tomorrow", "Hey, it's Mikey." Emoji are rare
   (about 3 in 100 texts), mostly 😅. "No judgment, I've seen it all."
+- **"Hey, it's Mikey." only when they don't know it's him yet:** the first
+  text to a new number, or someone who hasn't heard from him in weeks. Not
+  in a chat that's already going, and not after his missed-call text, which
+  already says it (Mikey, 2026-11-23: "saying hey it's Mikey in a row is not
+  natural"). Mid-conversation he just answers.
 - **"You", never "ya"** (Mikey, 2026-11-22: he changed "for ya" to "for
   you" in a draft and asked for it to stick), even though "ya" turns up in
   his old texts.
