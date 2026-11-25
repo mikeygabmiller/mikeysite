@@ -112,6 +112,33 @@ A customer holding something with an old price on it gets that price:
   it says. Not a price change: `PRICE_BOOK` doesn't move. It ended on time,
   and the code came out of `index.html` on 2026-10-27.
 
+## Gift card bonus (Mikey, 2026-11-23 to 25)
+
+Live on the homepage (`#gift-cards`) from 2026-11-25 until midnight Pacific
+going into December 25, 2026. It replaced Rain-Ready on the site.
+
+| Gift card bought | Price | Bonus card for the buyer |
+|---|---|---|
+| Exterior Detail | $199 | $40 |
+| Interior Detail | $249 | $50 |
+| Full Detail | $369 | $75 |
+
+- Card prices are a sedan's. Bigger car: +$40 / +$80, paid on the day or put on the card.
+- One bonus per gift card bought by December 24, 2026. A card over $369 gets the $75 bonus.
+- **The bonus card never expires and has no fees,** same as the gift card. Washington's
+  RCW 19.240.020 bars an expiration date on a gift certificate, and a free bonus card
+  very likely counts as one (the only exception is an awards or loyalty program, which
+  is a lawyer's question). Mikey picked never-expiring on 2026-11-25 over a dated coupon.
+- Sold by text, paid by Venmo, Zelle, cash or check. Both cards are made in the dashboard
+  (Gift cards); the bonus card is a second card in the buyer's name for the bonus amount.
+- Not a price change: the price book doesn't move.
+
+**Rain-Ready after 2026-11-25.** Off the site, but still honored through its own
+terms (booked by Dec 31, 2026, done by Jan 31, 2027) for anyone holding a piece
+that printed it: door hangers, postcards (his and the shared one), Treat Street
+cards, and the GBP offer posts 2 and 8. The calculator still applies it on its
+own for visits from those QR codes (`RR_PRINT`); anyone else who mentions it gets it too.
+
 ## The other price lists
 
 Decided by Mikey on 2026-09-27 unless marked open:

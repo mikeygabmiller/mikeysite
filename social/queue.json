@@ -1655,14 +1655,14 @@
   {
     "kind": "gbp",
     "date": "2026-11-27",
-    "id": "GBP34",
-    "title": "Bringing the Christmas tree home",
+    "id": "GBP36",
+    "title": "Black Friday gift card bonus",
     "approved": true,
-    "needs_yes": false,
+    "needs_yes": true,
     "gbp": {
-      "summary": "Picking up the Christmas tree this weekend? A few minutes of prep saves the roof and the back seat.\n\n1. Put an old blanket or a tarp down first, on the roof or in the truck bed. Bark and needles scratch, and fresh sap sticks to whatever it touches.\n2. Ask the lot to net or bale it. A netted tree sheds less and fits through the door.\n3. A roof rack or a truck bed is the safe way to carry it. Rope pulled tight through closed doors can crush the rubber seals, and that's where leaks start.\n4. Got sap on the paint? Don't scrape it. Hold a microfiber soaked in rubbing alcohol on it for a minute, lift it off gently, then wash the spot and put a little spray wax back on.\n5. Needles in the carpet: pull them out by hand or with a lint roller first. A vacuum can push them deeper into the weave.\n\nIf the car came home sappier than the tree, that's an Exterior Detail: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. A lot of sap can add time, and I tell you that when I quote it. Same price in Granite Falls, Lake Stevens or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
-      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/silverado-gray.jpg",
-      "url": "https://mikeysdetailing.com/#booking"
+      "summary": "Black Friday: give a detail, get a bonus card back.\n\nBuy a gift card for a detail by December 24 and I give you a bonus card for your own car:\n\nExterior Detail gift card, $199: you get a $40 bonus card\nInterior Detail gift card, $249: you get a $50 bonus card\nFull Detail gift card, $369: you get a $75 bonus card\n\nEach card is what that detail costs for a sedan, so they get the whole job. SUV or pickup is $40 more, van or 3-row $80. Neither card expires and there are no fees.\n\nI come to them, in their driveway, anywhere in the twelve towns I serve. You pay by Venmo, Zelle, cash or check, and I text you a link to their card to print or send.\n\nTap Book, or text me and say gift card.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/rav4-prime-silver.jpg",
+      "url": "https://mikeysdetailing.com/#gift-cards"
     }
   },
   {
@@ -1709,6 +1709,47 @@
   {
     "kind": "social",
     "date": "2026-12-01",
+    "id": "W06",
+    "title": "Gift card bonus (Mikey said yes 2026-11-25)",
+    "pillar": "Ask",
+    "ask": true,
+    "pin": false,
+    "needs_yes": true,
+    "approved": true,
+    "carousel": false,
+    "ig_caption": "Somebody on your list drives a car that needs me. Until December 24, giving them a detail gets you one back.\n\nBuy a gift card for a detail and I give you a bonus card for your own car:\nExterior Detail, $199: you get a $40 bonus card\nInterior Detail, $249: you get a $50 bonus card\nFull Detail, $369: you get a $75 bonus card\n\nEach card is what that detail costs for a sedan, so they get the whole job. SUV or pickup is $40 more, van or 3-row $80. Neither card ever expires and there are no fees.\n\nText me at (425) 600-7897 and say gift card. Pay by Venmo, Zelle, cash or check, and I text you a link to their card to print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.\n\nWho's the one person you know whose car could really use it?\n\n#giftideas #shoplocal #snohomishcounty #mobiledetailing #christmasgifts",
+    "fb_caption": "Somebody on your list drives a car that needs me. Until December 24, giving them a detail gets you one back.\n\nBuy a gift card for a detail and I give you a bonus card for your own car:\nExterior Detail, $199: you get a $40 bonus card\nInterior Detail, $249: you get a $50 bonus card\nFull Detail, $369: you get a $75 bonus card\n\nEach card is what that detail costs for a sedan, so they get the whole job. SUV or pickup is $40 more, van or 3-row $80. Neither card ever expires and there are no fees.\n\nText me at (425) 600-7897 and say gift card. Pay by Venmo, Zelle, cash or check, and I text you a link to their card to print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.\n\nWho's the one person you know whose car could really use it?",
+    "ig_image": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg",
+    "ig_media": [
+      {
+        "media_type": "IMAGE",
+        "image_url": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg"
+      }
+    ],
+    "fb_photos": [
+      {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg"
+      }
+    ],
+    "gbp": null
+  },
+  {
+    "kind": "gbp",
+    "date": "2026-12-02",
+    "id": "GBP34",
+    "title": "Bringing the Christmas tree home",
+    "approved": true,
+    "needs_yes": false,
+    "gbp": {
+      "summary": "Picking up the Christmas tree this weekend? A few minutes of prep saves the roof and the back seat.\n\n1. Put an old blanket or a tarp down first, on the roof or in the truck bed. Bark and needles scratch, and fresh sap sticks to whatever it touches.\n2. Ask the lot to net or bale it. A netted tree sheds less and fits through the door.\n3. A roof rack or a truck bed is the safe way to carry it. Rope pulled tight through closed doors can crush the rubber seals, and that's where leaks start.\n4. Got sap on the paint? Don't scrape it. Hold a microfiber soaked in rubbing alcohol on it for a minute, lift it off gently, then wash the spot and put a little spray wax back on.\n5. Needles in the carpet: pull them out by hand or with a lint roller first. A vacuum can push them deeper into the weave.\n\nIf the car came home sappier than the tree, that's an Exterior Detail: $199 for a sedan, $239 for an SUV or pickup, $279 for a van or 3-row. A lot of sap can add time, and I tell you that when I quote it. Same price in Granite Falls, Lake Stevens or anywhere else I go.\n\nTap Book to see your exact price in 60 seconds.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/silverado-gray.jpg",
+      "url": "https://mikeysdetailing.com/#booking"
+    }
+  },
+  {
+    "kind": "social",
+    "date": "2026-12-03",
     "id": "W05",
     "title": "The crumb cave",
     "pillar": "Teach",
@@ -1770,34 +1811,6 @@
       {
         "type": "url",
         "url": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W05-6.jpg"
-      }
-    ],
-    "gbp": null
-  },
-  {
-    "kind": "social",
-    "date": "2026-12-03",
-    "id": "W06",
-    "title": "Gift cards (Mikey's yes first)",
-    "pillar": "Ask",
-    "ask": true,
-    "pin": false,
-    "needs_yes": true,
-    "approved": false,
-    "carousel": false,
-    "ig_caption": "Somebody on your list drives a car that needs me.\n\nGift cards are good for any detail I do: interior, exterior, full detail, ceramic coating or paint correction. Any amount you want. They never expire and there are no fees, and if the job costs less than the card, the rest stays on it for next time.\n\nText me at (425) 600-7897 with who it's for and how much. You get a card with its own number that you can print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.\n\nWho's the one person you know whose car could really use it?\n\n#giftideas #shoplocal #snohomishcounty #mobiledetailing #christmasgifts",
-    "fb_caption": "Somebody on your list drives a car that needs me.\n\nGift cards are good for any detail I do: interior, exterior, full detail, ceramic coating or paint correction. Any amount you want. They never expire and there are no fees, and if the job costs less than the card, the rest stays on it for next time.\n\nText me at (425) 600-7897 with who it's for and how much. You get a card with its own number that you can print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.\n\nWho's the one person you know whose car could really use it?",
-    "ig_image": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg",
-    "ig_media": [
-      {
-        "media_type": "IMAGE",
-        "image_url": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg"
-      }
-    ],
-    "fb_photos": [
-      {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/posts/W06.jpg"
       }
     ],
     "gbp": null
@@ -2022,13 +2035,26 @@
   },
   {
     "kind": "gbp",
+    "date": "2026-12-18",
+    "id": "GBP37",
+    "title": "Last week for the gift card bonus",
+    "approved": true,
+    "needs_yes": true,
+    "gbp": {
+      "summary": "Still need a gift? The gift card bonus runs until Thursday, December 24.\n\nBuy a gift card for an Exterior ($199), Interior ($249) or Full Detail ($369) and I give you a bonus card for your own car: $40, $50 or $75. Neither one expires.\n\nIt's an easy gift for someone who has everything. I come to their driveway, they don't drive anywhere, and they pick the day.\n\nText me and say gift card. The minute you pay I text you a link to their card, ready to print or tuck in a stocking.\n\nTap Book to see the details.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/legacy-blue.jpg",
+      "url": "https://mikeysdetailing.com/#gift-cards"
+    }
+  },
+  {
+    "kind": "gbp",
     "date": "2026-12-21",
     "id": "GBP11",
     "title": "Selling it after the holidays",
     "approved": true,
     "needs_yes": false,
     "gbp": {
-      "summary": "Selling your car or trading it in after the holidays? Clean it before you take the photos, not after.\n\nPeople scroll past a listing with crumbs in the seat seams and a dull, spotted hood, and the person appraising a trade-in notices the same things. A clean car photographs like a car somebody looked after.\n\nWhat shows up most in the photos:\n\n1. Glass, inside and out. A hazy windshield is in every interior shot.\n2. Door jambs. They're the first thing anyone sees when they open the door.\n3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.\n4. Clean wheels and tires. They're half of every outside photo.\n\nA Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: ceramic wax, RainX on the outside glass and anti-fog on the inside.\n\nTap Book to see your exact price.",
+      "summary": "Selling your car or trading it in after the holidays? Clean it before you take the photos, not after.\n\nPeople scroll past a listing with crumbs in the seat seams and a dull, spotted hood, and the person appraising a trade-in notices the same things. A clean car photographs like a car somebody looked after.\n\nWhat shows up most in the photos:\n\n1. Glass, inside and out. A hazy windshield is in every interior shot.\n2. Door jambs. They're the first thing anyone sees when they open the door.\n3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.\n4. Clean wheels and tires. They're half of every outside photo.\n\nA Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway.\n\nTap Book to see your exact price.",
       "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/escalade-white.jpg",
       "url": "https://mikeysdetailing.com/#booking"
     }
@@ -2037,12 +2063,12 @@
     "kind": "gbp",
     "date": "2026-12-28",
     "id": "GBP12",
-    "title": "Last week for Rain-Ready",
+    "title": "Got a gift card for Christmas?",
     "approved": true,
-    "needs_yes": false,
+    "needs_yes": true,
     "gbp": {
-      "summary": "Last week for the Rain-Ready Full Detail: book by Thursday, December 31.\n\nAny Full Detail booked by then comes with three rain-season extras I don't charge for: ceramic wax so the rain beads up and rolls off, RainX on the outside glass, and anti-fog on the inside so it doesn't fog up when you climb in wet. The booking date is what counts, so the detail itself can be as late as January 31.\n\nAfter the holidays is a good time for it anyway. Road trips, wrapping paper, a month of wet boots and crumbs in the back seat. The inside gets the full treatment: vacuum, steam on the seats and carpet, leather cleaned, dash and trim wiped down, door jambs and glass done. Then the outside, with the three extras on top.\n\n$369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in all twelve towns I serve, no travel fee.\n\nPick Full Detail in the quote and the extras go on by themselves. Tap Book.",
-      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/lexus-interior.jpg",
+      "summary": "Got one of my gift cards for Christmas? Here's how it works.\n\n1. Text me the card number. It's the eight letters and numbers on your card.\n2. Pick a day. I work weekday afternoons and Saturdays.\n3. I come to you. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.\n4. The card comes off the price. If the detail costs more, say for an SUV, you pay the difference after we walk around the car together. If it costs less, the rest stays on the card.\n\nGift cards never expire, so there's no rush. After the holidays is a good time for it anyway: a month of wet boots, wrapping paper and crumbs in the back seat.\n\nTap Book to see your price.",
+      "photo": "https://raw.githubusercontent.com/mikeygabmiller/mikeysite/main/social/photos/pilot-garage.jpg",
       "url": "https://mikeysdetailing.com/#booking"
     }
   }

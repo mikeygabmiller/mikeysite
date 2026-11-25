@@ -434,29 +434,34 @@ What shows up most in the photos:
 3. Seats and carpets vacuumed and spot-free, with the floor mats out and cleaned.
 4. Clean wheels and tires. They're half of every outside photo.
 
-A Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway. Booked by December 31, it still comes with the Rain-Ready extras free: ceramic wax, RainX on the outside glass and anti-fog on the inside.
+A Full Detail does all of that, inside and out: $369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row, 3–5 hours in your driveway.
 
 Tap Book to see your exact price.
 ```
 
 ---
 
-## 12. Week of Dec 28 · Update · Last week for Rain-Ready
+## 12. Week of Dec 28 · Update · Got a gift card for Christmas?
 
 **Goes up:** 2026-12-28
-**Photo:** `social/photos/lexus-interior.jpg` (a Lexus interior, tan leather, after the detail)
+**Photo:** `social/photos/pilot-garage.jpg` (a Pilot in a customer's garage after the detail)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
+Rewritten 2026-11-25: it was "Last week for Rain-Ready", and the gift card
+bonus replaced Rain-Ready on the site that day (Mikey). Mentions gift cards,
+so it's in `GBP_APPROVED` (his yes to the gift card deal, 2026-11-25).
+
 ```
-Last week for the Rain-Ready Full Detail: book by Thursday, December 31.
+Got one of my gift cards for Christmas? Here's how it works.
 
-Any Full Detail booked by then comes with three rain-season extras I don't charge for: ceramic wax so the rain beads up and rolls off, RainX on the outside glass, and anti-fog on the inside so it doesn't fog up when you climb in wet. The booking date is what counts, so the detail itself can be as late as January 31.
+1. Text me the card number. It's the eight letters and numbers on your card.
+2. Pick a day. I work weekday afternoons and Saturdays.
+3. I come to you. I use your outdoor spigot and an outlet, which is a big part of how I keep my prices where they are.
+4. The card comes off the price. If the detail costs more, say for an SUV, you pay the difference after we walk around the car together. If it costs less, the rest stays on the card.
 
-After the holidays is a good time for it anyway. Road trips, wrapping paper, a month of wet boots and crumbs in the back seat. The inside gets the full treatment: vacuum, steam on the seats and carpet, leather cleaned, dash and trim wiped down, door jambs and glass done. Then the outside, with the three extras on top.
+Gift cards never expire, so there's no rush. After the holidays is a good time for it anyway: a month of wet boots, wrapping paper and crumbs in the back seat.
 
-$369 for a sedan, $409 for an SUV or pickup, $449 for a van or 3-row. Same price in all twelve towns I serve, no travel fee.
-
-Pick Full Detail in the quote and the extras go on by themselves. Tap Book.
+Tap Book to see your price.
 ```
 
 ---
@@ -938,9 +943,9 @@ Tap Book to see your exact price in 60 seconds.
 
 ---
 
-## 34. Week of Nov 22 · Update · Bringing the Christmas tree home
+## 34. Week of Nov 29 · Update · Bringing the Christmas tree home
 
-**Goes up:** 2026-11-27
+**Goes up:** 2026-12-02
 **Photo:** `social/photos/silverado-gray.jpg` (a gray Silverado on a gravel drive under the firs, after the detail, plate blurred)
 **Button:** Book → `https://mikeysdetailing.com/#booking`
 
@@ -978,4 +983,53 @@ Long drive home from Thanksgiving and someone got carsick? It happens. No judgme
 If the smell comes back on the first warm day or when the heater runs, it soaked into the padding under the carpet, and only hot water extraction reaches it. That's part of the Interior Detail: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row. Same price in Woodinville, Mukilteo or anywhere else I go.
 
 Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 36. Week of Nov 22 · Update · Black Friday gift card bonus
+
+**Goes up:** 2026-11-27
+**Photo:** `social/photos/rav4-prime-silver.jpg` (a silver RAV4 Prime after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#gift-cards`
+
+The gift card bonus, Mikey 2026-11-25 (in `GBP_APPROVED`). It took post 34's
+Black Friday slot; the Christmas tree post moved to Dec 2.
+
+```
+Black Friday: give a detail, get a bonus card back.
+
+Buy a gift card for a detail by December 24 and I give you a bonus card for your own car:
+
+Exterior Detail gift card, $199: you get a $40 bonus card
+Interior Detail gift card, $249: you get a $50 bonus card
+Full Detail gift card, $369: you get a $75 bonus card
+
+Each card is what that detail costs for a sedan, so they get the whole job. SUV or pickup is $40 more, van or 3-row $80. Neither card expires and there are no fees.
+
+I come to them, in their driveway, anywhere in the twelve towns I serve. You pay by Venmo, Zelle, cash or check, and I text you a link to their card to print or send.
+
+Tap Book, or text me and say gift card.
+```
+
+---
+
+## 37. Week of Dec 13 · Update · Last week for the gift card bonus
+
+**Goes up:** 2026-12-18
+**Photo:** `social/photos/legacy-blue.jpg` (a blue Legacy after the detail)
+**Button:** Book → `https://mikeysdetailing.com/#gift-cards`
+
+The gift card bonus, Mikey 2026-11-25 (in `GBP_APPROVED`).
+
+```
+Still need a gift? The gift card bonus runs until Thursday, December 24.
+
+Buy a gift card for an Exterior ($199), Interior ($249) or Full Detail ($369) and I give you a bonus card for your own car: $40, $50 or $75. Neither one expires.
+
+It's an easy gift for someone who has everything. I come to their driveway, they don't drive anywhere, and they pick the day.
+
+Text me and say gift card. The minute you pay I text you a link to their card, ready to print or tuck in a stocking.
+
+Tap Book to see the details.
 ```

@@ -352,10 +352,13 @@ body.on-price .wrap{padding-bottom:calc(100px + env(safe-area-inset-bottom))}
   // Rain-Ready: a Full Detail booked by December 31, 2026 gets ceramic wax,
   // RainX and RainX Anti-Fog free. Same offer and the same cutoff as RR_END in index.html
   // (midnight Pacific going into January 1). Past it this goes quiet by itself.
+  // Since 2026-11-25 (Mikey: the gift card bonus replaces Rain-Ready) it only
+  // shows when the link carries ?rr=1, for someone holding a door hanger or
+  // postcard that printed it. Those are still honored until the end date.
   var RR_END = Date.UTC(2027, 0, 1, 8);
   // [the add-on's name in the calculator and on his alert, how it reads here, its price]
   var RR = [['Ceramic Wax', 'ceramic wax', 20], ['RainX Windows', 'RainX on the outside glass', 10], ['RainX Anti-Fog', 'anti-fog on the inside', 30]];
-  function rrOn(){ return Date.now() < RR_END; }
+  function rrOn(){ return Date.now() < RR_END && q('rr') === '1'; }
 
   var S = { size:'', svc:'', cond:'', plan:'once', opens:null, pick:null, offer:null, step:1, club:null, busy:false };
 
