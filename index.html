@@ -178,7 +178,7 @@
    the # changes. Scrolling with your finger is fine either way.
    ========================================================= */
 html.cv #beforeafter { content-visibility:auto; contain-intrinsic-size:auto 1310px; }
-html.cv #rain-ready { content-visibility:auto; contain-intrinsic-size:auto 1240px; }
+html.cv #gift-cards { content-visibility:auto; contain-intrinsic-size:auto 1000px; }
 html.cv main > .hg4 { content-visibility:auto; contain-intrinsic-size:auto 1580px; }
 html.cv #service-area { content-visibility:auto; contain-intrinsic-size:auto 2070px; }
 html.cv #allservices { content-visibility:auto; contain-intrinsic-size:auto 1740px; }
@@ -2254,7 +2254,23 @@ header li a[href="#booking"],
   var RR_FREE = { 'Ceramic Wax':1, 'RainX Windows':1, 'RainX Anti-Fog':1 };
   // How the one free-extras row on the price screen names them.
   var RR_SHORT = { 'Ceramic Wax':'Ceramic wax', 'RainX Windows':'RainX', 'RainX Anti-Fog':'anti-fog' };
-  function rrLive(){ return Date.now() < RR_END; }
+  // Since 2026-11-25 (Mikey) the gift card bonus replaced Rain-Ready on the
+  // site, but door hangers, postcards (his and the shared one) and the Treat
+  // Street cards printed it until Dec 31, so it's still honored for anyone who
+  // arrives from one of their QR codes. The source is kept for the visit, so a
+  // reload or a second car still gets it.
+  var RR_PRINT = { doorhanger:1, postcard:1, sharedcard:1, treatstreet:1 };
+  var rrPrinted = (function(){
+    var src = '';
+    try { src = new URLSearchParams(location.search).get('utm_source') || ''; } catch (e) {}
+    if (RR_PRINT[src]) { try { sessionStorage.setItem('md_rr', '1'); } catch (e) {} return true; }
+    try { return sessionStorage.getItem('md_rr') === '1'; } catch (e) { return false; }
+  })();
+  function rrLive(){ return Date.now() < RR_END && rrPrinted; }
+  if (rrLive()) {
+    var rrTagged = document.querySelectorAll('[data-rr]');
+    for (var ri = 0; ri < rrTagged.length; ri++) rrTagged[ri].removeAttribute('hidden');
+  }
   function rrOn(){ return rrLive() && !!S.services['Full Detail']; }
   // Called before anything reads S.addons. Switching from Full Detail to an
   // Exterior (or an Interior) has to take the free extras back off, because the
@@ -2980,7 +2996,7 @@ header li a[href="#booking"],
   // ===== Public hook: let the Services section prefill the quote and jump to the final step =====
   // window.MikeyQQC.book({ service:'full'|'interior'|'exterior', vehicle:'sedan'|'suv'|'van', condition:'clean'|'work'|'rough', note:'...' })
   window.MikeyQQC = {
-    // The Rain-Ready section's button. It picks Full Detail and opens the
+    // Picks Full Detail and opens the
     // calculator at the car, not at the price: book() would skip the size
     // question and quote a van at the sedan's $369.
     startFull: function () {
@@ -3734,101 +3750,84 @@ header li a[href="#booking"],
   }
 </style>
 
-<!-- ===================== RAIN-READY OFFER =====================
-     The same offer as the door hanger, on purpose: a hanger or postcard QR lands
-     on this page, and the offer it promised has to be here when they arrive.
-     It sits straight after Before & After because that's where wanting it peaks
-     (SECTION-ORDER-ANALYSIS.md: the old offer at position 7 was seen by about a
-     quarter of visitors). The deadline is real and fixed, so it's named rather
-     than run as a ticking clock, and everything marked data-rr hides itself on
-     January 1 even if nobody takes this section down. -->
+<!-- ===================== GIFT CARD BONUS =====================
+     Mikey, 2026-11-23/25: the Black Friday deal, and it took Rain-Ready's place
+     here. Buy a gift card for an Exterior ($199), Interior ($249) or Full Detail
+     ($369) by December 24, 2026 and the buyer gets a bonus card for their own
+     car: $40, $50 or $75. Neither card ever expires: Washington law (RCW
+     19.240.020) bars an expiration date or fee on a gift card, and a bonus card
+     is one too. Sold by text and made in the dashboard (Gift cards), paid by
+     Venmo, Zelle, cash or check. Rain-Ready is still honored for anyone holding
+     a printed piece that promised it (see RR_PRINT in the calculator). The
+     section hides itself at midnight Pacific going into December 25. -->
 <style>
-  .rr{ background:radial-gradient(110% 70% at 50% 0%, rgba(201,162,75,.16), transparent 60%), #111; border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:clamp(52px,7vw,96px) 16px; color:#fff; font-family:'Outfit','Outfit Fallback',sans-serif }
-  .rr *{ box-sizing:border-box }
-  .rr-in{ max-width:980px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,56px); align-items:center }
-  .rr-when{ display:inline-flex; align-items:center; gap:8px; background:rgba(201,162,75,.14); border:1px solid rgba(201,162,75,.45); color:var(--brand-gold,#C9A24B); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; border-radius:999px }
-  .rr-when b{ color:#fff; font-weight:700; letter-spacing:.04em; text-transform:none }
-  .rr h2{ font-weight:900; font-size:clamp(34px,6vw,58px); line-height:.98; letter-spacing:-.01em; text-transform:uppercase; margin:18px 0 0 }
-  .rr h2 em{ font-style:normal; color:var(--brand-gold,#C9A24B) }
-  .rr-lead{ font-size:clamp(16px,1.9vw,19px); line-height:1.55; color:#d6d8da; margin:18px 0 0; max-width:520px }
-  .rr-why{ list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px; max-width:520px }
-  .rr-why li{ display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; line-height:1.5; color:#c9cccf }
-  .rr-why li b{ color:#fff; font-weight:700 }
-  .rr-why svg{ width:20px; height:20px; margin-top:2px; color:var(--brand-gold,#C9A24B) }
-  .rr-card{ background:linear-gradient(180deg,#1f1f1f,#171717); border:1px solid rgba(201,162,75,.4); border-radius:20px; padding:24px 22px 22px; box-shadow:0 26px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(201,162,75,.12) }
-  .rr-card h3{ margin:0 0 14px; font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#9aa0a6 }
-  .rr-stack{ list-style:none; margin:0; padding:0 }
-  .rr-stack li{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:16px }
-  .rr-stack li span:last-child{ font-weight:700; white-space:nowrap }
-  .rr-stack li.f span:last-child{ color:var(--brand-gold,#C9A24B) }
-  .rr-stack s{ color:#8a8f94; font-weight:500; margin-right:6px; text-decoration-color:var(--brand-red,#C8102E); text-decoration-thickness:2px }
-  .rr-sum{ display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-top:16px }
-  .rr-sum .worth{ font-size:15px; color:#9aa0a6 }
-  .rr-sum .worth s{ text-decoration-color:var(--brand-red,#C8102E); text-decoration-thickness:2px }
-  .rr-sum .yours{ text-align:right; line-height:1 }
-  .rr-sum .yours small{ display:block; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#9aa0a6; margin-bottom:6px }
-  .rr-sum .yours b{ font-size:clamp(34px,5vw,44px); font-weight:900; letter-spacing:-.02em }
-  .rr-btn{ display:flex; align-items:center; justify-content:center; width:100%; margin-top:20px; background:var(--brand-red,#C8102E); color:#fff; font-weight:800; font-size:18px; letter-spacing:.02em; text-decoration:none; padding:17px 22px; border-radius:999px; border:0; cursor:pointer; font-family:inherit; box-shadow:0 14px 34px rgba(200,16,46,.4); transition:transform .12s ease, background .2s ease }
-  .rr-btn:hover{ background:#E23744; transform:translateY(-2px) }
-  .rr-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px }
-  .rr-alt{ margin:12px 0 0; text-align:center; font-size:14px; color:#9aa0a6 }
-  .rr-alt a{ color:#fff; font-weight:600 }
-  .rr-fine{ margin:16px 0 0; font-size:13.5px; line-height:1.6; color:#a9aeb3 }
-  @media (max-width:820px){ .rr-in{ grid-template-columns:1fr } .rr-card{ max-width:520px; width:100% } }
+  .gc{ background:radial-gradient(110% 70% at 50% 0%, rgba(201,162,75,.16), transparent 60%), #111; border-top:1px solid #2a2a2a; border-bottom:1px solid #2a2a2a; padding:clamp(52px,7vw,96px) 16px; color:#fff; font-family:'Outfit','Outfit Fallback',sans-serif }
+  .gc *{ box-sizing:border-box }
+  .gc-in{ max-width:980px; margin:0 auto; display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(28px,5vw,56px); align-items:center }
+  .gc-when{ display:inline-flex; align-items:center; gap:8px; background:rgba(201,162,75,.14); border:1px solid rgba(201,162,75,.45); color:var(--brand-gold,#C9A24B); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:8px 14px; border-radius:999px }
+  .gc-when b{ color:#fff; font-weight:700; letter-spacing:.04em; text-transform:none }
+  .gc h2{ font-weight:900; font-size:clamp(34px,6vw,58px); line-height:.98; letter-spacing:-.01em; text-transform:uppercase; margin:18px 0 0 }
+  .gc h2 em{ font-style:normal; color:var(--brand-gold,#C9A24B) }
+  .gc-lead{ font-size:clamp(16px,1.9vw,19px); line-height:1.55; color:#d6d8da; margin:18px 0 0; max-width:520px }
+  .gc-why{ list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px; max-width:520px }
+  .gc-why li{ display:grid; grid-template-columns:22px 1fr; gap:10px; font-size:15px; line-height:1.5; color:#c9cccf }
+  .gc-why li b{ color:#fff; font-weight:700 }
+  .gc-why svg{ width:20px; height:20px; margin-top:2px; color:var(--brand-gold,#C9A24B) }
+  .gc-card{ background:linear-gradient(180deg,#1f1f1f,#171717); border:1px solid rgba(201,162,75,.4); border-radius:20px; padding:24px 22px 22px; box-shadow:0 26px 60px -24px rgba(0,0,0,.8), 0 0 0 1px rgba(201,162,75,.12) }
+  .gc-head{ display:grid; grid-template-columns:1fr auto auto; gap:14px; padding:0 0 10px; border-bottom:1px solid rgba(255,255,255,.14); font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:#9aa0a6 }
+  .gc-tier{ list-style:none; margin:0; padding:0 }
+  .gc-tier li, .gc-head{ grid-template-columns:1fr 64px 92px }
+  .gc-tier li{ display:grid; gap:14px; align-items:baseline; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.08) }
+  .gc-tier .svc{ font-size:17px; font-weight:700 }
+  .gc-tier .svc small{ display:block; font-size:13px; font-weight:500; color:#9aa0a6; margin-top:2px }
+  .gc-tier .pay{ font-size:18px; font-weight:700; text-align:right }
+  .gc-tier .back{ font-size:22px; font-weight:900; color:var(--brand-gold,#C9A24B); text-align:right; white-space:nowrap }
+  .gc-head span:not(:first-child){ text-align:right }
+  .gc-btn{ display:flex; align-items:center; justify-content:center; width:100%; margin-top:20px; background:var(--brand-red,#C8102E); color:#fff; font-weight:800; font-size:18px; letter-spacing:.02em; text-decoration:none; padding:17px 22px; border-radius:999px; border:0; cursor:pointer; font-family:inherit; box-shadow:0 14px 34px rgba(200,16,46,.4); transition:transform .12s ease, background .2s ease }
+  .gc-btn:hover{ background:#E23744; transform:translateY(-2px) }
+  .gc-btn:focus-visible{ outline:3px solid #fff; outline-offset:3px }
+  .gc-alt{ margin:12px 0 0; text-align:center; font-size:14px; color:#9aa0a6 }
+  .gc-alt a{ color:#fff; font-weight:600 }
+  .gc-fine{ margin:16px 0 0; font-size:13.5px; line-height:1.6; color:#a9aeb3 }
+  @media (max-width:820px){ .gc-in{ grid-template-columns:1fr } .gc-card{ max-width:520px; width:100% } }
 </style>
 
-<section class="rr" id="rain-ready" aria-labelledby="rr-title" data-rr>
-  <div class="rr-in">
+<section class="gc" id="gift-cards" aria-labelledby="gc-title">
+  <div class="gc-in">
     <div>
-      <span class="rr-when">Until December 31 <b id="rrDays"></b></span>
-      <h2 id="rr-title">The Rain-Ready <em>Full Detail</em></h2>
-      <p class="rr-lead">From October to March your car is wet more days than it's dry. So until December 31, every Full Detail gets the three things that help most in the rain, and I don't charge for them.</p>
-      <ul class="rr-why">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>Ceramic wax on the paint.</b> Rain beads and rolls off, and road grime has a harder time sticking between washes.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>RainX on the outside glass.</b> Water sheets off the windshield at speed, which you'll notice the first dark night on I-5 or US-2.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>RainX Anti-Fog on the inside.</b> Wet coats on a cold morning fog the glass from the inside. Anti-fog keeps it clear while the defroster warms up.</span></li>
+      <span class="gc-when">Until December 24 <b id="gcDays"></b></span>
+      <h2 id="gc-title">Give a Detail. <em>Get a Bonus Card Back.</em></h2>
+      <p class="gc-lead">Buy someone a gift card for an Exterior, Interior or Full Detail by December 24 and I'll give you a bonus card for your own car. Neither one expires.</p>
+      <ul class="gc-why">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>It's a whole detail, not a number.</b> Each card is what that detail costs, so they get the full job, not most of one.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>I come to them.</b> Their driveway, anywhere in the twelve towns I serve, no travel fee.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span><b>You get something to give.</b> The minute you pay I text you a link to their card, ready to print or send.</span></li>
       </ul>
     </div>
 
-    <div class="rr-card">
-      <h3>What you get</h3>
-      <ul class="rr-stack">
-        <li><span>Interior Detail</span><span>$249</span></li>
-        <li><span>Exterior Detail</span><span>$199</span></li>
-        <li class="f"><span>Ceramic wax</span><span><s>$20</s>Free</span></li>
-        <li class="f"><span>RainX on the outside glass</span><span><s>$10</s>Free</span></li>
-        <li class="f"><span>RainX Anti-Fog inside</span><span><s>$30</s>Free</span></li>
+    <div class="gc-card">
+      <div class="gc-head"><span>Gift card</span><span>You pay</span><span>Your bonus</span></div>
+      <ul class="gc-tier">
+        <li><span class="svc">Exterior Detail<small>hand wash, clay bar, wheels, wax</small></span><span class="pay">$199</span><span class="back">+$40</span></li>
+        <li><span class="svc">Interior Detail<small>vacuum, steam, shampoo, glass</small></span><span class="pay">$249</span><span class="back">+$50</span></li>
+        <li><span class="svc">Full Detail<small>inside and out</small></span><span class="pay">$369</span><span class="back">+$75</span></li>
       </ul>
-      <div class="rr-sum">
-        <span class="worth">Worth <s>$508</s></span>
-        <span class="yours"><small>Your price</small><b>from $369</b></span>
-      </div>
-      <a class="rr-btn" href="#booking" id="rrStart">Get My Instant Quote &rarr;</a>
-      <p class="rr-alt">Pick Full Detail and the extras go on by themselves. Booking by text? <a href="sms:+14256007897?&amp;body=Hi%20Mikey!%20I%27d%20like%20the%20Rain-Ready%20Full%20Detail.">Text (425) 600-7897</a> and say Rain-Ready.</p>
-      <p class="rr-fine">$508 is a sedan's Interior and Exterior booked apart, plus the three extras. The $79 you save by booking them together as a Full Detail is there all year; the extras are what's free until December 31, 2026. SUV or pickup +$40, van or 3-row +$80. Got my postcard? It lists carpet shampoo instead of anti-fog. Tell me which you'd rather have.</p>
+      <a class="gc-btn" id="gcStart" href="sms:+14256007897?&amp;body=Hi%20Mikey!%20I%27d%20like%20a%20gift%20card%20for%20a%20">Get My Gift Card &rarr;</a>
+      <p class="gc-alt">Or call <a href="tel:+14256007897">(425) 600-7897</a>. Pay by Venmo, Zelle, cash or check.</p>
+      <p class="gc-fine">Card prices are for a car or sedan. If theirs is an SUV or pickup it's $40 more, a van or 3-row $80, paid on the day (or put it on the card). The bonus card is yours for any detail on your own car. One bonus per gift card, with cards bought by December 24, 2026; a card for more than $369 gets the $75 bonus. Gift cards and bonus cards never expire and have no fees, and whatever's left stays on the card.</p>
     </div>
   </div>
 </section>
 
 <script>
 (function(){
-  // Midnight Pacific going into January 1 (08:00 UTC, PST). Must match RR_END in
-  // the quote calculator.
-  var END = Date.UTC(2027, 0, 1, 8);
+  // Midnight Pacific going into December 25 (08:00 UTC, PST).
+  var END = Date.UTC(2026, 11, 25, 8);
   var left = END - Date.now();
-  var tagged = document.querySelectorAll('[data-rr]');
-  for (var i=0;i<tagged.length;i++){
-    if (left > 0) tagged[i].removeAttribute('hidden'); else tagged[i].style.display = 'none';
-  }
-  if (left <= 0) return;
-  // Counted in whole days, not a ticking clock: the date is fixed, and seconds
-  // spinning on a deadline three months out would read as a gimmick.
-  var days = Math.ceil(left / 86400000), el = document.getElementById('rrDays');
-  if (el) el.textContent = days === 1 ? '· last day' : '· ' + days + ' days left';
-  var btn = document.getElementById('rrStart');
-  if (btn) btn.addEventListener('click', function(e){
-    if (window.MikeyQQC && window.MikeyQQC.startFull){ e.preventDefault(); window.MikeyQQC.startFull(); }
-  });
+  var sec = document.getElementById('gift-cards');
+  if (left <= 0){ if (sec) sec.style.display = 'none'; return; }
+  var days = Math.ceil(left / 86400000), el = document.getElementById('gcDays');
+  if (el) el.textContent = days === 1 ? '\u00b7 last day' : '\u00b7 ' + days + ' days left';
 })();
 </script>
 

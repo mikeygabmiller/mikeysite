@@ -792,24 +792,29 @@ Save this for the next big crumb day. Parents, what's the strangest thing you've
 #momlife #carcleaninghacks #carcaretips #snohomishcounty #marysvillewa`,
   },
   {
-    id: 'W06', week: 'winter', pillar: 'Ask', title: 'Gift cards (Mikey\'s yes first)', offer: true,
+    id: 'W06', week: 'winter', pillar: 'Ask', title: 'Gift card bonus (Mikey said yes 2026-11-25)', offer: true,
     slides: [{
       t: 'statement', slim: 'dark',
       eyebrow: 'For the person who has everything',
-      h: "Somebody's getting <em>a clean car.</em>",
+      h: "Give a detail. <em>Get a bonus card back.</em>",
       body: [
-        'Gift cards for any detail I do, in any amount. They never expire and there are no fees.',
-        "Text me who it's for and how much. You get a card with its own number to print, forward, or tuck in a stocking.",
+        'Until Dec 24: an Exterior gift card ($199) gets you a $40 bonus card for your own car. Interior ($249) gets $50. Full Detail ($369) gets $75.',
+        'Neither card expires and there are no fees. You get a link to their card to print or tuck in a stocking.',
       ],
       note: 'Text (425) 600-7897 and say gift card.',
       sign: 'Mikey',
     }],
-    alt: "Text post: Somebody's getting a clean car. Gift cards for any detail, in any amount, that never expire and have no fees. Text 425-600-7897 and say gift card.",
-    ig: `Somebody on your list drives a car that needs me.
+    alt: "Text post: Give a detail, get a bonus card back. Until December 24, an Exterior gift card for $199 gets a $40 bonus card, Interior for $249 gets $50, Full Detail for $369 gets $75. Neither expires, no fees. Text 425-600-7897 and say gift card.",
+    ig: `Somebody on your list drives a car that needs me. Until December 24, giving them a detail gets you one back.
 
-Gift cards are good for any detail I do: interior, exterior, full detail, ceramic coating or paint correction. Any amount you want. They never expire and there are no fees, and if the job costs less than the card, the rest stays on it for next time.
+Buy a gift card for a detail and I give you a bonus card for your own car:
+Exterior Detail, $199: you get a $40 bonus card
+Interior Detail, $249: you get a $50 bonus card
+Full Detail, $369: you get a $75 bonus card
 
-Text me at (425) 600-7897 with who it's for and how much. You get a card with its own number that you can print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.
+Each card is what that detail costs for a sedan, so they get the whole job. SUV or pickup is $40 more, van or 3-row $80. Neither card ever expires and there are no fees.
+
+Text me at (425) 600-7897 and say gift card. Pay by Venmo, Zelle, cash or check, and I text you a link to their card to print, forward, or tuck in a stocking. They text me the number, I come to their driveway, and the card comes off the price.
 
 Who's the one person you know whose car could really use it?
 

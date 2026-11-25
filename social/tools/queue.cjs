@@ -32,7 +32,7 @@ const SCHEDULE = [
   ['2026-11-10', 'B07'], ['2026-11-12', 'P08'], ['2026-11-15', 'W04'],
   ['2026-11-17', 'P17'], ['2026-11-19', 'P10'], ['2026-11-22', 'B12'],
   ['2026-11-24', 'P11'], ['2026-11-26', 'P18'], ['2026-11-29', 'P09'],
-  ['2026-12-01', 'W05'], ['2026-12-03', 'W06'], ['2026-12-06', 'W07'],
+  ['2026-12-01', 'W06'], ['2026-12-03', 'W05'], ['2026-12-06', 'W07'],
   ['2026-12-08', 'W09'], ['2026-12-10', 'B06'], ['2026-12-13', 'W08'],
 ];
 
@@ -40,6 +40,8 @@ const SCHEDULE = [
 // 2026-10-09: "I approve" for the first three weeks (Oct 11 to Nov 1).
 const APPROVED = new Set([
   'P01', 'P02', 'P03', 'W01', 'P13', 'P06', 'W02', 'W03', 'P04', 'P15', 'P16', 'P12',
+  // 2026-11-25: the gift card bonus, Black Friday (Mikey's yes to the deal).
+  'W06',
 ]);
 
 // Google Business Profile posts, by their number in outreach/GBP-POSTS.md.
@@ -48,7 +50,8 @@ const APPROVED = new Set([
 // anything", so an Update posts on its own once it passes the checks below.
 // Only an Offer-type post, or one that sells something new (gift cards), needs
 // its number here.
-const GBP_APPROVED = new Set([]);
+// 2026-11-25: Mikey's yes to the gift card bonus (posts 12, 36, 37).
+const GBP_APPROVED = new Set([12, 36, 37]);
 const GBP_DAYS = [0, 1, 3, 5]; // Sun, Mon, Wed, Fri
 const GBP_HAND_SCHEDULED_UNTIL = '2026-11-30'; // Mondays up to here are posts 1 to 8
 // Claims and words that never go in a post (CLAUDE.md facts and Voice).

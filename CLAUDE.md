@@ -265,17 +265,34 @@ the `<svg class="sa-map">` block rather than nudging pin coordinates by hand.
 
 ## Offers and countdowns
 
-**The live offer is the Rain-Ready Full Detail,** on the homepage since
-2026-09-28 at Mikey's request. It's the door hanger's version: book a Full
+**The live offer is the gift card bonus** (Mikey, 2026-11-25): buy a gift
+card for an Exterior ($199), Interior ($249) or Full Detail ($369) by
+**December 24, 2026** and the buyer gets a bonus card for their own car, $40,
+$50 or $75. **Neither card ever expires** (RCW 19.240.020; Mikey picked that
+over a dated coupon). It's the homepage's `#gift-cards` section, which hides
+itself at midnight Pacific going into December 25, plus GBP posts 36, 37 and
+12 and Instagram W06. Sold by text, made in the dashboard. `PRICING.md` has
+the terms. Don't change the amounts or the window without him.
+
+**Rain-Ready is off the site since 2026-11-25 but still honored.** The hangers,
+postcards, Treat Street cards and two GBP offer posts printed it, so a visit
+from one of their QR codes (`RR_PRINT` in the calculator: doorhanger, postcard,
+sharedcard, treatstreet) still gets the extras on its own, and the call page
+shows them only with `?rr=1`. Everything below about Rain-Ready describes that
+dormant code.
+
+**Rain-Ready Full Detail,** on the homepage from 2026-09-28 to 2026-11-25 at
+Mikey's request. It's the door hanger's version: book a Full
 Detail by **December 31, 2026** and ceramic wax, RainX and RainX Anti-Fog come
 free (worth $508, from $369; Mikey swapped anti-fog in for the exterior polish
 on 2026-10-15, at the same $30, before any offer piece was printed). It's the **booking** date that counts: a job
 booked by Dec 31 can be done as late as **January 31, 2027** (Mikey,
 2026-09-29), because weekday Full Details don't fit before dark in November and
-December and there aren't enough Saturdays to go round. It lives in two places in `index.html`, and
-both switch off on their own at midnight Pacific going into January 1:
+December and there aren't enough Saturdays to go round. Its section (`#rain-ready`) came out of `index.html` on
+2026-11-25 for the gift card section; what's left switches off on its own at
+midnight Pacific going into January 1:
 
-1. the `#rain-ready` section after Before & After, with its value stack
+1. (gone) the `#rain-ready` section
 2. the quote calculator: `RR_END` / `RR_FREE`, which put the three extras on
    any Full Detail at $0 and label them "(free, Rain-Ready)" in the text and
    email Mikey gets
@@ -294,7 +311,7 @@ Don't widen it, extend the window or swap the extras without Mikey; it's
 the same promise the hangers and postcards make. After January 1 take the
 dormant code out rather than leaving it.
 
-**The switch-off is tested** (2026-11-03): `node tools/rain-ready-switchoff-test.cjs`
+**The switch-off is tested** (2026-11-03; since 2026-11-25 `node tools/offer-switchoff-test.cjs`, which also checks the gift card section ends Dec 25 and Rain-Ready only reaches print visits): the old `rain-ready-switchoff-test.cjs`
 (serve the repo on :8766 first) fakes the browser clock at 11:59 PM Dec 31
 and 12:01 AM Jan 1 and drives a sedan Full Detail to the price screen. Both
 passed: extras free before, gone after, $369 either way. Rerun on
@@ -833,8 +850,9 @@ blanks for the number, never a printed one. Read its `README.md` first.
 - **A gift card is not an offer.** It's face value, no discount, so it doesn't
   need Mikey's yes the way a new offer does. A "buy $100, get $20" bonus would
   be an offer: ask him.
-- **Not on the website yet.** Putting "gift cards available" on the site (a
-  homepage line, a page, a FAQ) is Mikey's call; ask before adding it.
+- **On the website since 2026-11-25** (the gift card bonus section, Mikey's
+  yes). After December 24 it hides; whether gift cards stay on the site
+  without the bonus is his call.
 
 ## Hometown Values magazine ad
 
