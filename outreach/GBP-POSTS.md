@@ -1033,3 +1033,49 @@ Text me and say gift card. The minute you pay I text you a link to their card, r
 
 Tap Book to see the details.
 ```
+
+---
+
+## 38. Week of Nov 29 · Update · The seat belt nobody cleans
+
+**Goes up:** 2026-12-04
+**Photo:** `social/photos/volvo-interior.jpg` (a Volvo dash and windshield from the driver's side)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+When did you last clean your seat belt? It touches your neck and your coat every single drive, and almost nobody ever cleans one.
+
+1. Pull the belt all the way out and put a clip or clothespin at the top so it can't wind back in.
+2. A little mild soap in warm water on a microfiber. Wipe both sides. You'll see the gray come off.
+3. Don't soak it and don't use bleach or a harsh cleaner. The webbing is a safety part, and strong chemicals can weaken it.
+4. Let it dry all the way before you unclip it. A damp belt wound up tight is how it starts to smell musty.
+
+Do the buckle while you're there. That's where the crumbs and the sticky stuff end up.
+
+Belts and buckles get wiped down on every Interior Detail I do: $249 for a sedan, $289 for an SUV or pickup, $329 for a van or 3-row. Same price in Woodinville, Duvall or anywhere else I go.
+
+Tap Book to see your exact price in 60 seconds.
+```
+
+---
+
+## 39. Week of Dec 6 · Update · Why your paint looks worse in December
+
+**Goes up:** 2026-12-06
+**Photo:** `social/photos/superduty-black.jpg` (a black Ford Super Duty after the detail, plate blurred)
+**Button:** Book → `https://mikeysdetailing.com/#booking`
+
+```
+Notice spiderwebs all over your paint lately? They were there in July too. The winter sun just shows them.
+
+In December the sun sits low and comes in sideways, so every fine scratch in the clear coat catches the light. Dark cars show it the most. Those swirls mostly come from washing: brushes at the automatic car wash, a dirty mitt, or a towel dragged across a dry car.
+
+1. Skip the brush washes. Touchless or a careful hand wash.
+2. Rinse first, so the grit comes off before anything touches the paint.
+3. A clean microfiber mitt, rinsed often, and a soft towel to dry.
+4. Wax won't remove swirls. It fills them for a few weeks.
+
+Getting them out means polishing the clear coat, which is paint correction: from $400 for a one-step, and I quote it for your exact car once I've seen the paint. Same price in Mill Creek, Everett or anywhere else I go.
+
+Tap Book to get started.
+```
