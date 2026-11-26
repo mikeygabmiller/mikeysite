@@ -3789,6 +3789,27 @@ header li a[href="#booking"],
   .gc-alt{ margin:12px 0 0; text-align:center; font-size:14px; color:#9aa0a6 }
   .gc-alt a{ color:#fff; font-weight:600 }
   .gc-fine{ margin:16px 0 0; font-size:13.5px; line-height:1.6; color:#a9aeb3 }
+  .gc-tier li{ cursor:pointer; border-radius:10px; transition:background .15s ease }
+  .gc-tier li.on{ background:rgba(201,162,75,.12); box-shadow:inset 3px 0 0 var(--brand-gold,#C9A24B); padding-left:10px; margin-left:-10px }
+  .gc-form{ margin-top:18px; display:grid; gap:10px }
+  .gc-f{ display:grid; gap:5px; font-size:13px; font-weight:700; color:#c9cccf }
+  .gc-f i{ font-style:normal; font-weight:500; color:#8a8f94 }
+  .gc-f input, .gc-f select{ width:100%; font:inherit; font-size:16px; font-weight:500; color:#fff; background:#0d0d0d; border:1px solid #3a3a3a; border-radius:12px; padding:13px 14px }
+  .gc-f input:focus, .gc-f select:focus{ outline:2px solid var(--brand-gold,#C9A24B); outline-offset:1px; border-color:transparent }
+  .gc-two{ display:grid; grid-template-columns:1fr 1fr; gap:10px }
+  @media (max-width:380px){ .gc-two{ grid-template-columns:1fr } }
+  .gc-err{ margin:0; min-height:0; font-size:14px; color:#ff8a8a }
+  .gc-err:empty{ display:none }
+  .gc-consent{ margin:2px 0 0; font-size:11.5px; line-height:1.5; color:#8e8e93 }
+  .gc-consent a{ color:#b0b0b6 }
+  .gc-form .gc-btn{ margin-top:4px }
+  .gc-form[hidden], .gc-done[hidden]{ display:none }
+  .gc-btn[disabled]{ opacity:.7; cursor:default; transform:none }
+  .gc-done{ margin-top:18px; padding:18px; border-radius:14px; background:rgba(201,162,75,.1); border:1px solid rgba(201,162,75,.4); font-size:15.5px; line-height:1.55; color:#d6d8da }
+  .gc-done b{ color:#fff }
+  .gc-done h3{ margin:0 0 6px; font-size:20px; color:#fff }
+  /* A text link does nothing on a computer, so there the number is just the number. */
+  @media (hover:hover) and (pointer:fine){ .gc-alt a.gc-sms{ pointer-events:none; color:inherit; font-weight:inherit; text-decoration:none } }
   @media (max-width:820px){ .gc-in{ grid-template-columns:1fr } .gc-card{ max-width:520px; width:100% } }
 </style>
 
@@ -3812,8 +3833,29 @@ header li a[href="#booking"],
         <li><span class="svc">Interior Detail<small>vacuum, steam, shampoo, glass</small></span><span class="pay">$249</span><span class="back">+$50</span></li>
         <li><span class="svc">Full Detail<small>inside and out</small></span><span class="pay">$369</span><span class="back">+$75</span></li>
       </ul>
-      <a class="gc-btn" id="gcStart" href="sms:+14256007897?&amp;body=Hi%20Mikey!%20I%27d%20like%20a%20gift%20card%20for%20a%20">Get My Gift Card &rarr;</a>
-      <p class="gc-alt">Or call <a href="tel:+14256007897">(425) 600-7897</a>. Pay by Venmo, Zelle, cash or check.</p>
+      <form class="gc-form" id="gcForm" novalidate>
+        <label class="gc-f"><span>Which gift card</span>
+          <select id="gcCard">
+            <option value="Exterior Detail">Exterior Detail, $199 (your bonus $40)</option>
+            <option value="Interior Detail">Interior Detail, $249 (your bonus $50)</option>
+            <option value="Full Detail" selected>Full Detail, $369 (your bonus $75)</option>
+          </select>
+        </label>
+        <div class="gc-two">
+          <label class="gc-f"><span>Your name</span><input type="text" id="gcName" autocomplete="name" enterkeyhint="next"></label>
+          <label class="gc-f"><span>Who it's for <i>(optional)</i></span><input type="text" id="gcFor" autocomplete="off" enterkeyhint="next"></label>
+        </div>
+        <label class="gc-f"><span>Your cell, so I can text you</span><input type="tel" id="gcPhone" inputmode="tel" autocomplete="tel" enterkeyhint="send" aria-required="true"></label>
+        <p class="gc-err" id="gcErr" role="alert" aria-live="assertive"></p>
+        <input type="text" id="gcHp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+        <p class="gc-consent" id="gcConsent">By tapping below you agree to receive text messages about your gift card from Mikey&rsquo;s Mobile Detailing at the number above. Msg &amp; data rates may apply. Msg frequency varies. Reply STOP to opt out, HELP for help. <a href="/sms-opt-in/">SMS Terms</a> &middot; <a href="/privacy-policy/">Privacy Policy</a></p>
+        <button type="submit" class="gc-btn" id="gcSend">Get My Gift Card &rarr;</button>
+      </form>
+      <div class="gc-done" id="gcDone" hidden>
+        <h3 id="gcDoneH">Got it.</h3>
+        I'll text you from <b>(425) 600-7897</b> to set it up. Pay by Venmo, Zelle, cash or check, and I'll text you the link to their card and to your bonus card.
+      </div>
+      <p class="gc-alt">Rather text or call? <a class="gc-sms" href="sms:+14256007897?&amp;body=Hi%20Mikey!%20I%27d%20like%20a%20gift%20card.">(425) 600-7897</a>. Pay by Venmo, Zelle, cash or check.</p>
       <p class="gc-fine">Card prices are for a car or sedan. If theirs is an SUV or pickup it's $40 more, a van or 3-row $80, paid on the day (or put it on the card). The bonus card is yours for any detail on your own car. One bonus per gift card, with cards bought by December 24, 2026; a card for more than $369 gets the $75 bonus. Gift cards and bonus cards never expire and have no fees, and whatever's left stays on the card.</p>
     </div>
   </div>
@@ -3828,6 +3870,55 @@ header li a[href="#booking"],
   if (left <= 0){ if (sec) sec.style.display = 'none'; return; }
   var days = Math.ceil(left / 86400000), el = document.getElementById('gcDays');
   if (el) el.textContent = days === 1 ? '\u00b7 last day' : '\u00b7 ' + days + ' days left';
+
+  // The request form (2026-11-26, Mikey: an sms: link does nothing on a
+  // computer). Same path as the ceramic calculator: his alert and the email go
+  // through, smsConsent is false so the dashboard sends no automatic text (a
+  // quote text would read a gift card as a detail), and he texts them himself.
+  // No total on purpose, for the same reason.
+  function $(id){ return document.getElementById(id); }
+  var BONUS = { 'Exterior Detail':[199,40], 'Interior Detail':[249,50], 'Full Detail':[369,75] };
+  var rows = document.querySelectorAll('#gift-cards .gc-tier li'), card = $('gcCard');
+  var NAMES = ['Exterior Detail', 'Interior Detail', 'Full Detail'];
+  function mark(){ for (var i=0;i<rows.length;i++) rows[i].classList.toggle('on', NAMES[i] === card.value); }
+  for (var r=0;r<rows.length;r++) (function(i){ rows[i].addEventListener('click', function(){ card.value = NAMES[i]; mark(); }); })(r);
+  card.addEventListener('change', mark); mark();
+  $('gcForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var err = $('gcErr'); err.textContent = '';
+    if ($('gcHp').value){ $('gcForm').hidden = true; $('gcDone').hidden = false; return; }
+    var phone = $('gcPhone').value.trim(), d = phone.replace(/\D/g,'').slice(-10);
+    if (d.length !== 10){ err.textContent = 'Enter a valid cell number so I can text you.'; $('gcPhone').focus(); return; }
+    var name = $('gcName').value.trim(), who = $('gcFor').value.trim(), svc = card.value, b = BONUS[svc];
+    var line = 'Gift card: ' + svc + ' ($' + b[0] + '), bonus card $' + b[1] + ' for the buyer';
+    var btn = $('gcSend'); btn.disabled = true; btn.textContent = 'Sending\u2026';
+    var payload = { name:name, phone:'+1'+d, email:'', location:'', vehicle:'Gift card', condition:'', services:line,
+      notes: (who ? 'For: ' + who + '. ' : '') + 'Gift card request from the website, not a booking. Sell it in Gift cards, plus the bonus card.',
+      smsConsent:false, type:'quote',
+      consent:{ text:($('gcConsent').textContent||'').replace(/\s+/g,' ').trim(), at:new Date().toISOString(), source:'gift_card', page:location.href },
+      vid: window.MD_VID || '' };
+    var fd = new FormData();
+    fd.append('access_key','aa7076da-8d1c-427b-979f-03c238686a8e');
+    fd.append('subject','New Gift Card Request: ' + svc + ', ' + (name || phone));
+    fd.append('from_name','Mikeys Gift Card');
+    fd.append('name', name || '(not given)'); fd.append('phone', phone);
+    fd.append('message', [line, 'For: ' + (who || '(not given)')].join('\n'));
+    Promise.allSettled([
+      fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).then(function(r){return r.json();}),
+      fetch('https://texting.mikeysdetailingsnohomish.workers.dev/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json();})
+    ]).then(function(rs){
+      var ok = (rs[0].status==='fulfilled'&&rs[0].value&&rs[0].value.success)||(rs[1].status==='fulfilled'&&rs[1].value&&rs[1].value.ok);
+      if (ok){
+        if (typeof gtag === 'function') gtag('event','gift_card_request',{ card:svc });
+        if (typeof window.MDTrack === 'function') window.MDTrack('Gift card request SENT', svc);
+        $('gcDoneH').textContent = name ? 'Got it, ' + name.split(' ')[0] + '.' : 'Got it.';
+        $('gcForm').hidden = true; $('gcDone').hidden = false;
+      } else {
+        btn.disabled = false; btn.innerHTML = 'Get My Gift Card &rarr;';
+        err.textContent = "That didn't go through. Text or call me at (425) 600-7897 instead.";
+      }
+    });
+  });
 })();
 </script>
 
