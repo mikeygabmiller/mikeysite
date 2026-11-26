@@ -271,7 +271,11 @@ card for an Exterior ($199), Interior ($249) or Full Detail ($369) by
 $50 or $75. **Neither card ever expires** (RCW 19.240.020; Mikey picked that
 over a dated coupon). It's the homepage's `#gift-cards` section, which hides
 itself at midnight Pacific going into December 25, plus GBP posts 36, 37 and
-12 and Instagram W06. Sold by text, made in the dashboard. `PRICING.md` has
+12 and Instagram W06. People ask through the section's form (Mikey,
+2026-11-26: an sms: link does nothing on a computer), which posts to `/submit`
+like the ceramic calculator: no `total`, `smsConsent:false`, so he gets the
+alert and texts them himself; on a phone the number is also a text link.
+Made in the dashboard. `PRICING.md` has
 the terms. Don't change the amounts or the window without him.
 
 **Rain-Ready is off the site since 2026-11-25 but still honored.** The hangers,
