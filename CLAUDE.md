@@ -191,6 +191,13 @@ exactly as before.
   request at its own price; he sorts out the timing by text. No two-car
   slot: two Full Details is about 9 hours, which no slot of his holds.
 - **A street without a house number is allowed.** His alert tells him to ask.
+- **Holidays off** (Mikey, 2026-11-27): Dec 24, 25, 26, 31 and Jan 1 offer
+  no times. They're `HOLIDAYS_OFF` in the dashboard worker (not his saved
+  days off), and `/api/next-openings` returns the breaks still ahead as
+  `away`. The calculator's step 7 shows a "Gone for the holidays" card with
+  string lights and a row where each break falls in the list; the "Next
+  opening" lines say why the date jumps. It all hides once the dates pass.
+  Next year's breaks are his call: add them there.
 - Anything on his Google Calendar blocks a time. That's his off switch.
 
 ## The call page (`/onbored/`)

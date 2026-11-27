@@ -2013,6 +2013,21 @@ header li a[href="#booking"],
     #qqcCard .qq-open .ot{font-size:16.5px;font-weight:700;color:var(--accent);white-space:nowrap;}
     #qqcCard .qq-opens-more{display:none;margin-top:10px;}
     #qqcCard .qq-opens-more.on{display:grid;}
+    /* Off for the holidays (Mikey, 2026-11-27). The worker says which breaks
+       are ahead (`away` on /api/next-openings); these only show while one is. */
+    #qqcCard .qq-hol{position:relative;overflow:hidden;margin:0 0 14px;padding:22px 16px 14px;border-radius:14px;border:1.5px solid #2f6b3f;background:linear-gradient(160deg,#123a22 0%,#0f2a1a 60%,#3a1214 100%);color:#f4efe6;}
+    #qqcCard .qq-hol-lights{position:absolute;top:0;left:0;right:0;height:16px;display:flex;justify-content:space-around;align-items:flex-start;border-top:2px solid #1d1d1d;}
+    #qqcCard .qq-hol-lights i{display:block;width:8px;height:11px;margin-top:2px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;background:#e23b3b;box-shadow:0 0 8px #e23b3b;animation:qqHolTw 1.6s ease-in-out infinite;}
+    #qqcCard .qq-hol-lights i:nth-child(4n+2){background:#f5c542;box-shadow:0 0 8px #f5c542;animation-delay:.4s;}
+    #qqcCard .qq-hol-lights i:nth-child(4n+3){background:#3fbf6a;box-shadow:0 0 8px #3fbf6a;animation-delay:.8s;}
+    #qqcCard .qq-hol-lights i:nth-child(4n+4){background:#4aa3ff;box-shadow:0 0 8px #4aa3ff;animation-delay:1.2s;}
+    @keyframes qqHolTw{0%,100%{opacity:1}50%{opacity:.35}}
+    #qqcCard .qq-hol-t{font-size:17px;font-weight:750;letter-spacing:.2px;margin:4px 0 4px;}
+    #qqcCard .qq-hol-p{font-size:14px;line-height:1.45;color:#e6dfd2;margin:0;}
+    #qqcCard .qq-hol-snow{position:absolute;right:12px;bottom:6px;font-size:34px;opacity:.18;pointer-events:none;}
+    #qqcCard .qq-hol-gap{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1.5px dashed #2f6b3f;background:rgba(47,107,63,.12);color:var(--text-2);font-size:14px;}
+    #qqcCard .qq-hol-gap b{color:var(--text);font-weight:680;}
+    @media (prefers-reduced-motion:reduce){#qqcCard .qq-hol-lights i{animation:none;}}
     #qqcCard .qq-opens-msg{font-size:13.5px;color:var(--text-2);background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:12px;}
     #qqcCard .qq-booksum{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;padding:11px 16px;margin:2px 0 10px;}
     #qqcCard .qq-booksum .bs-rr{font-size:12.5px;color:var(--gold);margin-top:2px;}
@@ -2104,6 +2119,7 @@ header li a[href="#booking"],
   <div class="step" id="step7">
     <h3 class="q-title">Pick a time</h3>
     <p class="q-hint" id="qqTimeHint">I come to you. Tap the time you want and I&rsquo;ll hold it while I text you to confirm.</p>
+    <div class="qq-hol" id="qqHoliday" style="display:none;"></div>
     <div class="qq-opens-msg" id="qqOpensMsg" style="display:none;"></div>
     <div class="qq-opens" id="qqOpens"></div>
     <div class="qq-opens qq-opens-more" id="qqOpensMore"></div>
@@ -2567,7 +2583,7 @@ header li a[href="#booking"],
   // Openings come from the dashboard worker, the same engine his own Bookings
   // screen and his texts use, so the site can't offer a time he doesn't have.
   var BK_API = 'https://texting.mikeysdetailingsnohomish.workers.dev';
-  var BK = { key:'', opens:null, pending:null, pick:null };
+  var BK = { key:'', opens:null, pending:null, pick:null, away:[] };
   function bkService(){
     // Interior + Exterior picked separately is a Full Detail's worth of time.
     if (S.services['Full Detail'] || (S.services['Interior Detail'] && S.services['Exterior Detail'])) return 'full';
@@ -2596,7 +2612,7 @@ header li a[href="#booking"],
           .then(function(j){ if (done) return;
             if (!(j && j.ok && j.openings)) { giveUp(); return; }
             done = true; clearTimeout(t);
-            if (BK.key === key) BK.opens = j.openings;
+            if (BK.key === key) { BK.opens = j.openings; BK.away = j.away || []; }
             resolve(j.openings); })
           .catch(giveUp);
       } catch (e) { giveUp(); }
@@ -2612,8 +2628,9 @@ header li a[href="#booking"],
       var typing = val('qqName') || val('qqPhone') ||
         (document.activeElement && /^(qqName|qqPhone)$/.test(document.activeElement.id || ''));
       if (st.classList.contains('show') && typing) return;
-      var o = BK.opens[0];
-      $('qqNextLine').innerHTML = 'Next opening: <b>' + escapeHtml(o.label + ' at ' + o.time) + '</b>';
+      var o = BK.opens[0], hb = bkHolBefore(o.date, {});
+      $('qqNextLine').innerHTML = 'Next opening: <b>' + escapeHtml(o.label + ' at ' + o.time) + '</b>' +
+        (hb.length ? ' (I&rsquo;m off ' + escapeHtml(hb[0].note) + ' for ' + escapeHtml(hb[0].name) + ')' : '');
       st.classList.add('has-booking');
     };
     if (BK.opens && BK.key === bkKey()) apply();
@@ -2624,10 +2641,36 @@ header li a[href="#booking"],
     return '<button type="button" class="qq-open" data-bk="' + i + '"><span><span class="od">' + escapeHtml(o.label) +
       '</span><span class="op">' + bkPart(o.slot) + '</span></span><span class="ot">' + escapeHtml(o.time) + '</span></button>';
   }
+  // Holiday breaks (from the worker) that fall before this opening and
+  // haven't been shown yet. The worker only sends breaks still ahead.
+  function bkHolBefore(date, shown){
+    var out = [], a = BK.away || [];
+    for (var k=0;k<a.length;k++){ if (!shown[a[k].from] && a[k].from < date){ shown[a[k].from] = 1; out.push(a[k]); } }
+    return out;
+  }
+  function bkHolGap(h){
+    return '<div class="qq-hol-gap" role="note"><span aria-hidden="true">' + (/^New/.test(h.name) ? '&#127878;' : '&#127876;') +
+      '</span><span><b>' + escapeHtml(h.note) + '</b>: off for ' + escapeHtml(h.name) + '</span></div>';
+  }
+  function bkHolCard(){
+    var a = BK.away || [], el = $('qqHoliday'); if (!el) return;
+    if (!a.length){ el.style.display = 'none'; el.innerHTML = ''; return; }
+    var parts = a.map(function(h){ return escapeHtml(h.name) + ' (' + escapeHtml(h.note) + ')'; });
+    var bulbs = ''; for (var k=0;k<14;k++) bulbs += '<i></i>';
+    el.innerHTML = '<div class="qq-hol-lights" aria-hidden="true">' + bulbs + '</div>' +
+      '<div class="qq-hol-t">Gone for the holidays</div>' +
+      '<p class="qq-hol-p">I&rsquo;m taking ' + parts.join(' and ') + ' off, so you won&rsquo;t see those days below. Happy holidays!</p>' +
+      '<div class="qq-hol-snow" aria-hidden="true">&#10052;</div>';
+    el.style.display = 'block';
+  }
   function bkShowTimes(msg){
     var list = BK.opens || [];
-    var first = '', more = '';
-    for (var i=0;i<list.length;i++){ if (i < 3) first += bkOpenBtn(list[i], i); else more += bkOpenBtn(list[i], i); }
+    var first = '', more = '', shown = {};
+    for (var i=0;i<list.length;i++){
+      var gaps = bkHolBefore(list[i].date, shown).map(bkHolGap).join('');
+      if (i < 3) first += gaps + bkOpenBtn(list[i], i); else more += gaps + bkOpenBtn(list[i], i);
+    }
+    bkHolCard();
     $('qqOpens').innerHTML = first || '<div class="qq-opens-msg">Nothing open online right now. Text me and I&rsquo;ll find you a time.</div>';
     var mo = $('qqOpensMore'); mo.innerHTML = more; mo.classList.remove('on');
     $('qqMoreTimes').style.display = more ? 'block' : 'none';
