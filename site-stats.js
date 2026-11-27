@@ -561,8 +561,13 @@ window.MD_STATS = {
       .then(function (j) {
         var o = j && j.ok && j.openings && j.openings[0];
         if (!o) return;
+        // Off for the holidays (Mikey, 2026-11-27): when a break he's taking
+        // sits before the next opening, say why the date jumps.
+        var when = o.label + ' at ' + o.time;
+        var h = (j.away || []).filter(function (x) { return x.from < o.date; })[0];
+        if (h) when += ' (I\u2019m off ' + h.note + ' for ' + h.name + ')';
         Array.prototype.forEach.call(els, function (el) {
-          el.textContent = el.getAttribute('data-next-opening').replace('{when}', o.label + ' at ' + o.time);
+          el.textContent = el.getAttribute('data-next-opening').replace('{when}', when);
         });
       })
       .catch(function () {});
